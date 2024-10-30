@@ -1,0 +1,118 @@
+.photobook-box {
+  @extend .box;
+
+  position: relative;
+
+  > .title {
+    margin: 0;
+    height: 80px;
+    line-height: 80px;
+    vertical-align: middle;
+    color: $photobook-box-title;
+    font-size: 30px;
+    font-weight: $weight-normal;
+    text-align: center;
+    position: relative;
+
+    > .logo-wrapper {
+      display: inline-block;
+      position: relative;
+
+      .logo {
+        fill: $photobook-box-title-icon;
+        position: relative;
+        display: inline-block;
+      }
+
+      .cloud {
+        height: 43px;
+        width: 66px;
+        display: inline-block;
+        position: relative;
+        top: 9px;
+      }
+
+      .home {
+        height: 50px;
+        width: 70px;
+        display: inline-block;
+        position: relative;
+        top: 16px;
+      }
+    }
+  }
+
+  > .image {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 13px;
+
+    > img {
+      max-width: 100%;
+      height: 100%;
+    }
+  }
+
+  > .content {
+    margin-bottom: 45px;
+    padding: 0 $grid-gutter/2;
+
+    > .headline {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 24px;
+      font-weight: $weight-semibold;
+      text-align: center;
+    }
+
+    > .text {
+      text-align: center;
+      font-size: 16px;
+      line-height: 25px;
+      min-height: 75px;
+      margin-top: 0;
+      margin-bottom: 13px;
+    }
+
+    > .button-start {
+      @extend .button_action;
+      @extend .button_action_mod-medium;
+      @extend .button_action_mod-secondary;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 36px;
+    }
+  }
+
+  .meta {
+    .list-title {
+      font-size: 14px;
+      font-weight: $weight-semibold;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .specs, .suitable, .browsers, .os {
+      margin-bottom: 18px;
+      @extend .icon-list;
+    }
+
+    .browsers, .os {
+      @extend .icon-list.-horizontal;
+      @extend .icon-list.-has-4;
+      margin-bottom: 5px;
+    }
+  }
+
+  > .link {
+    color: $box-more-link-color;
+    position: absolute;
+    text-decoration: none;
+    bottom: 15px;
+    right: 10px;
+
+    &:hover {
+      color: $box-more-link-hover-color;
+    }
+  }
+}

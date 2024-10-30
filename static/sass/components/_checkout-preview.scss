@@ -1,0 +1,159 @@
+$measureverticalwidth: 60px;
+
+.checkout-preview {
+  padding: 0 20px;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  > .product {
+    position: relative;
+    display: table;
+    margin: 35px auto 20px;
+
+    &.-reduced {
+      margin-top: 0;
+    }
+
+    &:before {
+      position: absolute;
+      content: attr(data-waiting-text);
+      text-align: center;
+      font-size: 14px;
+      left: 30px;
+      top: 50%;
+      margin-top: -10px;
+      right: 90px;
+      color: $stone;
+      z-index: 19;
+    }
+  }
+
+  .measure {
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      background-color: #fff;
+    }
+
+    &.-horizontal.-hidden,
+    &.-vertical.-hidden {
+      border: none;
+
+      &:before {
+        display: none;
+      }
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  .measure.-horizontal {
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    border-bottom: 7px solid $page-text-color;
+    padding-bottom: 3px;
+    margin-bottom: 7px;
+    text-align: center;
+    margin-right: $measureverticalwidth;
+
+    // Overlap border to make a thin line
+    &:before,
+    &:after {
+      height: 3px;
+      left: 1px;
+      right: 1px;
+    }
+
+    &:before {
+      top: 100%;
+    }
+
+    &:after {
+      bottom: -7px;
+    }
+  }
+
+  .measure.-vertical {
+    top: 0;
+    bottom: 0;
+    left: 100%;
+    border-left: 7px solid $page-text-color;
+    padding-left: 5px;
+    margin-left: -$measureverticalwidth + 7px;
+
+    // Overlap border to make a thin line
+    &:before,
+    &:after {
+      width: 3px;
+      top: 1px;
+      bottom: 1px;
+    }
+
+    &:before {
+      right: 100%;
+    }
+
+    &:after {
+      left: -7px;
+    }
+
+    > span {
+      position: absolute;
+      height: 30px;
+      line-height: 30px;
+      top: 50%;
+      margin-top: -15px;
+    }
+  }
+
+  .canvas {
+  &.-cushion{
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);
+     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);
+     }
+    display: block;
+    max-width: 100%;
+    margin-right: $measureverticalwidth;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    z-index: 20;
+  }
+
+  .image-preview {
+    display: block;
+
+    &.-crop {
+      margin-top: -10px;
+      margin-right: -10px;
+    }
+  }
+
+  .cropit-image-preview {
+    display: block;
+    cursor: move;
+    position: relative;
+    z-index: 21;
+  }
+
+  .borderLayer {
+    position: absolute;
+    top: 0;
+    z-index: 20;
+  }
+
+  .cropit-image-loading {
+    width: 100%;
+    height: 300px;
+  }
+}

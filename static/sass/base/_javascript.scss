@@ -1,0 +1,15 @@
+*[data-clickarea] {
+  cursor: pointer;
+}
+
+.js-modal {
+  display: none;
+  
+  &.-initialized {
+    display: block;
+  }
+
+  &#bestPriceGuarantee {
+    width: 90% !important;
+  }
+}

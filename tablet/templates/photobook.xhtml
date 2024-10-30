@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      class="no-js desktop">
+<f:view>
+<h:head>
+  <base href="#{baseUrlBean.baseUrl}"/>
+
+  <ui:insert name="dataLayer"/>
+  <ui:include src="/trackingcodes/startofhead.xhtml"/>
+
+
+<h:outputText
+    value="&lt;!--[if IE]&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;/#{shopInfoBean.versionPath}static/build/css/split/page-desktop.min.css&quot; /&gt;&lt;![endif]--&gt;"
+    escape="false" />
+
+<h:outputText
+    value="&lt;!--[if !IE]&gt; &lt;!--&gt; &lt;link rel=&quot;stylesheet&quot; href=&quot;/#{shopInfoBean.versionPath}static/build/css/page-desktop.min.css&quot; /&gt;&lt;![endif]--&gt;"
+    escape="false" />
+
+  <ui:insert name="head" />
+  <ui:include src="/head/icons.xhtml" />
+  <h:outputText escape="false" value="#{contentBean.snippets['order-deadlines']}"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#74c100" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta http-equiv="content-language" content="de_DE" />
+  <ui:insert name="meta" />
+  <title>#{pageTitle}</title>
+  <ui:include src="/trackingcodes/endofhead.xhtml"/>
+  <ui:remove>
+    <!-- Try to keep the scripts in the head as short as possible. A <script> will block the
+         browser rendering until the script is loaded. Put as much scripts as possible before
+         the closing </body>, resp. use the eofscript-insert. (See below) -->
+  </ui:remove>
+  <style>
+    body{
+    font-family: "Century Gothic", CenturyGothic, sans-serif;
+    }
+
+    a{
+    color: #fff;
+    text-decoration: none;
+    }
+    h3, h4{
+      margin-top:0.2em;
+      margin-bottom: 0.2em;
+    }
+    p{
+      margin-top:1px;
+    }
+     .fotobuch-produkte-navi {
+     margin: 20px 20px 5px 20px;
+     border-bottom: 1px solid #5f5e5e;
+     }
+  .fotobuch-produkte-navi {
+     margin: 20px;
+     border-bottom: 1px solid #5f5e5e;
+     }
+     .fotobuch-produkte-navi span {
+     font-size: 24px;
+     color: #74c100;
+     margin-right: 20px
+     }
+
+     .col-3 {
+     width: 700px;
+     padding: 10px 20px;
+     }
+
+     .prod-item {
+     width: 30%;
+     margin-right: 2%;
+     display: inline-block;
+     }
+
+     .prod-img {
+     width: 204px;
+     height: 134px;
+     background-color: #5f5e5e;
+     }
+
+     .prod-item h2 { margin-top: 5px;     font-size: 20px;}
+   .prod-item h2 > span { font-size: 12px; font-weight: 400; }
+
+   .prod-item p.crossed { text-decoration: line-through; margin-bottom: 0;}
+   .prod-item p.price { color: #74c100; font-size: 1.5em; margin-top: 0; }
+   .prod-item p.price.space { margin-top: 20px; font-size: 1em;}
+
+     .prod-item .btn {
+     width: 132px;
+     height: 34px;
+     background: #74c100;
+     border-radius: 6px;
+     text-align: center;
+     line-height: 34px;
+     color: #fff;
+     font-weight: 700;
+   }
+
+   .main .prod-img.fotobuch { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/main-fb.jpg) top left no-repeat;}
+   .main .prod-img.fotocalendario { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/main-kalender.jpg) top left no-repeat;}
+   .main .prod-img.premium-layouts { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/main-pl.jpg) top left no-repeat;}
+
+   .fotobuch .prod-img.hardcover { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/b-hc.jpg) top left no-repeat;}
+   .fotobuch .prod-img.ringbindung { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/b-rb.jpg) top left no-repeat;}
+   .fotobuch .prod-img.softcover { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/b-sc.jpg) top left no-repeat;}
+
+   .hardcover .prod-img.handy { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/hc-handy.jpg) top left no-repeat;}
+   .hardcover .prod-img.pocket { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/hc-pocket.jpg) top left no-repeat;}
+   .hardcover .prod-img.square { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/hc-quadrat.jpg) top left no-repeat;}
+   .hardcover .prod-img.classic { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/hc-classic.jpg) top left no-repeat;}
+   .hardcover .prod-img.panorama { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/hc-panorama.jpg) top left no-repeat;}
+   .hardcover .prod-img.xxl { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/hc-xxl.jpg) top left no-repeat;}
+
+   .ringbindung .prod-img.handy { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/rb-handy.jpg) top left no-repeat;}
+   .ringbindung .prod-img.pocket { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/rb-pocket.jpg) top left no-repeat;}
+   .ringbindung .prod-img.square { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/rb-square.jpg) top left no-repeat;}
+   .ringbindung .prod-img.classic { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/rb-classic.jpg) top left no-repeat;}
+   .ringbindung .prod-img.panorama { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/rb-panorama.jpg) top left no-repeat;}
+   .ringbindung .prod-img.xxl { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/rb-xxl.jpg) top left no-repeat;}
+
+   .softcover .prod-img.mini { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/sc-mini.jpg) top left no-repeat;}
+
+   .fotocalendario .prod-img.quadrat { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/kl-quadrat.jpg) top left no-repeat;}
+   .fotocalendario .prod-img.classic { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/kl-classic.jpg) top left no-repeat;}
+   .fotocalendario .prod-img.panorama { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/kl-panorama.jpg) top left no-repeat;}
+   .fotocalendario .prod-img.premium { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/kl-premium.jpg) top left no-repeat;}
+   .fotocalendario .prod-img.xxl { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/kl-xxl.jpg) top left no-repeat;}
+   .fotocalendario .prod-img.maxi { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/kl-maxi.jpg) top left no-repeat;}
+   #eKomiVFreport-fixed{display: none;}
+   .premium-layouts .prod-img.reisen { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/pl-reisen.jpg) top left no-repeat;}
+   .premium-layouts .prod-img.hochzeit { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/pl-hochzeit.jpg) top left no-repeat;}
+   .premium-layouts .prod-img.xmas { background: url(/#{shopInfoBean.versionPath}assets/img/album-digital/popup/pl-xmas.jpg) top left no-repeat;}
+  </style>
+</h:head>
+<h:body style="padding-top: 0px;">
+  <ui:include src="/trackingcodes/beginofbody.xhtml"/>
+  <ui:insert name="content" />
+  <h:outputScript library="primefaces" name="jquery/jquery.js"/>
+  <script src="/#{shopInfoBean.versionPath}static/build/js/ux-tablet.min.js"></script>
+  <ui:remove>
+    <!-- Use <ui:define name="eofscript"></ui:define> to include scripts for specific pages or
+         page groups like the checkout. Try to minify and concatenate them as good as possible. -->
+  </ui:remove>
+  <ui:insert name="eofscript" />
+  <ui:insert name="trackingcodes" />
+  <ui:include src="/trackingcodes/endofbody.xhtml"/>
+
+  <ui:include src="/components/endofbody/endofbody.xhtml"/>
+
+</h:body>
+</f:view>
+</html>

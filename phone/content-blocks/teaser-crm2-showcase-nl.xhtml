@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <div class="showcase -showcase-min" style="background-image:url(#{bgimage})">
+    <header class="head text-center">
+      <h1 class="headline text-format -highlight"><b>#{headline}</b></h1>
+      <div class="claim"><b>#{subheading} <s>#{subheadingCross}</s> #{subheadingNext}</b> <span class="price">25€*</span></div>
+    </header>
+
+    <div class="body">
+
+      <!-- teaser left -->
+      <div class="product-crm">
+        <ui:fragment rendered="#{not empty image}">
+          <img class="image checkout-preview" src="#{image}" alt=""  />
+        </ui:fragment>
+        <ui:fragment rendered="#{not empty code}">
+          <p class="text-center"><strong>Dein Gutscheincode: <span class="coupon-code">#{code}</span></strong></p>
+         </ui:fragment>
+      </div><!-- /teaser left -->
+
+      <!-- teaser right -->
+      <div class="info-crm col -right">
+        <ui:fragment rendered="#{not empty listTitle}">
+          <h2>#{listTitle}</h2>
+        </ui:fragment>
+        <ul class="features">
+          <ui:fragment rendered="#{not empty list1}">
+            <li>#{list1}</li>
+          </ui:fragment>
+          <ui:fragment rendered="#{not empty list2}">
+            <li>#{list2}</li>
+          </ui:fragment>
+          <ui:fragment rendered="#{not empty list3}">
+            <li>#{list3}</li>
+          </ui:fragment>
+          <ui:fragment rendered="#{not empty list4}">
+            <li>#{list4}</li>
+          </ui:fragment>
+          <ui:fragment rendered="#{not empty list5}">
+            <li>#{list5}</li>
+          </ui:fragment>
+        </ul>
+
+        <div class="product-crm">
+        <!-- UPLOAD BUTTON INCLUDE-->
+          <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+            <ui:param name="directuploadProductId" value="#{ not empty directuploadProductId ? directuploadProductId : 492 }" />
+            <ui:param name="directuploadClass" value="action" />
+        </ui:include>
+          <p>#{Ndate}</p>
+      </div>
+      </div><!-- /teaser right -->
+    </div>
+  </div>
+
+</ui:composition>

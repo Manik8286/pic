@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <!-- Rich snippet -->
+    <section class="page-section">
+      <div class="article-showcase -no-bottom">
+        <h3 class="headline -has-sidelines"><span>Betygsättning och recensioner</span></h3>
+        <div class="col -span-12 description text-center" vocab="http://schema.org/" typeof="Product">
+          <meta property="brand" content="BestCanvas.se" />
+          <meta property="name" content="Inramat Foto med Passepartout" />
+          <meta property="image" src="https://download.cdn-shop.com/media/web_images/se/bestcanvas/inramat-foto-med-passepartout.jpg" />
+          <meta property="description" content="" />
+          <meta property="sku" content="POSTER-PPT-20x20-1" />
+          <span property="aggregateRating" typeof="AggregateRating">
+          <p class="text">
+            <ui:include src="/rich-snippets/snippet-rating.xhtml" />Inramat Foto med premium nu!</p>
+          </span>
+          <span property="offers" typeof="Offer">
+            <meta property="priceCurrency" content="SEK" />
+            <meta property="price" content="115.00" />
+            <time property="priceValidUntil" datetime="2022-12-31"></time>
+            <span property="seller" typeof="Organization">
+              <meta property="name" content=" BestCanvas.se " />
+            </span>
+            <link property="itemCondition" href="http://schema.org/NewCondition" />
+            <link property="availability" href="http://schema.org/InStock" />
+          </span>
+        </div>
+      </div>
+    </section>
+  <!-- /Rich snippet -->
+
+</ui:composition>

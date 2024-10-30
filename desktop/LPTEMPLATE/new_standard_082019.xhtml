@@ -1,0 +1,488 @@
+<ui:composition template="/templates/cms.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:param name="pageTitle" value="%%pageTitle%%" />
+
+<!-- Datalayer for GTM on each product page -->
+<ui:define name="dataLayer">
+  <ui:fragment rendered="#{ fn:length('%%module5%%') gt 1 }">
+    <ui:include src="%%module5%%">
+      <ui:param name="productId" value="%%ProductId%%" />
+    </ui:include>
+  </ui:fragment>
+
+  <ui:fragment rendered="#{ fn:length('%%module6%%') gt 1 }">
+    <ui:include src="%%module6%%" />
+  </ui:fragment>
+</ui:define>
+
+
+<ui:define name="topbar">
+  <c:if test="#{ fn:length('%%module8%%') gt 1 }">
+    <c:set var="topBarSnippet" value="#{ fn:replace(fn:replace('%%module8%%', '/LPMODULE/topbar/', ''), '.xhtml', '') }" scope="request"  />
+    <ui:include src="/helper/topbar.xhtml">
+      <ui:param name="desktop" value="#{contentBean.snippets['topbar-bcca-'.concat(topBarSnippet)]}" />
+      <ui:param name="phone" value="#{contentBean.snippets['topbar-bcca-'.concat(topBarSnippet).concat('-phone')]}" />
+    </ui:include>
+  </c:if>
+  <c:if test="#{ fn:length('%%module8%%') lt 1 }">
+    <ui:include src="/helper/topbar.xhtml">
+      <ui:param name="desktop" value="%%topbar%%" />
+      <ui:param name="phone" value="%%topbarPhone%%" />
+    </ui:include>
+  </c:if>
+</ui:define>
+
+
+<!--
+<ui:define name="additionalCss">
+  <ui:fragment rendered="#{sessionBean.userAgentType == 'desktop' or sessionBean.userAgentType == 'tablet'}">
+    <style>.cms-teaser>.showcase { background-image: url(%%image2%% ); }</style>  
+  </ui:fragment>
+</ui:define>
+-->
+
+
+<ui:define name="head"> 
+  <meta name="robots" content="NOINDEX,FOLLOW" />
+<!-- Returns reference. Usefull for Deal pages msg variations -->
+  <ui:include src="/helper/reference#{ fn:length('%%priceException%%') gt 1 ? 'crm' : 'cms'  }.xhtml" />
+  <!-- meta, seo, index-rules, canonical -->
+  %%meta%%  
+  <!-- Force DC to init on first load -->
+  <c:set var="couponSuccess" value="#{discountCodeBean.setCode('%%discountCode%%')}" scope="request"  />
+  <script>console.log("%c coupon: #{couponSuccess ? '❤' : '♠'}", "color: #{couponSuccess ? '#bada55' : '#000000'}");</script>
+  <f:facet name="first">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  </f:facet>
+  <!-- Returns price (€ 2,80), priceCross (€ 28,90), savingProcent (90%) -->
+  <ui:include src="/helper/price.xhtml">
+    <ui:param name="productType" value="%%ProductId%%" />
+    <ui:param name="formatSize"  value="%%format%%" />
+  </ui:include>
+</ui:define>
+
+
+
+
+<ui:define name="content">
+
+
+
+  <!-- Separate user agents for more control -->
+  <ui:fragment rendered="#{sessionBean.userAgentType == 'desktop'}">
+    <section class="cms-teaser -cmr-teaser #{ fn:length('%%styleClass%%') gt 1 ? '%%styleClass%%' : teaserClass}">
+      <div class="showcase" style="background-image: url(%%image2%% )">
+        <div class="body">
+          <div class="product ">
+            <img src="%%image4%%" alt="%%alt4%%" class="magnified-corner" jsf:rendered="#{ fn:length('%%image4%%') gt 1 }" />
+
+            <picture class="#{ fn:length('%%image1%%') gt 1 ? '' : 'vHidden' }">
+              <source srcset="#{ fn:length('%%image1%%') gt 1 ? fn:replace( '%%image1%%', 'png', 'webp'  ) : '' }" type="image/webp" />
+              <source srcset="%%image1%%" type="image/jpeg" /> 
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="%%image1%%" alt="%%alt1%%" class="image #{ fn:length('%%image1%%') gt 1 ? '' : 'vHidden' }" />
+            </picture>
+
+
+            <!-- badge block -->
+            <ui:fragment rendered="#{ fn:length('%%module3%%') gt 1 }">
+              <ui:include src="%%module3%%" />
+            </ui:fragment>
+            <!-- /badge block -->
+          </div>
+          <div class="info -right">
+            <h1 class="headline" jsf:rendered="#{ fn:length('%%headline%%') gt 1 }"><h:outputText value="%%headline%%" escape="false" /></h1>
+            <div class="claim" jsf:rendered="#{ fn:length('%%claim%%') gt 1 }"><h:outputText value="%%claim%%" escape="false" /></div>
+
+            <!-- info block -->
+            <ui:fragment rendered="#{ fn:length('%%infoblock%%') gt 1 }">
+              <div class="infoblock">%%infoblock%%</div>
+            </ui:fragment>
+            <!-- /info block -->
+
+            <!-- info block -->
+            <ul class="features" jsf:rendered="#{ fn:length('%%list1%%') gt 1 }">
+              <li jsf:rendered="#{ fn:length('%%list1%%') gt 1 }"><h:outputText value="%%list1%%" escape="false" /></li>
+              <li jsf:rendered="#{ fn:length('%%list2%%') gt 1 }"><h:outputText value="%%list2%%" escape="false" /></li>
+              <li jsf:rendered="#{ fn:length('%%list3%%') gt 1 }"><h:outputText value="%%list3%%" escape="false" /></li>
+              <li jsf:rendered="#{ fn:length('%%list4%%') gt 1 }"><h:outputText value="%%list4%%" escape="false" /></li>
+            </ul>
+            <!-- /info block -->
+
+            <!-- coupon block -->
+            <div class="coupon">
+              <p class="deal-title" jsf:rendered="#{ fn:length('%%couponTitle%%') gt 1 }">%%couponTitle%%</p>
+              <ui:fragment rendered="#{ fn:length('%%coupon%%') gt 1 }">
+                <form>
+                  <input type="text" value="%%coupon%%" data-clipboard-text="%%coupon%%" data-clip-translation="copies" readonly="true" class="code" />
+                </form>
+              </ui:fragment>
+              <c:choose>
+                <c:when test="#{ fn:length('%%module7%%') gt 1 }">
+                  <p class="expire-date" jsf:rendered="#{ not empty discountCodeBean.endDate }">Valid until #{discountCodeBean.endDate}</p>
+                </c:when>
+<!--
+                <c:otherwise>
+                  <p class="expire-date" jsf:rendered="#{ fn:length('%%smallPrint%%') gt 1 }">%%smallPrint%%</p>
+                </c:otherwise>
+-->
+              </c:choose>
+            </div>
+            <!-- /coupon block -->
+
+            <!-- quotes block -->
+            <ui:fragment rendered="#{ fn:length('%%module4%%') gt 1 }">
+              <ui:include src="%%module4%%" />
+            </ui:fragment>
+            <!-- /quotes block -->
+
+            <c:choose>
+              <c:when test="#{ fn:contains( '%%ProductId%%' , 'url_' )}">
+                <div class="upload-button">
+                   <a href="#{fn:replace( '%%ProductId%%' , 'url_', '')}" class="filebutton button -action -arrow -fullbleed -big -longText">#{_['Skapa']}</a>
+                 </div>
+              </c:when>
+
+              <c:otherwise>
+                 <ui:include src="/helper/directuploadcms.xhtml">
+                  <ui:param name="directuploadProductId" value="%%ProductId%%" />
+                  <ui:param name="directuploadPosition" value="-noTable" />
+                  <ui:param name="directuploadClass" value="button -action" />
+                  <ui:param name="buttonText" value="#{_['Skapa']}" />
+                </ui:include>
+              </c:otherwise>
+            </c:choose>
+
+
+
+            <c:choose>
+              <c:when test="#{ fn:length('%%module8%%') gt 1 }">
+                <p class="text-center smallprint" jsf:rendered="#{ not empty discountCodeBean.endDate }">#{_['Valid until']} #{discountCodeBean.endDate}</p>
+              </c:when>
+
+              <c:otherwise>
+                <p class="deal-condition" jsf:rendered="#{ fn:length('%%smallPrint%%') gt 1 }">%%smallPrint%%</p>
+              </c:otherwise>
+            </c:choose>   
+
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </ui:fragment>
+
+
+
+
+  <ui:fragment rendered="#{sessionBean.userAgentType == 'tablet'}">
+    <section class="cms-teaser  #{ fn:length('%%styleClass%%') gt 1 ? '%%styleClass%%' : teaserClass}">
+      <div class="showcase" style="background-image: url(%%image2%% )">
+        <div class="body">
+          <div class="product">
+            <img src="%%image4%%" alt="%%alt4%%" class="magnified-corner" jsf:rendered="#{ fn:length('%%image4%%') gt 1 }" />
+
+            <picture class="#{ fn:length('%%image1%%') gt 1 ? '' : 'vHidden' }">
+              <source srcset="#{ fn:length('%%image1%%') gt 1 ? fn:replace( '%%image1%%', 'png', 'webp'  ) : '' }" type="image/webp" />
+              <source srcset="%%image1%%" type="image/jpeg" /> 
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="%%image1%%" alt="%%alt1%%" class="image #{ fn:length('%%image1%%') gt 1 ? '' : 'vHidden' }" />
+            </picture>
+            <!-- badge block -->
+            <ui:fragment rendered="#{ fn:length('%%module3%%') gt 1 }">
+              <ui:include src="%%module3%%" />
+            </ui:fragment>
+            <!-- badge block -->  
+          </div>
+          <div class="info -right">
+            <h1 class="headline" jsf:rendered="#{ fn:length('%%headline%%') gt 1 }"><h:outputText value="%%headline%%" escape="false" /></h1>
+            <div class="claim" jsf:rendered="#{ fn:length('%%claim%%') gt 1 }"><h:outputText value="%%claim%%" escape="false" /></div>
+
+            <!-- info block -->
+            <ui:fragment rendered="#{ fn:length('%%infoblock%%') gt 1 }">
+              <div class="infoblock">%%infoblock%%</div>
+            </ui:fragment>
+            <!-- /info block -->
+
+            <!-- info block -->
+            <ul class="features" jsf:rendered="#{ fn:length('%%list1%%') gt 1 }">
+              <li jsf:rendered="#{ fn:length('%%list1%%') gt 1 }"><h:outputText value="%%list1%%" escape="false" /></li>
+              <li jsf:rendered="#{ fn:length('%%list2%%') gt 1 }"><h:outputText value="%%list2%%" escape="false" /></li>
+              <li jsf:rendered="#{ fn:length('%%list3%%') gt 1 }"><h:outputText value="%%list3%%" escape="false" /></li>
+              <li jsf:rendered="#{ fn:length('%%list4%%') gt 1 }"><h:outputText value="%%list4%%" escape="false" /></li>
+            </ul>
+            <!-- /info block -->
+
+            <!-- coupon block -->
+            <div class="coupon">
+              <p class="deal-title" jsf:rendered="#{ fn:length('%%couponTitle%%') gt 1 }">%%couponTitle%%</p>
+              <ui:fragment rendered="#{ fn:length('%%coupon%%') gt 1 }">
+                <form>
+                  <input type="text" value="%%coupon%%" data-clipboard-text="%%coupon%%" data-clip-translation="copies" readonly="true" class="code" />
+                </form>
+              </ui:fragment>
+              <c:choose>
+                <c:when test="#{ fn:length('%%module7%%') gt 1 }">
+                  <p class="expire-date" jsf:rendered="#{ not empty discountCodeBean.endDate }">Valid until #{discountCodeBean.endDate}</p>
+                </c:when>
+<!--
+                <c:otherwise>
+                  <p class="expire-date" jsf:rendered="#{ fn:length('%%smallPrint%%') gt 1 }">%%smallPrint%%</p>
+                </c:otherwise>
+-->
+              </c:choose>
+            </div>
+            <!-- /coupon block -->
+
+            <!-- quotes block -->
+            <ui:fragment rendered="#{ fn:length('%%module4%%') gt 1 }">
+              <ui:include src="%%module4%%" />
+            </ui:fragment>
+            <!-- /quotes block -->
+
+            <c:choose>
+              <c:when test="#{ fn:contains( '%%ProductId%%' , 'url_' )}">
+                <div class="upload-button">
+                   <a href="#{fn:replace( '%%ProductId%%' , 'url_', '')}" class="filebutton button -action -arrow -fullbleed -big -longText">#{_['Skapa']}</a>
+                 </div>
+              </c:when>
+
+              <c:otherwise>
+                 <ui:include src="/helper/directuploadcms.xhtml">
+                  <ui:param name="directuploadProductId" value="%%ProductId%%" />
+                  <ui:param name="directuploadPosition" value="-noTable" />
+                  <ui:param name="buttonText" value="#{_['Skapa']}" />
+                </ui:include>
+              </c:otherwise>
+            </c:choose>
+
+
+            <c:choose>
+              <c:when test="#{ fn:length('%%module8%%') gt 1 }">
+                <p class="text-center smallprint" jsf:rendered="#{ not empty discountCodeBean.endDate }">#{_['Valid until']} #{discountCodeBean.endDate}</p>
+              </c:when>
+
+              <c:otherwise>
+                <p class="deal-condition" jsf:rendered="#{ fn:length('%%smallPrint%%') gt 1 }">%%smallPrint%%</p>
+              </c:otherwise>
+            </c:choose>   
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </ui:fragment> 
+
+  <ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+
+    <section class="cms-teaser -cmr-teaser #{ fn:length('%%styleClass%%') gt 1 ? '%%styleClass%%' : teaserClass}">
+      <div class="showcase">
+        <div class="body">
+          <div class="product">
+            <img src="%%image4%%" alt="product zoom" class="magnified-corner" jsf:rendered="#{ fn:length('%%image4%%') gt 1 }" />
+
+            <picture class="#{ fn:length('%%image3%%') gt 1 ? '' : 'vHidden' }">
+              <source srcset="#{ fn:length('%%image3%%') gt 1 ? fn:replace( '%%image3%%', 'png', 'webp'  ) : '' }" type="image/webp" />
+              <source srcset="%%image3%%" type="image/jpeg" /> 
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="%%image3%%" alt="%%alt3%%" class="image #{ fn:length('%%image3%%') gt 1 ? '' : 'vHidden' }" />
+            </picture>
+
+            <!-- badge block -->
+            <ui:fragment rendered="#{ fn:length('%%module3%%') gt 1 }">
+              <ui:include src="%%module3%%" />
+            </ui:fragment>
+            <!-- badge block   -->
+          </div>
+          <div class="info">
+            <h1 class="headline" jsf:rendered="#{ fn:length('%%headline%%') gt 1 }"><h:outputText value="%%headline%%" escape="false" /></h1>
+            <div class="claim" jsf:rendered="#{ fn:length('%%claim%%') gt 1 }"><h:outputText value="%%claim%%" escape="false" /></div>
+
+            <!-- info block -->
+            <ui:fragment rendered="#{ fn:length('%%infoblock%%') gt 1 }">
+              <div class="infoblock">%%infoblock%%</div>
+            </ui:fragment>
+            <!-- /info block -->
+
+            <!-- info block -->
+            <ul class="features" jsf:rendered="#{ fn:length('%%list1%%') gt 1 }">
+              <li jsf:rendered="#{ fn:length('%%list1%%') gt 1 }"><h:outputText value="%%list1%%" escape="false" /></li>
+              <li jsf:rendered="#{ fn:length('%%list2%%') gt 1 }"><h:outputText value="%%list2%%" escape="false" /></li>
+              <li jsf:rendered="#{ fn:length('%%list3%%') gt 1 }"><h:outputText value="%%list3%%" escape="false" /></li>
+              <li jsf:rendered="#{ fn:length('%%list4%%') gt 1 }"><h:outputText value="%%list4%%" escape="false" /></li>
+            </ul>
+            <!-- /info block -->
+
+            <!-- coupon block -->
+            <div class="coupon">
+              <p class="deal-title" jsf:rendered="#{ fn:length('%%couponTitle%%') gt 1 }">%%couponTitle%%</p>
+              <ui:fragment rendered="#{ fn:length('%%coupon%%') gt 1 }">
+                <form>
+                  <input type="text" value="%%coupon%%" data-clipboard-text="%%coupon%%" data-clip-translation="copies" readonly="true" class="code" />
+                </form>
+              </ui:fragment>
+              <c:choose>
+                <c:when test="#{ fn:length('%%module7%%') gt 1 }">
+                  <p class="expire-date" jsf:rendered="#{ not empty discountCodeBean.endDate }">Valid until #{discountCodeBean.endDate}</p>
+                </c:when>
+
+                <c:otherwise>
+                  <p class="expire-date" jsf:rendered="#{ fn:length('%%smallPrint%%') gt 1 }">%%smallPrint%%</p>
+                </c:otherwise>
+              </c:choose>
+            </div>
+            <!-- /coupon block -->
+
+            <c:choose>
+              <c:when test="#{ fn:contains( '%%ProductId%%' , 'url_' )}">
+                <div class="upload-button">
+                   <a href="#{fn:replace( '%%ProductId%%' , 'url_', '')}" class="filebutton button -action -arrow -fullbleed -big -longText">#{_['Skapa']}</a>
+                 </div>
+              </c:when>
+
+              <c:otherwise>
+                 <ui:include src="/helper/directuploadcms.xhtml">
+                  <ui:param name="directuploadProductId" value="%%ProductId%%" />
+                  <ui:param name="directuploadPosition" value="-noTable" />
+                  <ui:param name="buttonText" value="#{_['Skapa']}" />
+                </ui:include>
+              </c:otherwise>
+            </c:choose>
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </ui:fragment> 
+
+
+
+
+<!-- badge block -->
+  <ui:fragment rendered="#{ fn:length('%%module9%%') gt 1 }">
+  <!-- microdata -->
+  <ui:include src="/page-blocks/cms/microdata-cms.xhtml">
+    <ui:param name="productType" value="%%ProductId%%" />
+    <ui:param name="productFormat"  value="%%format%%" />
+    <ui:param name="productPrice" value="#{price}" />
+    <ui:param name="productPriceCross" value="#{priceCross}" />
+  </ui:include>
+  <!-- /microdata -->
+  </ui:fragment>
+<!-- badge block   -->
+
+
+
+  <section class="page-section -alternate -smaller" jsf:rendered="#{ fn:length('%%snippet%%') gt 1 }">
+    <ui:include src="/page-blocks/info-blocks-dynamic.xhtml">
+      <ui:param name="quotes" value="quotes" /> 
+      <ui:param name="snippet" value="#{fn:replace( '%%snippet%%' , 'snippet_', '')}" />
+    </ui:include>
+  </section>
+
+
+  <section class="page-section -alternate -smaller" jsf:rendered="#{ fn:length('%%module1%%') gt 1 }">
+    <ui:include src="%%module1%%" />
+  </section>
+
+  <section class="page-section" jsf:rendered="#{ fn:length('%%module2%%') gt 1 }">
+    <ui:include src="%%module2%%" />
+  </section>
+
+
+  <!-- For index page support -->
+    <!-- paymentmethods and social -->
+    <section class="page-section -alternate">
+      <ui:include src="/page-blocks/paymentmethods.xhtml" />
+      <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+    </section>
+    <!-- /paymentmethods and social -->
+
+    <c:if test="#{ fn:length('%%coupon%%') gt 1 }">
+      <div class="hidden">
+        #{sessionScope.put("coupon", '%%coupon%%')}
+        #{couponRedemptionBean.setDefaultCoupon('%%coupon%%')}
+      </div>
+    </c:if>
+    
+  <!-- helper cookie for DC -->
+  <ui:include src="/page-blocks/cms/discountcode.xhtml" />
+  <!-- /helper cookie for DC -->
+
+  <!-- Highlight formats in configurator syntax productId:{format-string} .e.g. 505:20x20,505:40x30  -->
+  <ui:fragment rendered="#{ fn:length('%%priceException%%') gt 1  }">
+    <ui:include src="/page-blocks/cms/deal-highlight.xhtml">
+      <ui:param name="list" value="%%priceException%%" />
+      <ui:param name="discountcode" value="%%discountCode%%" />
+    </ui:include>
+  </ui:fragment>
+
+</ui:define>
+<ui:define name="eofscript">
+  <script>
+    // Canvas pages have: Laagste prijs garantie - tot 90% besparen!
+    if(document.getElementById('save')){
+      var saveId = document.getElementById('save');
+      saveId.className = '-red-text';
+      saveId.innerHTML ='#{savingProcent} besparen!'
+    }
+
+    // Copy funciton
+    var clipboard = new Clipboard('.coupon .code');   
+    $('.coupon .code').on('click', function(){
+      var $target = $(this);
+      $target.parent().addClass('-copy');
+      setTimeout(function () {
+          $target.parent().removeClass('-copy');
+      }, 2000);
+    });
+
+  </script>
+</ui:define>
+              
+
+<!--
+Template Name: 1 product Template
+
+Field "pageTitle": Page Title
+Field "meta": meta (textarea)
+Field "headline": Headline
+Field "claim": Claim
+Field "infoblock": infoblock (textarea)
+Field "list1": List1
+Field "list2": List2
+Field "list3": List3
+Field "list4": List4
+Field "ProductId": ProductId
+Field "format": format
+Field "topbar": topbar (Desktop)
+Field "topbarPhone": topbar (Phone)
+Field "smallPrint": Deal end small print
+Field "couponTitle": coupon title
+Field "coupon": coupon code
+Field "styleClass": styleClass
+Field "snippet": snippet name
+Field "priceException": Highlight Price
+
+Module 1: Info block (info)
+Module 2: Upgrade block (upgrade)
+Module 3: Badge variation (badge)
+Module 4: Quotes (quotes)
+Module 5: Datalayer (datalayer)
+Module 6: Channel (channel)
+Module 7: CRM dynamic (crm)
+Module 8: SEA topbars (topbar)
+Module 9: Microdata (microdata)
+
+Image 1: Product image (410x308)
+Image 2: Background image (1920x500)
+Image 3: Product (mobile) image (410x308)
+Image 4: Magnified-corner (90x90)
+-->
+</ui:composition>

@@ -1,0 +1,10 @@
+diff a/desktop/shopping/vaggdekoration/acrylic/foto-bakom-akrylglas-acryl-quad-20x20-1.xhtml b/desktop/shopping/vaggdekoration/acrylic/foto-bakom-akrylglas-acryl-quad-20x20-1.xhtml	(rejected hunks)
+@@ -27,7 +27,7 @@
+ 
+   <ui:define name="head">
+     <ui:include src="/coupons/discountcode-BC_SE_SEA.xhtml" />
+-<ui:include src="/helper/reference.xhtml" />
++    <ui:include src="/helper/reference.xhtml" />
+   </ui:define>
+ 
+   <ui:define name="meta">

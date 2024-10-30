@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:c="http://java.sun.com/jsp/jstl/core"
+        xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <div class="row">
+    <ui:include src="/content-blocks/info-blocks-badges.xhtml">
+      <ui:param name="ReviewBlock" value="#{RenderReviewBlock}" />
+    </ui:include>
+
+      <div jsf:rendered="#{hideVideo != 'true'}" class="col -span-#{sessionBean.userAgentType == 'phone' ? '12' : '4'}">
+
+        <c:choose>
+         <c:when  test="#{sessionBean.userAgentType == 'phone'}">
+         <div class="showcase-box" data-mh="showcase-box">
+            <iframe width="100%" height="auto" src="" data-src="//www.youtube.com/embed/yEAdvG_8qpA?loop=1&amp;autoplay=0&amp;modestbranding=1&amp;controls=1&amp;showinfo=0&amp;playlist=yEAdvG_8qpA&amp;fs=1" frameborder="0" allow="autoplay" allowfullscreen="allowfullscreen"></iframe>
+            <p class="text">Din sylvassa MIXPIX<sup>®</sup> bidrar med glädje och stil till ditt hem.</p>
+            <br/>
+            <div class="description-wrapper">
+                <a href="/multiimage_mixpix.jsf?product=4284" class="button -action -arrow">SKAPA</a>
+            </div>
+          </div>
+         </c:when>
+
+         <c:otherwise>
+          <div class="showcase-box" data-mh="showcase-box">
+            <h3 class="headline #{sessionBean.userAgentType == 'tablet' ? '-titleTable' : ''}">Introduktion på 30 sekunder</h3>
+
+            <a href="javascript:Modal.open('#mixPixVideo');"><img class="img-responsive" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/mixpix/Placeholder_Video_MixPix.jpg" alt="video placeholder" /></a>
+            <span class="mixPixInfo"> Din sylvassa MIXPIX<sup>®</sup> bidrar med glädje och stil till ditt hem.</span>
+            <a href="javascript:Modal.open('#mixPixVideo');" class="link">Se video »</a>
+          </div>
+
+          <div class="js-modal hideOveflow" id="mixPixVideo">
+            <iframe class="youtube-video" width="#{sessionBean.userAgentType == 'tablet' ? '600px' : '800px'}" height="#{sessionBean.userAgentType == 'tablet' ? '330px' : '450px'}" src="" data-src="//www.youtube.com/embed/yEAdvG_8qpA?loop=1&amp;autoplay=0&amp;modestbranding=1&amp;controls=1&amp;showinfo=0&amp;playlist=yEAdvG_8qpA&amp;enablejsapi=1&amp;fs=1" frameborder="0" allow="autoplay" allowfullscreen="allowfullscreen"></iframe>
+          </div>  
+         </c:otherwise>
+        </c:choose>
+
+      </div>
+
+      <div jsf:rendered="#{hideVideo == 'true'}" class="col -span-#{sessionBean.userAgentType == 'phone' ? '12' : '4'}">
+            <div class="showcase-box" data-mh="info">
+              <h3 class="headline">Psssst…tipsa en vän!</h3>
+              <p>Berätta för dina vänner om det här unika och exklusiva GRATISERBJUDANDET!</p>
+
+              <c:if test="#{sessionBean.userAgentType != 'phone'}">
+              <p><button class="button -action -facebook width100 fb-share -"><span class="icon"></span>Facebook</button></p>
+              <button onclick="showbubble()" class="button -action -link width100 clip" data-clipboard-text="https://www.bestcanvas.se/gratis-mixpix?utm_source=copylink&amp;utm_campaign=freemixpix&amp;utm_medium=link"><span class="icon"></span>Kopiera länk</button>
+              <div style="display: none;" class="copy-bubble">Kopierat till urklipp!</div>
+              </c:if>
+
+              <c:if test="#{sessionBean.userAgentType == 'phone'}">
+              <p><a href="whatsapp://send?text=Hej%21%20Jag%20beställde%20en%20a%20fotoprodukt%20och%20kan%20I%20tacka%20var%20och%20en%20av%20mina%20vänner%20med%205%20GRATIS%20MIXPIX%20https%3A%2F%2Fwww.bestcanvas.se%2Fgratis-mixpix%3Futm_source%3Dwhatsapp%26utm_campaign%3Dfreemixpix%26utm_medium%3Dlink"><button class="button -action -whatsapp width100"><span class="icon"></span>Dela på Whatsapp</button></a></p>
+              </c:if>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</ui:composition>

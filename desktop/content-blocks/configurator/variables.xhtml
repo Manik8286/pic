@@ -1,0 +1,91 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:c="http://java.sun.com/jsp/jstl/core"
+				xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<c:set var="canvas"					scope="request" value="254" />
+	<c:set var="framedPhoto"         	scope="request" value="1612" />
+	<c:set var="forex"               	scope="request" value="651" />
+	<c:set var="acrylic"             	scope="request" value="2421" />
+	<c:set var="aluminium"           	scope="request" value="258" />
+	<c:set var="acrylicForex"        	scope="request" value="473" />
+	<c:set var="acrylicAluminium"    	scope="request" value="267" />
+	<c:set var="acrylicBlock"        	scope="request" value="1613" />
+	<c:set var="mug"                 	scope="request" value="860" />
+	<c:set var="mugPrem"             	scope="request" value="1615" />
+	<c:set var="mugMagic"            	scope="request" value="1617" />
+	<c:set var="mugInner"            	scope="request" value="1616" />
+	<c:set var="cushion"             	scope="request" value="861" />
+	<c:set var="cushionPrem"         	scope="request" value="1614" />
+	<c:set var="blanket"             	scope="request" value="2000" />
+	<c:set var="phone"               	scope="request" value="1176" />
+	<c:set var="mouse"               	scope="request" value="863" />
+	<c:set var="puzzle"              	scope="request" value="864" />
+	<c:set var="wood"                	scope="request" value="1945" />
+	<c:set var="acrylClassic"      		scope="request" value="2421" />
+	<c:set var="acrylPremium"         	scope="request" value="2415" />
+	<c:set var="materialMugMagic"    	scope="request" value="41" />
+	<c:set var="materialBlanket"     	scope="request" value="46" />
+	<c:set var="materialBlanketPrem" 	scope="request" value="47" />
+	<c:set var="thinFrame"           	scope="request" value="10" />
+	<c:set var="thikFrame"           	scope="request" value="11" />
+	<c:set var="format20x20"         	scope="request" value="50" />
+	<c:set var="format30x20"         	scope="request" value="23" />
+
+  <c:set var="materialCanvas"					scope="request" value="10" />
+	<c:set var="materialAluminium" 				scope="request" value="11" />
+	<c:set var="materialAluminiumGlossy" 		scope="request" value="72" />
+	<c:set var="materialAluminiumMatte" 		scope="request" value="73" />
+	<c:set var="materialAcrylGlass" 			scope="request" value="12" />
+	<c:set var="materialAcrylGlassClassic" 		scope="request" value="59" />
+	<c:set var="materialAcrylAlu" 				scope="request" value="13" />
+	<c:set var="materialPoster" 				scope="request" value="14" />
+	<c:set var="materialAcrylForex" 			scope="request" value="15" />
+	<c:set var="materialMousepad" 				scope="request" value="16" />
+	<c:set var="materialPhotoPaper" 			scope="request" value="17" />
+	<c:set var="materialFotoabzug" 				scope="request" value="18" />
+	<c:set var="materialPocketCalendar" 		scope="request" value="19" />
+	<c:set var="materialMug" 					scope="request" value="20" />
+	<c:set var="materialGlassCuttingBoard" 		scope="request" value="21" />
+	<c:set var="materialPuzzle" 				scope="request" value="22" />
+	<c:set var="materialPillow" 				scope="request" value="23" />
+	<c:set var="materialWallCalendar" 			scope="request" value="24" />
+	<c:set var="materialTableCalendar" 			scope="request" value="25" />
+	<c:set var="materialMattePhoneCover" 		scope="request" value="26" />
+	<c:set var="materialForex"                 	scope="request" value="27" />
+	<c:set var="materialAufsteller"            	scope="request" value="28" />
+	<c:set var="materialPhone_Case"            	scope="request" value="29" />
+	<c:set var="materialPureWhitePolyLeinwand" 	scope="request" value="30" />
+	<c:set var="materialCanvas410gr"           	scope="request" value="31" />
+	<c:set var="materialCanvas280gr"           	scope="request" value="32" />
+  	<c:set var="materialPremiumLeinwand"       	scope="request" value="33" />
+	<c:set var="materialGlossyPhoneCover"      	scope="request" value="34" />
+	<c:set var="materialGlossPhoneCase"        	scope="request" value="35" />
+	<c:set var="materialMattePhoneCase"        	scope="request" value="36" />
+	<c:set var="materialAcrylblock"            	scope="request" value="37" />
+	<c:set var="materialDTG" 				  	scope="request" value="38" />
+	<c:set var="materialTShirtCottonWomens"    	scope="request" value="39" />
+	<c:set var="materialPorcelainMug"          	scope="request" value="40" />
+	<c:set var="materialMagicMug"              	scope="request" value="41" />
+	<c:set var="materialBilderbox"             	scope="request" value="42" />
+	<c:set var="materialPassepartoutPoster"    	scope="request" value="43" />
+	<c:set var="materialCanvasRolled"          	scope="request" value="44" />
+	<c:set var="materialPremiumCushion"        	scope="request" value="45" />
+	<c:set var="materialBlanketBasic"          	scope="request" value="46" />
+	<c:set var="materialBlanketPremium"        	scope="request" value="47" />
+	<c:set var="materialInnerColoredMug"       	scope="request" value="48" />
+	<c:set var="materialPaperMagnet5x5"        	scope="request" value="49" />
+	<c:set var="materialPaperMagnet7x7"        	scope="request" value="50" />
+	<c:set var="materialTShirtWhite"           	scope="request" value="51" />
+	<c:set var="materialWood" 				   	scope="request" value="52" />
+	<c:set var="materialWoodClasssic" 		   	scope="request" value="69" />
+
+	<c:set var="viewPrintMaterial"   scope="request" value="#{itemConfiguratorBean.colorCarriers.size > 1 and itemConfiguratorBean.productId != canvas or itemConfiguratorBean.productId == phone}" />
+	<c:set var="viewCups" 			 scope="request" value="#{itemConfiguratorBean.colorCarrierId == materialMug or itemConfiguratorBean.colorCarrierId == materialMugMagic}" />
+	<c:set var="viewMountings"       scope="request" value="#{itemConfiguratorBean.mountings.size > 1 and itemConfiguratorBean.mountings.get(1).value != 20}" />
+	<c:set var="viewBackMaterials"   scope="request" value="#{itemConfiguratorBean.borderEffects.size > 1 and itemConfiguratorBean.backMaterials.size > 0 and itemConfiguratorBean.productId != phone}" />
+	<c:set var="viewBorderEffects"   scope="request" value="#{itemConfiguratorBean.borderEffects.size > 1 and itemConfiguratorBean.productId != phone}" />
+	<c:set var="viewFrames"          scope="request" value="#{itemConfiguratorBean.frames.size > 1}" />
+	<c:set var="viewImageEffects"    scope="request" value="#{itemConfiguratorBean.productId != phone}" />
+	<c:set var="viewColorFinishings" scope="request" value="#{itemConfiguratorBean.productId == mugMagic or param['product'] == mugMagic}" />
+
+</ui:composition>

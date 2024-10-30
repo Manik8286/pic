@@ -1,0 +1,96 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:param name="pageTitle" value="Mobilskal med Foto | Ditt Foto på Mobilskal" />
+
+  <ui:define name="dataLayer">
+    <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+      <ui:param name="phone_glossy" value="true" />
+      <ui:param name="noList" value="true" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="head">
+    
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="description" content="Ditt Mobilskal med Foto. &#x2705; Designa ditt eget mobilskal med ditt foto. &#x2705; Okänsligt plasthölje med skrapskydd. &#x2705; Alla knappar och portar är lätt att komma åt." />
+    <meta name="robots" content="INDEX,FOLLOW" />
+
+    <meta property="og:title" content="Mobilskal med Foto | Ditt Foto på Mobilskal" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.bestcanvas.se/fotopresenter/mobilskal-med-foto.jsf" />
+    <meta property="og:image" content="https://download.cdn-shop.com/media/web_images/social_media/bestcanvasse/mobilskal-med-foto.jpg" />
+    <meta property="og:description" content="Ditt Mobilskal med Foto. &#x2705; Designa ditt eget mobilskal med ditt foto. &#x2705; Okänsligt plasthölje med skrapskydd. &#x2705; Alla knappar och portar är lätt att komma åt." />
+    <meta property="og:site_name" content="BestCanvas.se" />
+ 
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@bestcanvas_se" />
+    <meta name="twitter:creator" content="@bestcanvas_se" />
+    <meta name="twitter:title" content="Mobilskal med Foto | Ditt Foto på Mobilskal" />
+    <meta name="twitter:description" content="Ditt Mobilskal med Foto. &#x2705; Designa ditt eget mobilskal med ditt foto. &#x2705; Okänsligt plasthölje med skrapskydd. &#x2705; Alla knappar och portar är lätt att komma åt." />
+    <meta name="twitter:url" content="https://www.bestcanvas.se/fotopresenter/mobilskal-med-foto.jsf" />
+    <meta name="twitter:image" content="https://download.cdn-shop.com/media/web_images/social_media/bestcanvasse/mobilskal-med-foto.jpg" />
+
+    <link rel="canonical" href="https://www.bestcanvas.se/fotopresenter/mobilskal-med-foto.jsf" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+  </ui:define>
+
+  <ui:define name="content">
+    <!-- teaser -->
+    <section class="page-teaser">
+      <ui:include src="/page-blocks/teaser.xhtml">
+        <ui:param name="teaserBgImage" value="/#{shopInfoBean.versionPath}assets/img/backgrounds/phone-case-teaser-bg.jpg" />
+        <ui:param name="headline" value="Ditt" />
+        <ui:param name="headline2" value="Mobilskal med Foto" />
+        <ui:param name="claim" value="Personliga mobilskal av högsta kvalitet" />
+        <ui:param name="teaserProductImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/mobilskal/mobilskal-med-foto.png" />
+        <ui:param name="altTeaserProductImage" value="mobilskal med foto" />
+        <ui:param name="badgeTop" value="Spara upp till 64%" />
+        <ui:param name="badgeMiddle" value="#{priceBean.productPrice('Phone_Case_NEW_Bestcanvas_SE', 'Glossy phone cover', 'iPhone_Case_5_NEW')}" />
+        <ui:param name="badgeBottom" value="istället för #{priceBean.productCrossPrice('Phone_Case_NEW_Bestcanvas_SE', 'Glossy phone cover', 'iPhone_Case_5_NEW')}" />
+        <ui:param name="teaserFeatureHighlighted" value="" />
+        <ui:param name="teaserFeature1" value="Från den verkliga testvinnaren" />
+        <ui:param name="teaserFeature2" value="Garanti för bästa pris" />
+        <ui:param name="teaserFeature3" value="Brilliant, miljövänligt fototryck" />
+        <ui:param name="teaserFeature4" value="HD – särskilt lämplig för tryck i högupplösning" />
+        <ui:param name="showHpLogo" value="" />
+        <ui:param name="uploadId" value="1176" />
+        <ui:param name="buttonText" value="Skapa" />
+        <ui:param name="showShippingInfo" value="true" />
+      </ui:include>
+    </section>
+    <!-- /teaser -->
+
+    <!-- info boxes -->
+    <section class="page-section -alternate -collapse-top">
+      <ui:include src="/page-blocks/info-blocks-photogifts.xhtml">
+        <ui:param name="phoneFormatTable" value="true" />
+        <ui:param name="checkHideSVT" value="true" />
+      </ui:include>
+    </section>
+    <!-- /info boxes -->
+
+    <section class="page-section">
+      <ui:include src="/page-blocks/content-phone-case.xhtml" />
+    </section>
+
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+      <ui:include src="/page-blocks/paymentmethods.xhtml" />
+      <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+    </section>
+    <!-- /paymentmethods -->
+
+    <!-- Breadcrumbs-->
+    <ui:include src="/bread-crumbs/breadcrumbs-phonecase.xhtml" />
+    <!-- /Breadcrumbs -->
+
+  </ui:define>
+</ui:composition>

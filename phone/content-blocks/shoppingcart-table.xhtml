@@ -1,0 +1,132 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+  <ui:remove>
+    <!-- If you change something here, keep in mind, there are
+         following device-dependend files:
+           - desktop/content-blocks/shoppingcart-table.xhtml
+           - tablet/content-blocks/shoppingcart-table.xhtml
+           - phone/content-blocks/shoppingcart-table.xhtml -->
+  </ui:remove>
+  <script>
+    var thisCartProducts = [];
+    count = 0;
+  </script>
+  <table class="p_carttable" jsf:id="data" aria-label="table">
+    <tbody>
+      <ui:repeat value="#{shoppingCartBean.items}" var="item" varStatus="itemMeta" id="productsTable">
+      <script>
+        thisCartProducts[count] = {
+          'name': '#{item.information.colorCarrier.originalName}',
+          'variant': '#{item.information.formatDisplayName}'
+        }
+        if (thisCartProducts[count].name == "") {
+          thisCartProducts[count].name = "Hanger Kit";
+          thisCartProducts[count].variant = "#{item.information.productName}";
+        }
+        count++;
+      </script>
+        <ui:remove><!-- one product is two tr's --></ui:remove>
+        <ui:fragment rendered="#{!shoppingCartBean.isProductSetChildItem(item)}">
+          <tr class="products">
+            <td class="#{item.pageNumber gt 1 and (item.productId == 4284) ? 'image -mixpix' : 'image'}" valign="top"><!-- image -->
+              <picture class="#{item.colorCarrierId == 45 ? '-premiumPillow' : ''}#{item.colorCarrierId == 23 ? '-standardPillow' : ''}#{item.colorCarrierId == 47 ? (item.formatWidth gt item.formatHeight ? '-blanketPillowLandscape' : '-blanketPillowPortrait') : ''}#{item.colorCarrierId == 60 ? (item.formatWidth gt item.formatHeight ? '-towelLandscape' : '-towelPortrait') : ''}">
+                <img class="preview" src="dynamicimage/product/#{item.productId}"
+                jsf:rendered="#{item.productType != 'UPLOAD' and item.productType != 'STARMAP'}" alt="image" />
+                <img class="preview" src="dynamicimage/preview/cartitem/#{item.altId}"
+                jsf:rendered="#{item.productType == 'UPLOAD' or item.productType == 'STARMAP'}" alt="image" />
+              </picture>
+              </td>
+            <td valign="top"><!-- information -->
+              <ui:include src="/content-blocks/shoppingcart-item-description.xhtml">
+                <ui:param name="info" value="#{item.information}"/>
+                <ui:param name="showEditLink" value="false"/>
+              </ui:include>
+
+              <ui:fragment
+                rendered="#{type ne 'review' and !shoppingCartBean.isProductSetChildItem(item)}"
+              >
+                <h:selectOneMenu
+                  required="#{!disabled}"
+                  requiredMessage="#{_['Required.']}"
+                  id="itemQuantity"
+                  value="#{item.quantity}"
+                  valueChangeListener="#{shoppingCartBean.quantityChanged}"
+                  class="item-quantity-dropdown"
+                >
+                    <f:selectItems value="#{fn:split(item.maxQuantityPerItemList, ',')}" />
+                    <p:ajax event="change" update=":shoppingcartForm:data :wholePage" process="@this" onstart="block($('.js-tr-#{itemstatus.index}'));" oncomplete="updateDom(); unblock($('.js-tr-#{itemstatus.index}'));" />
+                </h:selectOneMenu>
+                <h:message for="itemQuantity" styleClass="validation -error -bottom" />
+              </ui:fragment>
+              <h:outputText
+                rendered="#{type eq 'review'}"
+                value="#{item.quantity}"
+              />
+
+            <div class="edit-remove">
+            <ui:fragment rendered="#{item.pageNumber == null}">
+              <a class="change" jsf:rendered="#{item.productType == 'UPLOAD'}" href="configurator.jsf?cartItem=#{item.altId}#{saveAndBackTo}&amp;item-product=#{item.productId}">#{_['Edit']}</a>
+              <a class="change" jsf:rendered="#{item.productType == 'STARMAP'}" href="configurator-starmap.jsf?cartItem=#{item.altId}">#{_['Edit']}</a>
+              <ui:fragment rendered="#{item.productType == 'UPLOAD' or item.productType == 'STARMAP'}"><span class="separator">|</span></ui:fragment>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{item.productId == 4284}">
+              <a class="change" jsf:rendered="#{item.productType == 'UPLOAD' and !shoppingCartBean.isProductSetChildItem(item)}" href="/multiimage_mixpix.jsf?cartItem=#{item.altId}">#{_['Edit']}</a><span class="separator"> | </span>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{!shoppingCartBean.isProductSetChildItem(item)}">
+                <h:commandLink
+                  value="#{_['Remove']}"
+                  styleClass="change">
+                  <p:ajax oncomplete="Modal.open('#deleteItem');" process="@this" update="" />
+                  <f:setPropertyActionListener value="#{item}" target="#{shoppingCartBean.selectedItem}"/>
+                </h:commandLink>
+              </ui:fragment>
+            </div>
+
+
+            </td>
+            <td class="price -align-right" valign="top" jsf:id="price"><!-- total price -->
+              <span class="dBlock pull-right -highlighted-text" style="width: 90px;"><strong>#{item.totalGrossPriceLabel}</strong></span><br />
+              <s>#{item.unitGrossCrossPriceLabel}</s>
+            </td>
+          </tr>
+        </ui:fragment>
+      </ui:repeat>
+    </tbody>
+  </table>
+
+
+
+  <ui:fragment rendered="#{type ne 'review'}">
+
+  <div class="js-modal" id="deleteItem">
+    <div class="body">
+      #{_['Are you sure you want to delete this item?']}
+    </div>
+    <div class="foot">
+      <h:commandButton actionListener="#{shoppingCartBean.remove}"
+        onclick="Modal.close('#deleteItem');"
+        value="#{_['Remove Item']}"
+        styleClass="button -control -critical">
+        <p:ajax process="@this" update=":wholePage @([id$=cartcount])" oncomplete="updateDom();" />
+      </h:commandButton>
+      <h:commandButton actionListener="#{shoppingCartBean.closeConfirmation}"
+        id="decline"
+        value="#{_['Cancel']}"
+        onclick="Modal.close('#deleteItem');"
+        type="button"
+        styleClass="button -control -nothing"/>
+    </div>
+  </div>
+
+  </ui:fragment>
+
+</ui:composition>

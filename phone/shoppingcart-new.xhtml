@@ -1,0 +1,308 @@
+<ui:composition template="/templates/checkout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<ui:param name="pageTitle" value="#{_['Shopping Cart']}" />
+<ui:param name="stepCount" value="3" />
+<ui:define name="head">
+  <script src="static/build/js/shoppingcart.js"></script>
+  <ui:include src="/tracking/trackingcodes-end-of-head-shoppingcart.xhtml"/>
+</ui:define>
+<ui:define name="meta">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="robots" content="NOINDEX,NOFOLLOW" />W" />
+</ui:define>
+
+<ui:define name="content">
+  <p:ajaxStatus onstart="showToast('Kundvagnen uppdateras...');" oncomplete="hideToast(300);" onerror="hideToast(300);" />
+
+
+  <ui:remove>
+    <!-- the "wholePage" id is needed when removing an item
+         from the cart to check, if there are no more
+         items in the shoppingcart and render the correct
+         message -->
+  </ui:remove>
+
+  <div jsf:id="wholePage" class="new-shoppingcart">
+
+  <c:choose>
+    <ui:remove>
+      <!-- If no Items are in the Shoppingcart -->
+    </ui:remove>
+
+    <c:when test="#{empty shoppingCartBean.items}">
+      <section class="checkout-step-3 checkout-section">
+        <div class="wrapper">
+          <br />
+          <p>#{_['You have no items in your shopping cart.']}</p>
+          <a class="button -action -arrow" href="/">Shopping vidare</a>
+        </div>
+      </section>
+    </c:when>
+    <c:otherwise>
+
+      <ui:remove>
+        <!-- Quickcheckout-Section -->
+      </ui:remove>
+
+      <section class="checkout-step-3 checkout-section -collapse-bottom quickcheckout cart" jsf:id="quickCheckout">
+        <div class="wrapper">
+
+        <div class="finalprice">
+            <strong>Precio total</strong> <small>(incluido IVA)</small> <span class="highlight -right" jsf:id="finalprice"><strong>#{shoppingCartBean.totalGrossPriceLabel}</strong></span>
+        </div>
+
+          <h:messages id="messageTop" globalOnly="true" styleClass="outmsg"
+            errorClass="-error"
+            warnClass="-warn"
+            infoClass="hidden" />
+
+          <button type="button"
+            jsf:id="proceedToCheckout"
+            jsf:disabled="#{shoppingCartBean.checkoutDisabled}"
+            class="action"
+            onclick="window.open('#{loginBean.loggedIn == true ? 'orderaddresses.jsf' : 'customer.jsf?redirect=orderaddresses.jsf'}', '_self')">
+            Gå till kassan
+          </button>
+
+            <div class="next js-next">
+              <div class="more add">
+                  <a class="upload" style="border: none;" onclick="UploadAnother();">Cargar otra imagen</a>
+              </div>
+            </div>
+
+        </div>
+
+      </section>
+    </c:otherwise>
+  </c:choose>
+  <ui:include src="/page-blocks/uploader-cover.xhtml" />
+  <c:if test="#{not empty shoppingCartBean.items}">
+  <h:form id="shoppingcartForm">
+
+    <ui:remove>
+      <!-- If there are items in the shoppingCart, we want to show
+      a bunch of stuff -->
+    </ui:remove>
+
+    <!-- table & upload another image -->
+    <section class="checkout-step-3 -collapse-top cart">
+      <div class="wrapper">
+        <ui:include src="/content-blocks/shoppingcart-table-new.xhtml">
+          <ui:param name="formId" value="shoppingcartForm"/>
+        </ui:include>
+
+
+            <!-- additional products -->
+          <ui:fragment rendered="#{not empty shoppingCartBean.linkedStockProducts}">
+              <ui:repeat var="p" value="#{shoppingCartBean.linkedStockProducts}">
+              <div class="additional recommendation">
+                <div class="clearfix">
+                  <img class="image" src="/#{shopInfoBean.versionPath}assets/img/uploads/checkout/#{p.configuration.productId}.gif" />
+                    <p>
+                    <span>Valfria produkter</span><br/>
+                    <strong>#{p.translatedName}</strong><br/>
+                      <s>8,00€</s> <span style="color: red"> sólo hoy #{p.totalGrossPriceLabel}</span>
+                    </p>
+                    <a class="upload-add"
+                      jsf:actionListener="#{shoppingCartBean.addToCart(p)}"
+                      jsf:update=":#{formId}">+ #{_['Add To Shopping Cart']}
+                      <p:ajax update=":shoppingcartForm :quickCheckout :cartcount" oncomplete="updateDom();" />
+                    </a>
+                  </div>
+                </div>
+              </ui:repeat>
+          </ui:fragment>
+<!--
+           <ui:fragment rendered="#{(shoppingCartBean.containsColorCarrier('Blanket Basic') and not shoppingCartBean.containsColorCarrier('Pillow')) and (shoppingCartBean.containsColorCarrier('Blanket Basic') and not shoppingCartBean.containsColorCarrier('Premium Cushion'))}">
+            <div class="additional recommendation">
+            <div class="clearfix">
+             <img class="image" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/uploads/checkout/cushion_stand.jpg" />
+               <p>
+              <strong>De perfecte kussen voor uw deken</strong><br/>
+              <s>50,90€</s> slechts nu 14,48€
+              </p>
+                  <a class="upload-add" href="singleupload.jsf?product=849">Kies een Foto</a>
+              </div>
+            </div>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{(shoppingCartBean.containsColorCarrier('Pillow') and not shoppingCartBean.containsColorCarrier('Blanket Basic')) or (shoppingCartBean.containsColorCarrier('Premium Cushion') and not shoppingCartBean.containsColorCarrier('Blanket Basic'))}">
+            <div class="additional recommendation">
+            <div class="clearfix">
+             <img class="image" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/uploads/checkout/blanket.jpg" />
+               <p>
+              <strong>De perfecte deken voor uw kussen</strong><br/>
+              <s>69,90€</s> slechts nu 18,90€
+              </p>
+                  <a class="upload-add" href="singleupload.jsf?product=1538">Kies een Foto</a>
+              </div>
+            </div>
+           </ui:fragment>
+           -->
+</div>
+    <!-- /additional products -->
+
+    </section><!-- /table & upload another image -->
+
+    <!-- checkout informations -->
+    <section class="checkout-step-3 options" jsf:id="prices">
+    <div class="wrapper">
+
+        <h:messages id="messageBottom" globalOnly="true" styleClass="outmsg"
+          errorClass="-error"
+          warnClass="-warn"
+          infoClass="-info" />
+
+        <div class="subprice" jsf:id="subprice">
+          #{_['Subtotal']} <span class="-right">#{shoppingCartBean.itemGrossPriceLabel}</span><br />
+          Leverans &amp; Paketering:
+          <ui:fragment rendered="#{type ne 'review'}">
+
+            <span class="form-dropdown new-form-dropdown -touch" data-dropdown="country" data-calc-width="false">
+              <h:inputText id="shippingCountry"
+                style="display: none"
+                styleClass="js-field #{ component.valid ? '' : '-invalid'}"
+                converter="IntegerFieldConverter"
+                disabled="#{disabled}"
+                value="#{shoppingCartBean.shippingCountry}">
+                 <p:ajax process="@this" update=":wholePage" oncomplete="updateDom();" />
+              </h:inputText>
+              <button type="button" class="label"><span>(bitte auswählen)</span></button>
+              <ul class="choices">
+                <ui:repeat value="#{shoppingCartBean.shippingCountries}" var="p">
+                  <li data-value="#{p.value}">#{p.label}</li>
+                </ui:repeat>
+              </ul>
+            </span>
+
+          </ui:fragment>
+
+          <ui:fragment rendered="#{type eq 'review'}">
+            #{shoppingCartBean.shippingCountryLabel} #{shoppingCartBean.shippingProviderLabel}
+          </ui:fragment>
+
+          <span class="-right">#{shoppingCartBean.shippingGrossPriceLabel}</span>
+          <c:if test="#{shoppingCartBean.discounted}">
+            <!-- coupon amount -->
+            <br />
+            #{shoppingCartBean.discountLabel}: <span class="-right">- #{shoppingCartBean.discountGrossPriceLabel}</span>
+          </c:if>
+          <c:if test="#{shoppingCartBean.customerDiscountValueToNextLevel != ''
+            or shoppingCartBean.customerDiscountLevel == 1
+            or shoppingCartBean.customerDiscountLevel == 2
+            or shoppingCartBean.customerDiscountLevel == 3
+            or shoppingCartBean.customerDiscountLevel == 4
+            or shoppingCartBean.customerDiscountLevel == 5
+            or shoppingCartBean.customerDiscountLevel == 6}">
+            <!-- customer discount -->
+            <br />
+            #{shoppingCartBean.customerDiscountLabel}: <span class="-right">- #{shoppingCartBean.customerDiscountGrossPriceLabel}</span>
+          </c:if>
+
+        </div>
+
+        <div class="finalprice">
+          <strong>Precio total</strong> <small>(incluido IVA)</small>: <span class="highlight -right" jsf:id="finalprice">#{shoppingCartBean.totalGrossPriceLabel}</span>
+
+
+        <!-- coupon code -->
+            <div class="additional couponField" jsf:rendered="#{(shoppingCartBean.customerDiscountValueToNextLevel == '') and
+                                         (sessionServicesBean.discountCode.code == null or
+                                          sessionServicesBean.discountCode.code == '' or
+                                          shoppingCartBean.isCouponFieldVisible == true)}" jsf:id="couponCodeBox">
+            <span class="text">Fyll i din kupongkod här:</span>
+                <h:inputText id="couponCode"
+                        converter="StringFieldConverter"
+                        size="15"
+                        disabled="#{shoppingCartBean.discounted}"
+                        requiredMessage="#{_['Please enter a coupon code.']}"
+                        value="#{shoppingCartBean.couponCode}"
+                        onkeypress="if (event.keyCode == 13 || event.which == 13) {this.value = this.value.trim(); document.getElementById('shoppingcartForm:applyCoupon').click();return false;}"
+                        onkeyup="checkException(this)"
+                        styleClass="field #{ component.valid ? '' : '-invalid'} text-field" />
+
+                <h:commandButton id="applyCoupon"
+                                rendered="#{!shoppingCartBean.discounted}"
+                                actionListener="#{shoppingCartBean.validateCoupon}"
+                                value="¡Canjear!"
+                                styleClass="action button couponButton">
+                <p:ajax update="shoppingcartForm :quickCheckout :cartcount" process="@parent" oncomplete="updateDom()" />
+              </h:commandButton>
+              <h:commandLink id="clearCoupon"
+                                rendered="#{shoppingCartBean.discounted}"
+                                actionListener="#{shoppingCartBean.clearCoupon}"
+                                value="Cancelar"
+                                styleClass="action button couponButton">
+              <p:ajax update="shoppingcartForm :quickCheckout :cartcount" process="@parent" oncomplete="updateDom()" />
+              </h:commandLink>
+
+            <h:message for="couponCode" styleClass="validation -error -bottom" />
+            </div>
+        <!-- /coupon code -->
+
+
+
+          <button type="button"
+            jsf:id="proceedToCheckout"
+            jsf:disabled="#{shoppingCartBean.checkoutDisabled}"
+            class="next"
+            onclick="window.open('#{loginBean.loggedIn == true ? 'orderaddresses.jsf' : 'customer.jsf?redirect=orderaddresses.jsf'}', '_self')">
+            Gå till kassan
+          </button>
+
+        </div>
+
+
+            <div class="additional benefits">
+            <div class="footer-logos">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/trusted-shops-logo_green.png" width="55"/>
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/SSL-logo.png" width="35"/>
+            </div>
+            <span class="headline"><strong>Tus ventajas </strong></span>
+            <ul class="features">
+            <li>Los mejores precios garantizados</li>
+            <li>Codificación segura SSL</li>
+            <li>Seguimiento Envío Online</li>
+            </ul>
+            </div>
+      </div>
+    </section><!-- checkout informations -->
+
+  </h:form>
+
+  </c:if>
+  </div>
+
+  <div class="hidden">
+      <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+       <ui:param name="directuploadProductId" value="254" />
+      </ui:include>
+  </div>
+
+  <!-- paymentmethods -->
+  <section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+   
+</section><!-- /paymentmethods -->
+
+</ui:define>
+
+<ui:define name="eofscript">
+  <script src="static/build/js/shoppingcart.js"></script>
+  <script>
+    function UploadAnother(){
+      $('input[type=file]').eq(0).trigger('click');
+    }
+  </script>
+  <ui:include src="/trackingcodes/endofbody-cart.xhtml" />
+</ui:define>
+
+
+</ui:composition>

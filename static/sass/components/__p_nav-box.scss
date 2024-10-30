@@ -1,0 +1,16 @@
+.nav-box {
+
+  ul > li {
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      right: 10px;
+      top: 15px;
+      height: 9px;
+      width: 6px;
+      background-image: url('data:image/svg+xml;base64,#{$svgarrow-invert-base64}');
+    }
+  }
+}

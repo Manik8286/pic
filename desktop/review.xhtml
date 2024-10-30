@@ -1,0 +1,387 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:param name="pageTitle" value="Review" />
+
+<ui:define name="head">
+  
+</ui:define>
+
+<ui:define name="meta">
+  <meta name="robots" content="NOINDEX,FOLLOW" />  
+</ui:define>
+
+<ui:define name="content">
+        <div class="container l-content review-page row">
+            <h1 class="green-color">Tack så mycket!</h1>
+            <p class="intro" style="text-align:center;">
+            Tack för rating! Vi beklagar att vi inte kunde tillfredsställa dina behov. Vi behöver information för att förbättra vår service till dig i framtiden. Vänligen gå igenom i korthet följande:
+            </p>
+            <form action="https://services.cdn-shop.com/service/ratingfeedback" method="POST">
+                <input type="hidden" name="hash" value="#{param['hash']}" />
+                <input type="hidden" name="red" value="#{request.requestURL.substring(0, request.requestURL.length() - request.requestURI.length())}/review-success.jsf" />
+
+
+          <table class="table-smiles">
+              <tbody>
+                  <tr class="row1">
+                      <td class="label-td">
+                          Hur nöjd är du med våra produkter?
+                      </td>
+                      <td class="text-center">
+                          <input name="product" class="product-btn5" id="product5"  type="radio" value="5" />
+                          <label class="green-smile-product" for="product5">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="product" class="product-btn4" id="product4"  type="radio" value="4" />
+                          <label class="lite-yellow-smile-product" for="product4">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="product" class="product-btn3" id="product3"  type="radio" value="3" />
+                          <label class="yellow-smile-product" for="product3">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="product" class="product-btn2" id="product2"  type="radio" value="2" />
+                          <label class="orange-smile-product" for="product2">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="product" class="product-btn1" id="product1"  type="radio" value="1" />
+                          <label class="red-smile-product" for="product1">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+                  </tr>
+
+<!-- delivery -->
+
+                  <tr class="row2">
+                      <td class="label-td">
+                          Hur nöjd är du med sändningstiden ?
+                      </td>
+                      <td class="text-center">
+                          <input name="delivery" class="delivery-btn5" id="delivery5"  type="radio" value="5" />
+                          <label class="green-smile-delivery" for="delivery5">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="delivery" class="delivery-btn4" id="delivery4"  type="radio" value="4" />
+                          <label class="lite-yellow-smile-delivery" for="delivery4">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="delivery" class="delivery-btn3" id="delivery3"  type="radio" value="3" />
+                          <label class="yellow-smile-delivery" for="delivery3">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="delivery" class="delivery-btn2" id="delivery2"  type="radio" value="2" />
+                          <label class="orange-smile-delivery" for="delivery2">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="delivery" class="delivery-btn1" id="delivery1"  type="radio" value="1" />
+                          <label class="red-smile-delivery" for="delivery1">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+                  </tr>
+
+<!-- dispatch -->
+
+                  <tr class="row3">
+                      <td class="label-td">
+                          Hur nöjd är du med vår leveranspartner?
+                      </td>
+                      <td class="text-center">
+                          <input name="dispatch" class="dispatch-btn5" id="dispatch5"  type="radio" value="5" />
+                          <label class="green-smile-dispatch" for="dispatch5">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="dispatch" class="dispatch-btn4" id="dispatch4"  type="radio" value="4" />
+                          <label class="lite-yellow-smile-dispatch" for="dispatch4">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="dispatch" class="dispatch-btn3" id="dispatch3"  type="radio" value="3" />
+                          <label class="yellow-smile-dispatch" for="dispatch3">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="dispatch" class="dispatch-btn2" id="dispatch2"  type="radio" value="2" />
+                          <label class="orange-smile-dispatch" for="dispatch2">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="dispatch" class="dispatch-btn1" id="dispatch1"  type="radio" value="1" />
+                          <label class="red-smile-dispatch" for="dispatch1">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+                  </tr>
+
+<!-- process -->
+
+                  <tr class="row4">
+                      <td class="label-td">
+                          Hur nöjd är du med beställningsprocessen ?
+                      </td>
+                      <td class="text-center">
+                          <input name="process" class="process-btn5" id="process5"  type="radio" value="5" />
+                          <label class="green-smile-process" for="process5">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="process" class="process-btn4" id="process4"  type="radio" value="4" />
+                          <label class="lite-yellow-smile-process" for="process4">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="process" class="process-btn3" id="process3"  type="radio" value="3" />
+                          <label class="yellow-smile-process" for="process3">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="process" class="process-btn2" id="process2"  type="radio" value="2" />
+                          <label class="orange-smile-process" for="process2">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="process" class="process-btn1" id="process1"  type="radio" value="1" />
+                          <label class="red-smile-process" for="process1">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+                  </tr>
+
+<!--  website -->
+                  <tr class="row5">
+                      <td class="label-td">
+                          Hur nöjd är du med vår webbplats i allmänhet?
+                      </td>
+                      <td class="text-center">
+                          <input name="website" class="website-btn5" id="website5"  type="radio" value="5" />
+                          <label class="green-smile-website" for="website5">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="website" class="website-btn4" id="website4"  type="radio" value="4" />
+                          <label class="lite-yellow-smile-website" for="website4">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="website" class="website-btn3" id="website3"  type="radio" value="3" />
+                          <label class="yellow-smile-website" for="website3">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="website" class="website-btn2" id="website2"  type="radio" value="2" />
+                          <label class="orange-smile-website" for="website2">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="website" class="website-btn1" id="website1"  type="radio" value="1" />
+                          <label class="red-smile-website" for="website1">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+                  </tr>
+
+<!-- knowledge -->
+
+                  <tr class="row6">
+                      <td class="label-td">
+                          Hur nöjd är du med expertisen hos vår kundtjänst?
+                      </td>
+                      <td class="text-center">
+                          <input name="knowledge" class="knowledge-btn5" id="knowledge5"  type="radio" value="5" />
+                          <label class="green-smile-knowledge" for="knowledge5">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="knowledge" class="knowledge-btn4" id="knowledge4"  type="radio" value="4" />
+                          <label class="lite-yellow-smile-knowledge" for="knowledge4">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="knowledge" class="knowledge-btn3" id="knowledge3"  type="radio" value="3" />
+                          <label class="yellow-smile-knowledge" for="knowledge3">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="knowledge" class="knowledge-btn2" id="knowledge2"  type="radio" value="2" />
+                          <label class="orange-smile-knowledge" for="knowledge2">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="knowledge" class="knowledge-btn1" id="knowledge1"  type="radio" value="1" />
+                          <label class="red-smile-knowledge" for="knowledge1">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+                  </tr>
+
+<!-- friendliness -->
+
+                  <tr class="row7">
+                      <td class="label-td">
+                          Hur nöjd är du med vänlighet vår kundtjänst?
+                      </td>
+                      <td class="text-center">
+                          <input name="friendliness" class="friendliness-btn5" id="friendliness5"  type="radio" value="5" />
+                          <label class="green-smile-friendliness" for="friendliness5">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="friendliness" class="friendliness-btn4" id="friendliness4"  type="radio" value="4" />
+                          <label class="lite-yellow-smile-friendliness" for="friendliness4">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="friendliness" class="friendliness-btn3" id="friendliness3"  type="radio" value="3" />
+                          <label class="yellow-smile-friendliness" for="friendliness3">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="friendliness" class="friendliness-btn2" id="friendliness2"  type="radio" value="2" />
+                          <label class="orange-smile-friendliness" for="friendliness2">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="friendliness" class="friendliness-btn1" id="friendliness1"  type="radio" value="1" />
+                          <label class="red-smile-friendliness" for="friendliness1">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+                  </tr>
+
+<!-- time -->
+
+                  <tr class="row8">
+                      <td class="label-td">
+                          Hur nöjd är du med den svarstid på dina frågor?
+                      </td>
+                      <td class="text-center">
+                          <input name="time" class="time-btn5" id="time5"  type="radio" value="5" />
+                          <label class="green-smile-time" for="time5">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="time" class="time-btn4" id="time4"  type="radio" value="4" />
+                          <label class="lite-yellow-smile-time" for="time4">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="time" class="time-btn3" id="time3"  type="radio" value="3" />
+                          <label class="yellow-smile-time" for="time3">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="time" class="time-btn2" id="time2"  type="radio" value="2" />
+                          <label class="orange-smile-time" for="time2">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+
+                      <td class="text-center">
+                          <input name="time" class="time-btn1" id="time1"  type="radio" value="1" />
+                          <label class="red-smile-time" for="time1">
+                            <div class="check"></div>
+                          </label>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+               
+                <div class="pure-g-r" style="margin-top: 3em;">
+                    <div class="pure-u-3-4" style="">
+                        <p>Klicka på knappen Skicka för att skicka meddelandet till vår serviceteam.</p>
+                    </div>
+                    <div class="pure-u-1-4">
+                        <input class="newsletter-button" value="#{_['Send']} >" style="font-size: 14px; float: right;" type="submit" />
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="thumbs-up">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/review/review-best.jpg" width="100%" />
+        </div>
+
+        <br/>
+
+
+          <script src="/#{shopInfoBean.versionPath}static/build/js/review.min.js"></script>
+
+
+
+</ui:define>
+
+</ui:composition>

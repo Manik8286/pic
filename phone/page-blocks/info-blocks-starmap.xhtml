@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:c="http://java.sun.com/jsp/jstl/core"
+				xmlns:p="http://primefaces.org/ui">
+
+
+	<div class="row">
+  		<ui:include src="/content-blocks/info-blocks-badges.xhtml"/>
+		<div class="col -span-12">
+			  <div class="showcase-box" data-mh="info">
+			    <table class="table -striped">
+			      <thead class="-highlighted">
+			        <tr>
+			          <th class="-text-centered">Format</th>
+			          <th class="-text-centered">Pris</th>
+			          <th class="-highlighted -text-centered">Idag</th>
+			        </tr>
+			      </thead>
+			      <tbody class="-text-centered">
+					<tr>
+						<td >40 x 30cm</td>
+						<td><s>#{priceBean.productCrossPrice('Starmap_Forex_Bestcanvas_SE', 'Starmap Forex', 'Starmap Forex 40x30')}</s></td>
+						<td class="-highlighted">#{priceBean.productPrice('Starmap_Forex_Bestcanvas_SE', 'Starmap Forex', 'Starmap Forex 40x30')}</td>
+					  </tr>
+					  <tr>
+						<td >60 x 40cm</td>
+						<td><s>#{priceBean.productCrossPrice('Starmap_Forex_Bestcanvas_SE', 'Starmap Forex', 'Starmap Forex 60x40')}</s></td>
+						<td class="-highlighted">#{priceBean.productPrice('Starmap_Forex_Bestcanvas_SE', 'Starmap Forex', 'Starmap Forex 60x40')}</td>
+					  </tr>
+					  <tr>
+						<td >80 x 60cm</td>
+						<td><s>#{priceBean.productCrossPrice('Starmap_Forex_Bestcanvas_SE', 'Starmap Forex', 'Starmap Forex 80x60')}</s></td>
+						<td class="-highlighted">#{priceBean.productPrice('Starmap_Forex_Bestcanvas_SE', 'Starmap Forex', 'Starmap Forex 80x60')}</td>
+					  </tr>	
+									
+			      </tbody>
+			    </table>
+			    <!-- <a href="/format/#canvas" class="link">Alla priser och format »</a> -->
+			  </div>
+		</div>
+	</div>
+
+</ui:composition>

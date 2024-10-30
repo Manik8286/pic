@@ -1,0 +1,59 @@
+.payment-items {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+
+  >.headline {
+    margin-bottom: 30px;
+  }
+
+  > .payment-item {
+    display: inline-block;
+    height: auto;
+    width: 25%;
+    margin-right: 0;
+    margin-bottom: -8px;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    &:last-child:after {
+      content: none;
+    }
+
+    &.-mastercard:before {
+      transform-origin: left center;
+      transform: scale(0.7, 0.7);
+    }
+
+    &.-mcode:before {
+      transform-origin: left center;
+      transform: scale(0.6, 0.6);
+    }
+
+    &.-visa:before {
+      transform-origin: left center;
+      transform: scale(0.7, 0.7);
+    }
+
+    &.-verified-by-visa:before {
+      transform-origin: left center;
+      transform: scale(0.8, 0.8);
+    }
+
+    &.-american-express:before {
+      transform-origin: center center;
+      transform: scale(0.7, 0.7);
+    }
+
+    &.-paypal:before {
+      transform-origin: left center;
+      transform: scale(0.45, 0.45);
+    }
+    
+    &.-klarna:before {
+      transform-origin: left center;
+      transform: scale(0.45, 0.45);
+    }
+
+  }
+}

@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+  <c:set var="aluSquareFormats" value="20 x 20,30 x 30,40 x 40,60 x 60,80 x 80" />
+  <c:set var="aluDigitalFormats" value="40 x 30,80 x 60,100 x 75" />
+  <c:set var="aluClassicFormats" value="30 x 20,60 x 40,75 x 50,90 x 60" />
+  <c:set var="aluPanoramaFormats" value="60 x 30,80 x 40,90 x 30,100 x 50,120 x 30,120 x 40,120 x 60" />
+  <c:set var="aluCinemaFormats" value="90 x 50" />
+
+  <dl class="accordion-panel js-accordion">
+    <dt class="title js-accordion-title -expandable" data-init-expand="true">Kvadratiskt Format</dt>
+    <dd class="sub js-accordion-body">
+      <div class="inner">
+        <ui:include src="/helper/product-price-tables-alu.xhtml">
+          <ui:param name="pricesList" value="#{aluSquareFormats}" />
+        </ui:include>
+      </div>
+    </dd>
+
+    <dt class="title js-accordion-title -expandable">Digitalt Format</dt>
+    <dd class="sub js-accordion-body">
+      <div class="inner">
+        <ui:include src="/helper/product-price-tables-alu.xhtml">
+          <ui:param name="pricesList" value="#{aluDigitalFormats}" />
+        </ui:include>
+      </div>
+    </dd>
+
+    <dt class="title js-accordion-title -expandable">Klassiskt Format</dt>
+    <dd class="sub js-accordion-body">
+      <div class="inner">
+        <ui:include src="/helper/product-price-tables-alu.xhtml">
+          <ui:param name="pricesList" value="#{aluClassicFormats}" />
+        </ui:include>
+      </div>
+    </dd>
+
+    <dt class="title js-accordion-title -expandable">Panorama Format</dt>
+    <dd class="sub js-accordion-body">
+      <div class="inner">
+        <ui:include src="/helper/product-price-tables-alu.xhtml">
+          <ui:param name="pricesList" value="#{aluPanoramaFormats}" />
+        </ui:include>
+      </div>
+    </dd>
+
+    <dt class="title js-accordion-title -expandable">Bio-Format</dt>
+    <dd class="sub js-accordion-body">
+      <div class="inner">
+        <ui:include src="/helper/product-price-tables-alu.xhtml">
+          <ui:param name="pricesList" value="#{aluCinemaFormats}" />
+        </ui:include>
+      </div>
+    </dd>
+   
+  </dl>
+</ui:composition>

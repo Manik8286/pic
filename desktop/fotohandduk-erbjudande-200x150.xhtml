@@ -1,0 +1,100 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Fotohandduk -#{priceBean.absoluteSavingsPercent('Towel_Bestcanvas_SE', 'Towel', 'Towel 90x50')} | Ditt Foto som en personlig handduk" />
+
+   <ui:define name="dataLayer">
+    <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+      <ui:param name="towel" value="true" />
+      <ui:param name="noList" value="true" />
+    </ui:include>
+    <script>
+			dataLayer.push({
+				'marketingChannelPage': 'sea'
+			})
+		</script>
+  </ui:define>
+
+  <ui:define name="head">
+  <ui:include src="/coupons/discountcode-BC_SE_SEA.xhtml" />
+<ui:include src="/helper/reference.xhtml" />
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="description" content="Mitt foto på handduk. &#x2705; Perfekt för stranden, bastun och hemmetr. &#x2705; Härlig frotté av hög kvalitet." />
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+    <link rel="canonical" href="https://www.bestcanvas.se/home-lifestyle/fotohandduk.jsf" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+  </ui:define>
+
+  <ui:define name="content">
+    <!-- teaser -->
+    <ui:include src="/page-blocks/teaser-right-white.xhtml">
+      <!-- Images -->
+      <ui:param name="teaserBgImage" value="#{libraryImagesBean.getFilePathByLibraryImageId(473)}" />
+      <ui:param name="teaserProductImage" value="#{libraryImagesBean.getFilePathByLibraryImageId(474)}" />
+      <ui:param name="altTeaserProductImage" value="#{libraryImagesBean.getAltByLibraryImageId(473)}" />
+      <ui:param name="showcaseClass" value="-transparent" />
+      <ui:param name="imgClass" value="-withGap" />
+
+      <!-- Price Badge -->
+      <ui:param name="badgeTop" value="200x150 cm" />
+      <ui:param name="badgeMiddle" value="#{priceBean.productPrice('Towel_Bestcanvas_SE', 'Towel', 'Towel 200x150')}" />
+      <ui:param name="badgeBottom" value="istället för #{priceBean.productCrossPrice('Towel_Bestcanvas_SE', 'Towel', 'Towel 200x150')}" />
+      <ui:param name="badgeClass" value="-positionBottom" />
+
+      <!-- Headers -->
+      <ui:param name="headline" value="Ditt foto på personlig handduk" />
+
+      <!-- Bullet points -->
+      <ui:param name="teaserFeature1" value="Härlig frotté av hög kvalitet" />
+      <ui:param name="teaserFeature2" value="Imponerande heltäckande premiumtryck" />
+      <ui:param name="teaserFeature3" value="Perfekt för stranden, bastun och hemmetr" />
+
+      <!-- Upload Button -->
+      <ui:param name="uploadId" value="2011" />
+      <ui:param name="buttonText" value="Skapa" />
+      <ui:param name="quotes" value="false" />
+    </ui:include>
+
+      <!-- /teaser -->
+
+      <!-- info boxes -->
+      <section class="page-section -alternate -collapse-top">
+        <ui:include src="/page-blocks/info-blocks-homestyle.xhtml">
+          <ui:param name="towelFormatTable" value="true" />
+          <ui:param name="checkHideSVT" value="true" />
+        </ui:include>
+      </section>
+      <!-- /info boxes -->
+
+      <section class="page-section">
+        <!-- product info -->
+        <ui:include src="/page-blocks/content-towel-new.xhtml" />
+        <!-- /product info -->
+      </section>
+
+      <!-- paymentmethods -->
+      <section class="page-section -alternate">
+        <ui:include src="/page-blocks/paymentmethods.xhtml" />
+        <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+      </section>
+      <!-- /paymentmethods -->
+
+      <!-- microdata -->
+        <ui:include src="/content-blocks/microdata-simple.xhtml">
+          <ui:param name="name" value="Ditt foto på personlig handduk - 200x150 cm" />
+          <ui:param name="sku" value="TOWEL-200x150" />
+          <ui:param name="url" value="https://www.bestcanvas.se/fotohandduk-erbjudande-200x150/" />
+          <ui:param name="price" value="#{priceBean.productPrice('Towel_Bestcanvas_SE', 'Towel', 'Towel 200x150')}" />
+      </ui:include>
+      <!-- /microdata -->
+
+
+  </ui:define>
+</ui:composition>

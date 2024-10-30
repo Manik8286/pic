@@ -1,0 +1,20 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:remove><!-- true false if some NL discount code is activated, hide prices for the blocks --></ui:remove>
+
+<c:set var="NlDealActivated" scope="request" value="#{sessionServicesBean.discountCode.code == 'PGLWUSCRM2177' or
+                                                      sessionServicesBean.discountCode.code == 'SA7FP' or
+                                                      sessionServicesBean.discountCode.code == '9S152030CRM2899' or
+                                                      sessionServicesBean.discountCode.code == 'CDWN20' or
+                                                      sessionServicesBean.discountCode.code == '3S20USCRM2680' or
+                                                      sessionServicesBean.discountCode.code == '302030CRM1699' or
+                                                      sessionServicesBean.discountCode.code == '4S7CRM1049' or
+                                                      sessionServicesBean.discountCode.code == '2S2540ALTCRM3119' or
+                                                      sessionServicesBean.discountCode.code == '3S352ALTCRM2433' or
+                                                      sessionServicesBean.discountCode.code == '3S101520USCRM3394' or
+                                                      sessionServicesBean.discountCode.code == '25PUSCRM1052'}" />
+
+</ui:composition>

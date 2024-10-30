@@ -1,0 +1,98 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <c:set var="acrylSquareFormats" value="20 x 20,30 x 30,40 x 40,60 x 60" />
+  <c:set var="acrylDigitalFormats" value="40 x 30,80 x 60,100 x 75" />
+  <c:set var="acrylClassicFormats" value="30 x 20,60 x 40,75 x 50,90 x 60,120 x 80" />
+  <c:set var="acrylPanoramicFormats" value="60 x 30,80 x 40,100 x 50,120 x 60" />
+
+  <div class="row">
+    <div class="col -span-12">
+      <h3 class="headline -sub-2 -collapse-top">Akrylglastavlor</h3>
+    </div>
+
+    <div class="col -span-6">
+      <h4 class="headline -sub-3 -collapse-top">Kvadratiskt Format</h4>
+      <table class="table -striped -centered -space-bottom" aria-label="table">
+        <thead class="-highlighted">
+          <tr>
+            <th scope="row">Format</th>
+            <th scope="row">Akrylglastavlor</th>
+            <th scope="row">Akrylglastavlor Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ui:include src="/helper/acryl-glass-print-price-table-rows.xhtml">
+            <ui:param name="pricesList" value="#{acrylSquareFormats}" />
+          </ui:include>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col -span-6">
+      <h4 class="headline -sub-3 -collapse-top">Digitalt Format</h4>
+      <table class="table -striped -centered -space-bottom" aria-label="table">
+        <thead class="-highlighted">
+          <tr>
+            <th scope="row">Format</th>
+            <th scope="row">Akrylglastavlor</th>
+            <th scope="row">Akrylglastavlor Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ui:include src="/helper/acryl-glass-print-price-table-rows.xhtml">
+            <ui:param name="pricesList" value="#{acrylDigitalFormats}" />
+          </ui:include>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col -span-6">
+      <h4 class="headline -sub-3 -collapse-top">Klassiskt Format</h4>
+      <table class="table -striped -centered -space-bottom" aria-label="table">
+        <thead class="-highlighted">
+          <tr>
+            <th scope="row">Format</th>
+            <th scope="row">Akrylglastavlor</th>
+            <th scope="row">Akrylglastavlor Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ui:include src="/helper/acryl-glass-print-price-table-rows.xhtml">
+            <ui:param name="pricesList" value="#{acrylClassicFormats}" />
+          </ui:include>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col -span-6">
+      <h4 class="headline -sub-3 -collapse-top">Panorama Format</h4>
+      <table class="table -striped -centered -space-bottom" aria-label="table">
+        <thead class="-highlighted">
+          <tr>
+            <th scope="row">Format</th>
+            <th scope="row">Akrylglastavlor</th>
+            <th scope="row">Akrylglastavlor Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ui:include src="/helper/acryl-glass-print-price-table-rows.xhtml">
+            <ui:param name="pricesList" value="#{acrylPanoramicFormats}" />
+          </ui:include>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col -span-12">
+      <a href="/singleupload.jsf?product=2421" class="upload">Beställ</a>
+    </div>
+  </div>
+
+</ui:composition>

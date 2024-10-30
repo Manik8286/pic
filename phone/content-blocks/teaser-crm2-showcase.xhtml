@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <div class="showcase -canvas-gsp">
+    <header class="head">
+      <h1 class="headline">#{headline}</h1>
+      <div class="claim">#{subheading} <span class="-highlighted-text">#{subheadingCross}</span> #{subheadingNext}</div>
+    </header>
+    <div class="body">
+
+      <!-- teaser left -->
+      <div class="product-crm">
+        <img class="image checkout-preview" src="#{image}" alt="altImage"  />
+        <p class="text-center">#{Ndate}</p>
+        <ui:fragment rendered="#{not empty code}">
+          <div>
+            <small>#{underCodeSentence}</small>
+          </div>
+          <br />
+          <form class="text-center">
+            <label for="coupon-code">Dein Gutscheincode: <input type="text" name="coupon-code" readonly="true" value="#{code}" class="coupon-code text-center" /></label>
+          </form>
+        </ui:fragment>
+      </div><!-- /teaser left -->
+
+      <!-- teaser right -->
+      <div class="info-crm">
+        <!-- UPLOAD BUTTON INCLUDE-->
+        <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+          <ui:param name="directuploadProductId" value="254" />
+          <ui:param name="directuploadClass" value="action" />
+          <ui:param name="buttonText" value="#{buttonText}" />
+        </ui:include>
+        <!--  /UPLOAD BUTTON INCLUDE-->
+
+        <ui:fragment rendered="#{not empty list1}">
+          <ul class="features">
+            <ui:fragment rendered="#{not empty list1}">
+              <li>#{list1} <b>#{list1Green}</b><s>#{strike1}</s> <strong><span>#{newPrice1}</span></strong></li>
+            </ui:fragment>
+            <ui:fragment rendered="#{not empty list2}">
+              <li>#{list2} <s>#{strike2}</s> <strong><span>#{newPrice2}</span></strong></li>
+            </ui:fragment>
+            <ui:fragment rendered="#{not empty list3}">
+              <li>#{list3} <s>#{strike3}</s> <strong><span>#{newPrice3}</span></strong> <br/>#{list3newline}</li>
+            </ui:fragment>
+            <ui:fragment rendered="#{not empty list4}">
+              <li>#{list4}</li>
+            </ui:fragment>
+            <ui:fragment rendered="#{not empty list5}">
+              <li>#{list5}</li>
+            </ui:fragment>
+          </ul>
+        </ui:fragment>
+        <br/>
+      </div><!-- /teaser right -->
+    </div>
+  </div>
+
+</ui:composition>

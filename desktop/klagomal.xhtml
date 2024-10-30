@@ -1,0 +1,51 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:param name="pageTitle" value="reklamation och klagomal" />
+
+    <ui:define name="head">
+        
+        <style>
+            .page-text {
+          padding-bottom: 0;  }
+          
+          </style>
+    </ui:define>
+
+    <ui:define name="meta">
+        <meta name="robots" content="#{contentBean.snippets['complaint-robots']}" />
+        <meta http-equiv="content-language" content="sv_SE"/>
+        <meta name="description" content="Fråga eller klagomål? Kontakta vår kundtjänst för att hitta en snabb lösning på ditt problem." />
+
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="page-teaser -collapse">
+            <div class="text" style="background-image: url(/#{shopInfoBean.versionPath}assets/img/backgrounds/tower_skyline.jpg)">
+                <div class="row">
+                    <div class="col -span-12">
+                        <h1 class="headline">Skicka fråga eller klagomål</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="page-text">
+            <div class="text-format">
+                <div class="privacy"><a name="top"></a>
+                    <h:outputText escape="false" value="#{contentBean.snippets['complaint-page-bc-se']}"/>
+                </div>
+            </div>
+        </section>
+        <br /> <br />
+    </ui:define>
+
+    <ui:define name="eofscript">
+        <ui:include src="/content-blocks/captcha-validation-global.xhtml" />
+    </ui:define>
+    
+</ui:composition>

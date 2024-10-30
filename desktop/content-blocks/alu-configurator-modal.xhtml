@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <div class="js-modal" id="aluInfo">
+    <div class="body text-format">
+      <h3 class="text-center">Aluminumtavlor i två fantastiska versioner</h3>
+      <div class="col #{sessionBean.userAgentType == 'desktop' or sessionBean.userAgentType == 'tablet' ? '-span-6' : ''} #{sessionBean.userAgentType == 'phone' ? '-span-12' : ''}">
+        <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/aluminium/aluminiumtavla-matte.jpg" width="100%" />
+        <h4 class="title">Aluminiumtryck matte (direktutskrift)</h4>
+        <ul class="grey-checkmark c-acryl-info">
+          <li>Premiumkvalitet matt finish</li>
+          <li>Polerade kanter med rundade hörn</li>
+          <li>Superb exakt färgåtergivning</li>
+          <li>Direktutskrift på aluminiumpanel för ett fantastiskt modernt uttryck</li>
+        </ul>
+      </div>
+      <div class="col #{sessionBean.userAgentType == 'desktop' or sessionBean.userAgentType == 'tablet' ? '-span-6' : ''} #{sessionBean.userAgentType == 'phone' ? '-span-12' : ''}">
+        <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/aluminium/aluminiumtryck-blank.jpg" width="100%" />
+        <h4 class="title">Aluminiumtryck blank (laminerat på fotopapper)</h4>
+        <ul class="grey-checkmark c-acryl-info">
+          <li>Ljusa, rika färger med högglanseffekt</li>
+          <li>Polerade kanter med rundade hörn</li>
+          <li>Kristallklar i minsta detalj</li>
+          <li>HD-utskrift på fotopapper i labbkvalitet applicerat på aluminiumpanel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+</ui:composition>

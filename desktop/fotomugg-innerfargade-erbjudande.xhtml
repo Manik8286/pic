@@ -1,0 +1,112 @@
+
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+  <ui:param name="pageTitle" value="Fotomugg | Ditt Foto på Mugg" />
+
+  <ui:define name="dataLayer">
+    <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+      <ui:param name="mug" value="true" />
+      <ui:param name="mug_color" value="true" />
+      <ui:param name="mug_magic" value="true" />
+      <ui:param name="mug_porcelain" value="true" />
+      <ui:param name="noList" value="true" />
+    </ui:include>
+    <script>
+			dataLayer.push({
+				'marketingChannelPage': 'sea'
+			})
+		</script>
+  </ui:define>
+
+  <ui:define name="head">
+    <ui:include src="/coupons/discountcode-BC_SE_SEA.xhtml" />
+    <ui:include src="/helper/reference.xhtml" />
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="description" content="Din Fotomugg. &#x2705; Mugg med foto för höger - eller vänsterhänta. &#x2705; Muggar med tryck är en unik och personlig present. &#x2705; Perfekt för din muggsamling - beställ den nu!" />
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+  </ui:define>
+
+  <ui:define name="content">
+    <!-- teaser -->
+    <section class="page-teaser">
+      <ui:include src="/content-blocks/teaser-mug.xhtml" >
+        <!-- base teaser parameters -->
+        <ui:param name="teaserHeadline" value="Premium Foto Mugg" />
+        <ui:param name="teaserClaim" value="Flera sorters Muggar i Bästa Kvalität" />
+        <ui:param name="teaserImage" value="#{libraryImagesBean.getFilePathByLibraryImageId(463)}" />
+        <ui:param name="showcaseClass" value="-noPaddingTop" />
+
+        <ui:param name="productHeadline1" value="Klassisk fotomugg" />
+        <ui:param name="productHeadline2" value="Premium fotomugg" />
+        <ui:param name="productHeadline3" value="Magisk fotomugg" />
+        <ui:param name="productHeadline4" value="Innerfargade fotomuggar" />
+
+        <ui:param name="productId1" value="860" />
+        <ui:param name="productId2" value="1615" />
+        <ui:param name="productId3" value="1617" />
+        <ui:param name="productId4" value="1616" />
+
+        <ui:param name="teaserProductImage1" value="#{libraryImagesBean.getFilePathByLibraryImageId(464)}" />
+        <ui:param name="teaserProductImage2" value="#{libraryImagesBean.getFilePathByLibraryImageId(465)}" />
+        <ui:param name="teaserProductImage3" value="#{libraryImagesBean.getFilePathByLibraryImageId(466)}" />
+        <ui:param name="teaserProductImage4" value="#{libraryImagesBean.getFilePathByLibraryImageId(467)}" />
+        <ui:param name="teaserLogoImageColors" value="/#{shopInfoBean.versionPath}assets/img/logo/mug-color-icon.png" />
+
+        <ui:param name="teaserProductAlt1" value="#{libraryImagesBean.getAltByLibraryImageId(464)}" />
+        <ui:param name="teaserProductAlt2" value="#{libraryImagesBean.getAltByLibraryImageId(465)}" />
+        <ui:param name="teaserProductAlt3" value="#{libraryImagesBean.getAltByLibraryImageId(466)}" />
+        <ui:param name="teaserProductAlt4" value="#{libraryImagesBean.getAltByLibraryImageId(467)}" />
+
+        <ui:param name="imageClass1" value="standardMugImg" />
+        <ui:param name="imageClass2" value="" />
+        <ui:param name="imageClass3" value="magicMugImg" />
+        <ui:param name="imageClass4" value="inner-colored-mug " />
+        <ui:param name="imageClass5" value="teaserLogoImageColorClass" />
+
+      </ui:include>
+    </section>
+    <!-- /teaser -->
+
+      <!-- info boxes -->
+      <section class="page-section -alternate -collapse-top">
+          <ui:include src="/page-blocks/info-blocks-info.xhtml" />
+          <ui:param name="checkHideSVT" value="true" />
+      </section>
+      <!-- /info boxes -->
+
+      <section class="page-section">
+        <ui:include src="/page-blocks/content-photo-mugs.xhtml">
+          <ui:param name="buttonText" value="Skapa" />
+          <ui:param name="productButtonIDClassic" value="860" />
+          <ui:param name="productButtonIDPremium" value="1615" />
+          <ui:param name="productButtonIDMagic" value="1617" />
+          <ui:param name="productButtonIDColored" value="1616" />
+        </ui:include>
+      </section>
+
+      <!-- paymentmethods -->
+      <section class="page-section -alternate">
+        <ui:include src="/page-blocks/paymentmethods.xhtml" />
+        <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+      </section>
+      <!-- /paymentmethods -->
+
+      <!-- microdata -->
+        <ui:include src="/content-blocks/microdata-simple.xhtml">
+          <ui:param name="name" value="Innerfargade fotomuggar" />
+          <ui:param name="sku" value="	TASSE-LI_QUER-INNER" />
+          <ui:param name="url" value="https://www.bestcanvas.se/fotomugg-innerfargade-erbjudande/" />
+          <ui:param name="price" value="#{priceBean.productPrice('Mug-Inner_Bestcanvas_SE', 'Inner colored mug', 'Inner Colored Mug Left Landscape')}" />
+      </ui:include>
+      <!-- /microdata -->
+
+  </ui:define>
+</ui:composition>

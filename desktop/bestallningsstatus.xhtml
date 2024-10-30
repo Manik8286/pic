@@ -1,0 +1,96 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+  <ui:param name="pageTitle" value="#{_['View status of your order']}" />
+  <ui:param name="mastertagTracking" value="generic" />
+
+  <ui:define name="head">
+    <f:event type="preRenderView" listener="#{orderStatusBean.loadOrderInfo}" />
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/osp/css/osp-new-design.xhtml" />
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/osp/css/osp-share-block.xhtml" />
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="robots" content="INDEX,FOLLOW" />
+    <meta name="description" content="#{_['View status of your order']}" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1" />
+  </ui:define>
+
+  <ui:define name="content">
+    <h:form id="orderTable" class="orderStatusParcels">
+      <ui:fragment rendered="#{orderStatusBean.orderInfo == null}">
+        <ui:include src="/#{shopInfoBean.defaultVersionPath}components/osp/osp-login.xhtml" />
+      </ui:fragment>
+
+      <ui:fragment rendered="#{orderStatusBean.orderInfo != null}">
+        <section class="page-text orderStatusPageNew" jsf:id="orderStatusBlock">
+          <!-- GREETING BLOCK -->
+          <ui:include src="/#{shopInfoBean.defaultVersionPath}components/osp/osp-greeting.xhtml"/>
+          <!-- /GREETING BLOCK -->
+
+          <!-- SPLIT ORDER -->
+          <ui:include src="/#{shopInfoBean.defaultVersionPath}components/osp/osp-content.xhtml">
+            <ui:param name="splitOrder" value="true" />
+            <ui:param name="infoBoxClass" value="-splitOrderStatus" />
+            <ui:param name="accordionClass" value="accordion-panel js-accordion-nv clear-both -nv" />
+            <ui:param name="wrapClass" value="-collapse-left splitOrderStatusWrap" />
+            <ui:param name="crossSellingClass" value="splitCrossSelling" />
+            <ui:param name="registerLink" value="/registro.jsf" />
+          </ui:include>
+          <!-- / SPLIT ORDER -->
+
+          <!-- SINGLE ORDER -->
+          <ui:include src="/#{shopInfoBean.defaultVersionPath}components/osp/osp-content.xhtml">
+            <ui:param name="accordionClass" value="accordion-panel js-accordion-nv clear-both -nv" />
+            <ui:param name="wrapClass" value="-collapse-left singleOrderStatusWrap" />
+            <ui:param name="infoBoxClass" value="-singleOrderStatus" />
+            <ui:param name="crossSellingClass" value="singleCrossSelling" />
+            <ui:param name="registerLink" value="/registro.jsf" />
+          </ui:include>
+          <!-- / SINGLE ORDER -->
+
+          <!-- ORDER INFORMATION -->
+          <ui:include src="/#{shopInfoBean.defaultVersionPath}components/osp/sections/osp-info.xhtml">
+            <ui:param name="registerLink" value="/registro.jsf" />
+          </ui:include>
+          <!-- / ORDER INFORMATION -->
+        </section>
+        <ui:include src="/#{shopInfoBean.defaultVersionPath}components/osp/js/osp-additional-script.xhtml"/>
+        <ui:fragment rendered="#{orderStatusBean.parcels.size gt 1}">
+          <script>ospAdditionalSplit();</script>
+        </ui:fragment>
+        <ui:fragment rendered="#{orderStatusBean.parcels.size le 1}">
+          <script>ospAdditionalSingle();</script>
+        </ui:fragment>
+      </ui:fragment>
+      <div class="g-recaptcha"
+           data-badge="bottomleft"
+           data-sitekey="6LeKH6wUAAAAAJFOGvfQi_HRu9kuPcY4MX4wvacI"
+           data-expired-callback="onExpired"
+           data-error-callback="onError"
+           data-callback="onSubmit"
+           data-size="invisible"></div>
+    </h:form>
+
+    <div class="hidden">
+      <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+       <ui:param name="directuploadProductId" value="254" />
+      </ui:include>
+    </div>
+    <ui:include src="/page-blocks/uploader-cover.xhtml" />
+  </ui:define>
+
+  <ui:define name="eofscript">
+    <script src="https://connect.facebook.net/se_SE/sdk.js"></script>
+    <script src="/#{shopInfoBean.versionPath}static/build/js/osp-share-buttons.min.js"></script>
+    <ui:include src="/content-blocks/captcha-validation-global.xhtml" />
+  </ui:define>
+
+</ui:composition>

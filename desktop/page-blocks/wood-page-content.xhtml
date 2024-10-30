@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:o="http://omnifaces.org/ui">
+
+
+  <section class="page-section">
+
+  <!-- product info -->
+  <div class="article-showcase">
+    <h3 class="headline -has-sidelines"><span>Direkttryck på trätavlor i laboratoriekvalitet</span></h3>
+ <div class="col -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'} image js-image-switcher">
+      <ul class="images">
+        <li data-image-name="preview:front" class="-visible"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/wood/tiles-isolated.jpg" /></li>
+        <li data-image-name="preview:room"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/wood/tiles-inroom.jpg" /></li>
+        <li data-image-name="preview:detail"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/wood/tiles-closeup.jpg" /></li>
+      </ul>
+
+      <ul class="options -has-3">
+            <li><button type="button" class="cbutton -highlight" data-target="preview:front">Komplett vy</button></li>
+            <li><button type="button" class="cbutton" data-target="preview:detail">Detaljerad vy</button></li>
+            <li><button type="button" class="cbutton" data-target="preview:room">I rummet</button></li>
+      </ul>
+    </div>
+
+    <div class="description-wrapper -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'}">
+        <p class="text">
+           Din trätavla strålar i högsta kvalitet tack vara direkttrycket på en 10 mm tjock flerskiktad träplatta. I de ljusare bildpartierna, där färgerna överförs direkt på träet, syns den subtila trästrukturen. Den diskreta ådringen harmonierar perfekt med fototavlan av trä. Vid direkttryck på trä får du en omsorgsfullt framställd trycksak av högsta kvalitet, som samtidigt utgör en unik naturprodukt.
+        </p>
+        <p class="text">
+           Färgerna på dina fotografier i direkttryck får en djup och briljant glans tack vare vårt professionella 6-färgstryck. Upplev din trätavla med foto i bästa laboratoriekvalitet, där varje detalj framhävs. Tack vare den synliga ådringen förvandlas varje trätavla till ett unikt verk av hisnande kvalitet. Särskilt natur- och landskapsbilder kommer till sin rätt genom träets varma egenskaper. Även djurbilder och utomhusporträtt får en speciell framtoning på trä.
+        </p>
+   </div>
+ </div>
+
+  <div class="article-showcase">
+    <h3 class="headline -has-sidelines"><span>Naturlig känsla med ditt foto direkttryckt på trä</span></h3>
+
+    <div class="col -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'} image js-image-switcher">
+      <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/wood/tiles-two-wood.jpg" />
+    </div>
+
+    <div class="col -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'} description">
+      <p class="text">
+        Skänk ditt hem en naturlig känsla och tryck upp ditt foto på trä. Ditt motiv överförs med hjälp av direkttryckstekniken och blir snyggt på den flerskiktade träplattan där den får en naturlig framtoning. Kanterna på fototavlan av flerskiktat trä är precisionsfrästa för att uppnå högklassig kvalitet och samtidigt behålla sin rustika karaktär.
+      </p>
+      <p class="text">
+        Det högkvalitativa träet kommer från lövträd och är splitterfritt och förvånansvärt lätt trots sin tjocklek på 10 mm. Detta gör att du enkelt kan hänga upp även den ståtliga storleken på 60x40cm var som helst. Ett professionellt upphängningskit får du per automatik gratis. Försköna ditt hem med varma trätoner och miljövänliga fototavlor av trä.
+      </p>
+    </div>
+  </div>
+
+ <!-- /product info -->
+
+  <ui:include src="/content-blocks/lp/wood-format-table.xhtml" />
+
+  </section>
+
+</ui:composition>

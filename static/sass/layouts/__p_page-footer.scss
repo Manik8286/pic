@@ -1,0 +1,57 @@
+._p_page-footer {
+  font-size: 18px;
+  background-color: $footer-background-color;
+  color: $white;
+  
+  .bCrumbs {
+    font-size: 15px;
+    padding: 0;
+    li {
+      display: inline-block;
+      padding-right: 5px;
+    }
+    a {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+
+  .fine-print {
+    font-size: 12px;
+    text-align: center;
+    margin: 9px;
+    line-height: 1.75;
+    position: relative;
+    top: 5px;
+    display: inline-block;
+  }
+  
+  &.-min {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    font-size: 12px;
+  }
+  
+  > .developer-note {
+    text-align: center;
+    margin-top: 40px;
+
+    > .heart {
+      position: relative;
+      height: 20px;
+      width: 24px;
+      fill: $footer-heart-fill-color;
+      margin: 0 7px;
+      top: 6px;
+    }
+  }
+
+  a {
+    color: $white;
+  }
+
+  > .menu {
+    @extend .accordion-nav;
+  }
+}

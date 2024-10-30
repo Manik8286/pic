@@ -1,0 +1,132 @@
+.page-login {
+  width: 100%;
+  min-width: $grid-width;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-image: url("/assets/img/backgrounds/girl_with_camera.jpg");
+
+  > .login-showcase {
+    @extend .row;
+
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  // Wrappers
+  > .login-showcase > .box-wrapper {
+    @extend .col;
+    @extend %-span-9;
+    @extend .col.-centered;
+
+    .phone & {
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  .box-login-wrapper {
+    @extend .col;
+    @extend %-span-6;
+
+    margin-bottom: 25px;
+  }
+
+  .box-register-wrapper {
+    @extend .col;
+    @extend %-span-6;
+
+    margin-bottom: 25px;
+  }
+
+  .box-upload-wrapper {
+    @extend .col;
+    @extend %-span-12;
+  }
+
+  // Boxes
+  .box-login {
+    @extend .login-box;
+    @include clearfix;
+
+    padding-bottom: 56px;
+
+    .group {
+      @extend .form-group;
+    }
+
+    .group > .label {
+      font-size: 16px;
+      margin-bottom: 5px;
+      display: inline-block;
+    }
+
+    .lostpassword {
+      @extend .anchor;
+      font-size: 12px;
+      position: absolute;
+      bottom: 28px;
+      left: 10px;
+    }
+
+    .action-login {
+      position: absolute;
+      right: 10px;
+      bottom: 20px;
+    }
+  }
+
+  .box-register {
+    @extend .login-box;
+    @include clearfix;
+
+    padding-bottom: 56px;
+
+    .list-title {
+      font-size: 16px;
+      font-weight: $weight-semibold;
+      margin-bottom: 2px;
+      display: block;
+    }
+
+    > .benefits {
+      @extend .icon-list;
+
+      margin-bottom: 22px;
+
+      li {
+        line-height: 21px;
+        height: 21px;
+      }
+      li > .icon {
+        width: 10px;
+        height: 21px;
+        vertical-align: middle;
+        fill: $icon-primary-color;
+      }
+    }
+
+    .action-register {
+      position: absolute;
+      right: 10px;
+      bottom: 20px;
+    }
+  }
+
+  .box-upload {
+    @include clearfix;
+    @extend .login-box;
+
+    .text {
+      float: left;
+      margin-top: 7px;
+      margin-bottom: 0;
+      font-size: 16px;
+    }
+
+    .action-upload {
+      float: right;
+    }
+  }
+}

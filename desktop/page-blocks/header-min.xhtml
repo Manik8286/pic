@@ -1,0 +1,47 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html">
+  <header class="page-head">
+    <div class="page-head-bar">
+      <div class="page-head-row">
+        <h1 class="sr">bestcanvas.se</h1>
+        <a href="#{baseUrlBean.baseUrl}" class="brand">
+          <ui:include src="/helper/svg.xhtml">
+            <ui:param name="svgClass" value="logo" />
+            <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-logo" />
+          </ui:include>
+        </a>
+
+        <div class="meta">
+          <nav class="nav">
+
+            <ul class="pull-right -navLinks">
+              <li class="#{shoppingCartBean.numberOfItems > 0 ? '-active' : ''}">
+                <a href="/shoppingcart.jsf">
+                  <ui:include src="/helper/svg.xhtml">
+                    <ui:param name="svgClass" value="cart" />
+                    <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-shopping-cart" />
+                  </ui:include>
+                  <h:outputText id="cartcount" value="Varukorg (#{shoppingCartBean.numberOfItems})"></h:outputText>
+                </a>
+              </li>
+            </ul>
+            <!--             
+            <a href="javascript:void(0)" onclick="Modal.open('#shippingInfo');">
+              <span class="pull-right">
+                <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/fri-leverans.png" class="pull-left -headerIcons" width="35" alt="24 hora logo" />
+                <span class="-highlighted-text">
+                  FRI leverans
+                </span> 
+                från 800 kr.
+                till den <h:outputText escape="false" value="#{contentBean.snippets['aktion_datum']}"/> !
+              </span>
+            </a> 
+            -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+</ui:composition>

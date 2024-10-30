@@ -1,0 +1,195 @@
+#tsbadgeResponsiveTop_db8d3657bdbe440c985ae127463eaad4node ~ .page-hero {
+  margin-top: 54px;
+}
+
+.-deko-teaser {
+  margin-top: 94px;
+}
+
+.-deko-teaser-null {
+  margin-top: 54px;
+}
+
+.page-hero {
+  min-height: 200px;
+  color: $white;
+  background-color: $image-loading-background;
+  text-align: center;
+  position: relative;
+  background-size: cover;
+  width: 100%;
+  background-position: center center;
+
+  &.-perfectphoto {
+    background-image:url("/assets/img/backgrounds/teaser-488x255.jpg");
+  }
+  &.-composicion {
+    background-image:url("/assets/img/backgrounds/litoral-mobile.jpg");
+  }
+  &.-relax {
+    background-image:url("/assets/img/backgrounds/relax.jpg");
+  }
+  &.-ordersuccess {
+    background-image:url("/assets/img/backgrounds/teaser-fototrends.jpg");
+  }
+  &.-photogiftideas {
+    background-image:url("/assets/img/photo-gift-ideas/gift-ideas-teaser.jpg");
+  }
+  &.-imagecenter {
+    background-image:url("/assets/img/backgrounds/teaser-imagecenter.jpg");
+  }
+  &.-tidyhome {
+    background-image:url("/assets/img/backgrounds/teaser-tidyhome.jpg");
+  }
+  &.-fairytale {
+    background-image:url("/assets/img/backgrounds/teaser-fairytale.jpg");
+  }
+  &.-mirror {
+    background-image: url("/assets/img/backgrounds/teaser-mirror.jpg");
+  }
+  &.-wedding {
+    background-image: url("/assets/img/backgrounds/teaser-wedding.jpg");
+  }
+  &.-flowers {
+    background-image: url("/assets/img/backgrounds/teaser-flowers.jpg");
+  }
+  &.-mediterranean {
+    background-image: url("/assets/img/backgrounds/teaser-mediterranean.jpg");
+  }
+  &.-holidays {
+    background-image: url("/assets/img/backgrounds/teaser-holidays.jpg");
+  }
+  &.-decotrendssummer {
+    background-image: url("/assets/img/backgrounds/teaser-deco-trends-summer.jpg");
+  }
+  &.-decotips {
+    background-image: url("/assets/img/backgrounds/teaser-10tips.jpg");
+  }
+  &.-homeoffice {
+    background-image: url("/assets/img/backgrounds/teaser-homeoffice.jpg");
+  }
+  &.-fotoprints {
+    background-image: url("/assets/img/backgrounds/teaser-fotoprints.jpg");
+  }
+  &.-diy {
+    background-image: url("/assets/img/backgrounds/teaser-diy.jpg");
+  }
+  &.-fototrends {
+    background-image: url("/assets/img/backgrounds/teaser-fototrends.jpg");
+  }
+  &.-colourtrends {
+    background-image: url("/assets/img/backgrounds/teaser-winter-colour-trends.jpg");
+  }
+  &.-pictureframes {
+    background-image: url("/assets/img/backgrounds/teaser-picture-frames.jpg");
+  }
+  &.-gallery {
+    background-image: url("/assets/img/backgrounds/teaser-gallery.jpg");
+  }
+  &.-eyecatcher {
+    background-image: url("/assets/img/backgrounds/teaser-eyecatcher.jpg");
+  }
+  &.-calendarInspiration {
+    background-image: url("/assets/img/backgrounds/7-creative-ideas-for-you-mobile.jpg");
+  }
+  &.-decorationTrends {
+    background-image: url("/assets/img/backgrounds/6-trends-from-cork-to-metallic-mix-mobile.jpg");
+  }
+  &.-colourTrends2017 {
+    background-image: url("/assets/img/backgrounds/colorful-and-bright-interiour-mobile.jpg");
+  }
+  &.-WallDecorationsOverview {
+    background-image: url("/assets/img/backgrounds/photography-mobile.jpg");
+  }
+  &.-photography {
+    background-image: url("/assets/img/backgrounds/photography.jpg");
+  }
+  &.-snuggleUp {
+    background-image: url("/assets/img/backgrounds/cosy-living-room-mobile.jpg");
+  }
+  &.-photobook {
+    background-image: url("/assets/img/backgrounds/teaser_photobook.jpg");
+  }
+  &.-goldenratio {
+    background-image: url("/assets/img/backgrounds/teaser_golden-ratio.jpg");
+  }
+  &.-stilmix {
+    background-image: url("/assets/img/backgrounds/teaser_stilmix.jpg");
+  }
+  &.-gallerie {
+    background-image: url("/assets/img/backgrounds/teaser-gallerie.jpg");
+  }
+  &.-biggie {
+    background-image: url("/assets/img/backgrounds/teaser_biggerpic.jpg");
+  }
+  &.-fotoposter {
+    background-image: url("/assets/img/backgrounds/teaser_fotoposter.jpg");
+  }
+  &.-balcony {
+    background-image: url("/assets/img/backgrounds/teaser_balcon.jpg");
+  }
+  &.-room {
+    background-image: url("/assets/img/backgrounds/teaser_room.jpg");
+  }
+   &.-interiour {
+    background-image: url("/assets/img/backgrounds/teaser_interiour-mistake.jpg");
+  }
+   &.-harmony {
+    background-image: url("/assets/img/backgrounds/teaser_harmony.jpg");
+  }
+   &.-apartments {
+    background-image: url("/assets/img/backgrounds/teaser_apartments.jpg");
+  }
+   &.-ideasChristmas {
+    background-image: url("/assets/img/backgrounds/8-ideas-for-a-cosy-christmas-mobile.jpg");
+  }
+  &.-winterHart {
+    background-image: url("/assets/img/backgrounds/make-your-loved-ones-very-happy.jpg");
+  }
+  &.-minimalism {
+    background-image: url("/assets/img/backgrounds/minimalism-teaser-mobile.jpg");
+  }
+  &.-taking-photographs-on-holiday {
+    background-image: url("/assets/img/backgrounds/holiday-photography-mobile.jpg");
+  }
+  &.-photobook-gift {
+    background-image: url("/assets/img/backgrounds/gepersonaliseerd-fotoboek-mobile.jpg");
+  }
+  &.-tips-how {
+    background-image:url("/assets/img/backgrounds/bestcanvas_se_blog.jpg");
+  }
+  > .inner > .headline {
+    font-size: 25px;
+    word-break: break-word;
+  }
+
+  > .inner > .subtitle {
+    font-size: 16px;
+    margin-top: 15px;
+  }
+   &:before {
+     content: '';
+     display: inline-block;
+     width: 0;
+     height: 100%;
+     vertical-align: middle;
+   }
+
+   > .inner {
+     display: inline-block;
+     vertical-align: middle;
+     margin-top: 26px;
+   }
+
+   > .inner > .headline {
+     font-size: 38px;
+     line-height: 1;
+     font-weight: $weight-bold;
+     margin: 0;
+
+  &.-shadows
+   {
+   text-shadow: 0px 0px 100px $black;
+   }
+   }
+}

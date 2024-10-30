@@ -1,0 +1,66 @@
+.story-box {
+  @extend .box;
+  font-size: 14px;
+  position: relative;
+  margin-bottom: 12px;
+
+  > .head,
+  > .body {
+    padding: 13px 15px;
+  }
+
+  > .head > .title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: $weight-semibold;
+
+    a:hover {
+      color: $highlight-color;
+    }
+  }
+
+  > .head > .subtitle {
+    font-size: 15px;
+    font-style: italic;
+  }
+
+  > .image {
+    width: 100%;
+    height: auto;
+  }
+
+  > .body {
+    padding-bottom: 30px;
+  }
+
+  > .body > p {
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  > .body a {
+    color: $highlight-color;
+
+    &:hover {
+      color: darken($highlight-color, 10);
+    }
+  }
+
+  > .body .more {
+    color: $box-more-link-color;
+    position: absolute;
+    bottom: 14px;
+    left: 20px;
+
+    &:hover {
+      color: $box-more-link-hover-color;
+    }
+  }
+
+  a {
+    color: inherit;
+    transition: color 0.2s;
+    text-decoration: none;
+  }
+
+}

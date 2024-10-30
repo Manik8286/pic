@@ -1,0 +1,201 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+ <url>
+     <loc>https://www.bestcanvas.se/vaggdekor/canvastavlor.jsf</loc>
+     <video:video>
+       <video:thumbnail_loc>https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/thumbnail/canvastavla.jpg</video:thumbnail_loc>
+       <video:title>Foto pa Canvas - Canvastavlor - Ramtjocklek 2cm</video:title>
+       <video:description>Canvastavlor fran bestcanvas.se. Bast i Test pa SVT's PLUS. Modernt latextryck - Barnrumsvanligt.</video:description>
+       <video:content_loc>https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/canvastavlor.mp4</video:content_loc>
+       <video:player_loc autoplay="ap=1">
+         https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/canvastavlor.mp4</video:player_loc>
+       <video:duration>33</video:duration>
+       <video:expiration_date>2018-12-31T23:59:59+08:00</video:expiration_date>
+       <video:rating>5.0</video:rating>
+       <video:view_count>30</video:view_count>
+       <video:publication_date>2017-08-02T11:01:19.000Z</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>
+       <video:restriction relationship="allow">SE</video:restriction>
+       <video:requires_subscription>no</video:requires_subscription>
+       <video:uploader info="https://www.bestcanvas.se/">BestCanvas.se
+         </video:uploader>
+       <video:live>no</video:live>
+     </video:video>
+   </url>
+   <url>
+     <loc>https://www.bestcanvas.se/vaggdekor/akrylglastavlor.jsf</loc>
+     <video:video>
+       <video:thumbnail_loc>https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/thumbnail/foto-bakom-akrylglas.jpg</video:thumbnail_loc>
+       <video:title>Akrylglastavla - Foto bakom Akryl | BestCanvas.se</video:title>
+       <video:description>Ditt Foto bakom Akrylglas. Hogvardig, adel akrylglas. HD - sarskilt lampligt for hogupplosta foton. Vattentat och Ljusakta.</video:description>
+       <video:content_loc>https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/foto-bakom-akrylglas.mp4</video:content_loc>
+       <video:player_loc autoplay="ap=1">
+         https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/foto-bakom-akrylglas.mp4</video:player_loc>
+       <video:duration>27</video:duration>
+       <video:expiration_date>2018-12-31T23:58:59+08:00</video:expiration_date>
+       <video:rating>5.0</video:rating>
+       <video:view_count>8264</video:view_count>
+       <video:publication_date>2015-12-23T16:45:21.000Z</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>
+       <video:restriction relationship="allow">SE</video:restriction>
+       <video:requires_subscription>no</video:requires_subscription>
+       <video:uploader info="https://www.bestcanvas.se/">BestCanvas.se
+         </video:uploader>
+       <video:live>no</video:live>
+     </video:video>
+   </url>
+   <url>
+     <loc>https://www.bestcanvas.se/vaggdekor/aluminiumtavlor.jsf</loc>
+     <video:video>
+       <video:thumbnail_loc>https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/thumbnail/foto-pa-aluminium.jpg</video:thumbnail_loc>
+       <video:title>Aluminiumtavla  - Foto pa Aluminium | BestCanvas.se</video:title>
+       <video:description>Ditt egna Foto pa Aluminium. Adel och stabil Aluminiumplatta. En glansande UV-plastfilm skyddar din bild och ger lang hallbarhe.</video:description>
+       <video:content_loc>https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/foto-pa-aluminium.mp4</video:content_loc>
+       <video:player_loc autoplay="ap=1">
+         https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/foto-pa-aluminium.mp4</video:player_loc>
+       <video:duration>22</video:duration>
+       <video:expiration_date>2018-12-31T23:57:59+08:00</video:expiration_date>
+       <video:rating>5.0</video:rating>
+       <video:view_count>7875</video:view_count>
+       <video:publication_date>2015-12-23T16:44:21.000Z</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>
+       <video:restriction relationship="allow">SE</video:restriction>
+       <video:requires_subscription>no</video:requires_subscription>
+       <video:uploader info="https://www.bestcanvas.se/">BestCanvas.se
+         </video:uploader>
+       <video:live>no</video:live>
+     </video:video>
+   </url>
+   <url>
+     <loc>https://www.bestcanvas.se/vaggdekor/fototavlor.jsf</loc>
+     <video:video>
+       <video:thumbnail_loc>https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/thumbnail/foto-pa-fotoboard.jpg</video:thumbnail_loc>
+       <video:title>Fototavla - Foto pa Fotoboard | BestCanvas.se</video:title>
+       <video:description>Ditt Foto som fotoboard. Perfekt utskrift pa fjaderlatt Fototavla (hardskumplatta). Fungerar perfekt pa latta vaggar.</video:description>
+       <video:content_loc>https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/foto-pa-fototavla.mp4</video:content_loc>
+       <video:player_loc autoplay="ap=1">
+         https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/foto-pa-fototavla.mp4</video:player_loc>
+       <video:duration>24</video:duration>
+       <video:expiration_date>2018-12-31T23:56:59+08:00</video:expiration_date>
+       <video:rating>5.0</video:rating>
+       <video:view_count>2375</video:view_count>
+       <video:publication_date>2015-12-23T16:43:21.000Z</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>
+       <video:restriction relationship="allow">SE</video:restriction>
+       <video:requires_subscription>no</video:requires_subscription>
+       <video:uploader info="https://www.bestcanvas.se/">BestCanvas.se
+         </video:uploader>
+       <video:live>no</video:live>
+     </video:video>
+   </url>
+   <url>
+     <loc>https://www.bestcanvas.se/vaggdekor/akryl-aluminium.jsf</loc>
+     <video:video>
+       <video:thumbnail_loc>https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/thumbnail/akrylglas-aluminium.jpg</video:thumbnail_loc>
+       <video:title>Foto pa Akrylglas + Aluminium</video:title>
+       <video:description>Foto pa Akryl + Aluminium. Latt, formstabil och slitstark. Bast lampad for anvandning utomhus.</video:description>
+       <video:content_loc>https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/foto-pa-akryl-aluminium.mp4</video:content_loc>
+       <video:player_loc autoplay="ap=1">
+         https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/foto-pa-akryl-aluminium.mp4</video:player_loc>
+       <video:duration>28</video:duration>
+       <video:expiration_date>2018-12-31T23:55:59+08:00</video:expiration_date>
+       <video:rating>5.0</video:rating>
+       <video:view_count>389</video:view_count>
+       <video:publication_date>2017-08-02T11:02:19.000Z</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>
+       <video:restriction relationship="allow">SE</video:restriction>
+       <video:requires_subscription>no</video:requires_subscription>
+       <video:uploader info="https://www.bestcanvas.se/">BestCanvas.se
+         </video:uploader>
+       <video:live>no</video:live>
+     </video:video>
+   </url>
+   <url>
+     <loc>https://www.bestcanvas.se/home-lifestyle/klassisk-kudde.jsf</loc>
+     <video:video>
+       <video:thumbnail_loc>https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/thumbnail/klassisk-kudde.jpg</video:thumbnail_loc>
+       <video:title>Fotokudde | BestCanvas.se</video:title>
+       <video:description>Klassisk Fotokudde. HD sarskilt lamplig for tryck i hogupplosning. Garanti for basta pris.</video:description>
+       <video:content_loc>https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/klassisk-fotokudde.mp4</video:content_loc>
+       <video:player_loc autoplay="ap=1">
+         https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/klassisk-fotokudde.mp4</video:player_loc>
+       <video:duration>28</video:duration>
+       <video:expiration_date>2018-12-31T23:54:59+08:00</video:expiration_date>
+       <video:rating>5.0</video:rating>
+       <video:view_count>600</video:view_count>
+       <video:publication_date>2015-12-23T16:43:21.000Z</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>
+       <video:restriction relationship="allow">SE</video:restriction>
+       <video:requires_subscription>no</video:requires_subscription>
+       <video:uploader info="https://www.bestcanvas.se/">BestCanvas.se
+         </video:uploader>
+       <video:live>no</video:live>
+     </video:video>
+   </url>
+   <url>
+     <loc>https://www.bestcanvas.se/fotopresenter/klassisk-mugg.jsf</loc>
+     <video:video>
+       <video:thumbnail_loc>https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/thumbnail/klassisk-mugg.jpg</video:thumbnail_loc>
+       <video:title>Fotomugg | BestCanvas.se</video:title>
+       <video:description>Ditt foto pa klassisk mugg. Enkelsidig keramik-mugg med tryck av hogsta kvalitet.</video:description>
+       <video:content_loc>https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/klassisk-fotomugg.mp4</video:content_loc>
+       <video:player_loc autoplay="ap=1">
+         https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/klassisk-fotomugg.mp4</video:player_loc>
+       <video:duration>19</video:duration>
+       <video:expiration_date>2018-12-31T23:53:59+08:00</video:expiration_date>
+       <video:rating>5.0</video:rating>
+       <video:view_count>609</video:view_count>
+       <video:publication_date>2015-12-23T16:42:21.000Z</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>
+       <video:restriction relationship="allow">SE</video:restriction>
+       <video:requires_subscription>no</video:requires_subscription>
+       <video:uploader info="https://www.bestcanvas.se/">BestCanvas.se
+         </video:uploader>
+       <video:live>no</video:live>
+     </video:video>
+   </url>
+   <url>
+     <loc>https://www.bestcanvas.se/fotopresenter/musmatta-med-foto.jsf</loc>
+     <video:video>
+       <video:thumbnail_loc>https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/thumbnail/musmatta-med-foto.jpg</video:thumbnail_loc>
+       <video:title>Musmatta med Foto | BestCanvas.se</video:title>
+       <video:description>Musmatta med tryck och trevlig yta av mikrofiber. Halkresistent tack vare svart naturgummi. Passar alla moss for datorer.</video:description>
+       <video:content_loc>https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/musmatta-med-foto.mp4</video:content_loc>
+       <video:player_loc autoplay="ap=1">
+         https://euc-picturator-download.s3.euc-picturator-download.s3.eu-central-1.amazonaws.com/media/web_images/se/bestcanvas/video/musmatta-med-foto.mp4</video:player_loc>
+       <video:duration>23</video:duration>
+       <video:expiration_date>2018-12-31T23:51:59+08:00</video:expiration_date>
+       <video:rating>5.0</video:rating>
+       <video:view_count>699</video:view_count>
+       <video:publication_date>2015-12-23T16:40:21.000Z</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>
+       <video:restriction relationship="allow">SE</video:restriction>
+       <video:requires_subscription>no</video:requires_subscription>
+       <video:uploader info="https://www.bestcanvas.se/">BestCanvas.se
+         </video:uploader>
+       <video:live>no</video:live>
+     </video:video>
+   </url>
+   <url>
+     <loc>https://www.bestcanvas.se/fotopresenter/fotopussel.jsf</loc>
+     <video:video>
+       <video:thumbnail_loc>https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/thumbnail/fotopussel.jpg</video:thumbnail_loc>
+       <video:title>Fotopussel | BestCanvas.se</video:title>
+       <video:description>Ditt Fotopussel. Personligt pussel med eget foto av hogsta kvalitet. Gjord av robust kartong och precisionsstamplade bitar.</video:description>
+       <video:content_loc>https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/fotopussel.mp4</video:content_loc>
+       <video:player_loc autoplay="ap=1">
+         https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/fotopussel.mp4</video:player_loc>
+       <video:duration>23</video:duration>
+       <video:expiration_date>2018-12-31T23:50:59+08:00</video:expiration_date>
+       <video:rating>5.0</video:rating>
+       <video:view_count>912</video:view_count>
+       <video:publication_date>2015-12-23T16:39:21.000Z</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>
+       <video:restriction relationship="allow">SE</video:restriction>
+       <video:requires_subscription>no</video:requires_subscription>
+       <video:uploader info="https://www.bestcanvas.se/">BestCanvas.se
+         </video:uploader>
+       <video:live>no</video:live>
+     </video:video>
+   </url>
+</urlset>

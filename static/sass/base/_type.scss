@@ -1,0 +1,54 @@
+// Alignment
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
+.text-justify        { text-align: justify; }
+.text-nowrap         { white-space: nowrap; }
+.text-underscore     { text-decoration: underline; }
+.text-bigger         { font-size: 1.3em;line-height: 2em; }
+.pull-left           { float: left !important; }
+.pull-right          { float: right !important; }
+.pull-none           { float: none !important; }
+.clear-both      	 { clear: both; }
+
+// Auto size
+.widthAuto { width: auto; }
+.width100 { width: 100%; }
+.width90 { width: 90%; }
+.heightAuto { height: auto; }
+.widthMax { max-width: 100%; }
+
+// display
+.dBlock { display: block; }
+.dFlex { display: flex; }
+.dJustCenter { justify-content: center; }
+.dFlexColumn { flex-direction: column; }
+.dJustBetween { justify-content: space-between; }
+.dInline { display: inline; }
+.dInlineBlock { display: inline-block; }
+.dInlineTable { display: inline-table; }
+.dNone { display: none !important; }
+.dTable { display: table; }
+.dTableCell { display: table-cell; }
+.vHidden { visibility: hidden; }
+
+.listStyleNone { list-style: none; }
+
+.-green { color: $newGreen; }
+
+.img-responsive { max-width: 100%; }
+
+.text-red { color: $red; }
+
+.pRelative { position: relative; }
+
+.p0 { padding: 0 !important; }
+._px0 { padding-left: 0 !important; padding-right: 0 !important; }
+._pr0 { padding-right: 0 !important;}
+._pl0 { padding-left: 0 !important;}
+.pb0 { padding-bottom: 0 !important; }
+
+.m0auto { margin: 0 auto; }
+
+.mt0 { margin-top: 0; }
+.mb0 { margin-bottom: 0; }

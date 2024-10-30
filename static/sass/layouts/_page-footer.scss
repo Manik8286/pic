@@ -1,0 +1,76 @@
+.page-footer {
+	width: 100%;
+  /*min-width: $grid-width; why ?*/
+	padding-top: 20px;
+	padding-bottom: 43px;
+	background-color: $footer-background-color;
+	color: $footer-text-color;
+	font-size: 12px;
+
+	> .fine-print {
+		position: relative;
+		text-align: center;
+		margin-bottom: 10px;
+
+    > .link {
+      color: $footer-text-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+	}
+
+	> .developer-note {
+		text-align: center;
+
+		> .heart {
+			position: relative;
+			height: 20px;
+			width: 24px;
+			fill: $footer-heart-fill-color;
+      margin: 0 7px;
+      top: 6px;
+		}
+	}
+}
+
+.page-footer-sitemap {
+  @extend .row;
+	padding-bottom: 47px;
+	font-family: $default-font-family;
+
+  > .column {
+    @extend .col;
+    width: 20%;
+  }
+
+  .headline {
+    font-size: 12px;
+    color: $footer-text-color;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  > .column > .link-list {
+    float: left;
+
+    > li {
+      line-height: 18px;
+    }
+
+    a {
+      color: $footer-text-color;
+      text-decoration: none;
+
+      &:hover {
+        color: $footer-link-highlight-color;
+        transition: color 0.2s;
+      }
+    }
+  }
+}
+
+
+

@@ -1,0 +1,66 @@
+<ui:composition template="/templates/checkout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<ui:param name="pageTitle" value="#{_['Shopping Cart']}" />
+<ui:param name="stepCount" value="3" />
+
+<ui:define name="dataLayer">
+  <ui:include src="/tracking/ecommerce/dataLayer-addToCart.xhtml"/>
+</ui:define>
+
+<ui:define name="meta">
+  <meta name="robots" content="NOINDEX,FOLLOW" />
+</ui:define>
+
+<ui:define name="head">
+  <script src="static/build/js/shoppingcart.js"></script>
+</ui:define>
+
+<ui:define name="content">
+  <p:ajaxStatus onstart="showToast('Kundvagnen uppdateras...');" oncomplete="hideToast(300);" onerror="hideToast(300);" />
+
+  <ui:remove>
+    <!-- this is mostly desktop/shoppingcart.xhtml
+         without the sidebar (right side). -->
+  </ui:remove>
+
+  <section class="checkout-step-3 checkout-section" jsf:id="wholePage">
+    <ui:include src="/content-blocks/shoppingcart-main-nv.xhtml" />
+  </section>
+
+  <!-- paymentmethods -->
+  <section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+   
+</section><!-- /paymentmethods -->
+
+     <p:outputPanel id="paypalform" style="display:none;">
+      <form method="post" action="#{shoppingCartBean.payPalExpressRedirectUrl}" id="payment" name="payment">
+           <ui:repeat value="#{shoppingCartBean.payPalExpressFormData}" var="element">
+               <input type="hidden"  name="#{element.name}" value="#{element.value}"/>
+           </ui:repeat>
+           <input id="submitbutton" type="submit" value="Pay" style="opacity: 0;"/>
+      </form>
+      <script>
+         function submitPayPalPayment() {
+           $("#payment input[name='javax.faces.ViewState']").remove();
+           document.payment.submit();
+         }
+      </script>
+   </p:outputPanel>
+
+
+</ui:define>
+
+<ui:define name="eofscript">
+<ui:include src="/trackingcodes/endofbody-cart.xhtml" />
+</ui:define>
+
+
+</ui:composition>

@@ -1,0 +1,43 @@
+.icon-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+  li {
+    display: block;
+    vertical-align: middle;
+    line-height: 26px;
+    margin-bottom: 3px;
+    font-size: 14px;
+    height: 26px;
+  }
+
+  li > .icon {
+    width: 20px;
+    height: 26px;
+    fill: #666;
+    vertical-align: bottom;
+    margin-right: 6px;
+  }
+
+  &.-horizontal {
+    @include clearfix;
+
+    li {
+      float: left;
+      padding-right: 10px;
+      box-sizing: border-box;
+    }
+
+    li > .icon {
+      margin-right: 0;
+    }
+
+    &.-has-4 {
+      li {
+        min-width: 25%;
+      }
+    }
+  }
+
+}

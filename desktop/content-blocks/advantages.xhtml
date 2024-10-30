@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:o="http://omnifaces.org/ui">
+
+      <div class="col -span-6">
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="logo height" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-logo" />
+        </ui:include>
+        <ul class="advantageList">
+          <li>Canvastavla uppspänd, färdig att hänga upp</li>
+          <li>Bästa kvaliteten till lägsta priset</li>
+          <li>Original HP Latex Bläck utan lösningsmedel, därför barnrumsvänligt</li>
+          <li>Leveransfärdig inom 48 timmar</li>
+          <li>1x leveranskostnad per beställning</li>
+        </ul>
+      </div>
+
+      <div class="col -span-6">
+        <h2>Många andra företag</h2>
+        <ul class="disadvantageList">
+          <li>Kilrams kit för självmontage</li>
+          <li>Dyra priser och gömda kostnader</li>
+          <li>Lösningsmedel som inte är användbara vid t.ex. skolor och sjukhus.</li>
+          <li>Leveransfärdiga inom 5 eller mera dagar</li>
+          <li>1x leveranskostnad per produkt</li>
+        </ul>
+      </div>
+
+</ui:composition>

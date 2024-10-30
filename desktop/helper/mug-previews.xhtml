@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <ui:remove><!--
+    All mug previews for the configurator page.
+  --></ui:remove>
+
+  <img src="/#{shopInfoBean.versionPath}assets/img/checkout/mug-panorama.gif" jsf:rendered="#{itemConfiguratorBean.configurator.formatKey.startsWith('200.0:85.0:RECTANGLE')}" width="300" />
+  <img src="/#{shopInfoBean.versionPath}assets/img/checkout/mug-left-landscape.gif" jsf:rendered="#{itemConfiguratorBean.configurator.formatKey.startsWith('120.01:85.01:RECTANGLE')}" width="300" />
+  <img src="/#{shopInfoBean.versionPath}assets/img/checkout/mug-right-landscape.gif" jsf:rendered="#{itemConfiguratorBean.configurator.formatKey.startsWith('120.0:85.0:RECTANGLE')}" width="300" />
+  <img src="/#{shopInfoBean.versionPath}assets/img/checkout/mug-right-portrait.jpg" jsf:rendered="#{itemConfiguratorBean.configurator.formatKey.startsWith('75.0:85.0:RECTANGLE')}" width="300" />
+  <img src="/#{shopInfoBean.versionPath}assets/img/checkout/mug-left-portrait.jpg" jsf:rendered="#{itemConfiguratorBean.configurator.formatKey.startsWith('75.01:85.01:RECTANGLE')}" width="300" />
+
+  <img src="/#{shopInfoBean.versionPath}assets/img/checkout/premium-mug-panorama.jpg" jsf:rendered="#{itemConfiguratorBean.configurator.formatKey.startsWith('178.0:70.0:RECTANGLE')}" width="300" />
+  <img src="/#{shopInfoBean.versionPath}assets/img/checkout/premium-mug-right-landscape.jpg" jsf:rendered="#{itemConfiguratorBean.configurator.formatKey.startsWith('120.01:70.01:RECTANGLE')}" width="300" />
+  <img src="/#{shopInfoBean.versionPath}assets/img/checkout/premium-mug-left-landscape.jpg" jsf:rendered="#{itemConfiguratorBean.configurator.formatKey.startsWith('120.0:70.0:RECTANGLE')}" width="300" />
+  <img src="/#{shopInfoBean.versionPath}assets/img/checkout/premium-mug-right-portrait.jpg" jsf:rendered="#{itemConfiguratorBean.configurator.formatKey.startsWith('70.01:70.01:RECTANGLE')}" width="300" />
+  <img src="/#{shopInfoBean.versionPath}assets/img/checkout/premium-mug-left-portrait.jpg" jsf:rendered="#{itemConfiguratorBean.configurator.formatKey.startsWith('70.0:70.0:RECTANGLE')}" width="300" />
+
+</ui:composition>

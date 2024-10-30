@@ -1,0 +1,69 @@
+.register {
+  @extend .form-boxed;
+
+  > .vertical {
+    @extend %-span-12;
+  }
+
+  .selection {
+    display: inline-block;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+
+  .legend {
+    margin-bottom: 20px;
+    font-weight: $weight-normal;
+    text-align: center;
+  }
+
+  > .userdata {
+    @extend .col;
+    @extend %-span-12;
+    @extend .col.-centered;
+
+    > .continue {
+    	  float: right;
+
+      > .action {
+        width: 100%;
+      }
+    }
+  }
+
+  .legend {
+    margin-bottom: 20px;
+    font-weight: $weight-normal;
+    text-align: center;
+  }
+
+  .cradio {
+    @extend .radio;
+  	font-size: 16px;
+    float: left;
+    margin-right: 0;
+
+    &:last-of-type {
+      float: right;
+    }
+  }
+
+  .selection {
+    display: inline-block;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+
+  .data {
+    @extend .item-box;
+    padding: 20px 10px;
+    margin-bottom: 20px;
+  }
+
+  .title {
+  	font-size: 18px;
+  	font-weight: $weight-semibold;
+  	margin-top: 0;
+  	margin-bottom: 20px;
+  }
+}

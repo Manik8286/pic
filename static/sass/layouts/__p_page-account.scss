@@ -1,0 +1,150 @@
+.page-account {
+  padding-top: 20px;
+
+  > .navigation {
+    @extend %-span-12;
+
+    margin-bottom: 40px;
+
+    > .headline {
+      font-size: 16px;
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-weight: $weight-semibold;
+    }
+  }
+
+  > .content {
+    @extend %-span-12;
+
+    .form-boxed .group > .label {
+      width: 100%;
+    }
+
+    .form-boxed .group.-has-inline-checkbox {
+      > .label {
+        line-height: 20px;
+      }
+
+      > .label, > .entry {
+        width: 50%;
+      }
+
+      .checkbox {
+        margin-left: 30px;
+
+        > label {
+          margin-bottom: 13px;
+        }
+      }
+    }
+  }
+
+  > .content > .form-boxed > .submit {
+    @extend .button_action_mod-touch;
+    width: 100%;
+  }
+
+  > .content > .headline {
+    margin-bottom: 9px;
+    font-size: 20px;
+    font-weight: $weight-normal;
+  }
+
+  > .content > .welcome,
+  > .content > .infotext {
+    font-size: 14px;
+  }
+
+  > .content > .addresses-wrapper > .addressbox {
+    @extend %-span-12;
+
+    margin-bottom: 17px;
+  }
+
+  > .content > .addresses-wrapper > .directory .address {
+    @extend %-span-12;
+
+    margin-bottom: 20px;
+  }
+
+  .backlink {
+    @extend .button_simple;
+    @extend .button_action_mod-fullbleed;
+    @extend .button_action_mod-touch;
+    @extend .button_action_mod-arrow-left-inline;
+
+    border-radius: 2px;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    color: $newGreen;
+    border-color: $newGreen;
+  }
+
+  > .content > .order-wrapper {
+    border-bottom: 1px solid $lighter-box-border;
+    margin: 0 -10px;
+    padding: 0 10px 10px 10px;
+  }
+
+  > .content > .order-wrapper > .order {
+    @extend .row;
+
+    border-top: 1px solid $lighter-box-border;
+    padding: 15px 0;
+    font-size: 14px;
+
+    &:first-of-type {
+      border-top: none;
+    }
+
+    > .key, > .value {
+      @extend .col;
+      @extend %-span-6;
+
+      margin-bottom: 10px;
+    }
+
+    > .key {
+      padding-left: 0;
+    }
+
+    > .value {
+      padding-right: 0;
+    }
+
+    > .action {
+      @extend .button_action;
+      @extend .button_action_mod-arrow;
+
+      margin-top: 15px;
+      float: right;
+    }
+  }
+
+  .order-table-wrapper {
+    margin: 0 -$grid-gutter/2;
+    margin-bottom: 40px;
+  }
+  .info-component.-vat .info-bubble {
+    top: 35px;
+  }
+
+  .infoB2b {
+    background-color: #F9F9F9;
+    padding: 20px;
+    margin: 20px 0 20px 0;
+    .infoIcon {
+      margin: 0 10px 0 0;
+    }
+    .infoB2bText {
+      font-size: 14px;
+
+      a {
+        color: #35b2b6;
+        text-decoration: underline;
+      }
+    }
+  }
+}

@@ -1,0 +1,200 @@
+.page-text {
+  padding: 30px 0 50px 0;
+
+  &.-plr10 {
+    padding: 30px 10px 50px;
+    ul {
+      font-size: 13px;
+    }
+    .link {
+      word-wrap: break-word;
+    }
+  }
+
+  > .content > .headline {
+    font-size: 20px;
+    margin-top: 4px;
+    margin-bottom: 18px;
+  }
+
+  > .content > .info {
+    @extend %-span-12;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  // OSP Cross Selling
+  .buymore {
+    .uploadProduct {
+      #blanket-mask,
+      #cushion-mask,
+      #mug-mask {
+        max-width: 95%;
+        position: relative;
+      }
+      img {
+        max-width: 95%;
+        min-height: 135px;
+        border: 0;
+      }
+      .smallPriceBadge {
+        position: absolute;
+        color: #fff;
+        background-color: #d40140;
+        padding: 2px 5px;
+        font-weight: 700;
+        right: 0;
+        bottom: 20px;
+      }
+      .button {
+        &:hover {
+          border: 2px solid #35b2b6;
+          color: #35b2b6;
+        }
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+    
+    &.ospCrossSellProducts {
+      margin-top: 10px;
+      margin-left: 5px;
+      width: 100%;
+      
+      .button {
+        line-height: 1em;
+        background-color: transparent;
+        border: 2px solid #35b2b6;
+        color: #35b2b6;
+        padding: 6px 20px;
+        cursor: pointer;
+        width: 95%;
+      }
+
+      &.-flex {
+        display: flex;
+        flex-wrap: wrap;
+        width: 330px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+  
+        .-deal-text {
+          text-align: left;
+          padding-top: 10px;
+          .-smaller {
+            line-height: 1.5;
+          }
+        }
+  
+        .headline.-large, .headline.-large .-red {
+          font-size: 18px;
+          font-weight: $weight-bold;
+        }
+  
+        .button {
+          width: 100%;
+        }
+      }
+  
+      .headline {
+        margin-bottom: 10px;
+      }
+  
+      .uploadProduct {
+        width: 50%;
+  
+        display: none;
+        &:nth-child(-n+3) {
+          display: block;
+        }
+  
+        .button {
+          padding: 0;
+          max-width: 95%;
+          .printsUpload {
+            width: 100%;
+            border: 0;
+            background: transparent;
+            font-weight: 600;
+            padding: 10px 0;
+          }
+        }
+  
+        a {
+          display: inline-block;
+          color: $newGreen;
+          text-decoration: none;
+          padding: 10px 0;
+          text-align: center;
+          font-size: 0.9em;
+          width: 100%;
+        }
+      }
+  
+      #mug-mask, #cushion-mask, #blanket-mask, .thumb-mask {
+        max-width: 95%;
+        position: relative;
+        margin-bottom: 10px;
+  
+        img {
+          max-width: 100%;
+          height: 135px;
+        }
+  
+        .smallPriceBadge {
+          position: absolute;
+          color: white;
+          background-color: #D40140;
+          padding: 2px 5px;
+          font-weight: bold;
+          right: 0;
+          bottom: 6px;
+        }
+      }
+    }
+  }
+}
+
+#reasons-to-buy
+{
+  .text-image-aside
+{
+  min-height: 335px;
+  margin-bottom:20px;
+}
+}
+
+
+.post {
+  .deko-welt {
+    padding-top: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    img {
+      width:100%;
+      height:auto;
+    }
+    h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    }
+    h3
+    {
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    }
+    p {
+      font-size: 14px;
+      margin: 0;
+      line-height: 20px;
+      margin-bottom: 20px;
+    }
+  }
+
+}

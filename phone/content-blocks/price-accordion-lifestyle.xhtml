@@ -1,0 +1,202 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+
+  <dl class="accordion-panel js-accordion">
+    <dt class="title js-accordion-title -expandable" data-init-expand="true">Acrylblock</dt>
+    <dd class="sub js-accordion-body">
+      <div class="inner">
+        <table aria-label="table" class="table -accordion">
+          <tbody>
+            <tr>
+              <td>10 x 10 cm</td>
+              <td class="-align-right">
+                <span class="-outdated">#{priceBean.productCrossPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 10x10')}</span>
+                <span class="-highlighted">#{priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 10x10')}</span>
+              </td>
+            </tr>
+            <tr>
+              <td>15 x 10 cm</td>
+              <td class="-align-right">
+                <span class="-outdated">#{priceBean.productCrossPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 15x10')}</span>
+                <span class="-highlighted">#{priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 15x10')}</span>
+              </td>
+            </tr>
+            <tr>
+              <td>20 x 15 cm</td>
+              <td class="-align-right">
+                <span class="-outdated">#{priceBean.productCrossPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x15') eq '#ERROR#' ? '—' : priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x15')}</span>
+                <span class="-highlighted">#{priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x15') eq '#ERROR#' ? '—' : priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x15')}</span>
+              </td>
+            </tr>
+            <tr>
+              <td>20 x 20 cm</td>
+              <td class="-align-right">
+                <span class="-outdated">#{priceBean.productCrossPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x20')}</span>
+                <span class="-highlighted">#{priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x20')}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </dd>
+
+    <dt class="title js-accordion-title -expandable">Fotofilt</dt>
+    <dd class="sub js-accordion-body">
+      <div class="inner">
+        <table aria-label="table" class="table -accordion">
+          <tbody>
+            <tr>
+              <td>100 x 70 cm</td>
+              <td class="-align-right">
+              <ui:fragment rendered="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 100x70') != '#ERROR#'}">
+                <span class="-outdated">#{priceBean.productCrossPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 100x70')}</span>
+                <span class="-highlighted">#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 100x70')}</span>
+              </ui:fragment>
+               <ui:fragment rendered="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 100x70') == '#ERROR#'}">
+                <span class="-highlighted">UTSÅLD</span>
+              </ui:fragment>
+              </td>
+            </tr>
+            <tr>
+              <td>150 x 100 cm</td>
+              <td class="-align-right">
+                <ui:fragment rendered="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 150x100') != '#ERROR#'}">
+                  <span class="-outdated">#{priceBean.productCrossPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 150x100')}</span>
+                  <span class="-highlighted">#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 150x100')}</span>
+                </ui:fragment>
+                 <ui:fragment rendered="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 150x100') == '#ERROR#'}">
+                  <span class="-highlighted">UTSÅLD</span>
+                </ui:fragment>
+              </td>
+              </tr>
+            <tr>
+              <td>200 x 150 cm</td>
+              <td class="-align-right">
+                <ui:fragment rendered="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 200x150') != '#ERROR#'}">
+                  <span class="-outdated">#{priceBean.productCrossPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 200x150')}</span>
+                  <span class="-highlighted">#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 200x150')}</span>
+                </ui:fragment>
+                 <ui:fragment rendered="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 200x150') == '#ERROR#'}">
+                  <span class="-highlighted">UTSÅLD</span>
+                </ui:fragment>
+              </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </dd>
+
+      <dt class="title js-accordion-title -expandable">Glänsande Foto-Kudde</dt>
+      <dd class="sub js-accordion-body">
+        <div class="inner">
+          <table aria-label="table" class="table -accordion">
+            <tbody>
+                <tr>
+                  <td>40x40 cm</td>
+                  <td class="-align-right"><span class="-outdated">#{priceBean.productCrossPrice('Pillow_Bestcanvas_SE', 'Pillow', 'Pillow 40x40')}</span>
+                    <span class="-highlighted">#{priceBean.productPrice('Pillow_Bestcanvas_SE', 'Pillow', 'Pillow 40x40')}</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </dd>
+
+      <dt class="title js-accordion-title -expandable">Premium Foto-Kudde</dt>
+      <dd class="sub js-accordion-body">
+        <div class="inner">
+          <table aria-label="table" class="table -accordion">
+            <tbody>
+                <tr>
+                  <td>30x30 cm</td>
+                  <td class="-align-right">
+                    <span class="-outdated">#{priceBean.productCrossPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 30x30')}</span>
+                    <span class="-highlighted">#{priceBean.productPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 30x30')}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>40x40 cm</td>
+                  <td class="-align-right">
+                    <span class="-outdated">#{priceBean.productCrossPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 40x40')}</span>
+                    <span class="-highlighted">#{priceBean.productPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 40x40')}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>60x60 cm</td>
+                  <td class="-align-right">
+                    <span class="-outdated">#{priceBean.productCrossPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 60x60')}</span>
+                    <span class="-highlighted">#{priceBean.productPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 60x60')}</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </dd>
+
+
+
+      <dt class="title js-accordion-title -expandable">Handduk</dt>
+      <dd class="sub js-accordion-body">
+        <div class="inner">
+          <table aria-label="table" class="table -accordion">
+            <tbody>
+                <tr>
+                  <td>90x50 cm</td>
+                  <td class="-align-right">
+                    <span class="-outdated">#{priceBean.productCrossPrice('Towel_Bestcanvas_SE', 'Towel', 'Towel 90x50')}</span>
+                    <span class="-highlighted">#{priceBean.productPrice('Towel_Bestcanvas_SE', 'Towel', 'Towel 90x50')}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>140x90 cm</td>
+                  <td class="-align-right">
+                    <span class="-outdated">#{priceBean.productCrossPrice('Towel_Bestcanvas_SE', 'Towel', 'Towel 140x90')}</span>
+                    <span class="-highlighted">#{priceBean.productPrice('Towel_Bestcanvas_SE', 'Towel', 'Towel 140x90')}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>200x150 cm</td>
+                  <td class="-align-right">
+                    <span class="-outdated">#{priceBean.productCrossPrice('Towel_Bestcanvas_SE', 'Towel', 'Towel 200x150')}</span>
+                    <span class="-highlighted">#{priceBean.productPrice('Towel_Bestcanvas_SE', 'Towel', 'Towel 200x150')}</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </dd>
+
+        <dt class="title js-accordion-title -expandable">Matta</dt>
+        <dd class="sub js-accordion-body">
+          <div class="inner">
+            <table aria-label="table" class="table -accordion">
+              <tbody>
+                  <tr>
+                    <td>70x50 cm</td>
+                    <td class="-align-right">
+                      <span class="-outdated">#{priceBean.productCrossPrice('Carpet_Bestcanvas_SE', 'Carpet', 'Carpet 70x50')}</span>
+                      <span class="-highlighted">#{priceBean.productPrice('Carpet_Bestcanvas_SE', 'Carpet', 'Carpet 70x50')}</span>
+                    </td>
+                  </tr>
+                  <tr jsf:rendered="#{priceBean.productPrice('Carpet_Bestcanvas_SE', 'Carpet', 'Carpet 140x90') ne '#ERROR#'}">
+                    <td>140x90 cm</td>
+                    <td class="-align-right">
+                      <span class="-outdated">#{priceBean.productCrossPrice('Carpet_Bestcanvas_SE', 'Carpet', 'Carpet 140x90')}</span>
+                      <span class="-highlighted">#{priceBean.productPrice('Carpet_Bestcanvas_SE', 'Carpet', 'Carpet 140x90')}</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </dd>
+
+
+      </dl>
+
+</ui:composition>

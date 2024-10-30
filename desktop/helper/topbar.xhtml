@@ -1,0 +1,74 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <c:if test="#{sessionBean.userAgentType == 'desktop'}">
+    <ui:include src="/helper/htmltags.xhtml">
+      <ui:param name="dirtyMsg" value="#{desktop}" />
+    </ui:include>
+    <c:if test="#{ fn:length(desktop) gt 1 }">
+      <script>Cookies.set('topbanner', { msg:'#{cleanMsg}', 
+  <c:if test="#{not empty topstyle}"> style:'#{topstyle}', </c:if>
+  <c:if test="#{not empty toplink}"> anchor:'#{toplink}', </c:if>
+  <c:if test="#{not empty toplinkMsg}"> anchorText:'#{toplinkMsg}', </c:if>
+	<c:if test="#{not empty toplinkTarget}"> anchorTarget:'#{toplinkTarget}', </c:if>
+  <c:if test="#{not empty topmodal}"> modal:'#{topmodal}', </c:if>
+  <c:if test="#{not empty topmodalMsg}"> modalMsg:'#{topmodalMsg}', </c:if>
+  <c:if test="#{not empty topdateTime}"> countdown: '#{topdateTime}', </c:if>
+  <c:if test="#{not empty topformat}"> countdownFormat: '#{topformat}', </c:if>
+  <c:if test="#{not empty countmsg}"> countdownFormat: '#{countmsg}' </c:if>
+                                        }, { expires: 1 });</script>
+    </c:if>
+    <c:if test="#{ desktop eq 'nobar' }">
+      <script>Cookies.remove('topbanner');</script>
+    </c:if>
+  </c:if>
+
+  <c:if test="#{sessionBean.userAgentType == 'tablet'}">
+    <ui:include src="/helper/htmltags.xhtml">
+      <ui:param name="dirtyMsg" value="#{desktop}" />
+    </ui:include>
+    <c:if test="#{ fn:length(desktop) gt 1 }">
+      <script>Cookies.set('topbanner', { msg:'#{cleanMsg}', 
+  <c:if test="#{not empty topstyle}"> style:'#{topstyle}', </c:if>
+  <c:if test="#{not empty toplink}"> anchor:'#{toplink}', </c:if>
+  <c:if test="#{not empty toplinkMsg}"> anchorText:'#{toplinkMsg}', </c:if>
+	<c:if test="#{not empty toplinkTarget}"> anchorTarget:'#{toplinkTarget}', </c:if>
+  <c:if test="#{not empty topmodal}"> modal:'#{topmodal}', </c:if>
+  <c:if test="#{not empty topmodalMsg}"> modalMsg:'#{topmodalMsg}', </c:if>
+  <c:if test="#{not empty topdateTime}"> countdown: '#{topdateTime}', </c:if>
+  <c:if test="#{not empty topformat}"> countdownFormat: '#{topformat}', </c:if>
+  <c:if test="#{not empty countmsg}"> countdownFormat: '#{countmsg}' </c:if>
+                                        }, { expires: 1 });</script>
+    </c:if>
+    <c:if test="#{ desktop eq 'nobar' }">
+      <script>Cookies.remove('topbanner');</script>
+    </c:if>
+  </c:if>
+  
+  <c:if test="#{sessionBean.userAgentType == 'phone'}">
+    <ui:include src="/helper/htmltags.xhtml">
+      <ui:param name="dirtyMsg" value="#{ fn:length(phone) gt 1 ? phone : desktop }" />
+    </ui:include>
+    <c:if test="#{ fn:length(phone) gt 1 or fn:length(desktop) gt 1 }">
+      <script>Cookies.set('topbanner', { msg:'#{cleanMsg}', 
+  <c:if test="#{not empty topstyle}"> style:'#{topstyle}', </c:if>
+  <c:if test="#{not empty toplink}"> anchor:'#{toplink}', </c:if>
+  <c:if test="#{not empty toplinkMsg}"> anchorText:'#{toplinkMsg}', </c:if>
+	<c:if test="#{not empty toplinkTarget}"> anchorTarget:'#{toplinkTarget}', </c:if>
+  <c:if test="#{not empty topmodal}"> modal:'#{topmodal}', </c:if>
+  <c:if test="#{not empty topmodalMsg}"> modalMsg:'#{topmodalMsg}', </c:if>
+  <c:if test="#{not empty topdateTime}"> countdown: '#{topdateTime}', </c:if>
+  <c:if test="#{not empty topformat}"> countdownFormat: '#{topformat}', </c:if>
+  <c:if test="#{not empty countmsg}"> countdownFormat: '#{countmsg}' </c:if>
+                                        }, { expires: 1 });</script>
+    </c:if>
+    <c:if test="#{ phone eq 'nobar' or desktop eq 'nobar' }">
+      <script>Cookies.remove('topbanner');</script>
+    </c:if>
+  </c:if>
+
+</ui:composition>

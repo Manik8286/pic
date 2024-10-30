@@ -1,0 +1,66 @@
+.orderStatusPage{
+    min-height: 80vh;
+
+
+    .ospLogin {
+        width: 100%;
+        background-color: #F9F9F9;
+        height: 386px;
+        padding-left: 10px;
+
+        }
+    .orderstatusTable input {
+        height: 40px;
+        width: 97%;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #BFBFBF;
+    }
+    input[type=text] {
+      -webkit-appearance: auto;
+    }  
+
+
+    .ospLoginHeader{
+      padding-right: 9px;
+    }
+  
+
+  .ospLogin label{
+    font-size: 16px;
+
+   }
+   .button.-action.-wide{
+    width: 97.3%;
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 15px;
+    height: 40px;
+  }
+  
+  .ospLoingHeader{
+    margin-top: 25px;
+  }
+
+  .more-info{
+    font-size: 12px !important;
+  }
+
+
+.ospLoginHeader p,h2{
+  margin-top: 0px;
+  padding-top: 5px;
+  font-size: 13px;
+  padding-right: 9px;
+}
+
+.desktop .page-section{
+  margin-top: 170px;
+}
+.ospheader{
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 1.5em;
+    padding-top: 10px;
+  }
+}

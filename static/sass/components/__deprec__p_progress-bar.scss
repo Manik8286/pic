@@ -1,0 +1,14 @@
+.progress-bar {
+  position: relative;
+  padding-bottom: 30px;
+
+  > .percentage {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    display: block;
+    float: none;
+    text-align: center;
+  }
+}

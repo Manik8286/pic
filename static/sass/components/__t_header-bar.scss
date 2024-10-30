@@ -1,0 +1,195 @@
+.topbar-wrapper {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 202;
+  position: relative;
+}
+
+.header-plus-bar {
+  font-size: 15px;
+  padding-bottom: 13px;
+
+  &.-xmas {
+    color: $white;
+    padding-bottom: 8px;
+
+    .js-countdown {
+      display: inline-block !important;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a {
+      color: $white !important;
+      text-decoration: underline;
+    }
+  }
+}
+
+.header-bar {
+  font-size: 15px;
+  height: 35px;
+
+  &.-topbannerDeal {
+    min-width: unset;
+    height: auto;
+    .-topbannerDealLogo {
+      height: 25px;
+      padding: 3px 0 0;
+    }
+  }
+
+  .header-container {
+    height: 35px;
+  }
+
+  &:before,&:after {
+    display: none;
+  }
+
+  // BG Colors for top bars
+
+  &.black-organic {
+    background: #2D2926;
+  }
+  &.red-old-organic {
+    background: #F10006;
+  }
+  &.red-new-organic {
+    background: #D40140;
+  }
+  &.red-cos-organic {
+    background: #E60042;
+  }
+
+  &.-black {
+    background-color: black !important;
+  }
+
+  &.-bg-green {
+    background-color: $highlight-color !important;
+  }
+
+  &.-cyber-monday {
+    background-color: #ffa500;
+    .black{
+      color:black;
+    }
+  }
+
+  .code-border {
+    border: 1px solid;
+    padding: 2px 5px;
+  }
+
+  &.-black-friday {
+    background-color: $black;
+  }
+
+  .topBannerMsg {
+    &.separete {
+      display: inline-block;
+      width: 65%;
+      float: left;
+      +.js-countdown {
+        display: inline-block;
+        width: 35%;
+        float: right;
+      }
+    }
+  }
+
+  &.-withAlignedCountdown {
+    .topBannerMsg {
+      display: inline-block;
+      width: 65%;
+      float: left;
+    }
+    .js-countdown {
+      display: inline-block;
+      width: 35%;
+      float: right;
+    }
+  }
+
+  &.-linkUnder {
+    .js-countdown {
+      margin-top: -7px;
+      display: inline-block;
+      width: 35%;
+      float: right;
+    }
+    .link {
+      right: 40px;
+    }
+  }
+
+  &.-until {
+    .js-countdown {
+      margin-right: 15px;
+    }
+  }
+
+ &.-font-message {
+    font-size: 13px;
+    &.-line2 {
+      line-height: 20px;
+    }
+    .secondLine {
+      margin-left: 33px;
+    }
+    .secondLine2 {
+      margin-left: 33px;
+    }
+    .-countdownWithLink {
+      font-weight: $weight-bold;
+      line-height: 50px;
+    }
+    .shippingBannerLink {
+      font-size: 10px;
+      line-height: 20px;
+      display: block;
+      margin-top: -15px;
+    }
+    .shippingBannerLink a {
+      color: #FFF;
+    }
+  }
+
+  &.-newsletter{
+    background-color: #5F5E5E;
+    color: white;
+    line-height: 20px;
+    padding: 0;
+
+    .checkbox {
+      padding: 0 4px;
+      font-size:10px;
+      line-height: 13px;
+    }
+    .white {
+      color:white;
+    }
+    .button {
+      height: 25px;
+      line-height: 25px;
+    }
+    .input{
+      height: 25px;
+      line-height: 25px;
+      font-size: 13px;
+    }
+    a {
+      color:white;
+    }
+  }
+
+  .-countdownSmall {
+     font-size: 10px!important;
+  }
+
+  .icon {
+    width: 17px;
+    height: 15px;
+  }
+}

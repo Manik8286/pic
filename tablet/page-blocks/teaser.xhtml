@@ -1,0 +1,163 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <section class="page-teaser #{teaserClass}">
+    <div class="showcase #{showcaseClass}" style="background-image: url(#{teaserBgImage})">
+      <header class="head">
+        <h1 class="headline #{headlineClass}"><h:outputText value="#{headline}" escape="false" /> <span class="-highlighted-text">#{headline2}</span> <span style="font-size:18px;">#{format}</span></h1>
+        <div class="claim"><h:outputText value="#{claim}" escape="false" /> <span class="-highlighted-text">#{claimGreen}</span> #{claim2}</div>
+      </header>
+
+      <div class="body">
+        <!-- teaser left -->
+        <div class="product">
+
+            <ui:fragment rendered="#{empty acrylblockProduct and not empty teaserProductImage}">
+              <img class="#{imgClass}" src="#{teaserProductImage}" width="410" height="308" alt="#{altTeaserProductImage}" />
+            </ui:fragment>
+            <ui:fragment rendered="#{not empty acrylblockProduct and not empty teaserProductImage }">
+              <img class="#{imgClass}" src="#{teaserProductImage}" alt="#{altTeaserProductImage}" />
+            </ui:fragment>
+
+          <ui:fragment rendered="#{not empty badgeMiddle}">
+            <ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'XZTNAB698UFRY25JDMJS' or
+                                     sessionServicesBean.discountCode.code != 'WUMZTDSHLFN9AM9106MQ' or
+                                     sessionServicesBean.discountCode.code != 'CANVASKERSTAANBIEDING' or
+                                     sessionServicesBean.discountCode.code != 'G1XJ5R96JICGJ6J5PLZF' or
+                                     sessionServicesBean.discountCode.code != '19DZKNQB79EBF2TECRPC'}">
+              <div class="badge #{badgeClass}">
+                <div class="title" style="font-size:13px;">
+                  <ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'NDLRI91VRT5XV6X2U7AZ'}">
+                    #{badgeTop}
+                  </ui:fragment>
+                  <ui:fragment rendered="#{sessionServicesBean.discountCode.code == 'NDLRI91VRT5XV6X2U7AZ'}">
+                    #{badgeTopDiscount}
+                  </ui:fragment>
+                </div>
+                <div class="price #{alternative}">#{badgeMiddle}<small><sup></sup></small></div>
+                  <div class="sub #{size}" style="font-size: 20px;">
+                    <div style="margin-top: 7px;">
+                      <sup>
+                        <h:outputText value="#{badgeBottom}" escape="false" />
+                        <ui:fragment rendered="#{empty seaBadgeText1 and empty seaBadgeText2}">
+                          #{badgeBottomBottom}
+                        </ui:fragment>
+                      </sup>
+                      <sup class="sup -sup2Line">#{seaBadgeText1} #{seaBadgeText2} </sup>
+                    </div>
+                  </div>
+              </div>
+            </ui:fragment>
+            <ui:fragment rendered="#{sessionServicesBean.discountCode.code == 'XZTNAB698UFRY25JDMJS' or
+                                     sessionServicesBean.discountCode.code == 'WUMZTDSHLFN9AM9106MQ' or
+                                     sessionServicesBean.discountCode.code == 'CANVASKERSTAANBIEDING' or
+                                     sessionServicesBean.discountCode.code == 'G1XJ5R96JICGJ6J5PLZF' or
+                                     sessionServicesBean.discountCode.code == '19DZKNQB79EBF2TECRPC'}">
+              <!-- NO BADGE -->
+            </ui:fragment>
+          </ui:fragment>
+          <ui:fragment rendered="#{not empty badgeBottomStrike}">
+          <div class="badge #{badgeClass}">
+            <div class="title" style="font-size:13px;">
+              #{badgeTop}
+            </div>
+            <div class="price">#{badgeCenter}<small><sup></sup></small></div>
+            <div class="sub #{size}" style="font-size: 20px;">
+              <div style="margin-top: 7px;">
+                <sup><s>#{badgeBottomStrike}</s></sup>
+              </div>
+            </div>
+          </div>
+          </ui:fragment>
+        </div>
+        <!-- /teaser left -->
+
+        <!-- teaser right -->
+        <div class="info pull-right">
+          <ui:fragment rendered="#{not empty uspHeading}">
+            <h3>#{uspHeading}</h3>
+          </ui:fragment>
+
+          <ul class="features">
+
+            <ui:fragment rendered="#{not empty teaserFeatureHighlighted}">
+              <li class="-highlight">#{teaserFeatureHighlighted}</li>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty teaserFeature1}">
+              <li> <span class="#{strong}"><h:outputText value="#{teaserFeature1}" escape="false" /></span> </li>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty teaserFeature2}">
+              <li><h:outputText value="#{teaserFeature2}" escape="false" /> <span class="-highlighted-text">#{teaserFeature2Green}</span> #{teaserFeature2Finish}</li>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty teaserFeature3}">
+              <li><h:outputText value="#{teaserFeature3}" escape="false" /> <span class="-highlighted-text">#{teaserFeature3Green}</span> #{teaserFeature3Finish}</li>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty teaserFeature4}">
+              <li><h:outputText value="#{teaserFeature4}" escape="false" /> <span class="-highlighted-text">#{teaserFeature4Green}</span> #{teaserFeature4Finish}</li>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty teaserFeature5}">
+              <li><h:outputText value="#{teaserFeature5}" escape="false" /> <span class="-highlighted-text">#{teaserFeature5Green}</span> #{teaserFeature5Finish}</li>
+            </ui:fragment>
+          </ul>
+
+          <ui:fragment rendered="#{codeField == true}">
+            <div class="teaserCodeField #{topCorrection}">
+             <div class="topTitle"><b>#{codeTitle}</b></div>
+              <div class="content #{codeClass}">
+                <span>
+                  #{codeContent}
+                </span>
+              </div>
+              <p>
+                <small>#{validUntil}</small>
+              </p>
+            </div>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{not empty Ndate and not empty quotes}">
+            <br />
+          </ui:fragment>
+
+          <ui:fragment rendered="#{showUpload != false}">
+            <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+              <ui:param name="directuploadProductId" value="#{uploadId}" />
+              <ui:param name="directuploadClass" value="action #{directuploadClass}" />
+              <ui:param name="buttonText" value="#{buttonText}" />
+              <ui:param name="outOfStock" value="#{outOfStock}" />
+            </ui:include>
+          </ui:fragment>
+
+          <p jsf:rendered="#{not empty customButtonLink}">
+            <div class="upload-button">
+              <a href="#{customButtonLink}" class="button action">#{customButtonText}</a>
+            </div>
+          </p>
+
+          <ui:fragment rendered="#{not empty Ndate}">
+            <p style="padding-left: 40px;"><small>#{Ndate}</small></p>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{shiipingInfo != false}">
+            <div class="freeShippingTeaser text-center #{ShippingInfoText}">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/fri-leverans.png" class="freeShippingLogo" alt="24 hora logo" width="25" />
+              <span class="b">
+                FRI leverans
+              </span>
+              <span>från 800 kr. till den <h:outputText escape="false" value="#{contentBean.snippets['aktion_datum']}"/>!</span>
+            </div>
+          </ui:fragment>
+
+        </div><!-- /teaser right -->
+      </div>
+    </div>
+  </section>
+
+</ui:composition>

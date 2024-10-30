@@ -1,0 +1,73 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+  
+
+      <div class="col -span-4">
+        <div class="showcase-box" data-mh="info">
+          <h3 class="headline">#{tableheading}</h3>
+          <table class="table -striped -smallerFont">
+            <thead class="-highlighted">
+              <tr>
+                <th class="-text-centered">#{FirstTitle}</th>
+                <th class="-text-centered">#{SecondTitle}</th>
+                <th class="-highlighted -text-centered"> #{HighlightedTitle}</th>
+              </tr>
+            </thead>
+            <tbody>
+          <tr>
+            <td>#{size1}</td>
+            <td>#{oldPrice1}</td>
+            <td class="-highlighted">#{newPrice1}</td>
+          </tr>
+          <ui:fragment rendered="#{not empty size2}">
+           <tr>
+            <td>#{size2}</td>
+            <td>#{oldPrice2}</td>
+            <td class="-highlighted">#{newPrice2}</td>
+          </tr>
+          </ui:fragment>
+          <ui:fragment rendered="#{not empty size3}">
+           <tr>
+            <td>#{size3}</td>
+            <td>#{oldPrice3}</td>
+            <td class="-highlighted">#{newPrice3}</td>
+          </tr>
+          </ui:fragment>
+          <ui:fragment rendered="#{not empty size4}">
+           <tr>
+            <td>#{size4}</td>
+            <td>#{oldPrice4}</td>
+            <td class="-highlighted">#{newPrice4}</td>
+          </tr> 
+          </ui:fragment>
+
+          <ui:fragment rendered="#{not empty size5}">
+           <tr>
+            <td>#{size5}</td>
+            <td>#{oldPrice5}</td>
+            <td class="-highlighted">#{newPrice5}</td>
+          </tr> 
+          </ui:fragment>
+          <ui:fragment rendered="#{not empty size6}">
+           <tr>
+            <td>#{size6}</td>
+            <td>#{oldPrice6}</td>
+            <td class="-highlighted">#{newPrice6}</td>
+          </tr> 
+          </ui:fragment>
+
+            </tbody>
+          </table>
+
+          <ui:fragment rendered="#{empty noFormatLink}">
+            <a href="/format/#canvas" class="link">Alla priser och format »</a>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{not empty customLink}">
+            <a href="/format/#{productNameLink}" class="link">Alla priser och format »</a>
+          </ui:fragment>
+
+        </div>
+      </div>
+
+</ui:composition>

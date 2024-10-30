@@ -1,0 +1,150 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+<!-- link styles in body tag is illegal -->
+
+<!-- here you can change a content of the banners -->
+	<ui:param name="Confirmoffer" value="#{sessionServicesBean.discountCode.code == 'OFFERBESTELL'}" />
+	<ui:param name="MI" value="#{sessionServicesBean.discountCode.code == 'PGLW4030INCRM4512'}" />
+	<ui:param name="FR" value="#{sessionServicesBean.discountCode.code == 'PGLWPL2INCRM4654'}" />
+	<ui:param name="SO" value="#{sessionServicesBean.discountCode.code == '1007520INCRM1695'}" />
+	<ui:param name="MI2" value="#{sessionServicesBean.discountCode.code == '806019FRSDINCRM4709'}" />
+	<ui:param name="FR2" value="#{sessionServicesBean.discountCode.code == '1208022INCRM880'}" />
+	<ui:param name="SO2" value="#{sessionServicesBean.discountCode.code == '10075LWAAINCRM4639' or sessionServicesBean.discountCode.code == 'IZGTT9G7GJKU41W6YCLW'}" />
+	<ui:param name="MI3" value="#{sessionServicesBean.discountCode.code == '3S80INCRM3251'}" />
+	<ui:param name="FR3" value="#{sessionServicesBean.discountCode.code == '3S15INCRM4649'}" />
+	<ui:param name="SO3" value="#{sessionServicesBean.discountCode.code == '3S22INCRM4651'}" />
+	<ui:param name="Reg" value="#{sessionServicesBean.discountCode.code == 'IKV9Z2967ABBZZV805R7'}" />
+	<ui:param name="RegPG" value="#{sessionServicesBean.discountCode.code == ''}" />
+
+
+<!-- Here you can change CONTENT, END DATE value="2017/04/10 00:00:00" of countdown, enable "true" or disable "" Countdown, change color of Canner -->
+
+ 	<div style="display:block" jsf:rendered="#{Confirmoffer}">
+		<ui:include src="/coupons/coupon-MOTHERS_DAY.xhtml">
+			<ui:param name="BannerContent" value="Nyhetsbrev erbjudande aktiverad!" />
+			<ui:param name="EndDate" value="2017/03/25 23:59" />
+			<ui:param name="countdown" value="" />
+			<ui:param name="BannerColor" value="" /> <!-- RED by default. example of color value: #D40140 -->
+		</ui:include>
+		<style>.header-bar.-empty {display: none;}</style>
+	</div>
+
+	<div style="display:block" jsf:rendered="#{MI}">
+		<ui:include src="/coupons/coupons-CRM.xhtml">
+			<ui:param name="BannerContent" value="Nyhetsbrev erbjudande aktiverad!" />
+			<ui:param name="EndDate" value="2017/04/10 00:00:00" />
+			<ui:param name="countdown" value="" />
+			<ui:param name="BannerColor" value="" /> <!-- RED by default. example of color value: #D40140 -->
+		</ui:include>
+		<style>.header-bar.-empty {display: none;}</style>
+	</div>
+
+  <div style="display:block" jsf:rendered="#{FR}">
+		<ui:include src="/coupons/coupons-CRM.xhtml">
+			<ui:param name="BannerContent" value="Nyhetsbrev erbjudande aktiverad!" />
+			<ui:param name="EndDate" value="" />
+			<ui:param name="countdown" value="" />
+			<ui:param name="BannerColor" value="" /> <!-- RED by default. example of color value: #D40140 -->
+		</ui:include>
+		<style>.header-bar.-empty {display: none;}</style>
+	</div>
+
+    <div style="display:block" jsf:rendered="#{SO}">
+		<ui:include src="/coupons/coupons-CRM.xhtml">
+			<ui:param name="BannerContent" value="Nyhetsbrev erbjudande aktiverad!" />
+			<ui:param name="EndDate" value="" />
+			<ui:param name="countdown" value="" />
+			<ui:param name="BannerColor" value="" /> <!-- RED by default. example of color value: #D40140 -->
+		</ui:include>
+		<style>.header-bar.-empty {display: none;}</style>
+	</div>
+
+	<div style="display:block" jsf:rendered="#{MI2}">
+		<ui:include src="/coupons/coupons-CRM.xhtml">
+			<ui:param name="BannerContent" value="Nyhetsbrev erbjudande aktiverad!" />
+			<ui:param name="EndDate" value="" />
+			<ui:param name="countdown" value="" />
+			<ui:param name="BannerColor" value="" /> <!-- RED by default. example of color value: #D40140 -->
+		</ui:include>
+		<style>.header-bar.-empty {display: none;}</style>
+	</div>
+
+	<div style="display:block" jsf:rendered="#{FR2}">
+		<ui:include src="/coupons/coupons-CRM.xhtml">
+			<ui:param name="BannerContent" value="Nyhetsbrev erbjudande aktiverad!" />
+			<ui:param name="EndDate" value="" />
+			<ui:param name="countdown" value="" />
+			<ui:param name="BannerColor" value="" /> <!-- RED by default. example of color value: #D40140 -->
+		</ui:include>
+		<style>.header-bar.-empty {display: none;}</style>
+	</div>
+
+	<div style="display:block" jsf:rendered="#{SO2}">
+		<ui:include src="/coupons/coupons-CRM.xhtml">
+			<ui:param name="BannerContent" value="Nyhetsbrev erbjudande aktiverad!" />
+			<ui:param name="EndDate" value="" />
+			<ui:param name="countdown" value="" />
+			<ui:param name="BannerColor" value="" /> <!-- RED by default. example of color value: #D40140 -->
+		</ui:include>
+		<style>.header-bar.-empty {display: none;}</style>
+	</div>
+
+	<div style="display:block" jsf:rendered="#{MI3}">
+		<ui:include src="/coupons/coupons-CRM.xhtml">
+			<ui:param name="BannerContent" value="Nyhetsbrev erbjudande aktiverad!" />
+			<ui:param name="EndDate" value="" />
+			<ui:param name="countdown" value="" />
+			<ui:param name="BannerColor" value="" /> <!-- RED by default. example of color value: #D40140 -->
+		</ui:include>
+		<style>.header-bar.-empty {display: none;}</style>
+	</div>
+
+	<div style="display:block" jsf:rendered="#{FR3}">
+		<ui:include src="/coupons/coupons-CRM.xhtml">
+			<ui:param name="BannerContent" value="Nyhetsbrev erbjudande aktiverad!" />
+			<ui:param name="EndDate" value="" />
+			<ui:param name="countdown" value="" />
+			<ui:param name="BannerColor" value="" /> <!-- RED by default. example of color value: #D40140 -->
+		</ui:include>
+		<style>.header-bar.-empty {display: none;}</style>
+	</div>
+
+	<div style="display:block" jsf:rendered="#{SO3}">
+		<ui:include src="/coupons/coupons-CRM.xhtml">
+			<ui:param name="BannerContent" value="Nyhetsbrev erbjudande aktiverad!" />
+			<ui:param name="EndDate" value="" />
+			<ui:param name="countdown" value="" />
+			<ui:param name="BannerColor" value="" /> <!-- RED by default. example of color value: #D40140 -->
+		</ui:include>
+		<style>.header-bar.-empty {display: none;}</style>
+	</div>
+
+	<div style="display:block" jsf:rendered="#{Reg}">
+		<ui:include src="/coupons/coupons-CRM.xhtml">
+			<ui:param name="BannerContent" value="Nyhetsbrev erbjudande aktiverad!" />
+			<ui:param name="EndDate" value="" />
+			<ui:param name="countdown" value="" />
+			<ui:param name="BannerColor" value="" /> <!-- RED by default. example of color value: #D40140 -->
+		</ui:include>
+		<style>.header-bar.-empty {display: none;}</style>
+	</div>
+
+	<div style="display:block" jsf:rendered="#{RegPG}">
+		<ui:include src="/coupons/coupons-CRM.xhtml">
+			<ui:param name="BannerContent" value="Nyhetsbrev erbjudande aktiverad!" />
+			<ui:param name="EndDate" value="" />
+			<ui:param name="countdown" value="" />
+			<ui:param name="BannerColor" value="" /> <!-- RED by default. example of color value: #D40140 -->
+		</ui:include>
+		<style>.header-bar.-empty {display: none;}</style>
+	</div>
+
+
+
+</ui:composition>

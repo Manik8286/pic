@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:p="http://primefaces.org/ui"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<!-- ################ CTA Multi Upload Button ################ --> 
+	<h:form id="MultiUpload" enctype="multipart/form-data" name="shapy" class="js-du" style="position:fixed;top:0; left:0; opacity:0;z-index:-10000;visibility: hidden;">
+		<h:inputText id="productId" style="display: none" styleClass="js-field js-du-productid" value="#{fileUploadController.productId}" />
+	
+		<p:remoteCommand name="redirectBuggyBrowser" actionListener="#{fileUploadController.redirectBuggyBrowser}"/>
+	    <p:messages>
+	      <p:autoUpdate />
+	    </p:messages>
+		
+		<pe:remoteCommand name="redirectNew" actionListener="#{fileUploadController.redirectMultiple}">
+			<pe:methodSignature parameters="java.lang.Boolean" />
+			<pe:methodParam name="multiple"/>
+		</pe:remoteCommand>
+
+		<p:remoteCommand name="redirectOrError" actionListener="#{fileUploadController.redirectOrError}"/>		
+
+		<f:subview id="foo">
+			<p:fileUpload listener="#{fileUploadController.upload}"
+				auto="true"
+				widgetVar="uploader"
+				sequential="true"
+				sizeLimit="62914560"
+				fileLimit="100"
+				update="@([id$=errormsg])"
+				accept="#{sessionBean.userAgentType == 'desktop' ? '.jpg, .jpeg, .png, .gif, .webp' : 'image/*'}"
+				fileLimitMessage="#{_['Max 100 images at once']}."
+				styleClass=""
+				invalidSizeMessage="Ihr Bild überschreitet leider die maximale Dateigröße von 60 MB."
+				requiredMessage="#{_['Please select a file to upload.']}"
+				onstart="followUploadProcess()"
+				message="Das Motiv wird hochgeladen. Bitte warten!"
+				oncomplete="#{LP ? 'onUploadCompleteMaskLP(this);' : 'onUploadCompleteMaskConfigurator(this);onUploadComplete();'} "
+				multiple="true"
+				invalidFileMessage="Ungültige Dateityp."
+				label="#{_['Upload photos']}"/>
+			</f:subview>
+
+	</h:form>
+
+    <script>
+        var onUploadComplete = function() {
+            if ($('.ui-messages-error-summary:contains("#{_["is not valid"]}")').length > 0) {
+                $('.ui-messages-error-summary').text('#{_["The resolution of the image file is too low. Please upload a file which has at least 551x551 pixels."]}');
+            }
+        }
+    </script>
+
+	<!-- ################ End: CTA Multi Upload Button ################ --> 
+</ui:composition>
+

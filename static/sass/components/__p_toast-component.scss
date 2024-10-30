@@ -1,0 +1,29 @@
+.toast-message {
+  box-sizing: border-box;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: $white;
+  background-color: #222222;
+  background-color: rgba(#222222, 0.9);
+  opacity: 1;
+  transition: all 0.3s;
+  transform: translateY(0);
+
+  &.-opening {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  &.-closing {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.toast-holder {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 905;
+}

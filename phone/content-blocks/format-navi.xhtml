@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <div class="row">
+      <div class="col -span-12">
+        <h2 class="headline -sub-2 -collapse">#{_['Products']}</h2>
+        <span class="form-dropdown -touch -fullbleed" data-dropdown="faq-navigation" data-calc-width="false">
+          <input class="js-field" type="hidden" name="faq-navigation" value="" />
+          <button class="label"><span>#{ProductName}</span></button>
+          <ul class="choices">
+            <li data-url="/format/canvas.jsf">Canvastavlor</li>
+            <li data-url="/format/canvas-xxl.jsf">Canvastavlor (Ramtjocklek 4cm)</li>
+            <li data-url="/format/canvas-premium-frame.jsf">Skuggram</li>
+            <li data-url="/format/framed-picture.jsf">Fototavlor med ram</li>
+            <li data-url="/format/tra.jsf">Trätavlor</li>
+            <li data-url="/format/alu.jsf">Aluminiumtavlor</li>
+            <li data-url="/format/acryl.jsf">Akrylglastavlor</li>
+            <li data-url="/format/acryl-premium.jsf">Akrylglastavlor Premium</li>
+            <li data-url="/format/acrylalu.jsf">Akryl +  Aluminium</li>
+            <li data-url="/format/forex.jsf">Fototavlor</li>
+            <li data-url="/format/lifestyle.jsf">Home/Lifestyle</li>
+            <li data-url="/format/photogifts.jsf">Fotopresenter</li>
+            <li data-url="/format/fotoposter.jsf">Fotoposter</li>
+          </ul>
+        </span>
+      </div>
+    </div>
+
+</ui:composition>

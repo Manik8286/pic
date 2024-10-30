@@ -1,0 +1,121 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+           xmlns:f="http://java.sun.com/jsf/core"
+           xmlns:c="http://java.sun.com/jsp/jstl/core"
+           xmlns:p="http://primefaces.org/ui"
+           xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:decorate template="/components/configurator/decorate/multiimage_mixpix-sections.xhtml">
+    <ui:param name="pageTitle" value="MIXBLOX" />
+    <ui:param name="isProduct" value="mixBlox" />
+    <!-- Preload Images -->
+    <ui:param name="componentsStyles" value="/components/configurator/css/primefaces-components.min.css" />
+    <ui:param name="componentsMainStyles" value="/components/configurator/css/main.css" />
+    
+    <!-- Meta --> 
+    <ui:param name="dataLayerName" value="MixBlox" />
+    <ui:param name="dataLayerCategory" value="Photo Gifts" />
+    <!-- Content -->
+    <ui:param name="wrapTitleCondition" value="true" />
+    <ui:param name="insideTitleCondition1" value="true" />
+    <ui:param name="subTitle" value="My photo on MIXBLOX" />
+    
+    <!-- Form -->  <!-- Image Remote Commands -->
+    <ui:param name="updateUpload" value="#{sessionBean.userAgentType == 'phone' ? 'large-preview-phone item-tools-phone' : 'large-preview'}" />
+    <ui:param name="updateUploadOnComplete" value="previewDefault();" />
+
+    <ui:param name="updateAfterUpload" value="#{sessionBean.userAgentType == 'phone' ? 'mixPixEmptyUpload mixPixImageList image-list item-tools-phone msg' : 'mixPixEmptyUpload mixPixImageList image-list item-tools large-preview cropBlock'}" /> 
+
+    <ui:param name="updateAfterUploadComplete" value="#{sessionBean.userAgentType == 'phone' ? 'updateUpload();hideUploader();updateFrameSelection();' : 'updateUpload();applyBorder();hideUploader();'}" />
+
+    <ui:param name="selectImageUpdate" value="#{sessionBean.userAgentType == 'phone' ? 'itemConfiguratorForm:itemQuantitySpinner-phone' : 'cropBlock mixPixImageList'}" />
+    <ui:param name="selectImageOnStart" value="#{sessionBean.userAgentType == 'phone' ? 'scroll();blocker.block();showToast(&#34;Ansicht wird aktualisiert...&#34;);' : 'blocker.block();'}" />
+    <ui:param name="selectImageOnComplete" value="#{sessionBean.userAgentType == 'phone' ? 'previewConfig.cropPreview();hideToast(500);' : 'previewConfig.cropPreview();'}" />
+    <ui:param name="removeImageUpdate" value="#{sessionBean.userAgentType == 'phone' ? 'image-list item-tools-phone large-preview-phone mixPixImageList mixPixEmptyUpload' : 'image-list item-tools large-preview cropBlock mixPixImageList mixPixEmptyUpload'}" />
+    <ui:param name="removeImageOnComplete" value="#{sessionBean.userAgentType == 'phone' ? 'blocker.unblock();previewDefault();' : 'blocker.unblock();previewDefault();applyBorder();'}" />
+    <ui:param name="cropUpdate" value="image-list #{sessionBean.userAgentType == 'phone' ? 'large-preview-phone mixPixImageList' : 'large-preview mixPixImageList'}" />
+    <ui:param name="cropOnComplete" value="blocker.unblock();previewDefault();applyBorder();" />
+    <ui:param name="cropBeforeCheckoutOnComplete" value="blocker.unblock();$('.ctaButton').trigger('click');" />
+
+    <!-- Remote Commands -->
+
+    <!-- Upload Button -->
+    <ui:param name="uploadButtonStyleClass" value="#{25 - multiImageBean.item.pageNumber lt 25 ? '' : '-filled'}" />
+    <ui:param name="uploadButtonOnStart" value="followUploadProcess();uploadMsg();" />
+    <ui:param name="uploadButtonLabel" value="#{25 - multiImageBean.item.pageNumber lt 25 ? 'Upload more photos' : 'Upload your photos'}" />
+    <ui:param name="tippText" value="&#60;strong&#62;Upload Hint:&#60;&#47;strong&#62; Press Ctrl or Shift for uploading several pictures at a time." />
+    <ui:param name="dealMixpixCondition" value="#{sessionServicesBean.shoppingCart.couponCode == '8L6NK6TI'}" />
+    <ui:param name="dealAcrylCondition" value="#{sessionServicesBean.shoppingCart.couponCode == 'X93SSGSK'}" />
+    <!-- RIGHT SIDE -->
+    <ui:param name="previewUploadMessage" value="Ingen bild uppladdad" />
+    <ui:param name="previewRemoveButtonText" value="Radera" />
+    <ui:param name="previewRotateButtonText" value="Rotera" />
+    <ui:param name="previewSaveButtonText" value="Spara" />
+    <ui:param name="previewRotateMessage1" value="Flytta din bild för att justera utskriftsområdet" />
+    <ui:param name="previewRotateMessage2" value="Flytta din bild för att justera utskriftsområdet" />
+
+    <ui:param name="descriptionFormatName" value="Format: &#60;strong&#62;8&#34;x8&#34; &#60;&#47;strong&#62;" />
+    <ui:param name="descriptionQtyText" value="Qty:" />
+    <ui:param name="descriptionPriceText" value="Price:" />
+    <ui:param name="descriptionZeroPrice" value="£0.00" />
+    <ui:param name="descriptionCrossPriceCondition" value="#{sessionServicesBean.discountCode.code != 'HIGHPRICESMYPICTURE'}" />
+    <ui:param name="descriptionDeliveryText" value="&#60;small&#62;incl. VAT excl. shipping costs&#60;&#47;small&#62;" />
+    <ui:param name="descriptionDealText" value="&#60;strong&#62;FREE MIXPIX&#60;&#47;strong&#62; will be deducted later." />
+
+    <ui:param name="descriptionDeliveryCondition" value="#{(sessionScope.get('coupon') != 'R7QDNC0D' and sessionScope.get('coupon') != '8L6NK6TI' and sessionScope.get('coupon') != 'X93SSGSK')}" />
+
+    <ui:param name="buttonToCartName" value="Add to Cart" />
+    <ui:param name="buttonSaveCartName" value="Add to Cart" />
+    <ui:param name="freeMixPixInfoCondition" value="#{(sessionScope.get('coupon') == 'R7QDNC0D' or sessionScope.get('coupon') == '8L6NK6TI' or sessionScope.get('coupon') == 'X93SSGSK') and multiImageBean.images.size != 0}" />
+    <ui:param name="modalErrorTitle" value="Upload failed" />
+    <ui:param name="modalErrorText" value="#{_['Maximum number of files exceeded.']}" />
+    <ui:param name="msgText" value="Maximum number of 25 photos reached." />
+    <!-- Deals -->
+    <ui:param name="mixpixDeal" value="false" />
+    <ui:param name="mixbloxDeal" value="true" />
+    <ui:param name="acrylDeal" value="false" />
+    <ui:param name="imgMixbloxDeal1_1" value="/assets/img/deal/bundle/gratis-1.svg" />
+    <ui:param name="imgMixbloxDeal1_2" value="/assets/img/deal/bundle/icon-1-mixblox.svg" />
+    <ui:param name="titleMixbloxDeal1" value="1 MIXBLOX Gratis" />
+    <ui:param name="priceMixbloxDeal1" value="0,00 €" />
+    <ui:param name="priceCrossMixbloxDeal1" value="16,90 €*" />
+    <ui:param name="priceDeliveryMixbloxDeal1" value="6,90 € Versand" />
+
+    <ui:param name="imgMixbloxDeal2_1" value="/assets/img/deal/bundle/gratis-2.svg" />
+    <ui:param name="imgMixbloxDeal2_2" value="/assets/img/deal/bundle/icon-5-mixblox.svg" />
+    <ui:param name="titleMixbloxDeal2" value="Nimm 5 &#60;br&#47;&#62; Bezahl 3" />
+    <ui:param name="priceMixbloxDeal2" value="18,00 €" />
+    <ui:param name="priceCrossMixbloxDeal2" value="99,50 €*" />
+    <ui:param name="priceDeliveryMixbloxDeal2" value="6,90 € Versand" />
+
+    <ui:param name="imgMixbloxDeal3_1" value="/assets/img/deal/bundle/gratis-2.svg" />
+    <ui:param name="imgMixbloxDeal3_2" value="/assets/img/deal/bundle/icon-9-mixblox.svg" />
+    <ui:param name="titleMixbloxDeal3" value="Nimm 9 &#60;br&#47;&#62;  Bezahl 7" />
+    <ui:param name="priceMixbloxDeal3" value="42,00 €" />
+    <ui:param name="priceCrossMixbloxDeal3" value="179,10 €*" />
+    <ui:param name="priceDeliveryMixbloxDeal3" value="Versandkostenfrei" />
+
+    <!-- MixBlox BD Deal -->
+    <ui:param name="mixbloxBdDeal" value="true" />
+    <ui:param name="imgMixbloxBdDeal1_1" value="/assets/img/deal/bundle/gratis-1.svg" />
+    <ui:param name="imgMixbloxBdDeal1_2" value="/assets/img/deal/bundle/icon-1-mixblox.svg" />
+    <ui:param name="titleMixbloxBdDeal1" value="Nimm 3 - Bezahl 2" />
+    <ui:param name="priceMixbloxBdDeal1" value="12,00 €" />
+    <ui:param name="priceCrossMixbloxBdDeal1" value="19,90 €*" />
+    <ui:param name="priceDeliveryMixbloxBdDeal1" value="6,90 € Versand" />
+
+    <ui:param name="imgMixbloxBdDeal2_1" value="/assets/img/deal/bundle/gratis-2.svg" />
+    <ui:param name="imgMixbloxBdDeal2_2" value="/assets/img/deal/bundle/icon-5-mixblox.svg" />
+    <ui:param name="titleMixbloxBdDeal2" value="Nimm 5 &#60;br&#47;&#62; Bezahl 3" />
+    <ui:param name="priceMixbloxBdDeal2" value="18,00 €" />
+    <ui:param name="priceCrossMixbloxBdDeal2" value="99,50 €*" />
+    <ui:param name="priceDeliveryMixbloxBdDeal2" value="6,90 € Versand" />
+
+    <ui:param name="imgMixbloxBdDeal3_1" value="/assets/img/deal/bundle/gratis-2.svg" />
+    <ui:param name="imgMixbloxBdDeal3_2" value="/assets/img/deal/bundle/icon-9-mixblox.svg" />
+    <ui:param name="titleMixbloxBdDeal3" value="Nimm 9 &#60;br&#47;&#62;  Bezahl 7" />
+    <ui:param name="priceMixbloxBdDeal3" value="36,00 €" />
+    <ui:param name="priceCrossMixbloxBdDeal3" value="179,10 €*" />
+    <ui:param name="priceDeliveryMixbloxBdDeal3" value="Versandkostenfrei" />
+  </ui:decorate>
+
+</ui:composition>

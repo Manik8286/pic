@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+	<div class="row">
+
+   <ui:include src="/content-blocks/info-blocks-badges.xhtml" >
+    <ui:param name="qualityPromiseText" value="Get top-quality, family-friendly photo gifts – made right here in the United States.  Fast turnaround and with 100% Money-back guarantee." />
+      </ui:include>
+
+		<div class="col -span-#{sessionBean.userAgentType == 'phone' ? '12' : ''}#{sessionBean.userAgentType == 'tablet' ? '4' : ''}#{sessionBean.userAgentType == 'desktop' ? '4' : ''}" data-mh="info">
+			<div class="showcase-box" data-mh="info">
+				<h3 class="headline #{sessionBean.userAgentType == 'tablet' ? 'mask-wrap' : ''}">Vi har låga priser för ansiktsmask</h3>
+				<table class="table -striped">
+					<thead class="-highlighted">
+						<tr>
+							<th>Size</th>
+							<th></th>
+							<th>Pris</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="-left">Munskydd</td>
+							<td></td>
+							<td class="-highlighted">#{priceBean.productPrice('Facemask_Bestcanvas_SE', 'Facemask', 'Facemask 18x13')}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</ui:composition>

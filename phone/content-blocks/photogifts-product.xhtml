@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<div class="page-text photo-gifts-box">
+
+
+    <div class="col -span-10">
+      <img src="#{productImage}" class="#{imgClass}" width="100%" alt="#{productImageAlt}"/>
+
+     
+        <div class="price-badge">
+          <div class="title" style="font-size:13px;">#{badgeTop}</div>
+          <div class="price">#{badgeMiddle}</div>
+          <div class="sub"><strong><small>#{badgeBottom}</small></strong></div>
+        </div>
+   
+    </div>
+
+   <div class="col -span-12">
+    <div class="text-format">
+      <h2>#{productHeading}</h2>
+    <p>#{productText}  <a href="#{productLink}">Mer information >></a> </p>
+    </div>
+    <a href="singleupload.jsf?product=#{productid}" class="button -action -arrow">Skapa</a>
+  </div>
+  
+</div>
+
+ </ui:composition>

@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <ui:include src="/payment/paymentmethod-klarnaapi-script.xhtml" />
+
+  <div class="head js-accordion-title -expandable klarna" data-clickarea="data-clickarea">
+    <div class="radio -alone">
+      <p:radioButton id="klarnaapi"
+        for=":paymentMethod:method"
+        itemIndex="#{index}" />
+      <h:outputLabel styleClass="label" for="klarnaapi" value="#{method.name}" />
+    </div>
+    <div class="-right">
+      <img src="/assets/img/sprites/payment/klarna.png" alt="Klarna" class="klarna" width="67px" height="37px" />
+    </div>
+  </div>
+  <div class="sub body js-accordion-body" style="overflow: hidden !important">
+    <div id="klarna-payments-container" class="text-center"></div>
+  </div>
+</ui:composition>

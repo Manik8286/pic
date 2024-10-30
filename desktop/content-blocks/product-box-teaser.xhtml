@@ -1,0 +1,16 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <div class="product-box -simple">
+    <a href="#{productBoxProductLink}" class="image">
+      <img src="#{productBoxImage}" alt="Foto auf Leinwand" />
+    </a>
+    <div class="body">
+      <div class="dimensions">#{productBoxDimensions}</div>
+      <div class="regularprice">Statt <span class="crossed">#{productBoxPriceCrossed}</span> nur</div>
+      <div class="price">#{productBoxPrice}</div>
+      <a href="#{productBoxUploadLink}" class="action">#{_['Get started']}</a>
+    </div>
+  </div>
+</ui:composition>

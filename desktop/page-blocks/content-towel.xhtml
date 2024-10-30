@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+
+
+      <div class="articles">
+          <!-- product info -->
+          <div class="article-showcase">
+            <h3 class="headline -has-sidelines"><span>Mitt foto på handduk</span></h3>
+            <div class="col #{sessionBean.userAgentType == 'desktop' ? '-span-6' : '-span-12'} image js-image-switcher">
+              <ul class="images">
+                <li data-image-name="preview:room" class="-visible"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/towel/room.jpg" /></li>
+                <li data-image-name="preview:outdoor"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/towel/outdoor.jpg" /></li>
+                <li data-image-name="preview:detail"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/towel/detail.jpg" /></li>
+              </ul>
+
+              <ul class="options #{sessionBean.userAgentType == 'phone' ? '-has-2' : '-has-3'}"> 
+                <li><button type="button" class="cbutton -highlight" data-target="preview:room">Som badhandduk</button></li>
+                <li><button type="button" class="cbutton" data-target="preview:outdoor">Som strandhandduk</button></li>
+                <li><button type="button" class="cbutton" data-target="preview:detail">I detalj</button></li>
+              </ul>
+            </div>
+
+            <div class="description-wrapper #{sessionBean.userAgentType == 'desktop' ? '-span-6' : '-span-12'}">
+              <div class="description">
+                <h5 class="headline">Gör ett statement med din fotohanduk</h5>
+                <p class="text">
+                  Din fotohandduk är vår splitternya höjdpunkt inom hemtextilier. Mjuk, tålig, snabbtorkande och till 100 % i din smak – ditt handduksfoto är den ultimata höjdpunkten, oavsett årstid. Den 350 gram tunga handduken i exklusiv frotté lämpar sig perfekt som present och går helt och hållet att anpassa efter person – till och med textfunktionen. Genom vårt premiumtryck får du en hållbar fotoprodukt som blir en självklarhet i hemmet. 
+                </p>
+              </div>
+              <div class="description">
+                <h5 class="headline">Exklusiv och hip – Din handduk med namn</h5>
+                <p class="text">
+                  Med din personliga handduk får du en exklusiv textilprodukt, som är hypoallergenisk och tål maskintvätt i upp till 40°C. Tack vare fyrfärgstrycket tränger färgen djupt in i vävnaden, så att fotohandduken säkert klarar av daglig användning. Skapa tillsammans med oss din egen handduk med foto med favoritmotiv och personlig text.
+                </p>
+              </div>
+           </div>
+         </div>
+         <!-- /product info -->
+  </div>
+
+</ui:composition>

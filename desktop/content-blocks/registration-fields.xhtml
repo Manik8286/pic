@@ -1,0 +1,293 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core" 
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:ui="http://java.sun.com/jsf/facelets" 
+  xmlns:p="http://primefaces.org/ui">
+
+
+<div class="#{registrationBean.registerCompany ? 'dNone' : ''}" jsf:id="personalData">
+  <div class="data">
+    <h3 class="title">Personlig information</h3>
+
+    <div class="group">
+      <div class="label">
+        <span class="label">#{_['Title']}<span class="-red">*</span></span>
+      </div>
+
+      <div class="entry">
+        <span
+          class="form-dropdown #{viewType == 'touch' ? '-touch' : ''}"
+          data-dropdown="gender"
+          style="#{viewType == 'touch' ? '-fullbleed' : ''}"
+          data-calc-width="#{viewType == 'touch' ? 'false' : 'true'}">
+          <h:inputText
+            id="gender"
+            styleClass="js-field #{ component.valid ? '' : '-invalid'}"
+            value="#{registrationBean.address.gender}"
+            required="true"
+            requiredMessage="#{_['Required.']}"
+            style="display: none" />
+          <button type="button" class="label"><span>(välj)</span></button>
+          <ul class="choices">
+          <ui:repeat value="#{commonDataBean.genders}" var="p">
+            <li data-value="#{p.value}">#{p.label}</li>
+          </ui:repeat>
+          </ul>
+        </span>
+        <h:message for="gender" styleClass="validation -error -bottom" />
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="label">
+        <span class="label">#{_['Forename']}<span class="-red">*</span></span>
+      </div>
+      <div class="entry">
+        <h:inputText
+          id="forename"
+          styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+          converter="StringFieldConverter"
+          required="true"
+          size="40"
+          requiredMessage="#{_['Required.']}"
+          value="#{registrationBean.address.forename}"
+          validatorMessage="#{_['Invalid']}">
+          <f:validateRegex pattern="^[\w\d_.-@+ ][^&gt;&lt;%#$]*$" />
+        </h:inputText>
+        <h:message for="forename" styleClass="validation -error -bottom" />
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="label">
+        <span class="label">#{_['Surname']}<span class="-red">*</span></span>
+      </div>
+      <div class="entry">
+        <h:inputText id="surname"
+          styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+          converter="StringFieldConverter"
+          required="true"
+          requiredMessage="#{_['Required.']}"
+          value="#{registrationBean.address.surname}"
+          validatorMessage="#{_['Invalid']}">
+          <f:validateRegex pattern="^[\w\d_.-@+ ][^&gt;&lt;%#$]*$" />
+        </h:inputText>
+        <h:message for="surname" styleClass="validation -error -bottom" />
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="label">
+        <span class="label">#{_['E-Mail Address']}<span class="-red">*</span></span>
+      </div>
+      <div class="entry">
+        <h:inputText
+          id="email"
+          styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+          converter="StringFieldConverter"
+          required="true"
+          size="40"
+          validator="emailValidator"
+          requiredMessage="#{_['Required.']}"
+          value="#{registrationBean.address.email}"
+          validatorMessage="#{_['Invalid']}">
+          <f:validateRegex pattern="^[\*_A-Za-z0-9-\+!$&amp;/=\?\{\}|~]+(\.[\*_A-Za-z0-9-\+!$&amp;/=\?\{\}|~]+)*@[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-\+]+)*(\.[A-Za-z]{2,})$" />
+        </h:inputText>
+        <h:message for="email" styleClass="validation -error -bottom" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="#{registrationBean.registerCompany ? 'dNone' : ''}" jsf:id="addressInformation">
+  <div class="data">
+    <h3 class="title">Adressinformation</h3>
+    <div class="group js-field-company" jsf:rendered="#{registrationBean.registerCompany}">
+      <div class="label">
+        <span class="label">#{_['Company (optional)']}<span class="-red"></span></span>
+      </div>
+
+      <div class="entry">
+      <h:inputText
+        id="company"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        converter="StringFieldConverter"
+        required="true"
+        requiredMessage="#{_['Required.']}"
+        value="#{registrationBean.address.company}"
+        size="45"
+        validatorMessage="#{_['Invalid']}">
+        <f:validateRegex pattern="^[\w\d_.-@+ ][^&gt;&lt;%#$]*$" />
+        </h:inputText>
+        <h:message for="company" styleClass="validation -error -bottom" />
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="label">
+        <span class="label">#{_['Street:']}<span class="-red">*</span></span>
+      </div>
+      <div class="entry">
+        <h:inputText id="street"
+          styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+          converter="StringFieldConverter"
+          required="true"
+          requiredMessage="#{_['Required.']}"
+          value="#{registrationBean.address.street}"
+          validatorMessage="#{_['Invalid']}">
+          <f:validateRegex pattern="^[\w\d_.-@+ ][^&gt;&lt;%#$]*$" />
+        </h:inputText>
+        <h:message for="street" styleClass="validation -error -bottom" />
+      </div>
+    </div>
+    <div class="group">
+      <div class="label">
+        <span class="label">#{_['Zip/Postal Code']}<span class="-red">*</span></span>
+      </div>
+      <div class="entry">
+        <h:inputText id="zipCode"
+          styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+          required="true"
+          requiredMessage="#{_['Required.']}"
+          converter="StringFieldConverter"
+          size="15"
+          value="#{registrationBean.address.zipCode}"
+          validatorMessage="#{_['Invalid']}">
+          <f:validateRegex pattern="^[\w\d- ]*$" />
+        </h:inputText>
+        <h:message for="zipCode" styleClass="validation -error -bottom" />
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="label">
+        <span class="label">#{_['City']}<span class="-red">*</span></span>
+      </div>
+      <div class="entry">
+        <h:inputText id="city"
+          styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+          required="true"
+          requiredMessage="#{_['Required.']}"
+          converter="StringFieldConverter"
+          size="45"
+          value="#{registrationBean.address.city}"
+          validatorMessage="#{_['Invalid']}">
+          <f:validateRegex pattern="^[\w\d_.-@+ ][^&gt;&lt;%#$]*$" />
+        </h:inputText>
+        <h:message for="city" styleClass="validation -error -bottom" />
+      </div>
+    </div>
+    <div class="group">
+      <div class="label">
+        <span class="label">#{_['Country']}<span class="-red">*</span></span>
+      </div>
+      <div class="entry">
+      <span class="form-dropdown #{viewType == 'touch' ? '-touch' : ''}" data-dropdown="country" style="#{viewType == 'touch' ? 'width: 100%' : ''}" data-calc-width="#{viewType == 'touch' ? 'false' : 'true'}">
+        <h:inputText id="country"
+          styleClass="js-field #{ component.valid ? '' : '-invalid'}"
+          value="#{registrationBean.address.countryId}"
+          converter="IntegerFieldConverter"
+          required="true"
+          requiredMessage="#{_['Required.']}"
+          style="display: none" />
+        <button type="button" class="label"><span>(välj)</span></button>
+        <ul class="choices">
+          <ui:repeat value="#{registrationBean.countries}" var="p">
+            <li data-value="#{p.value}">#{p.label}</li>
+          </ui:repeat>
+        </ul>
+      </span>
+      <h:message for="country" styleClass="validation -error -bottom" />
+      </div>
+    </div>
+    <div class="group">
+      <div class="label">
+        <span class="label">#{_['Phone']}</span>
+      </div>
+      <div class="entry">
+        <h:inputText id="phoneNumber"
+          styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+          converter="StringFieldConverter"
+          validator="phoneNumberValidator"
+          value="#{registrationBean.address.phoneNumber}"
+          validatorMessage="#{_['Invalid']}">
+          <f:validateRegex pattern="^[\w\d- ]*$" />
+        </h:inputText>
+      <h:message for="phoneNumber" styleClass="validation -error -bottom" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="passwordSection inputBlock data #{registrationBean.registerCompany ? 'dNone' : ''}" jsf:id="accessData">
+  <h3 class="title">Account</h3>
+    <div class="inputBlock -border">
+      <div class="pRelative">
+        <div class="-passwordVerify registration-input">
+          <p><strong>#{_['A secure password should include:']}</strong></p>
+          <ul>
+            <li>#{_['At least 8 characters']}</li>
+            <li>#{_['Upper and lower case characters']}</li>
+            <li>#{_['Numbers']}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="label">
+          <span class="label">Lösenord<span class="-red">*</span></span>
+        </div>
+
+        <div class="pRelative entry" >
+          <label class="floating-label hidden"></label>
+
+          <h:inputSecret 
+            id="newPasswordSe" 
+            name='newPasswordInput' 
+            required="true"
+            styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'} newPasswordInput inputValidator input-registration"
+            converter="StringFieldConverter"
+            requiredMessage="#{_['Required.']}"
+            validatorMessage="#{_['Invalid']}"
+            value="#{registrationBean.password}"
+            a:placeholder="Lösenord" 
+            onfocus="this.placeholder = ''"
+            onblur="this.placeholder = 'Lösenord'">
+            <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,})" />
+         </h:inputSecret>
+          <h:message for="newPasswordSe" styleClass="validation -error -bottom" style="white-space: pre; margin-top: 7px;"/>
+        </div>
+      </div>
+      
+      <div class="group" style="margin-top: 10px;">
+        <div class="label">
+          <span class="label">Skriv loginnamn igen<span class="-red">*</span></span>
+        </div>
+
+        <div class="pRelative entry" >
+          <label class="floating-label hidden"></label>
+          <h:inputSecret 
+            id="repeatedPasswordSe"
+            name='repeatedPasswordInput'
+            required="true"
+            styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'} repeatedPasswordInput inputValidator input-registration"
+            converter="StringFieldConverter"
+            requiredMessage="#{_['Required.']}"
+            validatorMessage="#{_['Invalid']}"
+            value="#{registrationBean.repeatedPassword}"
+            a:placeholder="Confirm password" 
+            onfocus="this.placeholder = ''"
+            onblur="this.placeholder = 'Confirm password'">
+            <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,})" />
+          </h:inputSecret>
+          <h:message for="repeatedPasswordSe" styleClass="validation -error -bottom" style="white-space: pre; margin-top: 7px;"/>
+        </div>
+      </div>
+  </div>
+</div>
+
+<script src="/js/password-validation/password.js"></script>
+
+</ui:composition>

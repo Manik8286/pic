@@ -1,0 +1,106 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Våra TOP erbjudanden! | bestcanvas.se" />
+  <ui:define name="dataLayer">
+      <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+        <ui:param name="canvas" value="true" />
+        <ui:param name="acryl_glass_classic" value="true" />
+        <ui:param name="aluminium_glossy" value="true" />
+        <ui:param name="aluminium_matte" value="true" />
+        <ui:param name="noList" value="true" />
+      </ui:include>
+      <script>
+          dataLayer.push({
+            'marketingChannelPage': 'newsletter'
+          })
+        </script>
+    </ui:define>
+  <ui:define name="head">
+    <script>
+      var couponSuccess = #{discountCodeBean.setCode('IKV9Z2967ABBZZV805R7')};
+    </script>
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+  </ui:define>
+
+  <ui:define name="content">
+    <section class="page-teaser">
+      <ui:include src="/page-blocks/teaser.xhtml" >
+        <ui:param name="headline" value="Våra specialerbjudanden nyhetsbrev" />
+        <ui:param name="claim" value="Spara upp till -87%" />
+
+        <!--<ui:param name="badgeTop" value="20x20cm" />
+        <ui:param name="badgeMiddle" value="35,20kr*" />
+        <ui:param name="badgeBottom" value="istället för 280kr" />-->
+
+        <ui:param name="listTitle" value="" />
+        <ui:param name="teaserFeature1" value="Ladda upp foto" />
+        <ui:param name="teaserFeature2" value="Välj format och effekt" />
+        <ui:param name="teaserFeature3" value="Koden är redan aktiverad" />
+        <ui:param name="teaserFeature4" value="" />
+        <ui:param name="quotes" value="no" />
+        <ui:param name="noFreeShippingInfo" value="yes" />
+
+        <ui:param name="teaserBgImage" value="" />
+        <ui:param name="teaserProductImage" value="/#{shopInfoBean.versionPath}assets/img/newsletter/teaser_reg_lp_17.png" />
+        <ui:param name="imageClass" value="fp-image" />
+
+        <ui:param name="Ndate" value="" />
+        <ui:param name="uploadId" value="254" />
+        <ui:param name="buttonText" value="Skapa" />
+      </ui:include>
+
+      <!--<ui:include src="/content-blocks/trust.xhtml" />-->
+    </section>
+
+    <!-- info boxes -->
+    <section class="page-section -alternate -collapse-top">
+       <div class="row">
+        <ui:include src="/content-blocks/info-blocks-badges.xhtml" >
+          <ui:param name="qualityPromiseText" value="Ontvang familievriendelijke geschenken van topkwaliteit – gemaakt hier in de Verenigde Staten. Snelle verwerking en met 100% Geld-terug-garantie." />
+        </ui:include>
+        <ui:include src="/content-blocks/custome-price-table.xhtml" >
+          <ui:param name="tableheading" value="Vi har låga priser!" />
+          <ui:param name="FirstTitle" value="Format"/>
+          <ui:param name="SecondTitle" value="Pris"/>
+          <ui:param name="HighlightedTitle" value="Idag"/>
+          <ui:param name="uploadId" value="254" />
+
+          <ui:param name="size1" value="20 x 20cm" />
+          <ui:param name="oldPrice1" value="#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 20x20')}" />
+          <ui:param name="newPrice1" value="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 20x20')}" />
+
+          <ui:param name="size2" value="30 x 20cm" />
+          <ui:param name="oldPrice2" value="#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 30x20')}" />
+          <ui:param name="newPrice2" value="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 30x20')}" />
+
+          <ui:param name="size3" value="40 x 30cm" />
+          <ui:param name="oldPrice3" value="#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 40x30')}" />
+          <ui:param name="newPrice3" value="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 40x30')}" />
+
+        </ui:include>
+      </div>
+    </section>
+    <!-- /info boxes -->
+
+
+    <section class="page-section">
+      <ui:include src="/page-blocks/canvas-page-content.xhtml" />
+    </section>
+
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+   <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+</section>
+    <!-- /paymentmethods -->
+
+  </ui:define>
+</ui:composition>

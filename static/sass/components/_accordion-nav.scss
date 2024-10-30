@@ -1,0 +1,114 @@
+.accordion-nav {
+  @extend .accordion-base;
+  background-color: $accordion-nav-background;
+  color: $white;
+
+  &,
+  > .sub {
+    @extend .link-list;
+    margin: 0;
+    padding: 0;
+  }
+
+  > .sub {
+    background-color: $accordion-nav-invert-color;
+  }
+
+  .item {
+    border-top: 1px solid $accordion-nav-invert-color;
+
+    &:first-of-type {
+      border-top: none;
+    }
+
+    &.-level-1 {
+      cursor: pointer;
+    }
+
+    &.-level-2 {
+      border-color: $accordion-nav-background;
+
+      > a,
+      > span {
+        padding-left: 20px;
+      }
+    }
+
+    > a,
+    > span {
+      display: block;
+      padding: 13px 10px;
+    }
+  }
+
+  > .item.-expandable {
+    position: relative;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      margin-top: 2px;
+      display: block;
+      width: 7px;
+      height: 1px;
+      background-color: $white; // rgba fallback
+      background-color: rgba($white, 0.77); // Make it look thinner and grey-ish
+      transition: transform 0.2s;
+
+      .no-csstransforms {
+        // TODO: Compatibility for Browsers
+        // without css transforms
+        content: none;
+      }
+    }
+
+    &:before {
+      transform-origin: top right;
+      transform: rotate(45deg);
+      margin-right: 6px;
+    }
+
+    &:after {
+      transform-origin: top left;
+      transform: rotate(-45deg);
+    }
+
+    &.-active {
+      &:before {
+        transform: translateY(-6px) translateX(-1px) rotate(-45deg);
+      }
+
+      &:after {
+        transform: translateY(-6px) rotate(45deg);
+      }
+    }
+  }
+
+  ._t_subnavitem:before {
+    content: '';
+    display: inline-block;
+    width: 73px;
+    height: 44px;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-top: -2px;
+  }
+
+  &.-bigger {
+    .item {
+      > a,
+      > span {
+        display: block;
+        padding: 20px 10px;
+
+        &._t_subnavitem {
+          padding-top: 12px;
+          padding-bottom: 8px;
+        }
+      }
+    }
+  }
+}

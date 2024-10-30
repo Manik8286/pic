@@ -1,0 +1,92 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <div class="showcase #{showcaseClass}" style="background-image: url(#{teaserImage})">
+    <header class="head">
+      <h1 class="headline">#{teaserHeadline}</h1>
+      <div class="claim">#{teaserClaim}</div>
+    </header>
+    
+    <div class="body tasse ">
+      <div class="row">
+        <div class="col -span-3">
+          <div class="col -span-12 -text-centered">
+            <h2 class="headline">#{productHeadline1}</h2>
+          </div>
+          <ui:fragment rendered="#{not empty teaserProductImage1}">
+            <img jsf:rendered="#{sessionBean.userAgentType != 'desktop'}" class="#{imageClass1}" src="#{teaserProductImage1}" width="280" alt="#{teaserProductAlt1}" />
+          </ui:fragment>
+
+          <div style="position: absolute;right: 20px;top: 310px;width: 100%;">
+            <ui:include src="/helper/directupload-short.xhtml">
+              <ui:param name="directuploadProductId" value="#{productId1}" />
+              <ui:param name="directuploadClass" value="button_action" />
+              <ui:param name="buttonText" value="Skapa >" />
+              <ui:param name="buttonMugs" value="true" /> 
+            </ui:include>
+          </div>
+        </div>
+
+        <div class="col -span-3">
+          <div class="col -span-12 -text-centered">
+            <h2 class="headline">#{productHeadline2}</h2>
+          </div>
+          <ui:fragment rendered="#{not empty teaserProductImage2}">
+            <img jsf:rendered="#{sessionBean.userAgentType != 'desktop'}" class ="#{imageClass2}" src="#{teaserProductImage2}" width="280" alt="#{teaserProductAlt2}" />
+          </ui:fragment>
+
+          <div style="position: absolute;right: 20px;top: 310px;width: 100%;">
+            <ui:include src="/helper/directupload-short.xhtml">
+              <ui:param name="directuploadProductId" value="#{productId2}" />
+              <ui:param name="directuploadClass" value="button_action" />
+              <ui:param name="buttonText" value="Skapa >" />
+              <ui:param name="buttonMugs" value="true" /> 
+            </ui:include>
+          </div>
+        </div>
+
+        <div class="col -span-3">
+          <div class="col -span-11 -text-centered">
+            <h2 class="headline3">#{productHeadline3}</h2>
+          </div>
+          <ui:fragment rendered="#{not empty teaserProductImage3}">
+            <img jsf:rendered="#{sessionBean.userAgentType != 'desktop'}" class ="#{imageClass3}" src="#{teaserProductImage3}" width="280" alt="#{teaserProductAlt3}" />
+          </ui:fragment>
+
+          <div style="position: absolute;right: 20px;top: 310px;width: 100%;">
+            <ui:include src="/helper/directupload-short.xhtml">
+              <ui:param name="directuploadProductId" value="#{productId3}" />
+              <ui:param name="directuploadClass" value="button_action" />
+              <ui:param name="buttonText" value="Skapa >" />
+              <ui:param name="buttonMugs" value="true" />         
+            </ui:include>
+          </div>
+        </div>
+
+        <div class="col -span-3 color-top">
+          <div class="col -span-12 text-center">
+            <img class="#{imageClass5}" src="#{teaserLogoImageColors}" width="41" alt="#{teaserLogoImageColorsAlt}" />
+            <h2 class="headline4">#{productHeadline4}</h2>
+          </div>
+          <ui:fragment rendered="#{not empty teaserProductImage4}">
+            <img jsf:rendered="#{sessionBean.userAgentType != 'desktop'}" class ="#{imageClass4}" src="#{teaserProductImage4}" width="280" alt="#{teaserProductAlt4}" />
+          </ui:fragment>
+
+          <div style="position: absolute;right: 20px;top: 320px;width: 100%;">
+            <ui:include src="/helper/directupload-short.xhtml">
+              <ui:param name="directuploadProductId" value="#{productId4}" />
+              <ui:param name="directuploadClass" value="button_action" />
+              <ui:param name="buttonText" value="Skapa >" />
+              <ui:param name="buttonMugs" value="true" />  
+            </ui:include>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ui:composition>

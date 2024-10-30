@@ -1,0 +1,218 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+
+  <header id="header-v1" class="_p_t-page-head -new">
+    <p class="sr">bestcanvas.se</p>
+    <div class="full">
+      <a href="#{baseUrlBean.baseUrl}" class="brand">
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="logo" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-logo" />
+        </ui:include>
+      </a>
+    </div>
+    <button class="burger js-mobile-nav-toggle-2" jsf:rendered="#{checkout ne true}" onclick="hideFeedback()">
+      <span class="lines -new">
+        <span class="line -l1"></span>
+        <span class="line -l2"></span>
+        <span class="line -l3"></span>
+      </span>
+    </button>
+
+    <ui:remove>
+      <!-- START shopping cart -->
+      <!-- Display Shopping Cart count and output active state, if count > 0 -->
+    </ui:remove>
+
+    <div class="headerIcons">
+      <c:choose>
+        <c:when test="#{loginBean.loggedIn}">
+          <a href="/accountoverview.jsf" class="action login -active">
+            <ui:include src="/helper/svg.xhtml">
+              <ui:param name="svgClass" value="icon user" />
+              <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-icon_account" />
+              <ui:param name="svgWidth" value="30" />
+              <ui:param name="svgHeight" value="25" />
+            </ui:include>
+          </a>
+        </c:when>
+        <c:otherwise>
+          <a href="/customer.jsf" class="action login">
+            <ui:include src="/helper/svg.xhtml">
+              <ui:param name="svgClass" value="icon user" />
+              <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-icon_account" />
+              <ui:param name="svgWidth" value="30" />
+              <ui:param name="svgHeight" value="25" />
+            </ui:include>
+          </a>
+        </c:otherwise>
+      </c:choose>
+
+      <h:outputLink global="false" value="/shoppingcart.jsf" styleClass="pRelative cart -new ${shoppingCartBean.numberOfItems > 0?'-filled':''}" a:data-fill-count="#{shoppingCartBean.numberOfItems}">
+        <span class="sr">Varukorg</span>
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-icon_cart" />
+          <ui:param name="svgWidth" value="30" />
+          <ui:param name="svgHeight" value="25" />
+        </ui:include>
+      </h:outputLink>
+    </div>
+
+    <nav id="mobileMenu" class="menu js-mobile-menu" data-toggle=".js-mobile-nav-toggle-2" jsf:rendered="#{checkout ne true}">
+
+      <ul class="nav js-accordion" data-accordion-close="true">
+        <li class="item -level-1 -expandable js-accordion-title"><span>Väggdekoration</span></li>
+        <ul class="sub js-accordion-body dFlex">
+          <li class="item -level-2 col -span-4 -phone" data-mh="info">
+            <a href="/vaggdekor/canvastavlor.jsf">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/sprites/nav/leinwand.png" alt="Canvastavlor" width="125px" height="75px" />
+              <div>Canvastavlor</div>
+            </a>
+          </li>
+          <li class="item -level-2 col -span-4 -phone" data-mh="info">
+            <a href="/vaggdekor/fototavlor-med-ram.jsf">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/sprites/nav/gerahmtes-bild.png" alt="Fototavlor med ram" width="125px" height="75px"  />
+              <div>Fototavlor med ram</div>
+            </a>
+          </li>
+          <li class="item -level-2 col -span-4 -phone" data-mh="info">
+            <a href="/vaggdekor/tratavlor.jsf">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/sprites/nav/wood.png" alt="Trätavlor" width="125px" height="75px"  />
+              <div>Trätavlor</div>
+            </a>
+          </li>
+          <li class="item -level-2 col -span-4 -phone" data-mh="info">
+            <a href="/vaggdekor/akrylglastavlor.jsf">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/sprites/nav/acryl.png" alt="Akrylglastavlor" width="125px" height="75px"  />
+              <div>Akrylglastavlor</div>
+            </a>
+          </li>
+          <li class="item -level-2 col -span-4 -phone" data-mh="info">
+            <a href="/vaggdekor/aluminiumtavlor.jsf">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/sprites/nav/aluminium.png" alt="Aluminiumtavlor" width="125px" height="75px"  />
+              <div>Aluminiumtavlor</div>
+            </a>
+          </li>
+          <li class="item -level-2 col -span-4 -phone" data-mh="info">
+            <a href="/vaggdekor/fototavlor.jsf">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/sprites/nav/forex.png" alt="Fototavlor" width="125px" height="75px"  />
+              <div>Fototavlor</div>
+            </a>
+          </li>
+          <li class="item -level-2 col -span-4 -phone" data-mh="info">
+            <a href="/vaggdekor/akryl-aluminium.jsf">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/sprites/nav/acryl-aluminium.png" alt="Akryl + Aluminium" width="125px" height="75px"  />
+              <div>Akryl + Aluminium</div>
+            </a>
+          </li>
+          <li class="item -level-2 col -span-4 -phone ref-mixpix">
+            <a href="/mixpix/">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/sprites/nav/mixpix.png" alt="mixpix" width="125px" height="75px"  /><br/>
+              <img
+                alt=""
+                src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.png"
+                data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/mixpix_S_T.svg"
+                width="65px"
+                class="lazyload -mixpix"
+                height="10px"
+              /><br/>
+              <span class="-red"><strong> NY</strong></span>
+            </a>
+          </li>
+          <li class="item -level-2 col -span-4 -phone" data-mh="info">
+            <a href="/vaggdekor/fotoposter.jsf">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/sprites/nav/fotoposter.png"
+                alt="Fotoposter" width="125px" height="75px" />
+              <div class="-lower">Fotoposter</div> <span class="-red"><strong>NY</strong></span>
+            </a>
+          </li>
+        </ul>
+
+        <li class="item -level-1 -expandable js-accordion-title"><span>Home &amp; Lifestyle</span></li>
+        <ul class="sub js-accordion-body">
+          <li class="item -level-2 col -span-4 -phone" data-mh="info">
+            <a href="/home-lifestyle/fotohandduk.jsf">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/sprites/nav/handtuch.png" alt="Handduk" width="125px" height="75px"  />
+              <div>Handduk</div>
+            </a>
+          </li>
+          <li class="item -level-2 col -span-4 -phone" data-mh="info">
+            <a href="/home-lifestyle/fotokudde.jsf">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/sprites/nav/kissen.png" alt="Fotokudde" width="125px" height="75px"  />
+              <div>Fotokudde</div>
+            </a>
+          </li>
+          <li class="item -level-2 col -span-4 -phone" data-mh="info">
+            <a href="/home-lifestyle/fotofilt.jsf">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/sprites/nav/blanket.png" alt="Fotofilt" width="125px" height="75px"  />
+              <div>Fotofilt</div>
+            </a>
+          </li>
+          <li class="item -level-2 col -span-4 -phone" data-mh="info">
+            <a href="/home-lifestyle/akrylblock.jsf">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/sprites/nav/acrylblock.png" alt="Akrylblock" width="125px" height="75px"  />
+              <div>Akrylblock</div>
+            </a>
+          </li>
+          <li class="item -level-2 col -span-4 -phone" data-mh="info">
+            <a href="/home-lifestyle/fotomatta.jsf">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/sprites/nav/rug.png" alt="Matta" width="125px" height="75px"  />
+              <div>Matta</div>
+            </a>
+          </li>
+        </ul>
+        <li class="item -level-1 -expandable js-accordion-title"><span>Fotopresenter</span></li>
+        <ul class="sub js-accordion-body">
+          <li class="item -level-2 col -span-4 -phone" data-mh="info">
+            <a href="/fotopresenter/fotomugg.jsf">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/sprites/nav/tasse.png" alt="Fotomugg" width="125px" height="75px"  />
+              <div>Fotomugg</div>
+            </a>
+          </li>
+          <li class="item -level-2 col -span-4 -phone" data-mh="info">
+            <a href="/fotopresenter/musmatta-med-foto.jsf">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/sprites/nav/mousepad.png" alt="Musmatta med Foto" width="125px" height="75px"  />
+              <div>Musmatta med Foto</div>
+            </a>
+          </li>
+          <li class="item -level-2 col -span-4 -phone" data-mh="info">
+            <a href="/fotopresenter/fotopussel.jsf">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/sprites/nav/puzzle.png" alt="Fotopussel" width="125px" height="75px"  />
+              <div>Fotopussel</div>
+            </a>
+          </li>
+          <li class="item -level-2 col -span-4 -phone" data-mh="info">
+            <a href="/fotopresenter/stjarnkarta.jsf">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/sprites/nav/starmap.png" alt="Stjärnhimmel" width="125px" height="75px"  />
+              <div>Stjärnhimmel</div>
+            </a>
+          </li>
+        </ul>
+        <li class="item -level-1 -smaller">
+          <a href="/format/">
+            <div>Format &amp; Priser</div>
+          </a>
+        </li>
+        <li class="item -level-1 -smaller">
+          <a href="/bestallningsstatus/">
+            <div>Beställningsstatus</div>
+          </a>
+        </li>
+        <li class="item -level-1 -smaller">
+          <a href="/faq/vanliga-fragor.jsf">
+            <div>Vanliga Frågor</div>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+  </header>
+
+
+</ui:composition>

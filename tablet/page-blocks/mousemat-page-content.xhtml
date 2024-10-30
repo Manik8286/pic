@@ -1,0 +1,71 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:o="http://omnifaces.org/ui">
+
+    <!-- product info -->
+
+  <!-- 
+  <div class="article-showcase -text-centered">
+  <h2 class="headline -section"><span>Personlig Foto Musmatta</span></h2>
+  <h3 class="headline -has-sidelines"><span>Musmatta med Foto i Microfiber</span></h3>
+  <iframe src="" data-src="//www.youtube.com/embed/xjIQ1n4QyPs?loop=1&amp;autoplay=1&amp;modestbranding=1&amp;controls=0&amp;showinfo=0&amp;playlist=xjIQ1n4QyPs" allow="autoplay" width="560" frameborder="0" height="315"></iframe>
+  </div> 
+  -->
+
+  <!-- product info -->
+  <div class="article-showcase">
+    <h3 class="headline -has-sidelines"><span>Passar alla datormöss</span></h3>
+    <div class="col -span-8 image -centered js-image-switcher">
+      <ul class="images">
+        <li data-image-name="preview:front" class="-visible">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/musmatta/foto-musmatta-komplett-vy.jpg" alt="foto musmatta komplett vy" />
+        </li>
+        <li data-image-name="preview:room">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/musmatta/foto-musmatta-i-rummet.jpg" alt="foto musmatta i rummet" />
+        </li>
+        <li data-image-name="preview:detail">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/musmatta/foto-musmatta-detaljerad-vy.jpg" alt="foto musmatta detaljerad vy" />
+        </li>
+        <li data-image-name="preview:video">
+          <iframe width="#{sessionBean.userAgentType == 'phone' ? '100%' : '490'}" height="#{sessionBean.userAgentType == 'phone' ? 'auto' : '275'}" src="" data-src="//www.youtube.com/embed/xjIQ1n4QyPs?loop=1&amp;autoplay=1&amp;modestbranding=1&amp;controls=0&amp;showinfo=0&amp;playlist=xjIQ1n4QyPs" frameborder="0" allow="autoplay"></iframe>
+        </li>
+      </ul>
+
+      <ul class="options -has-2">
+        <li><button type="button" class="cbutton -highlight" data-target="preview:front">Komplett vy</button></li>
+        <li><button type="button" class="cbutton" data-target="preview:detail">Detaljerad vy</button></li>
+        <li><button type="button" class="cbutton" data-target="preview:room">I rummet</button></li>
+        <li><button type="button" class="cbutton" data-target="preview:video">Videon</button></li>
+      </ul>
+    </div>
+
+    <div class="description-wrapper -span-12">
+      <div class="description">
+        <p class="text">
+           Få ett nytt perspektiv på din kontorsrutin genom att pryda ditt skrivbord med stunder som är viktiga. En foto musmatta låter dig inreda kontorsytan med personlighet samtidigt som du förhindrar glidning med musen, tack vare dess naturliga, svarta gummiunderlag. Våra personliga musmattor har också en exceptionellt behaglig yta av mikrofiber. Med ett högupplöst tryck på toppen av musmattan, kan det även bli en present som inte kan gå fel, eftersom den passar alla typer av möss som för tillfället finns på marknaden. Samtidigt kommer utskriften själv att bibehålla en skarp upplösning, så att musen kan navigera smidigt över den.
+        </p>
+      </div>
+      <div class="description">
+        <p class="text">
+         Trots alla de ovan nämnda parametrarna erbjuder Bestcanvas.se att tillverka billiga foto musmattor som, trots att de är anpassningsbara, inte kostar ett öre mer än andra, vanliga musmattor. Med en speciell undersida av anti-glidmaterial, underbar färg och en materialstruktur som faktiskt gör hela arbetsprocessen mycket lättare, så finns det ingen anledning till att inte utforma din egen musmatta, där du väljer en bild som ger dig glädje medan du jobbar! En musmatta med foto är ett bra exempel på en till synes liten present, som kan ha stor betydelse! Förutom den känslomässiga aspekten, tillhandahåller denna foto musmatta också:
+        </p>
+      </div>
+      <div class="description">
+        <p class="text">
+            <ul class="text -list">
+                <li>Bekväm och användbar yta</li>
+                <li>Halkmotstånd som tillhandahålls av det naturliga svarta gummit</li>
+                <li>Briljanta och levande högupplösta bilder</li>
+                <li>Passar alla typer av datormöss</li>
+                <li>En praktisk present till kontoret</li>
+            </ul>
+       </p>
+     </div>
+   </div>
+ </div>
+ <!-- /product info -->
+
+
+</ui:composition>

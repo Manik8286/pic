@@ -1,0 +1,101 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Akrylblock med Foto Tryck -57%" />
+
+  <ui:define name="dataLayer">
+    <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+      <ui:param name="acrylblock" value="true" />
+      <ui:param name="noList" value="true" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="head">
+    <ui:fragment rendered="#{sessionBean.userAgentType == 'desktop'}">
+        <style type="text/css">
+        .page-teaser>.showcase>.body>.product>.badge.-closeToWhiteBlock {
+            top: 277px;
+        }
+        .headline .-highlighted-text {
+            color: #4a4a4a;
+        }
+        </style>
+    </ui:fragment>
+    <ui:include src="/coupons/discountcode-BC_SE_SEA.xhtml" />
+    <ui:include src="/helper/reference.xhtml" />
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="description" content="Akrylblock med foto: sofistikerad visuell estetik, 25 mm tjockt glas. Foto akrylblock: gör så bilden ser dimensionell ut, behöver inget ytterligare stöd." />
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+    <link rel="canonical" href="https://www.bestcanvas.se/akrylblock-erbjudande-20x20/" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+  </ui:define>
+
+  <ui:define name="content">
+
+    <div class="page-photobook">
+
+    <ui:include src="/page-blocks/teaser-right-white.xhtml">
+      <!-- Images -->
+      <ui:param name="teaserBgImage" value="#{libraryImagesBean.getFilePathByLibraryImageId(439)}" />
+      <ui:param name="teaserProductImage" value="#{libraryImagesBean.getFilePathByLibraryImageId(440)}" />
+      <ui:param name="altTeaserProductImage" value="#{libraryImagesBean.getAltByLibraryImageId(439)}" />
+      <ui:param name="showcaseClass" value="-transparent" />
+      <ui:param name="imgClass" value="-withGap" />
+      <ui:param name="ProductImgClass" value="-smaller" />
+      
+      <!-- Headers -->
+      <ui:param name="headline" value="Ditt &#60;span class=&#34;-highlighted-text&#34;&#62;foto på ett akrylblock&#60;/span&#62;" />
+
+      <!-- Price Badge -->
+      <ui:param name="badgeTop" value="Spara upp till 57%" />
+      <ui:param name="badgeTopDiscount" value="Spara upp till" />
+      <ui:param name="badgeMiddle" value="#{priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x20')}" />
+      <ui:param name="badgeBottom" value="istället för #{priceBean.productCrossPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x20')}" />
+      <ui:param name="badgeClass" value="-closeToWhiteBlock" />
+      
+      <!-- Bullet points -->
+      <ui:param name="teaserFeature1" value="Kristallklart akrylglasblock" />
+      <ui:param name="teaserFeature2" value="Livfullt fototryck" />
+
+      <!-- Upload Button -->
+      <ui:param name="uploadId" value="1613" />
+      <ui:param name="buttonText" value="Skapa" />
+      <ui:param name="quotes" value="false" />
+    </ui:include>
+
+      <!-- info boxes -->
+      <section class="page-section -alternate -collapse-top">
+        <ui:include src="/page-blocks/info-blocks-homestyle.xhtml">
+          <ui:param name="acrylblockFormatTable" value="true" />
+          <ui:param name="checkHideSVT" value="true" />
+        </ui:include>
+      </section>
+      <!-- /info boxes -->
+
+      <ui:include src="/page-blocks/acrylblock-content.xhtml" />
+
+      <!-- Rich Snippet -->
+      <ui:include src="/components/rich-snippets/rich-snippets-template.xhtml">
+        <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Acrylblock']}" />
+        <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+        <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x20').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+      </ui:include>
+      <!-- /Rich Snippet -->
+
+      <!-- paymentmethods -->
+      <section class="page-section -alternate">
+        <ui:include src="/page-blocks/paymentmethods.xhtml" />
+        <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+      </section>
+      <!-- /paymentmethods -->
+      
+    </div>
+  </ui:define>
+</ui:composition>

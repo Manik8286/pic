@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <c:set var="forexSquareFormats" value="20 x 20,30 x 30,40 x 40,60 x 60" />
+    <c:set var="forexDigitalFormats" value="40 x 30,80 x 60,100 x 75" />
+    <c:set var="forexClassicFormats" value="30 x 20,60 x 40,75 x 50,80 x 20,80 x 40,90 x 60,120 x 80" />
+    <c:set var="forexPanoramaFormats" value="60 x 20,60 x 30,100 x 50,120 x 60" />
+
+  <dl class="accordion-panel js-accordion">
+    <dt class="title js-accordion-title -expandable" data-init-expand="true">Kvadratiskt Format</dt>
+    <dd class="sub js-accordion-body">
+      <div class="inner">
+        <ui:include src="/helper/product-price-tables-forex.xhtml">
+          <ui:param name="pricesList" value="#{forexSquareFormats}" />
+        </ui:include>
+      </div>
+    </dd>
+
+    <dt class="title js-accordion-title -expandable">Digitalt Format</dt>
+    <dd class="sub js-accordion-body">
+      <div class="inner">
+        <ui:include src="/helper/product-price-tables-forex.xhtml">
+          <ui:param name="pricesList" value="#{forexDigitalFormats}" />
+        </ui:include>
+      </div>
+    </dd>
+
+    <dt class="title js-accordion-title -expandable">Klassiskt Format</dt>
+    <dd class="sub js-accordion-body">
+      <div class="inner">
+        <ui:include src="/helper/product-price-tables-forex.xhtml">
+          <ui:param name="pricesList" value="#{forexClassicFormats}" />
+        </ui:include>
+      </div>
+    </dd>
+
+    <dt class="title js-accordion-title -expandable">Panorama Format</dt>
+    <dd class="sub js-accordion-body">
+      <div class="inner">
+        <ui:include src="/helper/product-price-tables-forex.xhtml">
+          <ui:param name="pricesList" value="#{forexPanoramaFormats}" />
+        </ui:include>
+      </div>
+    </dd>
+
+  </dl>
+</ui:composition>

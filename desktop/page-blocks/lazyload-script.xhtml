@@ -1,0 +1,67 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <script>
+        // <![CDATA[
+        document.addEventListener("DOMContentLoaded", function() {
+          let lazyImages = [].slice.call(document.querySelectorAll("[data-srcset]"));
+
+          if ("IntersectionObserver" in window) {
+              let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                  if (entry.isIntersecting) {
+                    let lazyImage = entry.target;
+                    lazyImage.src = lazyImage.dataset.srcset;
+                    //lazyImage.srcset = lazyImage.dataset.srcset;
+                    //lazyImage.classList.remove("lazy");
+                    lazyImage.removeAttribute('data-srcset')
+                    lazyImageObserver.unobserve(lazyImage);
+                  }
+                });
+              });
+              lazyImages.forEach(function(lazyImage) {
+                lazyImageObserver.observe(lazyImage);
+              });
+            } else {
+              let active = false;
+              const lazyLoad = function() {
+                if (active === false) {
+                  active = true;
+                  setTimeout(function() {
+                    lazyImages.forEach(function(lazyImage) {
+                      if ((lazyImage.getBoundingClientRect().top <= window.innerHeight && lazyImage.getBoundingClientRect().bottom >= 0) && getComputedStyle(lazyImage).display !== "none") {
+                        lazyImage.src = lazyImage.dataset.srcset;
+                        //lazyImage.srcset = lazyImage.dataset.srcset;
+                        //lazyImage.classList.remove("lazy");
+                        lazyImage.removeAttribute('data-srcset')
+                        //lazyImageObserver.unobserve(lazyImage);
+
+                        lazyImages = lazyImages.filter(function(image) {
+                          return image !== lazyImage;
+                        });
+
+                        if (lazyImages.length === 0) {
+                          document.removeEventListener("scroll", lazyLoad);
+                          window.removeEventListener("resize", lazyLoad);
+                          window.removeEventListener("orientationchange", lazyLoad);
+                        }
+                      }
+                    });
+
+                    active = false;
+                  }, 200);
+                }
+              };
+              document.addEventListener("scroll", lazyLoad );
+              window.addEventListener("resize",  lazyLoad );
+              window.addEventListener("orientationchange",  lazyLoad );
+              lazyLoad();
+            }
+         });
+        // ]]>
+    </script>
+
+</ui:composition>

@@ -1,0 +1,123 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Storlekar och Priser" />
+
+  <ui:define name="dataLayer">
+    <ui:include src="/tracking/dataLayer-pagetype-product.xhtml"/>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+			dataLayer.push({
+				'marketingChannelPage': 'sea'
+			})
+		</script>
+  </ui:define>
+  
+  <ui:define name="head">
+    <ui:include src="/coupons/discountcode-BC_SE_SEA.xhtml" />
+<ui:include src="/helper/reference.xhtml" />
+  </ui:define>
+
+  <ui:define name="meta">
+    <!-- <link rel="canonical" href="https://www.bestcanvas.se/format/" /> -->
+    <meta name="description" content="" />
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+  </ui:define>
+
+  <ui:define name="content">
+    <section class="page-section -smaller">
+      <div class="row">
+        <div class="col -span-12">
+          <h1 class="headline -sub-1 -collapse">Storlekar och Priser</h1>
+          <span class="-highlighted-text"><small>* Alla priser inkluderar moms 25%, exkl. leveranskostnad</small></span>
+        </div>
+      </div>
+    </section>
+
+    <ui:include src="/content-blocks/format-navi.xhtml" />
+
+    <c:set var="loopProducts" value="canvas,gerahmtes-bild,tra,alu,acryl,lifestyle,acrylalu,acrylforex,photogifts" /> <!--  poster, wood, photobook, photocalendar,acrylblock -->
+
+    <h:panelGroup id="viewPanel">
+      <h:panelGroup id="tableRenderPanel" rendered="true">
+        <!-- price-table toogle -->
+        <div class="price-tables">
+          <c:forEach items="#{fn:split(loopProducts, ',')}" var="group">
+            <!-- #{group} -->
+            <section class="page-section -collapse-top js-#{group} panel -visible">
+              <ui:include src="/content-blocks/price-table-#{group}.xhtml" />
+            </section>
+            <!-- /#{group} -->
+          </c:forEach>
+        </div>
+        <!-- /price-table toogle -->
+      </h:panelGroup>
+    </h:panelGroup>
+
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+   <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+</section>
+    <!-- /paymentmethods -->
+
+  </ui:define>
+
+  <ui:define name="eofscript">
+    <script>
+      (function($) {
+        var products = {
+         'canvas': 'selectCanvas',
+         'passeportout': 'selectBild',
+         'tra': 'selectWood',
+         'aluminium': 'selectAluminium',
+         'acrylglas': 'selectAcryl',
+         'lifestyle': 'selectLifestyle',
+         'acrylalu': 'selectAcrylAlu',
+         'acrylforex': 'selectAcrylForex',
+         'forex': 'selectForex',
+         'fotopresenter': 'selectFotogeschenke'
+       };
+
+       var helpProducts = {};
+
+       $.each(products, function(key, val) {
+        helpProducts[val] = key;
+      });
+
+       $(function() {
+        $('.selection-list label').on('mouseup', function() {
+          var hashValue = helpProducts[$(this).attr('for')];
+          if(history.pushState) {
+            history.pushState(null, null, '/format/#' + hashValue);
+          } else {
+            window.location.hash = '#' + hashValue;
+          }
+        });
+
+        $(window).bind('hashchange', function() {
+          checkLocationHash();
+        });
+
+        function checkLocationHash() {
+          var hash = window.location.hash;
+          var select = products[hash.substring(1)];
+
+          if (select) {
+            $('label[for='+select+']').trigger('click');
+          }
+        }
+
+        checkLocationHash();
+      });
+
+     })(jQuery);
+    </script>
+  </ui:define>
+</ui:composition>

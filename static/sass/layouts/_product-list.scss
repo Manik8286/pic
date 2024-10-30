@@ -1,0 +1,29 @@
+.product-list {
+    @extend .row;
+    .nl-icon {
+        width: 200px;
+        height: 90px;
+        fill: currentColor;
+    }
+    > .product {
+        @extend .col;
+        margin-bottom: 20px;
+
+        > .product-box {
+            > .info {
+                > .min-format {
+                    width: 100%;
+                    padding-top: 42px;
+                    > .min-cross-price {
+                        display: inline-block;
+                    }
+                    > .min-format-angebot {
+                        display: inline-block;
+                        float: right;
+                        padding-right: 3px;
+                    }
+                }
+            }
+        }
+    }
+}

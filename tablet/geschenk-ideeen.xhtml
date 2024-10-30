@@ -1,0 +1,160 @@
+<ui:composition template="/templates/clean.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:param name="pageTitle" value="Photo Gift ideas for every occasion" />
+
+<ui:define name="head">
+  
+</ui:define>
+
+<ui:define name="meta">
+  <meta name="description" content="Photo Gift ideas for every occasion" />
+  <meta name="robots" content="NOINDEX,NOFOLLOW" />
+</ui:define>
+
+<ui:define name="content">
+
+  <header class="page-hero -photogiftideas">
+    <div class="col -span-12">
+      <h1 class="headline">Geschenken voor Elke Gelegenheid</h1>
+      <div class="subtitle">Geef een ongeëvenaard geschenk: uw eigen foto</div>
+    </div>
+  </header>
+
+  <section class="text-section">
+
+    <div class="section">
+      <h3 class="headline">Fotogeschenk Ideeën voor Elke Gelegenheid</h3>
+      <p class="text">
+        Wenst u een geschenk te geven dat iets bijzonders is, maar kunt u niets origineel en uniek bedenken? Nu beschikt u over een geschenk voor elke gelegenheid dat niet in een winkel gekocht kan worden. Met uw foto wordt elk geschenk een prachtige herinnering. 
+        <br/><br/>
+        In slechts enkele minuten kunt u een romantisch jubileumgeschenk of een grappig verjaardagscadeau ontwerpen. Laat uw creativiteit de vrije loop en geef uw geliefden persoonlijke geschenken. Een foto is niet iets dat in een schuif dient te belanden, maar kan in de plaats als prachtige kamerdecoratie gebruikt worden. 
+        <br/><br/>
+        Op BestCanvas.se kunt u canvassen kopen aan de laagste prijzen, zodat u steeds een leuk geschenkje heeft voor elke gelegenheid. Verras uw geliefden met uw foto's. Een foto spreekt boekdelen, en uw foto heeft geen beschrijving nodig die “Dank je” of “Ik hou van je” zegt. Fotogeschenken zijn emotionele herinneringen, aangezien je het moment kiest dat nooit vergeten wordt.
+      </p>
+    </div>
+
+    <div class="section">
+    <h3 class="headline">Belangrijke gelegenheden door het jaar heen:</h3>
+
+<!--The most important events in the calendar-->
+
+    <section class="row">
+
+      <ui:include src="/content-blocks/event-box.xhtml">
+        <ui:param name="boxTitle" value="Moederdag"/>
+        <ui:param name="boxText" value="Een persoonlijk geschenk voor moederdag"/>
+        <ui:param name="imgUrl" value="/#{shopInfoBean.versionPath}assets/img/photo-gift-ideas/mothersday.jpg" />
+        <ui:param name="altText" value="Moederdag" />
+        <ui:param name="linkText" value="Ver más »" />
+        <ui:param name="link" value="/geschenk-ideeen/moederdag.jsf" />
+      </ui:include>
+
+      <ui:include src="/content-blocks/event-box.xhtml">
+        <ui:param name="boxTitle" value="Vaderdag"/>
+        <ui:param name="boxText" value="Geef unieke decoratieve geschenken voor vaderdag"/>
+        <ui:param name="imgUrl" value="/#{shopInfoBean.versionPath}assets/img/photo-gift-ideas/fathersday.jpg" />
+        <ui:param name="altText" value="Vaderdag" />
+        <ui:param name="linkText" value="Ver más »" />
+        <ui:param name="link" value="/geschenk-ideeen/vaderdag.jsf" />
+      </ui:include>
+
+      <ui:include src="/content-blocks/event-box.xhtml">
+        <ui:param name="boxTitle" value="Kerstmis"/>
+        <ui:param name="boxText" value="Creëer een uniek geschenk voor Kerstmis"/>
+        <ui:param name="imgUrl" value="/#{shopInfoBean.versionPath}assets/img/photo-gift-ideas/advent.jpg" />
+        <ui:param name="altText" value="Kerstmis" />
+        <ui:param name="linkText" value="Ver más »" />
+        <ui:param name="link" value="/geschenk-ideeen/kerstmis.jsf" />
+      </ui:include>
+
+
+<!--
+      <ui:include src="/content-blocks/event-box.xhtml">
+        <ui:param name="boxTitle" value="Nikolaus"/>
+        <ui:param name="boxText" value="Kleine und große Geschenke zum Nikolaustag."/>
+        <ui:param name="imgUrl" value="/#{shopInfoBean.versionPath}assets/img/geschenkanlass/nikolaus-geschenkidee.jpg" />
+        <ui:param name="altText" value="zwei Gnome und eine Kerze" />
+        <ui:param name="linkText" value="weiterlesen »" />
+        <ui:param name="link" value="/nikolaus/" />
+      </ui:include>
+
+        <ui:include src="/content-blocks/event-box.xhtml">
+        <ui:param name="boxTitle" value="Weihnachten"/>
+        <ui:param name="boxText" value="Verschenke Einzigartiges zu Weihnachten."/>
+        <ui:param name="imgUrl" value="/#{shopInfoBean.versionPath}assets/img/geschenkanlass/weihnachten-geschenkidee.jpg" />
+        <ui:param name="altText" value="Kind hält Christbaumschmuck" />
+        <ui:param name="linkText" value="weiterlesen »" />
+        <ui:param name="link" value="/weihnachten/" />
+      </ui:include>
+
+        <ui:include src="/content-blocks/event-box.xhtml">
+        <ui:param name="boxTitle" value="Silvester"/>
+        <ui:param name="boxText" value="Rückblick und Neuanfang mit Fotogeschenken."/>
+        <ui:param name="imgUrl" value="/#{shopInfoBean.versionPath}assets/img/geschenkanlass/silvester-geschenkidee.jpg" />
+        <ui:param name="altText" value="Silvester-Partyfeier" />
+        <ui:param name="linkText" value="weiterlesen »" />
+        <ui:param name="link" value="/silvester/" />
+      </ui:include>
+ --> 
+    </section>
+  </div>
+
+
+  <div class="section">
+  
+    <h3 class="headline">Populaire gelegenheden voor geschenken:</h3>
+    <section class="row">
+
+      <ui:include src="/content-blocks/event-box.xhtml">
+        <ui:param name="boxTitle" value="Diploma-uitreiking"/>
+        <ui:param name="boxText" value="Unieke artikelen voor de mooiste dag van uw leven"/>
+        <ui:param name="imgUrl" value="/#{shopInfoBean.versionPath}assets/img/photo-gift-ideas/graduation.jpg" />
+        <ui:param name="altText" value="Diploma-uitreiking" />
+      </ui:include>
+
+      <ui:include src="/content-blocks/event-box.xhtml">
+        <ui:param name="boxTitle" value="Trouwfeest"/>
+        <ui:param name="boxText" value="Unique items for the most beautiful day of your life"/>
+        <ui:param name="imgUrl" value="/#{shopInfoBean.versionPath}assets/img/photo-gift-ideas/wedding.jpg" />
+        <ui:param name="altText" value="Trouwfeest" />
+      </ui:include>
+
+      <ui:include src="/content-blocks/event-box.xhtml">
+        <ui:param name="boxTitle" value="Geboorte"/>
+        <ui:param name="boxText" value="Leg het eerste jaar vast op foto's"/>
+        <ui:param name="imgUrl" value="/#{shopInfoBean.versionPath}assets/img/photo-gift-ideas/birth.jpg" />
+        <ui:param name="altText" value="Geboorte" />
+      </ui:include>
+
+      <ui:include src="/content-blocks/event-box.xhtml">
+        <ui:param name="boxTitle" value="Verjaardag"/>
+        <ui:param name="boxText" value="Geef een verjaardagsgeschenk dat vast niemand heeft"/>
+        <ui:param name="imgUrl" value="/#{shopInfoBean.versionPath}assets/img/photo-gift-ideas/happy-birthday.jpg" />
+        <ui:param name="altText" value="Verjaardag" />
+      </ui:include>
+
+      <ui:include src="/content-blocks/event-box.xhtml">
+        <ui:param name="boxTitle" value="Jubileum"/>
+        <ui:param name="boxText" value="Creëer een jubileumgeschenk voor uw gedeelde momenten"/>
+        <ui:param name="imgUrl" value="/#{shopInfoBean.versionPath}assets/img/photo-gift-ideas/anniversary.jpg" />
+        <ui:param name="altText" value="Jubileum" />
+      </ui:include>
+
+      <ui:include src="/content-blocks/event-box.xhtml">
+        <ui:param name="boxTitle" value="Communie &amp; bevestiging"/>
+        <ui:param name="boxText" value="De prachtigste foto's voor u en uw naasten"/>
+        <ui:param name="imgUrl" value="/#{shopInfoBean.versionPath}assets/img/photo-gift-ideas/communion.jpg" />
+        <ui:param name="altText" value="Communie &amp; bevestiging" />
+      </ui:include>
+
+
+    </section>
+  </div> 
+</section>
+
+</ui:define>
+</ui:composition>

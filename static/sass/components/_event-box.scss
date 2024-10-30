@@ -1,0 +1,40 @@
+.event-box{
+  @extend .box;
+  margin-top:10px;
+  margin-bottom:15px;
+
+  h4{
+    margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+  .head{
+    padding: 10px 15px;
+    height: 70px;
+    }
+
+  .subtitle{
+    font-size: 16px;
+      font-style: italic;
+    }
+
+  .body{
+    padding: 10px 15px;
+
+    a{
+      color: $box-more-link-color;
+      text-decoration: none;
+
+      &:hover {
+            color: darken($box-more-link-color, 10);
+            text-decoration: none;
+          }
+      }
+    }
+
+  img {
+    height: auto;
+      width: 100%;
+    }
+  }

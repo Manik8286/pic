@@ -1,0 +1,123 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+  <ui:remove>
+    <!-- If you change something here, keep in mind, there are
+         following device-dependend files:
+           - desktop/content-blocks/shoppingcart-table.xhtml
+           - tablet/content-blocks/shoppingcart-table.xhtml
+           - phone/content-blocks/shoppingcart-table.xhtml -->
+  </ui:remove>
+  <table class="p_carttable" jsf:id="data">
+    <tbody>
+      <script>
+        var thisCartProducts = [];
+        count = 0;
+      </script>
+      <ui:repeat value="#{shoppingCartBean.items}" var="item" varStatus="itemMeta" id="productsTable">
+        <ui:remove><!-- one product is two tr's --></ui:remove>
+        <tr>
+          <script>
+            thisCartProducts[count] = {
+              'name': '#{item.information.colorCarrier.originalName}',
+              'variant': '#{item.information.formatDisplayName}'
+            }
+            if (thisCartProducts[count].name == "") {
+              thisCartProducts[count].name = "Hanger Kit";
+              thisCartProducts[count].variant = "#{item.information.productName}";
+            }
+            count++;
+          </script>
+          <td><!-- image -->
+            <img class="preview" src="dynamicimage/product/#{item.productId}"
+              jsf:rendered="#{item.productType != 'UPLOAD'}" />
+            <img class="preview" src="dynamicimage/preview/cartitem/#{item.altId}"
+              jsf:rendered="#{item.productType == 'UPLOAD'}" />
+          </td>
+          <td><!-- information -->
+            <ui:include src="/content-blocks/shoppingcart-item-description.xhtml">
+              <ui:param name="info" value="#{item.information}"/>
+              <ui:param name="showEditLink" value="false"/>
+            </ui:include>
+          </td>
+          <td class="price -align-right" jsf:id="price"><!-- total price -->
+            <span class="-highlighted-text"><strong>#{item.totalGrossPriceLabel}</strong></span><br />
+            <s>#{item.unitGrossCrossPriceLabel}</s>
+          </td>
+        </tr>
+        <tr class="-controls">
+          <td colspan="3">
+            <!-- amount -->
+            <ui:fragment rendered="#{type ne 'review'}" id="hello">
+              <button jsf:id="amount" type="button" class="amount" onclick="Modal.open('#amountItem#{itemMeta.index}')">#{item.quantity}</button>
+              <div class="js-modal" id="amountItem#{itemMeta.index}">
+                <div class="head">Bedrag</div>
+                <div class="body amount-chooser">
+                  <c:forEach var="i" begin="1" end="99">
+                    <div class="choosee js-clickarea">
+                      <input id="amount_#{itemMeta.index}_#{i}" type="radio" name="amountOf#{itemMeta.index}" checked="checked" value="#{i}" jsf:rendered="#{item.quantity == i}" />
+                      <input id="amount_#{itemMeta.index}_#{i}" type="radio" name="amountOf#{itemMeta.index}" value="#{i}" jsf:rendered="#{item.quantity != i}" />
+                      <label for="amount_#{itemMeta.index}_#{i}">#{i}</label>
+                    </div>
+                    <h:commandButton style="display: none">
+                  <f:setPropertyActionListener value="#{i}" target="#{item.quantity}" />
+                  <p:ajax oncomplete="var q = document.getElementById('shoppingcartForm:productsTable:#{itemMeta.index}:hiddenQuant'); q.value=#{i}; q.onchange();" />
+                </h:commandButton>
+                  </c:forEach>
+                  <h:inputText id="hiddenQuant" value="#{item.quantity}" style="display: none">
+              <p:ajax listener="#{shoppingCartBean.cart.changedItem(item)}" update=":quickCheckout :shoppingcartForm:subprice :shoppingcartForm:finalprice :shoppingcartForm:shipping :shoppingcartForm:productsTable:amount :shoppingcartForm:productsTable:price" oncomplete="updateDom()" />
+            </h:inputText>
+                </div>
+              </div>
+            </ui:fragment>
+            <input type="text" disabled="disabled" class="amount" value="#{item.quantity}" jsf:rendered="#{type eq 'review'}" />
+
+            <!-- edit product -->
+            <a jsf:rendered="#{item.productType == 'UPLOAD'}"
+              class="change"
+              href="configurator.jsf?cartItem=#{item.altId}">#{_['Edit']}</a>
+
+            <!-- delete product -->
+            <h:commandLink
+              styleClass="delete"
+              value="#{_['Remove']}"
+              rendered="#{type ne 'review'}">
+              <p:ajax oncomplete="Modal.open('#deleteItem')" process="@this" update="" />
+              <f:setPropertyActionListener value="#{item}" target="#{shoppingCartBean.selectedItem}"/>
+            </h:commandLink>
+          </td>
+        </tr>
+      </ui:repeat>
+    </tbody>
+  </table>
+
+  <ui:fragment rendered="#{type ne 'review'}">
+
+  <div class="js-modal" id="deleteItem">
+    <div class="body">
+      #{_['Are you sure you want to delete this item?']}
+    </div>
+    <div class="foot">
+      <h:commandButton actionListener="#{shoppingCartBean.remove}"
+        onclick="Modal.close('#deleteItem');"
+        value="#{_['Remove Item']}"
+        styleClass="button -control -critical">
+        <p:ajax process="@this" update=":wholePage" oncomplete="updateDom(); xmasGuarantee(thisCartProducts, '#{shoppingCartBean.shippingCountryLabel}');" />
+      </h:commandButton>
+      <h:commandButton actionListener="#{shoppingCartBean.closeConfirmation}"
+        id="decline"
+        value="#{_['Cancel']}"
+        onclick="Modal.close('#deleteItem');"
+        type="button"
+        styleClass="button -control -nothing"/>
+    </div>
+  </div>
+
+  </ui:fragment>
+
+</ui:composition>

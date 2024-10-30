@@ -1,0 +1,270 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <section class="page-teaser #{teaserClass}">
+    <div class="showcase #{showcaseClass} #{sessionBean.userAgentType == 'phone' ? '-noPaddingTop' : ''}" style="background-image: url(#{sessionBean.userAgentType != 'phone' ? teaserBgImage : ''})" title="#{sessionBean.userAgentType != 'phone' ? showcaseTitle : ''}">
+      <ui:fragment rendered="#{sessionBean.userAgentType != 'phone'}"></ui:fragment>
+      <header class="head" jsf:rendered="#{not empty claim or not empty claimGreen or not empty claimLink or not empty claim2}">
+        <div class="claim">
+          <h:outputText value="#{claim}" escape="false" />
+          <span class="-highlighted-text">
+            <h:outputText value="#{claimGreen}" escape="false" /> 
+          </span> 
+          <h:outputText value="#{claim2}" escape="false" />
+          <ui:fragment rendered="#{not empty claimLink}">
+            - with <a href="javascript:void(0)" onclick="Modal.open('#best-price-garantie');"><h:outputText value="#{claimLink}" escape="false" /></a>
+          </ui:fragment>
+        </div>
+      </header>
+
+
+      <div class="body">
+        <!-- teaser left -->
+        <div class="product #{ProductImgClass}">
+          <ui:fragment rendered="#{empty noShowcase}">
+           
+            <ui:fragment rendered="#{not empty magnifiedImg}">
+              <img class="magnified-corner #{magnifiedImgClass}" src="#{magnifiedImg}" alt="#{altMagnifiedImg}" />
+            </ui:fragment>
+
+            <ui:fragment rendered="#{empty acrylblockProduct}">
+              <img class="#{imgClass}" jsf:rendered="#{not empty teaserProductImage and sessionBean.userAgentType == 'phone'}" src="#{teaserProductImage}" width="410" alt="#{altTeaserProductImage}" />
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty acrylblockProduct}">
+              <img class="#{imgClass}" src="#{teaserProductImage}" alt="#{altTeaserProductImage}" />
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty badgeMiddle}">
+              <div class="badge #{badgeClass}">
+                <div class="title" style="font-size:13px;">
+                  <h:outputText value="#{badgeTop}" escape="false" />
+                </div>
+                <div class="price #{alternative}">
+                  <h:outputText value="#{badgeMiddle}" escape="false" /><small><sup></sup></small>
+                </div>
+                <div class="sub #{size}">
+                  <div style="#{empty seaBadgeText1 and empty seaBadgeText2 ? 'margin-top: 7px;' : ''} ">
+                    <sup>
+                      <h:outputText value="#{badgeBottom}" escape="false" />
+                      <ui:fragment rendered="#{empty seaBadgeText1 and empty seaBadgeText2}">
+                        <h:outputText value="#{badgeBottomBottom}" escape="false" />
+                      </ui:fragment>
+                    </sup>
+                    <sup class="sup -sup2Line"><h:outputText value="#{seaBadgeText1}" escape="false" />  <h:outputText value="#{seaBadgeText2}" escape="false" /></sup>
+                  </div>
+                </div>
+              </div>
+            </ui:fragment>
+          </ui:fragment>
+        </div>
+        <!-- /teaser left -->
+
+        <!-- teaser right -->
+        <div class="info #{sessionBean.userAgentType == 'phone' ? 'whiteBlockPhone' : '-right'} #{rightBlockClass} rightWhiteBlock">
+          <h1 class="headline #{headlineClass}">
+            <h:outputText value="#{headline}" escape="false" /> 
+            <span class="-highlighted-text">#{headline2}</span> 
+            <span style="font-size:18px;">
+              <h:outputText value="#{format}" escape="false" />
+            </span>
+          </h1>
+
+          <ui:fragment rendered="#{not empty uspHeading}">
+            <h3><h:outputText value="#{uspHeading}" escape="false" /></h3>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{not empty claim1}">
+            <div class="claim1">
+              <h:outputText value="#{claim1}" escape="false" />
+            </div>
+          </ui:fragment>
+
+          <ul class="features">
+
+            <ui:fragment rendered="#{not empty teaserFeatureHighlighted or not empty teaserFeatureHighlightedGreen}">
+              <li class="-highlight">
+                <h:outputText value="#{teaserFeatureHighlighted}" escape="false" /> 
+                <span class="-green">
+                  <h:outputText value="#{teaserFeatureHighlightedGreen}" escape="false" />
+                </span>
+              </li>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty teaserFeature1}">
+              <li>
+                <span class="#{strong1} #{greenColor1}">
+                  <h:outputText value="#{teaserFeature1}" escape="false" />
+                </span>
+                <span class="#{strong1_1} #{greenColor1_1}">
+                  <h:outputText value="#{teaserFeature1_1}" escape="false" />
+                </span>
+                <span class="#{strong1_2} #{greenColor1_2}">
+                  <h:outputText value="#{teaserFeature1_2}" escape="false" />
+                </span>
+              </li>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty teaserFeature2}">
+              <li>
+                <span class="#{strong2} #{greenColor2}">
+                <h:outputText value="#{teaserFeature2}" escape="false" />
+                </span>
+                <span class="#{strong2_1} #{greenColor2_1}">
+                <h:outputText value="#{teaserFeature2_1}" escape="false" />
+                </span>
+                <span class="#{strong2_2} #{greenColor2_2}">
+                <h:outputText value="#{teaserFeature2_2}" escape="false" />
+                </span>
+              </li>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty teaserFeature3}">
+              <li>
+                <span class="#{strong3} #{greenColor3}">
+                <h:outputText value="#{teaserFeature3}" escape="false" />
+                </span>
+                <span class="#{strong3_1} #{greenColor3_1}">
+                <h:outputText value="#{teaserFeature3_1}" escape="false" />
+                </span>
+                <span class="#{strong3_2} #{greenColor3_2}">
+                <h:outputText value="#{teaserFeature3_2}" escape="false" />
+                </span>
+              </li>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty teaserFeature4}">
+              <li>
+                <span class="#{strong4} #{greenColor4}">
+                <h:outputText value="#{teaserFeature4}" escape="false" />
+                </span>
+                <span class="#{strong4_1} #{greenColor4_1}">
+                <h:outputText value="#{teaserFeature4_1}" escape="false" />
+                </span>
+                <span class="#{strong4_2} #{greenColor4_2}">
+                <h:outputText value="#{teaserFeature4_2}" escape="false" />
+                </span>
+              </li>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty teaserFeature5}">
+              <li>
+                <span class="#{strong5} #{greenColor5}">
+                  <h:outputText value="#{teaserFeature5}" escape="false" />
+                </span>
+                <span class="#{strong5_1} #{greenColor5_1}">
+                  <h:outputText value="#{teaserFeature5_1}" escape="false" />
+                </span>
+                <span class="#{strong5_2} #{greenColor5_2}">
+                  <h:outputText value="#{teaserFeature5_2}" escape="false" />
+                </span>
+                <u>
+                  <h:outputText value="#{teaserFeature5Plus}" escape="false" />
+                </u>
+              </li>
+            </ui:fragment>
+          </ul>
+
+          <ui:fragment rendered="#{codeField == true}">
+            <div class="teaserCodeField #{topCorrection}">
+             <div class="topTitle">
+                <b>
+                  <h:outputText value="#{codeTitle}" escape="false" />
+                </b>
+              </div>
+              <div class="content">
+                <span>
+                  <h:outputText value="#{codeContent}" escape="false" />
+                </span>
+              </div>
+              <p>
+                <small>
+                  <h:outputText value="#{validUntil}" escape="false" />
+                </small>
+              </p>
+                          <br />
+            </div>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{empty quotes}">
+            <ui:include src="/content-blocks/teaser-quotes.xhtml">
+              <ui:param name="quotesClass" value="quotesClass" />
+            </ui:include>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{not empty Ndate and not empty quotes}">
+            <br />
+          </ui:fragment>
+
+          <ui:fragment rendered="#{ not empty teaserPrice }">
+            <div class="price">
+              <span>
+                <s>
+                  <h:outputText value="#{teaserCrossPrice}" escape="false" />
+                </s>
+                <sup jsf:rendered="#{asterix != 'false'}"> *</sup>
+                <br/>
+              </span>
+              <span class="highlight">
+                <small jsf:rendered="#{not empty from}"><h:outputText value="#{from}" escape="false" /> </small>
+                <h:outputText value="#{teaserPrice}" escape="false" />
+                <sup jsf:rendered="#{asterix != 'false'}"> *</sup>
+                <small class="highlight" jsf:rendered="#{not empty each}">
+                  <h:outputText value="#{each}" escape="false" />
+                </small>
+              </span>
+            </div>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{showUpload != false}">
+            <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+              <ui:param name="directuploadProductId" value="#{uploadId}" />
+              <ui:param name="directuploadClass" value="action" />
+              <ui:param name="buttonText" value="#{buttonText}" />
+            </ui:include>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{not empty customButtonLink and customLink != 'void'}">
+            <div class="upload-button #{customButtonClass}"> <br/>
+              <a href="#{customButtonLink}" target="#{empty blank ? '_blank' : ''}" class="filebutton">
+                <button type="button" class="js-du-button action filebutton -span-12">#{customButtonText}</button>
+              </a>
+            </div>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{customLink == 'void'}">
+            <a onclick="#{customButtonOnClick}" class="filebutton">
+              <button type="button" class="js-du-button filebutton button action -arrow -span-12 #{customButtonClass}">#{customButtonText}</button>
+            </a>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{not empty Ndate}">
+            <p style="padding-left: 40px;"><small><h:outputText value="#{Ndate}" escape="false" /></small></p>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{shiipingInfo != false and sessionBean.userAgentType != 'desktop'}">
+            <div class="freeShippingTeaser text-center #{ShippingInfoText}">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/fri-leverans.png" class="freeShippingLogo" alt="24 hora logo" width="25" />
+              <a href="/betalning-leveransinfo.jsf" target="_blank" class="-shippingLinkMobile">
+                <span class="b -red-text">
+                  FRI leverans
+                </span>
+                <span>från 800 kr.</span>
+              </a>
+            </div>
+          </ui:fragment>
+          <div jsf:rendered="#{not empty maskBadges}" class="-faceMaskInfo faceMaskBadges">    
+            <img src="/#{shopInfoBean.versionPath}assets/img/trust/oeko-tex-desktop.jpg" data-srcset="/#{shopInfoBean.versionPath}assets/img/trust/oeko-tex-desktop.jpg" class="oeko oeko-trust-badge"/>
+            <img src="/#{shopInfoBean.versionPath}assets/img/icons/Antibakteriell-icon-de.svg" class="antibacterial-badge"/>
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/backgrounds/bestcanvas-se-trustpilot.svg" height="90px" alt="Pålitlig service" class="trustpilot trustpilot-badge"/>
+        </div>
+        </div>
+        <!-- /teaser right -->
+      </div>
+    </div>
+  </section>
+
+</ui:composition>

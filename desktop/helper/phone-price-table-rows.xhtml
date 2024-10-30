@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:remove><!--
+    Since the beans for phone cases are rather inhomogeneous we need to tweak the design for this table a little.
+    We're using <c:choose> to determine with which manufacturer we're dealing (this is why we need explictly named price
+    list from price-accordion-phone.xhtml).
+    We then set up our type to match the bean we need.
+  --></ui:remove>
+
+  <c:choose>
+    <c:when test="${not empty samsungPrices}">
+      <ui:repeat value="#{fn:split(samsungPrices, ',')}" var="f">
+        <c:set var="type" value="Samsung_${f}_Case_NEW" />
+        <tr>
+          <td>Samsung #{f}</td>
+          <td>
+            <ui:fragment rendered="#{priceBean.productPrice('Phone_Case_NEW_Bestcanvas_SE', 'Glossy phone cover', type) ne '#ERROR#'}">
+              <span class="-outdated">#{priceBean.productCrossPrice('Phone_Case_NEW_Bestcanvas_SE', 'Glossy phone cover', type)}</span>
+              <span class="-highlighted">#{priceBean.productPrice('Phone_Case_NEW_Bestcanvas_SE', 'Glossy phone cover', type)}<sup>*</sup></span>
+            </ui:fragment>
+            <h:outputText value="—" rendered="#{priceBean.productPrice('Phone_Case_NEW_Bestcanvas_SE', 'Glossy phone cover', type) eq '#ERROR#'}" />
+          </td>
+          <td>
+            <ui:fragment rendered="#{priceBean.productPrice('Phone_Case_NEW_Bestcanvas_SE', 'Matt cell phone cover', type) ne '#ERROR#'}">
+              <span class="-outdated">#{priceBean.productCrossPrice('Phone_Case_NEW_Bestcanvas_SE', 'Matt cell phone cover', type)}</span>
+              <span class="-highlighted">#{priceBean.productPrice('Phone_Case_NEW_Bestcanvas_SE', 'Matt cell phone cover', type)}<sup>*</sup></span>
+            </ui:fragment>
+            <h:outputText value="—" rendered="#{priceBean.productPrice('Phone_Case_NEW_Bestcanvas_SE', 'Matt cell phone cover', type) eq '#ERROR#'}" />
+          </td>
+        </tr>
+      </ui:repeat>
+    </c:when>
+
+    <c:when test="${not empty iPhonePrices}">
+      <ui:repeat value="#{fn:split(iPhonePrices, ',')}" var="f">
+        <c:set var="type" value="iPhone_Case_#{f}_NEW" />
+        <tr>
+          <td>iPhone #{f}</td>
+          <td>
+            <ui:fragment rendered="#{priceBean.productPrice('Phone_Case_NEW_Bestcanvas_SE', 'Glossy phone cover', type) ne '#ERROR#'}">
+              <span class="-outdated">#{priceBean.productCrossPrice('Phone_Case_NEW_Bestcanvas_SE', 'Glossy phone cover', type)}</span>
+              <span class="-highlighted">#{priceBean.productPrice('Phone_Case_NEW_Bestcanvas_SE', 'Glossy phone cover', type)}<sup>*</sup></span>
+            </ui:fragment>
+            <h:outputText value="—" rendered="#{priceBean.productPrice('Phone_Case_NEW_Bestcanvas_SE', 'Glossy phone cover', type) eq '#ERROR#'}" />
+          </td>
+          <td>
+            <ui:fragment rendered="#{priceBean.productPrice('Phone_Case_NEW_Bestcanvas_SE', 'Matt cell phone cover', type) ne '#ERROR#'}">
+              <span class="-outdated">#{priceBean.productCrossPrice('Phone_Case_NEW_Bestcanvas_SE', 'Matt cell phone cover', type)}</span>
+              <span class="-highlighted">#{priceBean.productPrice('Phone_Case_NEW_Bestcanvas_SE', 'Matt cell phone cover', type)}<sup>*</sup></span>
+            </ui:fragment>
+            <h:outputText value="—" rendered="#{priceBean.productPrice('Phone_Case_NEW_Bestcanvas_SE', 'Matt cell phone cover', type) eq '#ERROR#'}" />
+          </td>
+        </tr>
+      </ui:repeat>
+    </c:when>
+  </c:choose>
+</ui:composition>

@@ -1,0 +1,14 @@
+.nav-box {
+  ul > li {
+    margin: 0 -10px;
+    border-bottom: 1px solid $lighter-box-border;
+
+    > a {
+      padding-left: 10px;
+    }
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+}

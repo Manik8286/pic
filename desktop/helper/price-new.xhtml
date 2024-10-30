@@ -1,0 +1,149 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+					      xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:include src="/page-blocks/cms/variables.xhtml" />
+
+ 
+  <c:choose>
+    <c:when test="#{productType eq canvas}">
+      <c:set value="Canvas_Bestcanvas_SE"             var="product" />
+      <c:set value="Canvas"                            var="printMaterial" />
+      <c:set value="Canvas #{formatSize}"              var="format" />
+      <c:if test="#{formatSize eq '150x100' or formatSize eq '160x90' or formatSize eq '160x40'}">
+        <c:set value="4 cm"              var="thickness" />
+      </c:if>
+    </c:when>
+     <c:when test="#{productType eq aluminium}">
+      <c:set value="Aluminium Print_Bestcanvas_SE"    var="product" />
+      <c:set value="Aluminium Glossy"                  var="printMaterial" />
+      <c:set value="Alu #{formatSize}"                 var="format" />
+    </c:when>
+    <c:when test="#{productType eq acryl_glass}">
+      <c:set value="Classic Acryl Glass Print_Bestcanvas_SE"  var="product" />
+      <c:set value="Acryl Glass Classic"                       var="printMaterial" />
+      <c:set value="Acryl #{formatSize}"               var="format" />
+    </c:when>
+    <c:when test="#{productType eq acryl_alu}">
+      <c:set value="Acryl + Alu Print_Bestcanvas_SE"  var="product" />
+      <c:set value="Acryl+Alu"                         var="printMaterial" />
+      <c:set value="Acryl+Alu #{formatSize}"           var="format" />
+    </c:when>
+    <c:when test="#{productType eq forex}">
+      <c:set value="Forex Print_Bestcanvas_SE"        var="product" />
+      <c:set value="Forex"                             var="printMaterial" />
+      <c:set value="Forex #{formatSize}"               var="format" />
+    </c:when>
+    <c:when test="#{productType eq mug}">
+      <c:set value="Mug_Bestcanvas_SE"                var="product" />
+      <c:set value="Mug"                               var="printMaterial" />
+      <c:set value="Mug Left Landscape"                var="format" />
+    </c:when>
+    <c:when test="#{productType eq pillow}">
+      <c:set value="Pillow_Bestcanvas_SE"             var="product" />
+      <c:set value="Pillow"                            var="printMaterial" />
+      <c:set value="Pillow #{formatSize}"              var="format" />
+    </c:when>
+    <c:when test="#{productType eq mousepad}">
+      <c:set value="Mousepad_Bestcanvas_SE"           var="product" />
+      <c:set value="Mousepad"                          var="printMaterial" />
+      <c:set value="Mousepad 22x18 bcnl"               var="format" />
+    </c:when>
+    <c:when test="#{productType eq puzzle}">
+      <c:set value="Puzzle_Bestcanvas_SE"             var="product" />
+      <c:set value="Puzzle"                            var="printMaterial" />
+      <c:set value="Puzzle 20x27 cm - 88 Teile"        var="format" />
+    </c:when>
+    <c:when test="#{productType eq phone_glossy}">
+      <c:set value="Phone_Case_NEW_Bestcanvas_SE"     var="product" />
+      <c:set value="Glossy phone cover"                var="printMaterial" />
+      <c:set value="iPhone_Case_5_NEW"                 var="format" />
+    </c:when>
+    <c:when test="#{productType eq carpet}">
+      <c:set value="Carpet_Bestcanvas_SE"             var="product" />
+      <c:set value="Carpet"                            var="printMaterial" />
+      <c:set value="Carpet #{formatSize}"              var="format" />
+    </c:when>
+    <c:when test="#{productType eq pillow_premium}">
+      <c:set value="Premium_Pillow_Bestcanvas_SE"     var="product" />
+      <c:set value="Premium Cushion"                   var="printMaterial" />
+      <c:set value="Premium Cushion #{formatSize}"     var="format" />
+    </c:when>
+    <c:when test="#{productType eq passepartout}">
+      <c:set value="Framed_Picture_Bestcanvas_SE"     var="product" />
+      <c:set value="Passepartout Poster"               var="printMaterial" />
+      <!-- Because actual format is dwhenferent -->
+      <c:if test="#{formatSize eq '24x24' or formatSize eq '20x20'}">
+        <c:set value="17x17"                       var="formatSizeAlt" />
+      </c:if>
+      <c:if test="#{formatSize eq '34x24' or formatSize eq '30x20'}">
+        <c:set value="27x17"                       var="formatSizeAlt" />
+      </c:if>
+      <c:if test="#{formatSize eq '44x34' or formatSize eq '40x30'}">
+        <c:set value="37x27"                       var="formatSizeAlt" />
+      </c:if>
+      <c:if test="#{formatSize eq '44x44' or formatSize eq '40x40'}">
+        <c:set value="37x37"                       var="formatSizeAlt" />
+      </c:if>
+      <c:if test="#{formatSize eq '64x44' or formatSize eq '60x40'}">
+        <c:set value="57x37"                       var="formatSizeAlt" />
+      </c:if>
+      <c:if test="#{formatSize eq '84x64' or formatSize eq '80x60'}">
+        <c:set value="77x57"                       var="formatSizeAlt" />
+      </c:if>
+      <c:set value="Passepartout Poster #{formatSizeAlt}" var="format" />
+    </c:when>
+    <c:when test="#{productType eq blanket}">
+      <c:set value="Blanket_Bestcanvas_SE"            var="product" />
+      <c:set value="Blanket Basic"                     var="printMaterial" />
+      <c:set value="Blanket #{formatSize}"             var="format" />
+    </c:when>
+    <c:when test="#{productType eq acrylblock}">
+      <c:set value="Acrylblock_Bestcanvas_SE"         var="product" />
+      <c:set value="Acrylblock"                        var="printMaterial" />
+      <c:set value="Acrylblock #{formatSize}"          var="format" />
+    </c:when>
+    <c:when test="#{productType eq wood}">
+      <c:set value="Wood Print_Bestcanvas_SE"         var="product" />
+      <c:set value="Wood Classic"                      var="printMaterial" />
+      <c:set value="Wood #{formatSize}"                var="format" />
+    </c:when>
+    <c:when test="#{productType eq mug_magic}">
+      <c:set value="Magic_Mug_Bestcanvas_SE"          var="product" />
+      <c:set value="Magic Mug"                         var="printMaterial" />
+      <c:set value="Magic Mug Left Landscape"          var="format" />
+    </c:when>
+    <c:when test="#{productType eq mug_porcelain}">
+      <c:set value="Mug-Porcelain_Bestcanvas_SE"      var="product" />
+      <c:set value="Porcelain Mug"                     var="printMaterial" />
+      <c:set value="Porcelain Mug Left Landscape"      var="format" />
+    </c:when>
+    <c:when test="#{productType eq mug_color}">
+      <c:set value="Inner_Mug_Bestcanvas_SE"          var="product" />
+      <c:set value="Inner colored mug"                 var="printMaterial" />
+      <c:set value="Inner Colored Mug Left Landscape"  var="format" />
+    </c:when>
+    <c:when test="#{productType eq blanket_premium}">
+      <c:set value="Premium_Blanket_Bestcanvas_SE"    var="product" />
+      <c:set value="Blanket Premium"                   var="printMaterial" />
+      <c:set value="Premium Blanket #{formatSize}"     var="format" />
+    </c:when>
+    <c:when test="#{productType eq towel}">
+      <c:set value="Towel_Bestcanvas_SE"              var="product" />
+      <c:set value="Towel"                             var="printMaterial" />
+      <c:set value="Towel #{formatSize}"               var="format" />
+    </c:when>
+    <c:when test="#{productType eq starmap_forex}">
+      <c:set value="Starmap_Forex_Bestcanvas_SE"              var="product" />
+      <c:set value="Starmap Forex"                             var="printMaterial" />
+      <c:set value="Starmap Forex #{formatSize}"               var="format" />
+    </c:when>
+    <c:otherwise></c:otherwise>
+  </c:choose>
+
+  <c:set value="#{priceBean.productPrice(product,printMaterial,format,thickness)}"           scope="request" var="price" />
+  <c:set value="#{priceBean.productCrossPrice(product,printMaterial,format,thickness)}"      scope="request" var="priceCross" />
+  <c:set value="#{format}"                                                                   scope="request" var="format" />
+
+</ui:composition>

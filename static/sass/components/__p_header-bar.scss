@@ -1,0 +1,283 @@
+.topbar-wrapper {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 202;
+  position: relative;
+
+  &.checkout {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+.js-countdown {
+  font-family: Arial,sans-serif;
+  font-size: 12px;
+
+  &.-special {
+    line-height: 1.2 !important;
+    padding-left: 0 !important;
+  }
+}
+
+.header-plus-bar {
+  font-size: 12px;
+
+  &.-xmas {
+    color: $white;
+    padding-bottom: 5px;
+
+    .js-countdown {
+      display: inline-block !important;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a {
+      color: $white !important;
+      text-decoration: underline;
+    }
+  }
+}
+
+// Main Top Banner
+.header-bar {
+  position: relative;
+  font-size: 12px;
+  font-weight: $weight-normal;
+  height: auto;
+  padding-bottom: 1px;
+  box-shadow: none;
+  z-index: 200 !important;
+  text-align: center;
+  line-height: 1.2;
+  color: #fff;
+
+  .-flex {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    .js-countdown,
+    .link {
+      padding: 0 5px;
+      width: unset !important;
+    }
+  }
+
+  &.-free-shipping {
+    color: $black;
+    background-color: $section-background-color-alternate;
+  }
+
+  // Top banner deal
+  &.-topbannerDeal {
+    min-height: auto;
+    padding: 0;
+    .-topbannerDealLogo {
+      width: 300px;
+      height: 22px;
+      line-height: 16px;
+      margin: 0 auto;
+      font-size: 16px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+  }
+  // end of Top banner deal
+
+  .topBannerMsg {
+    font-size: 12px;
+    &.separate {
+      display: block;
+      margin-top: -3px;
+      +.js-countdown {
+        font-weight: $weight-bold;
+        display: inline-block;
+        +.link {
+          color: #fff;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  svg.icon {
+    fill: $white;
+    width: 14px;
+    height: 12px;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  // BG Colors for top bars
+
+  &.black-organic {
+    background: #2D2926;
+  }
+  &.red-old-organic {
+    background: #F10006;
+  }
+  &.red-new-organic {
+    background: #D40140;
+  }
+  &.red-cos-organic {
+    background: #E60042;
+  }
+
+  &.-black {
+    background-color: black !important;
+  }
+
+  &.-cyber-monday {
+    background-color: #ffa500;
+    .black{
+      color:black;
+    }
+  }
+
+  &.-withShippingCountdown {
+    .topBannerMsg{
+      display: block;
+      margin-top: -3px;
+    }
+    .js-countdown {
+      font-weight: $weight-bold;
+      width: 50%;
+      display: inline-block;
+      float: right;
+    }
+    .link{
+      color: #fff;
+      display: inline-block;
+    }
+  }
+
+  &.-linkUnder {
+    .js-countdown {
+      display: inline-block;
+    }
+    .link {
+      color: #fff;
+    }
+  }
+
+  &.-countdown-right {
+    .js-countdown {
+      float: none;
+      display: block;
+    }
+  }
+
+  &.-until {
+    .js-countdown {
+      float: none;
+      display: block;
+      margin-right: 15px;
+    }
+  }
+
+  &.-withAlignedCountdown {
+    .js-countdown {
+      width: 100%;
+      padding-top: 2px;
+      display: inline-block;
+    }
+  }
+
+  &.-normalCountdown {
+    .js-countdown {
+      padding-top: 2px;
+    }
+  }
+
+  &.-font-message {
+    .-countdownWithLink {
+      font-weight: $weight-bold;
+      margin-left: 0;
+    }
+
+    .shippingBannerLink {
+      margin-top: 0;
+      margin-left: 0;
+      font-size: 11px;
+      display: initial;
+    }
+    .shippingBannerLink a {
+      color: #FFF;
+    }
+  }
+
+// Gray Top banner (newsletter)
+  &.header-bar-news {
+    background-color: rgb(95, 94, 94);
+    display: block;
+    line-height: normal;
+    height: auto;
+    box-shadow: none;
+    position: relative;
+
+    .closeGreyBanner {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      right: 0;
+      cursor: pointer;
+      background-color: transparent;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      border-radius: 2px;
+      -webkit-transition: background .2s;
+      -moz-transition: background .2s;
+      -o-transition: background .2s;
+      transition: background .2s;
+      z-index: 30;
+      color: #FFF;
+
+      &:before {
+        content: '×';
+        display: block;
+        position: absolute;
+        font-size: 25px;
+        line-height: 35px;
+        right: 5px;
+        font-weight: $weight-normal;
+        top: -5px;
+      }
+    }
+
+    .input {
+      height: 20px;
+      font-style: italic;
+      padding: 0 10px;
+      width: 150px;
+    }
+
+    .field {
+      padding: 5px 0;
+    }
+
+    .news-button {
+      background: #35B2B6!important;
+      color: #fff;
+      display: inline-block;
+      height: 20px;
+      font-size: 13px;
+      line-height: 1em;
+      padding: 0 15px;
+      text-decoration: none;
+      border-radius: 4px;
+      border: none;
+      box-sizing: border-box;
+      text-align: center;
+      position: relative;
+    }
+  }
+
+  .code-border {
+    border: 1px solid;
+    padding: 2px 5px;
+  }
+}
+

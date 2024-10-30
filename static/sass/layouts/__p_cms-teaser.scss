@@ -1,0 +1,160 @@
+.cms-teaser {
+  background-color: $lightergrey;
+  
+  &.-product {
+    background-color: $lightergrey;
+    > .showcase {
+      height: auto;
+      padding-top: 0;
+
+      >.body {
+
+        >.product {
+          width: 100%;
+          float: none;
+
+          .image {
+            box-sizing: border-box;
+            padding: 2px 3px 4px;
+            max-width: calc(100% - 40px);
+            margin: 15px 20px 0 20px;
+          }
+
+          > .badge {
+            padding: 3px 2px 3px 5px;
+            right: 0;
+            top: auto;
+            bottom: 10px;
+            height: 80px;
+
+            &:before {
+              left: -28px;
+              border-top: 40px solid transparent;
+              border-bottom: 40px solid transparent;
+              border-right: 27px solid $red;
+            }
+
+            .title {
+              font-size: 14px;
+            }
+
+            .price {
+              line-height: 1.4;
+              font-size: 20px;
+            }
+
+            .text {
+              font-size: 10px;
+              line-height: 1;
+            }
+          }
+        }
+
+        > .info {
+          float: none;
+          box-sizing: border-box;
+          background: $white;
+          padding: 20px 10px;
+          width: auto;
+          background-color: $white;
+          margin: 10px 10px 0;
+          border-radius: 3px;
+
+          > .headline {
+            font-size: 20px;
+            font-weight: 700;
+          }
+
+          > .features li {
+              font-size:14px;
+          }
+
+          > .js-du {
+            > .upload-button {
+              display: block;
+              padding-left: 0;
+
+              .filebutton {
+                line-height: 45px;
+                font-size: 20px;
+                height: 45px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &.-photogifts {
+    @extend .-product;
+
+    > .showcase {
+      >.body {
+        >.product {
+          > .badge {
+            padding: 5px;
+            right: 0;
+            top: auto;
+            bottom: 10px;
+            height: 80px;
+
+            &:before {
+              left: -27px;
+              border-top: 40px solid transparent;
+              border-bottom: 40px solid transparent;
+              border-right: 27px solid $red;
+            }
+
+            .title {
+              font-size: 14px;
+              line-height: 1.4;
+            }
+
+            .price {
+              line-height: 1.4;
+              font-size: 20px;
+            }
+
+            .text {
+              font-size: 14px;
+              line-height: 1.4;
+            }
+
+            &.-cross {
+              padding: 3px 2px 3px 5px;
+              right: 0;
+              top: auto;
+              bottom: 10px;
+              height: 80px;
+
+              &:before {
+                left: -28px;
+                border-top: 40px solid transparent;
+                border-bottom: 40px solid transparent;
+                border-right: 27px solid $red;
+              }
+
+              .title {
+                font-size: 14px;
+              }
+
+              .price {
+                line-height: 1.4;
+                font-size: 20px;
+              }
+
+              .text {
+                font-size: 10px;
+                line-height: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.-cmr-teaser {
+    @extend .-photogifts;
+  }
+}

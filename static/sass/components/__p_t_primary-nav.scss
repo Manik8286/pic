@@ -1,0 +1,79 @@
+$border-radius: 4px;
+
+._p_t_primary-nav {
+  background-color: $accordion-nav-background;
+  font-size: inherit;
+  border-top-right-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+  color: $white;
+  overflow: auto;
+
+  .NEW_badge{
+    color: $white;
+    background: $red;
+    font-size: 10px;
+    height: auto;
+    line-height: 12px;
+    padding: 3px 4px;
+    border-radius: 3px;
+    display: inline-block;
+    width: auto;
+    position: relative;
+  }
+
+  > .nav {
+    @extend .accordion-nav;
+  }
+
+  > .interact {
+    border-bottom: 1px solid $accordion-nav-invert-color;
+    @include clearfix;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  > .interact > .action {
+    display: table;
+    float: left;
+    padding: 10px 5px 10px 5px;
+    font-size: 0.9em;
+
+    &:not(:last-child) {
+      border-right: 1px solid $accordion-nav-invert-color;
+    }
+  }
+
+  .action > .icon {
+    fill: currentColor;
+    width: 10px;
+    height: 18px;
+    float: left;
+    display: block;
+    margin-right: 10px;
+
+    &.phone {
+      width: 12px;
+    }
+  }
+}
+
+._p_t_primary-nav.-bigger {
+  > .nav {
+    @extend .accordion-nav.-bigger;
+  }
+
+  > .interact > .action {
+    padding: 19px 29px;
+  }
+
+  .action > .icon {
+    margin-top: 3px;
+    height: 15px;
+    width: 17px;
+  }
+
+}

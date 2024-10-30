@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<div class="hidden" vocab="http://schema.org/" typeof="Product">
+		<meta property="brand" content="BestCanvas.se" />
+		<meta property="name" content="#{name}" />
+		<meta property="sku" content="#{sku}" />
+		<span property="offers" typeof="Offer">
+			<meta property="url" content="#{url}" />
+			<meta property="priceCurrency" content="#{shopInfoBean.shopCurrencyCode}" />
+			<meta property="price" content="#{fn:trim(price.replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+			<span property="seller" typeof="Organization">
+				<meta property="name" content="BestCanvas.se" />
+			</span>
+			<meta property="name" content="#{name}" />
+			<link property="itemCondition" href="http://schema.org/NewCondition" />
+			<link property="availability" href="http://schema.org/InStock" />
+		</span>
+	</div>
+
+</ui:composition>

@@ -1,0 +1,34 @@
+.price-tables {
+  position: relative;
+
+  > .panel {
+    top: 0;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    &.-visible {
+      display: block;
+    }
+
+    &.-active {
+      opacity: 1;
+    }
+
+    .upload {
+      @extend .button_action;
+      @extend .button_action_mod-arrow;
+      float: right;
+    }
+
+    .table + .upload {
+      margin-top: -30px;
+      margin-bottom: 30px;
+    }
+  }
+  .table tr .-highlighted {
+    width: 82px;
+    display: inline-block;
+    font-weight: $weight-semibold;
+  }
+}

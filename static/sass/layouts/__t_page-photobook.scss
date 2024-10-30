@@ -1,0 +1,32 @@
+.page-photobook {
+
+  .plattforms {
+    @extend .row;
+    .-centered {
+      margin: 0 auto;
+      margin-bottom: 30px;
+    }
+  }
+
+  .plattforms .web {
+    @extend .col;
+    @extend %-span-8;
+    @extend .col.-centered;
+  }
+
+  .article-showcase:last-of-type{
+    padding-bottom: 0;
+  }
+
+  .articles > .article-showcase > .image {
+    @extend .col;
+    @extend %-span-10;
+    @extend .col.-centered;
+  }
+
+  .articles > .article-showcase > .description {
+    @extend .col;
+    @extend %-span-10;
+    @extend .col.-centered;
+  }
+}

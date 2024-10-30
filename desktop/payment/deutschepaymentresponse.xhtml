@@ -1,0 +1,18 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:param name="pageTitle" value="#{_['Please wait...']}" />
+
+<ui:define name="meta">
+  <meta name="robots" content="NOINDEX,NOFOLLOW" />
+</ui:define>
+
+<ui:define name="content">
+  <script type="text/javascript">
+    window.onload = function() {window.open('#{sankyuWpfBean.confirmUrl}','_parent');};
+  </script>
+</ui:define>
+
+</ui:composition>

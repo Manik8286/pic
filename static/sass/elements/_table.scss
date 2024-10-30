@@ -1,0 +1,174 @@
+.table {
+  width: 100%;
+  font-family: $default-font-family;
+  font-size: 14px;
+  text-align: left;
+
+  // alternating row background color
+  &.-striped {
+    tbody {
+      tr:nth-child(odd) {
+        background-color: $table-row-odd-color;
+      }
+      tr:nth-child(even) {
+        background-color: $table-row-even-color;
+      }
+      tr.-not-striped {
+        background-color: $table-row-odd-color;
+      }
+    }
+  }
+
+  &.-striped-inverted {
+    tbody {
+      tr:nth-child(even) {
+        background-color: $table-row-odd-color;
+      }
+      tr:nth-child(odd) {
+        background-color: $table-row-even-color;
+      }
+      tr.-not-striped {
+        background-color: $table-row-odd-color;
+      }
+      tr.-active {
+        border: 1px solid $newGreen;
+      }
+    }
+  }
+
+  &.-smallerFont {
+    font-size: 13px;
+  }
+
+  &.-selection {
+    table-layout: fixed;
+
+    td:first-child,
+    th:first-child {
+      width: 15px;
+    }
+
+    &.-has-3 {
+      td:first-child,
+      th:first-child {
+        width: 15px;
+      }
+
+      td, th {
+        width: 50%;
+      }
+    }
+
+    &.-has-2 {
+      td:first-child,
+      th:first-child {
+        width: 15px;
+      }
+
+      td, th {
+        width: 100%;
+      }
+    }
+  }
+
+  &.-hoverable {
+    // ToDo
+  }
+
+  &.-centered {
+    text-align: center;
+  }
+
+  &.-equal-5 {
+    td, th {
+      width: 20%;
+    }
+
+    th {
+      white-space: nowrap;
+    }
+  }
+
+  &.-equal-4 {
+    td, th {
+      width: 25%;
+    }
+
+    th {
+      white-space: nowrap;
+    }
+  }
+
+  &.-space-bottom {
+    margin-bottom: 45px;
+  }
+
+  &.-equal-3 {
+    td, th {
+      width: 33.333%;
+    }
+  }
+
+  &.-equal-2 {
+    td, th {
+      width: 50%;
+    }
+  }
+
+  &.-tall {
+    td {
+      height: 50px;
+    }
+  }
+
+  thead {
+    font-weight: $weight-semibold;
+  }
+
+  td, th {
+    padding: 5px;
+  }
+  &.-discounted td
+  {
+    padding:5px 0;
+  }
+  &.-discounted td:nth-child(3)
+  {
+        padding: 5px 5px 5px 0;
+  }
+
+  tr .-highlighted {
+    color: $table-col-highlight-color;
+    font-weight: $weight-semibold;
+    &.-addWidth {
+      width: 31% !important;
+    }
+  }
+
+  tr .-highlighted.-discounted {
+    color: $redish;
+    font-weight: 700;
+  }
+
+  tr .-outdated {
+    text-decoration: line-through;
+  }
+
+  tr .-heavy {
+    font-weight: $weight-semibold;
+  }
+
+  .-align-left {
+    text-align: left;
+  }
+
+  .-align-right {
+    text-align: right;
+  }
+
+  > .-highlighted {
+    background-color: $table-head-highlighted-background-color;
+    color: $table-head-highlighted-color;
+    font-weight: $weight-semibold;
+  }
+}

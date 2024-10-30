@@ -1,0 +1,51 @@
+.orders {
+
+  .shippinginfo {
+    margin: 20px -10px 0 -10px;
+
+    > .address {
+      @extend .col;
+      @extend %-span-4;
+
+      margin-bottom: 20px;
+
+      > .addressbox {
+        @extend .box;
+
+        padding: 0 10px;
+        height: 100%;
+
+        > .title {
+          font-size: 16px;
+          font-weight: 700; // $font-semibold wont work here
+          margin-bottom: 12px;
+          word-break: break-word;
+        }
+
+        > .content {
+          white-space: pre;
+          margin: 0;
+        }
+      }
+    }
+
+    > .payment {
+      @extend .col;
+      @extend %-span-6;
+
+      > .paymentbox {
+        @extend .box;
+
+        padding: 15px 10px 20px 10px;
+
+         > .title {
+          font-size: 16px;
+          font-weight: 700; // $font-semibold wont work here
+          margin-bottom: 12px;
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+}

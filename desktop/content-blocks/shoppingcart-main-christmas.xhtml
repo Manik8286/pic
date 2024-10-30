@@ -1,0 +1,148 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions">
+  <div class="innercart" jsf:id="cartContent">
+    <c:choose>
+      <c:when test="#{empty shoppingCartBean.items}">
+        <div class="head">
+          <h1 class="legend">#{_['Empty Shopping Cart']}</h1>
+        </div>
+        <div class="overview">
+          <p>#{_['You have no items in your shopping cart.']}</p>
+          <a class="button -action -arrow" href="/">Shopping vidare</a>
+        </div>
+      </c:when>
+      <c:otherwise>
+        <div class="overview">
+          <h:form id="shoppingcartForm">
+            <h:messages id="messageTop"
+                        globalOnly="true"
+                        styleClass="outmsg"
+                        errorClass="-error"
+                        warnClass="-warn"
+                        infoClass="-info" />
+            <ui:include src="/content-blocks/shoppingcart-table-christmas.xhtml">
+              <ui:param name="formId" value="shoppingcartForm"/>
+              <ui:param name="updateIds" value=":cartContent"/>
+            </ui:include>
+            <div class="next js-next">
+              <div class="more">
+                <a href="/singleupload.jsf" class="action">#{_['Upload Another Image']}</a>
+              </div>
+              <div class="checkout">
+                <div class="form-group -inline -collapse">
+                  <div class="label">
+                    <ui:include src="/helper/svg.xhtml">
+                      <ui:param name="svgClass" value="lock" />
+                      <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-checkout.svg#checkout-lock" />
+                    </ui:include>
+                    Säker SSL-Encoding
+                  </div>
+                  <button type="button"
+                          jsf:id="proceedToCheckout"
+                          jsf:disabled="#{shoppingCartBean.checkoutDisabled}"
+                          class="action"
+                          onclick="window.open('#{loginBean.loggedIn == true ? 'orderaddresses.jsf' : 'customer.jsf?redirect=orderaddresses.jsf'}', '_self')">
+                    Gå till kassan
+                  </button>
+                  <div class="checkout-padding express-payment payment-items">
+                      <!--paypal express -->
+                  <h:commandLink value="">
+                      <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/checkout-logo-medium-se.png"
+                      srcset="assets/img/logo/checkout-logo-medium-se.png 1x, assets/img/logo/checkout-logo-medium-se-2x.png 2x"
+                      alt="Betala med" />
+
+                    <!-- <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/checkout-logo-medium-se.png" alt="Betala med"/> -->
+                    <p:ajax onstart="showToast('Vänligen vänta: Omdirigerar till betalningstjänst, vänligen vänta…'); block($('body'));" global="false" process="@this" update=":paypalform" oncomplete="submitPayPalPayment();" />
+                  </h:commandLink>
+                    </div>
+                </div>
+
+              </div>
+              <div class="coupon form-group"
+                   jsf:id="couponCodeBox"
+                   jsf:rendered="#{(shoppingCartBean.customerDiscountValueToNextLevel == '') and
+                                   (sessionServicesBean.discountCode.code == null or
+                                    sessionServicesBean.discountCode.code == '' or
+                                    sessionServicesBean.discountCode.code == '5WK29E3CTUA2LV63GEOP' or
+                                    sessionServicesBean.discountCode.code == 'overwriteOtherCodes' or
+                                    sessionServicesBean.discountCode.code == '5V21HTF05EV7062UCLB1' or
+                                    sessionServicesBean.discountCode.code == 'LayoutChangeOnly' or
+                                    sessionServicesBean.discountCode.code == 'EMPTYCODE')}">
+                <br />
+                <div class="form-group -inline -collapse">
+                  <label class="label">Fyll i din kupongkod här</label>
+                  <h:inputText id="couponCode"
+                               converter="StringFieldConverter"
+                               size="15"
+                               required="true"
+                               disabled="#{shoppingCartBean.discounted}"
+                               requiredMessage="#{_['Please enter a coupon code.']}"
+                               value="#{shoppingCartBean.couponCode}"
+                               onkeypress="if (event.keyCode == 13 || event.which == 13) {this.value = this.value.trim(); document.getElementById('shoppingcartForm:applyCoupon').click();return false;}"
+                               styleClass="field #{ component.valid ? '' : '-invalid'}" />
+                  <h:message for="couponCode" styleClass="validation -error -bottom -position" />
+
+                  <h:commandButton id="applyCoupon"
+                                   rendered="#{!shoppingCartBean.discounted}"
+                                   actionListener="#{shoppingCartBean.validateCoupon}"
+                                   value="#{_['Exchange']}"
+                                   styleClass="action">
+                    <p:ajax
+                      update="couponCode couponCodeBox :shoppingcartForm:data :shoppingcartForm:prices :shoppingcartForm:messageTop :shoppingcartForm:messageBottom :shoppingcartForm:freeShipping"
+                      process="@parent"
+                      oncomplete="updateDom(); calcFreeShip(#{shoppingCartBean.shippingProvider});" />
+                  </h:commandButton>
+                  <h:commandButton id="clearCoupon"
+                                   rendered="#{shoppingCartBean.discounted}"
+                                   actionListener="#{shoppingCartBean.clearCoupon}"
+                                   value="#{_['Clear Coupon']}"
+                                   styleClass="action">
+                    <p:ajax
+                      update="couponCode couponCodeBox :shoppingcartForm:data :shoppingcartForm:prices :shoppingcartForm:messageTop :shoppingcartForm:messageBottom :shoppingcartForm:freeShipping"
+                      process="@parent"
+                      oncomplete="updateDom(); calcFreeShip(#{shoppingCartBean.shippingProvider});" />
+                  </h:commandButton>
+                </div>
+              </div>
+            </div>
+            <div class="forexHangerSetMessage dNone next">
+              <strong>Met onze vrije haak, hoeft u alleen maar een spijker op te hangen aan uw foto board.</strong>
+            </div>
+            <div jsf:id="freeShipping" class="shippinginfo-box">
+              <p class="shipping info hidden">
+                Fri leverans från 800 kr! <br />
+                Tillbringa ytterligare
+                <strong>
+                  <span id="save-more" data-subtotal="#{shoppingCartBean.itemGrossPriceLabel}" data-shop="bestcanvas.se" data-country="#{shoppingCartBean.shippingCountryLabel}"></span>
+                </strong>
+                för fri leverans.
+              </p>
+              <script>
+                calcFreeShip(#{shoppingCartBean.shippingProvider})
+              </script>
+            </div>
+            <h:messages id="messageBottom"
+                        globalOnly="true"
+                        styleClass="outmsg"
+                        errorClass="-error"
+                        warnClass="-warn"
+                        infoClass="-info" />
+          </h:form>
+        </div>
+      </c:otherwise>
+    </c:choose>
+  </div>
+  <script>
+    $('#shoppingcartForm\\:couponCode').val("#{sessionScope.get('coupon')}");
+    <c:if test="#{not empty sessionScope.get('coupon')}">
+      $('.tool-tip').addClass('active');
+    </c:if>
+  </script>
+</ui:composition>
+

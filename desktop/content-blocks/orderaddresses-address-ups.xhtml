@@ -1,0 +1,477 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+  <!-- UPS Access Point -->
+  <ui:include src="/content-blocks/ups-access-point/ups-access-point-content.xhtml">
+    <ui:param name="idPrefix" value="#{idPrefix}" />
+    <ui:param name="upsAccessPoint" value="#{upsAccessPoint}" />
+  </ui:include>
+  <!-- / UPS Access Point -->
+
+  <div class="group #{idPrefix == 'shipping' ? '-top' : ''}">
+    <div class="label #{upsAccessPoint == true and orderAddressBean.addressType == 'SHIPPING_ADDRESS_UPS_ACCESS_POINT' ? '-fullwidth -collapse' : ''}">
+      <c:choose>
+        <c:when test="#{orderAddressBean.addressType == 'SHIPPING_ADDRESS_UPS_ACCESS_POINT' and upsAccessPoint == true}">
+          <span class="label -with-info"><span class="-red">*</span>#{_['Title (who is the collector)']}</span>
+        </c:when>
+        <c:otherwise>
+          <span class="label">Hälsning<span class="-red">*</span></span>
+        </c:otherwise>
+      </c:choose>
+      <div jsf:rendered="#{orderAddressBean.addressType == 'SHIPPING_ADDRESS_UPS_ACCESS_POINT' and upsAccessPoint == true}" class="info-component packstationQuestion -gender">
+        <span class="infoindicator">?</span>
+        <div class="info-bubble -packstation -th-bubble -psIn">
+          #{_['Please indicate the person that will pick up the parcel and make sure to bring a photo ID matching their name']}.
+        </div>
+      </div>
+    </div>
+    <div class="#{upsAccessPoint == true and orderAddressBean.addressType == 'SHIPPING_ADDRESS_UPS_ACCESS_POINT' and sessionBean.userAgentType != 'phone' ? '-span-4' : 'entry'} salutation">
+      <c:if test="#{empty address.gender}">
+        <c:set value="#{commonDataBean.genders[2].value}" target="#{address}" property="gender" />
+      </c:if>
+      <h:selectOneRadio id="#{idPrefix}Gender" value="#{address.gender}" styleClass="cradio" requiredMessage="#{_['Required.']}" required="true" disabled="#{disabled}">
+        <f:selectItem itemValue="#{commonDataBean.genders[2].value}" itemLabel="#{commonDataBean.genders[2].label}" />
+        <f:selectItem itemValue="#{commonDataBean.genders[1].value}" itemLabel="#{commonDataBean.genders[1].label}" />
+      </h:selectOneRadio>
+      <h:message for="#{idPrefix}Gender" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+
+  <div class="group">
+    <div class="label #{upsAccessPoint == true and orderAddressBean.addressType == 'SHIPPING_ADDRESS_UPS_ACCESS_POINT' ? '-fullwidth -collapse' : ''}">
+      <span class="label">Förnamn<span class="-red">*</span></span>
+    </div>
+    <div class="entry">
+      <h:inputText id="#{idPrefix}Forename"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        converter="StringFieldConverter"
+        disabled="#{disabled}"
+        required="#{!disabled}"
+        requiredMessage="#{_['Required.']}"
+        validatorMessage="#{_['Packstation not allowed']}"
+        value="#{address.forename}" 
+        maxlength="30">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+      </h:inputText>
+      <h:message for="#{idPrefix}Forename" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+
+  <div class="group">
+    <div class="label #{upsAccessPoint == true and orderAddressBean.addressType == 'SHIPPING_ADDRESS_UPS_ACCESS_POINT' ? '-fullwidth -collapse' : ''}">
+      <span class="label">Efternamn<span class="-red">*</span></span>
+    </div>
+    <div class="entry">
+      <h:inputText id="#{idPrefix}Surname"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        converter="StringFieldConverter"
+        disabled="#{disabled}"
+        required="#{!disabled}"
+        requiredMessage="#{_['Required.']}"
+        validatorMessage="#{_['Packstation not allowed']}"
+        value="#{address.surname}" 
+        maxlength="30">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+      </h:inputText>
+      <h:message for="#{idPrefix}Surname" styleClass="validation -error -bottom" />
+      <div jsf:rendered="#{orderAddressBean.addressType == 'SHIPPING_ADDRESS_UPS_ACCESS_POINT' and upsAccessPoint == true}" style="font-size: 10px;text-align: center;line-height: 15px;margin-top: 16px;">
+        #{_['Once your parcel is delivered to a UPS Access Point, you will receive an email with pick-up instructions at the indicated email address']}.
+      </div>
+    </div>
+  </div>
+
+  <div class="group" jsf:rendered="#{showEmail and ((upsAccessPoint != true) or (upsAccessPoint == true and orderAddressBean.addressType != 'SHIPPING_ADDRESS_UPS_ACCESS_POINT'))}">
+    <div class="label">
+      <span class="label">#{_['E-Mail Address']}<span class="-red">*</span></span>
+    </div>
+    <div class="entry">
+      <h:inputText id="#{idPrefix}Email"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'} changeType"
+        converter="StringFieldConverter"
+        disabled="#{disabled}"
+        required="#{!disabled}"
+        requiredMessage="#{_['Required.']}"
+        validatorMessage="#{_['Packstation not allowed']}"
+        value="#{address.email}">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+      </h:inputText>
+      <h:message for="#{idPrefix}Email" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+
+  <div class="group" jsf:rendered="#{showEmail and ((upsAccessPoint != true) or (upsAccessPoint == true and orderAddressBean.addressType != 'SHIPPING_ADDRESS_UPS_ACCESS_POINT'))}">
+    <div class="label">
+      <span class="label">#{_['Confirm Email Address']}<span class="-red">*</span></span>
+    </div>
+    <div class="entry">
+      <h:inputText id="#{idPrefix}EmailConfirmation"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'} changeType"
+        converter="StringFieldConverter"
+        disabled="#{disabled}"
+        required="#{!disabled}"
+        requiredMessage="#{_['Required.']}"
+        validatorMessage="#{_['Packstation not allowed']}"
+        value="#{orderAddressBean.emailConfirmation}">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+      </h:inputText>
+      <h:message for="#{idPrefix}EmailConfirmation" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+
+  <div class="group" jsf:rendered="#{(upsAccessPoint != true) or (upsAccessPoint == true and orderAddressBean.addressType != 'SHIPPING_ADDRESS_UPS_ACCESS_POINT')}">
+    <div class="label">
+      <span class="label">#{_['Street']}, <u>#{_['House Number']}</u><span class="-red">*</span></span>
+    </div>
+    <div class="entry">
+      <h:inputText id="#{idPrefix}Street"
+        styleClass="input -fullbleed -shy -street #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        converter="StringFieldConverter"
+        required="#{!disabled}"
+        requiredMessage="#{_['Required.']}"
+        validatorMessage="#{_['Packstation not allowed']}"
+        disabled="#{disabled}"
+        value="#{address.street}"
+        maxlength="30">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+        <!-- <f:validateLength maximum="30" /> -->
+      </h:inputText>
+      <h:message for="#{idPrefix}Street" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+
+  <div class="group" jsf:rendered="#{(upsAccessPoint != true) or (upsAccessPoint == true and orderAddressBean.addressType != 'SHIPPING_ADDRESS_UPS_ACCESS_POINT')}">
+    <div class="label">
+      <span class="label">Andra adressraden <span class="optional">(#{_['optional']})</span></span>
+    </div>
+    <div class="entry">
+      <h:inputText 
+        id="#{idPrefix}department"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        converter="StringFieldConverter"
+        requiredMessage="#{_['Required.']}"
+        disabled="#{disabled}"
+        value="#{address.department}"
+        a:placeholder="byggnad / golv / företag…"
+        a:autocomplete="#{idPrefix} address-line2"
+        validatorMessage="#{_['Packstation not allowed']}"
+        maxlength="30">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+      </h:inputText>
+      <h:message for="#{idPrefix}department" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+
+  <div class="group" jsf:rendered="#{(upsAccessPoint != true) or (upsAccessPoint == true and orderAddressBean.addressType != 'SHIPPING_ADDRESS_UPS_ACCESS_POINT')}">
+    <div class="label">
+      <span class="label">#{_['Zip/Postal Code']}<span class="-red">*</span></span>
+    </div>
+    <div class="entry  #{viewType == 'touch' ? '' : '-smaller'}">
+      <h:inputText id="#{idPrefix}ZipCode"
+        styleClass="#{idPrefix}ZipCodeField input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        required="#{!disabled}"
+        requiredMessage="#{_['Required.']}"
+        validatorMessage="#{_['Invalid zip code']}"
+        converter="StringFieldConverter"
+        disabled="#{disabled}"
+        size="15"
+        maxlength="10"
+        value="#{address.zipCode}">
+      </h:inputText>
+      <h:message for="#{idPrefix}ZipCode" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+
+  <div class="group" jsf:rendered="#{(upsAccessPoint != true) or (upsAccessPoint == true and orderAddressBean.addressType != 'SHIPPING_ADDRESS_UPS_ACCESS_POINT')}">
+    <div class="label">
+      <span class="label">#{_['City']}<span class="-red">*</span></span>
+    </div>
+    <div class="entry">
+      <h:inputText id="#{idPrefix}City"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        required="#{!disabled}"
+        requiredMessage="#{_['Required.']}"
+        validatorMessage="#{_['Packstation not allowed']}"
+        converter="StringFieldConverter"
+        disabled="#{disabled}"
+        size="15"
+        maxlength="30"
+        value="#{address.city}">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+      </h:inputText>
+      <h:message for="#{idPrefix}City" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+
+  <div class="group" jsf:rendered="#{(upsAccessPoint != true) or (upsAccessPoint == true and orderAddressBean.addressType != 'SHIPPING_ADDRESS_UPS_ACCESS_POINT')}">
+    <div class="label">
+      <span class="label">#{_['Country']}<span class="-red">*</span></span>
+    </div>
+    <div class="entry">
+      <span class="form-dropdown #{viewType == 'touch' ? '-touch' : ''}" data-dropdown="country" style="#{viewType == 'touch' ? 'width: 100%' : ''}" data-calc-width="#{viewType == 'touch' ? 'false' : 'true'}">
+          <c:choose>
+            <c:when test="#{idPrefix == 'invoice'}">
+              <h:inputText id="#{idPrefix}Country"
+              styleClass="js-field #{ component.valid ? '' : '-invalid'}"
+              value="#{address.countryId}"
+              disabled="#{disabled}"
+              required="#{!disabled}"
+              requiredMessage="#{_['Required.']}"
+              onchange="$('#addressesForm').validate().element('.invoiceZipCodeField')"
+              style="display: none" />
+            </c:when>
+            <c:when test="#{idPrefix == 'shipping'}">
+              <h:inputText id="#{idPrefix}Country"
+              styleClass="js-field #{ component.valid ? '' : '-invalid'}"
+              value="#{address.countryId}"
+              disabled="#{disabled}"
+              required="#{!disabled}"
+              requiredMessage="#{_['Required.']}"
+              onchange="$('#addressesForm').validate().element('.shippingZipCodeField')"
+              style="display: none" />
+            </c:when>
+            <c:otherwise>
+              <h:inputText id="#{idPrefix}Country"
+              styleClass="js-field #{ component.valid ? '' : '-invalid'}"
+              value="#{address.countryId}"
+              disabled="#{disabled}"
+              required="#{!disabled}"
+              requiredMessage="#{_['Required.']}"
+              onchange="$('#addressesForm').validate()"
+              style="display: none" />
+            </c:otherwise>
+          </c:choose>
+          
+        <button type="button" class="label"><span>(#{_['Please choose']})</span></button>
+        <ul class="choices">
+          <ui:repeat value="#{orderAddressBean.shippingCountries}" var="p">
+            <li data-value="#{p.value}">#{p.label}</li>
+          </ui:repeat>
+        </ul>
+      </span>
+      <h:message for="#{idPrefix}Country" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+
+  <div class="group text-right">
+    <div class="forminfo">
+      * #{_['Required fields']}
+    </div>
+  </div>
+
+<c:if test="#{registerOption != false}">
+
+  <span jsf:rendered="#{(upsAccessPoint != true) or (upsAccessPoint == true and orderAddressBean.addressType != 'SHIPPING_ADDRESS_UPS_ACCESS_POINT')}">
+    <hr />
+    <h4 class="title">Frivilligt</h4>
+    <br />
+  </span>
+
+<c:if test="#{showBirthday and ((upsAccessPoint != true) or (upsAccessPoint == true and orderAddressBean.addressType != 'SHIPPING_ADDRESS_UPS_ACCESS_POINT'))}">
+  <div class="group -dateOfBirth">
+    <div class="label">
+      <span class="label">#{_['Date Of Birth']}</span>
+      <div>
+        <small>¡Obtienes una sorpresa para tu cumpleaños!</small>
+      </div>
+    </div>
+    <div class="entry">
+      <p:inputMask id="#{idPrefix}dateOfBirth"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        disabled="#{disabled}"
+        maxlength="10"
+        mask="99.99.9999"
+        p:placeholder="dd.mm.yyyy"
+        validatorMessage="Por favor ingresa una fecha válida"
+        converterMessage="Por favor ingresa una fecha válida"
+        value="#{orderAddressBean.invoiceDateOfBirth}">
+          <f:convertDateTime pattern="dd.mm.yyyy"/>
+        </p:inputMask>
+      <h:message for="#{idPrefix}dateOfBirth" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+</c:if>
+
+<c:if test="#{showMobile and ((upsAccessPoint != true) or (upsAccessPoint == true and orderAddressBean.addressType != 'SHIPPING_ADDRESS_UPS_ACCESS_POINT'))}">
+  <div class="group">
+    <div class="label">
+      <span class="label">#{_['Phone']}</span>
+    </div>
+    <div class="entry">
+      <h:inputText id="#{idPrefix}PhoneNumber"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        converter="StringFieldConverter"
+        disabled="#{disabled}"
+        validator="phoneNumberValidator"
+        validatorMessage="#{_['Packstation not allowed']}"
+        value="#{address.phoneNumber}">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+      </h:inputText>
+      <h:message for="#{idPrefix}PhoneNumber" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+</c:if>
+
+  <div class="group" jsf:rendered="#{(upsAccessPoint != true) or (upsAccessPoint == true and orderAddressBean.addressType != 'SHIPPING_ADDRESS_UPS_ACCESS_POINT')}">
+    <div class="label">
+      <span class="label">#{_['Company']}</span>
+    </div>
+    <div class="entry">
+      <h:inputText id="#{idPrefix}Company"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        converter="StringFieldConverter"
+        disabled="#{disabled}"
+        value="#{address.company}"
+        validatorMessage="#{_['Packstation not allowed']}"
+        maxlength="30">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+      </h:inputText>
+      <h:message for="#{idPrefix}Company" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+
+  <div class="group" jsf:rendered="#{idPrefix == 'invoice' and showVat}">
+    <div class="label">
+      <span class="label">#{_['VAT Number']}</span>
+      <div class="info-component dInlineBlock #{sessionBean.userAgentType == 'desktop' ? '-vat' : '-vatMobile'}">
+        <h:outputText escape="false" value="#{contentBean.snippets['VAT-Number-Tooltip']}" />
+      </div>
+    </div>
+    <div class="entry">
+      <h:inputText id="#{idPrefix}VatNumber"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        converter="StringFieldConverter"
+        maxlength="30"
+        validatorMessage="#{_['Packstation not allowed']}"
+        value="#{address.vatNumber}">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+      </h:inputText>
+      <h:message for="#{idPrefix}VatNumber" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+
+  <!-- Password -->
+  <div jsf:id="#{idPrefix}loginPromtBlock" class="passwordSection">
+    <ui:fragment rendered="#{loginBean.loggedIn != true and idPrefix == 'invoice'}">
+        <div class="group checklogin checkbox creatNewAccount">
+          <h:selectBooleanCheckbox id="#{idPrefix}createAccount" styleClass="showLogin -sv"
+            value="#{orderAddressBean.createUserAccountOnOrder}">
+            <p:ajax global="false" event="change" update="addressesForm:#{idPrefix}loginPromtBlock"
+              oncomplete="passFunction();" />
+          </h:selectBooleanCheckbox>
+          <label class="checkbox" for="addressesForm:#{idPrefix}createAccount">
+            <span class="free-account-text">#{_['I would like to create a free customer account']}</span>
+          </label>
+        </div>
+
+          <o:messages globalOnly="true" class="outmsg emailErrorMsg" escape="false">
+            <p:autoUpdate />
+          </o:messages>
+
+          <div class="pRelative">
+            <div class="-passwordVerify checkoutPopup" style="display: none;">
+              <p><strong>#{_['A secure password should include:']}</strong></p>
+              <ul>
+                <li>#{_['At least 8 characters']}</li>
+                <li>#{_['Upper and lower case characters']}</li>
+                <li>#{_['Numbers']}</li>
+              </ul>
+            </div>
+          </div>
+
+        <div class="#{!orderAddressBean.createUserAccountOnOrder ? 'hidden' :''} showLoginBlock pRelative" jsf:rendered="#{orderAddressBean.createUserAccountOnOrder}">
+          <div class="group">
+            <div class="label">
+              <span class="label" for="#{idPrefix}passwordSe">#{_['Password']}</span>
+            </div>
+
+            <div class="checkoutPassword entry">
+              <h:inputSecret 
+                id="#{idPrefix}passwordSe" 
+                name='newPasswordInput'
+                requiredMessage="#{_['Required.']}" 
+                validatorMessage="Please enter correct password." 
+                required="true" 
+                styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'} inputValidator newPasswordInput input-registration"
+                converter="StringFieldConverter" 
+                value="#{orderAddressBean.registrationPassword}"
+                a:placeholder="Lösenord" 
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Lösenord'">
+                <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,})" />
+              </h:inputSecret>
+              <h:message styleClass="validation -error -bottom" for="#{idPrefix}passwordSe" display="text" />
+            </div>
+          </div>
+
+          <div class="group">
+            <div class="label">
+              <span class="label" for="#{idPrefix}repeatedPasswordSe">#{_['Confirm password']}</span>
+            </div>
+
+            <div class="checkoutPassword entry">
+              <h:inputSecret 
+                id="#{idPrefix}repeatedPasswordSe" 
+                name='repeatedPasswordInput'
+                requiredMessage="#{_['Required.']}" 
+                validatorMessage="Please enter correct password." 
+                required="true" 
+                styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'} inputValidator newPasswordInput  input-registration"
+                converter="StringFieldConverter" 
+                value="#{orderAddressBean.repeatRegistrationPassword}"
+                a:placeholder="Bekräfta lösenord" 
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Bekräfta lösenord'">
+                <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,})" />
+              </h:inputSecret>
+              <h:message styleClass="validation -error -bottom" for="#{idPrefix}repeatedPasswordSe" display="text" />
+            </div>
+          </div>
+
+          <div class="agb-login -sv">
+            <p class="text-center">
+              Skapandet av kontot innebär att du accepterar
+              <a href="/privacy-policy/" target="_blank" rel="noopener"><u>sekretesspolicyn</u></a> och
+              <a href="/terms-of-use/" target="_blank" rel="noopener"><u>villkoren</u></a>.
+            </p>
+          </div>
+
+        </div>
+
+    </ui:fragment>
+  </div>
+  <!-- // Password -->
+
+</c:if><!-- registerOption end -->
+
+  <script>
+    $('.changeType').attr('type','email');
+  </script>
+</ui:composition>

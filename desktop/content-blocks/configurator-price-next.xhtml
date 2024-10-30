@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <!-- price and next (#{nextId}) -->
+    <div class="next" jsf:id="sum#{nextId}">
+      <div class="amount">
+        <label class="label" for="quantity">#{_['Quantity']}:</label>
+        <h:inputText id="quantity#{nextId}"
+          value="#{itemConfiguratorBean.quantity}"
+          styleClass="input action #{ component.valid ? '' : '-invalid'}"
+          converterMessage="#{_['Please enter valid quantity.']}"
+          validator="#{itemConfiguratorBean.validQuantity}">
+          <p:ajax listener="#{itemConfiguratorBean.change}" update=":itemConfiguratorForm:sum2" />
+        </h:inputText>
+        <h:message for="quantity#{nextId}" styleClass="validation -error -bottom -align-right" />
+      </div>
+      <div class="price">
+        <span class="label">#{_['Price']}: <span class="highlight">
+          <h:outputText id="price#{nextId}" value="#{itemConfiguratorBean.configurator.price}"/>*</span>
+        </span>
+
+        <p:commandLink action="#{itemConfiguratorBean.addToCart}"
+          value="#{_['Continue']}"
+          onstart="return previewConfig.validateParams()"
+          rendered="#{itemConfiguratorBean.itemType != 'cart-item'}"
+          styleClass="js-next-button action button -action -arrow" />
+
+        <ui:remove>
+          <!-- the persist-method does not redirect to the shoppingcart, so we have
+               to explicit route it there with javascript.
+               This is legit, since many JSF commands are executed with javascript.
+               -->
+        </ui:remove>
+        <p:commandLink action="#{itemConfiguratorBean.persist}"
+          value="#{_['Save Changes']}"
+          onstart="return previewConfig.validateParams()"
+          rendered="#{itemConfiguratorBean.itemType == 'cart-item'}" styleClass="js-next-button action button -action -arrow" oncomplete="window.location='shoppingcart.jsf'"/>
+      </div>
+      <h:messages styleClass="outmsg" globalOnly="true"/>
+    </div><!-- /price and next (#{nextId}) -->
+</ui:composition>

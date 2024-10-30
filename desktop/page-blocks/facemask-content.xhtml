@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:o="http://omnifaces.org/ui">
+
+
+        <div class="article-showcase -small-bottom">
+
+          <h2 class="headline -has-sidelines"><span>Din personliga CUSTOMASK munskydd</span></h2>
+          <div class="col -span-#{sessionBean.userAgentType == 'phone' ? '12' : ''}#{sessionBean.userAgentType == 'tablet' ? '8 -centered' : ''}#{sessionBean.userAgentType == 'desktop' ? '6' : ''} image js-image-switcher">
+            <ul class="images">
+              <li data-image-name="canvas:front" class="-visible"><img class="lazy" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-src="/#{shopInfoBean.versionPath}assets/img/produkter/home-lifestyle/facemask/view-03-in-use.jpg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/home-lifestyle/facemask/view-03-in-use.jpg" alt="face mask in use" /></li>
+              <li data-image-name="canvas:detail"><img src="/#{shopInfoBean.versionPath}assets/img/produkter/home-lifestyle/facemask/view-02-closeup.jpg" alt="face mask detailed view" /></li>
+              <li data-image-name="canvas:room"><img src="/#{shopInfoBean.versionPath}assets/img/produkter/home-lifestyle/facemask/view-01-complete.jpg" alt="face mask complete view" /></li>
+            </ul>
+
+            <ul class="options -has-#{sessionBean.userAgentType == 'phone' ? '2' : '3'} -bottom">
+              <li><button type="button" class="cbutton -highlight" data-target="canvas:front">Under användning</button></li>
+              <li><button type="button" class="cbutton" data-target="canvas:detail">Detaljerad översikt</button></li>
+              <li><button type="button" class="cbutton" data-target="canvas:room">Fullständig översikt</button></li>
+            </ul>
+          </div>
+          
+          <div class="col -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'}">
+            <div class="description-wrapper">
+              <div class="#{sessionBean.userAgentType == 'tablet' ? '-fullbleed' : 'description'}">
+                <p class="text">Tryck med din egen bild eller välj från roliga designer - vår anpassade ansiktsmask är både praktiskt och snygg. Ansiktsmaskerna från bestcanvas.se är utrustade med en mjukt innerlager i bomull för högsta komfort, och de justerbara remmarna och den flexibla näsdelen ger en åtsittande passform. Masken kan tvättas i maskin och återanvändas - tvättas i maximalt 60 grader för bästa resultat. Observera: Ansiktsmasken från bestcanvas.se har inte genomgått vetenskapliga tester och är inte certifierad för medicinsk användning, såsom skydd mot sjukdomar eller behandling.<br/><br/><em>Av hygienskäl kan sålda ansiktsmasker ej returneras.</em></p>
+                <br />
+
+                <div class="upload-button">
+                  <a href="javascript:void(0)" onclick="javascript:CallPreUploadImgMulti(2820, #{galleryItem}, #{imageItem});" class="filebutton">
+                    <button type="button" class="js-du-button action filebutton button -action -no-margin-leftt">Skapa mask</button>
+                  </a>
+                </div>
+
+
+                <br />
+              </div>
+            </div>
+          </div>
+         </div>
+
+</ui:composition>

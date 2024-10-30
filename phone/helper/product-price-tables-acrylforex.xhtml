@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <table class="table -accordion">
+    <tbody>
+      <ui:repeat value="#{fn:split(pricesList, ',')}" var="f">
+        <c:set var="type" value="Acryl+Forex ${fn:replace(f, ' ', '')}" />
+        <tr>
+          <td>#{f}cm</td>
+          <ui:fragment>
+            <td class="-align-right">
+              <h:outputText
+                styleClass="-outdated -deco-none"
+                value="#{priceBean.productCrossPrice('Acryl + Forex Print_Bestcanvas_SE', 'Acryl+Forex', type)}"
+                rendered="#{priceBean.productPrice('Acryl + Forex Print_Bestcanvas_SE', 'Acryl+Forex', type) ne '#ERROR#'}" />
+              <h:outputText value="—" rendered="#{priceBean.productPrice('Acryl + Forex Print_Bestcanvas_SE', 'Acryl+Forex', type) eq '#ERROR#'}" />
+            </td>
+
+            <td>
+              <h:outputText
+                styleClass="-highlighted"
+                value="#{priceBean.productPrice('Acryl + Forex Print_Bestcanvas_SE', 'Acryl+Forex', type)}*"
+                rendered="#{priceBean.productPrice('Acryl + Forex Print_Bestcanvas_SE', 'Acryl+Forex', type) ne '#ERROR#'}" />
+              <h:outputText value="—" rendered="#{priceBean.productPrice('Acryl + Forex Print_Bestcanvas_SE', 'Acryl+Forex', type) eq '#ERROR#'}" />
+            </td>
+
+          </ui:fragment>
+        </tr>
+      </ui:repeat>
+    </tbody>
+  </table>
+
+</ui:composition>

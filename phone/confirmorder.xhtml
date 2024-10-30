@@ -1,0 +1,377 @@
+<ui:composition template="/templates/checkout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<ui:param name="pageTitle" value="#{_['Confirm Order']}" />
+<ui:param name="stepCount" value="6" />
+<ui:define name="dataLayer">
+  <ui:include src="/tracking/trackingcodes-end-of-head-confirmorder.xhtml"/>
+</ui:define>
+<ui:define name="meta">
+  <meta name="robots" content="NOINDEX,FOLLOW" />
+</ui:define>
+<ui:define name="head">
+
+  <!-- adyennewpaypal -->
+  <c:if test="#{cartCheckoutBean.aydenPaypalActive}">
+  <style>
+    .checkbox>input:checked+label:before,
+    .checkbox>input:checked+label:after {
+    display: none;
+    }
+    .adyen-checkout__paypal__button.adyen-checkout__paypal__button--pay-later {
+    display: none;
+    }
+    </style>
+  </c:if>
+  <!-- /adyennewpaypal -->
+
+  <f:event type="preRenderView" listener="#{orderBean.initConfirmationPage}" />
+  
+</ui:define>
+<ui:define name="content">
+
+  <!-- adyennewpaypal -->
+  <c:if test="#{cartCheckoutBean.aydenPaypalActive}">
+    <c:set target="#{orderBean}" property="acceptGTC" value="#{true}" scope="request" />
+  </c:if>
+  <div style="display: none;" data-paypal="#{cartCheckoutBean.aydenPaypalActive}"></div>
+  <!-- /adyennewpaypal -->
+
+  <section class="checkout-step-6 checkout-section">
+    <div class="head">
+      <h1 class="legend">#{_['Order Review']}</h1>
+      <p><h:outputText escape="false" value="#{contentBean.snippets['order-review']}"/></p>
+    </div>
+
+    <h:form id="orderConfirmationForm">
+      <div class="overview">
+        <ui:include src="/content-blocks/checkout-table.xhtml">
+          <ui:param name="formId" value="orderConfirmationForm"/>
+          <ui:param name="type" value="review"/>
+        </ui:include>
+      </div>
+      <div class="wrapper">
+        <div class="subprice">
+          #{_['Subtotal']}: <span class="-right">#{shoppingCartBean.itemGrossPriceLabel}</span><br />
+          #{_['Shipping &amp; Packaging']}: <span class="-right">#{shoppingCartBean.shippingGrossPriceLabel}</span>
+          <c:if test="#{shoppingCartBean.discounted}">
+            <!-- coupon amount -->
+            <br />
+            #{shoppingCartBean.discountLabel}: -#{shoppingCartBean.discountGrossPriceLabel}
+          </c:if>
+          <c:if test="#{shoppingCartBean.customerDiscountValueToNextLevel != ''
+            or shoppingCartBean.customerDiscountLevel == 1
+            or shoppingCartBean.customerDiscountLevel == 2
+            or shoppingCartBean.customerDiscountLevel == 3
+            or shoppingCartBean.customerDiscountLevel == 4
+            or shoppingCartBean.customerDiscountLevel == 5
+            or shoppingCartBean.customerDiscountLevel == 6}">
+            <!-- customer discount -->
+            <br />
+            #{shoppingCartBean.customerDiscountLabel}: -#{shoppingCartBean.customerDiscountGrossPriceLabel}
+          </c:if>
+        </div>
+        <div class="finalprice">
+          Totalsumma<ui:fragment rendered="#{checkoutCartBean.shippingCountry != 19}"> inkl. Moms</ui:fragment>: <span class="highlight -color -right">#{shoppingCartBean.totalGrossPriceLabel}</span>
+        </div>
+      </div>
+      <div class="wrapper">
+        <div class="billing" data-mh="billbox">
+          <div class="billbox -full">
+            <div class="head">
+              <h4 class="headline">#{_['Billing Address']}</h4>
+            </div>
+            <p class="nonformatted">#{orderBean.invoiceAddress}</p>
+            <p jsf:rendered="#{orderBean.invoiceEmail}">#{orderBean.invoiceEmail}</p>
+            <a class="edit" href="/orderaddresses.jsf">#{_['Edit']}</a>
+          </div>
+        </div>
+        <div class="billing">
+          <div class="billbox -full">
+            <div class="head">
+              <h4 class="headline">#{_['Shipping Address']}</h4>
+            </div>
+            <p class="#{not empty sessionServicesBean.checkout.shippingAddress.upsAccessPoint ? 'formatted' : 'nonformatted'}">#{orderBean.shippingAddress}</p>
+            <p jsf:rendered="#{orderBean.invoiceEmail}">#{orderBean.shippingEmail}</p>
+            <a class="edit" href="/orderaddresses.jsf">#{_['Edit']}</a>
+          </div>
+        </div>
+        <div class="billing">
+          <div class="billbox -half">
+            <div class="head">
+              <h4 class="headline">#{_['Payment Method']}</h4>
+            </div>
+            <p jsf:rendered="#{!sessionServicesBean.checkout.paymentNeeded}">#{_['Not required.']}</p>
+            <p jsf:rendered="#{sessionServicesBean.checkout.paymentNeeded}">#{sessionServicesBean.checkout.paymentMethod.name}</p>
+
+            <p:outputPanel rendered="#{sessionServicesBean.checkout.paymentMethodType == 'PREPAID'}">
+              <table class="prepaidConfirmorderTable -span-12">
+                <tbody>
+                  <tr>
+                    <td>
+                      <label>Intestatario</label>:
+                    </td>
+                    <td class="text-center">United Arts GmbH</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label>IBAN</label>:
+                    </td>
+                    <td class="text-center">SE4095000099604200637157</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label>BIC</label>:
+                    </td>
+                    <td class="text-center">NDEASESS</td>
+                  </tr>
+                </tbody>
+              </table>
+              <br />
+              <p><small>Vänligen skriv ditt beställningsnumret i meddelandet. Vi kommer omedelbart vid mottagandet av pengarna på vårt konto att producera och skicka dina produkter.</small></p>
+            </p:outputPanel>
+
+            <a class="edit" href="/paymentmethod.jsf">#{_['Edit']}</a>
+          </div>
+        </div>
+
+      </div>
+
+        <div class="terms">
+          <div class="checkbox -big">
+
+            <ui:fragment rendered="#{!cartCheckoutBean.aydenPaypalActive}">
+            <h:selectBooleanCheckbox id="acceptGTC"
+            converter="BooleanFieldConverter"
+            required="true"
+            requiredMessage="Akzeptieren."
+            value="#{orderBean.acceptGTC}">
+            <f:ajax render="checkCheckbox msg1" />
+            </h:selectBooleanCheckbox>
+
+            <h:outputLabel for="acceptGTC">Jag har läst, förstått och accepterar <a href="/kopvillkor/" target="_blank">villkoren, avbokningsregler</a> och <a href="/datasaekerhet/" target="_blank">integritetspolicy</a>.</h:outputLabel>
+            </ui:fragment>
+
+            <!-- adyennewpaypal -->
+            <ui:fragment rendered="#{cartCheckoutBean.aydenPaypalActive}">
+            <h:selectBooleanCheckbox id="acceptGTCpaypal"
+              checked="#{cartCheckoutBean.aydenPaypalActive ? 'checked' : 'unchecked'}"
+              disabled="#{cartCheckoutBean.aydenPaypalActive ? 'true' : 'false'}"
+              styleClass="hidden"
+              style="cursor: default;"
+              converter="BooleanFieldConverter"
+              required="true"
+              requiredMessage="Akzeptieren."
+              value="#{orderBean.acceptGTC}">
+              <f:ajax render="checkCheckbox msg1" />
+            </h:selectBooleanCheckbox>
+
+            <h:outputLabel for="acceptGTCpaypal" style="cursor: default;">I samband med mitt köp intygar jag att jag har läst <a href="/kopvillkor/" target="_blank">villkoren, avbokningsregler</a> samt <a href="/datasaekerhet/" target="_blank">integritetspolicy</a> och att jag uttryckligen godkänner dem.</h:outputLabel>
+            </ui:fragment>
+            <!-- /adyennewpaypal -->
+
+          </div>
+          <h:messages id="msg1" globalOnly="true" styleClass="outmsg" />
+          <p class="info">
+            För att hålla dig informerad om våra nuvarande erbjudanden, kommer vi att skicka vårt nyhetsbrev till den adress du angivit på bestcanvas.se. Om du inte längre vill få ett nyhetsbrev från oss, kan du när som helst avanmäla dig, utan några extra kostnader mer än den basiskostnad. Skriv ett mail till info@bestcanvas.se eller till den angivna kontaktdatan under ”Kontakt” i form av t.ex. Brev eller Fax. Självklart hittar du i varje nyhetsbrev en länk där man kan avanmäla sig. För att säkerställa leveransen överför vi e-postadressen och, om det anges, telefonnumret till transportföretaget.
+          </p>
+        </div>
+
+      <div class="next wrapper" jsf:id="checkCheckbox">
+        <ui:fragment rendered="#{!cartCheckoutBean.aydenPaypalActive}">
+        <button
+          jsf:action="#{orderBean.order}"
+          jsf:id="buyNowButton"
+          jsf:onclick="document.getElementById('orderConfirmationForm:buyNowButton').disabled=true;"
+          class="action">
+          <f:ajax execute="@form" render="orderConfirmationForm:msg1" />
+        Gå till kassan</button>
+      </ui:fragment>
+
+      <!-- adyennewpaypal -->
+      <ui:fragment rendered="#{cartCheckoutBean.aydenPaypalActive}">
+
+        <div id="paypal-container" style="width: 100%; display: inline-block; margin-top: 15px;"></div>
+
+        <script src="https://checkoutshopper-live.adyen.com/checkoutshopper/sdk/5.18.0/adyen.js"
+        integrity="sha384-+Rw9rSHx2q26vErvjVDm4hqgWknn8gKtLsfkpPNClC2OrzVcWBHM3N2IvElU8LGB"
+        crossorigin="anonymous"></script>
+
+      <link rel="stylesheet"
+        href="https://checkoutshopper-live.adyen.com/checkoutshopper/sdk/5.18.0/adyen.css"
+        integrity="sha384-QG8p2tW0dTruLa4Vjrq40etubKF7pMdXk1edAO5Z7aMXgahCo1NLHDpQQihqhnx3"
+        crossorigin="anonymous"></link>
+
+        <script>
+          // <![CDATA[
+          function showAlert() {
+          const styleEl = document.createElement("style")
+          styleEl.innerHTML = `
+          .alertbox {
+          top: -49px;
+
+          animation-name: position;
+          animation-duration: 1s;
+          animation-fill-mode: forwards;
+          }
+          @keyframes position {
+            from {top: -49px;}
+            to {top: 60px;}
+          }`
+          document.body.appendChild(styleEl)
+          setTimeout(()=>styleEl.remove(),3000)
+
+          if (document.querySelector(".alertbox")) document.querySelector(".alertbox").remove()
+
+          const txt = "Tyvärr gick något fel med betalningen. Försök igen eller välj en annan betalningsmetod."
+          const el = document.createElement("div")
+          el.classList.add("alertbox")
+          if (document.querySelector("html.phone") || document.querySelector("html.tablet")) {
+
+            el.style.cssText = `
+            font-size: 13px;
+            background-color: #FFC2C2;
+            border: 1px solid #8E0101;
+            color: #8E0101;
+            padding: 15px;
+            display: block;
+            position: fixed;
+            top: 60px;
+            margin: 0 5px;
+            cursor: pointer;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.6s;
+            box-shadow: 0 0 5px #aaa;
+            box-sizing: border-box;
+            width: calc(100% - 10px);
+            border-radius: 5px;`
+            } else {
+            el.style.cssText = `
+            font-size: 13px;
+            text-align: center;
+            background-color: #FFC2C2;
+            border: 1px solid #8E0101;
+            color: #8E0101;
+            padding: 15px;
+            width: 1020px;
+            display: block;
+            position: fixed;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.6s;
+            box-shadow: 0 0 5px #aaa;
+            box-sizing: border-box;
+            border-radius: 5px;`
+            }
+
+            el.innerHTML = "<span style='display: block; position: absolute; text-align: center; line-height: 24px; width: 24px; height: 24px; font-size: 16px; border-radius: 50%; background-color: #FE1210; color: #fff; top: 12px; left: 10px;'>!</span> <span style='padding-left:25px; display: block;'>"+ txt + "</span> <span style='font-weight: bold; font-size: 20px; position: absolute; top: 0; right: 5px; color: #8E0101;'>&times;</span>"
+          el.setAttribute("onclick", "this.style.opacity='0';setTimeout(()=>this.remove(),1000)")
+          document.body.appendChild(el)
+          }
+
+          async function doPaypalPayment() {
+            const configuration = {
+                environment: '#{orderBean.adyenSessionData.environment}',
+                clientKey: '#{orderBean.adyenSessionData.clientKey}',
+
+                session: {
+                  id: '#{orderBean.adyenSessionData.sessionId}',
+                  sessionData: '#{orderBean.adyenSessionData.sessionData}'
+                },
+                onPaymentCompleted: (result, component) => {
+                    console.info(result, component);
+
+                    function showPaypalLoadingCover() {
+                    const el=document.createElement("div")
+                    el.style.cssText=`
+                    width: 100vw;
+                    height: 100vh;
+                    background-color: rgba(255,255,255,0.9);
+                    box-sizing: border-box;
+                    position: fixed;
+                    left: 0;
+                    top: 0;
+                    z-index: 2147483646;
+                    color: #aaa;
+                    padding: 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    `
+                    el.innerHTML="Bara ett ögonblick till..."
+                    el.setAttribute("onclick","this.remove()")
+                    el.classList.add("paypal-loading-cover")
+                    document.body.appendChild(el)
+                  }
+                  showPaypalLoadingCover();
+
+                    if (result.resultCode === "Authorised" || result.resultCode === "Received") {
+                      location.href = "/ordersuccess.jsf"
+                    } else {
+                      showAlert()
+                    }
+
+                },
+                onError: (error, component) => {
+                    console.error(error.name, error.message, error.stack, component);
+
+                    showAlert()
+                },
+              };
+
+              const paypalConfiguration = {
+                blockPayPalCreditButton: true,
+                blockPayPalPayLaterButton: true
+              };
+
+            const checkout = await AdyenCheckout(configuration);
+            console.log(checkout.paymentMethodsResponse);
+            const paypalComponent = checkout.create('paypal', paypalConfiguration).mount('#paypal-container');
+          }
+          // ]]>
+        </script>
+
+        <p:remoteCommand process="@this" global="false" name="activate" action="#{orderBean.orderAydenPaypal}" update="@form" oncomplete="doPaypalPayment()" />
+
+        </ui:fragment>
+      <!-- /adyennewpaypal -->
+
+      </div>
+    </h:form>
+
+    <!-- adyennewpaypal -->
+    <ui:fragment rendered="#{cartCheckoutBean.aydenPaypalActive}">
+      <script type="text/javascript">$(document).ready(function(){activate()})</script>
+    </ui:fragment>
+    <!-- /adyennewpaypal -->
+
+  </section>
+
+  <!-- paymentmethods -->
+  <section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+
+</section><!-- /paymentmethods -->
+
+</ui:define>
+
+<ui:define name="eofscript">
+
+  <ui:fragment rendered="#{not empty param['paymentStatus'] and param['paymentStatus'] != 'CANCELLED'}">
+    <script>alert("#{_['The credit card payment could not be processed. Your credit card was not charged. Please try paying with another credit card or select a different payment method.']}");</script>
+  </ui:fragment>
+
+</ui:define>
+
+</ui:composition>

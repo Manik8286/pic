@@ -1,0 +1,615 @@
+.teaser-showcase {
+
+  > .product {
+    @extend .col;
+    @extend %-span-7;
+    position: relative;
+
+    &.-smaller {
+      @extend %-span-6;
+    }
+
+    .tablet & {
+      /* @extend %-span-5; */
+      width: 47%;
+    }
+  }
+
+  > .info {
+    @extend .col;
+    @extend %-span-5;
+
+    &.rightWhiteBlock {
+      width: 465px;
+      background: $white;
+      padding: 25px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      margin-top: 0;
+      margin-right: 12px;
+      &.-opct {
+        background: rgba(255,255,255,.9);
+      }
+      &.-top {
+        margin-top: 25px;
+      }
+      .headline {
+        font-size: 25px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        line-height: 1.038;
+        margin-top: 0;
+        margin-bottom: 15px;
+      }
+
+      .claim1 {
+        font-style: italic;
+        margin-bottom: 10px;
+      }
+
+      .fixedInTeaser {
+        position: relative !important;
+        bottom: 0 !important;
+      }
+      .features{
+        margin-bottom: 20px !important;
+      }
+      .upload-button {
+        padding-left: 0;
+        width: 100% ;
+        padding-top: 0;
+      }
+      #chooseFile,
+      .js-du-file {
+        width: 100%;
+      }
+    }
+
+    > h3 {
+      margin:0;
+    }
+
+    .tablet & {
+      /* @extend %-span-6; */
+      width: 51%;
+    }
+
+    .faceMaskBadges {
+      display: flex;
+      justify-content: space-evenly;
+      padding-top: 20px;
+
+      .oeko-trust-badge {
+        max-height: 75px;
+        padding-top: 5px;
+      }
+
+      .antibacterial-badge {
+        max-height: 70px;
+      }
+
+      .trustpilot-badge {
+        max-height: 70px;
+        padding-bottom: 5px;
+      }
+    }
+
+    .-faceMaskInfo {
+      text-align: center;
+
+      .oeko {
+        float: left;
+        height: 90px;
+        padding-left: 15px;
+      }
+      .trustpilot {
+        float: left;
+        width: auto;
+      }
+    }
+  }
+
+  > .info-crm {
+    @extend .col;
+    width: 38%;
+
+    > .quotes {
+      @extend .customer-quotes;
+      margin-top: 50px;
+    }
+
+    > .features {
+      margin-bottom: 20px;
+      li {
+        > strong span {
+            color: $red;
+        }
+      }
+    }
+
+    .tablet & {
+      @extend %-span-7;
+    }
+
+    > .title {
+      padding-top: 50px;
+      padding-bottom: 20px;
+      font-size: 16px;
+      font-weight: $weight-semibold;
+
+      &.-touch {
+        padding-top: 20px;
+      }
+    }
+
+    > .subtitle {
+      padding-top: 20px;
+      padding-left: 40px;
+      font-size: 12px;
+      font-weight: $weight-normal;
+    }
+    >.-add-width {
+      width: 360px;
+      >.deal-condition {
+        font-size: 11px;
+      }
+      > strong span {
+        color: $red;
+
+        &.codeSize20 {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
+  > .product-crm {
+    @extend .col;
+    @extend %-span-6;
+    position: relative;
+
+    .tablet & {
+      @extend %-span-5;
+    }
+    > .fp-image{
+    margin-top:-20px;
+    }
+  }
+
+  > .product-crm .upload-button {
+    position: absolute;
+    top: 303px;
+    right: 38px;
+  }
+
+  .product-crm .action {
+    @extend .button_action;
+    @extend .button_action_mod-big;
+    @extend .button_action_mod-arrow;
+    @extend .button_action_mod-big-arrow;
+
+    &.-hover {
+      @extend .button_action_mod-hover;
+    }
+  }
+
+
+  > .product > .badge {
+    @extend .price-badge;
+    position: absolute;
+    right: 65px;
+    top: 240px;
+
+    &.-closeToProduct {
+      margin-right: 85px;
+    }
+
+    &.-closeToProductPlates {
+      margin-right: 65px;
+      margin-top: -10px;
+    }
+
+    &.-closeToWhiteBlock {
+      right: -25px;
+    }
+
+    @media screen and (orientation: landscape) {
+      &.badgeClass {
+        right: 110px;
+        top: 93px;
+      }
+    }
+    @media screen and (orientation: portrait) {
+      &.badgeClass {
+        right: 10px;
+        top: 105px;
+      }
+    }
+
+    &.starmapBadge{
+       top:230px;
+     }
+    &.-black {
+       background-color: $black;
+       border-color: $black;
+       &:before {
+          border-right-color: $black;
+       }
+    }
+  }
+
+  .product-showcase-1 {
+    position: absolute;
+    right: 40px;
+    top: -50px;
+
+    > .image {
+      box-shadow: 2px 4px 5px #888;
+    }
+
+    > .badge {
+      @extend .price-badge-circle;
+      position: absolute;
+      top: -20px;
+      left: -30px;
+    }
+
+    > .sub {
+      font-size: 12px;
+    }
+  }
+
+  .product-showcase-2 {
+    position: absolute;
+    right: 40px;
+    top: 130px;
+
+    > .image {
+      box-shadow: 2px 4px 5px #888;
+    }
+
+    > .badge {
+      @extend .price-badge-circle;
+      position: absolute;
+      top: -20px;
+      left: -30px;
+    }
+
+    > .sub {
+      font-size: 12px;
+    }
+  }
+
+  .product-showcase-3 {
+    position: absolute;
+    left: 20px;
+    top: 40px;
+
+    > .image {
+      box-shadow: 2px 4px 5px #888;
+    }
+
+    > .badge {
+      @extend .price-badge-circle;
+      position: absolute;
+      top: -20px;
+      left: -30px;
+    }
+
+    > .sub {
+      font-size: 12px;
+    }
+  }
+
+  > .info-crm > .features {
+    @extend .text-list;
+    @extend .text-list.-checkmark;
+
+    li {
+      margin-bottom: 7px;
+      padding-left: 40px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  > .info > .features {
+    @extend .text-list;
+    @extend .text-list.-checkmark;
+
+    li {
+      margin-bottom: 7px;
+      padding-left: 40px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    .hplogo {
+      @extend %svgbackground-hp;
+      width: 29px;
+      height: 20px;
+      display: inline-block;
+      background-repeat: no-repeat;
+      background-size: 29px 18px;
+      vertical-align: bottom;
+      position: relative;
+      top: -2px;
+      margin-left: 5px;
+    }
+  }
+
+  > .info > .quotes {
+    @extend .customer-quotes;
+    margin-top: 50px;
+  }
+
+  .-noMOve {
+    padding-left: 0;
+    padding-top: 0;
+
+    &.-buttonFix {
+      margin-left: 87px;
+    }
+
+  }
+
+  > .info .upload-button {
+    &.-positionQuality {
+      position: absolute;
+      bottom: 30px;
+      margin-left: 67px;
+    }
+  }
+
+  > .product-kissen {
+    @extend .col;
+    @extend %-span-5;
+    position: relative;
+    margin-top: 8px;
+    margin-left: -30px;
+
+    &.-mlkissen{
+      margin-left: 200px;
+    }
+
+    .bottom {
+      bottom: 0;
+      margin-left: 40px;
+    }
+
+    .bottomT {
+      bottom: 5px;
+      margin: 0 auto;
+    }
+
+    .bottomP{
+      bottom: 0;
+      margin: 0 auto;
+    }
+
+    .info.js-du.-top-kissen {
+      position: relative;
+      top: 70px;
+    }
+
+    .info.js-du.-kissen-upload-left {
+      margin-left: 75px;
+    }
+
+    .info.js-du.-kissen-upload-right {
+      margin-left: -80px;
+    }
+
+    .badge {
+      @extend .price-badge;
+      position: absolute;
+      right: -5px;
+      top: 167px;
+    }
+    .tablet & {
+      @extend %-span-5;
+    }
+
+    .magnified-corner {
+      position: absolute;
+      top: -15px;
+      left: -15px;
+    }
+  }
+
+
+  > .info .action {
+    @extend .button_action;
+    @extend .button_action_mod-big;
+    @extend .button_action_mod-arrow;
+    @extend .button_action_mod-big-arrow;
+    padding-left: 90px;
+    padding-right: 90px;
+    &.-hover {
+      @extend .button_action_mod-hover;
+    }
+  }
+
+  > .info .actionT {
+    @extend .button_action;
+    @extend .button_action_mod-big;
+    @extend .button_action_mod-arrow;
+    @extend .button_action_mod-big-arrow;
+    padding-left: 5px;
+    padding-right: 16px;
+    height: 35px;
+    line-height: 35px;
+    &.-hover {
+      @extend .button_action_mod-hover;
+    }
+  }
+
+
+  .-shadow
+  {
+        -webkit-box-shadow: -2px 4px 5px #888;
+    -moz-box-shadow: -2px 4px 5px #888;
+    box-shadow: -2px 4px 5px #888;
+  }
+  .magnified-corner
+  {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+  }
+
+    .product-showcase-1-nl3x {
+      position: absolute;
+      right: 280px;
+      top: 15px;
+
+    > .image {
+      box-shadow: none;
+
+      &.-no-shadow{
+      box-shadow:none;
+      }
+    }
+
+    > .badge {
+      @extend .price-badge;
+      position: absolute;
+       top: -20px;
+      left: -30px;
+    }
+
+    > .sub {
+      font-size: 12px;
+    }
+  }
+
+  .product-showcase-2-nl3x {
+    position: absolute;
+  right: 0;
+  top: -65px;
+
+  > .magnified-corner-nl {
+      position: absolute;
+      margin-top: -99px;
+      margin-left: 148px;
+      width: 80px;
+  }
+
+    > .image {
+      box-shadow: none;
+
+      &.-no-shadow{
+      box-shadow:none;
+      }
+    }
+
+    > .badge {
+      @extend .price-badge;
+      position: absolute;
+       top: 0px;
+      left: -55px;
+    }
+
+    > .sub {
+      font-size: 12px;
+    }
+  }
+
+  .product-showcase-3-nl3x {
+    position: absolute;
+  left: 245px;
+  top: 115px;
+
+  > .magnified-corner-nl {
+      position: absolute;
+      margin-top: -99px;
+      margin-left: 148px;
+      width: 80px;
+  }
+
+    > .image {
+      box-shadow: none;
+
+      &.-no-shadow{
+      box-shadow:none;
+      }
+    }
+
+    > .badge {
+      @extend .price-badge;
+      position: absolute;
+      top: -0px;
+      left: -55px;
+    }
+
+    > .sub {
+      font-size: 12px;
+    }
+  }
+  .info-crm46 {
+    @extend .col;
+    width: 46%;
+    padding-left: 60px;
+
+    .tablet & {
+      @extend %-span-5;
+      float: right;
+    }
+
+    > .title {
+      padding-top: 50px;
+      padding-bottom: 20px;
+      font-size: 16px;
+      font-weight: $weight-semibold;
+
+      &.-touch {
+        padding-top: 20px;
+      }
+    }
+
+    > .subtitle {
+      padding-top: 20px;
+      padding-left: 40px;
+      font-size: 12px;
+      font-weight: $weight-normal;
+    }
+   > .features {
+    @extend .text-list;
+    @extend .text-list.-checkmark;
+
+    li {
+      margin-bottom: 7px;
+      padding-left: 40px;
+
+    &:last-of-type {
+        margin-bottom: 0;
+      }
+
+    }
+  }
+  }
+
+}
+
+.mug-teaser ,
+.photo-gifts-box {
+  .price-badge {
+    position: absolute;
+    top: 160px;
+    right: -10px;
+    .size {
+      font-size: 16px;
+    }
+    .price {
+      font-size: 28px;
+    }
+  }
+  .col {
+    position:relative;
+  }
+}

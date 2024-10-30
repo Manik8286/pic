@@ -1,0 +1,146 @@
+.page-section {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 25px;
+  background-color: $section-background-color;
+  &.ratingsReviews {
+    padding: 0;
+  }
+  
+  &.-b2b {
+    .-f18 {
+      font-size: 18px;
+    }
+    .whiteBg {
+      background-color: #fff;
+    }
+    .logo {
+      padding: 20px 0;
+    }
+    hr {
+      width: 80%;
+      margin: 0 auto;
+      opacity: 0.25;
+    }
+    a {
+      background-color: #E30613;
+      color: #fff !important;
+      width: 350px;
+      margin: 0 auto;
+      padding: 12px 0;
+      position: relative;
+      &:after {
+        content: "";
+        position: absolute;
+        background-image: url(/assets/img/icons/ext-link-icon.svg);
+        width: 20px;
+        height: 20px;
+        right: 20px;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  &.-medium {
+    padding-top: 38px;
+    padding-bottom: 38px;
+  }
+
+  &.-smaller {
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
+  &.-small {
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  &.-alternate {
+    background-color: $section-background-color-alternate;
+  }
+
+  &.-collapse-top {
+    padding-top: 0;
+  }
+
+  &.-collapse-bottom {
+    padding-bottom: 0;
+  }
+
+  &.-collapse {
+    padding: 0;
+  }
+
+  .format-lp-selection{
+    height: 110px;
+    border-bottom: 1.4px solid #aaaaaa;
+    text-align: center;
+    li{
+      height: 115px;
+      width: 180px;
+      padding: 10px 0px 10px 0;
+      position: relative;
+      top: -5px;
+    }
+  }
+
+  #prices.-new .format-lp-selection{
+    border-bottom: none;
+  }
+
+  .desktop & {
+    min-width: $grid-width;
+  }
+
+  .wrapCompareTable table {
+    width: 98%;
+    border-collapse: separate;
+    border-spacing: 4px 8px;
+    margin: 0 1% 0 1%;
+  }
+  .wrapCompareTable {
+    margin: 0 1% 0 1%;
+  }
+  .wrapCompareTable td.grey {
+    background-color: #e7e7e7;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  .wrapCompareTable td.green {
+    background-color: $newGreen;
+    color: $white;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  .wrapCompareTable .bottomText {
+    padding-right: 3%;
+    padding-top: 1%;
+  }
+  .-float-center{
+    float: none!important;
+    display: table;
+    margin: 0 auto;
+  }
+  /*Contact us*/
+  .contact-us {
+    .headline-contact-us {
+      font-weight: 700;
+      border-bottom: 1px solid #000;
+      padding-bottom: 20px;
+      margin: 0 10px 20px 10px;
+    }
+    .phone-number {
+      border:1px dotted #35b2b6;
+      color: #35b2b6;
+      padding: 7px 0;
+      background: transparent;
+    }
+  }
+
+  &.-blog {
+    .story-box {
+      font-size: 14px;
+    }
+  }
+}

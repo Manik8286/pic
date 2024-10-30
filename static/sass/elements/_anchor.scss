@@ -1,0 +1,9 @@
+.anchor {
+  color: $newGreen;
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: darken($newDarkGreen, 5);
+  }
+}

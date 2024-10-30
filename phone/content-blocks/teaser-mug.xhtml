@@ -1,0 +1,157 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <c:set var="FOTOGESCHENKE" value="#{ fn:contains(request.getRequestURL(), 'fotogeschenke') }" />
+  <div class="showcase #{showcaseClass}">
+    <header class="head">
+      <h1 class="headline">#{teaserHeadline}</h1>
+      <div class="claim">#{teaserClaim}
+        <ui:fragment rendered="#{not empty claimLink}">
+         - Mit <a href="javascript:void(0)" onclick="Modal.open('#best-price-garantie');">#{claimLink}</a>
+        </ui:fragment>
+      </div>
+    </header>
+
+    <div class="body">
+
+      <ui:fragment rendered="#{not empty teaserProductDetail}">
+        <img class="magnified-corner" src="#{teaserProductDetail}" alt="#{teaserProductDetailAlt}" />
+      </ui:fragment>
+
+      <!--Rewritten by Edgars-->
+      <div class="mugs-wrapper">
+        <div class="mug-product-wrapper">
+          <div class="mug-product-header">
+            <h2>#{productHeadline1}</h2>
+          </div>
+          <div class="mug-product-image">
+            <img class="#{imageClass1}" src="#{teaserProductImage1}" width="100%" alt="#{teaserProductAlt1}" />
+          </div>
+          <div class="mug-product-cta">
+            <ui:include src="/helper/directupload-short.xhtml">
+              <ui:param name="directuploadProductId" value="#{productId1}" />
+              <ui:param name="directuploadClass" value="action" />
+              <ui:param name="buttonText" value="Skapa" />
+            </ui:include>
+          </div>
+        </div>
+        <div class="mug-product-wrapper">
+          <div class="mug-product-header">
+            <h2>#{productHeadline2}</h2>
+          </div>
+          <div class="mug-product-image">
+            <img class="#{imageClass2}" src="#{teaserProductImage2}" width="100%" alt="#{teaserProductAlt2}" />
+          </div>
+          <div class="mug-product-cta">
+            <ui:include src="/helper/directupload-short.xhtml">
+              <ui:param name="directuploadProductId" value="#{productId2}" />
+              <ui:param name="directuploadClass" value="action" />
+              <ui:param name="buttonText" value="Skapa" />
+            </ui:include>
+          </div>
+        </div>
+        <div class="mug-product-wrapper">
+          <div class="mug-product-header">
+            <h2>#{productHeadline3}</h2>
+          </div>
+          <div class="mug-product-image">
+            <img class="#{imageClass3}" src="#{teaserProductImage3}" width="100%" alt="#{teaserProductAlt3}" />
+          </div>
+          <div class="mug-product-cta">
+            <ui:include src="/helper/directupload-short.xhtml">
+              <ui:param name="directuploadProductId" value="#{productId3}" />
+              <ui:param name="directuploadClass" value="action" />
+              <ui:param name="buttonText" value="Skapa" />
+            </ui:include> 
+          </div>
+        </div>
+        <div class="mug-product-wrapper">
+          <div class="mug-product-header">
+            <img class="#{imageClass5}" src="#{teaserLogoImageColors}" width="41" alt="#{teaserLogoImageColorsAlt}" />
+            <h2>#{productHeadline4}</h2>
+          </div>
+          <div class="mug-product-image">
+            <img class="#{imageClass4}" src="#{teaserProductImage4}" width="100%" alt="#{teaserProductAlt4}" />
+          </div>
+          <div class="mug-product-cta">
+            <ui:include src="/helper/directupload-short.xhtml">
+              <ui:param name="directuploadProductId" value="#{productId4}" />
+              <ui:param name="directuploadClass" value="action" />
+              <ui:param name="buttonText" value="Skapa" />
+            </ui:include>
+          </div>
+        </div>
+      </div>
+      
+      <!-- teaser left -->
+      <!-- <div class="tasse-row col -span-12 -collapse">
+      <ui:fragment rendered="#{not empty teaserProductDetail}">
+        <img class="magnified-corner" src="#{teaserProductDetail}" alt="#{teaserProductDetailAlt}" />
+      </ui:fragment>
+        <div class="col -span-6 -text-centered -collapse">
+          <h2 class="headline1 col -span-10">#{productHeadline1}</h2>
+          <img class="#{imageClass1}" src="#{teaserProductImage1}" width="100%" alt="#{teaserProductAlt1}" />
+        <ui:include src="/helper/directupload-short.xhtml">
+          <ui:param name="directuploadProductId" value="#{productId1}" />
+          <ui:param name="directuploadClass" value="action" />
+          <ui:param name="buttonText" value="Skapa" />
+        </ui:include>
+        </div>
+      <div class="col -span-6 -text-centered -collapse">
+        <h2 class="headline2 col -span-10">#{productHeadline2}</h2>
+        <img class="#{imageClass2}" src="#{teaserProductImage2}" width="100%" alt="#{teaserProductAlt2}" />
+        <ui:include src="/helper/directupload-short.xhtml">
+          <ui:param name="directuploadProductId" value="#{productId2}" />
+          <ui:param name="directuploadClass" value="action" />
+          <ui:param name="buttonText" value="Skapa" />
+        </ui:include>
+      </div>
+      <div class="col -span-6 -mt15-mb15 -fixMagicButton -text-centered -collapse">
+        <h2 class="headline3 col -span-10">#{productHeadline3}</h2>
+        <img class="#{imageClass3}" src="#{teaserProductImage3}" width="100%" alt="#{teaserProductAlt3}" />
+         <ui:include src="/helper/directupload-short.xhtml">
+          <ui:param name="directuploadProductId" value="#{productId3}" />
+          <ui:param name="directuploadClass" value="action" />
+          <ui:param name="buttonText" value="Skapa" />
+        </ui:include> 
+      </div>
+      <div class="col -span-6 -mt15-mb15 text-center -collapse">
+        <div class="col -span-11">
+          <img class="#{imageClass5}" src="#{teaserLogoImageColors}" width="41" alt="#{teaserLogoImageColorsAlt}" />
+        </div>
+        <h2 class="headline4 col -span-12">#{productHeadline4}</h2>
+        <img class="#{imageClass4}" src="#{teaserProductImage4}" width="100%" alt="#{teaserProductAlt4}" />
+        <ui:include src="/helper/directupload-short.xhtml">
+          <ui:param name="directuploadProductId" value="#{productId4}" />
+          <ui:param name="directuploadClass" value="action" />
+          <ui:param name="buttonText" value="Skapa" />
+        </ui:include>
+      </div> -->
+      <!-- </div>/teaser left -->
+
+        <div class="freeShippingTeaser text-center col -span-12 -top">
+          <span class="-highlighted-text">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/fri-leverans.png" class="freeShippingLogo" alt="24 hora logo" width="25" />
+            FRI leverans
+          </span> 
+          från 800 kr.
+        </div>
+
+      <!-- teaser right -->
+      <div class="info">
+        <ui:fragment rendered="#{not empty teaserCode}">
+          <p class="text-center">
+            Im Warenkorb diesen Code eingeben und Versandkostenfrei bestellen:<br/>
+            <strong>#{teaserCode}</strong>
+          </p>
+        </ui:fragment>
+        <ui:include src="/page-blocks/uploader-cover.xhtml" />
+      </div><!-- /teaser right -->
+    </div>
+  </div>
+<br />
+</ui:composition>

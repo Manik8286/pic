@@ -1,0 +1,468 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:decorate template="/#{shopInfoBean.defaultVersionPath}components/cms/dynamic.xhtml">
+    <ui:param name="parentTemplate" value="/templates/default.xhtml"/>
+    <ui:param name="paymentMethodBlock" value="/page-blocks/paymentmethods.xhtml"/>
+    <ui:param name="newsletterBlock" value="/page-blocks/newsletter-wr.xhtml"/>
+    <ui:param name="shopName" value="bestcanvas-se"/>
+
+    <ui:param name="discountCode" value="%%discountCode%%"/>
+
+    <!-- Parameters from the Picturator fields (defined in the bottom) -->
+    <ui:param name="pageMeta1Name" value="%%pageMeta1Name%%"/>
+    <ui:param name="pageMeta1Value" value="%%pageMeta1Value%%"/>
+    <ui:param name="pageMeta2Name" value="%%pageMeta2Name%%"/>
+    <ui:param name="pageMeta2Value" value="%%pageMeta2Value%%"/>
+    <ui:param name="pageMeta3Name" value="%%pageMeta3Name%%"/>
+    <ui:param name="pageMeta3Value" value="%%pageMeta3Value%%"/>
+    <ui:param name="pageMeta4Name" value="%%pageMeta4Name%%"/>
+    <ui:param name="pageMeta4Value" value="%%pageMeta4Value%%"/>
+    <ui:param name="pageMeta5Name" value="%%pageMeta5Name%%"/>
+    <ui:param name="pageMeta5Value" value="%%pageMeta5Value%%"/>
+
+    <ui:param name="pageTitle" value="%%pageTitle%%"/>
+    <ui:param name="topbar" value="%%topbar%%"/>
+    <ui:param name="expired" value="%%expired%%"/>
+    <ui:param name="expiredLink" value="%%expiredLink%%"/>
+
+    <ui:param name="teaserHeadline" value="%%teaserHeadline%%"/>
+    <ui:param name="teaserClaim" value="%%teaserClaim%%"/>
+    <ui:param name="teaserBadge" value="%%teaserBadge%%"/>
+    <ui:param name="teaserBadgeCrossedPriceStrike" value="%%teaserBadgeCrossedPriceStrike%%"/>
+    <ui:param name="teaserWhiteBoxCrossPrice" value="%%teaserWhiteBoxCrossPrice%%"/>
+    <ui:param name="teaserWhiteBoxDealPrice" value="%%teaserWhiteBoxDealPrice%%"/>
+    <ui:param name="teaserWhiteBoxFrom" value="%%teaserWhiteBoxFrom%%"/>
+    <ui:param name="teaserCouponTitle" value="%%teaserCouponTitle%%"/>
+    <ui:param name="teaserCouponCode" value="%%teaserCouponCode%%"/>
+    <ui:param name="teaserBackgroundImage" value="%%teaserBackgroundImage%%"/>
+    <ui:param name="teaserBackgroundColor" value="%%teaserBackgroundColor%%"/>
+    <ui:param name="teaserSmallPrint" value="%%teaserSmallPrint%%"/>
+
+    <ui:param name="priceTableSnippet" value="%%priceTableSnippet%%"/>
+
+    <ui:param name="columns" value="%%columns%%"/>
+    <ui:param name="columnBackgroundColor" value="%%columnBackgroundColor%%"/>
+
+    <ui:param name="specialPriceSymbol" value="%%specialPriceSymbol%%"/>
+    <ui:param name="priceException" value="%%priceException%%"/>
+    <ui:param name="disableAllCoupons" value="%%disableAllCoupons%%"/>
+    <ui:param name="hideNewsletter" value="%%hideNewsletter%%"/>
+
+    <ui:param name="column1Id" value="%%column1Id%%"/>
+    <ui:param name="column1Title" value="%%column1Title%%"/>
+    <ui:param name="column1BulletPoint1" value="%%column1BulletPoint1%%"/>
+    <ui:param name="column1BulletPoint2" value="%%column1BulletPoint2%%"/>
+    <ui:param name="column1BulletPoint3" value="%%column1BulletPoint3%%"/>
+    <ui:param name="column1BulletPoint4" value="%%column1BulletPoint4%%"/>
+    <ui:param name="column1BulletPoint5" value="%%column1BulletPoint5%%"/>
+    <ui:param name="column1Description" value="%%column1Description%%"/>
+    <ui:param name="column1CrossedPrice" value="%%column1CrossedPrice%%"/>
+    <ui:param name="column1Price" value="%%column1Price%%"/>
+    <ui:param name="column1PriceSize" value="%%column1PriceSize%%"/>
+    <ui:param name="column1Format" value="%%column1Format%%"/>
+    <ui:param name="column1CouponTitle" value="%%column1CouponTitle%%"/>
+    <ui:param name="column1CouponCode" value="%%column1CouponCode%%"/>
+    <ui:param name="alt1" value="%%alt1%%"/>
+    <ui:param name="column1Format1" value="%%column1Format1[column1Id]%%"/>
+    <ui:param name="column1Format1Label" value="%%column1Format1Label[column1Format1]%%"/>
+    <ui:param name="column1Format1CrossedPrice" value="%%column1Format1CrossedPrice[column1Format1]%%"/>
+    <ui:param name="column1Format1Price" value="%%column1Format1Price[column1Format1]%%"/>
+    <ui:param name="column1Format2" value="%%column1Format2[column1Id]%%"/>
+    <ui:param name="column1Format2Label" value="%%column1Format2Label[column1Format2]%%"/>
+    <ui:param name="column1Format2CrossedPrice" value="%%column1Format2CrossedPrice[column1Format2]%%"/>
+    <ui:param name="column1Format2Price" value="%%column1Format2Price[column1Format2]%%"/>
+    <ui:param name="column1Format3" value="%%column1Format3[column1Id]%%"/>
+    <ui:param name="column1Format3Label" value="%%column1Format3Label[column1Format3]%%"/>
+    <ui:param name="column1Format3CrossedPrice" value="%%column1Format3CrossedPrice[column1Format3]%%"/>
+    <ui:param name="column1Format3Price" value="%%column1Format3Price[column1Format3]%%"/>
+    <ui:param name="column1Format4" value="%%column1Format4[column1Id]%%"/>
+    <ui:param name="column1Format4Label" value="%%column1Format4Label[column1Format4]%%"/>
+    <ui:param name="column1Format4CrossedPrice" value="%%column1Format4CrossedPrice[column1Format4]%%"/>
+    <ui:param name="column1Format4Price" value="%%column1Format4Price[column1Format4]%%"/>
+    <ui:param name="column1DefaultFormatWidth" value="%%column1DefaultFormatWidth%%"/>
+    <ui:param name="column1DefaultFormatHeight" value="%%column1DefaultFormatHeight%%"/>
+    <ui:param name="column1CTALabel" value="%%column1CTALabel%%"/>
+    <ui:param name="column1CustomLink" value="%%column1CustomLink%%"/>
+    <ui:param name="column1DesktopImage" value="%%column1DesktopImage%%"/>
+    <ui:param name="column1mobileImage" value="%%column1mobileImage%%"/>
+    <ui:param name="useURLParam1" value="%%useURLParam1%%"/>
+    
+
+    <ui:param name="column2Id" value="%%column2Id%%"/>
+    <ui:param name="column2Title" value="%%column2Title%%"/>
+    <ui:param name="column2BulletPoint1" value="%%column2BulletPoint1%%"/>
+    <ui:param name="column2BulletPoint2" value="%%column2BulletPoint2%%"/>
+    <ui:param name="column2BulletPoint3" value="%%column2BulletPoint3%%"/>
+    <ui:param name="column2BulletPoint4" value="%%column2BulletPoint4%%"/>
+    <ui:param name="column2BulletPoint5" value="%%column2BulletPoint5%%"/>
+    <ui:param name="column2Description" value="%%column2Description%%"/>
+    <ui:param name="column2CrossedPrice" value="%%column2CrossedPrice%%"/>
+    <ui:param name="column2Price" value="%%column2Price%%"/>
+    <ui:param name="column2PriceSize" value="%%column2PriceSize%%"/>
+    <ui:param name="column2Format" value="%%column2Format%%"/>
+    <ui:param name="column2CouponTitle" value="%%column2CouponTitle%%"/>
+    <ui:param name="column2CouponCode" value="%%column2CouponCode%%"/>
+    <ui:param name="alt2" value="%%alt2%%"/>
+    <ui:param name="column2Format1" value="%%column2Format1[column2Id]%%"/>
+    <ui:param name="column2Format1Label" value="%%column2Format1Label[column2Format1]%%"/>
+    <ui:param name="column2Format1CrossedPrice" value="%%column2Format1CrossedPrice[column2Format1]%%"/>
+    <ui:param name="column2Format1Price" value="%%column2Format1Price[column2Format1]%%"/>
+    <ui:param name="column2Format2" value="%%column2Format2[column2Id]%%"/>
+    <ui:param name="column2Format2Label" value="%%column2Format2Label[column2Format2]%%"/>
+    <ui:param name="column2Format2CrossedPrice" value="%%column2Format2CrossedPrice[column2Format2]%%"/>
+    <ui:param name="column2Format2Price" value="%%column2Format2Price[column2Format2]%%"/>
+    <ui:param name="column2Format3" value="%%column2Format3[column2Id]%%"/>
+    <ui:param name="column2Format3Label" value="%%column2Format3Label[column2Format3]%%"/>
+    <ui:param name="column2Format3CrossedPrice" value="%%column2Format3CrossedPrice[column2Format3]%%"/>
+    <ui:param name="column2Format3Price" value="%%column2Format3Price[column2Format3]%%"/>
+    <ui:param name="column2Format4" value="%%column2Format4[column2Id]%%"/>
+    <ui:param name="column2Format4Label" value="%%column2Format4Label[column2Format4]%%"/>
+    <ui:param name="column2Format4CrossedPrice" value="%%column2Format4CrossedPrice[column2Format4]%%"/>
+    <ui:param name="column2Format4Price" value="%%column2Format4Price[column2Format4]%%"/>
+    <ui:param name="column2DefaultFormatWidth" value="%%column2DefaultFormatWidth%%"/>
+    <ui:param name="column2DefaultFormatHeight" value="%%column2DefaultFormatHeight%%"/>
+    <ui:param name="column2CTALabel" value="%%column2CTALabel%%"/>
+    <ui:param name="column2CustomLink" value="%%column2CustomLink%%"/>
+    <ui:param name="column2DesktopImage" value="%%column2DesktopImage%%"/>
+    <ui:param name="column2mobileImage" value="%%column2mobileImage%%"/>
+    <ui:param name="useURLParam2" value="%%useURLParam2%%"/>
+
+    <ui:param name="column3Id" value="%%column3Id%%"/>
+    <ui:param name="column3Title" value="%%column3Title%%"/>
+    <ui:param name="column3BulletPoint1" value="%%column3BulletPoint1%%"/>
+    <ui:param name="column3BulletPoint2" value="%%column3BulletPoint2%%"/>
+    <ui:param name="column3BulletPoint3" value="%%column3BulletPoint3%%"/>
+    <ui:param name="column3BulletPoint4" value="%%column3BulletPoint4%%"/>
+    <ui:param name="column3BulletPoint5" value="%%column3BulletPoint5%%"/>
+    <ui:param name="column3Description" value="%%column3Description%%"/>
+    <ui:param name="column3CrossedPrice" value="%%column3CrossedPrice%%"/>
+    <ui:param name="column3Price" value="%%column3Price%%"/>
+    <ui:param name="column3PriceSize" value="%%column3PriceSize%%"/>
+    <ui:param name="column3Format" value="%%column3Format%%"/>
+    <ui:param name="column3CouponTitle" value="%%column3CouponTitle%%"/>
+    <ui:param name="column3CouponCode" value="%%column3CouponCode%%"/>
+    <ui:param name="alt3" value="%%alt3%%"/>
+    <ui:param name="column3Format1" value="%%column3Format1[column3Id]%%"/>
+    <ui:param name="column3Format1Label" value="%%column3Format1Label[column3Format1]%%"/>
+    <ui:param name="column3Format1CrossedPrice" value="%%column3Format1CrossedPrice[column3Format1]%%"/>
+    <ui:param name="column3Format1Price" value="%%column3Format1Price[column3Format1]%%"/>
+    <ui:param name="column3Format2" value="%%column3Format2[column3Id]%%"/>
+    <ui:param name="column3Format2Label" value="%%column3Format2Label[column3Format2]%%"/>
+    <ui:param name="column3Format2CrossedPrice" value="%%column3Format2CrossedPrice[column3Format2]%%"/>
+    <ui:param name="column3Format2Price" value="%%column3Format2Price[column3Format2]%%"/>
+    <ui:param name="column3Format3" value="%%column3Format3[column3Id]%%"/>
+    <ui:param name="column3Format3Label" value="%%column3Format3Label[column3Format3]%%"/>
+    <ui:param name="column3Format3CrossedPrice" value="%%column3Format3CrossedPrice[column3Format3]%%"/>
+    <ui:param name="column3Format3Price" value="%%column3Format3Price[column3Format3]%%"/>
+    <ui:param name="column3Format4" value="%%column3Format4[column3Id]%%"/>
+    <ui:param name="column3Format4Label" value="%%column3Format4Label[column3Format4]%%"/>
+    <ui:param name="column3Format4CrossedPrice" value="%%column3Format4CrossedPrice[column3Format4]%%"/>
+    <ui:param name="column3Format4Price" value="%%column3Format4Price[column3Format4]%%"/>
+    <ui:param name="column3DefaultFormatWidth" value="%%column3DefaultFormatWidth%%"/>
+    <ui:param name="column3DefaultFormatHeight" value="%%column3DefaultFormatHeight%%"/>
+    <ui:param name="column3CTALabel" value="%%column3CTALabel%%"/>
+    <ui:param name="column3CustomLink" value="%%column3CustomLink%%"/>
+    <ui:param name="column3DesktopImage" value="%%column3DesktopImage%%"/>
+    <ui:param name="column3mobileImage" value="%%column3mobileImage%%"/>
+    <ui:param name="useURLParam3" value="%%useURLParam3%%"/>
+
+    <ui:param name="column4Id" value="%%column4Id%%"/>
+    <ui:param name="column4Title" value="%%column4Title%%"/>
+    <ui:param name="column4BulletPoint1" value="%%column4BulletPoint1%%"/>
+    <ui:param name="column4BulletPoint2" value="%%column4BulletPoint2%%"/>
+    <ui:param name="column4BulletPoint3" value="%%column4BulletPoint3%%"/>
+    <ui:param name="column4BulletPoint4" value="%%column4BulletPoint4%%"/>
+    <ui:param name="column4BulletPoint5" value="%%column4BulletPoint5%%"/>
+    <ui:param name="column4Description" value="%%column4Description%%"/>
+    <ui:param name="column4CrossedPrice" value="%%column4CrossedPrice%%"/>
+    <ui:param name="column4Price" value="%%column4Price%%"/>
+    <ui:param name="column4PriceSize" value="%%column4PriceSize%%"/>
+    <ui:param name="column4Format" value="%%column4Format%%"/>
+    <ui:param name="column4CouponTitle" value="%%column4CouponTitle%%"/>
+    <ui:param name="column4CouponCode" value="%%column4CouponCode%%"/>
+    <ui:param name="alt4" value="%%alt4%%"/>
+    <ui:param name="column4Format1" value="%%column4Format1[column4Id]%%"/>
+    <ui:param name="column4Format1Label" value="%%column4Format1Label[column4Format1]%%"/>
+    <ui:param name="column4Format1CrossedPrice" value="%%column4Format1CrossedPrice[column4Format1]%%"/>
+    <ui:param name="column4Format1Price" value="%%column4Format1Price[column4Format1]%%"/>
+    <ui:param name="column4Format2" value="%%column4Format2[column4Id]%%"/>
+    <ui:param name="column4Format2Label" value="%%column4Format2Label[column4Format2]%%"/>
+    <ui:param name="column4Format2CrossedPrice" value="%%column4Format2CrossedPrice[column4Format2]%%"/>
+    <ui:param name="column4Format2Price" value="%%column4Format2Price[column4Format2]%%"/>
+    <ui:param name="column4Format3" value="%%column4Format3[column4Id]%%"/>
+    <ui:param name="column4Format3Label" value="%%column4Format3Label[column4Format3]%%"/>
+    <ui:param name="column4Format3CrossedPrice" value="%%column4Format3CrossedPrice[column4Format3]%%"/>
+    <ui:param name="column4Format3Price" value="%%column4Format3Price[column4Format3]%%"/>
+    <ui:param name="column4Format4" value="%%column4Format4[column4Id]%%"/>
+    <ui:param name="column4Format4Label" value="%%column4Format4Label[column4Format4]%%"/>
+    <ui:param name="column4Format4CrossedPrice" value="%%column4Format4CrossedPrice[column4Format4]%%"/>
+    <ui:param name="column4Format4Price" value="%%column4Format4Price[column4Format4]%%"/>
+    <ui:param name="column4DefaultFormatWidth" value="%%column4DefaultFormatWidth%%"/>
+    <ui:param name="column4DefaultFormatHeight" value="%%column4DefaultFormatHeight%%"/>
+    <ui:param name="column4CTALabel" value="%%column4CTALabel%%"/>
+    <ui:param name="column4CustomLink" value="%%column4CustomLink%%"/>
+    <ui:param name="column4DesktopImage" value="%%column4DesktopImage%%"/>
+    <ui:param name="column4mobileImage" value="%%column4mobileImage%%"/>
+    <ui:param name="useURLParam4" value="%%useURLParam4%%"/>
+
+    <ui:param name="Module1" value="%%module1%%"/>
+    <ui:param name="Module2" value="%%module2%%"/>
+    <ui:param name="Module3" value="%%module3%%"/>
+    <ui:param name="Module4" value="%%module4%%"/>
+    <ui:param name="Module5" value="%%module5%%"/>
+    
+  </ui:decorate>
+  
+<!--
+Template Name: CRM Dynamic Template
+
+Field "pageMeta1Name": Page > Meta1 > Name [You can use meta Description or meta Refresh in this field]
+Field "pageMeta1Value": Page > Meta1 > Value
+Field "pageMeta2Name": Page > Meta2 > Name
+Field "pageMeta2Value": Page > Meta2 > Value
+Field "pageMeta3Name": Page > Meta3 > Name
+Field "pageMeta3Value": Page > Meta3 > Value
+Field "pageMeta4Name": Page > Meta4 > Name
+Field "pageMeta4Value": Page > Meta4 > Value
+Field "pageMeta5Name": Page > Meta5 > Name
+Field "pageMeta5Value": Page > Meta5 > Value
+
+Field "pageTitle": Page > Title
+Field "topbar": Topbar
+Field "expired": Topbar Expired Message
+Field "expiredLink": Topbar Expired Link
+
+Field "teaserHeadline": Teaser > Headline
+Field "teaserClaim": Teaser > Claim
+Field "teaserBadge": Teaser > (Full Width) Show Badge?
+Field "teaserBadgeCrossedPriceStrike": Teaser > (Full Width) Crossed Price Strike?
+
+Field "teaserWhiteBoxCrossPrice": Teaser > (Full Width) White Box Cross Price
+Field "teaserWhiteBoxDealPrice": Teaser > (Full Width) White Box Deal Price
+Field "teaserWhiteBoxFrom": Teaser > (Full Width) From Text
+
+Field "teaserCouponTitle": Teaser > (Full Width) Coupon Title
+Field "teaserCouponCode": Teaser > (Full Width) Coupon Code
+
+Field "teaserSmallPrint": Teaser > Deal end small print
+Image "teaserBackgroundImage": Teaser > BG Image (1920x500)
+Field "teaserBackgroundColor": Teaser background-color: [white, #fff, #ffffff, transparent or just empty...]
+
+Field "priceTableSnippet": Price Table Snippet Name (block)
+
+Field "columns": Columns (columns) [Number of columns (products) on Teaser layout]
+Field "columnBackgroundColor": Column(s) background-color: [white, #fff, #ffffff, transparent or just empty...]
+
+Field "specialPriceSymbol": Special price symbol: [*, 1 or leave it empty]
+Field "priceException": Highlight Prices: [productID:productFormat,productID:productFormat,productID:productFormat]
+Field "disableAllCoupons": Disable all coupons: [true OR leave it empty]
+Field "hideNewsletter": Hide Newsletter? [yes OR leave it empty]
+
+Field "column1Id": Product1 / ID (product)
+Field "column1Title": Product1 / Title
+
+Field "column1BulletPoint1": Product1 / BulletPoint1
+Field "column1BulletPoint2": Product1 / BulletPoint2
+Field "column1BulletPoint3": Product1 / BulletPoint3
+Field "column1BulletPoint4": Product1 / BulletPoint4 (Full Width)
+Field "column1BulletPoint5": Product1 / BulletPoint5 (Full Width)
+
+Field "column1Description": Product1 / Description (free text)
+
+Field "column1Format": Product1 / Format (formatLabel)
+Field "column1CrossedPrice": Product1 / Crossed Price
+Field "column1Price": Product1 / Price
+Field "column1PriceSize": Product1 / Price Size
+
+Field "column1CouponTitle": Product1 / Coupon Code Title
+Field "column1CouponCode": Product1 / Coupon Code
+Field "alt1": Product1 / Image Alt
+
+Field "column1Format1[column1Id]": Product1 / Format1 / Name (format)
+Field "column1Format1Label[column1Format1]": Product1 / Format1 / Label (formatLabel)
+Field "column1Format1CrossedPrice[column1Format1]": Product1 / Format1 / CrossedPrice
+Field "column1Format1Price[column1Format1]": Product1 / Format1 / Price
+
+Field "column1Format2[column1Id]": Product1 / Format2 / Name (format)
+Field "column1Format2Label[column1Format2]": Product1 / Format2 / Label (formatLabel)
+Field "column1Format2CrossedPrice[column1Format2]": Product1 / Format2 / CrossedPrice
+Field "column1Format2Price[column1Format2]": Product1 / Format2 / Price
+
+Field "column1Format3[column1Id]": Product1 / Format3 / Name (format)
+Field "column1Format3Label[column1Format3]": Product1 / Format3 / Label (formatLabel)
+Field "column1Format3CrossedPrice[column1Format3]": Product1 / Format3 / CrossedPrice
+Field "column1Format3Price[column1Format3]": Product1 / Format3 / Price
+
+Field "column1Format4[column1Id]": Product1 / Format4 / Name (format)
+Field "column1Format4Label[column1Format4]": Product1 / Format4 / Label (formatLabel)
+Field "column1Format4CrossedPrice[column1Format4]": Product1 / Format4 / CrossedPrice
+Field "column1Format4Price[column1Format4]": Product1 / Format4 / Price
+
+Field "column1DefaultFormatWidth": Product1 / Default Format Width
+Field "column1DefaultFormatHeight": Product1 / Default Format Height
+Field "column1CTALabel": Product1 / CTA Label
+Field "column1CustomLink": Product1 / CTA Custom Link
+
+Image "column1DesktopImage": Product1 / Desktop Image (410x308)
+Image "column1mobileImage": Product1 / Mobile Image (410x308)
+
+Field "useURLParam1": Product1 / Use URL Param instead of Image Upload (checkbox)
+
+Field "column2Id": Product2 / ID (product)
+Field "column2Title": Product2 / Title
+
+Field "column2BulletPoint1": Product2 / BulletPoint1
+Field "column2BulletPoint2": Product2 / BulletPoint2
+Field "column2BulletPoint3": Product2 / BulletPoint3
+Field "column2BulletPoint4": Product2 / BulletPoint4 (Full Width)
+Field "column2BulletPoint5": Product2 / BulletPoint5 (Full Width)
+
+Field "column2Description": Product2 / Description (free text).
+
+Field "column2Format": Product2 / Format (formatLabel)
+Field "column2CrossedPrice": Product2 / Crossed Price
+Field "column2Price": Product2 / Price
+Field "column2PriceSize": Product2 / Price Size
+
+Field "column2CouponTitle": Product2 / Coupon Code Title
+Field "column2CouponCode": Product2 / Coupon Code
+Field "alt2": Product2 / Image Alt
+
+Field "column2Format1[column2Id]": Product2 / Format1 / Name (format)
+Field "column2Format1Label[column2Format1]": Product2 / Format1 / Label (formatLabel)
+Field "column2Format1CrossedPrice[column2Format1]": Product2 / Format1 / CrossedPrice
+Field "column2Format1Price[column2Format1]": Product2 / Format1 / Price
+
+Field "column2Format2[column2Id]": Product2 / Format2 / Name (format)
+Field "column2Format2Label[column2Format2]": Product2 / Format2 / Label (formatLabel)
+Field "column2Format2CrossedPrice[column2Format2]": Product2 / Format2 / CrossedPrice
+Field "column2Format2Price[column2Format2]": Product2 / Format2 / Price
+
+Field "column2Format3[column2Id]": Product2 / Format3 / Name (format)
+Field "column2Format3Label[column2Format3]": Product2 / Format3 / Label (formatLabel)
+Field "column2Format3CrossedPrice[column2Format3]": Product2 / Format3 / CrossedPrice
+Field "column2Format3Price[column2Format3]": Product2 / Format3 / Price
+
+Field "column2Format4[column2Id]": Product2 / Format4 / Name (format)
+Field "column2Format4Label[column2Format4]": Product2 / Format4 / Label (formatLabel)
+Field "column2Format4CrossedPrice[column2Format4]": Product2 / Format4 / CrossedPrice
+Field "column2Format4Price[column2Format4]": Product2 / Format4 / Price
+
+Field "column2DefaultFormatWidth": Product2 / Default Format Width
+Field "column2DefaultFormatHeight": Product2 / Default Format Height
+Field "column2CTALabel": Product2 / CTA Label
+Field "column2CustomLink": Product2 / CTA Custom Link
+
+Image "column2DesktopImage": Product2 / Desktop Image (410x308)
+Image "column2mobileImage": Product2 / Mobile Image (410x308)
+
+Field "useURLParam2": Product2 / Use URL Param instead of Image Upload (checkbox)
+
+Field "column3Id": Product3 / ID (product)
+Field "column3Title": Product3 / Title
+
+Field "column3BulletPoint1": Product3 / BulletPoint1
+Field "column3BulletPoint2": Product3 / BulletPoint2
+Field "column3BulletPoint3": Product3 / BulletPoint3
+Field "column3BulletPoint4": Product3 / BulletPoint4 (Full Width)
+Field "column3BulletPoint5": Product3 / BulletPoint5 (Full Width)
+
+Field "column3Description": Product3 / Description (free text).
+
+Field "column3Format": Product3 / Format (formatLabel)
+Field "column3CrossedPrice": Product3 / Crossed Price
+Field "column3Price": Product3 / Price
+Field "column3PriceSize": Product3 / Price Size
+
+Field "column3CouponTitle": Product3 / Coupon Code Title
+Field "column3CouponCode": Product3 / Coupon Code
+Field "alt3": Product3 / Image Alt
+
+Field "column3Format1[column3Id]": Product3 / Format1 / Name (format)
+Field "column3Format1Label[column3Format1]": Product3 / Format1 / Label (formatLabel)
+Field "column3Format1CrossedPrice[column3Format1]": Product3 / Format1 / CrossedPrice
+Field "column3Format1Price[column3Format1]": Product3 / Format1 / Price
+
+Field "column3Format2[column3Id]": Product3 / Format2 / Name (format)
+Field "column3Format2Label[column3Format2]": Product3 / Format2 / Label (formatLabel)
+Field "column3Format2CrossedPrice[column3Format2]": Product3 / Format2 / CrossedPrice
+Field "column3Format2Price[column3Format2]": Product3 / Format2 / Price
+
+Field "column3Format3[column3Id]": Product3 / Format3 / Name (format)
+Field "column3Format3Label[column3Format3]": Product3 / Format3 / Label (formatLabel)
+Field "column3Format3CrossedPrice[column3Format3]": Product3 / Format3 / CrossedPrice
+Field "column3Format3Price[column3Format3]": Product3 / Format3 / Price
+
+Field "column3Format4[column3Id]": Product3 / Format4 / Name (format)
+Field "column3Format4Label[column3Format4]": Product3 / Format4 / Label (formatLabel)
+Field "column3Format4CrossedPrice[column3Format4]": Product3 / Format4 / CrossedPrice
+Field "column3Format4Price[column3Format4]": Product3 / Format4 / Price
+
+Field "column3DefaultFormatWidth": Product3 / Default Format Width
+Field "column3DefaultFormatHeight": Product3 / Default Format Height
+Field "column3CTALabel": Product3 / CTA Label
+Field "column3CustomLink": Product3 / CTA Custom Link
+
+Image "column3DesktopImage": Product3 / Desktop Image (410x308)
+Image "column3mobileImage": Product3 / Mobile Image (410x308)
+
+Field "useURLParam3": Product3 / Use URL Param instead of Image Upload (checkbox)
+
+Field "column4Id": Product4 / ID (product)
+Field "column4Title": Product4 / Title
+
+Field "column4BulletPoint1": Product4 / BulletPoint1
+Field "column4BulletPoint2": Product4 / BulletPoint2
+Field "column4BulletPoint3": Product4 / BulletPoint3
+Field "column4BulletPoint4": Product4 / BulletPoint4 (Full Width)
+Field "column4BulletPoint5": Product4 / BulletPoint5 (Full Width)
+
+Field "column4Description": Product4 / Description (free text).
+
+Field "column4Format": Product4 / Format (formatLabel)
+Field "column4CrossedPrice": Product4 / Crossed Price
+Field "column4Price": Product4 / Price
+Field "column4PriceSize": Product4 / Price Size
+
+Field "column4CouponTitle": Product4 / Coupon Code Title
+Field "column4CouponCode": Product4 / Coupon Code
+Field "alt4": Product4 / Image Alt
+
+Field "column4Format1[column4Id]": Product4 / Format1 / Name (format)
+Field "column4Format1Label[column4Format1]": Product4 / Format1 / Label (formatLabel)
+Field "column4Format1CrossedPrice[column4Format1]": Product4 / Format1 / CrossedPrice
+Field "column4Format1Price[column4Format1]": Product4 / Format1 / Price
+
+Field "column4Format2[column4Id]": Product4 / Format2 / Name (format)
+Field "column4Format2Label[column4Format2]": Product4 / Format2 / Label (formatLabel)
+Field "column4Format2CrossedPrice[column4Format2]": Product4 / Format2 / CrossedPrice
+Field "column4Format2Price[column4Format2]": Product4 / Format2 / Price
+
+Field "column4Format3[column4Id]": Product4 / Format3 / Name (format)
+Field "column4Format3Label[column4Format3]": Product4 / Format3 / Label (formatLabel)
+Field "column4Format3CrossedPrice[column4Format3]": Product4 / Format3 / CrossedPrice
+Field "column4Format3Price[column4Format3]": Product4 / Format3 / Price
+
+Field "column4Format4[column4Id]": Product4 / Format4 / Name (format)
+Field "column4Format4Label[column4Format4]": Product4 / Format4 / Label (formatLabel)
+Field "column4Format4CrossedPrice[column4Format4]": Product4 / Format4 / CrossedPrice
+Field "column4Format4Price[column4Format4]": Product4 / Format4 / Price
+
+Field "column4DefaultFormatWidth": Product4 / Default Format Width
+Field "column4DefaultFormatHeight": Product4 / Default Format Height
+Field "column4CTALabel": Product4 / CTA Label
+Field "column4CustomLink": Product4 / CTA Custom Link
+
+Image "column4DesktopImage": Product4 / Desktop Image (410x308)
+Image "column4mobileImage": Product4 / Mobile Image (410x308)
+
+Field "useURLParam4": Product4 / Use URL Param instead of Image Upload (checkbox)
+
+Module 1: Info block (info)
+Module 2: Upgrade block (upgrade)
+Module 3: Quotes (quotes)
+Module 4: Channel (channel)
+Module 5: CRM dynamic (crm)
+-->
+</ui:composition>

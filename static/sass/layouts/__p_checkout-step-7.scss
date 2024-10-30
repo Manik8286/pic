@@ -1,0 +1,613 @@
+.p_checkout-step-7 {
+  .wrapper {
+    @extend .row;
+    padding: 0 $grid-gutter/2;
+  }
+
+  &.thankyou {
+    text-align: center;
+    font-size: 20px;
+
+    .canvas {
+      background-image: url('/assets/img/backgrounds/canvas_pattern.png');
+      background-repeat: repeat;
+      box-shadow: 0 1px 6px $silver;
+      padding-bottom: 10px;
+    }
+
+    .image {
+      width: 100%;
+      max-height: 225px;
+      position: relative;
+      overflow-y: hidden;
+
+      &:before {
+        content: '';
+        position: absolute;
+        background-repeat: repeat-x;
+        height: 129px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('/assets/img/backgrounds/canvas_fade_pattern.png');
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  &.info {
+    .ordernumber {
+      color: $highlight-color;
+    }
+
+    .cbox {
+      @extend .box;
+      padding: 20px;
+      margin-bottom: 20px;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .trusted {
+      .content {
+        @include clearfix;
+      }
+
+      .logo {
+        width: 50px;
+        height: 50px;
+        float: left;
+        margin-left: -10px;
+      }
+
+      .body {
+        margin-left: 50px;
+      }
+
+      .action {
+        @extend .button_action;
+        @extend .button_action_mod-secondary;
+        @extend .button_action_mod-touch;
+        width: 100%;
+        margin-top: 20px;
+      }
+    }
+  }
+
+  &.coupon {
+    text-align: center;
+
+    .title {
+      margin: 0;
+      font-size: 20px;
+      font-weight: $weight-normal;
+    }
+
+    .action {
+      @extend .button_simple;
+      @extend .button_simple_mod-touch !optional;
+      width: 100%;
+      color: $highlight-color;
+      border-color: $highlight-color;
+    }
+  }
+
+  &.social {
+    text-align: center;
+    margin-bottom: 20px;
+
+    .facebook {
+      font-size: 20px;
+      text-decoration: none;
+      color: $facebook;
+
+      .like {
+        position: relative;
+        top: 6px;
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+.ordersuccess {
+
+  .copy-bubble {
+      text-align: center;
+      margin-left: 80px;
+      margin-top: 70px;
+      padding-top: 10px;
+      font-size: 14px;
+      position: absolute;
+      width: 260px;
+      height: 30px;
+      background: #fff;
+      border-radius: 45px;
+      border: 1px solid #7f7f7f;
+      &:after {
+          content: '';
+          position: absolute;
+          border-style: solid;
+          border-width: 0 22px 16px;
+          border-color: #fff transparent;
+          display: block;
+          width: 0;
+          z-index: 1;
+          top: -16px;
+          left: 105px;
+      }
+      &:before {
+          content: '';
+          position: absolute;
+          border-style: solid;
+          border-width: 0 22px 16px;
+          border-color: #7f7f7f transparent;
+          display: block;
+          width: 0;
+          z-index: 0;
+          top: -17px;
+          left: 105px;
+      }
+  }
+
+  .success-box {
+      padding: 20px;
+      border: 2px solid #35b2b6;
+        &.-new {
+          border: 2px solid $red;
+          .-pt5 {
+            padding-top: 5px;
+          }
+          .-pb5 {
+            padding-bottom: 5px;
+          }
+          .-f24 {
+            font-size: 24px;
+          }
+          .-icons {
+            width: 80%;
+            justify-content: space-between;
+            margin: 10px auto;
+            button {
+              background-color: transparent;
+              border: none;
+              padding: 0;
+            }
+          }
+        }
+  }
+  .inner {
+      padding: 15px;
+      margin: 15px;
+  }
+
+  .whatsapp-share.-standard {
+      display: block;
+      background-color: #0a0;
+      color: #fff;
+      border: none;
+      height: auto;
+      width: 260px;
+      font-size: 14px;
+      font-weight: 400;
+      border-radius: 0;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      position: relative;
+      padding: 8px 20px 8px 10px;
+      min-height: 35px;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      text-align: center;
+      text-decoration: none;
+      &:before {
+          background-image: url(/assets/img/sprites/ordersuccess/whatsapps-2x.png);
+          background-size: 30px 30px;
+          content: "";
+          display: block;
+          width: 30px;
+          height: 30px;
+          position: absolute;
+          top: 2px;
+          left: 20px;
+          margin-left: -12px;
+      }
+  }
+
+  .odd {
+    background-color: #f5f5f5;
+    .-f22 {
+      font-size: 18px;
+      margin-bottom: 36px;
+    }
+    a {
+      padding: 0 15px;
+    }
+  }
+
+  .count-position {
+    margin-top: 140px;
+  }
+
+  .offer-banner {
+    background-color: $red;
+    color: $white;
+    font-weight: 700;
+    padding: 0.5em 0px;
+    margin: 12px auto 0;
+    text-align: center;
+    font-size: 1.5em;
+    top: 3em;
+    border-radius: 20px;
+  }
+
+  .price-table {
+    margin: 0 auto;
+    margin-top: 0;
+    border-collapse: collapse;
+    th {
+      color: $newGreen;
+      font-weight: bold;
+      font-size: 1em;
+      text-align: center;
+      padding: 3px 12px;
+      &.price-special {
+        color: $white;
+        background: $red;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+      }
+    }
+    td {
+      padding: 3px 12px;
+      &.price-special {
+        color: $white;
+        background: $red;
+      }
+    }
+
+  }
+  .voucher-box {
+    color: $newGreen;
+    font-weight: bold;
+    .voucher-line {
+      margin: 5px auto 0px;
+      border: 2px solid;
+      padding: 7px;
+      font-size: 24px;
+    }
+    .voucher-code {
+      color: $red;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+  }
+
+  #countdown-success {
+    background-color: $black;
+    padding: 15px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 1.5em;
+    border-radius: 20px;
+  }
+
+  .post {
+    float: left;
+    position: relative;
+    border: 1px solid #dfdfe1;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .post::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .post .post-img {
+    height: 278px;
+    overflow: hidden;
+    text-align: center;
+    background: $black;
+    position: relative;
+    display:flex;
+  }
+
+  .post .square {
+    height: 100%;
+    width: 100%;
+  }
+
+  .post .landscape {
+    height: auto;
+    width: 100%;
+  }
+
+  .post .portrait {
+    width: 40%;
+    height: 100%;
+    margin: auto;
+  }
+
+  .post h2 {
+    color: $white;
+    position: absolute;
+    top: 10px;
+    left: 66px;
+    text-align: left;
+    margin: 0;
+    font-size: 16px;
+    z-index: 1;
+  }
+
+  .post h2 a {
+    color: inherit;
+  }
+
+  .post textarea {
+    border: none;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+    height: 150px;
+  }
+
+  .post textarea:focus {
+    outline: none;
+  }
+
+  .post textarea + p {
+    margin: 5px 20px;
+    color: $black;
+    font-size: 14px;
+  }
+
+  .post hr {
+    margin: 0 15px;
+    border-top: 1px solid #ededed;
+    border-bottom: none;
+  }
+
+  .post hr + p {
+    margin: 5px 0;
+  }
+
+
+  .side {
+    width: 64px;
+    float: left;
+    margin-top: 56px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    display: none;
+  }
+
+  .side img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .side ul {
+    padding: 0;
+    margin: 0;
+    display: none;
+  }
+
+  .side li {
+    width: 100%;
+    height: 58px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .side li.active::before {
+    background: none;
+  }
+  .controls {
+    background: url('/assets/img/backgrounds/spritesheet.png');
+    position: absolute;
+    top: 50%;
+    height: 50px;
+    width: 34px;
+    margin-top: -25px;
+    overflow: hidden;
+    text-indent: -999em;
+    cursor: pointer;
+    display: none;
+  }
+
+  .prev {
+    background-position: -5px -5px;
+    left: 0;
+  }
+
+  .next {
+    background-position: -37px -5px;
+    right: 0;
+  }
+  .side li::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    content: "";
+    background: rgba(84, 82, 82, 0.73);
+  }
+  .relative {
+    position: relative;
+  }
+  .image {
+    max-width: 100%;
+  }
+  .terms {
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .terms a {
+    color: $newGreen;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  #shareit {
+    color: $white;
+    text-transform: uppercase;
+    font-size: 24px;
+    position: relative;
+    background-color: $newGreen;
+    background-image: -webkit-linear-gradient(#f89711,#ff6d00);
+    background-image: linear-gradient(#f89711,#ff6d00);
+    -webkit-transition: background .2s linear;
+    transition: background .2s linear;
+    padding-left: 43px;
+    padding-right: 48px;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0 5px 0 15px;
+  }
+  .note {
+    font-size: .8em;
+    background: rgb(148, 144, 144);
+    color: $white;
+    padding: 25px;
+    clear: both;
+    border-radius: 10px;
+    font-style: italic;
+  }
+  .tip {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background: $newGreen;
+    color: $white;
+    padding: 13px 39px;
+    border-radius: 3px;
+    font-size: 15px;
+    display: none;
+  }
+  .tip::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 9px solid $newGreen;
+    position: absolute;
+    top: -8px;
+    left: 32px;
+  }
+  .page-section ul {
+    padding-left:0;
+    > li {
+      list-style: none;
+    }
+  }
+
+  .icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+  .icon-arrows {
+    width: 66px;
+    height: 50px;
+    background-position: -5px -5px;
+  }
+
+  .icon-cos {
+    background: url('/assets/img/icons/android-chrome-48x48.png');
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+  }
+
+  .icon-fb {
+    background-image: url(/assets/img/sprites/ordersuccess/fb-icon.png);
+    @include image-2x("/assets/img/sprites/ordersuccess/fb-icon-2x.png", 24px, 24px);
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    z-index: 1;
+  }
+
+  .icon-gift {
+    background-image: url(/assets/img/sprites/ordersuccess/gift.png);
+    @include image-2x("/assets/img/sprites/ordersuccess/gift-2x.png", 25px, 25px);
+    width: 25px;
+    height: 25px;
+  }
+
+  .icon-msg {
+    background-image: url(/assets/img/sprites/ordersuccess/chat.png);
+    @include image-2x("/assets/img/sprites/ordersuccess/chat-2x.png", 32px, 25px);
+    width: 32px;
+    height: 25px;
+  }
+
+  .icon-share {
+    background-image: url(/assets/img/sprites/ordersuccess/export.png);
+    @include image-2x("/assets/img/sprites/ordersuccess/export-2x.png", 24px, 24px);
+    width: 24px;
+    height: 24px;
+  }
+
+  .icon-share-arrow {
+    background-image: url(/assets/img/sprites/ordersuccess/forward.png);
+    @include image-2x("/assets/img/sprites/ordersuccess/forward-2x.png", 12px, 10px);
+    width: 12px;
+    height: 10px;
+    margin-right: 5px;
+    margin-left: 10px;
+  }
+
+  .icon-tag {
+    background-image: url(/assets/img/sprites/ordersuccess/tag.png);
+    @include image-2x("/assets/img/sprites/ordersuccess/tag-2x.png", 25px, 28px);
+    width: 25px;
+    height: 28px;
+  }
+  #waterwheel-carousel {
+    position: relative;
+    clear: both;
+    overflow: hidden;
+    margin: 0 auto 9em;
+    display: block;
+    width: 900px;
+    height: 500px;
+  }
+
+  #waterwheel-carousel img {
+    visibility: hidden;
+    cursor: pointer;
+  }
+}
+
+#tscard4_db8d3657bdbe440c985ae127463eaad4 #Container_db8d3657bdbe440c985ae127463eaad4 #Content_db8d3657bdbe440c985ae127463eaad4.checkout_db8d3657bdbe440c985ae127463eaad4.guaranteeCardContent_db8d3657bdbe440c985ae127463eaad4
+{
+  width: 100% !important;
+}

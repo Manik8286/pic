@@ -1,0 +1,213 @@
+#!groovy
+@Library('jenkins-shared-libs')_
+
+pipeline {
+  agent none
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+    ansiColor('xterm')
+    disableConcurrentBuilds()
+    skipDefaultCheckout()
+  }
+  environment {
+    DIRECTORY = "bestcanvas3-se/$TAG_NAME"
+    DIRECTORY_BASE = 'bestcanvas3-se'
+    gitCredentialId = '2385cbf0-468a-4209-8c65-0c3996ad8863'
+  }
+  stages {
+    stage('prepare') {
+      agent any
+      steps {
+        script {
+          def scmVars = checkout scm
+          if (env.TAG_NAME.contains('prod')) {
+            env.BASEURL = "https://assets.cdn-shop.com/bestcanvas3-se"
+            env.BASE_TPL_BRANCH = "master"
+            env.CLOUDFLARE_ZONE = ''
+            env.FLUSH_URL = "www.bestcanvas.se"
+            env.TEMPLATE_BUCKET = "euc-picturator-templates"
+            env.ASSETS_BUCKET = "euc-picturator-assets"
+            env.SLACK_CHANNEL = "jenkins_notifications_production"
+            env.url = "testing-bestcanvas-se.picanova.de"
+            env.version = env.TAG_NAME
+            env.shop_realm = 'live'
+            env.CLOUDFRONT_DISTRIBUTION_ID = "E2JS2ZD4TO7ZMT"
+            env.tagPrefix = 'prod'
+          }
+          else if (env.TAG_NAME.contains('test'))  {
+            env.BASEURL = "https://testing-assets.cdn-shop.com/bestcanvas3-se"
+            env.CLOUDFLARE_ZONE = ''
+            env.BASE_TPL_BRANCH = "develop"
+            env.FLUSH_URL = "testing-bestcanvas-se.picanova.de"
+            env.TEMPLATE_BUCKET = "euc-picturator-templates-testing"
+            env.ASSETS_BUCKET = "euc-picturator-assets-testing"
+            env.SLACK_CHANNEL = "jenkins_notifications_testing"
+            env.url = "test:karneval2@testing-bestcanvas-se.picanova.de"
+            env.version = env.TAG_NAME
+            env.shop_realm = 'test'
+            env.CLOUDFRONT_DISTRIBUTION_ID = "E29L71ZD2K03PE"
+            env.tagPrefix = 'test'
+          }
+          else{
+            error("Pipeline terminated: Please check the tag names. It should be like test- or prod-")
+          }
+        }
+      }
+    }
+    stage ('cleanup-old-tags-and-folders-in-s3') {
+      agent any
+      steps {
+        script {
+          tagCleanup(env.tagPrefix)
+        }
+      }
+    }
+    stage('checkout') {
+      agent any
+      steps {
+        checkoutTemplates('base-template-adaptive-green')
+      }
+    }
+    stage ('build+scan') {
+      parallel {
+        stage ('build') {
+          agent {
+            docker {
+              image 'node:14-buster'
+              args '-e HOME=/tmp'
+            }
+          }
+          steps {
+            script {
+              buildTemplates()
+            }
+          }
+        }
+        // stage ('scan') {
+        //   agent {
+        //     docker {
+        //       image 'sonarsource/sonar-scanner-cli'
+        //       args '--entrypoint=\'\''
+        //     }
+        //   }
+        //   steps {
+        //     sonarcloudScan(env.sonarProject)
+        //   }
+        // }
+      }
+    }
+    stage ('sync templates') {
+      agent {
+        dockerfile {
+          dir 'merged'
+        }
+      }
+      steps {
+        script {
+          deployTemplates()
+            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'cloudfront-jenkins-invalidation',
+                          accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                 sh '''
+                  if [ "${CLOUDFLARE_ZONE}" != "picanova.de" ]; then
+                   aws cloudfront create-invalidation --distribution-id "${CLOUDFRONT_DISTRIBUTION_ID}" --paths "/*"
+                  fi
+                  '''
+        }
+        }
+      }
+    }
+    stage('Execute test') {
+      agent {
+        docker {
+          image 'node:14-buster'
+          args '-e HOME=/tmp'
+        }
+      }
+      steps {
+        script{
+            echo "executing regression in prod"
+            parallel(
+                    'Case 19910': {
+                      def exitCode = sh script:'''
+                                echo ${Version}
+                                echo ${url}
+                            ''', returnStatus:true
+                      echo "exit code for case 19910: $exitCode"
+
+                      if (exitCode == 0){
+                        echo "updating the version number and clearing cache"
+                        withCredentials([
+                                [$class: 'AmazonWebServicesCredentialsBinding',
+                                 credentialsId: 'jenkins-aws-deployment',
+                                 accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                                 secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'],
+                                [$class: 'UsernamePasswordMultiBinding',
+                                 credentialsId: 'picturator-tpl-flush',
+                                 usernameVariable: 'FLUSH_USER',
+                                 passwordVariable: 'FLUSH_PASS']
+                        ]) {
+                          sh '''
+                curl -k -s --data "directory=$DIRECTORY" -u "$FLUSH_USER:$FLUSH_PASS" https://$url/api/updateTemplateVersion?directory=$DIRECTORY_BASE\\&version=$version\\&realm=$shop_realm
+                '''
+                          sh('curl -k -s --data "directory=$DIRECTORY" -u "$FLUSH_USER:$FLUSH_PASS" https://$FLUSH_URL/api/clearTemplateCache')
+                        }
+                      }
+                      else{
+                        error("pipeline terminate: test execution failed")
+                      }
+
+                    },
+                    'Case 19911': {
+                      def exitCode = sh script:'''
+                                echo ${Version}
+                                echo ${url}
+                            ''', returnStatus:true
+                      echo "exit code for case 19911: $exitCode"
+
+                      if (exitCode == 0){
+                        echo "updating the version number and clearing cache"
+                        withCredentials([
+                                [$class: 'AmazonWebServicesCredentialsBinding',
+                                 credentialsId: 'jenkins-aws-deployment',
+                                 accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                                 secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'],
+                                [$class: 'UsernamePasswordMultiBinding',
+                                 credentialsId: 'picturator-tpl-flush',
+                                 usernameVariable: 'FLUSH_USER',
+                                 passwordVariable: 'FLUSH_PASS']
+                        ]) {
+                          sh '''
+                curl -k -s --data "directory=$DIRECTORY" -u "$FLUSH_USER:$FLUSH_PASS" https://$url/api/updateTemplateVersion?directory=$DIRECTORY_BASE\\&version=$version\\&realm=$shop_realm
+                '''
+                          sh('curl -k -s --data "directory=$DIRECTORY" -u "$FLUSH_USER:$FLUSH_PASS" https://$FLUSH_URL/api/clearTemplateCache')
+                        }
+                      }
+                      else{
+                        error("pipeline terminate: test execution failed")
+                      }
+
+                    }
+            )
+          }
+      }
+    }
+    stage('clear cache'){
+      agent {
+        dockerfile {
+          dir 'merged'
+        }
+      }
+        steps {
+          clearCache() 
+        }
+    }
+  }
+  post {
+    always {
+      node('master') {
+        deleteDir()
+      }
+      reportBuildstatusToSlack(currentBuild.result, env.SLACK_CHANNEL)
+    }
+  }
+}

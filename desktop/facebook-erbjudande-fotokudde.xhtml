@@ -1,0 +1,129 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Fotokudde | Kudde med Foto" />
+
+  <ui:param name="SMP" value="spring64" />
+
+  <ui:define name="head">
+    <ui:include src="/coupons/discountcode-SMP-BCSE.xhtml" />
+    <ui:include src="/helper/reference.xhtml" />
+    <ui:fragment rendered="#{sessionBean.userAgentType == 'desktop'}">
+      <style type="text/css">
+              .upload-button.-position.-positionCushion {
+                  bottom: -275px !important;
+              }
+              .page-teaser>.showcase {
+                  padding-top: 0;
+              }
+      </style>
+    </ui:fragment>
+  </ui:define>
+
+  <ui:define name="dataLayer">
+    <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+      <ui:param name="pillow" value="true" />
+      <ui:param name="pillow_premium" value="true" />
+      <ui:param name="noList" value="true" />
+    </ui:include>
+    <script>
+        dataLayer.push({
+          'marketingChannelPage': 'social_paid'
+        })
+      </script>
+  </ui:define>
+
+
+  <ui:define name="meta">
+    <meta name="description" content="Din Fotokudde. &#x2705; Örngottet kan tvättas i masking på 40°C. &#x2705; En glamorös personlig kudde med foto av elegant satin. &#x2705; Väldigt populär som ett bevis på kärlek." />
+    <meta name="robots" content="NOINDEX,NOFOLLOW" />
+    <link rel="canonical" href="https://www.bestcanvas.se/home-lifestyle/fotokudde.jsf" />
+
+    <meta property="og:title" content="Fotokudde | Kudde med Foto" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.bestcanvas.se/home-lifestyle/fotokudde.jsf" />
+    <meta property="og:image" content="https://download.cdn-shop.com/media/web_images/social_media/bestcanvasse/2018/fotokudde.jpg" />
+    <meta property="og:description" content="Din Fotokudde. ✓ Örngottet kan tvättas i masking på 40°C. ✓ En glamorös personlig kudde med foto av elegant satin. ✓ Väldigt populär som ett bevis på kärlek." />
+    <meta property="og:site_name" content="BestCanvas.se" />
+
+    <meta itemprop="name" content="Fotokudde | Kudde med Foto" />
+    <meta itemprop="description" content="Din Fotokudde. ✓ Örngottet kan tvättas i masking på 40°C. ✓ En glamorös personlig kudde med foto av elegant satin. ✓ Väldigt populär som ett bevis på kärlek." />
+    <meta itemprop="image" content="https://download.cdn-shop.com/media/web_images/social_media/bestcanvasse/2018/fotokudde.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@bestcanvas_se" />
+    <meta name="twitter:creator" content="@bestcanvas_se" />
+    <meta name="twitter:title" content="Fotokudde | Kudde med Foto" />
+    <meta name="twitter:description" content="Din Fotokudde. ✓ Örngottet kan tvättas i masking på 40°C. ✓ En glamorös personlig kudde med foto av elegant satin. ✓ Väldigt populär som ett bevis på kärlek." />
+    <meta name="twitter:url" content="https://www.bestcanvas.se/home-lifestyle/fotokudde.jsf" />
+    <meta name="twitter:image" content="https://download.cdn-shop.com/media/web_images/social_media/bestcanvasse/2018/fotokudde.jpg" />
+        <meta http-equiv="content-language" content="sv_SE"/>
+  </ui:define>
+
+  <ui:define name="content">
+
+    <!-- teaser -->
+    <section class="page-teaser">
+      <ui:include src="/page-blocks/teaser-cushion.xhtml" >
+        <!-- base teaser parameters -->
+        <ui:param name="teaserHeadlineR" value="Glänsande Foto-Kudde" />
+        <ui:param name="teaserClaimR" value="Gjord utav satin, speciellt mjuk och mysig" />
+        <ui:param name="teaserHeadline" value="Premium Foto-Kudde" />
+        <ui:param name="teaserClaim" value="Randlöst tryck och handsydd" />
+        <ui:param name="fontSizeClaim" value="fontSizeClaim" />
+        <ui:param name="fontSizeHeadline" value="fontSizeHeadline" />
+        <ui:param name="teaserImage" value="#{libraryImagesBean.getFilePathByLibraryImageId(449)}" />
+        <ui:param name="bgPosition" value="center top" />
+
+        <!--
+        <ui:param name="teaserProductImageR" value="/#{shopInfoBean.versionPath}assets/img/produkter/fotokudde/cushion-standard.png" />
+        <ui:param name="teaserProductImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/fotokudde/cushion-premium.png" />
+        <ui:param name="teaserProductAltR" value="fotokudde" />
+        <ui:param name="teaserProductAlt" value="premium foto kudde" />
+        -->
+
+        <!-- badge parameters
+        <ui:param name="badgeTopR" value="Spara upp till 72%" />
+        <ui:param name="badgeMiddleR" value="#{priceBean.productPrice('Pillow_Bestcanvas_SE', 'Pillow', 'Pillow 40x40')}" />
+        <ui:param name="badgeBottomR" value="istället för #{priceBean.productCrossPrice('Pillow_Bestcanvas_SE', 'Pillow', 'Pillow 40x40')}" />
+
+        <ui:param name="badgeTop" value="Spara upp till 66%" />
+        <ui:param name="badgeMiddle" value="#{priceBean.productPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 40x40')}" />
+        <ui:param name="badgeBottom" value="istället för #{priceBean.productCrossPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 40x40')}" />
+         button parameters -->
+        <ui:param name="buttonText" value="Skapa" />
+      </ui:include>
+    </section>
+    <!-- /teaser -->
+
+    <!-- info boxes -->
+    <section class="page-section -alternate -collapse-top">
+        <ui:include src="/page-blocks/info-blocks-homestyle.xhtml">
+            <ui:param name="cushionsMainFormatTable" value="true" />
+        </ui:include>
+    </section>
+    <!-- /info boxes -->
+
+    <section class="page-section">
+        <!-- product info -->
+        <ui:include src="/page-blocks/cushion-page-content-new-img.xhtml">
+            <ui:param name="buttonText" value="Skapa" />
+            <ui:param name="productButtonIDinsideClassic" value="861" />
+            <ui:param name="productButtonIDinsidePremium" value="1614" />
+        </ui:include>
+    </section>
+
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+      <ui:include src="/page-blocks/paymentmethods.xhtml" />
+      <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+    </section>
+    <!-- /paymentmethods -->
+
+  </ui:define>
+</ui:composition>

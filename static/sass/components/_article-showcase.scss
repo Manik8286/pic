@@ -1,0 +1,433 @@
+.article-showcase {
+  @extend .row;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-bottom: 50px;
+
+  &.-faceMaskInfo {
+    position: relative;
+    padding-bottom: 15px;
+
+    .oddTextBlock {
+      position: absolute; 
+      top: 30px; 
+      right: -50px;
+      font-size: 14px;
+      font-weight: bold;
+      p:nth-child(1) {
+        padding-bottom: 35px;
+      }
+      p:nth-child(2) {
+        padding-bottom: 135px;
+      }
+      p:nth-child(3) {
+        padding-bottom: 79px;
+      }
+    }
+  }
+
+  &.-small-bottom {
+    padding-bottom: 35px;
+  }
+
+  &.-no-bottom {
+    padding-bottom: 0;
+  }
+
+  .text {
+    margin-top: 0px;
+    margin-bottom: 22px;
+    font-size: 14px;
+    line-height: 20px;
+
+    &.-list {
+      padding-left:20px;
+      line-height: 2;
+    }
+
+    &.grey-checkmark {
+      margin-top: 0;
+      margin-bottom: 22px;
+      font-size: 14px;
+      line-height: 20px;
+      padding-left: 10px;
+      li {
+        margin-bottom: 7px;
+        padding-left: 20px;
+        list-style-type: none;
+        position: relative;
+        &:before {
+          content: '';
+          top: 5px;
+          background-image: url(/assets/img/sprites/generic/checkmarkgrey.png);
+          @include image-2x("/assets/img/sprites/generic/checkmarkgrey-2x.png", 9px, 7px);
+          width: 9px;
+          height: 7px;
+          position: absolute;
+          left: 0;
+          top: 10px;
+        }
+      }
+    }
+  }
+
+  &.mixPix_productBox{
+    .highlight {
+      font-size: 22px;
+      color: $red;
+      font-weight: 700;
+      display: block;
+    }
+    .preview {
+      padding: 25px 0;
+      height: 60px;
+    }
+    .paddingBottom{
+      margin: 6px 0px;
+    }
+    .free_shipping {
+      color: $red;
+      fill: $red;
+    }
+    .topDeal{
+      background-color: rgba(84, 84, 84, 0.1);
+
+      .corner-ribbon{
+        width: 0;
+        height: 0;
+        border-top: 60px solid $red;
+        border-left: 60px solid transparent;
+        margin-left: 138px;
+        float: right;
+        position: relative;
+        right: -10px;
+        margin-bottom: -60px;
+        span{
+          transform: rotate(45deg);
+          position: absolute;
+          overflow: hidden;
+          color: #fff;
+          line-height: 11px;
+          margin-left: -33px;
+          font-weight: 400;
+          margin-top: -50px;
+          font-size: 12px;
+        }
+      }
+    }
+
+    &.-mask {
+      width: 100%;
+
+      .preview {
+        width: 100% !important;
+        height: 80px;
+      }
+
+      .price {
+        .highlight {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
+  .options {
+    @include clearfix;
+
+    list-style-type: none;
+    margin-top: 20px;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding: 0;
+
+    &.-has-2 > li {
+      width: 50%;
+    }
+
+    &.-has-3 > li {
+      width: 33.33333%;
+    }
+
+    &.-has-5 > li {
+      width: 20%;
+    }
+     &.-has-4 > li {
+      width: 25%;
+    }
+
+    > li {
+      float: left;
+      padding-right: 10px;
+      padding-left: 0;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+
+      > .cbutton {
+        @extend .button_simple;
+        width: 100%;
+
+        &.-highlight {
+          @extend .button_simple_mod-highlight;
+        }
+
+        &.-has-image {
+          @extend .button_simple_mod-has-image;
+        }
+
+        > .icon {
+          position: relative;
+          display: block;
+          width: 52px;
+          height: 34px;
+          border-radius: 8px;
+          margin: 0 auto;
+
+          &:before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 44px; /* (icon-width) - (this.left*2) */
+            height: 26px; /* (icon-height) - (this.top*2) */
+            background-color: $white;
+            border-radius: 4px;
+          }
+
+          &.-gold {
+            background-color: #FFC600;
+            background-image: linear-gradient(to top, #FFC600, #FFF370);
+          }
+
+          &.-silver {
+            background-color: #BDBDBD;
+            background-image: linear-gradient(to top, #BDBDBD, #F4F4F4);
+          }
+
+          &.-black-shiny {
+            background-color: #131313;
+            background-image: linear-gradient(to top, #131313, #C9C7C7);
+          }
+
+          &.-black-dull {
+            background: #333333;
+          }
+
+          &.-wood1,
+          &.-brown {
+            background: #73472E;
+          }
+
+          &.-wood2 {
+            background: #B4936A;
+          }
+
+          &.-wood3 {
+            background: #E6A45C;
+          }
+
+          &.-wood4 {
+            background: #97451C;
+          }
+
+          &.-white {
+            border: 1px solid #333333;
+            box-sizing: border-box;
+
+            &:after {
+              content: '';
+              position: absolute;
+              top: 4px;
+              left: 4px;
+              width: 40px; /* (icon-width) - (this.left) */
+              height: 22px; /* (icon-height) - (this.top) */
+              border-radius: 4px;
+              border: 1px solid #333333;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.-starMap {
+  margin-bottom: 20px;
+  .-section {
+    margin-top: 90px;
+  }
+  .-has-sidelines{
+     margin-top: 40px !important;
+  }
+  ul.text{
+    margin-top: 40px !important;
+    li{
+      color: #7ED321;
+      font-size: 16px;
+      line-height: 22px;
+      margin-bottom: 20px;
+      span{
+        color: $black;
+      }
+    }
+  }
+  .colorSelection {
+      padding-top: 30px;
+    .options{
+        margin: 0px auto;
+        float: none;
+        position: relative;
+        top: 70px;
+      li {
+        display: inline-grid;
+      }
+    }
+    .cbutton{
+      width: 40px !important;
+      border-radius: 40px !important;
+      color: transparent;
+      .checkmark{
+        display: none;
+      }
+
+      &:hover{
+        color: inherit !important;
+        border-color: $aluminium !important;
+      }
+      &.-highlight{
+        color: white !important;
+        border-color: $aluminium !important;
+        .checkmark{
+          display: block;
+          display: -ms-inline-grid;
+        }
+      }
+    }
+  }
+  .-span-12{
+    img {
+      padding: 5px;
+      width: 30%;
+    }
+  }
+}
+
+  > .image {
+    @extend .col;
+    float: right;
+    text-align: center;
+
+    &.-small {
+      position: relative;
+      min-height: 300px;
+
+      > img {
+        width: auto;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    > .images {
+      @extend .image-switcher;
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    &.-has-subtitle {
+      img {
+        margin-bottom: 30px;
+      }
+
+      .headline {
+        font-size: 16px;
+        font-weight: $weight-semibold;
+        margin-bottom: 5px;
+        margin-top: 0;
+      }
+
+      .text {
+        margin-top: 0px;
+        margin-bottom: 22px;
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  .description-wrapper {
+    @extend .col;
+
+    .description {
+      margin-bottom: 25px;
+
+      &.-content-left {
+        padding-left: 50px;
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      .headline {
+        font-size: 16px;
+        font-weight: $weight-semibold;
+        margin-bottom: 0;
+        margin-top: 0;
+      }
+
+      .text {
+        margin-top: 0px;
+        margin-bottom: 22px;
+        font-size: 14px;
+        line-height: 20px;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+
+      .button-container{
+        margin: 30px 0;
+      }
+
+      .action-button{
+        color:white;
+        @extend .button_action;
+        @extend .button_action_mod-arrow;
+        color: $white;
+      }
+    }
+  }
+  a.-green {
+    color: $newGreen;
+  }
+
+  &.photo-gifts-box {
+    .price-badge {
+      font-size: 14px;
+      .size {
+        font-size: 14px;
+      }
+      .price {
+        font-size: 28px;
+      }
+    }
+  }
+
+  .has-video {
+    display: grid;
+    min-height: 415px;
+
+    > li {
+      align-self: center;
+    }
+  }
+}

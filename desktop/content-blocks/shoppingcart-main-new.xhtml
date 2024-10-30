@@ -1,0 +1,63 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions">
+
+
+  <div class="innercart" jsf:id="cartContent">
+    <c:choose>
+      <c:when test="#{empty shoppingCartBean.items}">
+        <div class="head">
+          <h1 class="legend">#{_['Empty Shopping Cart']}</h1>
+        </div>
+        <div class="overview">
+          <p>#{_['You have no items in your shopping cart.']}</p>
+          <a class="button -action -arrow" href="/">Shopping vidare</a>
+        </div>
+      </c:when>
+      <c:otherwise>
+
+        <div class="overview" style="width: 80%">
+          <h:form id="shoppingcartForm">
+
+            <h:messages id="messageTop"
+                        globalOnly="true"
+                        styleClass="outmsg"
+                        errorClass="-error"
+                        warnClass="-warn"
+                        infoClass="-info" />
+
+              <ui:include src="/content-blocks/shoppingcart-table-new.xhtml">
+                <ui:param name="formId" value="shoppingcartForm"/>
+                <ui:param name="updateIds" value=":cartContent :cartcount"/>
+              </ui:include>
+
+            <h:messages id="messageBottom" globalOnly="true" styleClass="outmsg"
+                        errorClass="-error"
+                        warnClass="-warn"
+                        infoClass="-info" />
+          </h:form>
+        </div>
+      </c:otherwise>
+    </c:choose>
+  </div>
+    <div class="hidden">
+      <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+       <ui:param name="directuploadProductId" value="254" />
+      </ui:include>
+  </div>
+
+  <script>
+      function UploadAnother(){
+      $('input[type=file]').eq(0).trigger('click');
+    }
+    $('#shoppingcartForm\\:couponCode').val("#{sessionScope.get('coupon')}");
+    <c:if test="#{not empty sessionScope.get('coupon')}">
+      $('.tool-tip').addClass('active');
+    </c:if>
+  </script>
+</ui:composition>

@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <!-- Rich snippet -->
+    <section class="page-section">
+      <div class="article-showcase -no-bottom">
+        <h3 class="headline -has-sidelines"><span>Betygsättning och recensioner</span></h3>
+        <div class="col -span-12 description text-center" vocab="http://schema.org/" typeof="Product">
+          <meta property="brand" content="BestCanvas.se" />
+          <meta property="name" content="Mobilskal med Foto" />
+          <meta property="image" src="https://download.cdn-shop.com/media/web_images/se/bestcanvas/mobilskal-med-foto.jpg" />
+          <meta property="description" content="Ditt Mobilskal med Foto. ✓ Designa ditt eget mobilskal med ditt foto. ✓ Okänsligt plasthölje med skrapskydd. ✓ Alla knappar och portar är lätt att komma åt." />
+          <meta property="sku" content="PHONECASE-IPHONE-7" />
+          <span property="aggregateRating" typeof="AggregateRating">
+          <p class="text">
+            <ui:include src="/rich-snippets/snippet-rating.xhtml" />Mobilskal med Foto nu!</p>
+          </span>
+          <span property="offers" typeof="Offer">
+            <meta property="url" content="https://www.bestcanvas.se/fotopresenter/mobilskal-med-foto.jsf"/>
+            <meta property="priceCurrency" content="SEK" />
+            <meta property="price" content="55.00" />
+            <time property="priceValidUntil" datetime="2022-12-31"></time>
+            <span property="seller" typeof="Organization">
+              <meta property="name" content=" BestCanvas.se " />
+            </span>
+            <link property="itemCondition" href="http://schema.org/NewCondition" />
+            <link property="availability" href="http://schema.org/InStock" />
+          </span>
+        </div>
+      </div>
+    </section>
+  <!-- /Rich snippet -->
+
+</ui:composition>

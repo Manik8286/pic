@@ -1,0 +1,21 @@
+.infoindicator {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: $page-text-color;
+  color: $white;
+  font-size: 12px;
+  line-height: 17px;
+  cursor: pointer;
+  font-weight: $weight-semibold;
+
+  &.-light {
+    background-color: #999;
+  }
+
+  &:before {
+    content: '?';
+  }
+}

@@ -1,0 +1,19 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:param name="pageTitle" value="Newsletter" />
+
+<ui:define name="meta">
+  <meta name="robots" content="NOINDEX,NOFOLLOW" />
+</ui:define>
+
+<ui:define name="content">
+  <ui:remove>
+    <!-- This file will be loaded hidden when the user subscribes to the
+         newsletter. It won't be visible, but trackingcodes will work -->
+  </ui:remove>
+</ui:define>
+
+</ui:composition>

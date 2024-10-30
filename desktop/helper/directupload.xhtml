@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+	<c:set var="buttonTextLocal" value="Skapa" />
+	<c:set var="directuploadClassLocal" value="action" />
+
+	<c:if test="#{buttonText != '' and buttonText != null and buttonText.toLowerCase() != 'create canvas'}">
+		<c:set var="buttonTextLocal" value="#{buttonText}" />
+	</c:if>
+
+	<c:if test="#{directuploadClass != '' and directuploadClass != null}">
+		<c:set var="directuploadClassLocal" value="#{directuploadClass} " />
+	</c:if>
+
+  <form class="js-du">
+    <input type="hidden" value="#{directuploadProductId}" class="js-du-productid" />
+    <ui:fragment rendered="#{not empty discountParam}">
+      <input type="hidden" value="#{discountParam}" class="js-du-discountParam" />
+    </ui:fragment>
+    <div class="#{directuploadPosition} upload-button">
+      <ui:fragment rendered="#{outOfStock != true}">
+        <input type="file" class="js-du-file fileinput" accept="#{sessionBean.userAgentType == 'desktop' ? '.jpg, .jpeg, .png, .gif, .webp' : 'image/*'}" />
+      </ui:fragment>
+      <button type="button" id="chooseFile" class="js-du-button #{directuploadClass} filebutton">
+        #{buttonTextLocal}
+      </button>
+    </div>
+  </form>
+
+  <ui:include src="/page-blocks/uploader-cover.xhtml" />
+
+</ui:composition>

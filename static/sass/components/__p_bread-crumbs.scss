@@ -1,0 +1,23 @@
+  .footerBreadCrumbs {
+    width: 100%;
+    background-color: $concrete;
+    color: $white;
+    font-size: 15px;
+    .breadCrumbs {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid $stone;
+      .bCrumbs {
+        padding-left: 10px;
+        margin: 0;
+        li {
+          display: inline-block;
+          padding-right: 5px;
+          a {
+            color: $white;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }

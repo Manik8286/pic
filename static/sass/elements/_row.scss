@@ -1,0 +1,17 @@
+.row {
+  width: $grid-width;
+  margin: 0 auto;
+  box-sizing: border-box;
+  @include clearfix;
+
+  &.-nested {
+    width: auto;
+    max-width: none;
+    margin-left: -$grid-gutter/2;
+    margin-right: -$grid-gutter/2;
+  }
+
+  &.-orphan {
+    padding: 0 $grid-gutter/2;
+  }
+}

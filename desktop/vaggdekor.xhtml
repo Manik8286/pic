@@ -1,0 +1,83 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+  <ui:param name="pageTitle" value="Väggdekoration med Kvalitet som i ett galleri" />
+
+  <ui:define name="dataLayer">
+    <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+      <ui:param name="canvas" value="true" />
+      <ui:param name="passepartout" value="true" />
+      <ui:param name="acryl_glass" value="true" />
+      <ui:param name="aluminium_glossy" value="true" />
+      <ui:param name="aluminium_matte" value="true" />
+      <ui:param name="forex" value="true" />
+      <ui:param name="acryl_alu" value="true" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="head">
+    
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="description" content="Individuell väggdekoration: Foto på duk, akryl, aluminium, trä. Anpassad väggdekor direkt från tillverkaren, material av högsta kvalitet." />
+    <meta name="robots" content="INDEX,FOLLOW" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+    <link rel="canonical" href="https://www.bestcanvas.se/vaggdekor/" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Väggdekoration med Kvalitet som i ett galleri | bestcanvas.se" />
+	<meta property="og:url" content="https://www.bestcanvas.se/vaggdekor/" />
+	<meta property="og:image" content="https://download.cdn-shop.com/meta/bestcanvas-se/vaggdekor.jpg" />
+	<meta property="og:description" content="Individuell väggdekoration: Foto på duk, akryl, aluminium, trä. Anpassad väggdekor direkt från tillverkaren, material av högsta kvalitet." />
+	<meta property="og:site_name" content="BestCanvas.se" />
+
+	<meta itemprop="name" content="Väggdekoration med Kvalitet som i ett galleri | bestcanvas.se" />
+	<meta itemprop="description" content="Individuell väggdekoration: Foto på duk, akryl, aluminium, trä. Anpassad väggdekor direkt från tillverkaren, material av högsta kvalitet." />
+	<meta itemprop="image" content="https://download.cdn-shop.com/meta/bestcanvas-se/vaggdekor.jpg" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Väggdekoration med Kvalitet som i ett galleri | bestcanvas.se" />
+	<meta name="twitter:description" content="Individuell väggdekoration: Foto på duk, akryl, aluminium, trä. Anpassad väggdekor direkt från tillverkaren, material av högsta kvalitet." />
+	<meta name="twitter:url" content="https://www.bestcanvas.se/vaggdekor/" />
+	<meta name="twitter:image" content="https://download.cdn-shop.com/meta/bestcanvas-se/vaggdekor.jpg" />
+	
+  </ui:define>
+
+  <ui:define name="content">
+
+    <!-- teaser -->
+    <section class="page-teaser mainproducts -collapse">
+      <div class="showcase #{sessionBean.userAgentType == 'phone' ? '-noPaddingTop' : ''}" style="background-image: url(#{sessionBean.userAgentType != 'phone' ? '/assets/img/teaser/desktop/wall-deco.jpg' : ''});" >
+        <ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+          <img src="/assets/img/backgrounds/placeholder.svg" data-srcset="/assets/img/teaser/mobile/wall-deco-mobile.jpg" alt="" width="100%" />
+        </ui:fragment>
+      </div>
+    </section>
+    <!-- /teaser -->
+
+    <!-- product boxes -->
+    <section class="page-section -collapse-top">
+      <ui:include src="/page-blocks/product-boxes-walldeco.xhtml" />
+    </section>
+    <!-- /product boxes -->
+
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Wall-Decor']}" />
+      <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+      <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 20x20').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+
+    <!-- paymentmethods and social -->
+    <section class="page-section -alternate">
+      <ui:include src="/page-blocks/paymentmethods.xhtml" />
+      <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+    </section>
+    <!-- /paymentmethods and social -->
+
+  </ui:define>
+</ui:composition>

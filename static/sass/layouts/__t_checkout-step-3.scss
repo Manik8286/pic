@@ -1,0 +1,601 @@
+.checkout-step-3 {
+  .head {
+    @extend .col;
+    @extend %-span-12;
+  }
+
+  &.multiimage {
+    #errormsg {
+      .ui-messages-error-icon {
+        display: none;
+      }
+      ul {
+        margin: 0;
+        .ui-messages-error-summary {
+          margin: 0;
+        }
+      }
+    }
+    .ui-fileupload-content {
+      display: none;
+    }
+  }
+
+  #shoppingcartForm\:couponCodeBox .-topOnDevice {
+    padding-top: 20px;
+  }
+
+  .-discounted {
+    color: $redish;
+  }
+
+  .shipping{
+    background: #F3E5AB;
+    padding: 10px;
+  }
+
+  .buymore {
+    margin-top: 10px;
+    width: 300px;
+
+    .headline {
+      margin-bottom: 10px;
+    }
+
+    .uploadProduct {
+      width: 50%;
+
+      .button {
+        padding: 5px;
+        width: 95%;
+      }
+
+      a {
+        display: inline-block;
+
+        text-align: center;
+
+        font-size: 0.9em;
+        width: 100%;
+
+      }
+    }
+
+    #mug-mask, #cushion-mask, #blanket-mask {
+      max-width: 95%;
+      position: relative;
+
+      img {
+        max-width: 95%;
+        min-height: 135px;
+      }
+
+      .smallPriceBadge {
+        position: absolute;
+        color: white;
+        background-color: #D40140;
+        padding: 2px 5px;
+        font-weight: bold;
+        right: 0;
+        bottom: 20px;
+      }
+
+
+    }
+  }
+
+  .shippinginfo-box-new{
+    width: 100%;
+    min-width: 380px;
+    height: 60px;
+    border: 3px solid #78b72a;
+    margin-top: 20px;
+    border-radius: 5px;
+    background: none;
+    padding: 0px;
+    .tip{
+      float: left;
+      height: 55px;
+      width: 10%;
+      background: #78b72a;
+      font-size: 20px;
+      font-weight: 700;
+      color: $white;
+      span{
+        position: relative;
+        top: 15px;
+      }
+    }
+    .shippingText{
+      background: $eggshell;
+      text-align: left;
+      width: 90%;
+      height: 54px;
+      float: left;
+      padding: 5px;
+      font-size: 13px;
+      position: relative;
+      padding-top: 10px;
+    }
+  }
+
+  .overview {
+    @extend .col;
+    @extend %-span-12;
+
+    .delete {
+      display: block;
+      margin-top: 15px;
+      color: $cart-delete-color;
+      font-size: 12px;
+    }
+  }
+
+  .next {
+    @extend .form-group;
+    @extend .form-group.-new-action;
+    @extend .row;
+    @extend .row.-nested;
+
+    &.next-new {
+      margin-top: 5px !important;
+    }
+  }
+
+  .next > .more {
+    @extend .col;
+    @extend %-span-5;
+
+    &.add{
+      width: 310px;
+
+      a.action{
+        border: 0px;
+        float: right;
+        cursor:pointer;
+      }
+
+    }
+
+    .action {
+      @extend .anchor;
+      display: table;
+      font-size: 16px;
+      line-height: 18px;
+      height: 35px;
+      font-weight: $weight-semibold;
+      box-sizing: border-box;
+      padding: 10px;
+      padding-top: 5px;
+      border: 1px solid $highlight-color;
+      border-radius: 2px;
+      white-space: nowrap;
+
+      &:before {
+        content: '+';
+        position: relative;
+        top: 6px;
+        margin-right: 10px;
+        font-size: 36px;
+        display: inline-block;
+        line-height: 18px;
+      }
+    }
+  }
+
+  .next > .checkout {
+    @extend .col;
+    @extend %-span-7;
+    text-align: right;
+
+    .expressButtonPayPal {
+      background: none;
+      border: 0px;
+      padding: 0px;
+      margin-top: 15px;
+    }
+
+    &.full-width{
+      width: 100%;
+    }
+    .oder{
+      padding: 10px 0 10px 0;
+    }
+    button.new-cart-btn{
+      width: 100%;
+    }
+
+    .label {
+      font-size: 12px;
+      margin-right: 15px;
+      color: $page-lighter-text-color;
+    }
+
+    .lock {
+      width: 11px;
+      height: 13px;
+      fill: $page-lighter-text-color;
+      margin-right: 3px;
+      margin-bottom: -1px;
+    }
+
+    .action {
+      @extend .button_action;
+      @extend .button_action_mod-arrow;
+      @extend .button_action_mod-touch;
+      display: inline-block;
+    }
+  }
+
+  .next > .coupon {
+    @extend .col;
+    @extend %-span-12;
+
+    .field {
+      @extend .input;
+      @extend .input.-shy;
+      @extend .input.-has-background;
+      @extend .input.-touch;
+    }
+
+    .action {
+      @extend %button;
+      @extend .anchor;
+      display: inline-block;
+      background-color: transparent;
+      margin-left: 15px;
+      font-weight: $weight-semibold;
+      border: 1px solid $highlight-color;
+      border-radius: 2px;
+      padding: 8px;
+    }
+  }
+
+  .additional {
+    @extend .box;
+    padding: 10px;
+    font-size: 12px;
+    text-align: left;
+    width: 240px;
+    @include break(tablet_portrait_small) {
+      width: auto;
+    }
+
+    a.linkButton {
+      color: $white;
+    }
+
+    .title {
+      display: block;
+      font-size: 14px;
+      font-weight: $weight-semibold;
+      margin-bottom: 6px;
+    }
+
+    .image {
+      float: left;
+      margin-right: 8px;
+    }
+
+    .old {
+      text-decoration: line-through;
+    }
+
+    .clearfix {
+      p{
+        font-size: 12px;
+      }
+    }
+    &.couponField {
+      padding: 0px;
+      width: 100%;
+      float: right;
+      border: none;
+      display: inline-flex;
+      margin-top: 15px;
+
+      .text-field{
+        width: 50%;
+        height: 23px;
+        border: 2px solid #d4d4d4;
+        color: #7d7d7d;
+        border-radius: 5px;
+      }
+      .button{
+        width: 45%;
+        margin-left: 7px;
+        height: 30px;
+        line-height: 26px;
+        color: $newGreen;;
+        border: 2px solid $newGreen;
+        background-color: white !important;
+        background-image: none !important;
+      }
+    }
+
+    .action {
+      @extend .button_action;
+      @extend .button_action_mod-secondary;
+      @extend .button_action_mod-small;
+      @extend .button_action_mod-touch;
+      white-space: nowrap;
+    }
+
+  }
+  .tooltip {
+    background: $newGreen;
+    color: $white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin: 10px 0;
+    display: none;
+    position: relative;
+    &.active {
+      display: inline-block;
+    }
+    &:before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid $newGreen;
+      position: absolute;
+      bottom: -9px;
+    }
+  }
+
+  table.carttable{
+    width: 99%;
+    thead.shoppingcart{
+      border-bottom: 1px solid #bfbfbf;
+    }
+    .products{
+      border-bottom: 1px solid #bfbfbf;
+    }
+    td.sPrice{
+      padding-bottom: 20px;
+      border-top: 1px solid $concrete;
+    }
+  }
+
+
+  .new-cart {
+    .express-payment {
+      float: right;
+      width: 100%;
+
+      .-amazon {
+        width: 50%;
+      }
+
+      .payWithAmazon, .payWithPayPal {
+        vertical-align: top;
+      }
+
+      .amazonpay-button-inner-image {
+        height: 0;
+        padding: 0 100% 35px 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .payWithAmazon {
+        vertical-align: middle;
+        height: 14px;
+        position: relative;
+        top: 2px;
+        left: 2px;
+      }
+
+      .button.-action {
+        width: 95%;
+        text-decoration: none !important;
+        font-weight: 700;
+        font-size: 13px;
+        line-height: 1em;
+        position: relative;
+        background-color: transparent;
+        background-image: none;
+        border-radius: 4px;
+        border: 1px solid $newGreen;
+        color: $newGreen;
+        padding: 10px;
+        min-height: 35px;
+        cursor: pointer;
+        &.-payPal {
+          width: 100%;
+        }
+      }
+    }
+
+    div.clearfix {
+      padding-left: 10px;
+    }
+
+    .td-wider {
+      width: 60px;
+    }
+
+    .fixWide{
+      max-width: 130px;
+    }
+  }
+
+  .additionalnew {
+    @extend .box;
+    padding: 10px 0 10px 0;
+    font-size: 12px;
+    text-align: left;
+    width: 300px;
+    background-color: $eggshell;
+    font-size: 14px;
+
+    .-heavy {
+      line-height: 24px;
+    }
+
+    .image {
+      float: left;
+      margin-right: 8px;
+    }
+
+    .old {
+      text-decoration: line-through;
+    }
+
+    .clearfix {
+      p{
+        line-height: 18px;
+        margin-top: 0px;
+      }
+    }
+    span.red{
+      color: $coupon-code;
+    }
+
+    .action {
+      @extend .button_action;
+      @extend .button_action_mod-secondary;
+      @extend .button_action_mod-small;
+      white-space: nowrap;
+      display: inline-block;
+    }
+  }
+
+  .new-cart .amazon-button-image-2017 {
+    -webkit-border-radius: 5px!important;
+    -moz-border-radius: 5px!important;
+    border-radius: 5px!important;
+  }
+  .new-form-dropdown{
+    width: 140px !important;
+  }
+  .new-form-dropdown>.label {
+    line-height: 20px;
+
+  }
+  .new-form-dropdown>.label:before {
+    border:none;
+    background-color:white ;
+  }
+  .new-form-dropdown>.label:after {
+    border-top: 6px solid $black;
+    top:10px;
+  }
+
+  .SSL{
+    font-size: 14px;
+    color: $dusty-gray;
+    float: right;
+    margin: 10px 0 15px;
+
+    img{
+      margin-bottom: -5px;
+    }
+
+    .lock{
+      width: 15px;
+      height: 17px;
+      fill: #fa880b;
+      margin-right: 3px;
+      margin-bottom: -1px;
+    }
+  }
+
+  .UploadAnother{
+    font-size: 16px;
+    position: relative;
+    display: block;
+    padding: 5px;
+    border-bottom: 1px solid #bfbfbf;
+  }
+
+  .ExpressPayment button {
+    border: none;
+    background: none;
+  }
+}
+
+.-badges-carousel {
+
+      @extend .customer-quotes;
+      margin-top: 20px;
+
+    li {
+      top: 6px;
+      .quote {
+        margin: 0;
+        padding: 0;
+        font-size: 13px;
+        .foot {
+          font-size: 12px;
+          margin-top: 12px;
+          .stars {
+            width: 100%;
+            height: 18px;
+            display: inline-block;
+            position: relative;
+            top: -3px;
+            width: 98px;
+            vertical-align: bottom;
+          }
+          .from {
+            margin-left: 0;
+            vertical-align: bottom;
+            font-size: 10px;
+            position: relative;
+            margin-top: -14px;
+          }
+          .date {
+            display: inline-block;
+            vertical-align: bottom;
+            font-weight: 700;
+            float: right;
+          }
+        }
+        p {
+          margin-top: 0;
+          margin-bottom: 5px;
+          line-height: 18px;
+          font-size: 13px;
+        }
+      }
+    }
+}
+
+// pop up OSP
+#orderStatus,
+#addresscheck {
+  left: 0;
+  right: 0;
+  margin-left: 3%!important;
+  margin-right: 3%;
+  overflow: hidden;
+  .text-format {
+    .orderStatusContent,
+    .addresscheckContent {
+      width: 80%;
+      margin: 0 auto;
+      margin-top: 7%;
+      margin-bottom: 5%;
+      .orderStatusTitle {
+        font-size: 18px;
+      }
+      .orderStatusText,
+      .addresscheckText {
+        padding-bottom: 0;font-size: 14px;
+        +div {
+          margin-top: 25px;
+        }
+      }
+      #orderStatusOkay,
+      #addresscheckOkay {
+        text-decoration: none;
+        width: 35%;
+        margin: 0 auto;
+      }
+    }
+  }
+}

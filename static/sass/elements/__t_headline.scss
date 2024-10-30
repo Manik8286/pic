@@ -1,0 +1,23 @@
+.headline {
+  &.-section {
+    margin-top: 0;
+    margin-bottom: 44px;
+    font-size: 30px;
+  }
+
+  &.-subline {
+    text-align: center;
+    margin-top: 0;
+    font-size: 24px;
+    margin-bottom: 42px;
+    font-weight: $weight-normal;
+  }
+
+  &.-has-sidelines {
+    margin-bottom: 23px;
+  }
+
+  &.-has-subline {
+    margin-bottom: 6px;
+  }
+}

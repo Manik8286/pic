@@ -1,0 +1,14 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+								xmlns:c="http://java.sun.com/jsp/jstl/core"
+								xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<c:set var="viewPrintMaterial"   scope="request" value="#{itemConfiguratorBean.colorCarriers.size > 1 and itemConfiguratorBean.productId != canvas or itemConfiguratorBean.productId == phone}" />
+	<c:set var="viewCups" 					 scope="request" value="#{itemConfiguratorBean.colorCarrierId == materialMug or itemConfiguratorBean.colorCarrierId == materialMugMagic}" />
+	<c:set var="viewMountings"       scope="request" value="#{itemConfiguratorBean.mountings.size > 1 and itemConfiguratorBean.mountings.get(1).value != 20}" />
+	<c:set var="viewBackMaterials"   scope="request" value="#{itemConfiguratorBean.borderEffects.size > 1 and itemConfiguratorBean.backMaterials.size > 0 and itemConfiguratorBean.productId != phone}" />
+	<c:set var="viewBorderEffects"   scope="request" value="#{itemConfiguratorBean.borderEffects.size > 1 and itemConfiguratorBean.productId != phone}" />
+	<c:set var="viewFrames"          scope="request" value="#{itemConfiguratorBean.frames.size > 1}" />
+	<c:set var="viewImageEffects"    scope="request" value="#{itemConfiguratorBean.productId != phone}" />
+	<c:set var="viewColorFinishings" scope="request" value="#{itemConfiguratorBean.productId == mugMagic or param['product'] == mugMagic}" />
+
+</ui:composition>

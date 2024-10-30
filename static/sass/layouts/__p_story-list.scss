@@ -1,0 +1,72 @@
+.story-list {
+  @extend .row;
+
+  > .story {
+    @extend .col;
+    @extend %-span-12;
+    @extend .col.-centered;
+    margin-bottom: 20px;
+    width: 100% !important;
+    padding: 0;
+
+    @include break(phone_landscape) {
+      @include col(10);
+      float: left;
+      clear: none;
+    }
+
+    .pin-it-btn {
+      display:none;
+    }
+
+    .storyimg {
+      width:100%;
+      height: auto;
+    }
+  }
+
+  .-qualitySize {
+    margin-bottom: 25px;
+  } 
+}
+
+.easyPaginateList {
+  margin-top: -25px;
+}
+
+.easyPaginateNav {
+
+  color: $newGreen;
+  display: block;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  font-size: 1.1em;
+
+  a {
+    padding:9px;  
+    color: $newGreen;
+    text-decoration:none;
+  }
+
+  a:active, a:focus {
+    font-weight: bold;
+  }
+
+  a:hover {
+    font-weight: bold;
+    text-decoration:none;
+  }
+
+  a.disabled {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.4;
+  }
+
+  a.current {
+    pointer-events: none;
+    font-weight: bold;
+    text-decoration:underline;
+  }
+}

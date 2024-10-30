@@ -1,0 +1,22 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <form class="js-du">
+    <label for="productid"><input type="hidden" value="#{directuploadProductId}" name="productid" class="js-du-productid" accept="#{sessionBean.userAgentType == 'desktop' ? '.jpg, .jpeg, .png, .gif, .webp' : 'image/*'}"/></label>
+    <ui:fragment rendered="#{not empty discountParam}">
+      <label for="discountParam"><input type="hidden" value="#{discountParam}" name="discountParam" class="js-du-discountParam" /></label>
+    </ui:fragment>
+    <div class="#{directuploadPosition} upload-button">
+      <label for="file"><span class="sr">Upload image</span><input type="file" name="file" class="js-du-file fileinput" /></label>
+      <button type="button" id="chooseFile" class="js-du-button filebutton #{directuploadClass}">
+        #{buttonText}
+      </button>
+    </div>
+  </form>
+ 
+<ui:include src="/page-blocks/uploader-cover.xhtml" />
+  
+</ui:composition> 

@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+								xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+								xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+	<!-- image effects -->
+    <p:selectOneRadio
+      id="imageEffect"
+      value="#{itemConfiguratorBean.imageEffect}"
+      layout="custom"
+      plain="true">
+      <p:ajax
+        listener="#{itemConfiguratorBean.change}"
+        update=":itemConfiguratorForm:canvas-preview :itemConfiguratorForm:formats"
+        process="@this"
+        onstart='#{mobileView ? "smoothScrollTo($(\"#thepreviewBox\"));" : ""}'
+        oncomplete="updateDom();#{textConfig ? 'RefreshControls();RefreshFormatChange();' : ''}" />
+      <f:selectItems value="#{itemConfiguratorBean.imageEffects}"/>
+    </p:selectOneRadio>
+    <h3 class="title">
+      <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId == materialWoodClasssic or itemConfiguratorBean.colorCarrierId == materialWood}">
+        2)
+      </ui:fragment>
+      <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId != materialWoodClasssic and itemConfiguratorBean.colorCarrierId != materialWood}">
+        <span class="StepsCount"><h:outputText value="#{blockCount}" /></span>
+      </ui:fragment>
+      Bildeffekt:
+    </h3>
+    <div class="clearfix">
+      <ui:repeat value="#{itemConfiguratorBean.imageEffects}" var="f" varStatus="s">
+        <div class="selectable imageEffectsBox" data-clickarea="data-clickarea">
+          <img class="img-resposive" src="/staticimages/configurator/all/image-effect-#{f.value.toString().toLowerCase()}.jpg" alt="" />
+          <div class="radio pull-left">
+            <p:radioButton id="product" for=":itemConfiguratorForm:imageEffect" itemIndex="#{s.index}"/>
+            <h:outputLabel for="product" />
+          </div>
+          <div class="details pull-left">
+            <h:outputText value="#{f.label}" />
+          </div>
+        </div>
+      </ui:repeat>
+    </div>
+  <!-- /image effects -->
+
+</ui:composition>

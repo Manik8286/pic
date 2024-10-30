@@ -1,0 +1,15 @@
+.accordion-base {
+  &,
+  .sub {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .sub {
+    max-height: 0;
+    overflow: hidden;
+    transition-property: all;
+    transition-duration: 0.5s;
+  }
+}

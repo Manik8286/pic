@@ -1,0 +1,7 @@
+.blocker {
+  position: absolute;
+  background-color: $page-background-color;
+  opacity: 0.5;
+  user-select: none;
+  @include z-index('navigation', -1);
+}

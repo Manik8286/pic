@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+    <section class="page-section">
+        <h3 class="headline -section">Individuell Fotopresenter</h3>
+        <div class="product-list">
+
+            <div class="product -span-12">
+                <ui:include src="/content-blocks/product-box.xhtml">
+                    <ui:param name="productBoxTitle" value="Canvastavlor" />
+                    <ui:param name="productBoxAlt" value="Canvastavlor" />
+                    <ui:param name="productBoxProductLink" value="/vaggdekor/canvastavlor.jsf" />
+                    <ui:param name="productButtonIDinside" value="254" />
+                    <ui:param name="buttonText" value="Skapa" />
+                    <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/vaggdekoration/foto-canvas.jpg" />
+                    <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 20x20')}" />
+                    <ui:param name="productBoxText" value="Din personliga Canvastavla med träram: högkvalitativt tryck, uppspänd för hand och tillgänglig i många olika format." />
+                </ui:include>
+            </div>
+
+            <div class="product -span-12">
+                <ui:include src="/content-blocks/product-box.xhtml">
+                    <ui:param name="productBoxTitle" value="Fototavlor med ram" />
+                    <ui:param name="productBoxAlt" value="Fototavlor med ram" />
+                    <ui:param name="productBoxProductLink" value="/vaggdekor/fototavlor-med-ram.jsf" />
+                    <ui:param name="productButtonIDinside" value="1612" />
+                    <ui:param name="buttonText" value="Skapa" />
+                    <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/vaggdekoration/foto-passepartout.jpg" />
+                    <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 17x17')}" />
+                    <ui:param name="productBoxText" value="Elegant utseende - ditt Foto Med Passepartout, inramat i en smal träram i den färg du har valt." />
+                </ui:include>
+            </div>
+
+            <div class="product -span-12">
+                <ui:include src="/content-blocks/product-box.xhtml">
+                    <ui:param name="productBoxTitle" value="Akrylglastavlor" />
+                    <ui:param name="productBoxAlt" value="Akrylglastavlor" />
+                    <ui:param name="productBoxProductLink" value="/vaggdekor/akrylglastavlor.jsf" />
+                    <ui:param name="productButtonIDinside" value="2421" />
+                    <ui:param name="buttonText" value="Skapa" />
+                    <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/vaggdekoration/foto-akrylglas.jpg" />
+                    <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 10x10')}" />
+                    <ui:param name="productBoxText" value="Imponerande djupeffekter: Ditt äkta fototryck bakom perfekt gjutet Akrylglas ger verklig elegans till dina väggar." />
+                </ui:include>
+            </div>
+
+            <div class="product -span-12">
+                <ui:include src="/content-blocks/product-box.xhtml">
+                    <ui:param name="productBoxTitle" value="Handduk" />
+                    <ui:param name="productBoxAlt" value="Handduk" />
+                    <ui:param name="productBoxProductLink" value="/home-lifestyle/fotohandduk.jsf" />
+                    <ui:param name="productButtonIDinside" value="2011" />
+                    <ui:param name="formatAngebot" value="Format: 140 x 70 cm" />
+                    <ui:param name="buttonText" value="Skapa" />
+                    <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/home-lifestyle/fotohandduk.jpg" />
+                    <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Towel_Bestcanvas_SE', 'Towel', 'Towel 90x50')}" />
+                    <ui:param name="productBoxText" value="Ditt foto på personlig handduk. Imponerande heltäckande premiumtryck. Perfekt för stranden, bastun och hemmetr." />
+                </ui:include>
+            </div>
+
+            <div class="product -span-12">
+                <ui:include src="/content-blocks/product-box.xhtml">
+                    <ui:param name="productBoxTitle" value="Fotofilt" />
+                    <ui:param name="productBoxAlt" value="foto filt" />
+                    <ui:param name="productBoxProductLink" value="/home-lifestyle/fotofilt.jsf" />
+                    <ui:param name="productButtonIDinside" value="2000" />
+                    <ui:param name="buttonText" value="Skapa" />
+                    <ui:param name="formatAngebot" value="Format: 100 x 70 cm" />
+                    <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/home-lifestyle/foto-filt.jpg" />
+                    <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 100x70')}" />
+                    <ui:param name="productBoxText" value="Den supermjuka Fotofilten för soffa och säng imponerar med en fantastisk fotoutskrift och kan tvättas i maskin." />
+                </ui:include>
+            </div>
+
+            <div class="product -span-12">
+                <ui:include src="/content-blocks/product-box.xhtml">
+                    <ui:param name="productBoxTitle" value="Fotokudde" />
+                    <ui:param name="productBoxAlt" value="foto kudde" />
+                    <ui:param name="productBoxProductLink" value="/home-lifestyle/fotokudde.jsf" />
+                    <ui:param name="productButtonIDinside" value="1614" />
+                    <ui:param name="formatAngebot" value="Format: 40x40 cm" />
+                    <ui:param name="buttonText" value="Skapa" />
+                    <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/home-lifestyle/foto-kudde.jpg" />
+                    <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Pillow_Bestcanvas_SE', 'Pillow', 'Pillow 40x40')}" />
+                    <ui:param name="productBoxText" value="Högkvalitativa Fotokuddar i olika storlekar och material - ditt eget örngott när det är dags för mys." />
+                </ui:include>
+            </div>
+
+        </div>
+    </section>
+
+</ui:composition>

@@ -1,0 +1,51 @@
+.order-table {
+  table-layout: auto;
+  border-top: 1px solid $lighter-box-border;
+  border-bottom: 1px solid $lighter-box-border;
+
+  > tbody {
+    padding: 20px 10px;
+    display: inline-block;
+    background-color: $lighter-box-background;
+
+    > tr {
+      height: 75px;
+      background-color: $lighter-box-background;
+      border-top: 1px solid $lighter-box-border;
+      text-align: left;
+
+      &:first-of-type {
+        border-top: none;
+      }
+
+      &:nth-child(odd) {
+        background-color: $lighter-box-background;
+      }
+      &:nth-child(even) {
+        background-color: $lighter-box-background;
+      }
+    }
+
+    td {
+      padding: 15px 10px;
+    }
+
+    tr > td:first-of-type {
+      padding-left: 0;
+    }
+
+    tr > td:last-of-type {
+      padding-right: 0;
+    }
+
+    td.price {
+      text-align: right;
+      min-width: 75px; // to benefit from the auto-layout and still dont break the price-col
+    }
+
+    .thumbnail {
+      width: 60px;
+      height: auto;
+    }
+  }
+}

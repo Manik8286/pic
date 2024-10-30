@@ -1,0 +1,51 @@
+.multiimage {
+  .ui-fileupload-cancel{
+    display: none;
+  }
+  .-filled {
+    .ui-button{
+      background-color: $newGreen;
+      color: $white;
+      &:hover,
+      &:focus{
+      background-color: $newDarkGreen;
+      color:white;
+      }
+    }
+  }
+  .large-preview {
+    padding-top: 10px;
+    border-left: 10px solid #303539;
+    border-right: 10px solid #303539;
+  }
+
+  @media only screen and (orientation: portrait) {
+
+    .image-entry {
+      .item {
+        &.image-portrait {
+          margin: 0 8px 10px 0;
+        }
+      }
+    }
+    .mixpix {
+      .canvas-container {
+        transform: scale(.9);
+        margin-left: -3px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .item-tools {
+    margin-top: 15px;
+    .inclCostsText {
+      color: #979797;
+      font-size: 8px;
+      padding-bottom: 10px;
+    }
+    .button.-action {
+      width: 100%;
+    }
+  }
+}

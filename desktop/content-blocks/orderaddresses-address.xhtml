@@ -1,0 +1,351 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <div class="group">
+    <div class="label">
+      <span class="label">#{_['Title']}<span class="-red">*</span></span>
+    </div>
+    <div class="entry salutation">
+      <c:if test="#{empty address.gender}">
+        <c:set value="#{commonDataBean.genders[2].value}" target="#{address}" property="gender" />
+      </c:if>
+      <h:selectOneRadio id="#{idPrefix}Gender" value="#{address.gender}" styleClass="cradio" requiredMessage="#{_['Required.']}" required="true" disabled="#{disabled}">
+        <f:selectItem itemValue="#{commonDataBean.genders[2].value}" itemLabel="#{commonDataBean.genders[2].label}" />
+        <f:selectItem itemValue="#{commonDataBean.genders[1].value}" itemLabel="#{commonDataBean.genders[1].label}" />
+      </h:selectOneRadio>
+      <h:message for="#{idPrefix}Gender" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+
+  <div class="group">
+    <div class="label">
+      <span class="label">#{_['First Name']}<span class="-red">*</span></span>
+    </div>
+    <div class="entry">
+      <h:inputText id="#{idPrefix}Forename"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        converter="StringFieldConverter"
+        disabled="#{disabled}"
+        required="#{!disabled}"
+        requiredMessage="#{_['Required.']}"
+        validatorMessage="#{_['Packstation not allowed']}"
+        value="#{address.forename}" 
+        maxlength="30">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+      </h:inputText>
+      <h:message for="#{idPrefix}Forename" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+  <div class="group">
+    <div class="label">
+      <span class="label">#{_['Last Name']}<span class="-red">*</span></span>
+    </div>
+    <div class="entry">
+      <h:inputText id="#{idPrefix}Surname"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        converter="StringFieldConverter"
+        disabled="#{disabled}"
+        required="#{!disabled}"
+        requiredMessage="#{_['Required.']}"
+        validatorMessage="#{_['Packstation not allowed']}"
+        value="#{address.surname}" 
+        maxlength="30">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+      </h:inputText>
+      <h:message for="#{idPrefix}Surname" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+  <div class="group" jsf:rendered="#{showEmail}">
+    <div class="label">
+      <span class="label">#{_['E-Mail Address']}<span class="-red">*</span></span>
+    </div>
+    <div class="entry">
+      <h:inputText id="#{idPrefix}Email"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'} changeType"
+        converter="StringFieldConverter"
+        disabled="#{disabled}"
+        required="#{!disabled}"
+        requiredMessage="#{_['Required.']}"
+        validatorMessage="#{_['Packstation not allowed']}"
+        value="#{address.email}">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+      </h:inputText>
+      <h:message for="#{idPrefix}Email" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+  <div class="group" jsf:rendered="#{showEmail}">
+    <div class="label">
+      <span class="label">#{_['Confirm Email Address']}<span class="-red">*</span></span>
+    </div>
+    <div class="entry">
+      <h:inputText id="#{idPrefix}EmailConfirmation"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'} changeType"
+        converter="StringFieldConverter"
+        disabled="#{disabled}"
+        required="#{!disabled}"
+        requiredMessage="#{_['Required.']}"
+        validatorMessage="#{_['Packstation not allowed']}"
+        value="#{orderAddressBean.emailConfirmation}">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+      </h:inputText>
+      <h:message for="#{idPrefix}EmailConfirmation" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+
+  <div class="group">
+    <div class="label">
+      <span class="label">#{_['Street']}, <u>#{_['House Number']}</u><span class="-red">*</span></span>
+    </div>
+    <div class="entry">
+      <h:inputText id="#{idPrefix}Street"
+        styleClass="input -fullbleed -shy -street #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        converter="StringFieldConverter"
+        required="#{!disabled}"
+        requiredMessage="#{_['Required.']}"
+        validatorMessage="#{_['Packstation not allowed']}"
+        disabled="#{disabled}"
+        value="#{address.street}"
+        maxlength="30">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+        <!-- <f:validateLength maximum="30" /> -->
+      </h:inputText>
+      <h:message for="#{idPrefix}Street" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+  <div class="group">
+    <div class="label">
+      <span class="label">#{_['Zip/Postal Code']}<span class="-red">*</span></span>
+    </div>
+    <div class="entry  #{viewType == 'touch' ? '' : '-smaller'}">
+      <h:inputText id="#{idPrefix}ZipCode"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        required="#{!disabled}"
+        requiredMessage="#{_['Required.']}"
+        validatorMessage="#{_['Invalid zip code']}"
+        converter="StringFieldConverter"
+        disabled="#{disabled}"
+        size="15"
+        maxlength="10"
+        value="#{address.zipCode}">
+        <f:validateRegex pattern="[0-9- ]+" />
+      </h:inputText>
+      <h:message for="#{idPrefix}ZipCode" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+  <div class="group">
+    <div class="label">
+      <span class="label">#{_['City']}<span class="-red">*</span></span>
+    </div>
+    <div class="entry">
+      <h:inputText id="#{idPrefix}City"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        required="#{!disabled}"
+        requiredMessage="#{_['Required.']}"
+        validatorMessage="#{_['Packstation not allowed']}"
+        converter="StringFieldConverter"
+        disabled="#{disabled}"
+        size="15"
+        maxlength="30"
+        value="#{address.city}">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+      </h:inputText>
+      <h:message for="#{idPrefix}City" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+  <div class="group">
+    <div class="label">
+      <span class="label">#{_['Country']}<span class="-red">*</span></span>
+    </div>
+    <div class="entry">
+      <span class="form-dropdown #{viewType == 'touch' ? '-touch' : ''}" data-dropdown="country" style="#{viewType == 'touch' ? 'width: 100%' : ''}" data-calc-width="#{viewType == 'touch' ? 'false' : 'true'}">
+        <h:inputText id="#{idPrefix}Country"
+          styleClass="js-field #{ component.valid ? '' : '-invalid'}"
+          value="#{address.countryId}"
+          disabled="#{disabled}"
+          required="#{!disabled}"
+          requiredMessage="#{_['Required.']}"
+          style="display: none" />
+        <button type="button" class="label"><span>(#{_['Please choose']})</span></button>
+        <ul class="choices">
+          <ui:repeat value="#{orderAddressBean.shippingCountries}" var="p">
+            <li data-value="#{p.value}">#{p.label}</li>
+          </ui:repeat>
+        </ul>
+      </span>
+      <h:message for="#{idPrefix}Country" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+
+  <div class="group text-right">
+    <div class="forminfo">
+      * #{_['Required fields']}
+    </div>
+  </div>
+
+  <hr />
+  <h4 class="title">Frivilligt</h4>
+  <br />
+
+<c:if test="#{showBirthday}">
+  <div class="group -dateOfBirth">
+    <div class="label">
+      <span class="label">#{_['Date Of Birth']}</span>
+      <div>
+        <small>¡Obtienes una sorpresa para tu cumpleaños!</small>
+      </div>
+    </div>
+    <div class="entry">
+      <p:inputMask id="#{idPrefix}dateOfBirth"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        disabled="#{disabled}"
+        maxlength="10"
+        mask="99.99.9999"
+        p:placeholder="dd.mm.yyyy"
+        validatorMessage="Por favor ingresa una fecha válida"
+        converterMessage="Por favor ingresa una fecha válida"
+        value="#{orderAddressBean.invoiceDateOfBirth}">
+          <f:convertDateTime pattern="dd.mm.yyyy"/>
+        </p:inputMask>
+      <h:message for="#{idPrefix}dateOfBirth" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+</c:if>
+
+<c:if test="#{showMobile}">
+  <div class="group">
+    <div class="label">
+      <span class="label">#{_['Phone']}</span>
+    </div>
+    <div class="entry">
+      <h:inputText id="#{idPrefix}PhoneNumber"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        converter="StringFieldConverter"
+        disabled="#{disabled}"
+        validator="phoneNumberValidator"
+        validatorMessage="#{_['Packstation not allowed']}"
+        value="#{address.phoneNumber}">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+      </h:inputText>
+      <h:message for="#{idPrefix}PhoneNumber" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+</c:if>
+  <div class="group">
+    <div class="label">
+      <span class="label">#{_['Company']}</span>
+    </div>
+    <div class="entry">
+      <h:inputText id="#{idPrefix}Company"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        converter="StringFieldConverter"
+        disabled="#{disabled}"
+        value="#{address.company}"
+        validatorMessage="#{_['Packstation not allowed']}"
+        maxlength="30">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+      </h:inputText>
+      <h:message for="#{idPrefix}Company" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+
+  <div class="group" jsf:rendered="#{address.vatNumber != null}">
+    <div class="label">
+      <span class="label">#{_['VAT Number']}<span class="-red">*</span></span>
+    </div>
+    <div class="entry">
+      <h:inputText id="#{idPrefix}VatNumber"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        converter="StringFieldConverter"
+        maxlength="30"
+        validatorMessage="#{_['Packstation not allowed']}"
+        value="#{address.vatNumber}">
+        <c:if test="#{packstation == true}"> 
+          <f:validateRegex pattern="^((?i)(?!packstation|pack station|pack-station|pakstation|pacstation|pak station|pac station|Packstation|Pack Station|Pack-Station|Pakstation|Pacstation|Pak station|Pac station).)*" />
+        </c:if> 
+      </h:inputText>
+      <h:message for="#{idPrefix}VatNumber" styleClass="validation -error -bottom" />
+    </div>
+  </div>
+  <script>
+    /* <![CDATA[ */
+    $('.changeType').attr('type','email');
+
+    $( document ).ready(function() {
+      // Adapt the maxLength and the allowed Chars of the zipCode Input according to the rules. (maxlength = {Sweden: 5, Finland: 5, Others: 4})
+      const updateZipCodeLengthAndType = (length, element) => {
+        element.value = element.value.substring(0, length);
+        element.setAttribute("maxlength", length);
+      }
+
+      const updateZipCodeInput = (countryElement, zipCodeElement) => {
+        if(!countryElement || !countryElement.value) {
+          return false;
+        } else if (countryElement.value == "15") {
+          updateZipCodeLengthAndType(6, zipCodeElement);
+        } else if (countryElement.value == "12") {
+          updateZipCodeLengthAndType(5, zipCodeElement);
+        } else {
+          updateZipCodeLengthAndType(4, zipCodeElement);
+        }
+      }
+
+      const applyZipCodeRestrictions = (event, countryElement, zipCodeElement) => {
+        let key = event.which || event.keyCode;
+        
+        if (key != null) {
+          const Char = String.fromCharCode(key);
+          const navigationKeyCode = [8, 9, 37, 39, 46];
+          const decimalKeyCode = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 37, 39, 8, 9, 46];
+          const decimalKeyCodeAndWhiteSpace = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 37, 39, 8, 9, 46, 32];
+          if(countryElement.value == "15") { // If Sweden Selected it should accept onetime a Space > keyCode: 32
+              const spacesInZipCode = zipCodeElement.value.split(" ").length - 1;
+              const zipCodeLength = zipCodeElement.value.length - 1;
+            if (!decimalKeyCodeAndWhiteSpace.includes(key) || (Char == " " && spacesInZipCode > 0) || (spacesInZipCode <= 0 && zipCodeLength > 4 && !navigationKeyCode.includes(key))) {
+              event.preventDefault();
+            }
+          } else if (!decimalKeyCode.includes(key)) {
+            event.preventDefault();
+          }
+        }
+      }
+
+      const zipCode = document.getElementById("addressesForm:invoiceZipCode");
+      const zipCodeDelivery = document.getElementById("addressesForm:shippingZipCode");
+      const country = document.getElementById("addressesForm:invoiceCountry");
+      const countryDelivery = document.getElementById("addressesForm:shippingCountry");
+      const countryList = document.querySelector('#addressesForm\\:invoiceAddress span[data-dropdown="country"] ul.choices');
+      const countryListDelivery = document.querySelector('#addressesForm\\:shippingAddress span[data-dropdown="country"] ul.choices');
+
+      zipCode.onkeydown = (e) => {applyZipCodeRestrictions(e, country, zipCode)};
+      countryList.onclick = () => {updateZipCodeInput(country, zipCode)};
+      updateZipCodeInput(country, zipCode);
+
+      zipCodeDelivery.onkeydown = (e) => {applyZipCodeRestrictions(e, countryDelivery, zipCodeDelivery)};
+      countryListDelivery.onclick = () => {updateZipCodeInput(countryDelivery, zipCodeDelivery)};
+      updateZipCodeInput(countryDelivery, zipCodeDelivery);
+    });
+    /* ]]> */
+  </script>
+</ui:composition>

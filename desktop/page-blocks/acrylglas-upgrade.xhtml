@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:c="http://java.sun.com/jsp/jstl/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<!-- product boxes -->
+<section class="page-section">
+
+  <h3 class="headline -section">Uppgradera till Akryl +</h3>
+
+  <div class="product-list">
+
+  <div class="product -span-8 col -centered">
+    <ui:include src="/content-blocks/product-box.xhtml">
+      <ui:param name="productBoxTitle" value="Akryl + Aluminium" />
+      <ui:param name="productBoxAlt" value="foto bakom akrylglas-aluminium" />
+      <ui:param name="productBoxProductLink" value="/vaggdekor/akryl-aluminium.jsf" />
+      <ui:param name="productBoxUploadLink" value="/singleupload.jsf?product=267" />
+      <ui:param name="buttonText" value="Skapa" />
+      <ui:param name="productButtonIDinside" value="267" />
+      <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/acryl-alu/foto-bakom-akrylglas-aluminium.jpg" />
+      <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Acryl + Alu Print_Bestcanvas_SE', 'Acryl+Alu', 'Acryl+Alu 20x20')}" />
+      <ui:param name="productBoxPriceHigh" value="" />
+      <ui:param name="productBoxText" value="En baksida av aluminium förbättrar ditt foto bakom akrylglas avsevärt. Kompositpanelen som är tillverkad av aluminium och plast ger akrylglastavlor en ökad dimensionsstabilitet med låg vikt. Akrylens djupeffekt och de fina aluminiumelementen gör att din akrylglastavla ser ut som ett riktigt galleri. Denna kombination av akryl och aluminium är vår högkvalitetsprodukt." />
+    </ui:include>
+    </div>
+  </div>
+
+</section><!-- /product boxes -->
+
+</ui:composition>

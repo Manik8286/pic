@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+  <!-- Rich snippet -->
+  <section class="page-section">
+    <div class="article-showcase -no-bottom">
+      <h3 class="headline -has-sidelines"><span>Betygsättning och recensioner</span></h3>
+      <div class="col -span-12 description text-center" vocab="http://schema.org/" typeof="Product">
+        <span property="brand" typeof="Brand">
+        <meta property="name" content="BestCanvas.se" />
+        </span>
+        <meta property="name" content="Fotomatta" />
+        <meta property="image" src="https://download.cdn-shop.com/media/web_images/se/bestcanvas/fotomatta.jpg" />
+        <meta property="description" content="Förvandla ditt Foto till en skräddarsydd Matta eller Personlig Dörrmatta. UV-resistent och halksäker. Lätta att designa online." />
+        <meta property="sku" content="CARPET-BASIC‌-70X50" />
+        <span property="aggregateRating" typeof="AggregateRating">
+          <p class="text">
+            <ui:include src="/rich-snippets/snippet-rating.xhtml" /> 
+            Fotomatta nu!
+          </p>
+        </span>
+        <span property="offers" typeof="Offer">
+          <meta property="url" content="https://www.bestcanvas.se/home-lifestyle/fotomatta.jsf"/>
+          <meta property="priceCurrency" content="SEK" />
+          <meta property="price" content="#{fn:trim(priceBean.productPrice('Carpet_Bestcanvas_SE', 'Carpet', 'Carpet 70x50').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+          <time property="priceValidUntil" datetime="#{now.month + 1 eq 12 ? now.year + 1900 + 1 : now.year + 1900}-12-31"></time>
+          <span property="seller" typeof="Organization">
+            <meta property="name" content=" BestCanvas.se " />
+          </span>
+          <link property="itemCondition" href="http://schema.org/NewCondition" />
+          <link property="availability" href="http://schema.org/InStock" />
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- /Rich snippet -->
+
+</ui:composition>

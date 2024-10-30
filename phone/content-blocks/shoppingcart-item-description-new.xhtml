@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+  <p><strong>#{info.productName}</strong> <br/>#{info.formatName}</p>
+  <p jsf:rendered="#{info.imageEffectAvailable}">
+    <small>#{_['Effect:']} #{info.imageEffect}</small>
+  </p>
+  <p jsf:rendered="#{info.finishingAvailable}">
+    <small><h:outputText escape="false" value="#{info.finishings}" /></small>
+  </p>
+  <p jsf:rendered="#{info.borderEffectAvailable and info.productName != 'Funda para móvil'}">
+    <small>#{_['Border Effect:']} #{info.borderEffect}</small>
+  </p>
+  <p jsf:rendered="#{info.colorCarrier.available and info.productName == 'Funda para móvil'}">
+    <small>#{_['Print Material:']} #{info.colorCarrier.name}</small>
+  </p>
+  <p jsf:rendered="#{info.frame.available}">
+    <small>#{_['Shadow Frame:']} #{info.frame.name}</small>
+  </p>
+  <p jsf:rendered="#{(info.mounting.available and info.mounting.record.id != 20) or item.colorCarrierId == '69'}">
+    <small>#{_['Mounting:']} #{info.mounting.name}</small>
+  </p>
+  <p jsf:rendered="#{info.backgroundEffect.toString() != 'Bit' and info.backgroundEffect.toString() != 'null' and info.backgroundEffect.toString() != ''}">
+    <small>Tillbaka:</small> <small>#{info.backgroundEffect.toString() == 'Färgad' ? info.backgroundColorName : 'Fototryck'}</small>
+  </p>
+
+</ui:composition>

@@ -1,0 +1,83 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <div class="showcase" style="background-image: url(/#{shopInfoBean.versionPath}assets/img/backgrounds/Teaser_acryl_forex-angebot.jpg);">
+    <header class="head">
+      <h1 class="headline -green">#{headline}</h1>
+      <div class="claim">#{subheading}</div>
+    </header>
+    <div class="body">
+
+      <!-- teaser left -->
+      <div class="info-crm46">
+        <div class="title -green">#{listTitle}</div>
+        <ul class="features">
+        <ui:fragment rendered="#{not empty list1}">
+          <li>#{list1}</li>
+        </ui:fragment>
+        <ui:fragment rendered="#{not empty list2}">
+          <li>#{list2}</li>
+        </ui:fragment>
+        <ui:fragment rendered="#{not empty list3}">
+          <li>#{list3}</li>
+        </ui:fragment>
+        <ui:fragment rendered="#{not empty list4}">
+          <li>#{list4}</li>
+        </ui:fragment>
+        <ui:fragment rendered="#{not empty list5}">
+          <li>#{list5}</li>
+        </ui:fragment>
+        </ul>
+        <div class="subtitle">#{dealDeadline}</div>
+      </div><!-- /teaser left -->
+
+      <!-- teaser right -->
+      <div class="product-crm">
+      <div class="product-showcase-1-nl3x #{longThree}">
+        <img class="image" src="#{image1}" alt="" />
+        <ui:include src="/content-blocks/price-badge-crm.xhtml">
+          <ui:param name="badgeTitle" value="#{imageDealPrefix}" />
+          <ui:param name="badgeDiscount" value="#{image1Price}" />
+          <ui:param name="infoBelow" value="#{image1Caption}" />
+          <ui:param name="longTwoBageInside" value="#{longTwoBadge}" />
+        </ui:include>
+      </div>
+
+      <div class="product-showcase-2-nl3x #{longThree}">
+        <img class="image" src="#{image2}" alt="" />
+        <ui:include src="/content-blocks/price-badge-crm.xhtml">
+          <ui:param name="badgeTitle" value="#{imageDealPrefix}" />
+          <ui:param name="badgeDiscount" value="#{image2Price}" />
+          <ui:param name="infoBelow" value="#{image2Caption}" />
+          <ui:param name="longTwoBageInside" value="#{longTwoBadge}" />
+        </ui:include>
+        <ui:fragment rendered="#{not empty image2zoom}">
+			<img class="magnified-corner-nl" src="#{image2zoom}" alt="product-corner-zoomed2"/>
+        </ui:fragment>
+
+      </div>
+
+      <div class="product-showcase-3-nl3x">
+        <img class="image" src="#{image3}" alt="" />
+        <ui:include src="/content-blocks/price-badge-crm.xhtml">
+          <ui:param name="badgeTitle" value="#{imageDealPrefix}" />
+          <ui:param name="badgeDiscount" value="#{image3Price}" />
+          <ui:param name="infoBelow" value="#{image3Caption}" />
+          <ui:param name="longTwoBageInside" value="#{longTwoBadge}" />
+        </ui:include>
+	    <ui:fragment rendered="#{not empty image3zoom}">
+			<img class="magnified-corner-nl" src="#{image3zoom}" alt="product-corner-zoomed3"/>
+        </ui:fragment>
+      </div>
+      <!-- UPLOAD BUTTON INCLUDE-->
+              <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+          <ui:param name="directuploadProductId" value="492" />
+          <ui:param name="directuploadClass" value="action" />
+        </ui:include>
+      </div><!-- /teaser right -->
+    </div>
+  </div>
+
+</ui:composition>

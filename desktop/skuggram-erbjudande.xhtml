@@ -1,0 +1,148 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+                
+  <ui:param name="pageTitle" value="Mitt foto med skuggram" />
+
+  <ui:define name="dataLayer">
+    <ui:include src="/tracking/dataLayer-pagetype-product.xhtml"/>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+			dataLayer.push({
+				'marketingChannelPage': 'sea'
+			})
+		</script>
+  </ui:define>
+  
+  <ui:define name="head">
+    <ui:include src="/coupons/discountcode-BC_SE_SEA.xhtml" />
+<ui:include src="/helper/reference.xhtml" />
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="description" content="" />
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+  </ui:define>
+
+  <ui:define name="content">
+    <!-- teaser -->
+    <ui:include src="/page-blocks/teaser-right-white.xhtml">
+      <ui:param name="teaserBgImage" value="/#{shopInfoBean.versionPath}assets/img/backgrounds/wall-and-color-sofa.jpg" />
+      <ui:param name="teaserProductImage" value="/#{shopInfoBean.versionPath}assets/img/showcase/marco-flotante.png" />
+      <ui:param name="acrylblockProduct" value="true" />
+      <ui:param name="ProductImgClass" value="-smaller" />
+      <ui:param name="imgClass" value="#{sessionBean.userAgentType != 'desktop' ? '-span-12' : ''}" />
+      
+
+      <ui:param name="claim1" value="Den perfekta &#60;span class=&#34;-highlighted-text&#34;&#62;inramningen &#60;/span&#62; för ditt favoritfoto!" />
+      <ui:param name="headline" value="Ditt foto med skuggram" />
+      <ui:param name="altTeaserProductImage" value="Ditt foto med skuggram" />
+      <ui:param name="teaserFeatureHighlighted" value="" />
+      <ui:param name="teaserFeature1" value="Träramar av hög kvalitet i fyra färger" />
+      <ui:param name="teaserFeature2" value="För canvas, fototavla och aluminium" />
+      <ui:param name="teaserFeature3" value="Bilderna sätts in för hand" />
+      <ui:param name="teaserFeature4" value="Ger en äkta gallerikaraktär" />
+      <ui:param name="showUpload" value="false" />
+      <ui:param name="showShippingInfo" value="false" />
+      <ui:param name="quotes" value="false" />
+      <ui:param name="uploadId" value="505" />
+      <ui:param name="buttonText" value="Skapa" />
+      <ui:param name="quotes" value="false" />
+    </ui:include>
+    <!-- /teaser -->
+    <!-- info boxes -->
+    <section class="page-section -alternate -collapse-top">
+      <div class="row">
+        <ui:include src="/content-blocks/custome-price-table.xhtml" >
+          <ui:param name="tableheading" value="Skuggram för canvas" />
+          <ui:param name="FirstTitle" value="Format"/>
+          <ui:param name="SecondTitle" value="Pris"/>
+          <ui:param name="HighlightedTitle" value="Idag"/>
+          <ui:param name="uploadId" value="2421" />
+          <ui:param name="size1" value="20 x 20 cm" />
+          <ui:param name="oldPrice1" value="#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 20x20')}" />
+          <ui:param name="newPrice1" value="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 20x20')}" />
+          <ui:param name="size2" value="30 x 20 cm" />
+          <ui:param name="oldPrice2" value="#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 30x20')}" />
+          <ui:param name="newPrice2" value="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 30x20')}" />
+          <ui:param name="size3" value="40 x 30 cm" />
+          <ui:param name="oldPrice3" value="#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 40x30')}" />
+          <ui:param name="newPrice3" value="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 40x30')}" />
+          <ui:param name="size4" value="40 x 40 cm" />
+          <ui:param name="oldPrice4" value="#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 40x40')}" />
+          <ui:param name="newPrice4" value="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 40x40')}" />
+          <ui:param name="size5" value="60 x 20 cm" />
+          <ui:param name="oldPrice5" value="#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 60x20')}" />
+          <ui:param name="newPrice5" value="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 60x20')}" />
+          <ui:param name="noFormatLink" value="false" />
+          <ui:param name="customLink" value="true" />
+          <ui:param name="productNameLink" value="canvas" />
+        </ui:include>
+        <ui:include src="/content-blocks/custome-price-table.xhtml" >
+          <ui:param name="tableheading" value="Skuggram för aluminium" />
+          <ui:param name="FirstTitle" value="Format"/>
+          <ui:param name="SecondTitle" value="Pris"/>
+          <ui:param name="HighlightedTitle" value="Idag"/>
+          <ui:param name="uploadId" value="2421" />
+          <ui:param name="size1" value="20 x 20 cm" />
+          <ui:param name="oldPrice1" value="#{priceBean.productCrossPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 20x20')}" />
+          <ui:param name="newPrice1" value="#{priceBean.productPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 20x20')}" />
+          <ui:param name="size2" value="30 x 20 cm" />
+          <ui:param name="oldPrice2" value="#{priceBean.productCrossPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 30x20')}" />
+          <ui:param name="newPrice2" value="#{priceBean.productPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 30x20')}" />
+          <ui:param name="size3" value="40 x 30 cm" />
+          <ui:param name="oldPrice3" value="#{priceBean.productCrossPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 40x30')}" />
+          <ui:param name="newPrice3" value="#{priceBean.productPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 40x30')}" />
+          <ui:param name="size4" value="40 x 40 cm" />
+          <ui:param name="oldPrice4" value="#{priceBean.productCrossPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 40x40')}" />
+          <ui:param name="newPrice4" value="#{priceBean.productPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 40x40')}" />
+          <ui:param name="size5" value="60 x 30 cm" />
+          <ui:param name="oldPrice5" value="#{priceBean.productCrossPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 60x30')}" />
+          <ui:param name="newPrice5" value="#{priceBean.productPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 60x30')}" />
+          <ui:param name="noFormatLink" value="false" />
+          <ui:param name="customLink" value="true" />
+          <ui:param name="productNameLink" value="aluminium" />
+        </ui:include>
+        <ui:include src="/content-blocks/custome-price-table.xhtml" >
+          <ui:param name="tableheading" value="Skuggram för fototavla" />
+          <ui:param name="FirstTitle" value="Format"/>
+          <ui:param name="SecondTitle" value="Pris"/>
+          <ui:param name="HighlightedTitle" value="Idag"/>
+          <ui:param name="uploadId" value="2421" />
+          <ui:param name="size1" value="20 x 20 cm" />
+          <ui:param name="oldPrice1" value="#{priceBean.productCrossPrice('Forex Print_Bestcanvas_SE', 'Forex', 'Forex 20x20')}" />
+          <ui:param name="newPrice1" value="#{priceBean.productPrice('Forex Print_Bestcanvas_SE', 'Forex', 'Forex 20x20')}" />
+          <ui:param name="size2" value="30 x 20 cm" />
+          <ui:param name="oldPrice2" value="#{priceBean.productCrossPrice('Forex Print_Bestcanvas_SE', 'Forex', 'Forex 30x20')}" />
+          <ui:param name="newPrice2" value="#{priceBean.productPrice('Forex Print_Bestcanvas_SE', 'Forex', 'Forex 30x20')}" />
+          <ui:param name="size3" value="40 x 30 cm" />
+          <ui:param name="oldPrice3" value="#{priceBean.productCrossPrice('Forex Print_Bestcanvas_SE', 'Forex', 'Forex 40x30')}" />
+          <ui:param name="newPrice3" value="#{priceBean.productPrice('Forex Print_Bestcanvas_SE', 'Forex', 'Forex 40x30')}" />
+          <ui:param name="size4" value="60 x 40 cm" />
+          <ui:param name="oldPrice4" value="#{priceBean.productCrossPrice('Forex Print_Bestcanvas_SE', 'Forex', 'Forex 60x40')}" />
+          <ui:param name="newPrice4" value="#{priceBean.productPrice('Forex Print_Bestcanvas_SE', 'Forex', 'Forex 60x40')}" />
+          <ui:param name="size5" value="80 x 60 cm" />
+          <ui:param name="oldPrice5" value="#{priceBean.productCrossPrice('Forex Print_Bestcanvas_SE', 'Forex', 'Forex 80x60')}" />
+          <ui:param name="newPrice5" value="#{priceBean.productPrice('Forex Print_Bestcanvas_SE', 'Forex', 'Forex 80x60')}" />
+          <ui:param name="noFormatLink" value="false" />
+          <ui:param name="customLink" value="true" />
+          <ui:param name="productNameLink" value="forex" />
+        </ui:include>
+      </div>
+    </section>
+    <!-- /info boxes -->
+    <ui:include src="/page-blocks/premium-frame-content.xhtml" />
+
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+      <ui:include src="/page-blocks/paymentmethods.xhtml" />
+      <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+    </section>
+    <!-- /paymentmethods -->
+    
+  </ui:define>
+</ui:composition>

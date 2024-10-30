@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+  <section class="checkout-head">
+    <ul class="steps">
+      <li class="step #{stepCount eq 1 ? '-active' : '-condensed'} #{stepCount > 1 ? '-done' : ''}" data-step="1">
+        <c:set var="stepName" value="Cargar foto" />
+        <c:if test="${stepCount == 1}">
+          <span class="text">#{stepName}</span>
+        </c:if>
+        <c:if test="${stepCount > 1}">
+          <a href="/singleupload.jsf" class="blind"></a>
+        </c:if>
+      </li>
+      <li class="step #{stepCount eq 2 ? '-active' : '-condensed'} #{stepCount > 2 ? '-done' : ''}" data-step="2">
+        <c:set var="stepName" value="Cargar foto" />
+        <c:if test="${stepCount == 2}">
+          <span class="text">#{stepName}</span>
+        </c:if>
+        <c:if test="${stepCount > 2}">
+          <a href="/configurator.jsf" class="blind"></a>
+        </c:if>
+      </li>
+      <li class="step #{stepCount eq 3 ? '-active' : '-condensed'} #{stepCount > 3 ? '-done' : ''}" data-step="3">
+        <c:set var="stepName" value="Varukorg" />
+        <c:if test="${stepCount == 3}">
+          <span class="text">#{stepName}</span>
+        </c:if>
+        <c:if test="${stepCount > 3}">
+          <a href="/shoppingcart.jsf" class="blind"></a>
+        </c:if>
+      </li>
+    </ul>
+  </section>
+</ui:composition>

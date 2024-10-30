@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+  <ui:remove>
+    <!--
+    <element class="js-countdown">` needs two attributes in order to work:
+    - data-until: the date when the countdown is over. YYYY/MM/DD HH:MM:SS
+    - data-format: the formatted output. See here for a documentation:
+      http://hilios.github.io/jQuery.countdown/documentation.html#formatter
+    -->
+  </ui:remove>
+
+  <c:if test="#{not empty socialChannel}">
+    <c:set var="bannerClass" value="#{socialChannel}" scope="session" />
+  </c:if>
+
+  <div class="header-bar" jsf:rendered="#{ bannerClass eq 'facebook' }">
+    <div class="row">
+      <div class="col -span-12 -text-centered">
+        <h:outputText escape="false" value="#{contentBean.snippets['osm-bcse-msg-fb']}"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="header-bar -instagram" jsf:rendered="#{ bannerClass eq 'instagram' }">
+    <div class="row">
+      <div class="col -span-12 -text-centered">
+        <h:outputText escape="false" value="#{contentBean.snippets['osm-bcse-msg-in']}"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="header-bar" jsf:rendered="#{ bannerClass eq 'blackfriday' }">
+    <div class="row">
+      <div class="col -span-12 -text-centered">
+        <h:outputText escape="false" value="#{contentBean.snippets['osm-bcse-msg-blackfriday']}"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="header-bar" jsf:rendered="#{ bannerClass eq 'deken_bon' }">
+    <div class="row">
+      <div class="col -span-12 -text-centered">
+        <h:outputText escape="false" value="#{contentBean.snippets['osm-bcse-msg-deken-bon']}"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="header-bar" jsf:rendered="#{ bannerClass eq 'xmas' }">
+    <div class="row">
+      <div class="col -span-12 -text-centered">
+        <h:outputText escape="false" value="#{contentBean.snippets['osm-bcse-msg-xmas']}"/>
+      </div>
+    </div>
+  </div>
+
+
+</ui:composition>

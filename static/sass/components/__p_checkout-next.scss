@@ -1,0 +1,32 @@
+.checkout-next {
+  position: relative;
+  text-align: right;
+
+  > .amount {
+    font-size: 16px;
+    @extend .form-group;
+    @extend .form-group.-inline;
+  }
+
+   > .amount .label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+
+  > .amount .action {
+    text-align: right;
+    float: left;
+  }
+
+  .price {
+    line-height: 40px;
+    font-size: 20px;
+    margin-top: 40px;
+    @extend .form-group.-inline;
+  }
+
+  .price .highlight {
+    color: $highlight-color;
+  }
+}

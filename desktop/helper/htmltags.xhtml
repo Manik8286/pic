@@ -1,0 +1,131 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+  <c:set var="topBarMsg" value="#{dirtyMsg}"   />
+  <!-- Reset -->
+  <c:set var="topstyle" value="" scope="view" />
+  <c:set var="topdateTime" value="" scope="view" />
+  <c:set var="topformat" value="" scope="view" />
+  <c:set var="toplink" value="" scope="view" />
+	<c:set var="toplinkTarget" value="" scope="view" />
+	<c:set var="toplinkMsg" value="" scope="view" />
+  <c:set var="topmodal" value="" scope="view" />
+  <c:set var="topmodalMsg" value="" scope="view" />
+
+  <c:if test="${fn:contains(topBarMsg, '_b_')}">
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_b_', '&lt;b&gt;')}" />
+  </c:if>
+
+  <c:if test="${fn:contains(topBarMsg, '_/b_')}">
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_/b_', '&lt;/b&gt;')}" />
+  </c:if>
+ 
+  <c:if test="${fn:contains(topBarMsg, '_mbr_')}">
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_mbr_', '&lt;i class=&quot;mob-br&quot;&gt;&lt;/i&gt;')}" />
+  </c:if>
+
+  <c:if test="${fn:contains(topBarMsg, '_check_')}">
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_check_', '&lt;i class=&quot;check&quot;&gt;&lt;/i&gt;')}" />
+  </c:if>
+
+  <c:if test="${fn:contains(topBarMsg, '_dash_')}">
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_dash_', '&lt;i class=&quot;mob-hidden&quot;&gt;-&lt;/i&gt;')}" />
+  </c:if>
+
+
+  <c:if test="${fn:contains(topBarMsg, '_link:')}">
+    <c:set var="linkStart" value="${fn:indexOf(topBarMsg, '_link:') + 6}" />
+    <c:set var="linkEnd" value="${fn:indexOf(topBarMsg, '_/link_')}" />
+    <c:set var="toplink" value="${fn:substring(topBarMsg, linkStart, linkEnd)}" scope="view" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_link:', '')}" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_/link_', '')}"  />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, toplink, '')}"   />
+  </c:if>
+
+  <c:if test="${fn:contains(topBarMsg, '_linkMsg:')}">
+    <c:set var="linkMsgStart" value="${fn:indexOf(topBarMsg, '_linkMsg:') + 9}" />
+    <c:set var="linkMsgEnd" value="${fn:indexOf(topBarMsg, '_/linkMsg_')}" />
+    <c:set var="toplinkMsg" value="${fn:substring(topBarMsg, linkMsgStart, linkMsgEnd)}" scope="view" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_linkMsg:', '')}" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_/linkMsg_', '')}"  />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, toplinkMsg, '')}"   />
+  </c:if>
+
+  <c:if test="${fn:contains(topBarMsg, '_linkTarget:')}">
+    <c:set var="linkTargetStart" value="${fn:indexOf(topBarMsg, '_linkTarget:') + 12}" />
+    <c:set var="linkTargetEnd" value="${fn:indexOf(topBarMsg, '_/linkTarget_')}" />
+    <c:set var="toplinkTarget" value="${fn:substring(topBarMsg, linkTargetStart, linkTargetEnd)}" scope="view" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_linkTarget:', '')}" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_/linkTarget_', '')}"  />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, toplinkTarget, '')}"   />
+  </c:if>
+
+  <c:if test="${fn:contains(topBarMsg, '_tHide:')}">
+    <c:set var="tHideStart" value="${fn:indexOf(topBarMsg, '_tHide:') + 6}" />
+    <c:set var="tHideEnd" value="${fn:indexOf(topBarMsg, '_/tHide_')}" />
+    <c:set var="toptHide" value="${fn:substring(topBarMsg, tHideStart, tHideEnd)}" scope="view" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_tHide:', '&lt;span class=&quot;tHidden&quot;&gt;')}" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_/tHide_', '&lt;/span&gt;')}"  />
+  </c:if>
+
+  <c:if test="${fn:contains(topBarMsg, '_style:')}">
+    <c:set var="styleStart" value="${fn:indexOf(topBarMsg, '_style:') + 7}" />
+    <c:set var="styleEnd" value="${fn:indexOf(topBarMsg, '_/style_')}" />
+    <c:set var="topstyle" value="${fn:substring(topBarMsg, styleStart, styleEnd)}" scope="view" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_style:', '')}" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_/style_', '')}"  />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, topstyle, '')}"   />
+  </c:if>
+
+  <c:if test="${fn:contains(topBarMsg, '_date:')}">
+    <c:set var="dateStart" value="${fn:indexOf(topBarMsg, '_date:') + 6}" />
+    <c:set var="dateEnd" value="${fn:indexOf(topBarMsg, '_/date_')}" />
+    <c:set var="topdateTime" value="${fn:substring(topBarMsg, dateStart, dateEnd)}" scope="view" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_date:', '')}" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_/date_', '')}"   />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, topdateTime, '')}" />
+  </c:if>
+
+  <c:if test="${fn:contains(topBarMsg, '_format:')}">
+    <c:set var="formatStart" value="${fn:indexOf(topBarMsg, '_format:') + 8}" />
+    <c:set var="formatEnd" value="${fn:indexOf(topBarMsg, '_/format_')}" />
+    <c:set var="topformat" value="${fn:substring(topBarMsg, formatStart, formatEnd)}" scope="view" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_format:', '')}" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_/format_', '')}"  />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, topformat, '')}"  />
+  </c:if>
+
+  <c:if test="${fn:contains(topBarMsg, '_countmsg:')}">
+    <c:set var="countmsgStart" value="${fn:indexOf(topBarMsg, '_countmsg:') + 10}" />
+    <c:set var="countmsgEnd" value="${fn:indexOf(topBarMsg, '_/countmsg_')}" />
+    <c:set var="topcountmsg" value="${fn:substring(topBarMsg, countmsgStart, countmsgEnd)}" scope="view" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_countmsg:', '')}" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_/countmsg_', '')}"  />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, topcountmsg, '')}"  />
+  </c:if>
+
+  <c:if test="${fn:contains(topBarMsg, '_modal:')}">
+    <c:set var="modalStart" value="${fn:indexOf(topBarMsg, '_modal:') + 7}" />
+    <c:set var="modalEnd" value="${fn:indexOf(topBarMsg, '_/modal_')}" />
+    <c:set var="topmodal" value="${fn:substring(topBarMsg, modalStart, modalEnd)}" scope="view" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_modal:', '')}" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_/modal_', '')}"  />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, topmodal, '')}"  />
+  </c:if>
+
+  <c:if test="${fn:contains(topBarMsg, '_modalMsg:')}">
+    <c:set var="modalMsgStart" value="${fn:indexOf(topBarMsg, '_modalMsg:') + 10}" />
+    <c:set var="modalMsgEnd" value="${fn:indexOf(topBarMsg, '_/modalMsg_')}" />
+    <c:set var="topmodalMsg" value="${fn:substring(topBarMsg, modalMsgStart, modalMsgEnd)}" scope="view" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_modalMsg:', '')}" />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, '_/modalMsg_', '')}"  />
+    <c:set var="topBarMsg" value="${fn:replace(topBarMsg, topmodalMsg, '')}"  />
+  </c:if>
+
+  <c:set var="cleanMsg" value="#{topBarMsg}" scope="view" />
+  
+</ui:composition>

@@ -1,0 +1,116 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Newsletter Deal" />
+  <ui:define name="dataLayer">
+      <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+        <ui:param name="canvas" value="true" />
+        <ui:param name="mug" value="true" />
+        <ui:param name="pillow" value="true" />
+        <ui:param name="noList" value="true" />
+      </ui:include>
+      <script>
+          dataLayer.push({
+            'marketingChannelPage': 'newsletter'
+          })
+        </script>
+    </ui:define>
+  <ui:define name="head">
+    <script>
+      var couponSuccess = #{discountCodeBean.setCode('PGLW4030INCRM4512')};
+    </script>
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+  </ui:define>
+
+  <ui:define name="content">
+    <section class="page-teaser">
+      <div class="showcase">
+        <header class="head text-center">
+          <h1 class="headline">Tills imorgon - Rabatt på Canvas och Fotopresenter</h1> <br />
+          <div class="claim"></div>
+        </header>
+        <div class="body">
+          <div class="boxes">
+            <div class="col -span-10 -centered">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/newsletter/se_lp_w1_mi_int_1.png" alt="Foto på Canvas 40x30cm" width="100%" />
+              <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+                <ui:param name="directuploadProductId" value="254" />
+                <ui:param name="buttonText" value="Skapa" />
+                <ui:param name="directuploadPosition" value="-right -full" />
+                <ui:param name="directuploadClass" value="button -action -arrow" />
+              </ui:include>
+            </div>
+            <div class="col -span-10 -centered">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/newsletter/se_lp_w1_mi_int_2.png" alt="Fotomugg" width="100%" />
+              <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+                <ui:param name="directuploadProductId" value="860" />
+                <ui:param name="buttonText" value="Skapa" />
+                <ui:param name="directuploadPosition" value="-right -full" />
+                <ui:param name="directuploadClass" value="button -action -arrow" />
+              </ui:include>
+            </div>
+            <div class="col -span-10 -centered">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/newsletter/se_lp_w1_mi_int_3.png" alt="Fotokudde" width="100%" />
+              <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+                <ui:param name="directuploadProductId" value="861" />
+                <ui:param name="buttonText" value="Skapa" />
+                <ui:param name="directuploadPosition" value="-right -full" />
+                <ui:param name="directuploadClass" value="button -action -arrow" />
+              </ui:include>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="trust-nl deadline">
+        <br />
+        <p class="nlInfo">
+          Koden gäller endast till tisdag. Kan ej kombineras med andra erbjudanden.
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- info boxes -->
+    <section class="page-section -alternate -collapse-top">
+      <div class="row">
+        <ui:include src="/content-blocks/info-blocks-badges.xhtml" >
+          <ui:param name="qualityPromiseText" value="Ontvang familievriendelijke geschenken van topkwaliteit – gemaakt hier in de Verenigde Staten. Snelle verwerking en met 100% Geld-terug-garantie." />
+        </ui:include>
+        <ui:include src="/content-blocks/custome-price-table.xhtml" >
+          <ui:param name="tableheading" value="Vi har låga priser!" />
+          <ui:param name="FirstTitle" value="Produkter"/>
+          <ui:param name="SecondTitle" value="Pris"/>
+          <ui:param name="HighlightedTitle" value="Idag"/>
+          <ui:param name="uploadId" value="254" />
+
+          <ui:param name="size1" value="Canvas 40 x 30cm" />
+          <ui:param name="oldPrice1" value="#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 40x30')}" />
+          <ui:param name="newPrice1" value="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 40x30')}" />
+
+          <ui:param name="size2" value="Fotomugg" />
+          <ui:param name="oldPrice2" value="199,00 kr" />
+          <ui:param name="newPrice2" value="45,00 kr" />
+
+          <ui:param name="size3" value="Fotokudde" />
+          <ui:param name="oldPrice3" value="499,00 kr" />
+          <ui:param name="newPrice3" value="100,00 kr" />
+        </ui:include>
+      </div>
+    </section>
+    <!-- /info boxes -->
+
+    <section class="page-section">
+      <ui:include src="/page-blocks/canvas-page-content.xhtml" />
+    </section>
+
+  </ui:define>
+</ui:composition>

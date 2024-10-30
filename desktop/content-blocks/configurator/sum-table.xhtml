@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+								xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+  <table class="table" aria-label="table">
+    <tfoot>
+      <tr>
+        <td class="price-label">#{_['Price']}:</td>
+        <td colspan="2" class="text-right price-label highlight pRelative">
+                                <ui:fragment
+                                  rendered="#{((sessionScope.get('coupon') == 'HJ69BQMI' or sessionScope.get('coupon') == '5VZCZBZW' or sessionScope.get('coupon') == 'XKPNC45X') and (itemConfiguratorBean.configurator.formatWidth == 300 and itemConfiguratorBean.configurator.formatHeight == 200 or itemConfiguratorBean.configurator.formatWidth == 200 and itemConfiguratorBean.configurator.formatHeight == 300) and itemConfiguratorBean.productId == 254)}">
+                                  <div class="ribbon-label red -new"><strong class="ribbon-content">GRATIS</strong>
+                                  </div>
+                                </ui:fragment>
+          <h:outputText id="price_right" value="#{itemConfiguratorBean.configurator.price}" styleClass="hidden" />
+          <span id="total_right"></span><span class="-highlighted">*</span>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+</ui:composition>

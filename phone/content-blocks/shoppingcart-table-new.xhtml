@@ -1,0 +1,103 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+  <ui:remove>
+    <!-- If you change something here, keep in mind, there are
+         following device-dependend files:
+           - desktop/content-blocks/shoppingcart-table.xhtml
+           - tablet/content-blocks/shoppingcart-table.xhtml
+           - phone/content-blocks/shoppingcart-table.xhtml -->
+  </ui:remove>
+  <table class="p_carttable" jsf:id="data" aria-hidden="true">
+    <tbody>
+      <ui:repeat value="#{shoppingCartBean.items}" var="item" varStatus="itemMeta">
+
+        <tr class="products">
+          <td valign="top"><!-- image -->
+            <img class="preview" src="dynamicimage/product/#{item.productId}"
+              jsf:rendered="#{item.productType != 'UPLOAD'}" alt="product preview" />
+            <img class="preview" src="dynamicimage/preview/cartitem/#{item.altId}"
+              jsf:rendered="#{item.productType == 'UPLOAD'}" alt="product preview" />
+          </td>
+          <td valign="top"><!-- information -->
+            <ui:include src="/content-blocks/shoppingcart-item-description-new.xhtml">
+              <ui:param name="info" value="#{item.information}"/>
+              <ui:param name="showEditLink" value="false"/>
+            </ui:include>
+            <!-- amount -->
+            <ui:fragment rendered="#{type ne 'review'}">
+              <div class="number-spinner js-number-spinner">
+                <button type="button" class="edit js-less">-</button>
+                <h:inputText id="itemQuantity" style="line-height: 0px;"
+                  required="#{!disabled}"
+                  requiredMessage="#{_['Required.']}"
+                  value="#{item.quantity}"
+                  styleClass="field js-field #{ component.valid ? '' : '-invalid'}"
+                  onkeypress="if (event.keyCode == 13) { onchange(); return false; }"
+                  valueChangeListener="#{shoppingCartBean.quantityChanged}"
+                  converter="IntegerFieldConverter"
+                  validatorMessage="#{_['This must be a number between 1 and']} 500."
+                  converterMessage="#{_['Please enter valid quantity.']}">
+                    <f:validateDoubleRange minimum="1.00" maximum="500.00" />
+                    <p:ajax event="change" update=":wholePage" process="@this" oncomplete="updateDom()" />
+                </h:inputText>
+
+                <button type="button" class="edit js-more">+</button>
+                <h:message for="itemQuantity" styleClass="validation -error -bottom" />
+              </div>
+            </ui:fragment>
+            <h:outputText rendered="#{type eq 'review'}" value="#{item.quantity}" />
+          <div class="edit-remove">
+          <a class="change" jsf:rendered="#{item.productType == 'UPLOAD'}" href="configurator.jsf?cartItem=#{item.altId}#{saveAndBackTo}">#{_['Edit']}</a>
+          <ui:fragment rendered="#{item.productType == 'UPLOAD'}"><span class="separator">|</span></ui:fragment>
+
+          <ui:fragment rendered="#{item.productId == 4284}">
+              <a class="change" jsf:rendered="#{item.productType == 'UPLOAD' and showEditLink == true and !shoppingCartBean.isProductSetChildItem(item)}" href="/multiimage_mixpix.jsf?cartItem=#{item.altId}">#{_['Edit']}</a><ui:fragment rendered="#{showEditLink == true}"> | </ui:fragment>
+            </ui:fragment>
+
+
+              <h:commandLink
+                value="#{_['Remove']}"
+                styleClass="change">
+                <p:ajax oncomplete="Modal.open('#deleteItem');" process="@this" update="" />
+                <f:setPropertyActionListener value="#{item}" target="#{shoppingCartBean.selectedItem}"/>
+              </h:commandLink>
+          </div>
+
+          </td>
+          <td valign="top" class="price -align-right" jsf:id="price"><!-- total price -->
+            <strong>#{item.totalGrossPriceLabel}</strong>
+          </td>
+        </tr>
+      </ui:repeat>
+    </tbody>
+  </table>
+
+  <ui:fragment rendered="#{type ne 'review'}">
+
+  <div class="js-modal" id="deleteItem">
+    <div class="foot" style="padding: 0px 10px 0;"><span class="text">#{_['Are you sure you want to delete this item?']}</span>
+      <h:commandButton actionListener="#{shoppingCartBean.remove}"
+        onclick="Modal.close('#deleteItem');"
+        value="#{_['Remove Item']}"
+        styleClass="button -control -critical">
+        <p:ajax process="@this" update=":wholePage :cartcount" oncomplete="updateDom();" />
+      </h:commandButton>
+      <h:commandButton actionListener="#{shoppingCartBean.closeConfirmation}"
+        id="decline"
+        value="#{_['Cancel']}"
+        onclick="Modal.close('#deleteItem');"
+        type="button"
+        styleClass="button -control -nothing"/>
+    </div>
+  </div>
+
+  </ui:fragment>
+
+</ui:composition>

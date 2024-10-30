@@ -1,0 +1,124 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://java.sun.com/jsf/html"
+             xmlns:c="http://java.sun.com/jsp/jstl/core"
+             xmlns:f="http://java.sun.com/jsf/core"
+             xmlns:ui="http://java.sun.com/jsf/facelets"
+             xmlns:p="http://primefaces.org/ui">
+
+
+	<p:remoteCommand name="submitEncrypted" action="#{paymentMethodBean.submit}" process="cardEncrypted encCardType"/>
+
+	<div class="head js-accordion-title -expandable" data-clickarea="data-clickarea">
+		<div class="radio -alone">
+			<p:radioButton id="edyen"
+				for=":paymentMethod:method"
+				itemIndex="#{index}" />
+			<h:outputLabel styleClass="label" for="edyen" value="Kreditkort" />
+		</div>
+		
+      <div class="-right -kreditkarte">
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="-mastercard" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#payments-mastercard" />
+          <ui:param name="svgWidth" value="#{sessionBean.userAgentType == 'phone' ? '40px' : '40px'}" />
+          <ui:param name="svgHeight" value="#{sessionBean.userAgentType == 'phone' ? '25px' : '30px'}" />
+        </ui:include>
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="-visa" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#payments-visa" />
+          <ui:param name="svgWidth" value="#{sessionBean.userAgentType == 'phone' ? '70px' : '70px'}" />
+          <ui:param name="svgHeight" value="#{sessionBean.userAgentType == 'phone' ? '25px' : '30px'}" />
+        </ui:include>
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="logo" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#payments-ae" />
+          <ui:param name="svgWidth" value="#{sessionBean.userAgentType == 'phone' ? '40px' : '40px'}" />
+          <ui:param name="svgHeight" value="#{sessionBean.userAgentType == 'phone' ? '25px' : '30px'}" />
+        </ui:include>
+      </div>
+	</div>
+
+	<div class="creditcard-data sub body js-accordion-body">
+		<div id="validationMessages" class="validation-messages ui-message ui-message-error ui-widget ui-corner-all" style="display: none">
+			Vänligen kontrollera din information, detta är inte ett giltigt kreditkort!
+		</div>
+
+		<div style="margin-bottom: 20px;font-size: 12px;"><strong>#{_['Card type (e.g. Visa, Mastercard, American Express) will be detected automatically']}.</strong></div>
+
+		<div class="group">
+			<label class="label nameOnCard">#{_['Name on Card']} <span class="required-field-marker">*</span></label>
+			<div class="action">
+				<input id="cardHolder" class="input -fullbleed -shy" placeholder="Första-och efternamn"/>
+			</div>
+		</div>
+
+		<div class="group">
+			<label class="label CreditCardNumber">	#{_['Credit Card Number']} <span class="required-field-marker">*</span></label>
+			<div class="action">
+				<input id="cardNumber" class="input -fullbleed -shy" placeholder="Endast siffror, inga mellanslag eller bindestreck" onkeyup="this.value = this.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim()" maxlength="20" />
+			</div>
+		</div>
+
+	<div class="group">
+		<div class="label">
+			<span class="label ExpirationDate">#{_['Expiration Date']} <span class="required-field-marker">*</span></span>
+		</div>
+			<div class="entry">
+				<select id="cardExpirationMonth" class="valid-month form-dropdown creditcard -month" style="padding: 2px;margin: 5px 0;">
+					<ui:repeat value="#{paymentMethodBean.creditCard.months}" var="month">
+						<option value="#{month.value}">#{month.label}</option>
+					</ui:repeat>
+				</select>
+				<select id="cardExpirationYear" class="valid-year form-dropdown creditcard -month" style="padding: 2px;margin: 5px 0;">
+					<ui:repeat value="#{paymentMethodBean.creditCard.years}" var="year">
+						<option value="#{year.value}">#{year.label}</option>
+					</ui:repeat>
+				</select>
+			</div>
+		</div>
+
+
+		<div class="group">
+			<label class="label cardSecurityCode">#{_['Card Verification Number']} <span class="required-field-marker">*</span></label>
+			<div class="action">
+				<input id="cardSecurityCode" type="text" pattern="[0-9]*" maxlength="15" size="15" class="input -shy" placeholder="123" />
+				<a href="javascript:void(0)" onclick="Modal.open('#cvc');" class="link -step">#{_['What is this?']}</a>
+			</div>
+		</div>
+
+		<span id="cardEncryptedContainer">
+			<h:inputHidden id="cardEncrypted" value="#{paymentMethodBean.creditCard.encryptedData}"/>
+			<h:inputHidden id="encCardType" value="#{paymentMethodBean.creditCard.cardType}"/>
+		</span>
+	</div>
+
+	<div class="js-modal" id="cvc">
+		<div class="body text-format">
+			<div class="text-format">
+				<section class="-collapse-top">
+					<div>
+						<div class="col -span-8 -centered">
+							<div class="showcase-box">
+								<h3 class="headline">American Express</h3>
+								<img class="" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/uploads/checkout/cc_amex_cvc2.gif" width="100%" alt="cvc amex" />
+							</div>
+						</div>
+						<div class="col -span-8 -centered">
+							<div class="showcase-box">
+								<h3 class="headline">MasterCard</h3>
+								<img class="" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/uploads/checkout/cc_mc_cvc2.gif" width="100%" alt="cvc mc" />
+							</div>
+						</div>
+						<div class="col -span-8 -centered">
+							<div class="showcase-box">
+								<h3 class="headline">Visa</h3>
+								<img class="" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/uploads/checkout/cc_visa_cvc2.gif" width="100%" alt="cvc amex" />
+							</div>
+						</div>
+					</div>
+				</section>
+      		</div>
+    	</div>
+  	</div>
+
+</ui:composition>

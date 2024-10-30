@@ -1,0 +1,98 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <div class="article-showcase -small-bottom" id="prices">
+    <h2 class="headline -has-sidelines"><span>Storlekar och Priser</span></h2>
+    <ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+      <div class="description">
+        <p class="text text-center">Svajpa till sidan för att visa priserna för andra måttförhållanden.</p>
+      </div>
+    </ui:fragment>
+    <section class="page-section -smaller -collapse-top -collapse-bottom">
+      <div class="row">
+
+        <div class="col #{sessionBean.userAgentType != 'phone' ? '-span-10' : '-span-12'} -centered format-lp-selection">
+          <ul class="selection-list #{sessionBean.userAgentType == 'phone' ? '-phone' : ''}">
+            <li class="formatButton text-center">
+              <input class="selectradio" type="radio" id="selectForex_3" name="productSelection" data-active-target-group="prices"
+                data-active-target=".js-forex-3" checked="checked" />
+              <label class="lp-format-selection" for="selectForex_3">
+                <ui:include src="/helper/svg.xhtml">
+                  <ui:param name="svgHeight" value="#{sessionBean.userAgentType != 'phone' ? '60px' : '80px'}" />
+                  <ui:param name="svgWidth" value="#{sessionBean.userAgentType != 'phone' ? '90px' : '120px'}" />
+                  <ui:param name="svgClass" value="page-format" />
+                  <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-3-2" />
+                </ui:include><br />
+                <span>Rektangulär</span>
+                <div class="arrow-up"></div>
+              </label>
+            </li>
+            <li class="formatButton text-center">
+              <input class="selectradio" type="radio" id="selectForex_1" name="productSelection" data-active-target-group="prices" data-active-target=".js-forex-1" />
+              <label class="lp-format-selection" for="selectForex_1">
+                  <ui:include src="/helper/svg.xhtml">
+                    <ui:param name="svgHeight" value="#{sessionBean.userAgentType != 'phone' ? '60px' : '80px'}" />
+                    <ui:param name="svgWidth" value="#{sessionBean.userAgentType != 'phone' ? '60px' : '80px'}" />
+                    <ui:param name="svgClass" value="page-format" />
+                    <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-quadrat" />
+                  </ui:include><br/>
+                    <span>Kvadratiskt</span>
+                <div class="arrow-up"></div>
+            </label>
+            </li>
+            <li class="formatButton text-center">
+              <input class="selectradio" type="radio" id="selectForex_4" name="productSelection" data-active-target-group="prices" data-active-target=".js-forex-4" />
+              <label class="lp-format-selection" for="selectForex_4">
+                  <ui:include src="/helper/svg.xhtml">
+                    <ui:param name="svgHeight" value="#{sessionBean.userAgentType != 'phone' ? '60px' : '80px'}" />
+                    <ui:param name="svgWidth" value="#{sessionBean.userAgentType != 'phone' ? '45px' : '60px'}" />
+                    <ui:param name="svgClass" value="page-format" />
+                    <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-hochkant" />
+                  </ui:include><br/>
+               <span>Upprätt</span>
+               <div class="arrow-up"></div>
+            </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <h:panelGroup id="viewPanel">
+      <h:panelGroup id="tableRenderPanel">
+
+        <div class="price-tables row">
+            <section class="page-section -collapse-bottom js-forex-1 panel">
+              <ui:include src="/content-blocks/lp/fotoposter/price-table-lp-fotoposter-quadrat.xhtml" />
+            </section>
+            <section class="page-section -collapse-bottom js-forex-3 panel">
+              <ui:include src="/content-blocks/lp/fotoposter/price-table-lp-fotoposter-landscape.xhtml" />
+            </section>
+            <section class="page-section -collapse-bottom js-forex-4 panel">
+              <ui:include src="/content-blocks/lp/fotoposter/price-table-lp-fotoposter-uppratt.xhtml" />
+            </section>
+        </div>
+
+      </h:panelGroup>
+    </h:panelGroup>
+
+    <div class="description text-center col -span-#{sessionBean.userAgentType != 'phone' ? '2' : '5'} -centered">
+      <form class="js-du">
+        <input type="hidden" value="3819" class="js-du-productid" accept="#{sessionBean.userAgentType == 'desktop' ? '.jpg, .jpeg, .png, .gif, .webp' : 'image/*'}" />
+        <div class="upload-button info" style="#{sessionBean.userAgentType != 'desktop' ? 'padding-left: 0;padding-top:0;margin: 0 auto;' : 'padding-top:0'}">
+          <input id="uploadInputFormat3819" type="file" class="js-du-file fileinput" accept="#{sessionBean.userAgentType == 'desktop' ? '.jpg, .jpeg, .png, .gif, .webp' : 'image/*'}" />
+          <button type="button" id="chooseFile" class="button -action ">
+            <label for="uploadInputFormat3819">Skapa</label>
+          </button>
+        </div>
+      </form>
+    </div>
+
+</div>
+
+
+</ui:composition>

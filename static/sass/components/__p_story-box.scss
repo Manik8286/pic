@@ -1,0 +1,19 @@
+.story-box {
+  > .head,
+  > .body {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  > .head > .title {
+    font-size: 18px;
+  }
+
+  > .head > .subtitle {
+    font-size: 16px;
+  }
+
+  > .body .more {
+    left: 10px;
+  }
+}

@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+  <!-- Rich snippet -->
+  <ui:remove>
+    <section class="page-section">
+      <div class="article-showcase -no-bottom">
+        <h3 class="headline -has-sidelines"><span>Las mejores calificaciones de clientes</span></h3>
+        <div class="col -span-12 description text-center" vocab="http://schema.org/" typeof="Product">
+		  <span property="brand" typeof="Brand">
+	      <meta property="name" content="BestCanvas.se" />
+	      </span>
+          <meta property="name" content="Fotocalendario" />
+          <meta property="image" src="https://d2iooymu68nnir.cloudfront.net/mi-arte3-es/#{shopInfoBean.versionPath}assets/img/fotocalendario/fotocalendario-2017.f5c5b5b0.jpg" />
+          <meta property="description" content="Fotocalendario 2017 – las fechas y fotos importantes en un vistazo. ✓ Todas las funciones de nuestro Software para un Fotocalendario perfecto." />
+          <meta property="sku" content="PCACLASSIC" />
+          <span property="aggregateRating" typeof="AggregateRating">
+          <p class="text">
+            <ui:include src="/rich-snippets/snippet-rating.xhtml" /> Fotocalendario ahora!</p>
+          </span>
+          <span property="offers" typeof="Offer">
+            <meta property="priceCurrency" content="EUR" />
+            <meta property="price" content="17.90" />
+            <time property="priceValidUntil" datetime="#{now.month + 1 eq 12 ? now.year + 1900 + 1 : now.year + 1900}-12-31"></time>
+            <span property="seller" typeof="Organization">
+              <meta property="name" content=" BestCanvas.se " />
+            </span>
+            <link property="itemCondition" href="http://schema.org/NewCondition" />
+            <link property="availability" href="http://schema.org/InStock" />
+          </span>
+        </div>
+      </div>
+    </section>
+  </ui:remove>
+  <!-- /Rich snippet -->
+
+</ui:composition>

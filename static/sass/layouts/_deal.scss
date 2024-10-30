@@ -1,0 +1,194 @@
+.deal {
+
+  .showcase {
+    // when deal is over, show standart teaser
+    background-image: url('/assets/img/backgrounds/wall_with_shelf.jpg');
+
+    &.teaser-blackweek {
+
+      .body {
+        position: relative;
+
+        .info {
+          text-align: center;
+
+          ul {
+            text-align: left;
+          }
+
+          .action {
+            padding: 0 20px;
+            width: 92%;
+            margin: auto;
+
+            &.disabled {
+              padding-right: 10px;
+              background-image: linear-gradient(#c1c1c1,#757574);
+
+              &:after {
+                background: none;
+              }
+            }
+          }
+        }
+
+        .countdown-clock {
+          background: #72be44;
+          color: $white;
+          font-size: 23px;
+          width: 200px;
+          display: inline-block;
+          padding: 10px 15px;
+          border-radius: 5px;
+        }
+
+        .coupon-block {
+
+          form {
+            position: relative;
+          }
+          
+          input {
+            text-align: center;
+            color: #72be44;
+            font-weight: 700;
+            font-size: 30px;
+            background: $white;
+            border: none;
+            box-shadow: 1px 1px 1px 1px rgba(0,0,0,.2);
+            padding: 5px 15px;
+            border-radius: 3px;
+            width: 80%;
+            margin-bottom: 20px;
+          }
+        }
+
+        .quality-badges {
+          margin-top: 0;
+          position: absolute;
+          bottom: -100px;
+          left: 0;
+        }
+      }
+    }
+  }
+
+  .deal-section {
+    .product-list {
+      .product {
+        @extend .-span-4;
+
+        .product-box {
+          min-height: 310px;
+        }
+
+        .countdown-clock {
+          position: absolute;
+          background: #72be44;
+          color: $white;
+          bottom: 5px;
+          padding: 8px 5px;
+          left: 0;
+          width: 80px;
+        }
+
+        .coupon-block {
+          position: absolute;
+          width: 100px;
+          left: 110px;
+          bottom: 50px;
+
+          form {
+            position: relative;
+
+            &.-copy {
+              &:after {
+                left: 25px;
+              }
+            }
+          }
+
+          .coupon {
+            text-align: center;
+            color: #72be44;
+            font-weight: 700;
+            font-size: 1em;
+            background: $white;
+            border: none;
+            box-shadow: 1px 1px 1px 1px rgba(0,0,0,.2);
+            padding: 5px 0px;
+            border-radius: 3px;
+            width: 100%;
+            margin-bottom: 0;
+            height: 34px;
+          }
+        }
+
+        img {
+          max-width: 100%;
+          filter: grayscale(100%);
+        }
+
+        &.active {
+          img {
+            filter: inherit;
+          }
+        }
+
+        .action {
+
+          &.disabled {
+            padding-right: 10px;
+            background-image: linear-gradient(#c1c1c1,#757574);
+            &:after {
+              background: none;
+            }
+          }
+        }
+      }
+      .disabled .countdown-clock {
+        width: 80px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .loader {
+    height: 100px;
+
+    div {
+      background-color: $orange;
+    }
+  }
+
+  .-copy {
+
+    &:before {
+      content: "";
+      z-index: 1000;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid white;
+      position: absolute;
+      left: 50%;
+      margin-left: -12px;
+      bottom: 12px;
+    }
+    
+    &:after {
+      content: attr(data-clip-translation);
+      display: block;
+      position: absolute;
+      z-index: 1000;
+      background: $white;
+      padding: 3px 10px;
+      border-radius: 3px;
+      font-weight: bold;
+      left: 50%;
+      margin-left: -10%;
+      bottom: -16px;
+    }
+  }
+}

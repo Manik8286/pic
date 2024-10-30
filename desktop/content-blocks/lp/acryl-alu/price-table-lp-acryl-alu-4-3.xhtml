@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+    <div class="col -span-#{sessionBean.userAgentType != 'phone' ? '7' : '12'} -centered">
+      <table class="table -striped-inverted -centered -equal-3 -space-bottom">
+        <tbody>
+          <tr>
+            <td><strong>40 x 30 cm</strong></td>
+            <td><span class="-outdated">#{priceBean.productCrossPrice('Acryl + Alu Print_Bestcanvas_SE', 'Acryl+Alu', 'Acryl+Alu 40x30')}</span></td>
+            <td><span class="-highlighted -red-bold">#{priceBean.productPrice('Acryl + Alu Print_Bestcanvas_SE', 'Acryl+Alu', 'Acryl+Alu 40x30')}</span></td>
+          </tr>
+          <tr>
+            <td><strong>80 x 60 cm</strong></td>
+            <td><span class="-outdated">#{priceBean.productCrossPrice('Acryl + Alu Print_Bestcanvas_SE', 'Acryl+Alu', 'Acryl+Alu 80x60')}</span></td>
+            <td><span class="-highlighted -red-bold">#{priceBean.productPrice('Acryl + Alu Print_Bestcanvas_SE', 'Acryl+Alu', 'Acryl+Alu 80x60')}</span></td>
+          </tr>
+          <tr>
+            <td><strong>100 x 75 cm</strong></td>
+            <td><span class="-outdated">#{priceBean.productCrossPrice('Acryl + Alu Print_Bestcanvas_SE', 'Acryl+Alu', 'Acryl+Alu 100x75')}</span></td>
+             <td><span class="-highlighted -red-bold">#{priceBean.productPrice('Acryl + Alu Print_Bestcanvas_SE', 'Acryl+Alu', 'Acryl+Alu 100x75')}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+</ui:composition>

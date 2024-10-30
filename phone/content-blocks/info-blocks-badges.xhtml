@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <div class="col -span-12">
+        <div class="showcase-box" data-mh="info">
+            <h3 class="headline">Våra kunders åsikter</h3>
+            <ui:include src="/content-blocks/trust-pilot.xhtml" />
+            <ui:include src="/content-blocks/teaser-quotes.xhtml"/>
+        </div>
+    </div>
+
+    <div class="col -span-12">
+        <div class="showcase-box" data-mh="info">
+            <h3 class="headline">Utmärkt kvalitet</h3>
+            <div class="dFlex" style="justify-content: space-between;align-items: center;">
+                <div>
+                    <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/bast-i-test.png" width="140" alt="Pålitlig service" />
+                    <p>Bäst i test</p>
+                </div>
+                <div>
+                    <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/palitlig-service.png" width="140" alt="Pålitlig service" />
+                    <p>Pålitlig service</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</ui:composition>

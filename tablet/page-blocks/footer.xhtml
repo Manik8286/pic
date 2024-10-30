@@ -1,0 +1,75 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <footer class="page-footer">
+    <div class="page-footer-sitemap">
+      <div class="column">
+        <h5 class="headline">bestcanvas.se</h5>
+        <ul class="link-list">
+          <!--<c:forEach var="item" items="#{contentBean.menus['footer_canvasdiscount']}">
+            <li><h:outputText escape="false" value="#{item.htmlLink}" /></li>
+          </c:forEach>-->
+          <li><a href="/om-oss/">Om oss</a></li>
+          <li><a href="/kvalitet/">Kvalitet</a></li>
+          <li><a href="/inredningstips/">Dekor Världen</a></li>
+          <li><a href="/impressum/">Kontakt</a></li>
+          <!-- <li><a href="/registro/">Para Empresas</a></li> -->
+          <li><a href="/affiliate/">Affiliate Program</a></li>
+          <li><a href="/blog/">Canvas wiki blogg</a></li>
+        </ul>
+      </div>
+
+      <div class="column">
+        <h5 class="headline">Service</h5>
+        <ul class="link-list">
+          <!--<c:forEach var="item" items="#{contentBean.menus['footer_canvasdiscount']}">
+            <li><h:outputText escape="false" value="#{item.htmlLink}" /></li>
+          </c:forEach>-->
+          <li><a href="javascript:void(0)" onclick="Modal.open('#bestPriceGuarantee');">Lågprisgaranti</a></li>
+          <li><a href="/betalning/">Säker Betalning</a></li>
+           <li><a href="/betalning-leveransinfo.jsf">Leveransinformation</a></li>
+        </ul>
+      </div>
+
+      <div class="column">
+        <h5 class="headline">Kundtjänst</h5>
+        <ul class="link-list">
+          <!--<c:forEach var="item" items="#{contentBean.menus['footer_navigation_customerservice']}">
+            <li><h:outputText escape="false" value="#{item.htmlLink}" /></li>
+          </c:forEach>-->
+          <li><a href="/faq/vanliga-fragor.jsf">Vanliga Frågor</a></li>
+          <li><a href="/bestallningsstatus/">Beställningsstatus</a></li>
+          <li><a href="/format/">Format &amp; Priser</a></li>
+          <li><a href="/kopvillkor/">Allmänna Köpvillkor</a></li>
+          <li><a href="/datasaekerhet/">Integritetspolicyn</a></li>
+          <li><a href="javascript:void(0)" onclick="Modal.open('#shippingInfo');">Fraktkostnader</a></li>
+          <c:choose>
+            <c:when test="#{loginBean.loggedIn}">
+              <li><a href="/logout.jsf">#{_['Logout']}</a> </li>
+              <li><a href="/accountoverview.jsf">#{_['Account']}</a></li>
+            </c:when>
+            <c:otherwise>
+              <li><a href="/customer/">#{_['Login']}</a></li>
+            </c:otherwise>
+          </c:choose>
+        </ul>
+      </div>
+      <div class="column">
+        <h5 class="headline">Produkter</h5>
+        <ul class="link-list">
+          <!--<c:forEach var="item" items="#{contentBean.menus['footer_navigation_products']}">
+            <li><h:outputText escape="false" value="#{item.htmlLink}" /></li>
+          </c:forEach>-->
+          <li><a href="/vaggdekor/canvastavlor.jsf">Canvastavlor</a></li>
+          <li><a href="/vaggdekor/">Väggdekoration</a></li>
+          <li><a href="/home-lifestyle/">Home &amp; Lifestyle</a></li>
+          <li><a href="/fotopresenter/">Fotopresenter</a></li>
+          <li><a href="/vaerdecheckar/">Värdecheckar</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fine-print">* Alla priser inkl. moms, <a href="/betalning-leveransinfo.jsf" target="_blank" class="link">exkl. fraktkostnad</a> (ingen moms för beställningar till Norge).</div>
+  </footer>
+</ui:composition>

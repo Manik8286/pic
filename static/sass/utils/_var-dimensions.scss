@@ -1,0 +1,23 @@
+//
+// DIMENSION REFERENCE
+//
+
+$grid-width: 1020px;
+$grid-gutter: 20px;
+
+
+$depth: (
+  content: 100,
+  navigation: 200,
+  overlay: 900
+);
+
+$breakpoints: (
+  phone_portrait: "only screen and (max-width: #{em-calc(450px)})",
+  phone_landscape: "only screen and (min-width: #{em-calc(540px)})",
+  tablet_portrait_small: "only screen and (max-width: #{em-calc(700px)})",
+  tablet_portrait: "only screen and (max-width: #{em-calc(800px)})",
+  tablet_landscape: "only screen and (min-width: #{em-calc(801px)})",
+  desktop_m: "only screen and (max-width: #{em-calc($grid-width)})",
+  desktop_l: "only screen and (min-width: #{em-calc($grid-width)})"
+);

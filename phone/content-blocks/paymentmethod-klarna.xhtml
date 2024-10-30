@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+  <ui:remove>
+    <!-- WARNING - ATTENTION
+         This is mostly a duplicate of desktop/content-blocks/paymentmethod-klarna.xhtml.
+         It just has a few tweaks for mobile.
+         Keep this in mind. -->
+  </ui:remove>
+  <div class="head js-accordion-title -expandable" data-clickarea="data-clickarea">
+    <div class="radio -alone">
+      <p:radioButton id="klarna"
+        for=":paymentMethod:method"
+        itemIndex="#{index}" />
+      <h:outputLabel styleClass="label" for="klarna" value="Rechnung (Klarna)" />
+    </div>
+    <ul class="logos">
+      <li class="payment-item -klarna"></li>
+    </ul>
+  </div>
+  <div class="sub body js-accordion-body">
+    <p><a href="#{baseUrlBean.scheme}://cdn.klarna.com/1.0/shared/content/legal/terms/13278/sv_se/invoice?fee=9,00" onclick="window.open(this.href,'popUpWindow','height=420,width=600,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');return false;" class="link">Villkor för faktura</a></p>
+    <p class="text -smaller">Fakturaavgift: 9,00 kr<br />Betala om 14 dagar</p>
+    <p class="text -smaller">
+      Ange ditt personnummer och klicka på "Uppdatera min adress" för att hämta de adresser som du har lagrade hos Klarna. Din faktura och leveransadress kommer att uppdateras när du går till nästa steg.
+    </p>
+
+    <div class="group -new-action" jsf:rendered="#{paymentMethodBean.klarna.showPno}">
+      <h:outputLabel styleClass="label" for="klarnaPNO">#{_['Social Security Number:']}*</h:outputLabel>
+      <div class="action">
+        <h:inputText id="klarnaPNO"
+          styleClass="input -fullbleed -shy -touch #{ component.valid ? '' : '-invalid'}"
+          converter="StringFieldConverter"
+          required="#{paymentMethodBean.method eq 'KLARNA'}"
+          requiredMessage="#{_['Required.']}"
+          value="#{paymentMethodBean.klarna.pno}" />
+        <h:message for="klarnaPNO"
+          styleClass="validation -error -bottom" />
+      </div>
+    </div>
+
+    <div class="group -new-action">
+      <h:outputLabel styleClass="label" for="klarnaMobile">#{_['Mobile:']}*</h:outputLabel>
+      <div class="action">
+        <p:inputText id="klarnaMobile"
+          styleClass="input -fullbleed -shy -touch #{ component.valid ? '' : '-invalid'}"
+          converter="KlarnaPhoneConverter"
+          required="#{paymentMethodBean.method eq 'KLARNA'}"
+          requiredMessage="#{_['Required.']}"
+          value="#{paymentMethodBean.klarna.mobileNumber}" />
+        <h:message for="klarnaMobile"
+          styleClass="validation -error -bottom" />
+      </div>
+    </div>
+
+    <div class="group" jsf:rendered="#{!paymentMethodBean.klarna.showPno}">
+      <h:outputLabel styleClass="label" for="klarnaStreet">#{_['Street/Nr.:']}*</h:outputLabel>
+      <div class="action">
+        <h:inputText id="klarnaStreet"
+          styleClass="billinput -street -touch #{ component.valid ? '' : '-invalid'}"
+          converter="StringFieldConverter"
+          required="#{paymentMethodBean.method eq 'KLARNA'}"
+          requiredMessage="#{_['Required.']}"
+          value="#{paymentMethodBean.klarna.street}" />
+        <h:message for="klarnaStreet"
+          styleClass="validation -error -bottom" />
+        <h:inputText id="klarnaHouseNumber"
+          styleClass="billinput -streetnumber -touch"
+          converter="StringFieldConverter"
+          required="#{paymentMethodBean.method eq 'KLARNA'}"
+          requiredMessage="#{_['Required.']}"
+          value="#{paymentMethodBean.klarna.houseNumber}" />
+        <h:message for="klarnaHouseNumber"
+          styleClass="validation -error -bottom" />
+      </div>
+    </div>
+
+    <div class="group" jsf:rendered="#{!paymentMethodBean.klarna.showPno}">
+      <h:outputLabel styleClass="label" for="klarnaBirthday">#{_['Birthday:']}*</h:outputLabel>
+      <div class="action">
+        <h:inputText id="klarnaBirthday"
+          styleClass="billinput -birthday -touch js-klarna-birthday #{ component.valid ? '' : '-invalid'}"
+          converter="DateFieldConverter"
+          converterMessage="Falsches Format"
+          required="#{paymentMethodBean.method eq 'KLARNA'}"
+          requiredMessage="#{_['Required.']}"
+          value="#{paymentMethodBean.klarna.birthday}" />
+        <h:message for="klarnaBirthday"
+          styleClass="validation -error -bottom" />
+      </div>
+    </div>
+  </div>
+</ui:composition>

@@ -1,0 +1,127 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:p="http://primefaces.org/ui">
+
+<section class="page-section">
+      <div class="article-showcase">
+        <h3 class="headline -has-sidelines"><span>Vad innebär Foto på Aluminiumtavlor?</span></h3>
+        <div class="col -span-#{sessionBean.userAgentType == 'phone' ? '12' : ''}#{sessionBean.userAgentType == 'tablet' ? '8 -centered' : ''}#{sessionBean.userAgentType == 'desktop' ? '6' : ''} image js-image-switcher">
+          <ul class="images has-video">
+            <li data-image-name="preview:front" class="-visible"><img alt="aluminiumtavla komplett vy" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/aluminium/aluminiumtavla-komplett-vy.jpg" /></li>
+            <li data-image-name="preview:room"><img alt="aluminiumtavla i rummet" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/aluminium/aluminiumtavla-i-rummet.jpg" /></li>
+            <li data-image-name="preview:detail"><img alt="aluminiumtavla detaljerad vy" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/aluminium/aluminiumtavla-detaljerad-vy.jpg" /></li>
+            <li data-image-name="preview:video"><iframe src="" data-src="//www.youtube.com/embed/t8bOrRYJGBY?loop=1&amp;modestbranding=1&amp;controls=0&amp;showinfo=0&amp;playlist=t8bOrRYJGBY" width="#{sessionBean.userAgentType == 'phone' ? '100%' : '490'}" frameborder="0" height="#{sessionBean.userAgentType == 'phone' ? '200' : '276'}"></iframe></li>
+          </ul>
+
+          <ul class="options -has-#{sessionBean.userAgentType == 'phone' ? '2' : '4'}">
+            <li><button type="button" class="cbutton -highlight" data-target="preview:front">Komplett vy</button></li>
+            <li><button type="button" class="cbutton" data-target="preview:detail">Detaljerad vy</button></li>
+            <li><button type="button" class="cbutton" data-target="preview:room">I rummet</button></li>
+            <li><button type="button" class="cbutton" data-target="preview:video">Video</button></li>
+          </ul>
+        </div>
+
+        <div class="col -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'}">
+          <div class="description-wrapper">
+            <p class="text"><b>Foto på Aluminium</b> består av kompositpaneler som är uppbyggda av fjäderlätta syntet- och aluminiumblad. Dessa fantastiska aluminiumtavlor är expertbehandlade för att skydda mot UV-strålning. Foto på aluminium sticker ut som väggdekoration, och är ett sant premiumhantverk!</p>
+            <div  class="description">
+              <h5 class="headline">Aluminiumtavlor för de som uppskattar elegans</h5>
+              <ul class="text -list">
+                <li>Smart byggd kompositpanel</li>
+                <li>Låg vikt men underbart robust</li>
+                <li>Enkel, minimalistisk och elegant design</li>
+                <li>Specialbehandlade för UV-resistens</li>
+                <li>Premium prisvärd väggdekor</li>
+              </ul>
+              <br />
+                <ui:include src="/helper/directupload-short.xhtml">
+                  <ui:param name="directuploadProductId" value="258" />
+                  <ui:param name="directuploadClass" value="button_action -productBox button_action_mod-arrow buttonContent" />
+                  <ui:param name="buttonText" value="Skapa" />
+                  <ui:param name="buttonTextDesktop" value="Skapa" />
+                </ui:include>
+            </div>
+          </div>
+        </div>
+       </div>
+
+      <div class="article-showcase">
+        <br jsf:rendered="#{sessionBean.userAgentType == 'phone'}"/>
+        <h3 class="headline -has-sidelines"><span>Aluminumtavlor i två fantastiska versioner</span></h3>
+        <div class="col -span-#{sessionBean.userAgentType == 'phone' ? '12' : '6'} image -has-subtitle">
+          <img alt="aluminiumtryck blank" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/aluminium/aluminiumtryck-blank.jpg" />
+              <h5 class="headline" style="text-align: left;">Aluminiumtryck blank (laminerat på fotopapper)</h5>
+            <br/>
+            <ul class="text -align-left">
+              <li>Ljusa, rika färger med högglanseffekt</li>
+              <li>Polerade kanter med rundade hörn</li>
+              <li>Kristallklar i minsta detalj</li>
+              <li>HD-utskrift på fotopapper i labbkvalitet applicerat på aluminiumpanel</li>
+            </ul>
+        </div>
+
+        <div class="col -span-#{sessionBean.userAgentType == 'phone' ? '12' : '6'} image -has-subtitle">
+          <img alt="aluminiumtavla matte" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/aluminium/aluminiumtavla-matte.jpg" />
+              <h5 class="headline" style="text-align: left;">Aluminiumtryck matte (direktutskrift)</h5>
+            <br/>
+            <ul class="text -align-left">
+              <li>Premiumkvalitet matt finish</li>
+              <li>Polerade kanter med rundade hörn</li>
+              <li>Superb exakt färgåtergivning</li>
+              <li>Direktutskrift på aluminiumpanel för ett fantastiskt modernt uttryck</li>
+            </ul>
+        </div>
+        <div class="description-wrapper text-center #{sessionBean.userAgentType == 'phone' ? '-span-12' : ''}">
+          <div class="description #{sessionBean.userAgentType == 'tablet' ? '-fullbleed' : ''}">
+          <ui:include src="/helper/directupload-short.xhtml">
+            <ui:param name="directuploadProductId" value="258" />
+            <ui:param name="directuploadClass" value="button_action -productBox button_action_mod-arrow buttonContent" />
+            <ui:param name="styleTop" value="" />
+            <ui:param name="buttonText" value="Skapa" />
+            <ui:param name="buttonTextDesktop" value="Skapa" />
+            <ui:param name="buttonCushion" value ="true"/>
+          </ui:include>
+        </div>
+      </div>
+
+    </div>
+
+      <ui:include src="/content-blocks/lp/alu-format-table.xhtml" />
+    
+    <div class="article-showcase">
+        <div class="description-wrapper">
+         <h3 class="headline -has-sidelines"><span>​Aluminiumtavlor i högsta kvalitet</span></h3>
+          <div class="description media col -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'}">
+            <h5 class="headline">Exceptionell bildskärpa</h5>
+            <p class="text">
+              Ditt aluminiumfototryck kommer att visa ditt mest levande fotominne in i minsta detalj. Oavsett om det skrivs ut på vårt fotopapper i labbkvalitet eller direkt på den aluminiumpanelen, kommer din bild att glänsa med högsta möjliga skärpa och med högsta möjliga upplösning. Ditt foto på aluminium kommer helt enkelt att stråla, tack vare toppmodern tryckteknik som kan producera fantastiska brillianta färger och kontraster.
+            </p>
+          </div>
+
+          <div class="description media col -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'}">
+            <h5 class="headline">Lämplig för vilken miljö som helst</h5>
+            <p class="text">
+              Den glansiga versionen av ditt aluminiumtryck lamineras noggrant. Förutom att ge en blank effekt och med extra färgdjup gör lamineringsprocessen ditt aluminiumfototryck lämpligt för rum med hög luftfuktighet. Så nu kan du hänga dina favoritbilder både i köket eller badrummet som en aluminiumtavla. Samtidigt levereras den diskreta, ultramoderna matta versionen av ditt aluminiumtryck med en speciell finish som möjliggör visning även i mer utsatta områden utomhus.</p>
+          </div>
+
+          <div class="description media col -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'} clear-both">
+            <h5 class="headline">Foton på Aluminium som är byggda för att tåla mycket</h5>
+            <p class="text">
+              Panelens svarta kärna tillverkas från ett styvt och lättviktigt syntetmaterial som inte bara gör din tavla lätt utan även stabil. Själva kärnan är belägen mellan två aluminiumblad. Den digitala reproduktionen av ditt foto återges på en exakt skuren aluminiumskompositpanel och levereras med ett toppmodernt UV-skydd. Panelens svarta kärna tillverkas från ett styvt och lättviktigt syntetmaterial som inte bara gör din tavla lätt utan även stabil. Själva kärnan är belägen mellan två aluminiumblad. Aluminiumtavlans silverfärgade kanter ger din fotoutskrift på aluminium en speciell elegant glans!
+            </p>
+          </div>
+
+          <div class="description media col -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'}">
+            <h5 class="headline">Tryck på Aluminium för premium väggdekoration</h5>
+            <p class="text">
+              Foto på aluminium har en elegant design som fungerar som en fokuspunkt på vilken vägg som helst. Aluminiumunderlaget visar upp de vackraste bilderna från din samling. Ditt foto på aluminium kommer att se ut som om det flyter på väggen tack vare ett dolt upphängningssystem. Skapa ett personligt foto på aluminium med din bästa bild och skapa därmed ett unikt konstobjekt.
+            </p>
+          </div>
+
+        </div>
+      </div>
+      
+</section>
+
+</ui:composition>

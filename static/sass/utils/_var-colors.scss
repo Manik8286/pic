@@ -1,0 +1,178 @@
+//
+// COLOR REFERENCE
+//
+
+// Primary assignment
+$black: #000000;
+$concrete: #4a4a4a;
+$dimgrey: #575757;
+$stone: #646464;
+$dusty-gray: #949494;
+$aluminium: #aaaaaa;
+$silver: #c2c2c2;
+$alto: #e0e0e0;
+$gallery: #e1e1e1;
+$mercury: #e8e8e8;
+$lightgrey: #f1f1f1;
+$lightergrey: #f3f3f3;
+$eggshell: #f8f8f8;
+$alabaster: #f9f9f9;
+$white: #ffffff;
+$darkergrey: #8f8f8f;
+$grey: #999999;
+
+$grass: #95c200;
+$red: #D40140;
+$redish: #CC071E;
+$newGreen: #35B2B6;
+$newDarkGreen: #0D6A6D;
+$yellow: yellow;
+$blood: #ad0000;
+$coupon-code: #cc1717;
+$winered: #8e0000;
+$flamingo: #ffc2c2;
+$orange: #ff9900;
+$facebook: #3b5999;
+
+$green-shades: $grass, #81a800, $newGreen, #65a800;
+$orange-shades: #35B2B6, #35B2B6, #35B2B6, #0D6A6D;
+
+// Secondary link assignment
+$highlight-color: $red;
+$text-search-highlight-color: $yellow;
+
+$link-secondary-color: $newGreen;
+
+$icon-primary-color: $newGreen;
+$icon-dark-color: $concrete;
+
+$section-background-color: $white;
+$section-background-color-alternate: $lightergrey;
+$section-subline-line-color: $aluminium;
+
+$page-background-color: $white;
+$page-text-color: $concrete;
+$page-lighter-text-color: $stone;
+
+$header-bar-background-color: $newGreen;
+$header-bar-color: $white;
+
+$footer-background-color: $dimgrey;
+$footer-text-color: $white;
+$footer-link-highlight-color: $newGreen;
+$footer-heart-fill-color: $newGreen;
+
+$head-background-color: $white;
+$head-link-highlight-color: $newGreen;
+
+$price-badge-background: $red;
+$price-badge-border: $eggshell;
+$price-badge-text: $white;
+
+$teaser-ribbon-background: $red;
+$teaser-ribbon-color: $white;
+
+$box-border-color: $lightgrey;
+$box-title-border-color: $concrete;
+$showcase-box-headline: $concrete;
+$showcase-box-background: $eggshell;
+
+$product-box-background-color-light: $alabaster;
+
+$photobook-box-title: $newGreen;
+$photobook-box-title-icon: $newGreen;
+
+$lighter-box-background: $alabaster;
+$lighter-box-border: $gallery;
+$darker-box-background: $eggshell;
+$darker-box-border: $mercury;
+$box-border-color: $concrete;
+
+$box-more-link-color: nth($orange-shades, 1);
+$box-more-link-hover-color: nth($orange-shades, 2);
+
+$accoridion-panel-title-color: $concrete;
+$accoridion-panel-background: $alabaster;
+$accoridion-panel-border: $gallery;
+$accordion-panel-indicator: $black;
+
+$table-head-highlighted-background-color: $concrete;
+$table-head-background-color: $white;
+$table-head-highlighted-color: $white;
+$table-col-highlight-color: $highlight-color;
+$table-row-odd-color: $white;
+$table-row-even-color: $lightergrey;
+$table-col-highlight-color--showcase: $white;
+$table-col-highlight-bgcolor--showcase: $grey;
+$table-col-highlight-bgcolor-odd--showcase: $darkergrey;
+$table-head-highlighted-color--showcase: $red;
+
+$table-phone-head-background-color: $dusty-gray;
+$table-phone-head-color: $alabaster;
+$table-phone-color: $dusty-gray;
+$table-phone-row-background-color: $alto;
+
+
+$button-primary-normal-color-top: nth($orange-shades, 1);
+$button-primary-normal-color-bottom: nth($orange-shades, 3);
+$button-primary-hover-color-top: nth($orange-shades, 2);
+$button-primary-hover-color-bottom: nth($orange-shades, 4);
+
+$button-secondary-background-color-top: nth($green-shades, 1);
+$button-secondary-background-color-bottom: nth($green-shades, 3);
+$button-secondary-background-hover-color-top: nth($green-shades, 2);
+$button-secondary-background-hover-color-bottom: nth($green-shades, 4);
+
+$button-simple-normal-color: $aluminium;
+$button-simple-hasimage-background-color: $alabaster;
+$button-simple-dark-color: $page-text-color;
+$button-simple-lighter-color: $gallery;
+$button-simple-highlight-color: $newGreen;
+$button-simple-background-color: $alabaster;
+$button-cancel-background-color: $red;
+$button-cancel-border-color: $blood;
+
+$cart-delete-color: $dimgrey;
+
+$radio-color: $concrete;
+$radio-background: $white;
+$radio-active-color: $newGreen;
+
+$checkbox-border-color: darken($mercury, 5);
+$checkbox-icon-color: $concrete;
+$checkbox-background: $white;
+$checkbox-dimmed-color: $gallery;
+$checkbox-active-color: $highlight-color;
+
+$accordion-nav-background: $concrete;
+$accordion-nav-invert-color: $stone;
+
+$image-loading-background: $aluminium;
+
+$input-border-color: $concrete;
+$input-darker-background-color: $alabaster;
+$input-shy-border-color: $gallery;
+$input-active-border-color: $newGreen;
+$input-background: $white;
+$input-placeholder-color: $aluminium;
+$input-placeholder-color-mobile: $concrete;
+$input-invalid-border-color: $red;
+$input-valid-border-color: $grass;
+
+$checkout-head-background: $lightergrey;
+$checkout-head-border-color: $mercury;
+
+$teaster-headline-light-color: $white;
+
+$step-active-top-background: $grass;
+$step-active-bottom-background: $newGreen;
+$step-background: $silver;
+$step-color: $silver;
+$step-active-color: nth($orange-shades, 1);
+
+$dropdown-border-color: $dimgrey;
+$dropdown-options-background: $lightergrey;
+$dropdown-options-border-color: $mercury;
+
+$validation-border-color: $winered;
+$validation-background: $flamingo;

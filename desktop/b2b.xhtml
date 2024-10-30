@@ -1,0 +1,121 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Kontakt" />
+
+  <ui:define name="meta">
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+  </ui:define>
+
+  <ui:define name="content">
+    <section class="page-text">
+
+<div class="col -span-12">
+  <h1 class="-highlighted-text">Särskilda konditioner och kooperationer</h1>
+  <p>
+    Företagskunder och större kunder, erbjuder vi speciella priser. Vill du dekorera din arbetsplats (kontor, restauranger, hotell ...) efter dina individuella önskemål?
+    Eller presentera företagets logotyp ovanligt ädelt? Eller överraska deltagarna på nästa Teambuilding i form av en gruppbild?
+    Våra exklusiva dukutskrifter kan användas på många sätt. Vi erbjuder även presentkort, kontakta oss för en offert
+  </p>
+  <p>Är du intresserad av ett samarbete? - Det är vi!</p>
+  <p>Beskriv din förfrågan så specifik som möjligt så kontaktar vi dig inom kort tid.</p>
+</div>
+      
+      <form action="https://www.bestcanvas.se/contact/index/b2bPost/" id="contactForm" method="post" enctype="multipart/form-data">
+        <fieldset>
+          <h3>Din förfrågan</h3>
+          <ul class="form-list group-select lStyleNone">
+            <li>
+              <div class="input-box">
+                <label for="company">Företag</label><br />
+                <input name="company" id="company" title="Företag" value="" class="input-text" type="text" />
+              </div>
+            </li>
+            <li>
+              <div class="input-box">
+                <label for="street">Gata, Husnummer (Portkod?) <span class="required">*</span></label><br />
+                <input name="street" id="street" title="Gata, Husnummer (Portkod?)" value="" class="input-text required-entry" type="text" />
+              </div>
+            </li>
+            <li>
+              <div class="input-box">
+                <label for="street2">&#160;</label><br />
+                <input name="street2" id="street2" title="Gata, Husnummer (Portkod?)" value="" class="input-text" type="text" />
+              </div>
+            </li>
+            <li>
+              <div class="input-box">
+                <label for="post_code">Postnummer <span class="required">*</span></label><br />
+                <input name="post_code" id="post_code" title="Postnummer" value="" class="input-text required-entry" type="text" />
+              </div>
+            </li>
+            <li>
+              <div class="input-box">
+                <label for="city">Stad <span class="required">*</span></label><br />
+                <input name="city" id="city" title="Stad" value="" class="input-text required-entry" type="text" />
+              </div>
+            </li>
+            <li>
+              <div class="input-box">
+                <label for="email">E-Post Adress <span class="required">*</span></label><br />
+                <input name="email" id="email" title="E-Post Adress" value="" class="input-text required-entry validate-email" type="text" />
+              </div>
+            </li>
+            <li>
+              <div class="input-box">
+                <label for="first_name">Förnamn <span class="required">*</span></label><br />
+                <input name="first_name" id="first_name" title="Förnamn" value="" class="input-text required-entry" type="text" />
+              </div>
+            </li>
+            <li>
+              <div class="input-box">
+                <label for="last_name">Efternamn <span class="required">*</span></label><br />
+                <input name="last_name" id="last_name" title="Efternamn" value="" class="input-text required-entry" type="text" />
+              </div>
+            </li>
+            <li>
+              <div class="input-box">
+                <label for="telephone">Telefon</label><br />
+                <input name="telephone" id="telephone" title="Telefon" value="" class="input-text" type="text" />
+              </div>
+            </li>
+            <li>
+              <div class="input-box">
+                <label for="vat_number">Tax/VAT nummer</label><br />
+                <input name="vat_number" id="vat_number" title="Tax/VAT nummer" value="" class="input-text" type="text" />
+              </div>
+            </li>
+            <li>
+              <label for="comment">Din förfrågan <span class="required">*</span></label><br />
+              <textarea name="comment" id="comment" title="Ditt meddelande" class="required-entry input-text" style="width:60%;height:100px;border: 1px solid;"></textarea>
+            </li>
+            <li>
+              <label for="reference">Hur har du blivit uppmärksammad av vår hemsida?</label><br/>
+              <textarea name="reference" id="reference" title="Ditt meddelande" style="width:60%;height:100px;border: 1px solid;"></textarea>
+            </li>
+          </ul>
+        </fieldset>
+
+
+        <div class="col -span-12">
+          <p>* Obligatoriska fält</p>
+          <p>Tack så mycket för din förfrågan!</p>
+          <button type="submit" class="action button -action -wide cursorPointer">Skicka</button>
+          <!-- <input type="submit" class="button" value="Skicka" /> -->
+        </div>
+      </form>
+
+      <script type="text/javascript">
+        //<![CDATA[
+        var contactForm = new VarienForm('contactForm', true);
+        //]]>
+      </script>
+    </section>
+
+  </ui:define>
+</ui:composition>

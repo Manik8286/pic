@@ -1,0 +1,85 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+								xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+								xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+
+	<!-- mountings -->
+
+    <p:selectOneRadio
+      id="mounting"
+      value="#{itemConfiguratorBean.mountingId}"
+      layout="custom"
+      plain="true">
+      <p:ajax
+        listener="#{itemConfiguratorBean.change}"
+        update=":itemConfiguratorForm:formats :itemConfiguratorForm:priceBox"
+        onstart="altMsg = 1;"
+        oncomplete="updateDom();altMsg = 0;" />
+      <f:selectItems value="#{itemConfiguratorBean.mountings}"/>
+    </p:selectOneRadio>
+
+    <h3 class="title">
+      <span class="StepsCount">#{blockCount}</span>
+      <h:outputText rendered="#{itemConfiguratorBean.colorCarrierId == materialCanvas}" value="Bildstöd:" />
+      <h:outputText rendered="#{itemConfiguratorBean.colorCarrierId != materialCanvas}" value="Välj upphängningssats:" />
+    </h3>
+
+    <div class="clearfix">
+      <ui:repeat value="#{itemConfiguratorBean.mountings}" var="f" varStatus="s">
+        <div class="selectable" data-clickarea="data-clickarea" id="mounting-#{f.value}">
+          <h:graphicImage for="entry" class="img-resposive" value="/staticimages/configurator/cd/mounting-#{f.value}.jpg"/>
+          <div class="radio pull-left">
+            <p:radioButton id="product" for=":itemConfiguratorForm:mounting" itemIndex="#{s.index}"/>
+            <h:outputLabel for="product" />
+          </div>
+          <div class="details pull-left">
+            <h:outputText rendered="#{(itemConfiguratorBean.colorCarrierId == materialCanvas or itemConfiguratorBean.colorCarrierId == materialPassepartoutPoster) and f.value eq 0}" value="Ingen" />
+            <h:outputText rendered="#{(itemConfiguratorBean.colorCarrierId == materialCanvas) and f.value gt 0}" value="Bildstöd" />
+            <h:outputText rendered="#{(itemConfiguratorBean.colorCarrierId == materialCanvas and f.value eq 21) or (itemConfiguratorBean.colorCarrierId == materialPassepartoutPoster and f.value eq 44)}" value="#{_['Hanger Set']}" />
+
+            <h:outputText rendered="#{(itemConfiguratorBean.colorCarrierId == materialForex or
+                                      itemConfiguratorBean.colorCarrierId == materialAcrylGlassClassic or
+                                      itemConfiguratorBean.colorCarrierId == materialAluminium or
+                                      itemConfiguratorBean.colorCarrierId == materialAcrylGlass or
+                                      itemConfiguratorBean.colorCarrierId == materialAcrylAlu or
+                                      itemConfiguratorBean.colorCarrierId == materialAluminiumGlossy or
+                                      itemConfiguratorBean.colorCarrierId == 14 or
+                                      itemConfiguratorBean.colorCarrierId == materialAluminiumMatte) and f.value == 0}" value="Ingen" />
+
+            <h:outputText rendered="#{(itemConfiguratorBean.colorCarrierId == materialForex or
+                                      itemConfiguratorBean.colorCarrierId == materialAcrylGlassClassic or
+                                      itemConfiguratorBean.colorCarrierId == materialAluminium or
+                                      itemConfiguratorBean.colorCarrierId == materialAcrylGlass or
+                                      itemConfiguratorBean.colorCarrierId == materialAcrylAlu or
+                                      itemConfiguratorBean.colorCarrierId == materialAluminiumGlossy or
+                                      itemConfiguratorBean.colorCarrierId == materialAluminiumMatte) and f.value == 19}" value="Bakre aluminiumram" />
+
+            <h:outputText rendered="#{(itemConfiguratorBean.colorCarrierId == materialForex or
+                                      itemConfiguratorBean.colorCarrierId == materialAcrylGlassClassic or
+                                      itemConfiguratorBean.colorCarrierId == materialAluminium or
+                                      itemConfiguratorBean.colorCarrierId == materialAcrylGlass or
+                                      itemConfiguratorBean.colorCarrierId == materialAcrylAlu or
+                                      itemConfiguratorBean.colorCarrierId == materialAluminiumGlossy or
+                                      itemConfiguratorBean.colorCarrierId == materialAluminiumMatte) and f.value == 18}" value="Platthängare" />
+
+            <h:outputText rendered="#{(itemConfiguratorBean.colorCarrierId == 14) and f.value == 47}" styleClass="posterText" value="Poster klipp" />
+
+            <br />
+
+            <span jsf:rendered="#{f.value == 21 or f.value eq 44}">
+              <s>90 kr</s> <span jsf:rendered="#{f.value eq 44}" class="divider"> | </span>
+            </span>
+
+            <h:outputText rendered="#{f.value != 0}" value="#{f.value != 44 and f.value != 0 ? '+ ' : ''}#{fn:replace(itemConfiguratorBean.configurator.mountingFormatDefaultPriceDifference(f.value), ',00', ' ')}*"
+                          styleClass="#{f.value == 21 or f.value == 44 ? '-red' : ''}" />
+          </div>
+        </div>
+    </ui:repeat>
+  </div>
+  <!-- end mountings -->
+
+</ui:composition>

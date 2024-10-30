@@ -1,0 +1,158 @@
+.form-dropdown {
+  display: inline-block;
+  position: relative;
+  width: 180px; // initial value, will be overridden in JS
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+
+  &.-touch {
+    > .label {
+      line-height: 38px;
+
+      &:before {
+        width: 38px;
+      }
+
+      &:after {
+        border-left-width: 6px;
+        border-right-width: 6px;
+        border-top-width: 10px;
+        top: 20px;
+        right: 18px;
+      }
+    }
+
+    > .choices > li {
+      padding: 10px 10px;
+    }
+  }
+
+  &.-fullbleed {
+    width: 100%;
+  }
+
+  > .label {
+    position: relative;
+    width: 100%;
+    background-color: $white;
+    line-height: 28px;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 10px;
+    padding-right: 40px;
+    border-radius: 2px;
+    border: 1px solid $dropdown-border-color;
+    text-align: left;
+
+    &:focus,
+    &:active {
+      outline: none;
+    }
+
+    &:before {
+      position: absolute;
+      content: '';
+      display: block;
+      right: 0;
+      top: 0;
+      width: 28px;
+      height: 100%;
+      background-color: #b1b1b1;
+      border-left: 1px solid $dropdown-border-color;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: 7px solid $white;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      right: 15px;
+      margin-right: -5px;
+      top: 15px;
+      margin-top: -4px;
+    }
+  }
+
+  > .choices {
+    position: absolute;
+    left: 0;
+    right: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid $dropdown-options-border-color;
+    border-top: none;
+    background-color: $dropdown-options-background;
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: transform .2s;
+    max-height: 170px;
+    overflow-y: auto;
+    text-align: left;
+    pointer-events: none;
+    @include z-index(navigation, -1);
+
+    .no-csstransforms & {
+      visibility: hidden;
+    }
+
+    .categorie {
+      font-size: 11px;
+      padding: 10px 0 0 10px;
+      color: #b7b7b7;
+      cursor: default;
+      pointer-events: none;
+
+      &:hover {
+        color: #b7b7b7;
+        cursor: default;
+        font-size: 11px;
+      }
+
+      &.-next {
+        padding: 12px 0 0 10px;
+      }
+    }
+
+    .new {
+      color: #ff0000;
+      font-size: 14px;
+    }
+
+  }
+
+  > .choices > li {
+    display: block;
+    width: 100%;
+    padding: 7px 10px;
+    box-sizing: border-box;
+
+    &:hover {
+      color: $highlight-color;
+    }
+  }
+
+  &.-active,
+  &:hover {
+    > .label:before {
+      background-color: $newGreen;
+    }
+  }
+
+  &.-active {
+
+    > .choices {
+      pointer-events: auto;
+      transform: scaleY(1);
+
+      .no-csstransforms & {
+        visibility: visible;
+      }
+    }
+  }
+}

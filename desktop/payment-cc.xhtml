@@ -1,0 +1,52 @@
+<ui:composition template="/templates/checkout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<ui:param name="pageTitle" value="#{_['Please wait...']}" />
+<ui:param name="stepCount" value="6" />
+
+<f:event type="preRenderView" listener="#{paymentRedirectBean.checkPaymentMethod}" />
+
+<ui:define name="meta">
+  <meta name="robots" content="NOINDEX,FOLLOW" />
+</ui:define>
+
+<ui:define name="head">
+  <style type="text/css">
+    .page-head, .page-head-bar, .header-bar, ._p_t-page-head, .usabilla_live_button_container, .page-footer, .embeddedServiceHelpButton {display: none;}
+  </style>
+  <script type="text/javascript">
+    window.onload = function() {
+      document.payment.submit();
+    };
+  </script>
+</ui:define>
+
+<ui:define name="content">
+
+<section class="checkout-step-6 checkout-section">
+  <div class="head">
+    <h1 class="legend">#{_['Please wait...']}</h1>
+    <p>#{_['Redirecting to payment provider, please wait...']}</p>
+  </div>
+
+  <form method="post" action="#{paymentRedirectBean.redirectUrl}" id="payment" name="payment">
+    <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/uploads/checkout/ideal-load.gif"  style="margin-left: 50%; margin-right: 50%"/>
+    <ui:repeat value="#{paymentRedirectBean.formData}" var="element">
+        <input type="hidden" name="#{element.name}" value="#{element.value}"/>
+    </ui:repeat>
+    <input id="submitbutton" type="submit" value="#{_['Pay Now']}" style="visibility: hidden;" />
+  </form>
+
+</section>
+
+
+</ui:define>
+<ui:include src="/trackingcodes/endofbody.xhtml"/>
+
+</ui:composition>

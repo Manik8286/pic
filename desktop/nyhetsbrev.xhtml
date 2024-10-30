@@ -1,0 +1,71 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Kontakt" />
+
+  <ui:define name="head">
+    
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+  </ui:define>
+
+  <ui:define name="content">
+    <section class="page-text -noTopPadding">
+      <div class="col -span-12">
+      <h1 class="-highlighted-text">Bestcanvas.se Nyhetsbrev</h1>
+      <p><b>Med Bestcanvas.se nyhetsbrev får du alltid aktuella information om våra produkter och speciella erbjudanden.</b></p>
+      <p>
+        Efter du fått nyhetsbrevet för första gången vänligen lägg till avsändaren till dina kontakter eller lista med säkra avsändaren. Så säkerställs att du alltid får nyhetsbrevet till din inbox.
+      </p>
+      <p>
+        I slutet av varje nyhetsbrev hittar du en länk till formuläret för att ändra aller avbeställa nyhetsbrevet. Ni kan också gärna skriva till oss direkt <a href="mailto:unsubscribe@bestcanvas.se" class="-highlighted-text">unsubscribe@bestcanvas.se</a>, om du vill avregistrera nyhetsbrevet. 
+      </p>
+      <p><b>Dataskydd:</b></p>
+      <p>Dataskydd är viktigt för oss på Bestcanvas.se! Samtliga personliga information behandlas på ett konfidentiellt sätt.</p>
+
+      <div id="faq-content">
+        <form action="https://services.cdn-shop.com/api/v1/doisubscribe?" method="get" id="newsletter-body" accept-charset="UTF-8">
+          <input name="red" type="hidden" value="https://www.bestcanvas.se" />
+          <input name="shop" type="hidden" value="bestcanvas.se" />
+          <input name="event" type="hidden" value="566" />
+          <input name="subscribevia" type="hidden" value="6" />
+          <p class="radio" style="border: none;">
+            <input name="salutation" type="radio" value="1" checked="checked" id="salutation_1" />
+            <label for="salutation_1">Herr.</label>
+            <input name="salutation" type="radio" value="2" id="salutation_2" />
+            <label for="salutation_2">Fru</label>
+          </p>
+          <p class="text-right">
+            <label for="firstname">Förnamn*</label>
+            <input name="firstname" type="text" required="true" />
+          </p>
+          <p class="text-right">
+            <label for="lastname">Efternamn*</label>
+            <input name="lastname" type="text" required="true" />
+          </p>
+          <p class="text-right">
+            <label for="email">Email-address*</label>
+            <input name="email" type="email" required="true" />
+          </p>
+          <p class="text-right">
+            <input class="btn-submit" name="subscribe" type="submit" value="Sign Up Now »" />
+          </p>
+          <div class="success hidden">
+            <h2>Tak for din tilmelding.</h2>
+            <p>Vi har nu sendt dig et link til bekræftelse af din mail-adresse. Klik venligst linket for at modtage eksklusive tilbud via e-mail.</p>
+            <a href="javascript:void(0);" class="close">x</a>
+          </div>
+        </form>
+      </div>
+    </div>
+    </section>
+  </ui:define>
+
+</ui:composition>

@@ -1,0 +1,227 @@
+<ui:composition
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:o="http://omnifaces.org/ui">
+
+	<!-- <h1 class="headline -section">Bestseller in Testsieger-Qualität</h1> -->
+
+    <div class="article-showcase -small-bottom">
+      <h3 class="headline -has-sidelines"><span>Fototavlor med ram i gallerikvalitet</span></h3>
+
+      <div class="col -span-6 image js-image-switcher">
+        <ul class="images">
+          <li data-image-name="canvas:front" class="-visible">
+            <img class="lazy" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-src="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramat-foto-med-passepartout-komplett.jpg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramat-foto-med-passepartout-komplett.jpg" alt="foto con marco completo" />
+          </li>
+          <li data-image-name="canvas:detail">
+            <img src="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramat-foto-med-passepartout-detaljerad.jpg" alt="inramat foto med passepartout detaljerad" />
+          </li>
+          <li data-image-name="canvas:room">
+            <img src="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramat-foto-med-passepartout-interior.jpg" alt="inramat foto med passepartout interior" />
+          </li>
+          <li data-image-name="preview:video" class="videoBlock">
+            <iframe src="" data-src="https://www.youtube.com/embed/F8urN5CLBF8?loop=1&amp;modestbranding=1&amp;controls=0&amp;showinfo=0" width="490" frameborder="0" height="411"></iframe>
+          </li>
+        </ul>
+
+        <ul class="options -has-4">
+          <li><button type="button" class="cbutton -highlight" data-target="canvas:front">Komplett</button></li>
+          <li><button type="button" class="cbutton" data-target="canvas:detail">Detaljerad</button></li>
+          <li><button type="button" class="cbutton" data-target="canvas:room">Exempel på rum</button></li>
+          <li><button type="button" class="cbutton" data-target="preview:video">Video</button></li>
+        </ul>
+      </div>
+
+      <div class="description-wrapper -span-6">
+        <div class="description">
+          <h5 class="headline">Skarpt foto tryck i hög kvalitet</h5>
+          <p class="text">
+            Upptäck detaljer som du aldrig sett tidigare. Ditt foto tryck är ett digitalt tryckt i den allra vassaste upplösningen med vibrerande färger, vilket resulterar i ett tryck av fantastisk kvalitet.
+          </p>
+        </div>
+        <div class="description">
+          <h5 class="headline">Fototavlor med snett snitt</h5>
+          <p class="text">
+            Alla våra passepartout är tillverkade av högkvalitativ vit museum-kartong. Det sneda snittet på varje passepartout är särskilt vacker, eftersom det ger ditt foto djup och drar betraktarens öga till sig.
+          </p>
+        </div>
+        <div class="description">
+          <h5 class="headline">Personliga dekorativa ramar</h5>
+          <p class="text">
+           Tryckt, inramat, levererat - ditt galleri av inramade foton kommer inramat och färdigt, så att du kan hänga upp det direkt när du packat upp det. Allt du behöver göra är att välja din favorit från ett kalejdoskop av färgalternativ. Varje ram är handgjord och vi lägger på en kristallklar akrylglasruta på var och en. Därefter skickas din tavla till dig via en försiktig och försäkrad logistikpartner.
+          </p>
+        </div>
+      </div>
+    </div><!-- /product info -->
+
+    <!-- floating frames -->
+    <div class="article-showcase -small-bottom">
+      <h3 class="headline -has-sidelines"><span>Dekorativa galleri-ramar med passepartout för ditt foto</span></h3>
+
+      <div class="col -span-6 image js-image-switcher" id="frameSwitcher">
+        <ul class="images">
+          <li data-image-name="floating:silver:full" class="-visible">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/foto-passepartout-silver-framsida.jpg" alt="foto passepartout silver framsida" />
+          </li>
+          <li data-image-name="floating:silver:front">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/foto-passepartout-silver-detaljer-framsida.jpg" alt="foto passepartout silver detaljer framsida" />
+          </li>
+          <li data-image-name="floating:silver:back">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/foto-passepartout-silver-detaljer-baksida.jpg" alt="foto passepartout silver detaljer baksida" />
+          </li>
+          <li data-image-name="floating:shinyblack:full">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramade-foto-glansig-svart-framsida.jpg" alt="inramade foto glansig svart framsida" />
+          </li>
+          <li data-image-name="floating:shinyblack:front">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramade-foto-glansig-svart-detaljer-framsida.jpg" alt="inramade foto glansig svart detaljer framsida"/>
+          </li>
+          <li data-image-name="floating:shinyblack:back">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramade-foto-glansig-svart-detaljer-baksida.jpg" alt="inramade foto glansig svart detaljer baksida" />
+          </li>
+          <li data-image-name="floating:mattblack:full">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramat-foto-svart-stoft-framsida.jpg" alt="inramat foto svart stoft framsida" />
+          </li>
+          <li data-image-name="floating:mattblack:front">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramat-foto-svart-stoft-detaljer-framsida.jpg" alt="inramat foto svart stoft detaljer framsida" />
+          </li>
+          <li data-image-name="floating:mattblack:back">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramat-foto-svart-stoft-detaljer-baksida.jpg" alt="inramat foto svart stoft detaljer baksida" />
+          </li>
+          <li data-image-name="floating:white:full">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramat-foto-vit-framsida.jpg" alt="inramat foto vit framsida" />
+          </li>
+          <li data-image-name="floating:white:front">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramat-foto-vit-detaljer-framsida.jpg" alt="inramat foto vit detaljer framsida" />
+          </li>
+          <li data-image-name="floating:white:back">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/nramat-foto-vit-detaljer-baksida.jpg" alt="inramat foto vit detaljer baksida" />
+          </li>
+          <li data-image-name="floating:walnut:full">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/foto-med-passepartout-valnotskansla-framsida.jpg" alt="foto med passepartout valnotskansla framsida" />
+          </li>
+          <li data-image-name="floating:walnut:front">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/foto-med-passepartout-valnotskansla-detaljer-framsida.jpg" alt="foto med passepartout valnotskansla detaljer framsida" />
+          </li>
+					<li data-image-name="floating:walnut:back">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/foto-med-passepartout-valnotskansla-detaljer-baksida.jpg" alt="foto med passepartout valnotskansla detaljer baksida" />
+          </li>
+          <li data-image-name="floating:ashtree:full">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramat-foto-med-passepartout-ekkansla-framsida.jpg" alt="inramat foto med passepartout ekkansla framsida" />
+          </li>
+          <li data-image-name="floating:ashtree:front">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramat-foto-med-passepartout-ekkansla-detaljer-framsida.jpg" alt="inramat foto med passepartout ekkansla detaljer framsida" />
+          </li>
+					<li data-image-name="floating:ashtree:back">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramat-foto-med-passepartout-ekkansla-detaljer-baksida.jpg" alt="inramat foto med passepartout ekkansla detaljer baksida" />
+          </li>
+          <li data-image-name="floating:oak:full">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramat-foto-askkansla-framsida.jpg" alt="inramat foto askkansla framsida" />
+          </li>
+          <li data-image-name="floating:oak:front">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramat-foto-askkansla-detaljer-framsida.jpg" alt="inramat foto askkansla detaljer framsida" />
+          </li>
+					<li data-image-name="floating:oak:back">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramat-foto-askkansla-detaljer-baksida.jpg" alt="inramat foto askkansla detaljer baksida" />
+          </li>
+          <li data-image-name="floating:jacaranda:full">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramat-foto-rosentrakansla-framsida.jpg" alt="inramat foto rosentrakansla framsida" />
+          </li>
+          <li data-image-name="floating:jacaranda:front">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramat-foto-rosentrakansla-detaljer-framsida.jpg" alt="inramat foto rosentrakansla detaljer framsida" />
+          </li>
+					<li data-image-name="floating:jacaranda:back">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/passepartout/inramat-foto-rosentrakansla-detaljer-baksida.jpg" alt="inramat foto rosentrakansla detaljer baksida" />
+          </li>
+        </ul>
+
+        <ul class="options -has-2">
+          <li><button type="button" class="cbutton -highlight" data-target="floating:%:full">Framsida</button></li>
+          <li><button type="button" class="cbutton" data-target="floating:%:front">Detaljer framsida</button></li>
+        </ul>
+      </div>
+
+      <div class="col -span-6 description js-image-switcher" data-target-id="frameSwitcher">
+        <p class="text">
+          Ditt inramade foto galleri levereras med en högkvalitativ solid ram. Välj en färg som bäst passar ditt foto eller en färg som ger lite kontrast. Den perfekta ramen får ditt foto att glänsa och förvandlar det till något alla vill titta på.
+        </p>
+        <p class="text">
+          Välj den perfekta ramen från de många alternativen vi har att erbjuda, inklusive ram med snygga färger eller varma tränyanser.
+        </p>
+
+        <ul class="options -has-5">
+         <!--<li>
+            <button type="button" class="cbutton -has-image -highlight" data-target="floating:gold:%">
+              <span class="label">Gold</span>
+              <span class="icon -gold"></span>
+            </button>
+          </li>-->
+          <li>
+            <button type="button" class="cbutton -has-image -highlight" data-target="floating:silver:%">
+              <span class="label">Antikt silver</span>
+              <!-- <span class="icon -silver"></span> -->
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/small-elements/button-silver.jpg" />
+            </button>
+          </li>
+          <!-- <li>
+            <button type="button" class="cbutton -has-image" data-target="floating:shinyblack:%">
+              <span class="label">Svart glänsand</span>
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/small-elements/button-black-gloss.jpg" />
+            </button>
+          </li> -->
+          <li>
+            <button type="button" class="cbutton -has-image" data-target="floating:mattblack:%">
+              <span class="label">Svart matt</span>
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/small-elements/button-black-flat.jpg" />
+            </button>
+          </li>
+          <li>
+            <button type="button" class="cbutton -has-image" data-target="floating:white:%">
+              <span class="label">Vit</span>
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/small-elements/button-white.jpg" />
+            </button>
+          </li>
+          <li>
+            <button type="button" class="cbutton -has-image" data-target="floating:walnut:%">
+              <span class="label">Valnöt optik</span>
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/small-elements/button-walnut.jpg" />
+            </button>
+          </li>
+          <li>
+            <button type="button" class="cbutton -has-image" data-target="floating:ashtree:%">
+              <span class="label">Ek antikt optik</span>
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/small-elements/button-oak.jpg" />
+            </button>
+          </li>
+          <!-- <li>
+            <button type="button" class="cbutton -has-image" data-target="floating:oak:%">
+              <span class="label">Ask optik</span>
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/small-elements/button-ash.jpg" />
+            </button>
+          </li>
+          <li>
+            <button type="button" class="cbutton -has-image" data-target="floating:jacaranda:%">
+              <span class="label">Rosenträ optik</span>
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/small-elements/button-rosewood.jpg" />
+            </button>
+          </li> -->
+        </ul>
+      </div>
+    </div><!-- /floating frames -->
+
+    <ui:remove><!--
+      These Variables define the sizes of listed products.
+      They sizes are separated by commas and will be looped below
+      for each size-group.
+    --></ui:remove>
+    <c:set var="squareFormats" value="20 x 20,40 x 40,60 x 60,80 x 80" />
+    <c:set var="digitalFormats" value="40 x 30,80 x 60,100 x 75,120 x 90" />
+    <c:set var="classicFormats" value="30 x 20,60 x 40,75 x 50,90 x 60,120 x 80,150 x 100" />
+    <c:set var="panoramaFormats" value="60 x 30,80 x 40,100 x 50,120 x 60" />
+    <c:set var="cinemaFormats" value="90 x 50,160 x 90" />
+
+
+ </ui:composition>

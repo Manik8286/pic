@@ -1,0 +1,333 @@
+<ui:composition template="/templates/checkout.xhtml"
+				xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:c="http://java.sun.com/jsp/jstl/core"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:o="http://omnifaces.org/ui"
+				xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:p="http://primefaces.org/ui"
+				xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <!-- Sets view in cache - fixes back button lost session -->
+  <f:metadata>
+    <c:catch var="ProductIdCatchException">
+      <c:set var="productId" value="#{param['product'] + 1}" scope="request" />
+    </c:catch>
+    <c:if test="#{not empty ProductIdCatchException}">
+      <f:viewAction action="/fotopresenter/stjarnkarta.jsf" />
+    </c:if>
+    <f:event type="preRenderView" listener="#{facesContext.externalContext.response.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')}" />
+
+  </f:metadata>
+	<ui:define name="dataLayer">
+    #{itemConfiguratorBean.setDefaultConfigurationAndFormat}
+    #{itemConfiguratorBean.ignoreCutout}
+    <ui:include src="/tracking/ecommerce/dataLayer-product-details.xhtml"/>
+  </ui:define>
+  <ui:param name="pageTitle" value="Personliga Stjärnkarta  | Star Map" />
+  <ui:param name="bodyClass" value="StarMap" />
+  <ui:define name="meta">
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="pragma" content="no-cache" />
+  </ui:define>
+  <ui:define name="content">
+  <p:ajaxStatus />
+	<script type="text/javascript">
+	  function blinkMsgBox() {
+	    $('.cartInfoBox-bubble').slideToggle(400);
+	    setTimeout(function(){
+	      $('.cartInfoBox-bubble').slideToggle(400);
+	    },3000);
+	  }
+	</script>
+	  <ui:fragment rendered="#{param['success'] == 'true'}">
+	    <script type="text/javascript">setTimeout(function() { blinkMsgBox(); }, 50);</script>
+	  </ui:fragment>
+
+    <h:form id="itemConfiguratorForm">
+
+      <section class="checkout-step-2 checkout-section -alternative background-container">
+
+        <div class="addon blockerBox">
+          <div id="preview-wrapper">
+            <div class="canvas-block" jsf:id="productSpecific">
+              <div class="prices" jsf:id="preview">
+
+          <!-- Starmap Color -->
+          <!-- Reset default color value and set Sternbilder -->
+          <c:if test="#{empty param['cartItem']}">
+            <c:set target="#{itemConfiguratorBean.configurator.starMapData}" property="constellations" value="#{true}" />
+            <c:set target="#{itemConfiguratorBean.configurator.starMapData}" property="fillColor" value="#2D2C4D" />
+          </c:if>
+            <p:selectOneRadio id="fillColor" value="#{itemConfiguratorBean.configurator.starMapData.fillColor}" layout="custom" plain="true" onchange="previewConfig.buildPreview();">
+              <f:selectItem itemValue="#2D2C4D" itemLabel="Midnatt" />
+              <f:selectItem itemValue="#000000" itemLabel="Svart" />
+              <f:selectItem itemValue="#FFFFFF" itemLabel="Vit" />
+              <f:selectItem itemValue="#B76E69" itemLabel="Morgonrodnad" />
+              <f:selectItem itemValue="#FC5C65" itemLabel="Aftonrodnad" />
+              <f:selectItem itemValue="#F7CAC9" itemLabel="Morgondagg" />
+              <f:selectItem itemValue="#A2ADD0" itemLabel="Månsken" />
+              <f:selectItem itemValue="#5F4B8B" itemLabel="Ultraviolett" />
+              <f:selectItem itemValue="#00AB84" itemLabel="Glänta" />
+
+            </p:selectOneRadio>
+            <div class="clearfix">
+
+              <div class="selectable starMapTitles" data-clickarea="data-clickarea">
+                <div class="radio pull-left">
+                  <p:radioButton id="color9" for=":itemConfiguratorForm:fillColor" itemIndex="0" />
+                  <h:outputLabel for="color9" />
+                </div>
+                <img style="background-color: #2D2C4D !important;" for="entry" class="img-resposive" src="/#{shopInfoBean.versionPath}static/images/configurator/mf/starmap-icon.png" />
+                <div class="centered">Midnatt</div>
+              </div>
+
+              <div class="selectable starMapTitles" data-clickarea="data-clickarea">
+                <div class="radio pull-left">
+                  <p:radioButton id="color7" for=":itemConfiguratorForm:fillColor" itemIndex="1" />
+                  <h:outputLabel for="color7" />
+                </div>
+                <img style="background-color: #000000 !important;" for="entry" class="img-resposive" src="/#{shopInfoBean.versionPath}static/images/configurator/mf/starmap-icon.png" />
+                <div class="centered">Svart</div>
+              </div>
+
+              <div class="selectable starMapTitles" data-clickarea="data-clickarea">
+                <div class="radio pull-left">
+                  <p:radioButton checked="true" id="color5" for=":itemConfiguratorForm:fillColor" itemIndex="2" />
+                  <h:outputLabel for="color5" />
+                </div>
+                <img style="background-color: #FFFFFF !important;" for="entry" class="img-resposive" src="/#{shopInfoBean.versionPath}static/images/configurator/mf/starmap-icon-black.png" />
+                <div class="centered">Vit</div>
+              </div>
+
+              <div class="selectable starMapTitles" data-clickarea="data-clickarea">
+                <div class="radio pull-left">
+                  <p:radioButton id="color1" for=":itemConfiguratorForm:fillColor" itemIndex="3" />
+                  <h:outputLabel for="color1" />
+                </div>
+                <img style="background-color: #B76E69 !important;" for="entry" class="img-resposive" src="/#{shopInfoBean.versionPath}static/images/configurator/mf/starmap-icon.png" />
+                <div class="centered">Morgonrodnad</div>
+              </div>
+
+              <div class="selectable starMapTitles" data-clickarea="data-clickarea">
+                <div class="radio pull-left">
+                  <p:radioButton id="color4" for=":itemConfiguratorForm:fillColor" itemIndex="4" />
+                  <h:outputLabel for="color4" />
+                </div>
+                <img style="background-color: #FC5C65 !important;" for="entry" class="img-resposive" src="/#{shopInfoBean.versionPath}static/images/configurator/mf/starmap-icon.png" />
+                <div class="centered">Aftonrodnad</div>
+              </div>
+
+              <div class="selectable starMapTitles" data-clickarea="data-clickarea">
+                <div class="radio pull-left">
+                  <p:radioButton id="color8" for=":itemConfiguratorForm:fillColor" itemIndex="5" />
+                  <h:outputLabel for="color8" />
+                </div>
+                <img style="background-color: #F7CAC9 !important;" for="entry" class="img-resposive" src="/#{shopInfoBean.versionPath}static/images/configurator/mf/starmap-icon.png" />
+                <div class="centered">Morgondagg</div>
+              </div>
+
+              <div class="selectable starMapTitles" data-clickarea="data-clickarea">
+                <div class="radio pull-left">
+                  <p:radioButton checked="true" id="color3" for=":itemConfiguratorForm:fillColor" itemIndex="6" />
+                  <h:outputLabel for="color3" />
+                </div>
+                <img style="background-color: #A2ADD0 !important;" for="entry" class="img-resposive" src="/#{shopInfoBean.versionPath}static/images/configurator/mf/starmap-icon.png" />
+                <div class="centered">Månsken</div>
+              </div>
+
+              <div class="selectable starMapTitles" data-clickarea="data-clickarea">
+                <div class="radio pull-left">
+                  <p:radioButton id="color2" for=":itemConfiguratorForm:fillColor" itemIndex="7" />
+                  <h:outputLabel for="color2" />
+                </div>
+                <img style="background-color: #5F4B8B !important;" for="entry" class="img-resposive" src="/#{shopInfoBean.versionPath}static/images/configurator/mf/starmap-icon.png" />
+                <div class="centered">Ultraviolett</div>
+              </div>
+
+
+              <div class="selectable starMapTitles" data-clickarea="data-clickarea">
+                <div class="radio pull-left">
+                  <p:radioButton id="color6" for=":itemConfiguratorForm:fillColor" itemIndex="8" />
+                  <h:outputLabel for="color6" />
+                </div>
+                <img style="background-color: #00AB84 !important;" for="entry" class="img-resposive" src="/#{shopInfoBean.versionPath}static/images/configurator/mf/starmap-icon.png" />
+                <div class="centered">Glänta</div>
+              </div>
+            </div>
+          <!-- /Starmap Color -->
+
+
+
+
+              <p:outputPanel id="updatePreview">
+                <div class="loader">Loading...</div>
+                <canvas id="canvas-preview"></canvas>
+
+                <div id="imageData" class="hidden" data-id="#{itemConfiguratorBean.configurator.productType != 'STARMAP' ? itemConfiguratorBean.item.images[0].imageId : 0}" data-serviceurl="#{itemConfiguratorBean.configurator.productType == 'STARMAP' ? itemConfiguratorBean.starmapServiceUrl : ''}" data-productid="#{itemConfiguratorBean.productId}" data-format="#{itemConfiguratorBean.configurator.formatKey}" data-imgwidth="#{itemConfiguratorBean.configurator.image.width}" data-imgheight="#{itemConfiguratorBean.configurator.image.height}" data-loadalert="Bitte warte, bis die ganze Seite geladen wurde. Wenn die Vorschau nicht angezeigt wird, lade die Seite neu." data-material="#{itemConfiguratorBean.colorCarrierId}" data-frame="#{itemConfiguratorBean.frameId!=null?itemConfiguratorBean.frameId:0}">
+
+                </div>
+              </p:outputPanel>
+
+
+
+
+          <!-- Starmap settings -->
+            <div class="OptionBox">
+              <h3 class="title">Välj stjärnhimmel</h3>
+              <div class="row">
+              <div class="fieldBlock">
+                <p>Plats:</p>
+                <h:inputText id="location" converter="StringFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.location}" update="dateValidation" onchange="previewConfig.buildPreview();smoothScrollTo($('#canvas-preview'));" required="true" />
+              </div>
+
+
+
+              <div class="fieldBlock">
+                  <div class="col -span-6">
+                    <p>Datum:</p>
+                    <span id="dateValidation" class="validation -error -bottom">Gib bitte ein gültiges Datum ein.</span>
+                    <h:inputText type="number" id="datetimeInput" onchange="previewConfig.buildPreview();smoothScrollTo($('#canvas-preview'));" onclick="setTimeout(function(){ $('#itemConfiguratorForm\\:datetimeInput').datepicker('show'); }, 500);"/>
+                  </div>
+                  <div class="col -span-6 -right">
+                    <p>Klockslag:</p>
+                    <h:selectOneMenu id="dateTimeHours" value="00" onchange="previewConfig.buildPreview();smoothScrollTo($('#canvas-preview'));">
+                         <f:selectItems value="#{fn:split('00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23', ',')}" />
+                    </h:selectOneMenu>
+                    :
+                    <h:selectOneMenu id="dateTimeMinutes" value="00" onchange="previewConfig.buildPreview();smoothScrollTo($('#canvas-preview'));">
+                         <f:selectItems value="#{fn:split('00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59', ',')}" />
+                    </h:selectOneMenu>
+                 </div>
+
+              </div>
+              </div>
+            </div>
+            <ul class="toggleSwitch">
+              <li>
+                <div class="panelSwitch">
+                  Konstellation:
+                  <label class="switch">
+                    <h:selectBooleanCheckbox id="constellations" converter="BooleanFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.constellations}" onchange="previewConfig.buildPreview();smoothScrollTo($('#canvas-preview'));" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="panelSwitch">
+                  Rutnät:
+                  <label class="switch">
+                    <h:selectBooleanCheckbox id="graticule" converter="BooleanFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.graticule}" onchange="previewConfig.buildPreview();smoothScrollTo($('#canvas-preview'));" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="panelSwitch -last">
+                  Enkel design:
+                  <label class="switch">
+                    <h:selectBooleanCheckbox id="onwhite" converter="BooleanFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.onwhite}" onchange="previewConfig.buildPreview();smoothScrollTo($('#canvas-preview'));" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </li>
+            </ul>
+          <!-- Starmap settings -->
+              </div>
+
+          <!-- Starmap Optinal Text -->
+          <div class="prices OptionBox textBlock">
+            <h3 class="title">Infoga text (optionellt):</h3>
+            <h:inputTextarea data-limit-rows="true" onchange="previewConfig.buildPreview();" onkeyup="limitTextarea(this,6,90)" id="title"  value="#{itemConfiguratorBean.configurator.starMapData.title}" cols="55" rows="6"/>
+            <a href="javascript:void" onclick="previewConfig.buildPreview();smoothScrollTo($('#canvas-preview'));" class="action button -action -left">Verkställ</a>
+            <div class="text-right"><span class="textLines">1</span> / 6 rader</div>
+          </div>
+          <!-- /Starmap Optinal Text -->
+
+          <!-- Starmap Mounting -->
+          <div class="prices">
+              <p:selectOneRadio id="mounting" value="#{itemConfiguratorBean.mountingId}" layout="custom" plain="true">
+                <p:ajax listener="#{itemConfiguratorBean.change}"  />
+                <f:selectItems value="#{itemConfiguratorBean.mountings}"/>
+              </p:selectOneRadio>
+            <h3 class="title">Välj upphängningssats:</h3>
+              <div class="clearfix">
+                <ui:repeat value="#{itemConfiguratorBean.mountings}" var="f" varStatus="s">
+                  <div class="selectable mountingBox" data-clickarea="data-clickarea" data-mh="mountings" style="width: 31%;">
+                    <img for="entry" class="img-resposive" src="/#{shopInfoBean.versionPath}static/images/configurator/mf/Aufsteller-#{f.value}.jpg"/>
+                    <div class="radio pull-left">
+                      <p:radioButton id="product" for=":itemConfiguratorForm:mounting" itemIndex="#{s.index}"/>
+                      <h:outputLabel for="product" />
+                    </div>
+                    <div class="details pull-left">
+
+                      <h:outputText rendered="#{f.value == 0}" value="Ingen" />
+                      <h:outputText rendered="#{f.value == 19}" value="Bakre aluminiumram" />
+                      <h:outputText rendered="#{f.value == 18}" value="Platthängare" />
+                      <br/>
+
+                      <!-- if price discounted show red -->
+                      <h:outputText value="+ #{fn:replace(itemConfiguratorBean.configurator.mountingFormatDefaultPriceDifference(f.value), ',00', ' ')}*"  rendered="#{f.value != 0 and itemConfiguratorBean.configurator.mountingFormatDefaultPriceDifference(f.value) != '€ 0,00' and (itemConfiguratorBean.configurator.mountingFormatDefaultPriceDifference(f.value,true) != itemConfiguratorBean.configurator.mountingFormatDefaultPriceDifference(f.value))}" style="color:#D40140;"/>
+                      <!-- if price not discounted show black -->
+                      <h:outputText value="+ #{fn:replace(itemConfiguratorBean.configurator.mountingFormatDefaultPriceDifference(f.value,true), ',00', ' ')}*" rendered="#{f.value != 0 and itemConfiguratorBean.configurator.mountingFormatDefaultPriceDifference(f.value) != '€ 0,00' and (itemConfiguratorBean.configurator.mountingFormatDefaultPriceDifference(f.value,true) == itemConfiguratorBean.configurator.mountingFormatDefaultPriceDifference(f.value))}" />
+
+                    </div>
+                  </div>
+                </ui:repeat>
+              </div>
+          </div>
+          <!-- /Starmap Mounting -->
+
+              <div class="checkout-new">
+                <p:commandLink action="#{itemConfiguratorBean.persist}" value="#{_['Save Changes']}" onstart="showToast('Ansicht wird aktualisiert...'); block($('body'));return previewConfig.validateParams()" rendered="#{itemConfiguratorBean.itemType == 'cart-item'}" styleClass="js-next-button action button -action -arrow" oncomplete="window.location='shoppingcart.jsf'" />
+                <p:commandLink action="#{itemConfiguratorBean.addToCart}" global="false" onstart="showToast('Ansicht wird aktualisiert...'); block($('body'));return previewConfig.validateParams()" rendered="#{itemConfiguratorBean.itemType != 'cart-item'}" styleClass="js-next-button action button -action -arrow -cart4">
+                  Fortsätt
+									<ui:include src="/helper/svg.xhtml">
+										<ui:param name="svgClass" value="checkout-cart" />
+										<ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-shopping-cart" />
+									</ui:include>
+                </p:commandLink>
+                <p:commandLink action="#{itemConfiguratorBean.addToCart(false)}" value="Skapa ett annat stjärnhimmel" onstart="showToast('Ansicht wird aktualisiert...'); block($('body'));return previewConfig.validateParams()" rendered="#{itemConfiguratorBean.itemType != 'cart-item'}" styleClass="js-next-button action button -action -arrow -cart3" oncomplete="window.location='/configurator-starmap.jsf?product=2276&amp;new&amp;success=true'" />
+                <h:messages styleClass="outmsg" globalOnly="true" errorClass="-error" warnClass="-warn" infoClass="-info" />
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+
+      </section>
+      <h:inputHidden id="latitude" converter="StringFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.latitude}" />
+      <h:inputHidden id="longitude" converter="StringFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.longitude}" />
+      <h:inputHidden id="datetime" converter="StringFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.datetime}" />
+      <h:inputHidden id="margin" converter="DoubleFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.margin}" />
+      <h:inputHidden id="subtitle1" converter="StringFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.subtitle1}" />
+      <h:inputHidden id="subtitle2" converter="StringFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.subtitle2}" />
+    </h:form>
+
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+
+</section>
+    <!-- /paymentmethods -->
+
+  </ui:define>
+
+  <ui:define name="eofscript">
+  <script type="text/javascript">
+    function AdjusteScroll() {
+      // empty function
+    }
+  </script>
+    <script src="/#{shopInfoBean.versionPath}static/build/js/configurator.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?language=sv&amp;key=AIzaSyAu_BtPilbAIX5FtU0a0onnKqdVLR4PliE&amp;libraries=places"></script>
+    <script src="/#{shopInfoBean.versionPath}static/build/js/configuratorS.min.js"></script>
+  </ui:define>
+</ui:composition>

@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<div class="page-text text-format">
+
+	<div class="row">
+		<ui:fragment rendered="#{not empty articleImgLeft}">
+		<div class="col -span-4"><img src="#{articleImgLeft}" width="100%" />
+		</div>
+	</ui:fragment>
+	
+	<div class="col -span-8">
+		<h2>#{articleHeading}</h2>
+		<p>#{articleText}</p>
+		<a href="#{Mer information}">Mer information >> </a>
+	</div>
+	<ui:fragment rendered="#{not empty articleImgRight}">
+	<div class="col -right -span-4"><img src="#{articleImgRight}" width="100%" /></div>
+</ui:fragment>
+</div>
+</div>
+
+
+</ui:composition>

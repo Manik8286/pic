@@ -1,0 +1,17 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+
+
+<div class="row">
+
+  		<ui:include src="/content-blocks/info-blocks-badges.xhtml" >
+  			<ui:param name="qualityPromiseText" value="" />
+		</ui:include>
+
+		<div class="col #{sessionBean.userAgentType == 'phone' ? '-span-12' : '-span-4'}">
+			<ui:include src="/content-blocks/pricetables-lp/wood-pricetable.xhtml" />
+		</div>
+</div>
+
+</ui:composition>

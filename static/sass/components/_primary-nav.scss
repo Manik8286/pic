@@ -1,0 +1,139 @@
+.primary-nav {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: $weight-emibold;
+
+  li {
+    position: relative;
+    margin-right: 0px;
+
+    a.-valentines {
+      padding-left: 20px;
+
+      &:before {
+        content: '';
+        background-image: url(/assets/img/valentines/heart_final.svg);
+        background-repeat: no-repeat;
+        background-size: 20px 20px;
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: -2px;
+      }
+    }
+
+    .NEU_badge{
+      color: white;
+      background: #d40140;
+      font-size: 12px;
+      height: 12px;
+      padding: 2px;
+      border-radius: 3px;
+      display: inline-block;
+      width: auto;
+      position: relative;
+      top: -1px;
+
+      p {
+        margin: 0;
+        position: relative;
+        top: -1px;
+      }
+
+      &.-neuheiten {
+        border-radius: 0;
+        padding: 5px 6px;
+        top: -4px;
+      }
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    &:hover {
+      color: $head-link-highlight-color;
+    }
+  }
+
+
+  .action {
+    position: relative;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+    text-transform: uppercase;
+    padding: 0px 20px 22px 20px;
+    cursor: pointer;
+
+    &.-first {
+      padding-left: 0;
+    }
+
+    &.-neu {
+      padding-bottom: 18px;
+    }
+
+    &.christmasDeal {
+      color: #fff;
+      background-color: #A10030;
+      padding: 6px;
+      &:focus {
+        outline: none;
+        color: #fff;
+      }
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -3px;
+      margin-left: -8px;
+      display: none;
+      width: 0;
+      height: 0;
+
+      // Support for no csstransforms
+      .no-csstransforms & {
+        display: none;
+      }
+    }
+
+    &:before {
+      border-top: 8px solid #878787;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      bottom: -3px;
+    }
+
+    &:after {
+      border-top: 8px solid $head-background-color;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      bottom: -2px;
+    }
+
+    &:focus {
+      outline: none;
+      color: $head-link-highlight-color;
+    }
+
+    &.-active {
+      color: $head-link-highlight-color;
+
+      &:before,
+      &:after {
+        display: block;
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}

@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:remove>
+    <!--
+      Author: Matiss Vaisla - matiss.vaisla@picanova.com / @matiss.vaisla (slack)
+      Require:
+      newsletter.css        - main form styles + alternative styles for mobile
+      newsletter.js         - form submition
+      js.cookie.js          - cookie lib
+      newsletter-mobile.js  - mobile form api
+    -->
+  </ui:remove>
+  <section id="email-deal" class="header-notification #{styleClass}">
+    <div class="container">
+      <div class="deadline">
+        <form action="https://services.cdn-shop.com/api/v1/doisubscribe?" method="get" id="newsletter-header-mobile">
+        <c:set var="event" value="566" />
+        <c:set var="url" value="#{ fn:substringAfter(request.getRequestURL(), '://') } " />
+        <c:set var="urlEnds" value="#{ fn:indexOf(url, '/')}" />
+        <c:set var="domain" value="#{ fn:substring(url, 0, urlEnds) }" />
+        <c:set var="shop" value="#{ (fn:substring(domain, '0', fn:indexOf(url, '.')) == 'testing') ? domain : fn:substringAfter(domain, '.') }" />
+        <c:if test="#{domain eq 'www.meinxxl.de'}"><c:set var="event" value="2207" /></c:if>
+        <c:if test="#{domain eq 'www.my-picture.co.uk'}"><c:set var="event" value="2035" /></c:if>
+        <c:if test="#{domain eq 'www.my-picture.co.uk'}"><c:set var="event" value="2041" /></c:if>
+        <c:if test="#{domain eq 'www.meinfoto.de'}"><c:set var="event" value="2215" /></c:if>
+        <c:if test="#{domain eq 'www.picanova.de'}"><c:set var="event" value="2216" /></c:if>
+        <c:if test="#{domain eq 'www.photo-sur-toile.fr'}"><c:set var="event" value="2040" /></c:if>
+        <c:if test="#{domain eq 'www.bestcanvas.se'}"><c:set var="event" value="566" /></c:if>
+        <c:if test="#{domain eq 'www.mi-arte.es'}"><c:set var="event" value="566" /></c:if>
+        <c:if test="#{domain eq 'www.monoeuvre.fr'}"><c:set var="event" value="2039" /></c:if>
+        <c:if test="#{domain eq 'www.canvasonsale.com'}"><c:set var="event" value="2217" /></c:if>
+        <input name="red" type="hidden" value="http://#{domain}" />
+        <input name="shop" type="hidden" value="#{shop}" />
+        <input name="event" type="hidden" value="#{event}" />
+        <input name="subscribevia" type="hidden" value="11" />
+        <label for="email">#{msg}</label>
+        <div id="clock-newsletter"></div>
+        <input name="email" type="email" required="true" placeholder="#{placeholderTxt}" />
+        <input name="submit" type="submit" value="#{_['subscribe']}" class="newsletter-button" />
+        <div class="success hidden">
+          <h2>#{_['Thank you. Please check your inbox.']}</h2>
+          <a href="javascript:void(0);" class="close">x</a>
+        </div>
+      </form>
+      </div>
+      <a href="#" class="btn-close" aria-hidden="true">x</a>
+    </div>
+  </section>
+  <script src="/#{shopInfoBean.versionPath}static/build/js/js.cookie.js"></script>
+  <script src="/#{shopInfoBean.versionPath}static/build/js/newsletter.js"></script>
+  <script src="/#{shopInfoBean.versionPath}static/build/js/newsletter-mobile.js"></script>
+</ui:composition>

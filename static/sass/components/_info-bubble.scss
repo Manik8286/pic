@@ -1,0 +1,12 @@
+.info-bubble {
+  position: absolute;
+  border: 1px solid $aluminium;
+  background-color: $white;
+  border-radius: 2px;
+  padding: 10px;
+  @include z-index(content, 1);
+
+  .body {
+    display: block;
+  }
+}

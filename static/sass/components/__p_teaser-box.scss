@@ -1,0 +1,28 @@
+.teaser-box > .wrapper > .body {
+  padding-bottom: 20px;
+
+  > .headline {
+    font-size: 20px;
+    word-wrap: break-word;
+  }
+
+  > .subline {
+    font-size: 14px;
+  }
+
+  > .boxes {
+    margin-left: -$grid-gutter/2;
+    margin-right: -$grid-gutter/2;
+  }
+
+  > .boxes .product-box {
+    margin: 0;
+  }
+
+  > .fine-print {
+    position: absolute;
+    bottom: -25px;
+    right: 44px;
+    font-size: 12px;
+  }
+}

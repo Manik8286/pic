@@ -1,0 +1,22 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:repeat value="#{fn:split(pricesList, ',')}" var="f">
+    <c:set var="type" value="Alu ${fn:replace(f, ' ', '')}" />
+    <tr>
+      <td>#{f}cm</td>
+      <td class="-align-right">
+        <ui:fragment rendered="#{priceBean.productPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', type) ne '#ERROR#'}">
+          <span class="-outdated">#{priceBean.productCrossPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', type)}</span>
+          <span class="-highlighted">#{priceBean.productPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', type)}<sup>*</sup></span>
+        </ui:fragment>
+        <h:outputText value="—" rendered="#{priceBean.productPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', type) eq '#ERROR#'}" />
+      </td>
+    </tr>
+  </ui:repeat>
+
+</ui:composition>

@@ -1,0 +1,211 @@
+<ui:composition template="/templates/checkout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<ui:param name="pageTitle" value="#{_['Addresses']}" />
+<ui:param name="stepCount" value="4" />
+<ui:define name="dataLayer">
+  <ui:include src="/tracking/trackingcodes-end-of-head-orderaddresses.xhtml"/>
+</ui:define>
+
+<ui:define name="meta">
+  <meta name="robots" content="NOINDEX,FOLLOW" />
+  <f:event type="preRenderView" listener="#{orderAddressBean.initAddressPage}" />
+</ui:define>
+
+<ui:define name="content">
+  <!-- <c:set target="#{orderAddressBean.invoiceAddress}" property="gender" value="#{commonDataBean.genders[1].value}"/> -->
+  <p:ajaxStatus onstart="showToast('Uppdaterar förhandsgranskning...');" oncomplete="hideToast(500);" onerror="hideToast(500);" />
+
+  <section class="checkout-step-4 checkout-section">
+
+    <!-- header section -->
+    <div class="head">
+      <h1 class="legend">#{_['Billing and Delivery Address']}</h1>
+      <c:if test="#{!loginBean.loggedIn}">
+        <div class="login">
+          <a href="/customer.jsf?redirect=orderaddresses.jsf">Redan registrerad? Logga in.</a>
+        </div>
+      </c:if>
+    </div><!-- /header section -->
+
+    <h:form id="addressesForm">
+
+      <!-- invoice address -->
+      <div class="delivery">
+        <h:messages styleClass="outmsg" globalOnly="true"
+            errorClass="-error"
+            warnClass="-warn"
+            infoClass="-info" />
+       <div class="address">
+         <h3 class="title">#{_['Your Billing Address']}</h3>
+         <div class="subtitle">
+         #{_['Sorry, no PO Boxes possible']}
+         </div>
+         <div jsf:id="invoiceAddress">
+           <ui:include src="/content-blocks/orderaddresses-address.xhtml">
+             <ui:param name="address" value="#{orderAddressBean.invoiceAddress}"/>
+             <ui:param name="idPrefix" value="invoice" />
+             <ui:param name="showEmail" value="true" />
+             <ui:param name="showFax" value="false" />
+             <ui:param name="showMobile" value="true" />
+             <ui:param name="disabled" value="false" />
+             <ui:param name="showBirthday" value="false" />
+           </ui:include>
+          </div>
+          <div class="form-group -new-action" jsf:rendered="#{loginBean.loggedIn}">
+            <h:commandButton value="#{_['Choose from Address Book']}"
+              styleClass="button -action -secondary"
+              onclick="Modal.open('#chooseInvoiceAddress');">
+              <p:ajax process="@this" />
+            </h:commandButton>
+          </div>
+        </div>
+        <div class="continue">
+
+          <button
+            jsf:action="#{orderAddressBean.save}"
+            class="action button -action -arrow">
+            <p:ajax update="invoiceAddress shippingAddress" process="invoiceAddress shippingAddress" oncomplete="updateDom();" />
+            #{_['Continue']}
+          </button>
+        </div>
+      </div><!-- /invoice address -->
+
+      <!-- optional delivery address -->
+      <div class="extra-delivery">
+        <div class="extra-address clearfix">
+          <h3 class="title">#{_['Your Delivery Address (Please only state if different from billing address)']}</h3>
+
+          <ui:remove>
+            <!-- START same delivery / other delivery address swith
+                 This might look a bit complicated, and it is.
+                 We have a custom layout for a selectOneRadio and
+                 listen on a change of it to re-render the
+                 form. The re-render of the form will decide if the
+                 fields are required or not (this translates to if the
+                 user wants an other shipping address or not).
+                 After that we have a strange markup for the
+                 radio-buttons with javascript linked to the
+                 form below -->
+          </ui:remove>
+          <div class="selection">
+            <p:selectOneRadio
+              plain="true"
+              id="differentShippingAddress"
+              value="#{orderAddressBean.differentShippingAddress}"
+              layout="custom"
+              styleClass="js-dat-group_deliveryaddress">
+              <p:ajax
+                listener="#{orderAddressBean.differentShippingAddressChange}"
+                update="shippingAddress"
+                oncomplete="updateDom()" />
+              <f:selectItem itemValue="false" />
+              <f:selectItem itemValue="true" />
+            </p:selectOneRadio>
+            <div class="cradio">
+              <p:radioButton id="isNotDifferentShippingAddress"
+                for="differentShippingAddress"
+                itemIndex="0"
+                styleClass="js-dat-group_deliveryaddress"/>
+              <h:outputLabel for="isNotDifferentShippingAddress" value="Stämmer med faktureringsadressen" />
+            </div>
+            <div class="js-accordion-title" data-clickarea="true">
+              <div class="cradio">
+                <p:radioButton id="isDifferentShippingAddress"
+                  for="differentShippingAddress"
+                  itemIndex="1"
+                  styleClass="js-dat-group_deliveryaddress js-dat-target_js-delivery-address">
+                </p:radioButton>
+                <h:outputLabel for="isDifferentShippingAddress" value="Leverera till annan adress" />
+              </div>
+            </div>
+          </div>
+          <ui:remove>
+            <!-- END same delivery / other delivery address swith -->
+          </ui:remove>
+
+          <div class="js-delivery-address deliveryaddress">
+            <div jsf:id="shippingAddress">
+              <ui:include src="/content-blocks/orderaddresses-address.xhtml">
+              <br />
+                <ui:param name="address" value="#{orderAddressBean.shippingAddress}"/>
+                <ui:param name="idPrefix" value="shipping" />
+                <ui:param name="showEmail" value="false" />
+                <ui:param name="showFax" value="false" />
+                <ui:param name="showMobile" value="false" />
+                <ui:param name="disabled" value="#{!orderAddressBean.differentShippingAddress}" />
+                <ui:param name="showBirthday" value="false" />
+              </ui:include>
+              <div jsf:rendered="#{loginBean.loggedIn}" class="form-group -new-action">
+                <h:commandButton value="#{_['Choose from Address Book']}"
+                  styleClass="button -action -secondary"
+                  onclick="Modal.open('#chooseShippingAddress');">
+                  <p:ajax process="@this" />
+                </h:commandButton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- optional delivery address -->
+
+    </h:form>
+
+  </section>
+
+<!-- paymentmethods -->
+<section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+   
+</section><!-- /paymentmethods -->
+
+<div class="js-modal" id="chooseInvoiceAddress">
+  <div class="head">#{_['Select invoice address']}</div>
+  <div class="body">
+    <h:outputText rendered="#{empty orderAddressBean.allAddresses}" value="#{_['No addresses found.']}" />
+    <div class="address-list" jsf:rendered="#{not empty orderAddressBean.allAddresses}">
+      <ui:repeat value="#{orderAddressBean.allAddresses}" var="address">
+        <div class="address" data-mh="invoiceAddress">
+          <div class="content"><h:outputText value="#{address.label}" /></div>
+          <h:commandButton action="#{orderAddressBean.setInvoice}"
+            styleClass="add button -control -positive"
+            value="#{_['Select']}">
+            <p:ajax process="@this" update=":addressesForm:invoiceAddress" oncomplete="Modal.close('#chooseInvoiceAddress'); updateDom()" />
+            <f:setPropertyActionListener
+              target="#{orderAddressBean.selectedInvoiceAddress}"
+              value="#{address.id}" />
+          </h:commandButton>
+        </div>
+      </ui:repeat>
+    </div>
+  </div>
+</div>
+
+<div class="js-modal" id="chooseShippingAddress">
+  <div class="head">#{_['Select shipping address']}</div>
+  <div class="body">
+    <div class="address-list">
+      <ui:repeat value="#{orderAddressBean.allAddresses}" var="address">
+        <div class="address" data-mh="shippingAddress">
+          <div class="content"><h:outputText value="#{address.label}" /></div>
+          <h:commandButton action="#{orderAddressBean.setShipping}"
+            styleClass="add button -control -positive"
+            value="#{_['Select']}">
+            <p:ajax process="@this" update=":addressesForm:shippingAddress :addressesForm:invoiceAddress" oncomplete="Modal.close('#chooseShippingAddress'); updateDom()" />
+            <f:setPropertyActionListener
+              target="#{orderAddressBean.selectedShippingAddress}"
+              value="#{address.id}" />
+          </h:commandButton>
+        </div>
+      </ui:repeat>
+    </div>
+  </div>
+</div>
+
+</ui:define>
+</ui:composition>

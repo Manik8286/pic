@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+
+  <div class="showcase-box" data-mh="info">
+    <h3 class="headline -titleTable">Vi har låga priser för Aluminium!</h3>
+    <table class="table -striped -tableTablet">
+      <thead class="-highlighted">
+        <tr>
+          <th class="-text-centered">Format</th>
+          <th class="-text-centered">Pris</th>
+          <th class="-highlighted -text-centered">Idag</th>
+        </tr>
+      </thead>
+      <tbody class="-text-centered">
+        <tr>
+          <td>20 x 20cm</td>
+          <td><s>#{priceBean.productCrossPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 20x20')}</s></td>
+          <td class="-highlighted">#{priceBean.productPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 20x20')}</td>
+        </tr>
+        <tr>
+          <td>30 x 20cm</td>
+          <td><s>#{priceBean.productCrossPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 30x20')}</s></td>
+          <td class="-highlighted">#{priceBean.productPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 30x20')}</td>
+        </tr>
+        <tr>
+          <td>40 x 30cm</td>
+          <td><s>#{priceBean.productCrossPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 40x30')}</s></td>
+          <td class="-highlighted">#{priceBean.productPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 40x30')}</td>
+        </tr>
+        <tr>
+          <td>40 x 40cm</td>
+          <td><s>#{priceBean.productCrossPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 40x40')}</s></td>
+          <td class="-highlighted">#{priceBean.productPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 40x40')}</td>
+        </tr>
+        <tr>
+          <td>60 x 40cm</td>
+          <td><s>#{priceBean.productCrossPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 60x40')}</s></td>
+          <td class="-highlighted">#{priceBean.productPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 60x40')}</td>
+        </tr>
+        <tr>
+          <td>80 x 60cm</td>
+          <td><s>#{priceBean.productCrossPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 80x60')}</s></td>
+          <td class="-highlighted">#{priceBean.productPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 80x60')}</td>
+        </tr>
+      </tbody>
+    </table>
+    <a href="#{not empty customLink ? customLink : '/format/#aluminium'}" class="link">Alla priser och format »</a>
+  </div>
+
+</ui:composition>

@@ -1,0 +1,81 @@
+.ui-state-focus,
+.ui-state-active {
+  background: initial;
+  color: initial;
+  font-weight: initial;
+  border: initial;
+  color: inherit;
+}
+
+.ui-widget,
+.ui-widget input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.ui-dialog-titlebar {
+  background-image: none;
+  background-color: $white;
+}
+
+.ui-dialog-title {
+  font-size: 18px;
+  color: $page-text-color;
+  font-weight: $weight-semibold;
+  margin: 10px 0 0 8px !important;
+}
+
+.ui-corner-all {
+  border-radius: 3px;
+}
+
+.ui-shadow {
+  box-shadow: 0px 1px 3px rgba($concrete, 0.7) !important;
+  border: none !important;
+}
+
+.ui-dialog-titlebar-close {
+  border: none !important;
+  padding: 0 !important
+}
+
+.ui-state-hover {
+/*   border: none !important;
+  background: initial !important; 
+  padding: initial !important;*/
+}
+
+.ui-dialog {
+  position: fixed !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translateX(-50%) translateY(-50%);
+  max-width: 95%;
+  min-width: 300px;
+
+  .no-csstransforms & {
+    width: 350px !important;
+    margin-left: -175px;
+    margin-top: -100px;
+  }
+}
+
+.ui-dialog-content {
+  font-family: inherit !important;
+  font-size: 14px !important;
+  padding: 10px 15px !important;
+}
+
+.ui-icon-alert {
+  display: none;
+}
+
+.ui-dialog-buttonpane {
+  border: none !important;
+  padding-left: 10px !important;
+  padding-bottom: 10px !important;
+
+  .button {
+    font-size: 14px !important;
+  }
+}

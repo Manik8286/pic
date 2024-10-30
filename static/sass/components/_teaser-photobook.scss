@@ -1,0 +1,77 @@
+.teaser-photobook {
+
+  > .eyecatcher {
+    @extend .col;
+    @extend %-span-6;
+
+    position: relative;
+    height: 500px;
+  }
+
+  > .action-wrapper {
+    @extend .col;
+    @extend %-span-6;
+
+    position: relative;
+    margin-top: 130px;
+  }
+
+  > .eyecatcher > .image {
+    height: 400px;
+    position: absolute;
+    bottom: 0;
+  }
+
+  > .eyecatcher > .badge {
+    @extend .price-badge;
+
+    right: 10px;
+    top: 135px;
+    position: absolute;
+  }
+
+  > .action-wrapper > .actions {
+    position: absolute;
+    right: $grid-gutter/2;
+    text-align: right;
+
+    > .label {
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+      font-size: 14px;
+      font-weight: $weight-semibold;
+      padding: 0 12px;
+      background-color: rgb(255, 255, 255); // rgba fallback
+      background-color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 10px;
+    }
+
+    .action {
+      margin-bottom: 40px;
+      cursor: pointer;
+
+      .new {
+        @extend .button_action;
+        @extend .button_action_mod-big;
+        @extend .button_action_mod-static-250-60;
+        @extend .button_action_mod-big-plus;
+
+        display: inline-block;
+      }
+
+      .edit {
+        @extend .button_action;
+        @extend .button_action_mod-secondary;
+        @extend .button_action_mod-big;
+        @extend .button_action_mod-static-250-60;
+        @extend .button_action_mod-refresh;
+        @extend .button_action_mod-static-250-60-refresh;
+        padding-left: 40px;
+        display: inline-block;
+      }
+    }
+
+  }
+
+}

@@ -1,0 +1,343 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+  <ui:remove>
+    <!--
+    <element class="js-countdown">` needs two attributes in order to work:
+    - data-until: the date when the countdown is over. YYYY/MM/DD HH:MM:SS
+    - data-format: the formatted output. See here for a documentation:
+      http://hilios.github.io/jQuery.countdown/documentation.html#formatter
+    -->
+  </ui:remove>
+
+  <c:if test="#{not empty socialChannel}">
+    <c:set var="bannerClass" value="#{socialChannel}" scope="session" />
+  </c:if>
+
+  <ui:fragment rendered="#{ bannerClass eq 'daily' }">
+    <h:outputText escape="false" value="#{contentBean.snippets['smp-bcse-msg-fb']}"/>
+  </ui:fragment>
+
+  <ui:fragment rendered="#{ bannerClass eq 'facebook' }">
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'desktop'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>Facebook Erbjudande:</strong> Spara upp till <strong>59%</strong> - </span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'tablet'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>Facebook Erbjudande:</strong> Spara upp till <strong>59%</strong> - </span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span style="margin-bottom: 4px; display: block;"><strong>Facebook Erbjudande:</strong> Spara upp till <strong>59%</strong><br/></span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<script>
+			 document.addEventListener('DOMContentLoaded', function () {
+         $('body').addClass('-has-header-bar');
+      });
+		</script>
+  </ui:fragment>
+
+  <ui:fragment rendered="#{ bannerClass eq 'easter' }">
+    <h:outputText escape="false" value="#{contentBean.snippets['smp-bcse-msg-easter']}"/>
+  </ui:fragment>
+
+  <ui:fragment rendered="#{ bannerClass eq 'spring' }">
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'desktop'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>Facebook Erbjudande:</strong> Spara upp till <strong>86%</strong> - </span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'tablet'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>Facebook Erbjudande:</strong> Spara upp till <strong>86%</strong> - </span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span style="margin-bottom: 4px; display: block;"><strong>Facebook Erbjudande:</strong> Spara upp till <strong>86%</strong><br/></span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<script>
+			 document.addEventListener('DOMContentLoaded', function () {
+         $('body').addClass('-has-header-bar');
+      });
+		</script>
+  </ui:fragment>
+
+  <ui:fragment rendered="#{ bannerClass eq 'spring52' }">
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'desktop'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>Facebook Erbjudande:</strong> Spara upp till <strong>52%</strong> - </span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'tablet'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>Facebook Erbjudande:</strong> Spara upp till <strong>52%</strong> - </span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span style="margin-bottom: 4px; display: block;"><strong>Facebook Erbjudande:</strong> Spara upp till <strong>52%</strong><br/></span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<script>
+			 document.addEventListener('DOMContentLoaded', function () {
+         $('body').addClass('-has-header-bar');
+      });
+		</script>
+  </ui:fragment>
+
+  <ui:fragment rendered="#{ bannerClass eq 'spring55' }">
+    <ui:fragment rendered="#{sessionBean.userAgentType == 'desktop'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>Facebook Erbjudande:</strong> Spara upp till <strong>55%</strong> - </span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+    </ui:fragment>
+    <ui:fragment rendered="#{sessionBean.userAgentType == 'tablet'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>Facebook Erbjudande:</strong> Spara upp till <strong>55%</strong> - </span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+    </ui:fragment>
+    <ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span style="margin-bottom: 4px; display: block;"><strong>Facebook Erbjudande:</strong> Spara upp till <strong>55%</strong><br/></span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+    </ui:fragment>
+    <script>
+       document.addEventListener('DOMContentLoaded', function () {
+         $('body').addClass('-has-header-bar');
+      });
+    </script>
+  </ui:fragment>
+
+
+  <ui:fragment rendered="#{ bannerClass eq 'spring65' }">
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'desktop'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>Facebook Erbjudande:</strong> Spara upp till <strong>65%</strong> - </span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'tablet'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>Facebook Erbjudande:</strong> Spara upp till <strong>65%</strong> - </span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span style="margin-bottom: 4px; display: block;"><strong>Facebook Erbjudande:</strong> Spara upp till <strong>65%</strong><br/></span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<script>
+			 document.addEventListener('DOMContentLoaded', function () {
+         $('body').addClass('-has-header-bar');
+      });
+		</script>
+  </ui:fragment>
+
+  <ui:fragment rendered="#{ bannerClass eq 'spring64' }">
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'desktop'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>Facebook Erbjudande:</strong> Spara upp till <strong>64%</strong> - </span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'tablet'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>Facebook Erbjudande:</strong> Spara upp till <strong>64%</strong> - </span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span style="margin-bottom: 4px; display: block;"><strong>Facebook Erbjudande:</strong> Spara upp till <strong>64%</strong><br/></span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<script>
+			 document.addEventListener('DOMContentLoaded', function () {
+         $('body').addClass('-has-header-bar');
+      });
+		</script>
+  </ui:fragment>
+
+  <ui:fragment rendered="#{ bannerClass eq 'spring75' }">
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'desktop'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>Facebook Erbjudande:</strong> Spara upp till <strong>75%</strong> - </span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'tablet'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>Facebook Erbjudande:</strong> Spara upp till <strong>75%</strong> - </span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span style="margin-bottom: 4px; display: block;"><strong>Facebook Erbjudande:</strong> Spara upp till <strong>75%</strong><br/></span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<script>
+			 document.addEventListener('DOMContentLoaded', function () {
+         $('body').addClass('-has-header-bar');
+      });
+		</script>
+  </ui:fragment>
+
+  <ui:fragment rendered="#{ bannerClass eq 'spring67' }">
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'desktop'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>Facebook Erbjudande:</strong> Spara upp till <strong>67%</strong> - </span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'tablet'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>Facebook Erbjudande:</strong> Spara upp till <strong>67%</strong> - </span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span style="margin-bottom: 4px; display: block;"><strong>Facebook Erbjudande:</strong> Spara upp till <strong>67%</strong><br/></span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<script>
+			 document.addEventListener('DOMContentLoaded', function () {
+         $('body').addClass('-has-header-bar');
+      });
+		</script>
+  </ui:fragment>
+
+  <ui:fragment rendered="#{ bannerClass eq 'towel' }">
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'desktop'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>Facebook Erbjudande:</strong> Spara upp till <strong>58%</strong> - </span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'tablet'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>Facebook Erbjudande:</strong> Spara upp till <strong>58%</strong> - </span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span style="margin-bottom: 4px; display: block;"><strong>Facebook Erbjudande:</strong> Spara upp till <strong>58%</strong><br/></span> <span class="" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<script>
+			 document.addEventListener('DOMContentLoaded', function () {
+         $('body').addClass('-has-header-bar');
+      });
+		</script>
+  </ui:fragment>
+
+</ui:composition>

@@ -1,0 +1,22 @@
+.form-boxed {
+
+  > .data .group > .entry {
+    .form-dropdown {
+      @extend .-touch;
+
+      width: 100%;
+    }
+
+    input {
+      @extend .-touch;
+    }
+
+    .checkbox {
+      @extend .-big;
+    }
+  }
+
+  .group > .label {
+    padding: 10px 0;
+  }
+}

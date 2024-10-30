@@ -1,0 +1,82 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Klassisk Fotokudde" />
+
+  <ui:define name="dataLayer">
+  <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+    <ui:param name="pillow" value="true" />
+    <ui:param name="noList" value="true" />
+  </ui:include>
+  </ui:define>
+
+  <ui:define name="head">
+    
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="description" content="" />
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+    <link rel="canonical" href="https://www.bestcanvas.se/home-lifestyle/klassisk-kudde.jsf" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+  </ui:define>
+
+  <ui:define name="content">
+    <!-- teaser -->
+    <section class="page-teaser">
+      <ui:include src="/page-blocks/teaser.xhtml">
+        <ui:param name="teaserBgImage" value="/#{shopInfoBean.versionPath}assets/img/backgrounds/cushion-teaser.jpg" />
+        <ui:param name="headline" value="Din" />
+        <ui:param name="headline2" value="Fotokudde" />
+        <ui:param name="claim" value="Personliga fotokuddar av högsta kvalitet" />
+        <ui:param name="badgeTop" value="Spara upp till 72%" />
+        <ui:param name="badgeMiddle" value="#{priceBean.productPrice('Pillow_Bestcanvas_SE', 'Pillow', 'Pillow 40x40')}" />
+        <ui:param name="badgeBottom" value="istället för #{priceBean.productCrossPrice('Pillow_Bestcanvas_SE', 'Pillow', 'Pillow 40x40')}" />
+        <ui:param name="teaserProductImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/fotokudde/fotokudde.png" />
+        <ui:param name="altTeaserProductImage" value="fotokudde" />
+        <ui:param name="teaserFeatureHighlighted" value="" />
+        <ui:param name="teaserFeature1" value="Från den verkliga testvinnaren" />
+        <ui:param name="teaserFeature2" value="Garanti för bästa pris" />
+        <ui:param name="teaserFeature3" value="Brilliant, miljövänligt fototryck" />
+        <ui:param name="teaserFeature3" value="HD – särskilt lämplig för tryck i högupplösning" />
+        <ui:param name="showHpLogo" value="" />
+        <ui:param name="uploadId" value="861" />
+        <ui:param name="buttonText" value="Skapa" />
+        <ui:param name="showShippingInfo" value="true" />
+      </ui:include>
+    </section><!-- /teaser -->
+
+    <!-- info boxes -->
+    <section class="page-section -alternate -collapse-top">
+        <ui:include src="/page-blocks/info-blocks-homestyle.xhtml">
+          <ui:param name="cushionFormatTable" value="true" />
+        </ui:include>
+    </section>
+    <!-- /info boxes -->
+
+    <section class="page-section">
+      <ui:include src="/page-blocks/content-golssy-cushion-new-img.xhtml" />
+    </section>
+
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Mugs']}" />
+      <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+      <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Mug_Bestcanvas_SE', 'Mug', 'Mug Left Landscape').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+   <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+</section>
+    <!-- /paymentmethods -->
+
+  </ui:define>
+</ui:composition>

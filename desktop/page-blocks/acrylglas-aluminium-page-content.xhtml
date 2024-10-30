@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:o="http://omnifaces.org/ui">
+
+
+  <section class="page-section">
+
+  <!-- product info -->
+  <div class="article-showcase">
+    <h3 class="headline -has-sidelines"><span>Lyxigt utseende i galleri-stil</span></h3>
+    <div class="col -span-#{sessionBean.userAgentType == 'desktop' ? '6' : ''}#{sessionBean.userAgentType == 'tablet' ? '8 -centered' : ''}#{sessionBean.userAgentType == 'phone' ? '12 -centered' : ''} image js-image-switcher">
+      <ul class="images has-video" style="#{sessionBean.userAgentType == 'phone' ? 'max-height: 350px;min-height: unset' : ''}">
+        <li data-image-name="preview:front" class="-visible">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/acryl-alu/foto-akrylglas-aluminium-komplett-vy.jpg" alt="foto akrylglas aluminium komplett vy" />
+        </li>
+        <li data-image-name="preview:room">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/acryl-alu/foto-akrylglas-aluminium-i-rummet.jpg" alt="foto akrylglas aluminium i rummet" />
+        </li>
+        <li data-image-name="preview:detail">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/acryl-alu/foto-akrylglas-aluminium-detaljerad-vy.jpg" alt="foto akrylglas aluminium detaljerad vy" />
+        </li>
+        <li data-image-name="canvas:video">
+          <iframe width="#{sessionBean.userAgentType == 'phone' ? '100%' : '490'}" height="#{sessionBean.userAgentType == 'phone' ? 'auto' : '275'}" src="" data-src="//www.youtube.com/embed/8Vc-V7bkjGQ?loop=1&amp;modestbranding=1&amp;controls=0&amp;showinfo=0&amp;playlist=8Vc-V7bkjGQ" frameborder="0"></iframe>
+        </li>
+      </ul>
+
+      <ul class="options -has-#{sessionBean.userAgentType == 'desktop' ? '4' : '2'}">
+        <li><button type="button" class="cbutton -highlight" data-target="preview:front">Komplett vy</button></li>
+        <li><button type="button" class="cbutton" data-target="preview:detail">Detaljerad vy</button></li>
+        <li><button type="button" class="cbutton" data-target="preview:room">I rummet</button></li>
+        <li><button type="button" class="cbutton" data-target="canvas:video">Videon</button></li>
+      </ul>
+    </div>
+
+    <div class="description-wrapper -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'}">
+      <div class="description">
+        <p class="text">
+           Din bild kommer att få en perfekt yta tack vare akryl av högsta kvalitet från en enda gjutning. Din fototavla kommer att skina i härliga färger bakom den kristallklara plasten. Akrylglastavlan som digital fotoutskrift i allra högsta kvalitet ger bästa möjliga upplösning för dina foton. Ditt fototryck blir exakt laminerat på akrylglaset och sedan förseglat. Ljusstyrkan och färgdjupet på ditt objekt blir säkrat permanent.
+        </p>
+      </div>
+      <div class="description">
+        <p class="text">
+            Den ramlösa designen lägger till mer djup i dina bilder. Detta gör att din akrylglastavla med aluminium får en ännu större effekt och gör ditt rum visuellt större. Den imponerande djupeffekten på kanterna och det dolda upphängningssystemet ger din bild en riktig gallerikänsla. Det lilla avståndet från väggen gör att ditt foto på akrylglas och aluminium verkar sväva på väggen.
+        </p>
+      </div>
+        <div class="description">
+          <p class="text">Ditt foto på Akrylglas+Aluminium är vår finaste premiumprodukt. Den utmärkta kvaliteten på aluminiumsbackpanelen ger din tavla ett sant galleriutseende. De eleganta ljuspunkterna från platina vit aluminium förfinar ditt foto på kristallklart akryl genom sin speciella glans. De tunna aluminiumplattorna som omger den svarta plastkärnan ger en unik och lyxig design.</p>
+          </div>
+          <div class="description">
+          <p class="text">Högkvalitativ komposit av aluminium och akryl kombinerar lätt vikt med optisk elegans. Ditt foto på Akrylglas+Aluminium är också lätt nog för vårt gallerihängande system, även i större storlekar. Den styva ryggen skyddar mot skevhet som kan uppstå på grund av materialet, med en förstärkande aluminiumplatta. På så sätt kan du hänga din akryl med aluminium även i skyddade utomhusområden.</p>
+        </div>
+   </div>
+ </div>
+ <!-- /product info -->
+
+  <ui:include src="/content-blocks/lp/acryl-alu-format-table.xhtml" />
+
+  </section>
+
+</ui:composition>

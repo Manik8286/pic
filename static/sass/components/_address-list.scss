@@ -1,0 +1,39 @@
+.address-list {
+  display: table;
+  margin: -10px;
+  @include clearfix;
+
+  .phone & {
+    width: 270px;
+  }
+
+  .address {
+    float: left;
+    padding: 10px;
+    border-radius: 2px;
+    width: 222px;
+    position: relative;
+    padding-bottom: 60px;
+    box-sizing: border-box;
+    background-color: $white;
+    margin: 10px;
+    border: 1px solid $mercury;
+
+    .phone & {
+      width: 250px;
+    }
+
+    > .content {
+      white-space: pre;
+    }
+
+    > .add {
+      position: absolute;
+      bottom: 10px;
+    }
+
+    .phone & {
+      width: 250px;
+    }
+  }
+}

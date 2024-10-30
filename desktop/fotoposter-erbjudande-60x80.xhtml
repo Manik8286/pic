@@ -1,0 +1,97 @@
+<ui:composition template="/templates/default.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:param name="pageTitle" value="Fotoposter » Gor din egna poster" />
+
+    <ui:define name="dataLayer">
+        <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+            <ui:param name="poster" value="true" />
+            <ui:param name="noList" value="true" />
+        </ui:include>
+    </ui:define>
+
+    <ui:define name="head">
+        <ui:include src="/coupons/discountcode-BC_SE_SEA.xhtml" />
+        <ui:include src="/helper/reference.xhtml" />
+    </ui:define>
+
+    <ui:define name="meta">
+        <meta name="robots" content="NOINDEX,NOFOLLOW" />
+        <link rel="canonical" href="https://www.bestcanvas.se/vaggdekor/fotoposter.jsf" />
+		
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="theme-color" content="#35B2B6" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#35B2B6" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    </ui:define>
+
+    <ui:define name="content">
+
+        <!-- teaser -->
+        <ui:include src="/page-blocks/teaser-right-white.xhtml">
+            <!-- Headline -->
+            <ui:param name="headline" value="Ditt egna fotoposter-tryck" />
+
+            <ui:param name="teaserBgImage" value="#{libraryImagesBean.getFilePathByLibraryImageId(658)}" />
+            <ui:param name="teaserProductImage" value="#{libraryImagesBean.getFilePathByLibraryImageId(659)}" />
+            <ui:param name="altTeaserProductImage" value="#{libraryImagesBean.getAltByLibraryImageId(659)}" />
+            <ui:param name="showcaseClass" value="-transparent" />
+            <ui:param name="showcaseTitle" value="fotoposter" />
+            <ui:param name="imgClass" value="-withGap" />
+
+            <!-- Badge -->
+            <ui:param name="badgeTop" value="60 x 80 cm" />
+            <ui:param name="badgeMiddle" value="#{priceBean.productPrice('Wall_Poster_Bestcanvas_SE', 'Poster', 'Wall Poster 80x60')}" />
+            <ui:param name="badgeBottom" value="&#x3C;span&#x3E;instället för &#x3C;/span&#x3E;#{priceBean.productCrossPrice('Wall_Poster_Bestcanvas_SE', 'Poster', 'Wall Poster 80x60')}" />
+            <ui:param name="badgeClass" value="-positionBottom" />
+
+            <!-- Teaser bullet points -->
+            <ui:param name="teaserFeature1" value="HD-utskrift på 275 g/m² fotopapper av högsta kvalitet" />
+            <ui:param name="teaserFeature2" value="Val av 13 format" />
+            <ui:param name="teaserFeature3" value="Matt finish i färg eller svartvitt" />
+            <ui:param name="teaserFeature4" value="Fantastiskt tryck med fantastisk minimalistisk design" />
+
+            <!-- CTA Button -->
+            <ui:param name="uploadId" value="3819" />
+            <ui:param name="buttonText" value="Ladda upp foto" />
+            <ui:param name="quotes" value="false" />
+        </ui:include>
+        <!-- /teaser -->
+
+        <!-- Info boxes -->
+        <section class="page-section -alternate -smaller">
+            <ui:include src="/page-blocks/info-blocks-wall-poster.xhtml">
+                <ui:param name="normal" value="#{sessionBean.userAgentType == 'desktop' ? 'yes please' : ''}" />
+                <ui:param name="customLink" value="javascript:scrolltoPrices();" />
+            </ui:include>
+        </section>
+        <!-- Info boxes -->
+
+        <!-- Formats and Prices -->
+        <section class="page-section">
+            <ui:include src="/page-blocks/wall-poster.xhtml" />
+        </section>
+        <!-- Formats and Prices -->
+
+        <!-- paymentmethods and social -->
+        <section class="page-section -alternate">
+            <ui:include src="/page-blocks/paymentmethods.xhtml" />
+            <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+        </section>
+        <!-- /paymentmethods and social -->
+
+        <!-- microdata -->
+        <ui:include src="/content-blocks/microdata-simple.xhtml">
+            <ui:param name="name" value="Fotoposter » Gor din egna poster 60x80" />
+            <ui:param name="sku" value="POSTER-80X60" />
+            <ui:param name="url" value="https://www.bestcanvas.se/fotoposter-erbjudande-60x80/" />
+            <ui:param name="price"
+                value="#{priceBean.productPrice('Wall_Poster_Bestcanvas_SE', 'Poster', 'Wall Poster 80x60')}" />
+        </ui:include>
+        <!-- /microdata -->
+
+    </ui:define>
+</ui:composition>

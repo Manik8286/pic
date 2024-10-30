@@ -1,0 +1,351 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:param name="pageTitle" value="Tu Álbum Digital personal de la MEJOR calidad" />
+
+  <ui:define name="head">
+    
+    <style type="text/css">
+      .modal-window .scroll , #eKomiVFreport-button { display: none; }
+    </style>
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="description" content="Álbum digital – los eventos más bonitos en una encuadernación perfecta. ✓ Crea tu Álbum Digital personal !" />
+    <meta name="robots" content="NOINDEX,NOFOLLOW" />
+
+    <meta property="og:title" content="Crea tu Álbum Digital personal" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.bestcanvas.se/album-digital/" />
+    <meta property="og:image" content="https://download.cdn-shop.com/media/web_images/social_media/miartees/2017/spring/album-digital.jpg" />
+    <meta property="og:description" content="Tu álbum digital – los eventos más bonitos en una encuadernación perfecta. ✓ Crea tu Álbum Digital personal" />
+    <meta property="og:site_name" content="BestCanvas.se" />
+
+    <meta itemprop="name" content="Crea tu Álbum Digital personal" />
+    <meta itemprop="description" content="Tu álbum digital – los eventos más bonitos en una encuadernación perfecta. ✓ Crea tu Álbum Digital personal" />
+    <meta itemprop="image" content="https://download.cdn-shop.com/media/web_images/social_media/miartees/2017/spring/album-digital.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@bestcanvas_se" />
+    <meta name="twitter:creator" content="@bestcanvas_se" />
+    <meta name="twitter:title" content="Crea tu Álbum Digital personal" />
+    <meta name="twitter:description" content="Tu álbum digital – los eventos más bonitos en una encuadernación perfecta. ✓ Crea tu Álbum Digital personal" />
+    <meta name="twitter:url" content="https://www.bestcanvas.se/album-digital/" />
+    <meta name="twitter:image" content="https://download.cdn-shop.com/media/web_images/social_media/miartees/2017/spring/album-digital.jpg" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+  </ui:define>
+
+<ui:define name="content">
+
+  <div class="page-photobook">
+
+    <section class="page-teaser -alternate -has-ribbon" data-ribbon-title="NEW">
+      <div class="photobook" style="background-image: url(/#{shopInfoBean.versionPath}assets/img/backgrounds/livingroom_with_sofa.jpg)">
+        <div class="body">
+
+          <!-- teaser left -->
+          <div class="eyecatcher">
+            <img class="image" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/album-digital/album-digital-online.png" alt="album digital online" />
+
+            <ui:include src="/content-blocks/price-badge.xhtml">
+              <ui:param name="badgeTop" value="16 pagina's" />
+              <ui:param name="badgeMiddle" value="4.90 €*" />
+              <ui:param name="badgeBottom" value="van 9.90 €" />
+            </ui:include>
+
+          </div><!-- /teaser left -->
+
+          <!-- teaser right -->
+          <div class="action-wrapper">
+            <div class="actions">
+              <span class="label">Iniciar un nuevo Álbum digital</span>
+              <div class="action">
+                  <div onclick="Modal.open('#myModal2');_gaq.push(['_trackEvent', 'Fotobuch', 'LinkClick', 'Neues Projekt']);" class="fancybox new cursor-pointer">Nuevo proyecto</div>
+                </div>
+
+              <span class="label">Continúa donde lo dejaste</span>
+              <div class="action">
+                <a href="http://cart.unitedartslimited.com/branding/miartees/" target="_blank" onclick="_gaq.push(['_trackEvent', 'Fotobuch', 'LinkClick', 'Projekt editieren']);" class="edit">Editar proyecto</a>
+              </div>
+            </div>
+          </div><!-- /teaser right -->
+
+        </div>
+      </div>
+      <!-- teaser trust -->
+      <div class="trust">
+
+      </div><!-- /teaser trust -->
+    </section>
+
+    <section class="page-section -collapse-top">
+      <h1 class="headline -section -has-subline">Crea tu Álbum Digital personal</h1>
+      <h4 class="headline -subline">Selecciona una plataforma</h4>
+
+      <div class="plattforms">
+        <div class="box-wrapper">
+
+          <!-- photobook web -->
+          <div class="web">
+            <div class="photobook-box" data-mh="photobook-box">
+              <h3 class="title">mi-arte.es <span class="sr">Web</span>
+                <div class="logo-wrapper">
+                  <div class="logo">
+                    <ui:include src="/helper/svg.xhtml">
+                      <ui:param name="svgClass" value="cloud" />
+                      <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-photobook.svg#photobook-cloud_web" />
+                    </ui:include>
+                  </div>
+                </div>
+              </h3>
+
+              <div class="image">
+                <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/album-digital/album-digital-creacion.jpg" alt="album digital creacion" />
+              </div>
+
+              <div class="content">
+
+                <h4 class="headline">Diseña en todas partes</h4>
+                <p class="text">Guarda tus memorias en línea y desde cualquier lugar. Perfecto para crear proyectos más pequeños.</p>
+
+                <a onclick="Modal.open('#myModal2');" class="button-start">Comienza con mi-arte Web</a>
+
+                <div class="meta">
+                  <span class="list-title">Crea:</span>
+                  <ul class="specs">
+                    <li>
+                      <ui:include src="/helper/svg.xhtml">
+                        <ui:param name="svgClass" value="icon" />
+                        <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-photobook.svg#photobook-tablet" />
+                      </ui:include>
+                      En tu tablet, portátil u ordenador
+                    </li>
+                    <li>
+                      <ui:include src="/helper/svg.xhtml">
+                        <ui:param name="svgClass" value="icon" />
+                        <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-photobook.svg#photobook-wifi" />
+                      </ui:include>
+                     Mientras estás en línea
+                    </li>
+                  </ul>
+
+                  <span class="list-title">Adecuado para:</span>
+                  <ul class="suitable">
+                    <li>
+                      <ui:include src="/helper/svg.xhtml">
+                        <ui:param name="svgClass" value="icon" />
+                        <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-photobook.svg#photobook-check" />
+                      </ui:include>
+                      Pocas fotos por página
+                    </li>
+                    <li>
+                      <ui:include src="/helper/svg.xhtml">
+                        <ui:param name="svgClass" value="icon" />
+                        <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-photobook.svg#photobook-check" />
+                      </ui:include>
+                      Pocos números de páginas
+                    </li>
+                  </ul>
+
+                  <span class="list-title">Utiliza tu navegador favorito: </span>
+                  <ul class="browsers">
+                    <li>
+                      <ui:include src="/helper/svg.xhtml">
+                        <ui:param name="svgClass" value="icon" />
+                        <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-environment.svg#environment-ie" />
+                      </ui:include>
+                      IE
+                    </li>
+                    <li>
+                      <ui:include src="/helper/svg.xhtml">
+                        <ui:param name="svgClass" value="icon" />
+                        <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-environment.svg#environment-chrome" />
+                      </ui:include>
+                      Chrome
+                    </li>
+                    <li>
+                      <ui:include src="/helper/svg.xhtml">
+                        <ui:param name="svgClass" value="icon" />
+                        <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-environment.svg#environment-firefox" />
+                      </ui:include>
+                      Firefox
+                    </li>
+                    <li>
+                      <ui:include src="/helper/svg.xhtml">
+                        <ui:param name="svgClass" value="icon" />
+                        <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-environment.svg#environment-safari" />
+                      </ui:include>
+                      Safari
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div><!-- /photobook web -->
+
+          <!-- photobook home -->
+          <div class="home">
+            <div class="photobook-box" data-mh="photobook-box">
+              <h3 class="title">mi-arte.es <span class="sr">Home</span>
+                <div class="logo-wrapper">
+                  <div class="logo">
+                    <ui:include src="/helper/svg.xhtml">
+                      <ui:param name="svgClass" value="home" />
+                      <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-photobook.svg#photobook-desktop-large_home" />
+                    </ui:include>
+                  </div>
+                </div>
+              </h3>
+
+              <div class="image">
+                <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/album-digital/fotolibro-creacion-online.jpg" alt="fotolibro creacion online" />
+              </div>
+
+              <div class="content">
+
+                <h4 class="headline">Diseña en tu escritorio</h4>
+                <p class="text">Crea en tu portátil u ordenador - ¡incluso offline! La mejor manera de implementar grandes proyectos.</p>
+
+                <a onclick="Modal.open('#myModal');" class="button-start">Comienza con mi-arte Home</a>
+  
+                <div class="meta">
+                  <span class="list-title">Crea:</span>
+                  <ul class="specs">
+                    <li>
+                      <ui:include src="/helper/svg.xhtml">
+                        <ui:param name="svgClass" value="icon" />
+                        <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-photobook.svg#photobook-desktop" />
+                      </ui:include>
+                      En tu portátil u ordenador
+                    </li>
+                    <li>
+                      <ui:include src="/helper/svg.xhtml">
+                        <ui:param name="svgClass" value="icon" />
+                        <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-photobook.svg#photobook-offline" />
+                      </ui:include>
+                      Incluso si estás offline
+                    </li>
+                  </ul>
+
+                  <span class="list-title">Adecuado para:</span>
+                  <ul class="suitable">
+                    <li>
+                      <ui:include src="/helper/svg.xhtml">
+                        <ui:param name="svgClass" value="icon" />
+                        <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-photobook.svg#photobook-check" />
+                      </ui:include>
+                      Muchas fotos por página
+                    </li>
+                    <li>
+                      <ui:include src="/helper/svg.xhtml">
+                        <ui:param name="svgClass" value="icon" />
+                        <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-photobook.svg#photobook-check" />
+                      </ui:include>
+                      Grandes números de páginas
+                    </li>
+                  </ul>
+
+                  <span class="list-title">Utiliza nuestro software libre:</span>
+                  <ul class="os">
+                    <li>
+                      <ui:include src="/helper/svg.xhtml">
+                        <ui:param name="svgClass" value="icon" />
+                        <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-environment.svg#environment-windows" />
+                      </ui:include>
+                      Windows
+                    </li>
+                    <li>
+                      <ui:include src="/helper/svg.xhtml">
+                        <ui:param name="svgClass" value="icon" />
+                        <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-environment.svg#environment-apple" />
+                      </ui:include>
+                      Mac
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+            
+            </div>
+          </div><!-- /photobook home -->
+
+        </div>
+      </div>
+    </section>
+
+
+    <section class="page-section">
+      <div class="articles">
+        <div class="article-showcase">
+          <h3 class="headline -has-sidelines"><span>Crea un Fotolibro – cuenta tu historia</span></h3>
+
+          <div class="col -span-6 image -small">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/album-digital/fotolibro.jpg" alt="fotolibro" />
+          </div>
+
+          <div class="description-wrapper -span-6">
+            <div class="description">
+              <p class="text">
+              Puedes almacenar momentos memorables e importantes de tu vida en un álbum digital. Al igual que en un álbum de fotos, pero sin necesidad de imprimir fotos para ello. Las fotografías de los fotolibros en Mi-arte se pueden imprimir al tamaño de la hoja entera. Eres el diseñador que tiene las herramientas para crear un fotolibro totalmente personalizado con tu historia única. Puede ser un libro sobre las vacaciones de verano de 2016 o sobre el nacimiento de tu niño.
+              </p>
+              <p class="text">
+                Mantiene el calor en las tardes de otoño al ver las fotos sacadas el verano pasado. Tus amigos y tus invitados lo disfrutarán tanto como tú. Escribe tu libro único seleccionando tus recuerdos favoritos y poniéndolos en el orden que eliges tú mismo. Álbum digital de Mi-arte– una manera esplendida de almacenar recuerdos llenos de color!
+              </p>
+
+            </div>
+         </div>
+        </div>
+
+        <div class="article-showcase">
+          <h3 class="headline -has-sidelines"><span>Tu Álbum digital – Los mejores eventos en una unión perfecta</span></h3>
+
+          <div class="col -span-6 image -small">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/album-digital/fotolibro-digital.jpg" alt="fotolibro digital" />
+          </div>
+
+          <div class="description-wrapper -span-6">
+            <div class="description">
+              <p class="text">
+                El álbum digital es la mejor manera de guardar los momentos especiales, como unas vacaciones maravillosas, tus bodas, unos momentos afectuosos o momentos increíbles. Ordena tus fotos más hermosas en un álbum digital y cuenta la historia de un evento en varias páginas a través de tu punto de vista personal. Te ofrecemos la más alta calidad, utilizando una tecnología de impresión innovadora, que asegura colores súper modernos y brillantes.
+              </p>
+              <p class="text">
+                Nuestro fantástico papel fotográfico de primera calidad muestra las fotos en un fotolibro elegante. Tu álbum digital será atado cuidadosamente a mano y todavía en calidad superior a los precios más bajos.
+              </p>
+              <p class="text">
+               Nuestro amplio programa gratuito para crear fotolibros te ayudará a dar forma a tu álbum personal. La navegación rápida y fácil es posible de entender, también para los usuarios inexpertos. Las posibilidades creativas parecen ser interminables. En comparación con el mapa fotográfico tradicional, todas tus fotos pueden orientarse de forma diferente, por lo que parece que tengan movimiento. Después, puedes elegir el fondo apropiado a partir de nuestras muchas plantillas o puedes utilizar una imagen tuya, que será desplegada en la página entera. Antes de imprimir tu fotolibro, puedes hacer mejorías digitales a tus fotos e iluminarlas óptimamente. Con nuestro software gratuito puedes guardar cambios entre los trabajos. Entrégate un hermoso álbum digital que será una fuente de gran alegría por mucho tiempo.
+              </p>
+            </div>
+         </div>
+        </div>
+      </div>
+    </section>
+
+   <div class="js-modal" id="myModal2">
+     <iframe width="700" scrolling="no" height="650" frameborder="0" src="fotobuch-produkte"></iframe>
+   </div>
+      <div class="js-modal" id="myModal">
+                  <h2 class="text-center">Elegir sistema operativo</h2>
+  <div class="col -span-6">
+      <a href="https://download.cdn-shop.com/media/mi-arte.es_setup.exe" target="_blank">
+          <img border="0" onclick="_gaq.push(['_trackEvent', 'Fotobuch-Software', 'WIN', 'Teaser Fotobuch']);" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/win-logo.jpg" />
+      </a>
+  </div>
+  <div class="col -span-6">
+      <a href="https://download.cdn-shop.com/media/mi-arte.es_setup.dmg" target="_blank">
+          <img border="0" onclick="_gaq.push(['_trackEvent', 'Fotobuch-Software', 'WIN', 'Teaser Fotobuch'])" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/mac-logo.jpg" />
+      </a>
+  </div>
+      </div>
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+   <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+</section><!-- /paymentmethods -->
+  </div>
+  </ui:define>
+</ui:composition>

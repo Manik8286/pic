@@ -1,0 +1,16 @@
+.text-section {
+  > .headline {
+    font-size: 30px;
+  }
+  &.deko-welt {
+  	padding-top: 0;
+  }
+}
+
+.post {
+	.text-section {
+		width: auto !important;
+		padding: 10px !important;
+
+	}	
+}

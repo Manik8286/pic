@@ -1,0 +1,180 @@
+.radio {
+  user-select: none;
+  border: 1px solid $radio-color;
+  border-radius: 2px;
+  padding: 10px;
+
+  &.-active {
+    border-color: $radio-active-color;
+  }
+
+  input[type="radio"] {
+    &:not(:checked),
+    &:checked {
+      position: absolute;
+      opacity: 0;
+
+      + label {
+        position: relative;
+        padding-left: 25px;
+        cursor: pointer;
+      }
+
+      + label:before,
+      + label:after {
+        content: '';
+        cursor: pointer;
+        box-sizing: border-box;
+        position: absolute;
+        transition: all 0.2s;
+        left: 0;
+        top: 3px;
+        border-radius: 50%;
+      }
+
+      + label:before {
+        width: 15px;
+        height: 15px;
+        border: 1px solid $radio-color;
+        background-color: $radio-background;
+      }
+
+      + label:after {
+        width: 7px;
+        height: 7px;
+        background-color: $radio-active-color;
+        top: 3px + 4px;
+        left: 4px;
+        transform: scale(1);
+      }
+    }
+
+    &:checked {
+      + label:before {
+        border-color: $radio-active-color;
+      }
+    }
+
+    &:not(:checked) {
+      + label:after {
+        transform: scale(0);
+      }
+
+      &.-hover + label:before,
+      &:hover + label:before {
+        border-color: $radio-active-color;
+      }
+    }
+  }
+
+  &.-alone {
+    > input {
+      &:not(:checked) + label,
+      &:checked + label {
+        padding-left: 15px;
+      }
+    }
+  }
+
+  &.-below {
+    margin-top: 20px;
+    &.-colorMug {
+      > input {
+        &:not(:checked),
+        &:checked {
+            + label {
+            padding-left: 0;
+            padding-top: 20px;
+          }
+
+          + label:before,
+          + label:after {
+            left: -30%;
+            margin-left: -8px;
+            top: 53%;
+          }
+
+          + label:after {
+            margin-left: -4px;
+            margin-top: 4px;
+          }
+        }
+      }
+    }
+
+    &.-colorEffects {
+      > input {
+        &:not(:checked),
+        &:checked {
+            + label {
+            padding-left: 0;
+            padding-top: 20px;
+          }
+
+          + label:before,
+          + label:after {
+            left: 50%;
+            margin-left: -8px;
+            top: 5%;
+          }
+
+          + label:after {
+            margin-left: -4px;
+            margin-top: 4px;
+          }
+        }
+      }
+    }
+
+    > input {
+      &:not(:checked),
+      &:checked {
+        + label {
+          padding-left: 0;
+          padding-top: 20px;
+        }
+
+        + label:before,
+        + label:after {
+          left: 50%;
+          margin-left: -8px;
+        }
+
+        + label:after {
+          margin-left: -4px;
+        }
+      }
+    }
+  }
+
+  .no-csstransforms & {
+    > input {
+      &:not(:checked) + label:after {
+        display: none;
+      }
+
+      &:checked + label:after {
+        display: block;
+      }
+    }
+  }
+}
+
+//
+// You may wonder: "Why this mess of code?"
+// The answer: Basically every browser supporting `:checked`
+// `:not(:checked)` will support "faking" a input field in a
+// pseudo element, while hiding the system input field. So we
+// use `:checked` and `:not()` in _every selector_. If a browser
+// won't support this, he will simply ignore all this and show
+// the system input.
+//
+
+/* Markup:
+
+<div class="radio">
+  <input type="radio" id="radio">
+  <label for="radio">Hello</label>
+</div>
+
+*/

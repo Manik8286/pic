@@ -1,0 +1,8 @@
+.amount-chooser {
+  .choosee {
+    @extend .radio;
+    @extend .radio.-touch !optional;
+    width: 200px;
+    margin-bottom: 10px;
+  }
+}

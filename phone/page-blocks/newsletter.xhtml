@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html">
+
+  <div class="newsletter-list">
+    <div class="newsletter -span-12">
+      <div class="item-box -nl">
+        <h3 class="title">Prenumerera på vårt nyhetsbrev för att få exklusiva erbjudanden!</h3>
+        <form action="https://services.cdn-shop.com/api/v1/doisubscribe?" method="get" class="signup" accept-charset="UTF-8"  target="newsletterTarget" onsubmit="Modal.open('#newsletterSubmitted');">
+          <div class="form-group -powerline -grouped">
+            <div class="field">
+              <input class="input -shy -high -touch" type="email" name="email" placeholder="Vänligen ange din e-postadress" required="true" />
+            </div>
+          </div>
+          <div class="form-group -grouped">
+            <div class="checkbox -huge accept">
+              <input type="checkbox" id="acceptNewsletter" name="acceptNewsletter" />
+              <label for="acceptNewsletter">Jag har läst <a href="javascript:void(0)" onclick="Modal.open('#privacyPolicy');">Integritetspolicyn</a> och godkänner denna.</label>
+            </div>
+            <button type="submit" class="action button -action -wide">Skicka</button>
+          </div>
+          <input name="red" type="hidden" value="https://www.bestcanvas.se" />
+          <input name="shop" type="hidden" value="bestcanvas.se" />
+          <input name="event" type="hidden" value="566" />
+          <input name="subscribevia" type="hidden" value="1" />
+        </form>
+        <iframe style="display: none" name="newsletterTarget"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="js-modal" id="newsletterSubmitted">
+    <div class="body text-format">
+      <h:outputText escape="false" value="#{contentBean.snippets['nl-subscription']}"/>
+    </div>
+    <div class="foot">
+      <button type="button" onclick="Modal.close('#newsletterSubmitted')" class="button -control -neutral">Ok</button>
+    </div>
+  </div>
+
+</ui:composition>

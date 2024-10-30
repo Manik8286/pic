@@ -1,0 +1,217 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:param name="pageTitle" value="#{_['Reorder']}" />
+
+    <ui:define name="head">
+        <c:set var="ordersuccessTextTrigger" value="true" scope="session" />
+        <style>
+            .page-teaser {
+                padding-bottom: 0;
+            }
+            .teaser {
+                height: 500px;
+                background: url("/assets/img/teaser/desktop/reorder.webp") no-repeat center center;
+            }
+            .teaser.mobile {
+                height: 240px;
+                background: url("/assets/img/teaser/mobile/reorder.webp") no-repeat center center;
+            }
+            .page-teaser>.showcase>.body>.info.rightWhiteBlock {
+                padding: 15px;
+            }
+            .page-teaser>.showcase>.body>.info.rightWhiteBlock .headline {
+                padding: 0;
+                font-size: 30px !important;
+            }
+            h1 {
+                color: #4A4A4A;
+                font-size: 22px !important;
+                font-weight: 600;
+                letter-spacing: 0;
+                line-height: 1;
+                background-color: #fff;
+                margin: 0;
+            }
+            .reorder p {
+                padding: 15px;
+                color: #545454;
+                font-size: 16px;
+                letter-spacing: 0;
+                line-height: 16px;
+                margin: 0;
+            }
+            .reorder .highlight {
+                font-family: "Montserrat";
+                font-weight: 900;
+                color: #D40140;
+            }
+            .reorder h2 {
+                font-size: 24px !important;
+                padding: 0 10px;
+                margin-bottom: 30px;
+            }
+
+            .page-section.-newGap {
+                padding-top: 30px;
+                position: relative;
+                border-radius: 10px;
+            }
+            .reorder .list {
+                padding: 0 15px;
+            }
+            .reorder .list.mobile .list-point {
+                width: auto;
+            }
+            .reorder .list.mobile .list-num {
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 24px;
+            }
+            .reorder .list.mobile .list-point {
+                flex-direction: row;
+                gap: 15px;
+            }
+            .reorder .list.mobile .list-text {
+                text-align: left;
+                margin-top: 0;
+            }
+            .reorder .list-point {
+                padding: 0 0 10px 0;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                width: 25%;
+            }
+            .reorder .list-num {
+                background-color: #178386;
+                color: #fff;
+                display: inline-block;
+                text-align: center;
+                width: 90px;
+                height: 90px;
+                font-size: 40px;
+                font-weight: 900;
+                flex-shrink: 0;
+                line-height: 90px;
+            }
+            .reorder .list-text {
+                font-weight: bold;
+                text-align: center;
+                margin-top: 15px;
+            }
+            .page-teaser.-new .product .product-image {
+                margin: 0;
+            }
+            .page-teaser.-new,
+            .page-teaser .product .image {
+                padding: 0;
+            }
+            .page-teaser.-new .info {
+                padding: 15px;
+                padding-bottom: 0;
+                margin: 0;
+                margin-top: -3px;
+            }
+            .page-teaser.-new .info .headline {
+                font-size: 24px !important;
+            }
+            .highlight {
+                color: #D40140;
+            }
+            .page-teaser>.showcase>.body>.info.rightWhiteBlock .claim1 {
+                font-style: normal !important;
+            }
+            .page-teaser .mobileImg {
+                width: 100%;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="meta">
+        <meta name="description" content="Reorder" />
+        <meta name="robots" content="NOINDEX,NOFOLLOW" />
+
+        <link rel="canonical" href="https://www.bestcanvas.se/reorder.jsf" />
+    </ui:define>
+
+    <ui:define name="content">
+        <ui:include src="/page-blocks/teaser-right-white.xhtml">
+            <!-- headline -->
+            <ui:param name="headline" value="Välkommen till sidan för återbeställning!" />
+            <ui:param name="claim1" value="&lt;/br&gt;Tyvärr inträffar det ibland fel under produktion eller leverans. Vi beklagar verkligen om något gått fel med din beställning.
+            De goda nyheterna: På den här sidan kan du designa din produkt igen och beställa den &lt;strong class='highlight'&gt;GRATIS&lt;/strong&gt;.&lt;/br&gt;&lt;/br&gt;&lt;strong class='highlight'&gt;Viktigt&lt;/strong&gt;: Följ stegen nedan för en lyckad ombeställning." />
+            <!-- images -->
+            <ui:param name="teaserBgImage" value="/assets/img/teaser/desktop/reorder.webp" />
+            <ui:param name="#{sessionBean.userAgentType == 'phone' ? 'teaserProductImage' : ''}" value="/assets/img/teaser/mobile/reorder.webp" />
+            <ui:param name="imgClass" value="mobileImg" />
+
+            <ui:param name="infoClass" value="-white" />
+
+            <ui:param name="showBadge" value="false" />
+            <ui:param name="showUpload" value="false" />
+            <ui:param name="hideFeatures" value="true" />
+            <ui:param name="quotes" value="false" />
+            <ui:param name="shiipingInfo" value="false" />
+        </ui:include>
+
+        <section class="page-section -newGap reorder">
+        <div class="article-showcase">
+            <div class="list-wrapper">
+                <h2 class="#{sessionBean.userAgentType == 'phone' ? 'text-left' : 'text-center'}">Så här fungerar det</h2>
+
+                <div class="list #{sessionBean.userAgentType != 'phone' ? 'dFlex' : 'mobile'}">
+                    <div class="list-point"><span class="list-num">1</span> <span class="list-text">Välj produkt i menyn</span></div>
+                    <div class="list-point"><span class="list-num">2</span> <span class="list-text">Ladda upp foto och designa produkten</span></div>
+                    <div class="list-point"><span class="list-num">3</span> <span class="list-text">Slutför din beställning</span></div>
+                    <div class="list-point"><span class="list-num">4</span> <span class="list-text">Skicka ordernumret till vår kundtjänst</span></div>
+                </div>
+            </div>
+
+            <p class="#{sessionBean.userAgentType == 'phone' ? 'text-left' : 'text-center'}">Observera att din beställning kommer att produceras och skickas först efter att vår kundtjänst har kontrollerat och godkänt beställningen.</p>
+
+        </div>
+
+            <div class="article-showcase -small-bottom">
+                <h2 class="headline #{sessionBean.userAgentType == 'phone' ? 'text-left' : 'text-center'}"><span>Vanliga frågor om återbeställningar</span></h2>
+                <dl class="accordion-panel js-accordion  text-format">
+
+                    <dt class="title js-accordion-title -expandable -new">
+                        <h3>När kommer min återkommande beställning att levereras?</h3>
+                    </dt>
+                    <dd class="sub js-accordion-body">
+                        <div class="col">
+                            <p>Återbeställningen kommer att produceras och skickas till dig så snabbt som möjligt. Produktionstiderna varierar beroende på produkt. Du hittar mer information om våra leveranstider på sidan Frakt och leverans eller i avsnittet Vanliga frågor. Du kommer naturligtvis att få en leveransavisering via e-post så snart utskrifterna är klara för leverans. Du kan också kontrollera statusen för din beställning här: Orderstatus</p>
+                        </div>
+                    </dd>
+                    <dt class="title js-accordion-title -expandable -new">
+                        <h3>Vad gör jag om det erbjudna priset har ändrats?</h3>
+                    </dt>
+                    <dd class="sub js-accordion-body">
+                        <div class="col">
+                            <p>Du behöver inte oroa dig. Ombeställning är kostnadsfritt för dig, så i det här fallet spelar priset på sidan ingen roll.</p>
+                        </div>
+                    </dd>
+
+                </dl>
+            </div>
+
+        </section>
+
+        <!-- Paymentmethods and Social -->
+        <section class="page-section -alternate">
+            <ui:include src="/page-blocks/paymentmethods.xhtml" />
+            <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+        </section>
+        <!-- end of Paymentmethods and Social -->
+
+        <span data-freeorder="freereorderBean.showFreeReorderPaymentMethod: #{freereorderBean.showFreeReorderPaymentMethod}" class="hidden"></span>
+
+    </ui:define>
+</ui:composition>

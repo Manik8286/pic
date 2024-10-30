@@ -1,0 +1,152 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Kvalitet &amp; Leverans" />
+
+  <ui:define name="dataLayer">
+    <ui:include src="/tracking/dataLayer-pagetype-companyinfo.xhtml"/>
+  </ui:define>
+
+  <ui:define name="head">
+    
+    <style type="text/css">
+      .trust-box {
+        display: inline-block;
+      }
+      .trust {
+        position: absolute;
+        bottom: 0;
+      }
+    </style>
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="robots" content="INDEX,FOLLOW" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+  </ui:define>
+
+  <ui:define name="content">
+
+    <section class="page-teaser -noGrayLine" style="background-image:url(/#{shopInfoBean.versionPath}assets/img/backgrounds/quality-background.jpg); background-color:transparent; background-size:cover;">
+      <div class="showcase -quality">
+        <header class="head">
+          <h1 class="headline">Kvalitet &amp; Leverans</h1>
+          <div class="claim"></div>
+        </header>      
+        <div class="body">
+          <div class="product -quality-badge"></div>
+          
+          <div class="info -right">
+            <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+              <ui:param name="directuploadProductId" value="254" />
+              <ui:param name="directuploadClass" value="action" />
+              <ui:param name="buttonText" value="Skapa" />
+              <ui:param name="directuploadPosition" value="-positionQuality" />
+            </ui:include>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="story-list">
+
+        <span class="story -fullWidth">
+          <div class="story-box" data-mh="article">
+            <header class="head">
+              <h3 class="title">
+                Tryck av högsta kvalitet
+              </h3>
+            </header>
+            <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/kvalitet/tryck-av-hogsta-kvalitet.jpg" alt="tryck av hogsta kvalitet" />
+            <div class="body">
+              <p>
+                Vi trycker dina foton på olika material med hjälp av toppmodern tryckteknik: allt från fotocanvas, snygga väggdekorationer, personliga fotoböcker, till någon av våra andra anpassade produkter. Vi är en av HPs största samarbetspartners och använder oss av deras UV-resistenta bläck som gör att dina foton kommer att skina i briljanta färger.
+              </p> 
+            </div>
+          </div>
+
+          <div class="story-box" data-mh="article">
+            <header class="head">
+              <h3 class="title">
+                Prisvinnare
+              </h3>
+            </header>
+            
+            <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/kvalitet/prisvinnare.jpg" alt="prisvinnare" />
+            <div class="body">
+              <p>
+                Vi är väldigt glada över att kvaliteten på våra produkter regelbundet bekräftas. Vi har fått godkännande av fotoutskriftsexperter och de har utsett my-picture.co.uk till vinnare i test när det gäller pris och service. Vi erbjuder våra kunder fullständigt köpskydd och också möjligheten att granska oss på oberoende webbsidor. Vi vill tacka alla våra nöjda kunder för att de gett betyget "Excellent"! 
+              </p>
+            </div>
+          </div>
+        </span>
+
+        <span class="story -fullWidth">
+          <div class="story-box" data-mh="article">
+            <header class="head">
+              <h3 class="title">
+                Allra bästa materialet
+              </h3>
+            </header>
+            <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/kvalitet/allra-basta-materialet.jpg" alt="allra basta materialet" />
+            <div class="body">
+              <p>
+                När vi trycker dina foton som canvastavla använder vi bara en speciell HP-certifierad duk som passar särskilt för HP-bläck. Duken är riktigt vit, vilket gör duken perfekt för digital utskrift. För produkter som foto på aluminium eller som affisch, trycker vi ut ditt foto på äkta fotopapper. Vi ser till att vi väljer rätt material för att ditt foto ska bli perfekt.
+              </p>
+            </div>
+          </div>
+
+          <div class="story-box" data-mh="article">
+            <header class="head">
+              <h3 class="title">
+                Miljövänlig produktion
+              </h3>
+            </header>
+            <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/kvalitet/miljovanlig-produktion.jpg" alt="miljovanlig produktion" />
+            <div class="body">
+              <p>
+                Elförsörjningen i vår fabrik kommer från förnybara energikällor. Alla våra maskiner drivs på denna gröna energi från vind, vatten och sol. Dessutom deltar vi i skogsplanteringsprojekt och planterar genom dessa 1000 träd varje år.
+              </p>
+            </div>
+          </div>
+        </span>
+
+        <span class="story -fullWidth">
+          <div class="story-box" data-mh="article">
+            <header class="head">
+              <h3 class="title">
+                Äkta handgjorda produkter
+              </h3>
+            </header>
+            <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/kvalitet/akta-handgjorda-produkter.jpg" alt="akta handgjorda produkter" />
+            <div class="body">
+              <p>
+                Vi producerar din fotoprodukt i vår egen fabrik. Beroende på produkt, så är den antingen noga utformad för hand eller med moderna maskiner. Varje foto tillverkas med omsorg och med uppmärksamhet på varje detalj. Vår kvalitetsstandard säkerställs av våra strikta kontroller.
+              </p>
+            </div>
+          </div>
+
+          <div class="story-box" data-mh="article">
+            <header class="head">
+              <h3 class="title">
+                Barnvänlig 
+              </h3>
+            </header>
+            <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/kvalitet/barnvanlig.jpg" alt="barnvanlig" />
+            <div class="body">
+              <p>
+                HPs speciella latexbläck innebär att dina tryck är helt ofarliga för både människor och djur. Färgerna är helt fria från lösningsmedel och detta betyder att dina fotoprodukter även är lämpliga för barn och personer med allergier. Dessutom är detta luktfria bläck perfekt anpassat till vår skrivare. Den här perfekta tillämpningen av färg betyder att färgerna på ditt foto kommer att bli speciellt skarpa och skinande.
+              </p>
+            </div>
+          </div>
+        </span> 
+      </div>
+    </section>
+  </ui:define>
+</ui:composition>

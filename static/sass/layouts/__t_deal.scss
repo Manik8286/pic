@@ -1,0 +1,35 @@
+.deal {
+
+  .showcase {
+
+    &.teaser-blackweek {
+      .head {
+        .headline {
+          font-size: 28px;
+        }
+      }
+    }
+
+    .countdown-block {
+      position: static;
+      bottom: auto;
+      left: auto;
+      width: 360px;
+      margin-left: 0;
+      text-align: center;
+      white-space: initial;
+      display: inline-block;
+    }
+  }
+
+  .deal-section {
+    .product-list {
+      .product {
+        @extend .-span-6;
+        .product-box {
+          min-height: 330px;
+        }
+      }
+    }
+  }
+}

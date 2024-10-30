@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+  <p:outputPanel style="display:block">
+    <div class="showcase-box" data-mh="info">
+      <h3 class="headline">Vi har låga priser för Fotofilt!</h3>
+      <table class="table -striped">
+        <thead class="-highlighted">
+          <tr>
+            <th>Format</th>
+            <th>#{_['Price']}</th>
+            <th>#{_['Special Price']}</th>
+          </tr>
+        </thead>
+        <tbody class="-text-centered"> 
+            <tr>
+              <td>100 x 70 cm</td>
+              <ui:fragment rendered="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 100x70') != '#ERROR#'}">
+                <td><s>#{priceBean.productCrossPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 100x70')}</s></td>
+                <td class="-highlighted">#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 100x70')}*</td>
+              </ui:fragment>
+               <ui:fragment rendered="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 100x70') == '#ERROR#'}">
+                <td>UTSÅLD</td>
+                <td class="-highlighted">UTSÅLD</td>
+              </ui:fragment>
+            </tr>
+            <tr>
+              <td>150 x 100 cm</td>
+              <ui:fragment rendered="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 150x100') != '#ERROR#'}">
+                <td><s>#{priceBean.productCrossPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 150x100')}</s></td>
+                <td class="-highlighted">#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 150x100')}*</td>
+              </ui:fragment>
+               <ui:fragment rendered="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 150x100') == '#ERROR#'}">
+                <td>UTSÅLD</td>
+                <td class="-highlighted">UTSÅLD</td>
+              </ui:fragment>
+            </tr>
+            <tr>
+              <td>200 x 150 cm</td>
+              <ui:fragment rendered="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 200x150') != '#ERROR#'}">
+                <td><s>#{priceBean.productCrossPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 200x150')}</s></td>
+                <td class="-highlighted">#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 200x150')}*</td>
+              </ui:fragment>
+               <ui:fragment rendered="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 200x150') == '#ERROR#'}">
+                <td>UTSÅLD</td>
+                <td class="-highlighted">UTSÅLD</td>
+              </ui:fragment>
+            </tr>
+        </tbody>
+      </table>
+      <a href="/format/lifestyle.jsf" class="link">Alla priser och format »</a>
+    </div>
+  </p:outputPanel>
+
+</ui:composition>

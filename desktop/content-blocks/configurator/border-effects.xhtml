@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+								xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+								xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+	<!-- border effects -->
+      <p:selectOneRadio
+      id="borderEffect"
+      value="#{itemConfiguratorBean.borderEffect}"
+      layout="custom"
+      plain="true">
+      <p:ajax
+        listener="#{itemConfiguratorBean.change}"
+        update=":itemConfiguratorForm:configuration :itemConfiguratorForm:priceBox :itemConfiguratorForm:canvas-preview"
+        onstart='#{mobileView ? "smoothScrollTo($(\"#thepreviewBox\"));" : ""}'
+        oncomplete="updateDom();#{textConfig ? 'RefreshControls();RefreshFormatChange();' : ''}" />
+      <f:selectItems value="#{itemConfiguratorBean.borderEffects}"/>
+    </p:selectOneRadio>
+    <h3 class="title"><span class="StepsCount"><h:outputText value="#{blockCount}" /></span>Välj kantalternativ:</h3>
+    <div class="clearfix">
+      <ui:repeat value="#{itemConfiguratorBean.borderEffects}" var="f" varStatus="s">
+        <div class="selectable" data-clickarea="data-clickarea">
+          <h:graphicImage for="entry" class="img-resposive" value="/staticimages/configurator/mf/Rand-Design-#{f.value.toString().toLowerCase()}.jpg"/>
+          <div class="radio pull-left">
+            <p:radioButton id="product" for=":itemConfiguratorForm:borderEffect" itemIndex="#{s.index}"/>
+            <h:outputLabel for="product" />
+          </div>
+          <div class="details pull-left">
+            <h:outputText value="#{f.label} " />
+          </div>
+        </div>
+      </ui:repeat>
+    </div>
+  <!-- /border effects -->
+
+
+
+</ui:composition>

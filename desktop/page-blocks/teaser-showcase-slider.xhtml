@@ -1,0 +1,167 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+					 xmlns:p="http://primefaces.org/ui">
+
+	<div class="slider-pro showcase slider-showcase hidden" id="Slider-Teaser">
+		<div class="sp-slides">
+
+			<!-- Slide 01 -->
+			<div class="sp-slide">
+
+				<!-- Slide 01 Background -->
+				<img class="sp-image"
+					src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/backgrounds/cyber-cd-3canvas.jpg"
+					data-small="/#{shopInfoBean.versionPath}assets/img/backgrounds/cyber-cd-3canvas_small.jpg"
+					/>
+
+				<!-- Slide 01 Thumbnail -->
+				<p class="sp-thumbnail">88% discount on Canvas Bestsellers</p>
+
+				<!-- Slide 01 Content -->
+				<div class="sp-layer sp-static">
+					<div class="sp-content">
+						<div class="showcase">
+							<!-- Snippet: Cyber-slide-1 -->
+							<h:outputText value="#{contentBean.snippets['cyber-slide-1']}" escape="false" />
+						</div>
+					</div>
+				</div>
+				<!-- /Slide 01 Content -->
+
+			</div>
+
+			<!-- Slide 02 -->
+			<div class="sp-slide">
+
+				<!-- Slide 02 Background -->
+				<img class="sp-image"
+					src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/backgrounds/cyber-cd-forex.jpg"
+					data-small="/#{shopInfoBean.versionPath}assets/img/backgrounds/cyber-cd-forex_small.jpg"
+					/>
+
+				<!-- Slide 02 Thumbnail -->
+				<p class="sp-thumbnail">67% off on Forex Prints</p>
+
+				<!-- Slide 02 Content -->
+				<div class="sp-layer sp-static">
+					<div class="sp-content">
+						<div class="showcase">
+							<!-- Snippet: Cyber-slide-1 -->
+							<h:outputText value="#{contentBean.snippets['cyber-slide-2']}" escape="false" />
+						</div>
+					</div>
+				</div>
+				<!-- /Slide 02 Content -->
+
+			</div>
+
+			<!-- Slide 03 -->
+			<div class="sp-slide">
+
+				<!-- Slide 03 Background -->
+				<img class="sp-image"
+					src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/backgrounds/cyber-cd-phonecase.jpg"
+					data-small="/#{shopInfoBean.versionPath}assets/img/backgrounds/cyber-cd-phonecase_small.jpg"
+					/>
+
+				<!-- Slide 03 Thumbnail -->
+				<p class="sp-thumbnail">Phone Cases for $12,90 each</p>
+
+				<!-- Slide 03 Content -->
+				<div class="sp-layer sp-static">
+					<div class="sp-content">
+						<div class="showcase">
+							<!-- Snippet: Cyber-slide-1 -->
+							<h:outputText value="#{contentBean.snippets['cyber-slide-3']}" escape="false" />
+						</div>
+					</div>
+				</div>
+				<!-- /Slide 03 Content -->
+
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+
+		function copyToClipboard(text)
+		{
+		  var aux = document.createElement("input");
+		  aux.setAttribute("value", text);
+		  document.body.appendChild(aux);
+		  aux.select();
+		  document.execCommand("copy");
+		  document.body.removeChild(aux);
+		}
+
+		$(document).ready(function() {
+
+			$("#GutscheinSpan").dblclick(function() {
+				$("#GutscheinSpan").addClass("selected");
+				copyToClipboard("10Tassen");
+			});
+
+			$("#GutscheinSpan").mouseout(function() {
+				setTimeout(function(){
+					$("#GutscheinSpan").removeClass("selected");
+				}, 500);
+			});
+
+			var isFireFox = (navigator.userAgent.toLowerCase().indexOf('firefox') > -1);
+
+			$("#Slider-Teaser").removeClass("hidden");
+			$("#Slider-Teaser").sliderPro({
+				width: 1920,
+				height: 496,
+				centerSelectedSlide: true,
+				imageScaleMode: 'cover',
+				centerImage: true,
+				arrows: true,
+				fadeArrows: false,
+				fadeDuration: 600,
+				slideDistance: 0,
+				thumbnailPointer: true,
+				touchSwipe: true,
+				keyboard: true,
+				buttons: false,
+				fade: true,
+				loop: false,
+				fullScreen: false,
+				autoplayDelay: 7000,
+				autoplay: true, // false
+				autoScaleLayers: true,
+				waitForLayers: false,
+				thumbnailWidth: 280,
+				thumbnailHeight: 42,
+				thumbnailsPosition: 'bottom',
+				breakpoints: {
+					1024: {
+						width: '100%',
+					},
+					770: {
+						height: 350,
+						width: '100%',
+					},
+					670: {
+						height: 230,
+						width: '100%',
+					},
+					440: {
+						height: 200,
+						width: '100%',
+					},
+					320: {
+						height: 180,
+						width: '100%',
+					},
+				}
+			});
+		});
+
+	</script>
+
+<ui:include src="/page-blocks/uploader-cover.xhtml" />
+
+</ui:composition>

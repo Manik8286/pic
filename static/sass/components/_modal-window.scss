@@ -1,0 +1,116 @@
+.modal-window {
+  display: none;
+  background-color: $lighter-box-background;
+  border: 1px solid $lighter-box-border;
+  border-radius: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 800px;
+  min-width: 400px;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: all 0.2s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &#shippingInfo.-phone {
+    width: 90% !important;
+    margin-left: unset !important;
+    transform: translate(-50%, 0);
+  }
+
+  .simpleTable {
+    td {
+      border: 1px solid;
+      padding: 5px;
+    }
+  }
+
+  .phone & {
+    min-width: 0;
+  }
+
+  .head {
+    padding: 17px 45px 17px 10px;
+    font-size: 18px;
+    font-weight: $weight-semibold;
+    background-color: $lighter-box-background;
+
+    &.-nothing {
+      padding-top: 5px;
+      padding-bottom: 15px;
+    }
+  }
+
+  .body {
+    padding: 0 10px;
+    box-sizing: border-box;
+    .text{
+      font-size: 14px;
+    }
+  }
+
+  .foot {
+    padding: 20px 10px 0;
+    @include clearfix;
+
+    &.-nothing {
+      padding: 0 0 20px 0;
+    }
+
+    > * {
+      float: left;
+      margin-right: 20px;
+      margin-bottom: 20px;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .scroll {
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+  }
+
+  .close {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    right: 7px;
+    top: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 2px;
+    transition: background 0.2s;
+
+    &:hover {
+      background-color: $mercury;
+    }
+
+    &:before {
+      content: '×';
+      display: block;
+      position: absolute;
+      font-size: 36px;
+      line-height: 35px;
+      right: 7px;
+      font-weight: $weight-semibold;
+    }
+  }
+  /*shipping-delivery-payment page*/
+  .titleBlockShipping {
+    background-color: lightgray;
+    margin-bottom: 10px;
+    padding: 10px 0 10px 10px;
+    &.-top {
+      margin-top: 20px;
+    }
+  }
+  .contentBlockShipping {
+    background-color: lightgray;
+    padding: 10px 0 10px 10px;
+  }
+}

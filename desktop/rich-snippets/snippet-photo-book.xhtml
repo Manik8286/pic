@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <!-- Rich snippet -->
+  <ui:remove>
+    <section class="page-section">
+      <div class="article-showcase -no-bottom">
+        <h3 class="headline -has-sidelines"><span>Las mejores calificaciones de clientes</span></h3>
+        <div class="col -span-12 description text-center" vocab="http://schema.org/" typeof="Product">
+		  <span property="brand" typeof="Brand">
+	      <meta property="name" content="BestCanvas.se" />
+	      </span>
+          <meta property="name" content="Álbum Digital" />
+          <meta property="image" src="https://d2iooymu68nnir.cloudfront.net/mi-arte3-es/#{shopInfoBean.versionPath}assets/img/album-digital/fotolibro.d431dbce.jpg" />
+          <meta property="description" content="Álbum digital – los eventos más bonitos en una encuadernación perfecta. ✓ Crea tu Álbum Digital personal!" />
+          <meta property="sku" content="FBRSMINI" />
+          <span property="aggregateRating" typeof="AggregateRating">
+          <p class="text">
+            <ui:include src="/rich-snippets/snippet-rating.xhtml" /> Álbum Digital ahora!</p>
+          </span>
+          <span property="offers" typeof="Offer">
+            <meta property="priceCurrency" content="EUR" />
+            <meta property="price" content="4.90" />
+            <time property="priceValidUntil" datetime="#{now.month + 1 eq 12 ? now.year + 1900 + 1 : now.year + 1900}-12-31"></time>
+            <span property="seller" typeof="Organization">
+              <meta property="name" content=" BestCanvas.se " />
+            </span>
+            <link property="itemCondition" href="http://schema.org/NewCondition" />
+            <link property="availability" href="http://schema.org/InStock" />
+          </span>
+        </div>
+      </div>
+    </section>
+  </ui:remove>
+  <!-- /Rich snippet -->
+
+</ui:composition>

@@ -1,0 +1,259 @@
+<ui:composition template="/templates/checkout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<ui:param name="pageTitle" value="#{_['Addresses']}" />
+<ui:param name="stepCount" value="4" />
+<ui:define name="dataLayer">
+  <ui:include src="/tracking/trackingcodes-end-of-head-orderaddresses.xhtml"/>
+</ui:define>
+
+<ui:define name="head">
+  <h:outputScript library="javax.faces" name="jsf.js" target="head"/>
+  <style>
+    .checkout-head-new {
+      display: none;
+    }
+  </style>
+</ui:define>
+
+<ui:define name="meta">
+  <meta name="robots" content="NOINDEX,FOLLOW" />
+</ui:define>
+
+<ui:define name="content">
+  <p:ajaxStatus onstart="showToast('Uppdaterar förhandsgranskning...');" oncomplete="hideToast(500);updateDom();" onerror="hideToast(500);" />
+
+  <section class="checkout-step-4 checkout-section">
+
+    <!-- header section -->
+    <div class="head">
+      <h1 class="legend">#{_['Billing and Delivery Address']}</h1>
+      <c:if test="#{!loginBean.loggedIn}">
+        <div class="login">
+          <a href="/customer.jsf?redirect=orderaddresses.jsf">Redan registrerad? Logga in.</a>
+        </div>
+      </c:if>
+    </div><!-- /header section -->
+
+    <h:form id="addressesForm">
+
+      <!-- invoice address -->
+      <div class="delivery">
+        <span jsf:id="globalMessage">
+          <o:messages styleClass="outmsg"
+                      globalOnly="true"
+                      errorClass="-error"
+                      warnClass="-warn"
+                      infoClass="-info"
+                      escape="false" />
+        </span>
+       <div class="address" jsf:id="invoiceAddress">
+         <h3 class="title">#{_['Your Billing Address']}</h3>
+         <div class="subtitle">
+         #{_['Sorry, no PO Boxes possible']}
+         </div>
+         <div class="form-group -action" jsf:rendered="#{loginBean.loggedIn}">
+            <h:commandButton value="#{_['Choose from Address Book']}"
+              styleClass="button -action -secondary chooseaddress"
+              onclick="Modal.open('#chooseInvoiceAddress');">
+              <p:ajax process="@this" />
+            </h:commandButton>
+          </div>
+          <ui:include src="/content-blocks/orderaddresses-address-ups.xhtml">
+            <ui:param name="address" value="#{orderAddressBean.invoiceAddress}"/>
+            <ui:param name="idPrefix" value="invoice" />
+            <ui:param name="showEmail" value="true" />
+            <ui:param name="showFax" value="false" />
+            <ui:param name="showMobile" value="true" />
+            <ui:param name="disabled" value="false" />
+            <ui:param name="viewType" value="touch" />
+            <ui:param name="showBirthday" value="false" />
+            <ui:param name="showVat" value="#{shoppingCartBean.customerDiscountValueToNextLevel != ''}" />
+          </ui:include>
+        </div>
+      </div><!-- /invoice address -->
+
+      <!-- optional delivery address -->
+      <div class="extra-delivery">
+        <div class="extra-address clearfix">
+          <h3 class="title">#{_['Your Delivery Address (Please only state if different from billing address)']}</h3>
+
+          <div jsf:id="shipping-ps">
+            <p:selectOneRadio  id="packstationRB" value="#{orderAddressBean.addressType}" styleClass="cradio packstationRB" required="true">
+              <f:selectItem itemValue="SHIPPING_ADDRESS_SAME_AS_BILLING" itemLabel="#{_['Corresponds to the billing address']}"/>
+              <f:selectItem itemValue="SHIPPING_ADDRESS_STANDARD" itemLabel="#{_['Ship to different address']}" />
+              <f:selectItem itemValue="SHIPPING_ADDRESS_UPS_ACCESS_POINT" itemEscaped="false" itemLabel="#{_['Pick Up from']} &lt;img src=&quot;/#{shopInfoBean.versionPath}assets/img/logo/ups.svg&quot; class=&quot;upsImg&quot; /&gt;" itemDisabled="#{orderAddressBean.allowUpsAccessPoint == false}"/>
+              <p:ajax process="@this" update="shipping-ps shippingAddress invoiceCountry shippingCountry" oncomplete="takeZip();" listener="#{orderAddressBean.differentShippingAddressChange}"/>
+            </p:selectOneRadio>
+
+            <div class="info-component packstationQuestion">
+              <span class="infoindicator">?</span>
+              <div class="info-bubble -packstation -th-bubble -ps">
+                <ui:fragment rendered="#{orderAddressBean.allowUpsAccessPoint == true}">
+                  #{_['UPS Access Points are retail outlets that serve as a convenient UPS parcel delivery location']}. #{_['Enter a valid ZIP Code']}.
+                </ui:fragment>
+                <ui:fragment rendered="#{orderAddressBean.allowUpsAccessPoint != true}">
+                  #{_['Your product selection is not eligible for a UPS Access Point delivery']}.
+                </ui:fragment>
+              </div>
+            </div>
+          </div>
+
+          <div jsf:id="shippingAddress" class="#{orderAddressBean.differentShippingAddress ? '' : 'hidden'}">
+            <div jsf:rendered="#{loginBean.loggedIn}" class="form-group -action -collapse-top">
+              <h:commandButton value="#{_['Choose from Address Book']}"
+                styleClass="button -action -secondary chooseaddress"
+                onclick="Modal.open('#chooseShippingAddress');">
+                <p:ajax process="@this" />
+              </h:commandButton>
+            </div>
+            <ui:include src="/content-blocks/orderaddresses-address-ups.xhtml">
+              <ui:param name="address" value="#{orderAddressBean.shippingAddress}"/>
+              <ui:param name="idPrefix" value="shipping" />
+              <ui:param name="showEmail" value="false" />
+              <ui:param name="showFax" value="false" />
+              <ui:param name="showMobile" value="false" />
+              <ui:param name="disabled" value="#{!orderAddressBean.differentShippingAddress}" />
+              <ui:param name="viewType" value="touch" />
+              <ui:param name="showBirthday" value="false" />
+              <ui:param name="upsAccessPoint" value="#{orderAddressBean.addressType == 'SHIPPING_ADDRESS_UPS_ACCESS_POINT' ? 'true' : ''}" />
+            </ui:include>
+          </div>
+        </div>
+        <div class="continue">
+          <button
+            jsf:action="#{orderAddressBean.completeCheck}"
+            class="action button -action -touch -arrow js-next-button">
+            <p:ajax update="invoiceAddress shippingAddress globalMessage" process="invoiceAddress shippingAddress" oncomplete="updateDom();" />
+            #{_['Continue']}
+          </button>
+        </div>
+      </div>
+      <!-- /optional delivery address -->
+    </h:form>
+  </section>
+
+<!-- paymentmethods -->
+<section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+</section>
+<!-- /paymentmethods -->
+
+<!-- Pop-up -->
+<div class="js-modal" id="addresscheck" style="overflow-y: hidden;">
+  <div class="body text-format">
+    <div class="text-format">
+      <div class="addresscheckContent">
+        <div class="addresscheckTitle"><strong>#{_['Address check']}</strong></div>
+        <p class="addresscheckText">
+          #{_['The selected payment provider transferred your address data in a different format']}.
+          #{_['Please correct the relevant points so that your items arrive at the correct address']}.
+          #{_['You can then complete the purchase']}.
+        </p>
+        <div class="text-center">
+          <div id="addresscheckOkay" class="button -action -filled new-cart-btn">#{_['Okay']}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Pop-up -->
+
+<div class="js-modal" id="chooseInvoiceAddress">
+  <div class="head">#{_['Select invoice address']}</div>
+  <div class="body">
+    <h:outputText rendered="#{empty orderAddressBean.allAddresses}" value="#{_['No addresses found.']}" />
+    <div class="address-list" jsf:rendered="#{not empty orderAddressBean.allAddresses}">
+      <ui:repeat value="#{orderAddressBean.allAddresses}" var="address">
+        <div class="address" data-mh="invoiceAddress">
+          <div class="content"><h:outputText value="#{address.label}" /></div>
+          <h:commandButton action="#{orderAddressBean.setInvoice}"
+            styleClass="add button -control -positive"
+            value="#{_['Select']}">
+            <p:ajax process="@this" update=":addressesForm:invoiceAddress" oncomplete="Modal.close('#chooseInvoiceAddress'); updateDom()" />
+            <f:setPropertyActionListener
+              target="#{orderAddressBean.selectedInvoiceAddress}"
+              value="#{address.id}" />
+          </h:commandButton>
+        </div>
+      </ui:repeat>
+    </div>
+  </div>
+</div>
+
+<div class="js-modal" id="chooseShippingAddress">
+  <div class="head">#{_['Select shipping address']}</div>
+  <div class="body">
+    <div class="address-list">
+      <ui:repeat value="#{orderAddressBean.allAddresses}" var="address">
+        <div class="address" data-mh="shippingAddress">
+          <div class="content"><h:outputText value="#{address.label}" /></div>
+          <h:commandButton action="#{orderAddressBean.setShipping}"
+            styleClass="add button -control -positive"
+            value="#{_['Select']}">
+            <p:ajax process="@this" update=":addressesForm:shippingAddress :addressesForm:invoiceAddress" oncomplete="Modal.close('#chooseShippingAddress'); updateDom()" />
+            <f:setPropertyActionListener
+              target="#{orderAddressBean.selectedShippingAddress}"
+              value="#{address.id}" />
+          </h:commandButton>
+        </div>
+      </ui:repeat>
+    </div>
+  </div>
+</div>
+</ui:define>
+
+<ui:define name="eofscript">
+  <script src="/#{shopInfoBean.versionPath}static/build/js/orderaddress.min.js"></script>
+  <ui:include src="/content-blocks/ups-access-point/ups-access-point-inline-script.xhtml"/>
+  
+  <script>
+    $( document ).ready(function() {
+
+      function additionalMessages() {
+        if ($('#addressesForm\\:invoiceSurname').val().length > 30) {
+          $('#addressesForm\\:invoiceSurname').after('<span class="validation -error -bottom">Max 30 tecken</span>');
+        }
+        if ($('#addressesForm\\:shippingSurname').val().length > 30) {
+          $('#addressesForm\\:shippingSurname').after('<span class="validation -error -bottom">Max 30 tecken</span>');
+        }
+        if ($('#addressesForm\\:invoiceForename').val().length > 30) {
+          $('#addressesForm\\:invoiceForename').after('<span class="validation -error -bottom">Max 30 tecken</span>');
+        }
+        if ($('#addressesForm\\:shippingForename').val().length > 30) {
+          $('#addressesForm\\:shippingForename').after('<span class="validation -error -bottom">Max 30 tecken</span>');
+        }
+        if ($('#addressesForm\\:invoiceCity').val().length > 30) {
+          $('#addressesForm\\:invoiceCity').after('<span class="validation -error -bottom">Max 30 tecken</span>');
+        }
+        if ($('#addressesForm\\:shippingCity').val().length > 30) {
+          $('#addressesForm\\:shippingCity').after('<span class="validation -error -bottom">Max 30 tecken</span>');
+        }
+      }
+      $('.js-next-button').click(function() {
+        additionalMessages();
+      });
+
+      var date = new Date();
+      date.setTime(date.getTime() + (5 * 60 * 1000));
+      if (! $.cookie("cookiePopUp")){
+        $(".js-next-button").trigger('click');
+        setTimeout(function(){ Modal.open('#addresscheck'); }, 2000);
+        $.cookie("cookiePopUp", "firstSet", { expires: date });
+      }
+
+      $( "#addresscheckOkay" ).click(function() {
+        Modal.close('#addresscheck');
+      });
+    });
+  </script>
+</ui:define>
+
+</ui:composition>

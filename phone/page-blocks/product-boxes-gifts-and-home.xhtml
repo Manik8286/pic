@@ -1,0 +1,111 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+    <section class="page-section">
+        <h3 class="headline -section">
+            <ui:fragment rendered="#{boxHomeLifestyle == true}">
+                Home &amp; Lifestyle-produkter som får dig att må bra
+            </ui:fragment>
+            <ui:fragment rendered="#{boxPhotogifts == true}">
+                Fotopresenter – från hjärtat istället för från lagerhyllan
+            </ui:fragment>
+        </h3>
+        <div class="product-list">
+
+            <ui:fragment rendered="#{boxHomeLifestyle == true}">
+                <div id="products-lifestyle" class="product -span-12">
+                    <ui:include src="/content-blocks/product-box.xhtml">
+                        <ui:param name="productBoxTitle" value="Fotofilt" />
+                        <ui:param name="productBoxAlt" value="foto filt" />
+                        <ui:param name="productBoxProductLink" value="home-lifestyle/fotofilt.jsf" />
+                        <ui:param name="buttonText" value="Skapa" />
+                        <ui:param name="productButtonIDinside" value="2000" />
+                        <ui:param name="formatAngebot" value="Format: 100 x 70 cm" />
+                        <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/home-lifestyle/foto-filt.jpg" />
+                        <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 100x70')}" />
+                        <ui:param name="productBoxText" value="Den supermjuka fotofilten för soffa och säng imponerar med en fantastisk fotoutskrift och kan tvättas i maskin." />
+                    </ui:include>
+                </div>
+
+                <div class="product -span-12">
+                    <ui:include src="/content-blocks/product-box.xhtml">
+                        <ui:param name="productBoxTitle" value="Fotokudde" />
+                        <ui:param name="productBoxAlt" value="foto kudde" />
+                        <ui:param name="productBoxProductLink" value="/home-lifestyle/fotokudde.jsf" />
+                        <ui:param name="productBoxUploadLink" value="home-lifestyle/fotokudde.jsf" />
+                        <ui:param name="buttonText" value="Mer information" />
+                        <ui:param name="formatAngebot" value="Format: 40x40 cm" />
+                        <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/home-lifestyle/foto-kudde.jpg" />
+                        <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Pillow_Bestcanvas_SE', 'Pillow', 'Pillow 40x40')}" />
+                        <ui:param name="productBoxText" value="Högkvalitativa fotokuddar i olika storlekar och material - ditt eget örngott när det är dags för mys." />
+                    </ui:include>
+                </div>
+
+                <div class="product -span-12">
+                    <ui:include src="/content-blocks/product-box.xhtml">
+                        <ui:param name="productBoxTitle" value="Akrylblock" />
+                        <ui:param name="productBoxAlt" value="acrylblock" />
+                        <ui:param name="productBoxProductLink" value="/home-lifestyle/akrylblock.jsf" />
+                        <ui:param name="productBoxUploadLink" value="/singleupload.jsf?product=1613" />
+                        <ui:param name="buttonText" value="Skapa" />
+                        <ui:param name="productButtonIDinside" value="1613" />
+                        <ui:param name="formatAngebot" value="Format: 10x10 cm" />
+                        <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/home-lifestyle/acrylblock.jpg" />
+                        <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 10x10')}" />
+                        <ui:param name="productBoxText" value="Det kristallklara fotoakrylblocket visar fotot från alla vinklar - den perfekta dekorationen för bord &amp; fönsterbräda." />
+                    </ui:include>
+                </div>
+
+            </ui:fragment>
+
+            <ui:fragment rendered="#{boxPhotogifts == true}">
+                <div id="products-gifts" class="product -span-12">
+                    <ui:include src="/content-blocks/product-box.xhtml">
+                        <ui:param name="productBoxTitle" value="Fotomugg" />
+                        <ui:param name="productBoxAlt" value="foto mugg" />
+                        <ui:param name="productBoxProductLink" value="/fotopresenter/fotomugg.jsf" />
+                        <ui:param name="productBoxUploadLink" value="/fotopresenter/fotomugg.jsf" />
+                        <ui:param name="buttonText" value="Mer information" />
+                        <ui:param name="formatAngebot" value="" />
+                        <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/fotopresenter/foto-mugg.jpg" />
+                        <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Mug_Bestcanvas_SE', 'Mug', 'Mug Left Landscape')}" />
+                        <ui:param name="productBoxText" value="Ditt foto på muggar gjorda av högkvalitativ keramik eller äkta porslin – finns även med färgstark insida och magisk effekt." />
+                    </ui:include>
+                </div>
+
+
+                <div class="product -span-12">
+                    <ui:include src="/content-blocks/product-box.xhtml">
+                        <ui:param name="productBoxTitle" value="Musmatta med Foto" />
+                        <ui:param name="productBoxAlt" value="foto musmatta" />
+                        <ui:param name="productBoxProductLink" value="/fotopresenter/musmatta-med-foto.jsf" />
+                        <ui:param name="productBoxUploadLink" value="/singleupload.jsf?product=863" />
+                        <ui:param name="buttonText" value="Skapa" />
+                        <ui:param name="formatAngebot" value="Format: 22 x 18 x 0,3 cm" />
+                        <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/fotopresenter/foto-musmatta.jpg" />
+                        <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Mousepad_Bestcanvas_SE', 'Mousepad', 'Mousepad 22x18x03')}" />
+                        <ui:param name="productBoxText" value="Vacker och funktionell! Med den halksäkra fotomusmattan kan du njuta av din favoritbild vid skrivbordet." />
+                    </ui:include>
+                </div>
+
+                <div class="product -span-12">
+                    <ui:include src="/content-blocks/product-box.xhtml">
+                        <ui:param name="productBoxTitle" value="Fotopussel" />
+                        <ui:param name="productBoxAlt" value="foto pussel" />
+                        <ui:param name="productBoxProductLink" value="/fotopresenter/fotopussel.jsf" />
+                        <ui:param name="productBoxUploadLink" value="/singleupload.jsf?product=864" />
+                        <ui:param name="buttonText" value="Skapa" />
+                        <ui:param name="formatAngebot" value="Format: 20 x 27 cm" />
+                        <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/fotopresenter/foto-pussel.jpg" />
+                        <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Puzzle_Bestcanvas_SE', 'Puzzle', 'Puzzle 20x27 cm - 88 Teile')}" />
+                        <ui:param name="productBoxText" value="Ett bra presenttips: Ditt foto som ett 88-bitars pussel - stabil låda, exakt stansning och äkta fotoglans." />
+                    </ui:include>
+                </div>
+            </ui:fragment>
+        </div>
+    </section>
+
+</ui:composition>

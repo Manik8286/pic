@@ -1,0 +1,69 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <div class="col -span-12">
+
+    <h3 class="-highlighted-text">Fraktkostnader</h3>
+    <p><strong>Sverige/Norge/Finland/Danmark:</strong></p>
+    <ul>
+      <li>
+        Frakt inom Sverige/Norge/Finland/Danmark för första artikeln kostar 119,00 kr. För ytterligare artiklar (beställningar med 2+ artiklar*) tillkommer en extra fraktkostnad på 30 kr.*Flera MIXPIX-beställningar räknas som en artikel, vilket innebär att en beställning med flera MIXPIX-artiklar endast kommer att ha en fraktkostnad på 119 kr. Frakt till öar kostar 299,00 kr.
+      </li>
+    </ul>
+
+    <p><strong>Vänligen notera:</strong></p>
+    <ul>
+      <li>
+        <strong>Sverige:</strong> Fri leverans från 800,00 kr.
+      </li>
+      <li>
+        <strong>Norge:</strong> Tullavgifter kan tas ut vid leverans till Norge.
+      </li>
+      <li>
+        Vid beställningar som innehåller olika produkter, riktar sig leveranskostnaderna efter den produkt med högsta leveranskostnad.
+      </li>
+      <li>
+        Vid mix beställningar, vägg- och fotopresent produkter tillkommer +30,00 kr.
+      </li>
+    </ul>
+
+    <h3 class="-highlighted-text">Leveranstid</h3>
+    <ul>
+      <li>Vid beställningar som innehåller olika produkter, riktar sig leveranstiden efter den produkt med längst leveranstid.</li>
+      <li>Beställningar med 2 produkter med maximal storlek 40x30cm kommer automatiskt att skickas utan paketnummer.</li>
+      <li>Den totala leveranstiden till Norge ökar för samtliga artiklar med upp till 7 dagar. Leveranser till Norge kan försenas på grund av tull- och importformaliteter.</li>
+    </ul>
+
+    <p><strong>Sverige, Norge, Finland, Danmark:</strong></p>
+
+    <div class="col #{sessionBean.userAgentType == 'desktop' or sessionBean.userAgentType == 'tablet' ? '-span-6' : '-span-12'}">
+      <div class="-span-12 titleBlockShipping">
+        <strong>Canvas tavlor*</strong>
+      </div>
+      <div class="-span-12 contentBlockShipping">
+        Produktionstid: 1 arbetsdag <br />
+        Leveranstid: 3 till 5 arbetsdagar <br />
+        Total leveranstid: upp till 6 arbetsdagar
+      </div>
+    </div>
+
+    <div class="col #{sessionBean.userAgentType == 'desktop' or sessionBean.userAgentType == 'tablet' ? '-span-6' : '-span-12'}">
+      <div class="-span-12 titleBlockShipping #{sessionBean.userAgentType == 'phone' ? '-top' : ''}">
+        <strong>Alla andra produkter</strong>
+      </div>
+      <div class="-span-12 contentBlockShipping">
+        Produktionstid: 2 arbetsdagar <br />
+        Leveranstid: 3 till 5 arbetsdagar <br />
+        Total leveranstid: upp till 7 arbetsdagar
+      </div>
+    </div>
+
+    <div class="col -span-12">
+      <p class="answer"></p>
+    </div>
+
+  </div>
+
+</ui:composition>

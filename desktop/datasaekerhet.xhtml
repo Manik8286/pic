@@ -1,0 +1,35 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Sekretesspolicy" />
+
+  <ui:define name="head">
+    
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="robots" content="INDEX,FOLLOW" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+  </ui:define>
+
+  <ui:define name="content">
+    <div class="page-teaser -collapse">
+      <div class="text" style="background-image: url(/#{shopInfoBean.versionPath}assets/img/backgrounds/tower_skyline.jpg)">
+        <div class="row">
+          <div class="col -span-12">
+            <h1 class="headline">Integritetspolicyn</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="page-text">
+      <h:outputText escape="false" value="#{contentBean.snippets['GDPR-bcse']}"/>
+    </section>
+    
+  </ui:define>
+</ui:composition>

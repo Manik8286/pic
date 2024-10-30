@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+                <ui:remove>
+                  <!--
+                  <element class="js-countdown">` needs two attributes in order to work:
+                  - data-until: the date when the countdown is over. YYYY/MM/DD HH:MM:SS
+                  - data-format: the formatted output. See here for a documentation:
+                  http://hilios.github.io/jQuery.countdown/documentation.html#formatter
+                  -->
+                </ui:remove>
+                
+    <div class="header-bar -facebook">
+      <div class="row">
+        <div class="col -span-12 -text-centered" style="margin-top: 8px;">
+          <span>¡Oferta de Facebook Activada!</span>
+          <!--
+          <div class="-countdownBlock">
+            <span class="js-countdown" data-until="2017/06/12 23:59:59" data-format="%-H T. %M Min. %S Sek."></span>
+            <a href="javascript:void(0)" class="shippingLinkDeal" onclick="Modal.open('#guarantee24h');">
+              <span>Levergarantie voor Vaderdag</span>
+            </a> 
+          </div>
+          -->
+        </div>
+      </div>
+    </div>
+</ui:composition>

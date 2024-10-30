@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <footer class="_p_page-footer row">
+    <ul class="js-accordion menu col -span-12" data-accordion-close="true">
+      <li class="item -level-1 -expandable js-accordion-title"><span>bestcanvas.se</span></li>
+      <ul class="sub js-accordion-body">
+        <li class="item -level-2"><a href="/om-oss/">Om oss</a></li>
+        <li class="item -level-2"><a href="/kvalitet/">Kvalitet</a></li>
+        <li class="item -level-2"><a href="/inredningstips/">Dekor Världen</a></li>
+        <li class="item -level-2"><a href="/impressum/">Kontakt</a></li>
+        <li class="item -level-2"><a href="/affiliate/">Affiliate Program</a></li>
+        <li class="item -level-2"><a href="/blog/">Canvas wiki blogg</a></li>
+      </ul>
+
+      <li class="item -level-1 -expandable js-accordion-title"><span>Service</span></li>
+
+      <ul class="sub js-accordion-body">
+        <li class="item -level-2"><a href="javascript:void(0)" onclick="Modal.open('#bestPriceGuarantee');">Lågprisgaranti</a></li>
+        <li class="item -level-2"><a href="/betalning/">Säker Betalning</a></li>
+        <li class="item -level-2"><a href="/betalning-leveransinfo.jsf">Leveransinformation</a></li>
+      </ul>
+
+      <li class="item -level-1 -expandable js-accordion-title"><span>Kundtjänst</span></li>
+
+      <ul class="sub js-accordion-body">
+        <li class="item -level-2"><a href="/faq/vanliga-fragor.jsf">Vanliga Frågor</a></li>
+        <li class="item -level-2"><a href="/bestallningsstatus/">Beställningsstatus</a></li>
+        <li class="item -level-2"><a href="/format/">Format &amp; Priser</a></li>
+        <li class="item -level-2"><a href="/kopvillkor/">Allmänna Köpvillkor</a></li>
+        <li class="item -level-2"><a href="/datasaekerhet/">Integritetspolicyn</a></li>
+        <li class="item -level-2"><a href="javascript:void(0)" onclick="Modal.open('#shippingInfo');">Fraktkostnader</a></li>
+        <c:choose>
+          <c:when test="#{loginBean.loggedIn}">
+            <li class="item -level-2"><a href="/logout.jsf">#{_['Logout']}</a> </li>
+            <li class="item -level-2"><a href="/accountoverview.jsf">#{_['Account']}</a></li>
+          </c:when>
+          <c:otherwise>
+            <li class="item -level-2"><a href="/customer/">#{_['Login']}</a></li>
+          </c:otherwise>
+        </c:choose>
+      </ul>
+
+      <li class="item -level-1 -expandable js-accordion-title"><span>Produkter</span></li>
+
+      <ul class="sub js-accordion-body">
+          <li class="item -level-2"><a href="/vaggdekor/canvastavlor.jsf">Canvastavlor</a></li>
+          <li class="item -level-2"><a href="/vaggdekor/">Väggdekoration</a></li>
+          <li class="item -level-2"><a href="/home-lifestyle/">Home &amp; Lifestyle</a></li>
+          <li class="item -level-2"><a href="/fotopresenter/">Fotopresenter</a></li>
+          <li class="item -level-2"><a href="/vaerdecheckar/">Värdecheckar</a></li>
+      </ul>
+    </ul>
+    <div class="fine-print">* Alla priser inkl. moms, <a href="/betalning-leveransinfo.jsf" target="_blank" class="link">exkl. fraktkostnad</a> (ingen moms för beställningar till Norge).</div>
+  </footer>
+</ui:composition>

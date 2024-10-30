@@ -1,0 +1,75 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Kontakt" />
+
+  <ui:define name="head"></ui:define>
+
+  <ui:define name="meta">
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+  </ui:define>
+
+  <ui:define name="content">
+    <section class="page-section -span-12">
+      <div class="contact-us row">
+        <ui:include src="/content-blocks/contact-us/contact-info.xhtml">
+          <ui:param name="contactMainTitle" value="#{_['Help &amp; Contact']}" />
+          <ui:param name="requestIcon" value="/#{shopInfoBean.versionPath}assets/img/icons/contact-mail.svg" />
+          <ui:param name="requestTitle" value="#{_['Submit a request']}" />
+          <ui:param name="requestTime" value="#{_['Anytime']}" />
+          <ui:param name="requestDays" value="#{_['Monday to Sunday']}" />
+          <ui:param name="requestButtonName" value="#{_['Submit Request']}" />
+          <ui:param name="webFormAction" value="
+                    FreshworksWidget('open');
+                    FreshworksWidget('hide', 'ticketForm', ['group_id']);
+                    FreshworksWidget('hide', 'ticketForm', [ 'custom_fields.cf_company']);
+                    FreshworksWidget('hide', 'ticketForm', [ 'custom_fields.cf_topic_api']);
+                    FreshworksWidget('hideChoices', 'ticketForm', {
+                      'custom_fields': {
+                        'cf_topic': [
+                                      'Orders (status, reprints, refunds)',
+                                      'Cancel &amp; Change Order',
+                                      'Integrations',
+                                      'Ordering',
+                                      'Pricing',
+                                      'Shipping',
+                                      'Invoicing',
+                                      'Products',
+                                      'Account',
+                                      'Collaboration',
+                                      'Request a Feature',
+                                      'Report a Bug',
+                                      'Cancel and Change Order',
+                                      'Order Process'
+                                    ]
+                        }
+                    });" />
+
+          <ui:param name="callIcon" value="/#{shopInfoBean.versionPath}assets/img/icons/contact-call.svg" />
+          <ui:param name="callTitle" value="#{_['Phone with an agent']}" />
+          <ui:param name="callTime" value="11 till 16" />
+          <ui:param name="callDays" value="#{_['Monday to Friday']}" />
+          <ui:param name="phoneNumberCall" value="+4922195673125" />
+          <ui:param name="phoneNumberText" value="+ 49 (0) 221 95673125*" />
+
+          <ui:param name="blueChat" value="true" />
+          <ui:param name="hideChatBlock" value="true" />
+          <ui:param name="customColSizeRequestHalf" value="true" />
+          <ui:param name="customColSizeCallHalf" value="true" />
+        </ui:include>
+        <div class="col -span-12">
+          <p>
+            <small>
+              (* 1,4 kr. från fasta telefoner, mobil priser kan vara högre. Kostnaden per minut motsvarar tariffen av din operatör för ett vanligt internationellt samtal, max. 4,2 kr.)
+            </small>
+          </p>
+        </div>
+      </div>
+    </section>
+  </ui:define>
+</ui:composition>

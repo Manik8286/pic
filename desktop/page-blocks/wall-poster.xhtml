@@ -1,0 +1,93 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:o="http://omnifaces.org/ui">
+
+
+  <section class="page-section">
+    <div class="articles">
+      <!-- product info -->
+      <div class="article-showcase">
+        <h3 class="headline -has-sidelines"><span>Vad är ett fotoposter-tryck?</span></h3>
+        <div class="col -span-#{sessionBean.userAgentType == 'desktop' ? '6' : ''}#{sessionBean.userAgentType == 'tablet' ? '8 -centered' : ''}#{sessionBean.userAgentType == 'phone' ? '12' : ''} image js-image-switcher">
+          <ul class="images">
+            <li data-image-name="preview:front" class="-visible"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/fotoposter/poster-egen-bild-komplett-vy.jpg" alt="poster egen bild komplett vy" /></li>
+            <li data-image-name="preview:room"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/fotoposter/poster-egen-bild-i-rummet.jpg" alt="poster egen bild i rummet" /></li>
+            <li data-image-name="preview:detail"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/fotoposter/poster-egen-bild-detaljerad-vy.jpg" alt="poster egen bild detaljerad vy" /></li>
+          </ul>
+
+          <ul class="options -has-#{sessionBean.userAgentType == 'desktop' ? '3' : '2'}">
+            <li><button type="button" class="cbutton -highlight" data-target="preview:front">Komplett vy</button></li>
+            <li><button type="button" class="cbutton" data-target="preview:detail">Detaljerad vy</button></li>
+            <li><button type="button" class="cbutton" data-target="preview:room">I rummet</button></li>
+          </ul>
+        </div>
+
+        <div class="description-wrapper -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'}">
+          <div class="description" style="#{sessionBean.userAgentType == 'tablet' ? 'width: 100%' : ''}">
+            <p class="text">
+            Vårt fotoposter-tryck är en underskattad klassiker! Om du vill lägga till den personliga touchen i alla rum är
+            fotoposters den enklaste och mest prisvärda lösningen. Förvänta dig fantastisk HD-reproduktion på premium fotopapper,
+            kombinerat med en elegant minimalistisk design. Finns i färg eller svartvitt.
+            </p>
+            <p class="text">
+              <strong>Foto på poster</strong>
+            </p>
+            <br />
+            <ul class="text grey-checkmark">
+              <li>Finns i 13 mångsidiga format</li>
+              <li>Matt tryck för en elegant finish</li>
+              <li>Vackert berikade färger och skarp definition</li>
+              <li>Superlätt och enkel att hänga upp</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="description-wrapper">
+          <br />
+          <h3 class="headline -has-sidelines"><span>Fotoposter-tryck SE - En tidlös klassiker</span></h3>
+          <div class="col -span-#{sessionBean.userAgentType != 'desktop' ? '12' : '6'}" data-mh="text">
+            <strong class="text">Anpassad poster i HD-kvalitet</strong>
+            <p class="text">
+            Med endast några enkla steg kan du göra ditt foto till en poster - i exceptionell HD-kvalitet. Vår personliga poster är
+            inget lättviktigt engångsobjekt. Den är tillverkad av äkta premiumfotopapper, så skarpa linjer och levande färger är
+            garanterade. Om ditt rum behöver ett nytt utseende kan du förvandla dina speciella fotominnen till anpassade posters och
+            låta din kreativitet få fritt spelrum!
+            </p>
+          </div>
+          <div class="col -span-#{sessionBean.userAgentType != 'desktop' ? '12' : '6'}" data-mh="text">
+            <strong class="text">Flera format, en värld av möjligheter</strong>
+            <p class="text">
+            Fotoposters är fantastiskt mångsidiga. Den enkla designen innebär att de gör rättvisa åt alla foton från din samling.
+            Dessa personliga posters finns i 13 olika storlekar, vilket möjliggör en mängd olika kombinationer. Alla format är
+            fantastiskt prisvärda, så om du vill trycka flera foton och skapa en klassisk gallerivägg kommer våra anpassade
+            fotoposters inte att behöva krossa spargrisen.
+            </p>
+          </div>
+          <div class="col -span-#{sessionBean.userAgentType != 'desktop' ? '12' : '6'}" data-mh="text">
+            <strong class="text">Förvandla foton till posters med BestCanvas.se</strong>
+            <p class="text">
+            Vi använder 275g/m² premium fotopapper för alla våra fotoposter-tryck. Pappret av laboratoriekvalitet ger dina bilder en
+            oslagbar klarhet och djup. Samtidigt ger den eleganta matta finishen en touch av vintagestil som vackert sammanstrålar
+            med monokroma bilder. Fotopostern är betryggande robust men ändå mycket lätt.
+            </p>
+          </div>
+          <div class="col -span-#{sessionBean.userAgentType != 'desktop' ? '12' : '6'}" data-mh="text">
+            <strong class="text">Personliga posters - snabb och enkel beställning</strong>
+            <p class="text">
+            Vår beställningsprocess kunde inte vara enklare. Klicka bara på "Ladda upp bilder" så uppmanas du att söka efter en
+            digital bildfil på din dator. Ladda upp ditt foto och sedan behöver du bara göra ett par snabba designval för ditt
+            fotoposter-tryck. Din nya personliga poster kommer att anlända till din dörr inom bara några dagar.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- /product info -->
+    </div>
+
+      <ui:include src="/content-blocks/lp/fotoposter-format-table.xhtml" />
+
+  </section>
+
+</ui:composition>

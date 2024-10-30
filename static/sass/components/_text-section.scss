@@ -1,0 +1,101 @@
+.text-section {
+  @extend .page-section;
+
+  > .headline {
+    margin-top: 0;
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 34px;
+    font-weight: $weight-normal;
+  }
+
+  > .section {
+    @extend .row;
+
+    margin-top: 0;
+    margin-bottom: 45px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    > .headline {
+      @extend .col;
+      @extend %-span-12;
+
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 18px;
+      font-weight: $weight-normal;
+    }
+
+    > .headline-small{
+      @extend .col;
+      @extend %-span-12;
+
+      font-size: 16px;
+      margin-top: 0;
+      margin-bottom: 18px;
+      font-weight: $weight-bold;
+    }
+
+    > .action-green {
+      @extend .button.-flat-green;
+      margin: 0 10px;
+      float: left;
+
+      &.-right{
+        float:right;
+      }
+    }
+
+    > .action-orange {
+      @extend .button.-flat-orange;
+      margin: 0 10px;
+
+      &.-right{
+        float:right;
+      }
+    }
+
+    > ul{
+      @extend .col;
+      @extend %-span-12;
+
+      font-size: 14px;
+      line-height: 20px;
+      padding: 18px 10px;
+      margin:0;
+    }
+
+    > ul li{
+      margin-left: 18px;
+
+    }
+
+    > .text {
+      @extend .col;
+      @extend %-span-12;
+
+      font-size: 14px;
+      line-height: 20px;
+      margin: 0;
+      > a {
+        color: $newGreen;
+        text-decoration: none;
+      }
+      > .action-link {
+        color:$newGreen;
+        text-decoration:none;
+      }
+
+      > .action-link:hover {
+        text-decoration:underline;
+      }
+
+      &.-intro{
+      font-weight:bold;
+      }
+    }
+  }
+}

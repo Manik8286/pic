@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+  <!-- Rich snippet -->
+    <section class="page-section">
+      <div class="article-showcase -no-bottom">
+        <h3 class="headline -has-sidelines"><span>Betygsättning och recensioner</span></h3>
+        <div class="col -span-12 description text-center" vocab="http://schema.org/" typeof="Product">
+          <span property="brand" typeof="Brand">
+	      <meta property="name" content="BestCanvas.se" />
+	      </span>
+          <meta property="name" content="Fotopussel" />
+          <meta property="image" src="https://download.cdn-shop.com/media/web_images/se/bestcanvas/fotopussel.jpg" />
+          <meta property="description" content="Ditt Fotopussel. &#x2705; Personligt pussel med eget foto av högsta kvalitet. &#x2705; Gjord av robust kartong och precisionsstämplade bitar." />
+          <meta property="sku" content="PUZZLE-20x27-88TEILE" />
+          <span property="aggregateRating" typeof="AggregateRating">
+          <p class="text">
+            <ui:include src="/rich-snippets/snippet-rating.xhtml" />Fotopussel nu!</p>
+          </span>
+          <span property="offers" typeof="Offer">
+            <meta property="url" content="https://www.bestcanvas.se/fotopresenter/fotopussel.jsf" />
+            <meta property="priceCurrency" content="SEK" />
+            <meta property="price" content="#{fn:trim(priceBean.productPrice('Puzzle_Bestcanvas_SE', 'Puzzle', 'Puzzle 20x27 cm - 88 Teile').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+            <time property="priceValidUntil" datetime="#{now.month + 1 eq 12 ? now.year + 1900 + 1 : now.year + 1900}-12-31"></time>
+            <span property="seller" typeof="Organization">
+              <meta property="name" content="BestCanvas.se" />
+            </span>
+            <link property="itemCondition" href="http://schema.org/NewCondition" />
+            <link property="availability" href="http://schema.org/InStock" />
+          </span>
+        </div>
+      </div>
+    </section>
+  <!-- /Rich snippet -->
+
+</ui:composition>

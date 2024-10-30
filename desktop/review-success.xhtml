@@ -1,0 +1,32 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:param name="pageTitle" value="Review Success" />
+
+  <ui:define name="head">
+    
+    <style>
+        .review-success {padding-top: 30px;}
+        .thumbs-up {max-width: 1360px; top: 4px; position: relative; margin: 0px auto;}
+    </style>
+  </ui:define>
+
+    <ui:define name="meta">
+        <meta name="robots" content="NOINDEX,FOLLOW" />
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="container l-content review-success text-center">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/review/smile-green-success.jpg" align="center" />
+            <h2>Tack så mycket!</h2>
+            <h4>
+                Tack för att ni  tog er tid att betygsätta er beställning hos oss. Denna information skickats vidare till våra specialister för att säkerställa att våra tjänster kontinuerligt förbättras.
+            </h4>
+        </div>
+        <div class="thumbs-up">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/review/review-best.jpg" width="100%" />
+        </div>
+    </ui:define>
+
+</ui:composition>

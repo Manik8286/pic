@@ -1,0 +1,111 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:o="http://omnifaces.org/ui">
+
+
+  <h2 class="headline -section" jsf:rendered="#{empty NotShowTitle}">Ge liv åt dina väggar</h2>
+
+    <div class="article-showcase -small-bottom">
+      <h2 class="headline -has-sidelines"><span>Snabbt, flexibelt och enkelt</span></h2>
+      <div class="col -span-12 image" jsf:rendered="#{sessionBean.userAgentType != 'phone'}">
+        <img class="img-responsive width100" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/mixpix/lp_Product_info.jpg" alt="mixpix" />
+      </div>
+    </div>
+
+
+  <div class="article-showcase -small-bottom">
+
+      <div class="col -span-#{sessionBean.userAgentType == 'phone' ? '12' : '4'} -has-subtitle">
+        <div class="description-wrapper">
+          <ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/mixpix/lp_Product_info_mob.jpg" class="img-responsive width100" alt="mixpix" />
+            <br /> <br /><br />
+          </ui:fragment>
+          <img class="img-responsive width100" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/mixpix/LP_tile_1_320x320px.jpg" alt="mixpix" />
+          <h4 class="headline">Djupa färger och makalöst klart tryck.</h4>
+          <p class="text -align-left">Välj MIXPIX<sup>®</sup> och förvandla din heminredning - på ett par sekunder!</p>
+          <br />
+       </div>
+     </div>
+
+     <div class="col -span-#{sessionBean.userAgentType == 'phone' ? '12' : '4'} -has-subtitle">
+      <div class="description-wrapper">
+      <img class="img-responsive width100" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/mixpix/magnofix-preview-image.jpg" alt="mixpix" />
+        <h4 class="headline">Pålitlig upphängning med Magnofix<sup>®</sup></h4>
+          <p class="text -align-left">Det nya och innovativa hängsystemet från Magnofix<sup>®</sup> kommer att hålla fast vid nästan alla väggar.</p>
+          <br />
+      </div>
+      </div>
+
+      <div class="col -span-#{sessionBean.userAgentType == 'phone' ? '12' : '4'} -has-subtitle">
+        <div class="description-wrapper">
+         <img class="img-responsive width100" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/mixpix/LP_tile_3_320x320px.jpg" alt="mixpix" />
+          <h4 class="headline">Beställt snabbt och enkelt</h4>
+            <p class="text -align-left">Ingen app eller login behövs: bara ladda upp dina bilder och beställ!</p>
+            <br />
+       </div>
+     </div>
+
+      <div class="col -span-12 description-wrapper text-center">
+        <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+          <ui:param name="directuploadProductId" value="4284" />
+          <ui:param name="directuploadClass" value="button -action -arrow" />
+          <ui:param name="buttonText" value="Skapa" />
+        </ui:include>
+      </div>
+
+  </div>
+
+  <div class="article-showcase -small-bottom">
+      <h2 class="headline -has-sidelines"><span>Ibland galet, ibland sött, alltid annorlunda</span></h2>
+      <div class="col -span-12 description-wrapper text-center">
+        <img class="lazy #{sessionBean.userAgentType == 'phone' ? 'img-responsive' : ''}" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-src="#{sessionBean.userAgentType == 'phone' ? '/assets/img/produkter/mixpix/Pattern_mobileGif.gif' : '/assets/img/produkter/mixpix/LP_Product_Pattern_variations.gif'}" data-srcset="#{sessionBean.userAgentType == 'phone' ? '/assets/img/produkter/mixpix/Pattern_mobileGif.gif' : '/assets/img/produkter/mixpix/LP_Product_Pattern_variations.gif'}" alt="mixpix" />
+          <p class="text center">Placera din MIXPIX<sup>®</sup> som ett tomt rutnät, I ett häftigt mönster eller freestyle.</p>
+          <br />
+     </div>
+
+  </div>
+
+
+  <ui:fragment rendered="#{sessionBean.userAgentType != 'phone'}">
+    <div class="article-showcase -small-bottom">
+      <h2 class="headline -has-sidelines"><span>MIXPIX<sup>®</sup> fotorutor ger dig kontrollen</span></h2>
+
+      <div class="description-wrapper col -span-#{sessionBean.userAgentType == 'desktop' ? '6 -right' : '12 text-center'}">
+        <iframe src="" data-src="https://www.youtube.com/embed/UuvMA8rUrxw?loop=1&#x26;modestbranding=1&#x26;showinfo=0&#x26;rel=0&#x26;iv_load_policy=3&#x26;controls=0" width="490" frameborder="0" height="276"></iframe>
+        <br/><br/>
+      </div>
+
+      <div class="description-wrapper col -span-#{sessionBean.userAgentType == 'desktop' ? '6 -left' : '12'}" data-target-id="frameSwitcher">
+            <p class="text">Det är det nyaste, enklaste sättet att hänga upp bilder på din vägg! Inga fler borrningar, inga fler hål – MIXPIX<sup>®</sup> håller sig uppe på egen hand!</p>
+            <p class="text">Tack vare en kärna av lättviktsskum och ett smart självhäftande + magnetiskt hängsystem, kommer MIXPIX<sup>®</sup> att fastna fast vid nästan alla väggar. (Tips: Om du är osäker på om du kommer att kunna ta bort dem utan att lämna rester ska du testa kuddarna på en obemärkt plats först för att kontrollera.)</p>
+            <p class="text">Förvandla dina favoritfoton till eleganta och mångsidiga utskrifter. Med en fantastisk upplösning och de otroliga färgerna ger MIXPIX<sup>®</sup> dig dubbelt så roligt och inget krångel!</p>
+        <br/><br />
+      <div class="description-wrapper">
+        <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+          <ui:param name="directuploadProductId" value="4284" />
+          <ui:param name="directuploadClass" value="button -action -arrow" />
+          <ui:param name="buttonText" value="Skapa" />
+        </ui:include>
+      </div>
+
+      </div>
+    </div>
+  </ui:fragment>
+
+
+  <ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+    <div class="article-showcase -small-bottom">
+        <h2 class="headline -has-sidelines"><span>Väggdesign har aldrig varit enklare</span></h2>
+        <div class="description-wrapper col -span-12 text-center">
+          <iframe src="" data-src="https://www.youtube.com/embed/UuvMA8rUrxw?loop=1&#x26;modestbranding=1&#x26;showinfo=0&#x26;rel=0&#x26;iv_load_policy=3&#x26;controls=0" width="100%" frameborder="0" height="200"></iframe>
+        </div>
+    </div>
+  </ui:fragment>
+
+ </ui:composition>

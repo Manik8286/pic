@@ -1,0 +1,146 @@
+<ui:composition template="/templates/default-pwa.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="#{_['View status of your order']}" />
+  <ui:param name="mastertagTracking" value="generic" />
+
+  <ui:define name="head">
+    <!--  -->
+    <link rel="manifest" href="manifest.json" />
+    <style>
+      .pwaBottomBarHide {
+        display: none;
+      }
+      #pwaBottomBar {
+        padding: 12px 0;
+        text-align: center;
+        border-left: 1px solid;
+        border-top: 1px solid;
+        border-right: 1px solid;
+        padding-top: 7px;
+        font-size: 12px;
+        width: 100%;
+        z-index: 100000000;
+        bottom: 47px;
+        position: fixed;
+        background-color: #fff;
+      }
+      .close-pwa-notification {
+        cursor: pointer;
+        color: #526066;
+        text-decoration: underline;
+      }
+    </style>
+  </ui:define>
+  
+  <ui:define name="meta">
+    <meta name="robots" content="NOINDEX,NOFOLLOW" />
+    <meta name="description" content="#{_['View status of your order']}" />
+  </ui:define>
+
+  <ui:define name="content">
+    <div class="page-teaser -collapse">
+      <div class="text -impressum-teaser">
+        <div class="row">
+          <div class="col -span-12">
+            <h1 class="headline">#{_['View status of your order']}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="page-text">
+      <div class="wrapAllShops l-content col -span-12">
+        <div id="trackingEntry">
+
+          <table class="orderstatusTable">
+            <tbody>
+              <tr>
+                <td>
+                  <label for="ordernumber">#{_['Order Number']} *</label>
+                </td>
+                <td>
+                  <input type="text" id="ordernumber" value="#{param['ordernumber']}" size="25"/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="emailaddress">#{_['Email address used on order']} *</label>
+                </td>
+                <td>
+                  <input type="text" id="emailaddress" value="#{param['email']}" size="25"/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a class="action button -action -wide cursorPointer" onclick="PT.searchOrderStatus();">#{_['View details']}</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="orderInfo" class="l-content" style="display:none;">
+        <h2>#{_['Order Status']}</h2>
+        <h3>#{_['Order Number']} <span id="numberResponse"></span></h3>
+        <div id="dynamicContent"></div>
+      </div>
+      
+      <div class="subscription-details js-subscription-details">
+        <pre><code class="js-subscription-json"></code></pre>
+      </div>
+
+    </section>
+    <script src="js/orderstatusSE.min.js"/>
+    <input id="accesscode" value="#{param['accesscode']}" type="hidden"/>
+
+    <div id="pwaBottomBar" class="pwaBottomBar pwaBottomBarHide">
+      <p>
+          <button disabled="disabled" class="js-push-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+            Enable Push Messaging
+          </button>
+          Once you've subscribed your user, you'd send their subscription to your
+          server to store in a database so that when you want to send a message
+          you can lookup the subscription and send a message to it.
+      </p>
+      <span class="close-pwa-notification" onclick="document.getElementById('pwaBottomBar').remove();"><span>Close</span></span>
+    </div>
+
+  </ui:define>
+
+  <ui:define name="eofscript">
+      <script type="text/javascript">
+      $(document).ready(function () {
+          var ordernumber = document.getElementById('ordernumber').value;
+          var accesscode = document.getElementById('accesscode').value;
+          if (window.location.href.indexOf("accesscode") > -1) {
+            $('#trackingEntry').hide();
+            PT.searchOrderStatusByAccessCode(ordernumber, accesscode);
+          }
+      });
+    </script>
+
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script> -->
+    <script src="js/pwa-example.js"></script>
+    <script type="text/javascript" src="js/cookie-pwa.js"></script>
+    <script>
+      $(document).ready(function() {
+        if ($.cookie('hide-after-load') == 'yes') {
+          $('body #pwaBottomBar').addClass('pwaBottomBarHide');
+        }
+        else {
+          $('body #pwaBottomBar').removeClass('pwaBottomBarHide');
+        }
+        $.cookie('hide-after-load', 'yes', {expires: 7 });
+      });
+    </script>
+  </ui:define>
+
+
+
+</ui:composition>

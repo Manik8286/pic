@@ -1,0 +1,42 @@
+.nav-box {
+  @extend .box;
+
+  padding: 0;
+
+  ul {
+    padding: 0 10px;
+    margin: 0;
+    list-type: none;
+  }
+
+  ul > li {
+    list-style-type: none;
+
+    > a {
+      font-size: 14px;
+      display: block;
+      width: 100%;
+      padding: 8px 10px;
+      padding-left: 0;
+      text-decoration: none;
+      color: $page-text-color;
+    }
+
+    &:hover > a {
+      color: $highlight-color;
+    }
+
+    &.-active > a {
+      font-weight: $weight-semibold;
+      color: $highlight-color;
+    }
+
+    &.headline {
+      font-size: 16px;
+      font-weight: $weight-semibold;
+      border-bottom: 1px solid $lighter-box-border;
+      margin: 0 -10px;
+      padding: 5px 10px;
+    }
+  }
+}

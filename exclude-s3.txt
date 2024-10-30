@@ -1,0 +1,5 @@
+assets/uploads/**/*
+assets/svg/**/*
+assets/img/sprites/**/*
+assets/build/svg/**/*
+

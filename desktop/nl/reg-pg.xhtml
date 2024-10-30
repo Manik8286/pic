@@ -1,0 +1,52 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Premium fotopresenter" />
+  <ui:define name="dataLayer">
+    <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+      <ui:param name="mug" value="true" />
+      <ui:param name="phone_glossy" value="true" />
+      <ui:param name="mousepad" value="true" />
+      <ui:param name="puzzle" value="true" />
+      <ui:param name="noList" value="true" />
+    </ui:include>
+    <script>
+        dataLayer.push({
+          'marketingChannelPage': 'newsletter'
+        })
+      </script>
+  </ui:define>
+  <ui:define name="meta">
+    <meta name="description" content="" />
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+  </ui:define>
+
+  <ui:define name="content">
+    <!-- teaser -->
+    <section class="page-teaser mainproducts -collapse">
+      <div class="showcase" style="background-image: url(/#{shopInfoBean.versionPath}assets/img/backgrounds/teaser-photogifts-desktop.jpg);" ></div>
+    </section>
+    <!-- /teaser -->
+
+    <!-- product boxes -->
+    <section class="page-section -collapse-top">
+      <ui:include src="/page-blocks/product-boxes-gifts-and-home.xhtml">
+        <ui:param name="boxPhotogifts" value="true" />
+      </ui:include>
+    </section>
+    <!-- /product boxes -->
+
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+   <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+</section>
+    <!-- /paymentmethods -->
+
+  </ui:define>
+</ui:composition>

@@ -1,0 +1,82 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Black Week SALE" />
+  <ui:define name="head">
+  <script>var couponSuccess = "#{sessionServicesBean.discountCode.code != null ? discountCodeBean.resetDiscount() : false}";</script>
+  <!-- remove default redbar -->
+  <style>.header-bar { display: none; }.header-bar.blackweek-notification { display: block; }</style>
+
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="description" content="Black Week SALE - #{shopInfoBean.shopName}" />
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+  </ui:define>
+
+  <ui:define name="content">
+    <!-- remove default redbar -->
+    <script>document.body.className = '';</script>
+    <!-- deal -->
+    <section class="deal">
+      <!-- teaser -->
+      <section class="page-teaser -collapse">
+        <div class="showcase teaser-blackweek">
+          <header class="head">
+            <h2 class="headline">
+              <ui:fragment rendered="#{now.month eq 11 and now.date gt 2}">
+                BLACK WEEK DEALS ÄR ÖVER
+              </ui:fragment>
+            </h2>
+            <ui:fragment rendered="#{now.month eq 11 and now.date gt 2}">
+              <div class="claim">Skapa ditt eget högvärdiga konstverk!</div>
+            </ui:fragment>
+          </header>
+          <div class="body">
+            <!-- teaser left -->
+            <div class="product">
+              <img class="image -no-shadow" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/hemsida/canvastavlor-teaser-spring.png" alt="" />
+            </div><!-- /teaser left -->
+            <div class="info -after-deals">
+              <button class="button action filebutton uploadButton" data-product-id="254">Skapa</button>
+            </div>
+          </div>
+        </div>
+      </section>      <!-- /teaser -->
+
+      <section class="page-section deal-section">
+        <div class="loader">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+      </section>
+
+      <section class="hidden" id="upload-btn">
+        <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+          <ui:param name="directuploadProductId" value="254" />
+          <ui:param name="directuploadClass" value="action" />
+        </ui:include>
+      </section>
+
+    </section><!-- /deal -->
+
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+   <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+</section>
+    <!-- /paymentmethods -->
+  </ui:define>
+
+  <ui:define name="eofscript">
+    <script src="/#{shopInfoBean.versionPath}static/build/js/blackweek.min.js"></script>
+  </ui:define>
+</ui:composition>

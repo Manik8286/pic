@@ -1,0 +1,12 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:param name="pageTitle" value="#{_['Logout']}" />
+
+<ui:define name="head">
+    <f:event type="preRenderView" listener="#{sessionBean.doLogout}"/>
+</ui:define>
+
+</ui:composition>

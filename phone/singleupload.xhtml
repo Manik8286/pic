@@ -1,0 +1,67 @@
+<ui:composition template="/templates/checkout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<ui:param name="pageTitle" value="#{_['Upload Image']}" />
+<ui:param name="stepCount" value="1" />
+
+<ui:define name="meta">
+  <meta name="robots" content="NOINDEX,FOLLOW" />
+</ui:define>
+
+<ui:define name="content">
+
+<section class="checkout-step-1 checkout-section">
+  <form class="js-du">
+    <div class="head wrap">
+      <h1 class="legend"><span class="-highlighted-text">Ladda upp</span> bild:</h1>
+    </div>
+    <div class="upload wrap">
+      <div class="form-group">
+        <span class="label">#{_['Product']}:</span>
+
+        <span class="form-dropdown action -touch" data-dropdown="product" data-calc-width="false">
+          <h:inputText id="product"
+            style="display: none"
+            styleClass="js-field js-du-productid"
+            value="#{fileUploadController.productId}" />
+          <button type="button" class="label"><span>(#{_['Please choose']})</span></button>
+          <ul class="choices">
+            <ui:repeat value="#{productBean.products}" var="p">
+              <li jsf:rendered="#{p.id != 473 and p.id != 2276 and p.id != 4284}" data-value="#{p.id}">#{p.translatedName}</li>
+            </ui:repeat>
+          </ul>
+        </span>
+      </div>
+      <div class="action">
+        <div class="form-group -grouped">
+          <div class="upload-button -noMove">
+            <input type="file" class="js-du-file fileinput" />
+            <button type="button" class="js-du-button button -action -plus -fullbleed -touch filebutton">Välj bild</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <ui:include src="/page-blocks/uploader-cover.xhtml" />
+
+</section>
+
+<!-- paymentmethods -->
+<section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+   
+</section><!-- /paymentmethods -->
+
+</ui:define>
+
+<ui:define name="eofscript">
+</ui:define>
+<ui:include src="/trackingcodes/endofbody.xhtml"/>
+
+</ui:composition>

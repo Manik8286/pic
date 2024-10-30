@@ -1,0 +1,84 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Ditt foto på canvas från #{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 20x20')}" />
+
+  <ui:define name="dataLayer">
+    <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+      <ui:param name="canvas" value="true" />
+      <ui:param name="noList" value="true" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="head">
+    <ui:include src="/coupons/discountcode-BESTCANVAS_SE_SEA.xhtml" />
+    
+    <style>
+      .page-head-row > .nav {display: none;}
+    </style>
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="description" content="" />
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+  </ui:define>
+
+<ui:define name="content">
+
+    <ui:include src="/page-blocks/teaser.xhtml">
+      <!-- Image -->
+      <ui:param name="teaserBgImage" value="/#{shopInfoBean.versionPath}assets/img/backgrounds/room-canvas.jpg" />
+      <ui:param name="teaserProductImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/hemsida/canvastavlor.png" />
+      <ui:param name="altTeaserProductImage" value="Ditt Foto på Canvas" />
+      <!-- Headers -->
+      <ui:param name="headline" value="Ditt Foto på" />
+      <ui:param name="headline2" value="Canvas" />
+      <ui:param name="claim" value="Skapa ditt eget" />
+      <ui:param name="claimGreen" value="högvärdiga" />
+      <ui:param name="claim2" value="konstverk!" />
+      <ui:param name="claimLink" value="" />
+      <!-- Price Badge -->
+      <ui:param name="badgeTop" value="" />
+      <ui:param name="badgeTopDiscount" value="" />
+      <ui:param name="badgeMiddle" value="" />
+      <ui:param name="badgeBottom" value="" />
+      <!-- Bullet points -->
+      <ui:param name="uspHeading" value="" />
+      <ui:param name="strong" value="b" />
+      <ui:param name="teaserFeature1" value="Spara upp till 88%" />
+      <ui:param name="teaserFeature2" value=" " />.
+      <ui:param name="teaserFeature2Green" value="Bäst i Test" />
+      <ui:param name="teaserFeature2Finish" value="på SVT's PLUS" />
+      <ui:param name="teaserFeature3" value="Redan över 40.000 nöjda kunder" />
+      <ui:param name="teaserFeature4" value="Leveransfärdig inom" />
+      <ui:param name="teaserFeature4Green" value="24 timmar" />
+      <ui:param name="showHpLogo" value="" />
+      <!-- Upload Button -->
+      <ui:param name="uploadId" value="254" />
+      <ui:param name="buttonText" value="Skapa" />
+      
+    </ui:include>
+
+    <!-- info boxes -->
+    <section class="page-section -alternate -collapse-top">
+      <ui:include src="/page-blocks/info-blocks-canvas.xhtml" />
+    </section>
+    <!-- /info boxes -->
+
+    <section class="page-section">
+      <ui:include src="/page-blocks/canvas-page-content.xhtml" />
+    </section>
+
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+   <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+</section><!-- /paymentmethods -->
+
+  </ui:define>
+</ui:composition>

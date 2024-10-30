@@ -1,0 +1,15 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+  
+
+	<div class="row">
+		<ui:include src="/content-blocks/info-blocks-badges.xhtml"/>
+		<div class="col -span-#{sessionBean.userAgentType != 'phone' ? '4' : '12'}" data-mh="info">
+			<ui:include src="/content-blocks/pricetables-lp/acrylic-aluminium-pricetable.xhtml">
+				<ui:param name="customLink" value="#{customLink}" />
+			</ui:include>
+		</div>
+	</div>
+
+</ui:composition>

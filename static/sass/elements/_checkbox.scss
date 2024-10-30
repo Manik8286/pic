@@ -1,0 +1,190 @@
+$checksvg_disabled: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="377 -162 1550 1188"><path fill="#dbdbdb" d="M1927 70c0 26.7-9.3 49.3-28 68l-724 724-136 136c-18.7 18.7-41.3 28-68 28s-49.3-9.3-68-28L767 862 405 500c-18.7-18.7-28-41.3-28-68s9.3-49.3 28-68l136-136c18.7-18.7 41.3-28 68-28s49.3 9.3 68 28l294 295 656-657c18.7-18.7 41.3-28 68-28s49.3 9.3 68 28L1899 2c18.7 18.7 28 41.3 28 68z"/></svg>';
+$checksvg_64_disabled: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjM3NyAtMTYyIDE1NTAgMTE4OCI+PHBhdGggZmlsbD0iI2RiZGJkYiIgZD0iTTE5MjcgNzBjMCAyNi43LTkuMyA0OS4zLTI4IDY4bC03MjQgNzI0LTEzNiAxMzZjLTE4LjcgMTguNy00MS4zIDI4LTY4IDI4cy00OS4zLTkuMy02OC0yOEw3NjcgODYyIDQwNSA1MDBjLTE4LjctMTguNy0yOC00MS4zLTI4LTY4czkuMy00OS4zIDI4LTY4bDEzNi0xMzZjMTguNy0xOC43IDQxLjMtMjggNjgtMjhzNDkuMyA5LjMgNjggMjhsMjk0IDI5NSA2NTYtNjU3YzE4LjctMTguNyA0MS4zLTI4IDY4LTI4czQ5LjMgOS4zIDY4IDI4TDE4OTkgMmMxOC43IDE4LjcgMjggNDEuMyAyOCA2OHoiLz48L3N2Zz4=';
+
+.checkbox {
+  user-select: none;
+
+  .label {
+    padding-left: 22px;
+  }
+
+  > input {
+    &:not(:checked),
+    &:checked {
+      position: absolute;
+      opacity: 0;
+
+      + label {
+        position: relative;
+        padding-left: 22px;
+        cursor: pointer;
+        max-width: 100%;
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      + label:before,
+      + label:after {
+        content: '';
+        cursor: pointer;
+        box-sizing: border-box;
+        position: absolute;
+        transition: all 0.2s;
+        left: 0;
+        top: 2px;
+      }
+
+      + label:before {
+        border-radius: 2px;
+        border: 1px solid $checkbox-border-color;
+        width: 12px;
+        height: 12px;
+        background-color: $checkbox-background;
+      }
+
+      + label:after {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='49' viewBox='0 0 64 49'%3E%3Cpath d='M62.75 9.625c0 1.125-.375 2-1.125 2.75L26.875 47c-.75.75-1.625 1.125-2.75 1.125s-2-.375-2.75-1.125L1.25 26.875C.5 26.125.125 25.25.125 24.125s.375-2 1.125-2.75l5.5-5.5c.75-.75 1.625-1.125 2.75-1.125s2 .375 2.75 1.125L24.125 27.75l26.5-26.5C51.375.5 52.25.125 53.375.125s2 .375 2.75 1.125l5.5 5.5c.75.875 1.125 1.75 1.125 2.875z' fill='%2335B2B6' fill-rule='evenodd'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        transform: scale(0);
+        width: 8px;
+        height: 10px;
+        left: 2px;
+        top: 3px;
+      }
+
+      &:hover {
+        + label:before {
+          border-color: $newGreen;
+        }
+      }
+    }
+
+    &:disabled {
+      + label:after {
+        background-image: url('data:image/svg+xml;base64,#{$checksvg_64_disabled}');
+      }
+
+      &:hover + label:before {
+        border-color: $newGreen;
+      }
+    }
+
+    &:checked {
+      + label:after {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &.-big {
+    .label {
+      padding-left: 28px;
+    }
+
+    > input {
+      &:not(:checked),
+      &:checked {
+        + label {
+          padding-left: 28px;
+          line-height: 20px;
+        }
+
+        + label:before {
+          width: 20px;
+          height: 20px;
+          top: 2px;
+        }
+
+        + label:after {
+          top: 2px;
+          left: 2px;
+          width: 16px;
+          height: 20px;
+        }
+      }
+    }
+  }
+
+  &.-huge {
+    .label {
+      padding-left: 38px;
+    }
+
+    > input {
+      &:not(:checked),
+      &:checked {
+        + label {
+          padding-left: 38px;
+          line-height: 20px;
+        }
+
+        + label:before {
+          width: 30px;
+          height: 30px;
+          top: 4px;
+        }
+
+        + label:after {
+          left: 5px;
+          width: 22px;
+          height: 30px;
+        }
+      }
+    }
+  }
+
+  .no-csstransforms & {
+    > input {
+      &:not(:checked) + label:after {
+        display: none;
+      }
+
+      &:checked + label:after {
+        display: block;
+      }
+    }
+  }
+
+  .no-svg & {
+    > input {
+      &:not(:checked)
+      &:checked {
+        + label:after {
+          background-image: none;
+          content: '✓';
+          top: 0;
+        }
+      }
+    }
+  }
+}
+
+.checkbox.-orphan {
+  > input + label {
+    margin-bottom: 7px;
+  }
+}
+
+.checkbox.-inline {
+  margin-left: 20px;
+  display: inline-block;
+
+  &.-big > input +label:before, &.-big > input +label:after {
+    top: -15px;
+  }
+
+  &.-huge > input +label:before, &.-huge > input +label:after {
+    top: -20px;
+  }
+}
+
+/* Markup:
+
+<div class="checkbox">
+  <input type="checkbox" id="checkbox">
+  <label for="checkbox">Hello</label>
+</div>
+
+*/

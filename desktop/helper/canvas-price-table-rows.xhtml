@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+  <style>.sameprice{margin-right: 4.9em;}</style>
+  <ui:repeat value="#{fn:split(pricesList, ',')}" var="f">
+    <c:set var="type" value="Canvas ${fn:replace(f, ' ', '')}" />
+    <tr>
+      <td>#{f}cm</td>
+      <td class="-align-right">
+        <ui:fragment rendered="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', type) ne '#ERROR#'}">
+          <span class="#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', type) == priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', type) ? 'sameprice' : '-outdated'}">
+          #{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', type)}</span>
+          <span class="#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', type) == priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', type) ? 'hidden' : '-highlighted'}">
+          #{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', type)}<sup>*</sup></span>
+        </ui:fragment>
+        <h:outputText value="—" rendered="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', type) eq '#ERROR#'}" />
+      </td>
+      <td class="-align-right">
+        <ui:fragment rendered="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', type, '4 cm') ne '#ERROR#'}">
+          <span class="#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', type, '4 cm') == priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', type, '4 cm') ? 'sameprice' : '-outdated'}">
+          #{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', type, '4 cm')}</span>
+          <span class="#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', type, '4 cm') == priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', type, '4 cm') ? 'hidden' : '-highlighted'}">
+          #{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', type, '4 cm')}<sup>*</sup></span>
+        </ui:fragment>
+        <h:outputText value="—" rendered="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', type, '4 cm') eq '#ERROR#'}" />
+      </td>
+      <td class="-align-right">
+        <ui:fragment rendered="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', type, '2 cm', 'Black matte') ne '#ERROR#'}">
+          <span class="#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', type, '2 cm', 'Black matte') == priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', type, '2 cm', 'Black matte') ? 'sameprice' : '-outdated'}">
+          #{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', type, '2 cm', 'Black matte')}</span>
+          <span class="#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', type, '2 cm', 'Black matte') == priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', type, '2 cm', 'Black matte') ? 'hidden' : '-highlighted'}">
+          #{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', type, '2 cm', 'Black matte')}<sup>*</sup></span>
+        </ui:fragment>
+        <h:outputText value="—" rendered="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', type, '2 cm', 'Black matte') eq '#ERROR#'}" />
+      </td>
+
+    </tr>
+  </ui:repeat>
+
+
+</ui:composition>

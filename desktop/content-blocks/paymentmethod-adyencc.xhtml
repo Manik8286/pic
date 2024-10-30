@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+
+    <div class="head js-accordion-title -expandable" data-clickarea="data-clickarea">
+      <div class="radio -alone">
+        <p:radioButton id="adyencc"
+          for=":paymentMethod:method"
+          itemIndex="#{index}" />
+        <h:outputLabel styleClass="label" for="adyencc" value="Kreditkort" />
+      </div>
+    
+      <div class="-right -kreditkarte">
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="-mastercard" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#payments-mastercard" />
+          <ui:param name="svgWidth" value="#{sessionBean.userAgentType == 'phone' ? '30px' : '40px'}" />
+          <ui:param name="svgHeight" value="#{sessionBean.userAgentType == 'phone' ? '25px' : '30px'}" />
+        </ui:include>
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="-visa" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#payments-visa" />
+          <ui:param name="svgWidth" value="#{sessionBean.userAgentType == 'phone' ? '60px' : '70px'}" />
+          <ui:param name="svgHeight" value="#{sessionBean.userAgentType == 'phone' ? '25px' : '30px'}" />
+        </ui:include>
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="logo" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#payments-ae" />
+          <ui:param name="svgWidth" value="#{sessionBean.userAgentType == 'phone' ? '30px' : '40px'}" />
+          <ui:param name="svgHeight" value="#{sessionBean.userAgentType == 'phone' ? '25px' : '30px'}" />
+        </ui:include>
+      </div>
+    </div>
+
+  <div class="sub body js-accordion-body">
+    <p class="text">Vänligen ange dina kreditkortsuppgifter efter att du har gjort beställningen.</p>
+  </div>
+</ui:composition>

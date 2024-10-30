@@ -1,0 +1,58 @@
+.page-login {
+
+  background-image: url("/assets/img/backgrounds/p_girl_with_camera.jpg");
+
+  .box-login-wrapper {
+    @extend %-span-12;
+    margin-bottom: 20px;
+  }
+
+  .box-register-wrapper {
+    @extend %-span-12;
+    margin-bottom: 20px;
+  }
+
+
+  .box-login {
+    padding: 20px 10px;
+
+    .lostpassword {
+      position: static;
+      margin-top: 20px;
+      float: right;
+    }
+
+    .action-login {
+      width: 100%;
+      position: relative;
+      right: auto;
+      bottom: auto;
+    }
+  }
+
+  .box-register {
+    padding: 20px 10px;
+
+    .action-register {
+      width: 100%;
+      position: relative;
+      right: auto;
+      bottom: auto;
+    }
+  }
+
+   .box-upload {
+    padding: 20px 10px;
+
+    .action-upload {
+      width: 100%;
+      position: relative;
+      right: auto;
+      bottom: auto;
+    }
+
+    .text {
+      margin-bottom: 15px;
+    }
+  }
+}

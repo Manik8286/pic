@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:o="http://omnifaces.org/ui">
+
+
+<div class="article-showcase -text-centered">
+<h2 class="headline -section">Klassisk fotomugg</h2>
+<h3 class="headline -has-sidelines"><span>Ditt foto på klassisk mugg</span></h3>
+      <div class="col -span-12 -centered image">
+      <br/>
+        <iframe width="100%" height="225" src="" data-src="https://www.youtube.com/embed/UKTQuKgzCX8?loop=1&amp;autoplay=1&amp;modestbranding=1&amp;controls=0&amp;showinfo=0&amp;playlist=UKTQuKgzCX8" allow="autoplay" frameborder="0"></iframe>
+      </div>
+  </div>
+
+
+  <!-- product info -->
+  <div class="article-showcase">
+    <h3 class="headline -has-sidelines"><span>Mugg för höger- och vänsterhänta</span></h3>
+    <div class="col -span-12 image js-image-switcher">
+      <ul class="images">
+        <li data-image-name="preview:front" class="-visible"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/fotomugg/klassisk/klassisk-mugg-komplett-vy.jpg" alt="klassisk mugg komplett vy" /></li>
+        <li data-image-name="preview:room"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/fotomugg/klassisk/klassisk-mugg-i-rummet.jpg" alt="klassisk mugg i rummet" /></li>
+        <li data-image-name="preview:detail"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/fotomugg/klassisk/klassisk-mugg-detaljerad-vy.jpg" alt="klassisk mugg detaljerad vy" /></li>
+      </ul>
+
+      <ul class="options -has-3">
+        <li><button type="button" class="cbutton -highlight" data-target="preview:front">Komplett vy</button></li>
+        <li><button type="button" class="cbutton" data-target="preview:detail">Detaljerad vy</button></li>
+        <li><button type="button" class="cbutton" data-target="preview:room">I rummet</button></li>
+      </ul>
+    </div>
+
+    <div class="description-wrapper -span-12">
+      <div class="description">
+        <p class="text">
+          Enkelt men ändå effektivt, den diskmaskin-säkra keramiska muggen är en bra presentlösning för sina praktiska och visuella egenskaper. Oavsett om det är en bra start på en ny och tematiskt samling av fotomuggar eller bara ett enstaka fototillbehör som firar en mycket speciell händelse i livet, så är en personlig fotomugg från oss alltid en högkvalitativ produkt. Den är endast tillverkad med miljövänliga trycktekniker, men ändå upprätthåller den en skarp och klar utskriftsupplösning och fantastiska färger! Gör dig redo att packa upp din nya mugg och upptäck ditt foto på nytt och alla dess fantastiska detaljer!
+        </p>
+      </div>
+      <div class="description">
+        <p class="text">
+        Fotot som du väljer kan skrivas ut i antingen stående eller liggande format, medan det skyddande skiktet inte bara förhindrar att ditt tryck suddas ut som ett resultat av regelbunden diskning, men du kan också värma upp din favoritdryck med hjälp av mikrovågsugnen! Den solida vita, högkvalitativa keramiken är ett robust och pålitligt material, som i kombination med ett högkvalitativt tryck av ditt foto gör den här produkten till ett mycket bättre val än produkter som du kan hitta i vanliga butiker!
+        </p>
+      </div>
+      <div class="description">
+        <p class="text">
+          <ul class="text -list">
+          <li>En klassisk fotogåva i vit keramik</li>
+          <li>Underbara färger och tryck med skärpa</li>
+          <li>Bilder kan tryckas i stående eller liggande format</li>
+          <li>Kan diskas i diskmaskin</li>
+          <li>Perfekt för din personliga muggsamling</li>
+        </ul>
+       </p>
+     </div>
+   </div>
+ </div>
+ <!-- /product info -->
+
+</ui:composition>

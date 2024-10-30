@@ -1,0 +1,106 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+  <p>
+    <strong>#{info.productName}</strong>
+    <br jsf:rendered="#{sessionBean.userAgentType == 'phone'}" />
+    #{info.formatName}
+    <br />
+  </p>
+
+  <span jsf:rendered="#{item.backMaterialId == '10' or item.backMaterialId == '11' or item.backMaterialId == '19'}">
+    <small>Ramtjocklek: #{info.backMaterial.name}</small>
+    <br />
+  </span>
+
+  <span jsf:rendered="#{item.colorCarrierId == '72' or item.colorCarrierId == '73'}">
+    <small>Variant:</small> <small>#{item.colorCarrierId == '72' ? 'Blank' : ' Matt'}</small>
+    <br />
+  </span>
+
+  <span jsf:rendered="#{info.imageEffectAvailable}">
+    <small>#{_['Effect:']} #{info.imageEffect}</small>
+    <br />
+  </span>
+
+  <span jsf:rendered="#{info.finishingAvailable}">
+    <small><h:outputText escape="false" value="#{info.finishings}" /></small>
+      <br />
+  </span>
+
+  <span jsf:rendered="#{info.borderEffectAvailable and info.productName != 'Funda para móvil' and info.productName != 'Mobilskal' and info.productName != 'Mobilskal test'}">
+    <small>#{_['Border Effect:']} #{info.borderEffect}</small>
+    <br />
+  </span>
+
+  <span jsf:rendered="#{info.colorCarrier.available and (info.productName == 'Funda para móvil' or info.productName == 'Mobilskal' or info.productName == 'Mobilskal test')}">
+    <small>#{_['Print Material:']} #{info.colorCarrier.name}</small>
+    <br />
+  </span>
+  <span jsf:rendered="#{info.backgroundEffect.toString() != 'Vit' and info.backgroundEffect.toString() != 'null' and info.backgroundEffect.toString() != ''}">
+    <small>Tillbaka:</small> <small>#{info.backgroundEffect.toString() == 'Färgad' ? info.backgroundColorName : 'Fotoafdruk'}</small>
+    <br />
+  </span>
+
+
+  <span jsf:rendered="#{info.frame.available}">
+    <strong>#{_['Shadow Frame:']}</strong> #{info.frame.name}
+    <br />
+  </span>
+
+  <span jsf:rendered="#{(info.mounting.available and info.mounting.record.id != 20) or item.colorCarrierId == '69'}">
+    <strong>#{_['Mounting:']}</strong> #{info.mounting.name}
+    <br />
+  </span>
+
+  <ui:fragment rendered="#{item.productId == 4284}">
+    <p><small>Plattor: #{item.pageNumber}</small></p>
+  </ui:fragment>
+
+  <span jsf:rendered="#{info.productName == 'Foto op Forex'}">
+    <style>
+      .forexHangerSetMessage {
+        display: block !important;
+      }
+    </style>
+  </span>
+
+  <p:outputPanel  rendered="#{showEditLink}">
+
+    <ui:fragment rendered="#{item.pageNumber == null}">
+
+      <a class="change" jsf:rendered="#{item.productType == 'UPLOAD'}" href="/configurator.jsf?cartItem=#{item.altId}#{saveAndBackTo}&amp;item-product=#{item.productId}">#{_['Edit']}</a>
+
+      <a class="change" jsf:rendered="#{item.productType == 'STARMAP'}" href="/configurator-starmap.jsf?cartItem=#{item.altId}">#{_['Edit']}</a>
+
+    </ui:fragment>
+
+    <a class="change" jsf:rendered="#{item.productId == 4284 and !shoppingCartBean.isProductSetChildItem(item)}" href="/multiimage_mixpix.jsf?cartItem=#{item.altId}">#{_['Edit']}</a>
+
+    <ui:fragment rendered="#{view.viewId == '/shoppingcart.xhtml' or
+                             view.viewId == '/shoppingcart-nv.xhtml' or
+                             view.viewId == '/shoppingcart-nv1.xhtml' or
+                             view.viewId == '/shoppingcart-nv2.xhtml' or
+                             view.viewId == '/shopping-cart.xhtml'}"> |
+
+      <ui:fragment rendered="#{!shoppingCartBean.isProductSetChildItem(item)}">
+        <ui:fragment rendered="#{sessionBean.userAgentType != 'phone'}">
+          <h:commandLink value="#{_['Remove']}" styleClass="change">
+            <p:ajax oncomplete="Modal.open('#deleteItem');calcFreeShip(#{shoppingCartBean.shippingProvider});" process="@this" update="" />
+            <f:setPropertyActionListener value="#{item}" target="#{shoppingCartBean.selectedItem}"/>
+          </h:commandLink>
+        </ui:fragment>
+      </ui:fragment>
+
+    </ui:fragment>
+
+  </p:outputPanel>
+
+
+
+</ui:composition>

@@ -1,0 +1,105 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Fotomatta -58%: Matta med eget Tryck" />
+
+   <ui:define name="dataLayer">
+    <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+      <ui:param name="carpet" value="true" />
+      <ui:param name="noList" value="true" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="head">
+    
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="description" content="Matta med eget tryck: en ny, unik inredningsdetalj till ditt hem, UV-resistent, halksäker och lätt att rengöra. Fotomatta: lätta att designa online." />
+    <meta name="robots" content="INDEX,FOLLOW" />
+    <link rel="canonical" href="https://www.bestcanvas.se/home-lifestyle/fotomatta.jsf" />
+	<meta http-equiv="content-language" content="sv_SE"/>
+	
+    <meta property="og:title" content="Fotomatta -58%: Matta med eget Tryck | bestcanvas.se" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.bestcanvas.se/home-lifestyle/fotomatta.jsf" />
+    <meta property="og:image" content="https://download.cdn-shop.com/meta/bestcanvas-se/fotomatta.jpg" />
+    <meta property="og:description" content="Matta med eget tryck: en ny, unik inredningsdetalj till ditt hem, UV-resistent, halksäker och lätt att rengöra. Fotomatta: lätta att designa online." />
+    <meta property="og:site_name" content="BestCanvas.se" />
+	
+	<meta itemprop="name" content="Fotomatta -58%: Matta med eget Tryck | bestcanvas.se" />
+	<meta itemprop="description" content="Matta med eget tryck: en ny, unik inredningsdetalj till ditt hem, UV-resistent, halksäker och lätt att rengöra. Fotomatta: lätta att designa online." />
+	<meta itemprop="image" content="https://download.cdn-shop.com/meta/bestcanvas-se/fotomatta.jpg" />
+	
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@bestcanvas_se" />
+    <meta name="twitter:creator" content="@bestcanvas_se" />
+    <meta name="twitter:title" content="Fotomatta -58%: Matta med eget Tryck | bestcanvas.se" />
+    <meta name="twitter:description" content="Matta med eget tryck: en ny, unik inredningsdetalj till ditt hem, UV-resistent, halksäker och lätt att rengöra. Fotomatta: lätta att designa online." />
+    <meta name="twitter:url" content="https://www.bestcanvas.se/home-lifestyle/fotomatta.jsf" />
+    <meta name="twitter:image" content="https://download.cdn-shop.com/meta/bestcanvas-se/fotomatta.jpg" />
+
+  </ui:define>
+
+  <ui:define name="content">
+    <!-- teaser -->
+    <ui:include src="/page-blocks/teaser-right-white.xhtml">
+      <!-- Images -->
+      <ui:param name="teaserBgImage" value="#{libraryImagesBean.getFilePathByLibraryImageId(447)}" />
+      <ui:param name="teaserProductImage" value="#{libraryImagesBean.getFilePathByLibraryImageId(448)}" />
+      <ui:param name="altTeaserProductImage" value="#{libraryImagesBean.getAltByLibraryImageId(447)}" />
+      <ui:param name="showcaseClass" value="-transparent" />
+      <ui:param name="imgClass" value="-withGap" />
+      
+      <!-- Headers -->
+      <ui:param name="headline" value="Ditt Foto på en Personlig Matta" />
+
+      <!-- Bullet points -->
+      <ui:param name="teaserFeature1" value="En ny, unik inredningsdetalj till ditt hem" />
+      <ui:param name="teaserFeature2" value="Tillverkad med världsledande teknologi" />
+      <ui:param name="teaserFeature3" value="UV-resistent, halksäker och lätt att rengöra" />
+
+      <!-- Upload Button -->
+      <ui:param name="uploadId" value="2266" />
+      <ui:param name="buttonText" value="Skapa" />
+      <ui:param name="quotes" value="false" />
+    </ui:include>
+    <!-- /teaser -->
+
+      <!-- info boxes -->
+      <section class="page-section -alternate -collapse-top">
+        <ui:include src="/page-blocks/info-blocks-homestyle.xhtml">
+          <ui:param name="carpetFormatTable" value="true" />
+          <ui:param name="checkHideSVT" value="true" />
+        </ui:include>
+      </section>
+      <!-- /info boxes -->
+
+      <ui:include src="/page-blocks/carpet-content.xhtml" />
+
+      <!-- Rich Snippet -->
+      <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+        <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Carpet']}" />
+        <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+        <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Carpet_Bestcanvas_SE', 'Carpet', 'Carpet 70x50').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+      </ui:include>
+      <!-- /Rich Snippet -->
+
+      <!-- paymentmethods -->
+      <section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+   <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+</section>
+      <!-- /paymentmethods -->
+
+      <!-- Breadcrumbs-->
+      <ui:include src="/bread-crumbs/breadcrumbs-carpet.xhtml" />
+      <!-- /Breadcrumbs -->
+      
+  </ui:define>
+</ui:composition>

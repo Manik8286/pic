@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+    <section class="page-section">
+        <h3 class="headline -section">Fotopresenter från hjärtat</h3>
+        <div class="product-list">
+
+            <div class="product -span-12">
+                <ui:include src="/content-blocks/product-box.xhtml">
+                    <ui:param name="productBoxTitle" value="Fotomugg" />
+                    <ui:param name="productBoxAlt" value="foto mugg" />
+                    <ui:param name="productBoxProductLink" value="/fotopresenter/fotomugg.jsf" />
+                    <ui:param name="productBoxUploadLink" value="/fotopresenter/fotomugg.jsf" />
+                    <ui:param name="buttonText" value="Mer information" />
+                    <ui:param name="formatAngebot" value="" />
+                    <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/fotopresenter/foto-mugg.jpg" />
+                    <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Mug_Bestcanvas_SE', 'Mug', 'Mug Left Landscape')}" />
+                    <ui:param name="productBoxText" value="Ditt Foto på Muggar gjorda av högkvalitativ keramik eller äkta porslin – finns även med färgstark insida och magisk effekt." />
+                </ui:include>
+                </div>
+
+
+                <div class="product -span-12">
+                <ui:include src="/content-blocks/product-box.xhtml">
+                    <ui:param name="productBoxTitle" value="Musmatta med Foto" />
+                    <ui:param name="productBoxAlt" value="foto musmatta" />
+                    <ui:param name="productBoxProductLink" value="/fotopresenter/musmatta-med-foto.jsf" />
+                    <ui:param name="productBoxUploadLink" value="/singleupload.jsf?product=863" />
+                    <ui:param name="buttonText" value="Skapa" />
+                    <ui:param name="formatAngebot" value="Format: 22 x 18 x 0,3 cm" />
+                    <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/fotopresenter/foto-musmatta.jpg" />
+                    <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Mousepad_Bestcanvas_SE', 'Mousepad', 'Mousepad 22x18x03')}" />
+                    <ui:param name="productBoxText" value="Vacker och funktionell! Med den halksäkra fotomusmattan kan du njuta av din favoritbild vid skrivbordet." />
+                </ui:include>
+                </div>
+
+                <div class="product -span-12">
+                <ui:include src="/content-blocks/product-box.xhtml">
+                    <ui:param name="productBoxTitle" value="Fotopussel" />
+                    <ui:param name="productBoxAlt" value="foto pussel" />
+                    <ui:param name="productBoxProductLink" value="/fotopresenter/fotopussel.jsf" />
+                    <ui:param name="productBoxUploadLink" value="/singleupload.jsf?product=864" />
+                    <ui:param name="buttonText" value="Skapa" />
+                    <ui:param name="formatAngebot" value="Format: 20 x 27 cm" />
+                    <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/fotopresenter/foto-pussel.jpg" />
+                    <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Puzzle_Bestcanvas_SE', 'Puzzle', 'Puzzle 20x27 cm - 88 Teile')}" />
+                    <ui:param name="productBoxText" value="Ett bra presenttips: Ditt Foto som ett pussel med 88, 300 eller 1000 bitar - stabil låda, exakt stansning och äkta fotoglans." />
+                </ui:include>
+                </div>
+
+        </div>
+    </section>
+
+</ui:composition>

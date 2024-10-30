@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+								xmlns:c="http://java.sun.com/jsp/jstl/core"
+								xmlns:ui="http://java.sun.com/jsf/facelets"
+								xmlns:h="http://java.sun.com/jsf/html"
+								xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+								xmlns:p="http://primefaces.org/ui"
+								xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+
+	<!-- Phone case print material -->
+  <h3 class="title"><span class="StepsCount"><h:outputText value="#{blockCount}" /></span> Material:</h3>
+  <p:selectOneRadio
+    id="colorCarrier"
+    value="#{itemConfiguratorBean.colorCarrierId}"
+    layout="custom"
+    plain="true">
+    <p:ajax
+      listener="#{itemConfiguratorBean.change}"
+      update=""
+      oncomplete="updateDom();#{textConfig ? 'RefreshControls();RefreshFormatChange();' : ''}" />
+    <f:selectItems value="#{itemConfiguratorBean.colorCarriers}"/>
+  </p:selectOneRadio>
+
+  <ui:fragment rendered="#{mobileView}">
+    <ui:repeat value="#{itemConfiguratorBean.colorCarriers}" var="f" varStatus="s">
+      <div class="item" data-clickarea="data-clickarea">
+        <p:radioButton id="product" for=":itemConfiguratorForm:colorCarrier" itemIndex="#{s.index}"/>
+        <h:outputLabel for="product">
+         <div class="formats format-table"><span class="format-label">#{fn:replace(f.label, 'Handy Case', '')}</span></div>
+        </h:outputLabel>
+      </div>
+    </ui:repeat>
+  </ui:fragment>
+
+  <ui:fragment rendered="#{mobileView eq false}">
+    <table class="table -striped -centered -selection block-table">
+      <tbody>
+        <ui:repeat value="#{itemConfiguratorBean.colorCarriers}" var="f" varStatus="s">
+          <tr data-clickarea="data-clickarea">
+            <td>
+              <div class="radio -alone">
+                <p:radioButton id="product" for=":itemConfiguratorForm:colorCarrier" itemIndex="#{s.index}"/>
+                <h:outputLabel for="product" />
+              </div>
+            </td>
+            <td>
+              #{fn:replace(f.label, 'Handy Case', '')}
+            </td>
+          </tr>
+        </ui:repeat>
+      </tbody>
+    </table>
+  </ui:fragment>
+
+  <!-- end Phone case print material -->
+
+</ui:composition>

@@ -1,0 +1,16 @@
+.item-box {
+  @extend .box;
+  font-size: 14px;
+  padding: 20px;
+  position: relative;
+  box-sizing: border-box;
+  
+  .accont-social-title {
+    margin: 5px 0;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+}

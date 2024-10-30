@@ -1,0 +1,321 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:param name="pageTitle" value="Newsletter Settings" />
+<ui:param name="mastertagTracking" value="generic" />
+
+<ui:define name="head">
+  
+  <style>
+    .page-teaser>.text:before, .teaser-box>.text:before {
+      background-color: rgba(0,0,0,0);
+      background-size: contain;
+    }
+    .page-teaser>.text .headline, .teaser-box>.text .headline {
+      color:#5f5e5e;
+    }
+    .page-text{
+      background-color: #35B2B6;
+      width: 100%;
+    }
+    .box-left{
+      background: #ffffff;
+      box-shadow: 0px 0px 25px 0px;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+    }
+    .box-right{
+      background: #ffffff;
+      box-shadow: 0px 0px 25px 0px;
+      padding-bottom: 20px;
+      margin-bottom: 50px;
+    }
+    .sub-box{
+      padding-left: 30px;
+    }
+    .unsubscribe .submit {
+      background-color: #35B2B6;
+      border: 0px;
+      width:60%;
+    }
+    .unsubscribe input[type=email] {
+      border: 1px solid #35B2B6;
+      width: 65%;
+      height: 33px;
+      font-size: 13px;
+      padding: 0 3px;
+    }
+
+    .radio {
+      margin-bottom:20px;
+    }
+    .subline-a{
+      color: #FFF;
+      text-align: center;
+      margin-bottom: -25px;
+      margin-top: 60px;
+    }
+    .subline-b{
+      text-align: center;
+    }
+    .socials-line{
+      border: 2px;
+      height: 1px;
+      width: 200px;
+      background: #35B2B6;
+    }
+    .socials{
+      text-align: center;
+      padding-bottom: 50px;
+
+    }
+    .box-headline{
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    input[type='radio']:checked:after {
+      width: 8px;
+      height: 8px;
+      border-radius: 6px;
+      top: -7px;
+      left: 2px;
+      position: relative;
+      background-color: #35B2B6;
+      content: '';
+      display: inline-block;
+      visibility: visible;
+    }
+    .fa {
+      color:#ffffff;
+      border-radius: 40px;
+      background: #575757;
+      padding: 15px;
+      width: 25px;
+      height: 25px;
+      margin:15px;
+    }
+    .fa:hover {
+      background: #35B2B6;
+    }
+    .fa-google-plus:before {
+      margin-left: -5px;
+    }
+    .text-green{
+      color: #35B2B6;
+      font-weight: 900;
+    }
+    .hide{
+      display:none;
+    }
+    .unsubscribe label {
+      display: inline-block;
+      padding: 1px 0;
+    }
+  </style>
+</ui:define>
+
+<ui:define name="meta">
+  <script src="https://use.fontawesome.com/a0f369f717.js"></script>
+  <meta name="robots" content="NOINDEX,FOLLOW" />
+
+</ui:define>
+
+<ui:define name="content">
+  <div class="page-teaser -collapse">
+    <div class="text" style="background-image: url(/#{shopInfoBean.versionPath}assets/img/backgrounds/girl-with-phone.jpg); width:100%;">
+      <div class="row">
+        <div class="col -span-12">
+           <h1 class="headline -smallerMargin">ALLTID DE BÄSTA <span class="text-green">ERBJUDANDEN</span>,<br />SÅ OFTA SOM DU BEHÖVER DE</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="page-text unsubscribe">
+    <div class="text-format">
+      <c:set var="url" value="#{ fn:substringAfter(request.getRequestURL(), '://') } " />
+      <c:set var="urlEnds" value="#{ fn:indexOf(url, '/')}" />
+      <c:set var="domain" value="#{ fn:substring(url, 0, urlEnds) }" />
+      <c:set var="email" value="#{param['email']}" />
+      <c:set var="contact_uid" value="#{param['contact_uid']}" />
+      <c:set var="email_id" value="#{param['email_id']}" />
+      <c:set var="launch_list_id" value="#{param['launch_list_id']}" />
+      <c:if test="#{shopInfoBean.shopUrl.contains('testing')}">
+        <c:set var="unsubscribeApi" value="https://shop-api-testing.picanova.net/public/v1/newsletter/unsubscribe?" />
+      </c:if>
+      <c:if test="#{!shopInfoBean.shopUrl.contains('testing')}">
+        <c:set var="unsubscribeApi" value="https://shop-api.picanova.de/public/v1/newsletter/unsubscribe?" />
+      </c:if>
+      <form method="post" action="#{unsubscribeApi}" id="unsubscribe-form" target="unsubscribeTarget">
+        <input type="hidden" name="red" value="http://#{domain}" />
+        <input type="hidden" name="contact_uid" value="#{contact_uid}" />
+        <input type="hidden" name="email_id" value="#{email_id}" />
+        <input type="hidden" name="launch_list_id" value="#{launch_list_id}" />
+        <div class="row">          
+
+        <div class="col -span-12 box-right">
+            <h2 class="box-headline">Beneficios de la subscripción</h2>
+            <div class="sub-box">
+            <ul class="text-list -in-text -checkmark">
+              <li>
+                <strong> Fördelar med att Prenumerera</strong><br/>
+                Använd rabattkoden som du får i varje nyhetsbrev
+              </li>
+              <br/>
+              <li>
+                <strong>Exklusiva erbjudanden</strong><br/>
+                Endast genom e-post får du möjlighet att ta del av de bästa erbjudandena
+              </li>
+              <br/>
+              <li>
+                <strong>Få Gåvor</strong><br/>
+                Vi överraskar dig vid speciella tillfällen
+              </li>
+              <br/>
+              <li>
+                <strong>Flexibilitet</strong><br/>
+                Du bestämmer hur många erbjudanden du vill ta del av
+              </li>
+            </ul>
+            </div>
+          </div>
+
+          <div class="col -span-12 box-left">
+            <h2 class="box-headline">Vill du ändra frekvensen?</h2>
+            <div class="sub-box">
+              <div class="radio">
+                <input type="radio" name="frequency" id="frequency1" value="1" />
+                <label for="frequency1">Jag vill ha alla erbjudanden</label>
+              </div>
+              <div class="radio">
+                <input type="radio" name="frequency" id="frequency2" value="2" checked="checked" />
+                <label for="frequency2">Ett erbjudande per vecka</label>
+              </div>
+              <div class="radio">
+                <input type="radio" name="frequency" id="frequency3" value="3" />
+                <label for="frequency3">Endast ett erbjudande per månad</label>
+              </div>
+              <div class="radio">
+                <input type="radio" name="frequency" id="frequency0" value="0" />
+                <label for="frequency0">Avbeställ nyhetsbrevet</label>
+              </div>
+              <input class="hide" type="email" id="email_txt" name="email_txt" placeholder="#{_['Enter e-mail address here']}" /><input type="submit" value="#{_['Save changes']}" class="submit" />
+            </div>
+          </div>
+        </div>
+      </form>
+      <iframe class="hidden" name="unsubscribeTarget"></iframe>
+      <div class="js-modal" id="success1">
+        <div class="head"><h2>#{_['Change successful']}</h2></div>
+        <div class="body text-format">
+          <h:outputText escape="false" value="#{_['You’ll now be receiving all offers with immediate effect']}"/>
+        </div>
+        <div class="foot">
+          <button type="button" onclick="Modal.close('#success1')" class="button -control -neutral">Ok</button>
+        </div>
+      </div>
+      <div class="js-modal" id="success2">
+        <div class="head"><h2>#{_['Change successful']}</h2></div>
+        <div class="body text-format">
+          <h:outputText escape="false" value="#{_['You’ll now be receiving only one offer per week']} #{_['(except for emails such as invoices or order confirmation)']}"/>
+        </div>
+        <div class="foot">
+          <button type="button" onclick="Modal.close('#success2')" class="button -control -neutral">Ok</button>
+        </div>
+      </div>
+      <div class="js-modal" id="success3">
+        <div class="head"><h2>#{_['Change successful']}</h2></div>
+        <div class="body text-format">
+          <h:outputText escape="false" value="#{_['You’ll now be receiving only one offer a month']} #{_['(except for emails such as invoices or order confirmation)']}"/>
+        </div>
+        <div class="foot">
+          <button type="button" onclick="Modal.close('#success3')" class="button -control -neutral">Ok</button>
+        </div>
+      </div>
+      <div class="js-modal" id="success0">
+        <div class="head"><h2>#{_['Change successful']}</h2></div>
+        <div class="body text-format">
+          <h:outputText escape="false" value="#{_['You won’t be receiving any more offers by email']} #{_['(except for emails such as invoices or order confirmation)']}"/>
+        </div>
+        <div class="foot">
+          <button type="button" onclick="Modal.close('#success0')" class="button -control -neutral">Ok</button>
+        </div>
+      </div>
+      <div class="js-modal" id="errorUnsubscribe">
+        <div class="head"><h2>#{_['Change unsuccessful']}</h2></div>
+        <div class="body text-format">
+          <h:outputText escape="false" value="#{_['Please check again your email address']}"/>
+        </div>
+        <div class="foot">
+          <button type="button" onclick="Modal.close('#errorUnsubscribe')" class="button -control -neutral">Ok</button>
+        </div>
+      </div>
+    </div>
+     <h3 class="subline-a">#{_['Before you unsubscribe...']}</h3>
+  </section>
+    <section>
+    <h3 class="subline-b">#{_['Follow us on']}</h3>
+    <hr class="socials-line" />
+    <div class="socials fa-2x">
+      <a href="https://facebook.com/bestcanvasse/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+      <a href="https://twitter.com/bestcanvas_se/"><i class="fa fa-twitter" aria-hidden="true"></i></a>          
+      <a href="https://pinterest.com/bestcanvasse/"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+    </div>
+
+  </section>
+
+</ui:define>
+
+
+  <ui:define name="eofscript">
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.submit').click(function(){
+                if($('input[name="frequency"]:checked').val()==0) {
+                   window._vis_opt_queue = window._vis_opt_queue || [];
+                    window._vis_opt_queue.push(function() {_vis_opt_goal_conversion(200);});
+                }
+                else {
+                    window._vis_opt_queue = window._vis_opt_queue || [];
+                    window._vis_opt_queue.push(function() {_vis_opt_goal_conversion(201);});
+                }
+            });
+        });
+    </script>
+
+    <script>
+      $(document).ready(function(){
+        $("#frequency0").click(function(){
+            $("#email_txt").show(1000);
+            $('#email_txt').attr("required", "true");
+        });
+        $("#frequency3").click(function(){
+            $("#email_txt").hide(1000);
+            $('#email_txt').removeAttr('required');
+        });
+        $("#frequency2").click(function(){
+            $("#email_txt").hide(1000);
+            $('#email_txt').removeAttr('required');
+        });
+        $("#frequency1").click(function(){
+            $("#email_txt").hide(1000);
+            $('#email_txt').removeAttr('required');
+        });
+      });
+    </script>
+
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/crm/js/newsletter-unsubscribe.xhtml">
+      <ui:param name="unsubscribeForm" value="#unsubscribe-form"/>
+      <ui:param name="unsubscribeApi" value="#{unsubscribeApi}"/>
+      <ui:param name="emailId" value="#{email_id}"/>
+      <ui:param name="launchListId" value="#{launch_list_id}"/>
+      <ui:param name="contactUid" value="#{contact_uid}"/>
+    </ui:include>
+</ui:define>
+
+</ui:composition>

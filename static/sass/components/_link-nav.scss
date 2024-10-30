@@ -1,0 +1,13 @@
+.link-nav {
+  > ul {
+    @extend .link-list;
+  }
+
+  &.-horizontal > ul {
+    @extend .link-list.-horizontal;
+  }
+
+  &.-divider > ul {
+    @extend .link-list.-divider;
+  }
+}

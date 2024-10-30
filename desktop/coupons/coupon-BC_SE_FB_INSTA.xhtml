@@ -1,0 +1,130 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+                <ui:remove>
+                  <!--
+                  <element class="js-countdown">` needs two attributes in order to work:
+                  - data-until: the date when the countdown is over. YYYY/MM/DD HH:MM:SS
+                  - data-format: the formatted output. See here for a documentation:
+                  http://hilios.github.io/jQuery.countdown/documentation.html#formatter
+                  -->
+                </ui:remove>
+
+<ui:remove> <!--old header , just for safety , to bring it back after christmas -->
+    <div class="header-bar -christmas"> 
+      <ui:remove> 
+      <!-- add these classes back, for now removed because for christmas deal headers, which are identical. Remove -christmas class -->#{facebook == 'true' ? '-facebook' : '-instagram'}</ui:remove>
+
+      <div class="row">
+        <div class="col -span-12 -text-centered">
+          <ui:fragment rendered="#{facebook == 'true'}">
+            Jul Erbjudande: Spara upp till 86% på canvastavlor - Bara kort tid:
+          </ui:fragment>
+          <ui:fragment rendered="#{facebook == 'false'}">
+           Jul Erbjudande: Spara upp till 86% på canvastavlor - Bara kort tid:
+          </ui:fragment>
+          <!-- <div class="right"> --> <!-- If you have a link below please add this class "-countdownBlock" -->
+            <span class="js-countdown" data-until="2018/06/12 23:59:59" data-format="%-H T. %M Min. %S Sek."></span>
+            <!--
+            <a href="javascript:void(0)" class="shippingLinkDeal" onclick="Modal.open('#guarantee24h');">
+              <span>Levergarantie voor Vaderdag</span>
+            </a>
+            -->
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+</ui:remove>
+
+<style type="text/css">
+  .phone body.-has-header-bar ._p_t-page-head {
+    top: 65px;
+}
+.phone body.-has-header-bar {
+    padding-top: 125px;
+}
+</style>
+
+
+<div class="header-bar -christmas ">
+  <div class="row">
+    <div class="col -span-12 -text-centered"> 
+      <div class="RedBarMsg col #{sessionBean.userAgentType != 'phone' ? '-span-9' : '-span-12'}" style="padding: 0;"></div> 
+      <div class="#{sessionBean.userAgentType != 'phone' ? 'right' : ''} -countdownBlock hidden">
+        <span id="clock"></span>
+        <!-- <a href="/betalning-leveransinfo.jsf" onclick="window.open(this.href) return false" class="shippingLinkDeal hidden">Leveransgaranti till jul...</a> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<ui:remove>
+<!--         
+<div class="header-bar -christmas ">
+<div class="row">
+<div class="col -span-12 -text-centered RedBarMsg"> this runs after 24h countdown is finished, from 18th for all christmas time. countdown is hidden. Start and end date is there because script requires it
+<strong>Julerbjudande:</strong> spara upp til 86% på canvastavlor - Bara kort tid! 
+<div class="right -countdownBlock hidden">
+<span id="clock"></span>
+<a href="/betalning-leveransinfo.jsf" onclick="window.open(this.href) return false" class="shippingLinkDeal">Leveransgaranti till jul...</a>
+</div>
+</div>
+</div>
+</div> 
+  -->
+</ui:remove>
+        <script>
+          /* <![CDATA[ */
+           
+$( document ).ready(function() {
+     var current = new Date();
+            var dd = current.getDate()+1;
+            var mm = current.getMonth()+1; //January is 0!
+            var yyyy = current.getFullYear();
+            var startDate  = new Date("2017/12/11 00:00");
+            var expireDate  = new Date("2017/12/15 23:59:58");
+
+            var startDate2  = new Date("2017/12/16 00:00");
+            var expireDate2  = new Date("2017/12/16 23:59:58");
+
+            var startDate3  = new Date("2017/12/17 00:00:00");
+            var expireDate3  = new Date("2018/12/17 00:00:00");
+            
+            if(current.getTime() >= startDate.getTime() && current.getTime() < expireDate.getTime()){
+              $(".header-bar").addClass("-countdown");
+              $(".-countdownBlock").removeClass("hidden");
+              $('#clock').countdown(expireDate).on('update.countdown', function(event) {
+                var $this = $(this).html(event.strftime('<span>%d</span> D. <span>%H</span> T. <span>%M</span> Min.'));
+              });
+            }
+
+            if(current.getTime() >= startDate2.getTime() && current.getTime() < expireDate2.getTime()){
+              $(".header-bar").addClass("-countdown");
+              $(".-countdownBlock").removeClass("hidden");
+              $('#clock').countdown(expireDate2).on('update.countdown', function(event) {
+                var $this = $(this).html(event.strftime('<span>%d</span> D. <span>%H</span> T. <span>%M</span> Min.'));
+              });
+            }
+
+            /*            
+            if(current.getTime() >= startDate3.getTime()){
+              $('.RedBarMsg').html('<strong>Julerbjudande:</strong> spara upp til 86% på canvastavlor - Bara kort tid! ');
+              $(".phone body.-has-header-bar ._p_t-page-head").css("top" , "40px");
+              $(".phone body.-has-header-bar").css("padding-top" , "100px");   
+            }    
+            */
+
+            if(current.getTime() >= startDate3.getTime()){
+            $('.RedBarMsg').html('<strong>Super Erbjudande:</strong> spara upp til <strong>86%</strong> på canvastavlor - Bara kort tid!');
+            $(".header-bar").addClass("-countdown");
+            $(".-countdownBlock").removeClass("hidden");
+            $(".-countdownBlock").css("margin-top", "17px");
+            $('#clock').countdown(expireDate3).on('update.countdown', function(event) {
+              var $this = $(this).html(event.strftime('<span>%H</span> T. <span>%M</span> Min. <span>%S</span> Sek.'));
+            });
+            } 
+          });
+          /* ]]> */
+        </script>
+
+
+</ui:composition>

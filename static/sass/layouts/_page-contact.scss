@@ -1,0 +1,16 @@
+.page-contact {
+  @extend .page-section;
+
+  padding-top: 25px;
+
+  .row > .content {
+    @extend .col;
+    @extend %-span-8;
+
+    .formatted {
+      white-space: pre;
+      word-break: break-word;
+      margin: 0;
+    }
+  }
+}

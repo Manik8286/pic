@@ -1,0 +1,13 @@
+.login-box {
+  @extend .item-box;
+  @extend .item-box.-wide !optional;
+
+  border-radius: 4px;
+
+  > .headline {
+    margin-top: 0;
+    margin-bottom: 13px;
+    font-size: 18px;
+    font-weight: $weight-semibold;
+  }
+}

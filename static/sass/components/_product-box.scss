@@ -1,0 +1,235 @@
+// Note:
+// The product-box has a padding-bottom of the info-element
+// (price + button). The info-element will be positioned
+// absolute on bottom of the info box.
+// Why? The height of the product boxes will be changed with
+// jquery.matchHeight. This is the only suitable solution in
+// order to have the buttons all arranged at the bottom of
+// the product-boxes.
+
+
+.product-box {
+  @extend .box;
+  font-size: 14px;
+  padding-bottom: 50px;
+  position: relative;
+  box-sizing: border-box;
+
+  .title {
+    font-weight: $weight-semibold;
+    font-size: 16px;
+    padding: 7px 10px;
+    margin: 0;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $highlight-color;
+      }
+    }
+  }
+
+  .image {
+    display: block;
+    width: 100%;
+    position: relative;
+    margin-bottom: 25px;
+    text-decoration: none;
+
+    &:after {
+      content: attr(data-more-text);
+      display: table;
+      position: absolute;
+      height: 30px;
+      width: 150px;
+      left: 43%;
+      bottom: -15px;
+      margin-left: -50px;
+      line-height: 30px;
+      text-align: center;
+      color: $white;
+      background-color: $highlight-color;
+      opacity: 0;
+      transform: translateY(-2px);
+      transition: all 0.3s;
+      text-decoration: none;
+      z-index: 99;
+
+      .no-csstransitions & {
+        visibility: hidden;
+      }
+    }
+
+    &:hover:after {
+      transform: translateY(0);
+      opacity: 1;
+
+      .no-csstransitions & {
+        visibility: visible;
+      }
+    }
+
+    #img1 {
+      position: relative;
+      margin-top: -240px;
+      z-index: 0;
+    }
+    
+    #img2 {
+      position: relative;
+      z-index: 1;
+    }
+
+    &:hover #img2 {
+      opacity: 0;
+      transition: opacity 1s ease-out;
+      -moz-transition: opacity 1s ease-out;
+      -webkit-transition: opacity 1s ease-out;
+      -o-transition: opacity 1s ease-out;
+    }
+
+    > img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .body {
+    line-height: 18px;
+    padding: 0 10px;
+    margin: 20px 0;
+  }
+
+  .info {
+    padding: 5px 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    @include clearfix;
+  }
+
+
+
+  .info > .price > .highlight {
+    font-size: 25px;
+    margin-left: 5px;
+    font-weight: $weight-semibold;
+    color: $red;
+  }
+
+  .info > .action {
+    @extend .button_action;
+    @extend .button_action_mod-arrow;
+
+
+    button 
+    {
+      background: transparent;
+      border: none;
+      color: $white;
+    }
+  }
+
+  p {
+    margin: 10px 0;
+  }
+
+}
+
+
+/* This is the siple variant of the product-box */
+.product-box.-simple {
+  padding: 15px;
+  font-size: 16px;
+
+  > .image:after {
+    content: none;
+  }
+
+  > .body {
+    padding: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+
+    > .dimensions {
+      font-weight: $weight-semibold;
+      padding-bottom: 4px;
+    }
+
+    > .regularprice {
+      margin-bottom: 20px;
+    }
+
+    .crossed {
+      text-decoration: line-through;
+    }
+
+    > .price {
+      font-size: 30px;
+      font-weight: $weight-semibold;
+      color: $highlight-color;
+      margin-bottom: 20px;
+    }
+
+    > .action {
+      @extend .button_action;
+      @extend .button_action_mod-arrow;
+    }
+  }
+}
+
+#gift-certificates .product-box
+{
+  padding-bottom: 100px;
+  padding-top: 50px;
+  border: none;
+
+  .discount
+  {
+    background: url(/assets/img/generic/discount.png) no-repeat;
+    width: 104px;
+    height: 100px;
+    color: $white;
+    -webkit-border-radius: 10px 30px;
+    -moz-border-radius: 10px 30px;
+    border-radius: 10px 30px;
+    text-align: center;
+    margin: auto auto auto -52px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    z-index: 1;
+
+    .price 
+    {
+      font-size: 24px;
+      font-weight: 700;
+      position: relative;
+      top: -10px;
+    }
+  }
+}
+
+  .giftcertificates-table {
+    max-width: 600px;
+    margin: 0 auto;
+
+    td:not(:last-child)  {
+      font-size: 16px;
+      padding: 5px 25px 0 0;
+    }
+
+    td:last-child {
+      font-size: 16px;
+      padding-top: 5px;
+    }
+  }
+  .showcase-box.certificatePdf-box {
+    padding: 10px 10px 15px;
+    min-height: auto;
+  }

@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+                <ui:remove><!--
+                  <element class="js-countdown">` needs two attributes in order to work:
+                  - data-until: the date when the countdown is over. YYYY/MM/DD HH:MM:SS
+                                  - data-format: the formatted output. See here for a documentation:
+                                    http://hilios.github.io/jQuery.countdown/documentation.html#formatter
+                --></ui:remove>
+  <div class="header-bar #{noBanner}" style="background-color:#{BannerColor}">
+    <div class="row">
+      <ui:include src="/helper/svg.xhtml">
+        <ui:param name="svgClass" value="icon" />
+        <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-check" />
+      </ui:include>
+      #{BannerContent}
+      <ui:fragment rendered="#{not empty countdown}">
+        <div class="right">
+          <span class="js-countdown" data-until="#{EndDate}" data-format="%-D d. %-H T. %M Min. %S Sek."></span>
+        </div>
+      </ui:fragment>
+    </div>
+  </div>
+
+</ui:composition>

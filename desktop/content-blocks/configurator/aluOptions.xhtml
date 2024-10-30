@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:c="http://java.sun.com/jsp/jstl/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+xmlns:p="http://primefaces.org/ui"
+xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<div class="-right"><a href="javascript:void(0)" onclick="Modal.open('#aluInfo');"><img src="/staticimages/configurator/mf/info-icon.png" /></a></div>
+
+<ui:include src="/content-blocks/alu-configurator-modal.xhtml" />
+<p:selectOneRadio
+id="printMaterialSwitch"
+value="#{itemConfiguratorBean.colorCarrierId}"
+layout="custom"
+plain="true">
+<p:ajax
+listener="#{itemConfiguratorBean.change}"
+update=":itemConfiguratorForm:canvas-preview :itemConfiguratorForm:formats"
+onstart='#{mobileView ? "smoothScrollTo($(\"#thepreviewBox\"));" : ""}'
+oncomplete="updateDom();" />
+<f:selectItems value="#{itemConfiguratorBean.colorCarriers}"/>
+</p:selectOneRadio>
+<h3 class="title"><span class="StepsCount"><h:outputText value="#{blockCount}" /></span>Välj variant:</h3>
+<div class="clearfix">
+	<ui:repeat value="#{itemConfiguratorBean.colorCarriers}" var="f" varStatus="s">
+	<div class="selectable backMaterialsBox" data-clickarea="data-clickarea">
+		<img class="img-resposive" src="/staticimages/configurator/printmaterial_#{f.value}.jpg" alt="" />
+		<div class="radio pull-left">
+			<p:radioButton id="product" for=":itemConfiguratorForm:printMaterialSwitch" itemIndex="#{s.index}"/>
+			<h:outputLabel for="product" />
+		</div>
+		<div class="details pull-left">
+			<h:outputText value="#{f.value eq 72 ? 'Aluminium Blank' : 'Aluminium Matt'}" />
+		</div>
+	</div>
+</ui:repeat>
+</div>
+</ui:composition>

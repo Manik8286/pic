@@ -1,0 +1,178 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:t="http://myfaces.apache.org/tomahawk"
+                xmlns:p="http://primefaces.org/ui">
+
+  <ui:param name="pageTitle" value="Presentkort för väggdekor" />
+
+  <ui:define name="dataLayer">
+    <ui:include src="/tracking/dataLayer-pagetype-product.xhtml"/>
+  </ui:define>
+  
+  <ui:define name="head">
+    
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="description" content="" />
+    <meta name="robots" content="INDEX,FOLLOW" />
+    <link rel="canonical" href="https://www.bestcanvas.se/vaerdecheckar/" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+  </ui:define>
+
+  <ui:define name="content">
+    <!-- teaser -->
+    <ui:include src="/page-blocks/teaser-right-white.xhtml">
+      <!-- Images -->
+      <ui:param name="teaserBgImage" value="/#{shopInfoBean.versionPath}assets/img/backgrounds/gift-certificate-bg.jpg" />
+      <ui:param name="altTeaserProductImage" value="Ditt Foto på Canvas" />
+      <ui:param name="imgClass" value="-withGap" />
+      <ui:param name="teaserClass" value="-alternate" />
+      
+
+      <!-- Headers -->
+      <ui:param name="headline" value="Presentkort för väggdekor" />
+      <ui:param name="claim1" value="Är du fortfarande på jakt efter en present till dina nära och kära? Vi har den perfekta present!" />
+
+      <!-- Bullet points -->
+      <ui:param name="teaserFeature1" value="Den perfekta julklappsidén – snabbt och enkelt" />
+      <ui:param name="teaserFeature2" value="Levereras direkt via mejl" />
+      <ui:param name="teaserFeature3" value="En fantastisk present för både unga och gamla" />
+      <ui:param name="quotes" value="false" />
+      <ui:param name="showUpload" value="false" />
+    </ui:include>
+    <!-- /teaser -->
+
+    <section class="page-section -collapse-top">
+      <div class="row">
+        <h:form id="gift-certificates" styleClass="product-list">
+          <div class="product -span-3">
+            <div class="product-box">
+              <div class="discount">
+                <p class="discount-title">Du sparar</p>
+                <p class="price">400 kr</p>
+              </div>
+              <img class="image gift-voucher" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/vaerdecheckar/vaerdecheckar-2000-kr.jpg" alt="vaerdecheckar 2000 kr" />
+              <div class="info text-center">
+                <div class="price">
+                 <h3><strong>Presentkortsvärde värde: 2.000 kr*</strong></h3>
+                 Pris:<span class="highlight">1.600 kr*</span>
+                </div>
+                <div class="action">
+                  <p:commandButton value="Beställ nu" styleClass="discount-btn" actionListener="#{shoppingCartBean.addGiftCertificate(354)}"/>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product -span-3">
+            <div class="product-box">
+              <div class="discount">
+                <p class="discount-title">Du sparar</p>
+                <p class="price">300 kr</p>
+              </div>
+              <img class="image gift-voucher" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/vaerdecheckar/vaerdecheckar-1500-kr.jpg" alt="vaerdecheckar 1500 kr" />
+              <div class="info text-center">
+                <div class="price">
+                  <h3><strong>Presentkortsvärde värde: 1500 kr*</strong></h3>
+                  Pris:<span class="highlight"> 1.200 kr*</span>
+                </div>
+                <div class="action">
+                  <p:commandButton value="Beställ nu" styleClass="discount-btn" actionListener="#{shoppingCartBean.addGiftCertificate(353)}"/>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product -span-3">
+            <div class="product-box">
+              <div class="discount">
+                <p class="discount-title">Du sparar</p>
+                <p class="price">200 kr</p>
+              </div>
+              <img class="image gift-voucher" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/vaerdecheckar/vaerdecheckar-1000-kr.jpg" alt="vaerdecheckar 1000 kr" />
+              <div class="info text-center">
+                <div class="price">
+                 <h3><strong>Presentkortsvärde värde: 1.000 kr*</strong></h3>
+                 Pris:<span class="highlight"> 800 kr*</span>
+               </div>
+               <div class="action">
+                 <p:commandButton value="Beställ nu" styleClass="discount-btn" actionListener="#{shoppingCartBean.addGiftCertificate(352)}"/>
+               </div>
+             </div>
+           </div>
+          </div>
+
+          <div class="product -span-3">
+            <div class="product-box">
+              <div class="discount">
+                <p class="discount-title">Du sparar</p>
+                <p class="price">100 kr</p>
+              </div>
+              <img class="image gift-voucher" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/vaerdecheckar/vaerdecheckar-500-kr.jpg" alt="vaerdecheckar 500 kr" />
+              <div class="info text-center">
+                <div class="price">
+                 <h3><strong>Presentkortsvärde värde: 500 kr*</strong></h3>
+                 Pris:<span class="highlight"> 400 kr*</span>
+               </div>
+               <div class="action">
+                 <p:commandButton value="Beställ nu" styleClass="discount-btn" actionListener="#{shoppingCartBean.addGiftCertificate(350)}"/>
+               </div>
+             </div>
+           </div>
+          </div>
+        </h:form>
+      </div>
+    </section><!-- /product boxes -->
+
+    <section class="text-section -collapse-top">
+      <div class="section">
+        <p class="text-format text -highlighted-text">
+          Notera: Presentkortet kan endast lösas in på hemsidan bestcanvas.se och kan inte kombineras med andra kampanjer eller rabatter. Presentkortet är giltigt i 3 år från och med inköpsdatumet.
+        </p>
+        <p class="text">
+          <br/>
+          <strong>Det snabbaste och enklaste sättet att överraska dina nära och kära!</strong> <br/> <br/>
+          Letar du efter den perfekta? Vet du inte vad du ska ge till dina vänner, släktingar eller kollegor? Vår julklappsidé: presentkort värda 500 kr, 1.000 kr, 1.500 kr och 2.000 kr för personlig väggdekoration. Praktiskt köp online. Våra presentkort kommer garanterat göra dina nära och kära väldigt glada.
+        </p>
+        <p class="text">
+          <br/>
+          <strong>Hur det funkar:</strong>
+          <ul>
+            <li><span class="text-format text -highlighted-text">Steg 1</span> Välj presentkort och klicka ”beställ”</li>
+            <li><span class="text-format text -highlighted-text">Steg 2</span> Slutför beställningen</li>
+            <li><span class="text-format text -highlighted-text">Steg 3</span> Du får ett mejl med en rabattkod. Skriv ut presentkortet och överraska dina nära och kära!</li>
+          </ul>
+        </p>
+      </div>
+    </section>
+
+    <section class="text-section -collapse-top">
+      <div class="section text-center showcase-box certificatePdf-box">
+        <h2 class="text-format -highlighted-text">Ladda ner det passande presentkortet!</h2>
+        <table class="giftcertificates-table">
+          <tbody>
+            <tr>
+              <td><a class="link" href="/vaerdecheckar/Neutral_bestcanvas-se.pdf" target="_blank">Neutral</a></td>
+              <td><a class="link" href="/vaerdecheckar/AllaHjaertansDag_bestcanvas-se.pdf" target="_blank">Alla Hjärtans Dag</a></td>
+              <td><a class="link" href="/vaerdecheckar/MorsDag_bestcanvas-se.pdf" target="_blank">Morsdag</a></td>
+              <td><a class="link" href="/vaerdecheckar/Julafton_bestcanvas-se.pdf" target="_blank">Julafton</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+   <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+</section>
+    <!-- /paymentmethods -->
+
+  </ui:define>
+</ui:composition>
+

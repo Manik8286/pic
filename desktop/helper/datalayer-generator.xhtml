@@ -1,0 +1,110 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:include src="/page-blocks/cms/variables.xhtml" />
+
+  <c:choose>
+    <c:when test="#{productId eq canvas}">
+      <c:set value="Canvas"                     var="product" />
+      <c:set value="Wall Decoration"            var="category" />
+    </c:when>
+    <c:when test="#{productId eq aluminium}">
+      <c:set value="Aluminium"                  var="product" />
+      <c:set value="Wall Decoration"            var="category" />
+    </c:when>
+    <c:when test="#{productId eq acryl_glass}">
+      <c:set value="Acryl Glass"                var="product" />
+      <c:set value="Wall Decoration"            var="category" />
+    </c:when>
+    <c:when test="#{productId eq acryl_alu}">
+      <c:set value="Acryl+Alu"                  var="product" />
+      <c:set value="Wall Decoration"            var="category" />
+    </c:when>
+    <c:when test="#{productId eq forex}">
+      <c:set value="Forex"                      var="product" />
+      <c:set value="Wall Decoration"            var="category" />
+    </c:when>
+    <c:when test="#{productId eq mug}">
+      <c:set value="Mug"                        var="product" />
+      <c:set value="Photo Gifts"                var="category" />
+    </c:when>
+    <c:when test="#{productId eq pillow}">
+      <c:set value="Pillow"                     var="product" />
+      <c:set value="Home &amp; Lifestyle"       var="category" />
+    </c:when>
+    <c:when test="#{productId eq mousepad}">
+      <c:set value="Mousepad"                   var="product" />
+      <c:set value="Photo Gifts"                var="category" />
+    </c:when>
+    <c:when test="#{productId eq puzzle}">
+      <c:set value="Puzzle"                     var="product" />
+      <c:set value="Photo Gifts"                var="category" />
+    </c:when>
+    <c:when test="#{productId eq phone_glossy}">
+      <c:set value="Glossy phone cover"         var="product" />
+      <c:set value="Photo Gifts"                var="category" />
+    </c:when>
+    <c:when test="#{productId eq pillow_premium}">
+      <c:set value="Premium Cushion"            var="product" />
+      <c:set value="Home &amp; Lifestyle"       var="category" />
+    </c:when>
+    <c:when test="#{productId eq mug_magic}">
+      <c:set value="Magic Mug"                  var="product" />
+      <c:set value="Photo Gifts"                var="category" />
+    </c:when>
+    <c:when test="#{productId eq mug_porcelain}">
+      <c:set value="Porcelain Mug"              var="product" />
+      <c:set value="Photo Gifts"                var="category" />
+    </c:when>
+    <c:when test="#{productId eq mug_color}">
+      <c:set value="Inner colored mug"          var="product" />
+      <c:set value="Photo Gifts"                var="category" />
+    </c:when>
+    <c:when test="#{productId eq passepartout}">
+      <c:set value="Passepartout Poster"        var="product" />
+      <c:set value="Wall Decoration"            var="category" />
+    </c:when>
+    <c:when test="#{productId eq acrylblock}">
+      <c:set value="Acrylblock"                 var="product" />
+      <c:set value="Home &amp; Lifestyle"       var="category" />
+    </c:when>
+    <c:when test="#{productId eq wood}">
+      <c:set value="Wood Classic"               var="product" />
+      <c:set value="Wall Decoration"            var="category" />
+    </c:when>
+    <c:when test="#{productId eq blanket}">
+      <c:set value="Blanket Basic"              var="product" />
+      <c:set value="Home &amp; Lifestyle"       var="category" />
+    </c:when>
+    <c:when test="#{productId eq blanket_premium}">
+      <c:set value="Blanket Premium"            var="product" />
+      <c:set value="Home &amp; Lifestyle"       var="category" />
+    </c:when>
+    <c:when test="#{productId eq towel}">
+      <c:set value="Towel"                       var="product" />
+      <c:set value="Home &amp; Lifestyle"        var="category" />
+    </c:when>
+    <c:when test="#{productId eq starmap_forex}">
+      <c:set value="Starmap Forex"               var="product" />
+      <c:set value="Wall Decoration"             var="category" />
+    </c:when>
+    <c:when test="#{productId eq carpet}">
+      <c:set value="Carpet"                      var="product" />
+      <c:set value="Home &amp; Lifestyle"        var="category" />
+    </c:when>
+
+    <c:otherwise>
+      
+    </c:otherwise>
+  </c:choose>
+
+  <script>
+    productArray.push({
+      'name': '#{product}',
+      'category': '#{category}'
+    });
+  </script>
+
+</ui:composition>

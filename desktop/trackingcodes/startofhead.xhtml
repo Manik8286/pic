@@ -1,0 +1,86 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core">
+
+	<!-- CookieFirst Banner-->
+	<c:choose>
+		<c:when test="#{(shopInfoBean.shopUrl.contains('testing') or shopInfoBean.shopUrl.contains('8080'))}">
+			<script
+				src="https://consent.cookiefirst.com/sites/testing-bestcanvas-se.picanova.de-0e7deacf-b868-4cbe-9b8a-cabdd6ec120c/consent.js"></script>
+		</c:when>
+		<c:otherwise>
+			<script
+				src="https://consent.cookiefirst.com/sites/bestcanvas.se-0e7deacf-b868-4cbe-9b8a-cabdd6ec120c/consent.js"></script>
+		</c:otherwise>
+	</c:choose>
+	<!-- End CookieFirst Banner-->
+
+	<!-- Start Visual Website Optimizer Asynchronous Code -->
+	<c:if test="#{empty param['noTracking']}">
+		<ui:include src="/tracking/visual-web-optimizer.xhtml">
+			<ui:param name="cookieFirst" value="false" />
+		</ui:include>
+	</c:if>
+	<!-- End Visual Website Optimizer Asynchronous Code -->
+
+	<f:verbatim>
+		<!-- Google Consent Mode -->
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() { dataLayer.push(arguments); }
+			gtag('consent', 'default', {
+				//Consent for ad_storage
+				'ad_storage': 'denied',
+				'ad_user_data': 'denied',
+				'ad_personalization': 'denied'
+			});
+		</script>
+		<!-- End Google Consent Mode -->
+
+		<!-- Microsoft Bing Consent Mode -->
+		<script>/* <![CDATA[ */
+			function handleConsentChange(e) {
+				var consent = e.detail || {};
+				var advertisingConsent = consent.advertising || null; // Get advertising consent from event detail
+
+				// Set default Bing Ads consent to 'denied'
+				window.uetq = window.uetq || [];
+				window.uetq.push('consent', 'default', {
+					'ad_storage': 'denied'
+				});
+
+				if (advertisingConsent === true) {
+					// Bing Ads: Push Ads enabled
+					window.uetq.push('consent', 'update', {
+						'ad_storage': 'granted'
+					});
+				} else if (advertisingConsent === false || advertisingConsent === null) {
+					// Bing Ads: Push Ads Disabled
+					window.uetq.push('consent', 'update', {
+						'ad_storage': 'denied'
+					});
+				} else {
+					console.error("Unexpected advertising consent value:", advertisingConsent);
+				}
+			}
+
+			// Add event listeners for cf_consent and cf_consent_loaded
+			window.addEventListener("cf_consent", handleConsentChange);
+			window.addEventListener("cf_consent_loaded", handleConsentChange);
+			/* ]]> */</script>
+		<!-- End Microsoft Bing Consent Mode -->
+
+		<!-- Google Tag Manager -->
+		<script>/* <![CDATA[ */
+			function pagetypeExists(e) { for (var a = 0; a < e.length; a++)if (1 == e[a].hasOwnProperty("pagetype")) return !0 } function isNewsletterPage(e) { return -1 !== e.indexOf("/nl/") } function findPagetype(e) { return isNewsletterPage(e) ? "product" : "other" } window.dataLayer = window.dataLayer || []; var pageTypeExists = pagetypeExists(dataLayer); if (!0 !== pageTypeExists) { var pagetype = findPagetype(window.location.pathname); dataLayer.push({ pagetype: pagetype }) } isNewsletterPage(window.location.pathname) && window.dataLayer.push({ marketingChannelPage: "newsletter" }), window.dataLayer.push({ internalIp: "#{sessionServicesBean.isOfficeIpAddress}", shopName: "#{shopInfoBean.shopName}", baseUrlScheme: "#{baseUrlBean.scheme}", shopTemplateName: "#{sessionBean.shopTemplateName}" });
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || []; w[l].push({
+					'gtm.start':
+						new Date().getTime(), event: 'gtm.js'
+				}); var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+						'https://t.bestcanvas.se/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-M6ZF8NLG');
+			/* ]]> */</script>
+		<!-- End Google Tag Manager -->
+	</f:verbatim>
+</ui:composition>

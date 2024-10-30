@@ -1,0 +1,119 @@
+.outmsg {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  &.-full {
+    li {
+      display: block;
+    }
+  }
+
+  &.-single {
+    display: table;
+    position: relative;
+    border-radius: 4px;
+    font-size: 14px;
+    border: 1px solid $validation-border-color;
+    background-color: $validation-background;
+    color: $validation-border-color;
+    padding: 20px 20px 20px 44px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    &:before {
+      content: '!';
+      display: block;
+      position: absolute;
+      text-align: center;
+      line-height: 24px;
+      width: 24px;
+      height: 24px;
+      font-size: 16px;
+      border-radius: 50%;
+      background-color: #ff1111;
+      color: $white;
+      top: 18px;
+      left: 10px;
+    }
+  }
+
+  &.emailErrorMsg {
+    margin: 10px 0 15px 0;
+    li {
+      display: table;
+      position: relative;
+      border-radius: 4px;
+      font-size: 13px;
+      border: 1px solid red;
+      background-color: transparent;
+      color: #000;
+      padding: 20px 10px 20px 50px;
+      margin-top: 0;
+      margin-bottom: 0;
+      a {
+        color: #35b2b6;
+        text-decoration: underline;
+      }
+      &:before {
+        top: 25px;
+      }
+    }
+  }
+
+  li,
+  .-error {
+    display: table;
+    position: relative;
+    border-radius: 4px;
+    font-size: 14px;
+    border: 1px solid $validation-border-color;
+    background-color: $validation-background;
+    color: $validation-border-color;
+    padding: 20px 20px 20px 44px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    &:before {
+      content: '!';
+      display: block;
+      position: absolute;
+      text-align: center;
+      line-height: 24px;
+      width: 24px;
+      height: 24px;
+      font-size: 16px;
+      border-radius: 50%;
+      background-color: #ff1111;
+      color: $white;
+      top: 18px;
+      left: 10px;
+    }
+    a {
+      color: #35b2b6;
+      text-decoration: underline;
+    }
+  }
+
+  .-info {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+
+    &:before {
+      content: 'i';
+      background-color: #31708f;
+    }
+  }
+
+  .-warn {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+
+    &:before {
+      content: '!';
+      background-color: #8a6d3b;
+    }
+  }
+}

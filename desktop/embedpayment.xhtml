@@ -1,0 +1,31 @@
+<ui:composition template="/templates/checkout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<ui:param name="pageTitle" value="#{_['Please wait...']}" />
+
+<ui:define name="meta">
+  <meta name="robots" content="NOINDEX,FOLLOW" />
+  
+</ui:define>
+
+
+<ui:define name="content">
+  <iframe sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation" id="iFrame" src="payment-cc.jsf" frameborder="0" scrolling="auto" width="100%" height="700px">
+    </iframe>
+    <script>
+    $("#iFrame").on("load", function () {
+        if($(this).get(0).contentWindow.location.href.includes("confirmorder.jsf"))
+        {
+            window.top.location.href = "confirmorder.jsf";
+        }
+    })
+    </script>
+</ui:define>
+
+</ui:composition>

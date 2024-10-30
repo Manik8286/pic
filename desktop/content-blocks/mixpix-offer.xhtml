@@ -1,0 +1,93 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:o="http://omnifaces.org/ui">
+
+      <div class="col -span-#{sessionBean.userAgentType == 'desktop' ? '10' : '12'} -centered">
+        <div class="col -span-#{sessionBean.userAgentType == 'desktop' or sessionBean.userAgentType == 'tablet' ? '3' : '6'} text-center">
+          <div class="preview" jsf:rendered="#{sessionBean.userAgentType != 'phone'}">
+            <ui:include src="/helper/svg.xhtml">
+              <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-1_square" />
+              <ui:param name="svgWidth" value="15px" />
+              <ui:param name="svgHeight" value="75px" />
+            </ui:include>
+          </div>
+          <p><strong>1 MIXPIX<br/> GRATIS</strong></p>
+          <p class="price">
+            <span class="highlight">0 kr</span>
+            <span><s>200,00 kr</s></span>
+            <p class="paddingBottom"><small>+ 129,00 kr frakt</small></p>
+          </p>
+        </div>
+
+        <div class="col -span-#{sessionBean.userAgentType == 'desktop' or sessionBean.userAgentType == 'tablet' ? '3' : '6'} text-center">
+          <div class="preview" jsf:rendered="#{sessionBean.userAgentType != 'phone'}">
+            <ui:include src="/helper/svg.xhtml">
+              <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-6_squares" />
+              <ui:param name="svgWidth" value="45px" />
+              <ui:param name="svgHeight" value="75px" />
+            </ui:include>
+          </div>
+          <p><strong>Få 6<br/> Köp 4</strong></p>
+          <p class="price">
+            <span class="highlight">400,00 kr</span>
+            <span><s>1200,00 kr</s></span>
+            <p class="paddingBottom"><small>+ 129,00 kr frakt</small></p>
+          </p>
+        </div>
+
+        <div class="col -span-#{sessionBean.userAgentType == 'desktop' or sessionBean.userAgentType == 'tablet' ? '3' : '6'} text-center topDeal">
+          <div class="corner-ribbon"><span>Topp <br/>Deal</span></div>
+          <div class="preview" jsf:rendered="#{sessionBean.userAgentType != 'phone'}">
+            <ui:include src="/helper/svg.xhtml">
+              <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-12_squares" />
+              <ui:param name="svgWidth" value="75px" />
+              <ui:param name="svgHeight" value="75px" />
+            </ui:include>
+          </div>
+          <p><strong>Få 12<br/> Köp 8</strong></p>
+          <p class="price">
+            <span class="highlight">800,00 kr</span>
+            <span><s>2400,00 kr</s></span>
+            <p class="free_shipping paddingBottom">
+              <c:if test="#{sessionBean.userAgentType != 'phone'}">
+                <ui:include src="/helper/svg.xhtml">
+                  <ui:param name="svgWidth" value="10px" />
+                  <ui:param name="svgHeight" value="10px" />
+                  <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-check" />
+                </ui:include>
+              </c:if>
+              <small>Fri leverans</small>
+            </p>
+          </p>
+        </div>
+
+        <div class="col -span-#{sessionBean.userAgentType == 'desktop' or sessionBean.userAgentType == 'tablet' ? '3' : '6'} text-center">
+          <div class="preview" jsf:rendered="#{sessionBean.userAgentType != 'phone'}">
+            <ui:include src="/helper/svg.xhtml">
+              <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-25_squares" />
+              <ui:param name="svgWidth" value="75px" />
+              <ui:param name="svgHeight" value="75px" />
+            </ui:include>
+          </div>
+          <p><strong>Få 25<br/> Köp 20</strong></p>
+          <p class="price">
+            <span class="highlight">2000,00 kr</span>
+            <span><s>5000,00 kr</s></span>
+            <p class="free_shipping paddingBottom">
+              <ui:fragment rendered="#{sessionBean.userAgentType != 'phone'}">
+                <ui:include src="/helper/svg.xhtml">
+                  <ui:param name="svgWidth" value="10px" />
+                  <ui:param name="svgHeight" value="10px" />
+                  <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-check" />
+                </ui:include>
+              </ui:fragment>
+              <small>Fri leverans</small>
+            </p>
+          </p>
+        </div>
+      </div>
+ </ui:composition>

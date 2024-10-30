@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+  <div class="row">
+    <ui:include src="/content-blocks/info-blocks-badges.xhtml">
+      <ui:param name="ReviewBlock" value="#{RenderReviewBlock}" />
+    </ui:include>
+
+      <div class="col #{sessionBean.userAgentType == 'phone' ? '-span-12' : '-span-4'}">
+
+        <c:choose>
+         <c:when  test="#{sessionBean.userAgentType == 'phone'}">
+         <div class="showcase-box" data-mh="showcase-box">
+            <iframe width="100%" height="auto" src="" data-src="//www.youtube.com/embed/yEAdvG_8qpA?loop=1&amp;autoplay=0&amp;modestbranding=1&amp;controls=1&amp;showinfo=0&amp;playlist=yEAdvG_8qpA&amp;fs=1" frameborder="0" allow="autoplay" allowfullscreen="allowfullscreen"></iframe>
+            <p class="text">Din sylvassa MIXPIX bidrar med glädje och stil till ditt hem.</p>
+            <br/>
+            <div class="description-wrapper">
+                <a href="/multiimage_mixpix.jsf?product=4284" class="button -action -arrow">SKAPA</a>
+            </div>
+          </div>
+         </c:when>
+
+         <c:otherwise>
+          <div class="showcase-box" data-mh="showcase-box">
+            <h3 class="headline #{sessionBean.userAgentType == 'tablet' ? '-titleTable' : ''}">Introduktion på 30 sekunder</h3>
+
+            <a href="javascript:Modal.open('#mixPixVideo');"><img class="img-responsive" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/mixpix/Placeholder_Video_MixPix.jpg" /></a>
+            <span class="mixPixInfo"> Din sylvassa MIXPIX bidrar med glädje och stil till ditt hem.</span>
+            <a href="javascript:Modal.open('#mixPixVideo');" class="link">Se video »</a>
+          </div>
+
+          <div class="js-modal hideOveflow" id="mixPixVideo">
+            <iframe class="youtube-video" width="#{sessionBean.userAgentType == 'tablet' ? '600px' : '800px'}" height="#{sessionBean.userAgentType == 'tablet' ? '330px' : '450px'}" src="" data-src="//www.youtube.com/embed/yEAdvG_8qpA?loop=1&amp;modestbranding=1&amp;controls=1&amp;showinfo=0&amp;playlist=yEAdvG_8qpA&amp;enablejsapi=1&amp;fs=1" frameborder="0" allow="autoplay" allowfullscreen="allowfullscreen"></iframe>
+          </div>  
+         </c:otherwise>
+        </c:choose>
+      </div>
+    </div>
+
+</ui:composition>

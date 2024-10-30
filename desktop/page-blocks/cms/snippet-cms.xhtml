@@ -1,0 +1,185 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:include src="/page-blocks/cms/variables.xhtml" />
+
+  <ui:fragment rendered="#{productId eq canvas}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Canvas']}" />
+      <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+      <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 20x20').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->     
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq aluminium}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Aluminium']}" />
+      <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+      <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 20x20').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->  
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq acryl_glass}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Acrylglas']}" />
+      <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+      <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 30x20').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->  
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq acryl_alu}">
+    <!-- <ui:include src="/rich-snippets/snippet-acrylglas-aluminium.xhtml" />     -->
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq forex}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+        <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Forex']}" />
+        <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+        <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Forex Print_Bestcanvas_SE', 'Forex', 'Forex 20x20').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq mug}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Mugs']}" />
+      <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+      <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Mug_Bestcanvas_SE', 'Mug', 'Mug Left Landscape').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq pillow}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+        <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Cushions']}" />
+        <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+        <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Pillow_Bestcanvas_SE', 'Pillow', 'Pillow 40x40').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq mousepad}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Mousepad']}" />
+      <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+      <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Mousepad_Bestcanvas_SE', 'Mousepad', 'Mousepad 22x18x03').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq puzzle}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+        <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Puzzle']}" />
+        <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+        <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Puzzle_Bestcanvas_SE', 'Puzzle', 'Puzzle 20x27 cm - 88 Teile').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq phone_glossy}">
+    <!-- <ui:include src="/rich-snippets/snippet-phonecase.xhtml" /> -->
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq pillow_premium}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+        <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Cushions']}" />
+        <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+        <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Pillow_Bestcanvas_SE', 'Pillow', 'Pillow 40x40').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq mug_magic}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Magic-Mug']}" />
+      <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+      <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Mug-Magic_Bestcanvas_SE', 'Magic Mug', 'Magic Mug Left Landscape').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq mug_porcelain}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Premium-Mug']}" />
+      <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+      <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Mug-Porcelain_Bestcanvas_SE', 'Porcelain Mug', 'Porcelain Mug Left Landscape').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq mug_color}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Colored-Mug']}" />
+      <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+      <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Mug-Inner_Bestcanvas_SE', 'Inner colored mug', 'Inner Colored Mug Left Landscape').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq passepartout}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Framed-Picture']}" />
+      <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+      <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 17x17').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq acrylblock}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Acrylblock']}" />
+      <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+      <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 10x10').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq wood}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Wood']}" />
+      <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+      <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Wood Print_Bestcanvas_SE', 'Wood Classic', 'Wood 20x20').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq blanket_premium}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Blanket']}" />
+      <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+      <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 100x70').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq towel}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Towel']}" />
+      <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+      <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Towel_Bestcanvas_SE', 'Towel', 'Towel 90x50').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq starmap}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Starmap']}" />
+      <ui:param name="picturatorSnippetRating" value="#{fn:trim(priceBean.productPrice('Starmap_Forex_Bestcanvas_SE', 'Starmap Forex', 'Starmap Forex 40x30').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+  </ui:fragment>
+  <ui:fragment rendered="#{productId eq carpet}">
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Carpet']}" />
+      <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+      <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Carpet_Bestcanvas_SE', 'Carpet', 'Carpet 70x50').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+  </ui:fragment>
+
+</ui:composition>

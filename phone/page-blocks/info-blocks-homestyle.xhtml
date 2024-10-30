@@ -1,0 +1,295 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <div class="row">
+
+    <ui:include src="/content-blocks/info-blocks-badges.xhtml" >
+      <ui:param name="qualityPromiseText" value="Ontvang familievriendelijke geschenken van topkwaliteit – gemaakt hier in de Verenigde Staten. Snelle verwerking en met 100% Geld-terug-garantie." />
+    </ui:include>
+
+    <ui:fragment rendered="#{not empty nonePrices}">
+      <div class="col -span-12">
+        <div class="showcase-box" data-mh="info">
+          <h3 class="headline">Home &amp; Lifestyle</h3>
+          <div class="body">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/fotokudde/home-lifestyle.jpg"  alt="home lifestyle"/>
+            <p>Unika personliga fotogåvor. Överraska dina nära och kära med högkvalitativa bilder på högkvalitativa material och med garanterat bästa pris.</p>
+          </div>
+          <a href="/home-lifestyle/" class="link">Läs mer »</a>
+        </div>
+      </div>
+    </ui:fragment>
+
+    <!-- Blanket Prices -->
+    <ui:fragment rendered="#{not empty blanketFormatTable}">
+      <div class="col -span-12">
+        <div class="showcase-box" data-mh="info">
+          <h3 class="headline">Vi har låga priser för Fotofilt!</h3>
+          <table class="table -striped">
+            <thead class="-highlighted">
+              <tr>
+                <th class="-text-centered">Format</th>
+                <th class="-text-centered">Pris</th>
+                <th class="-highlighted -text-centered">Idag</th>
+              </tr>
+            </thead>
+            <tbody class="-text-centered">
+            <tr>
+              <td>100 x 70 cm</td>
+              <ui:fragment rendered="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 100x70') != '#ERROR#'}">
+                <td><s>#{priceBean.productCrossPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 100x70')}</s></td>
+                <td class="-highlighted">#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 100x70')}*</td>
+              </ui:fragment>
+               <ui:fragment rendered="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 100x70') == '#ERROR#'}">
+                <td>UTSÅLD</td>
+                <td class="-highlighted">UTSÅLD</td>
+              </ui:fragment>
+            </tr>
+            <tr>
+              <td>150 x 100 cm</td>
+              <ui:fragment rendered="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 150x100') != '#ERROR#'}">
+                <td><s>#{priceBean.productCrossPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 150x100')}</s></td>
+                <td class="-highlighted">#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 150x100')}*</td>
+              </ui:fragment>
+               <ui:fragment rendered="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 150x100') == '#ERROR#'}">
+                <td>UTSÅLD</td>
+                <td class="-highlighted">UTSÅLD</td>
+              </ui:fragment>
+            </tr>
+            <tr>
+              <td>200 x 150 cm</td>
+              <ui:fragment rendered="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 200x150') != '#ERROR#'}">
+                <td><s>#{priceBean.productCrossPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 200x150')}</s></td>
+                <td class="-highlighted">#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 200x150')}*</td>
+              </ui:fragment>
+               <ui:fragment rendered="#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 200x150') == '#ERROR#'}">
+                <td>UTSÅLD</td>
+                <td class="-highlighted">UTSÅLD</td>
+              </ui:fragment>
+            </tr>
+            </tbody>
+          </table>
+          <a href="/format/lifestyle.jsf" class="link">Alla priser och format »</a>
+        </div>
+      </div>
+    </ui:fragment>
+
+    <!-- Acrylblock Prices -->
+    <ui:fragment rendered="#{not empty acrylblockFormatTable}">
+      <div class="col -span-12">
+        <div class="showcase-box" data-mh="info">
+          <h3 class="headline">Vi har låga priser för Akrylblock!</h3>
+          <table class="table -striped">
+            <thead class="-highlighted">
+              <tr>
+                <th class="-text-centered">Format</th>
+                <th class="-text-centered">Pris</th>
+                <th class="-highlighted -text-centered">Idag</th>
+              </tr>
+            </thead>
+            <tbody class="-text-centered">
+              <tr>
+                <td>10 x 10 cm</td>
+                <td><s>#{priceBean.productCrossPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 10x10')}</s></td>
+                <td class="-highlighted">#{priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 10x10')}*</td>
+              </tr>
+              <tr>
+                <td>15 x 10 cm</td>
+                <td><s>#{priceBean.productCrossPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 15x10')}</s></td>
+                <td class="-highlighted">#{priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 15x10')}*</td>
+              </tr>
+              <tr>
+                <td>20 x 15 cm</td>
+                <td><s>#{priceBean.productCrossPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x15') eq '#ERROR#' ? '—' : priceBean.productCrossPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x15')}</s></td>
+                <td class="-highlighted">#{priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x15') eq '#ERROR#' ? '—' : priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x15')}*</td>
+              </tr>
+              <tr>
+                <td>20 x 20 cm</td>
+                <td><s>#{priceBean.productCrossPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x20')}</s></td>
+                <td class="-highlighted">#{priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x20')}*</td>
+              </tr>
+            </tbody>
+          </table>
+          <a href="/format/lifestyle.jsf" class="link">Alla priser och format »</a>
+        </div>
+      </div>
+    </ui:fragment>
+
+    <!-- Cushion Prices -->
+    <ui:fragment rendered="#{not empty cushionFormatTable}">
+      <div class="col -span-12">
+        <div class="showcase-box" data-mh="info">
+          <h3 class="headline">Vi har låga priser för Foto-Kudde</h3>
+          <table class="table -striped">
+            <thead class="-highlighted">
+              <tr>
+                <th class="-text-centered">Format</th>
+                <th class="-text-centered">Pris</th>
+                <th class="-highlighted -text-centered">Idag</th>
+              </tr>
+            </thead>
+            <tbody class="-text-centered">
+              <tr>
+                <td>40 x 40 cm</td>
+                <td><s>#{priceBean.productCrossPrice('Pillow_Bestcanvas_SE', 'Pillow', 'Pillow 40x40')}</s></td>
+                <td class="-highlighted">#{priceBean.productPrice('Pillow_Bestcanvas_SE', 'Pillow', 'Pillow 40x40')}*</td>
+              </tr>
+            </tbody>
+          </table>
+          <a href="/format/lifestyle.jsf" class="link">Alla priser och format »</a>
+        </div>
+      </div>
+    </ui:fragment>
+
+    <!-- Premium Cushion Prices -->
+    <ui:fragment rendered="#{not empty cushionPremiumFormatTable}">
+      <div class="col -span-12">
+        <div class="showcase-box" data-mh="info">
+          <h3 class="headline">Vi har låga priser för Premium Kudde</h3>
+          <table class="table -striped">
+            <thead class="-highlighted">
+              <tr>
+                <th class="-text-centered">Format</th>
+                <th class="-text-centered">Pris</th>
+                <th class="-highlighted -text-centered">Idag</th>
+              </tr>
+            </thead>
+            <tbody class="-text-centered">
+              <tr>
+                <td>40 x 40 cm</td>
+                <td><s>#{priceBean.productCrossPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 40x40')}</s></td>
+                <td class="-highlighted">#{priceBean.productPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 40x40')}*</td>
+              </tr>
+            </tbody>
+          </table>
+          <a href="/format/lifestyle.jsf" class="link">Alla priser och format »</a>
+        </div>
+      </div>
+    </ui:fragment>
+
+  <!-- Main Cushions Page Prices -->
+  <ui:fragment rendered="#{not empty cushionsMainFormatTable}">
+      <div class="col -span-12">
+        <div class="showcase-box" data-mh="info">
+      <h3 class="headline">Glänsande Foto-Kudde</h3>
+      <table class="table -striped">
+        <thead class="-highlighted">
+          <tr>
+              <th class="-text-centered">Format</th>
+              <th class="-text-centered">Pris</th>
+              <th class="-highlighted -text-centered">Idag</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>40 x 40 cm</td>
+            <td>#{priceBean.productCrossPrice('Pillow_Bestcanvas_SE', 'Pillow', 'Pillow 40x40')}*</td>
+            <td class="-highlighted">#{priceBean.productPrice('Pillow_Bestcanvas_SE', 'Pillow', 'Pillow 40x40')}*</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 class="headline">Premium Foto-Kudde</h3>
+      <table class="table -striped">
+        <thead class="-highlighted">
+          <tr>
+              <th class="-text-centered">Format</th>
+              <th class="-text-centered">Pris</th>
+              <th class="-highlighted -text-centered">Idag</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>30 x 30 cm</td>
+            <td>#{priceBean.productCrossPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 30x30')}*</td>
+            <td class="-highlighted">#{priceBean.productPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 30x30')}*</td>
+          </tr>
+          <tr>
+            <td>40 x 40 cm</td>
+            <td>#{priceBean.productCrossPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 40x40')}*</td>
+            <td class="-highlighted">#{priceBean.productPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 40x40')}*</td>
+          </tr>
+          <tr>
+            <td>60 x 60 cm</td>
+            <td>#{priceBean.productCrossPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 60x60')}*</td>
+            <td class="-highlighted">#{priceBean.productPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 60x60')}*</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </ui:fragment>
+
+
+    <!-- Cushion Prices -->
+    <ui:fragment rendered="#{not empty towelFormatTable}">
+      <div class="col -span-12">
+        <div class="showcase-box" data-mh="info">
+          <h3 class="headline">Våra priser för handdukar</h3>
+          <table class="table -striped">
+            <thead class="-highlighted">
+              <tr>
+                <th class="-text-centered">Format</th>
+                <th class="-text-centered">Pris</th>
+                <th class="-highlighted -text-centered">Idag</th>
+              </tr>
+            </thead>
+            <tbody class="-text-centered">
+              <tr>
+                <td>90 x 50 cm</td>
+                <td><s>#{priceBean.productCrossPrice('Towel_Bestcanvas_SE', 'Towel', 'Towel 90x50')}</s></td>
+                <td class="-highlighted">#{priceBean.productPrice('Towel_Bestcanvas_SE', 'Towel', 'Towel 90x50')}*</td>
+              </tr>
+              <tr>
+                <td>140 x 90 cm</td>
+                <td><s>#{priceBean.productCrossPrice('Towel_Bestcanvas_SE', 'Towel', 'Towel 140x90')}</s></td>
+                <td class="-highlighted">#{priceBean.productPrice('Towel_Bestcanvas_SE', 'Towel', 'Towel 140x90')}*</td>
+              </tr>
+              <tr>
+                <td>200 x 150 cm</td>
+                <td><s>#{priceBean.productCrossPrice('Towel_Bestcanvas_SE', 'Towel', 'Towel 200x150')}</s></td>
+                <td class="-highlighted">#{priceBean.productPrice('Towel_Bestcanvas_SE', 'Towel', 'Towel 200x150')}*</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </ui:fragment>
+
+    <ui:fragment rendered="#{not empty carpetFormatTable}">
+      <div class="col -span-12">
+        <div class="showcase-box" data-mh="info">
+          <h3 class="headline">Våra priser för matta</h3>
+          <table class="table -striped">
+            <thead class="-highlighted">
+              <tr>
+                <th class="-text-centered">Format</th>
+                <th class="-text-centered">Pris</th>
+                <th class="-highlighted -text-centered">Idag</th>
+              </tr>
+            </thead>
+            <tbody class="-text-centered">
+              <tr>
+                <td>70 x 50 cm</td>
+                <td><s>#{priceBean.productCrossPrice('Carpet_Bestcanvas_SE', 'Carpet', 'Carpet 70x50')}</s></td>
+                <td class="-highlighted">#{priceBean.productPrice('Carpet_Bestcanvas_SE', 'Carpet', 'Carpet 70x50')}*</td>
+              </tr>
+              <tr jsf:rendered="#{priceBean.productPrice('Carpet_Bestcanvas_SE', 'Carpet', 'Carpet 140x90') ne '#ERROR#'}">
+                <td>140 x 90 cm</td>
+                <td><s>#{priceBean.productCrossPrice('Carpet_Bestcanvas_SE', 'Carpet', 'Carpet 140x90')}</s></td>
+                <td class="-highlighted">#{priceBean.productPrice('Carpet_Bestcanvas_SE', 'Carpet', 'Carpet 140x90')}*</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </ui:fragment>
+
+
+
+  </div>
+
+</ui:composition>

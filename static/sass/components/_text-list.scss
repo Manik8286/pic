@@ -1,0 +1,41 @@
+.text-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    &.-highlight {
+      font-weight: $weight-bold;
+    }
+  }
+
+  &.-checkmark {
+    li:before {
+      @extend %svgbackground-svgcheck;
+      content: '';
+      top: 3px;
+      width: 25px;
+      height: 20px;
+      background-size: 25px 25px;
+      position: absolute;
+      left: 0px;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &.-horizontal {
+    @include clearfix;
+
+    li {
+      float: left;
+    }
+  }
+}

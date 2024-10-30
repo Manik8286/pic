@@ -1,0 +1,31 @@
+.progress-bar {
+  > .bar {
+    @extend .box;
+    display: block;
+    position: relative;
+    height: 13px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  > .bar > .inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    background-image: url("/assets/img/checkout/loading.gif");
+    background-repeat: repeat-x;
+    border-radius: 4px;
+  }
+
+  > .percentage {
+    display: block;
+    float: right;
+    text-align: right;
+    padding: 0 10px;
+    font-size: 18px;
+    line-height: 15px;
+    min-width: 35px;
+  }
+}

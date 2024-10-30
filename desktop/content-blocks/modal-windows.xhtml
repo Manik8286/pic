@@ -1,0 +1,47 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:o="http://omnifaces.org/ui">
+
+
+    <!-- modal window for best price guarantee -->
+    <div class="js-modal" id="bestPriceGuarantee">
+      <div class="head">Lågpris garanti!</div>
+      <ui:include src="/content-blocks/best-price-guarantee.xhtml" />
+    </div>
+    <!-- /modal window for best price guarantee -->
+
+    <!-- modal window for shipping in header -->
+    <div class="js-modal" id="shippingInfoPayment">
+      <div class="head">Betalning och leveransinformation<span class="close"></span></div>
+        <h:outputText escape="false" value="#{contentBean.snippets['shipping-info-modal']}"/>
+        <div class="col -span-12">
+          <h3 class="-highlighted-text">Pago seguro</h3>
+          <ui:include src="/page-blocks/payments-content.xhtml" />
+        </div>
+    </div>
+    <!-- /modal window for shipping in header -->
+
+    <!-- modal window for shipping info in footer -->
+    <div class="js-modal #{sessionBean.userAgentType == 'phone' ? '-phone' : ''}" id="shippingInfo">
+      <div class="head">Leverans<span class="close"></span></div>
+      <ui:include src="/content-blocks/shipping-text.xhtml" />
+    </div>
+    <!-- /modal window for shipping info in footer -->
+
+    <!-- modal window for Privacy Policy -->
+    <div class="js-modal" id="privacyPolicy">
+      <div class="head">Integritetspolicyn<span class="close"></span></div>
+      <ui:include src="/page-blocks/privacy-policy.xhtml" />
+    </div>
+    <!-- /modal window for Privacy Policy -->
+
+    <!-- modal window for "show-advantages" link in teaser -->
+    <div class="js-modal" id="advantages">
+      <div class="head">Jämför oss!<span class="close"></span></div>
+        <ui:include src="/content-blocks/advantages.xhtml" />
+    </div>
+    <!-- /modal window for "show-advantages" link in teaser -->
+
+</ui:composition>

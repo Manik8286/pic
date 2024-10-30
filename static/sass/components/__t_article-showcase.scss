@@ -1,0 +1,119 @@
+.article-showcase {
+
+  > .options-wrapper {
+    @extend .col;
+    @extend .col.-centered;
+
+    margin-bottom: 35px;
+  }
+
+  .description {
+    .action {
+      color: rgb(255, 255, 255);
+      height: 40px;
+      line-height: 42px;
+      padding: 0px 15px;
+      position: relative;
+      background-color: rgb(248, 151, 17);
+      transition: background 0.2s linear 0s;
+      border-radius: 4px;
+      border: medium none;
+      box-sizing: border-box;
+      text-align: center;
+      text-decoration: none;
+      display: table;
+      margin-left: 37px;
+      margin-top: 26px;
+      font-size: 18px;
+      background-image: linear-gradient(rgb(248, 151, 17), rgb(255, 109, 0));
+    }
+  }
+
+  &.-faceMaskInfo {
+    position: relative;
+    padding-bottom: 15px;
+
+    .mask-image {
+      position: relative;
+      right: 55px;
+    }
+
+    .oddTextBlock {
+      position: absolute; 
+      top: 10px; 
+      right: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      p:nth-child(1) {
+        padding-bottom: 7px;
+      }
+      p:nth-child(2) {
+        padding-bottom: 70px;
+      }
+      p:nth-child(3) {
+        padding-bottom: 31px;
+      }
+    }
+  }
+
+  .description-wrapper {
+    @extend .col.-centered;
+
+    .description {
+      @extend .col;
+      @extend %-span-6;
+    }
+  }
+
+  &.-starMap {
+    .action{
+      line-height: 2em;
+      min-width: 175px;
+    }
+    .-span-12{
+      img {
+        width: 30%;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .text-wrapper {
+    @extend .col;
+    @extend .col.-centered;
+
+    text-align: center;
+  }
+
+  > .headline.-has-sidelines {
+    margin-bottom: 38px;
+  }
+
+  > .image {
+    margin-bottom: 20px;
+    float: left;
+
+    &.-centered {
+      float: none;
+    }
+
+    > .headline {
+      font-size: 16px;
+    }
+  }
+
+  &.photo-gifts-box {
+    .price-badge {
+      top: 190px;
+      right: 10px;
+      font-size: 14px;
+      .size {
+        font-size: 14px;
+      }
+      .price {
+        font-size: 28px;
+      }
+    }
+  }
+  
+}

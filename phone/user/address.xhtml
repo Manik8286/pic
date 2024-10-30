@@ -1,0 +1,141 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:c="http://java.sun.com/jsp/jstl/core"
+             xmlns:f="http://java.sun.com/jsf/core"
+             xmlns:h="http://java.sun.com/jsf/html"
+             xmlns:ui="http://java.sun.com/jsf/facelets"
+             xmlns:p="http://primefaces.org/ui"
+             id="adddressFieldSet"
+             xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <div class="group">
+      <div class="label">
+        <span class="label">#{_['Street']}: *</span>
+      </div>
+      <div class="entry">
+      <h:inputText id="street"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        converter="StringFieldConverter"
+        required="true"
+        requiredMessage="#{_['Required.']}"
+        value="#{address.street}" />
+        <h:message for="street" styleClass="validation -error -right" />
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="label">
+        <span class="label">#{_['ZIP Code:']}: *</span>
+      </div>
+      <div class="entry">
+      <h:inputText id="zipCode"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        converter="StringFieldConverter"
+        required="true"
+        requiredMessage="#{_['Required.']}"
+        value="#{address.zipCode}" />
+        <h:message for="zipCode" styleClass="validation -error -right" />
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="label">
+        <span class="label">#{_['City:']} *</span>
+      </div>
+      <div class="entry">
+      <h:inputText id="city"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        converter="StringFieldConverter"
+        required="true"
+        requiredMessage="#{_['Required.']}"
+        value="#{address.city}" />
+        <h:message for="city" styleClass="validation -error -right" />
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="label">
+        <span class="label">#{_['Country']}: *</span>
+      </div>
+      <div class="entry">
+        <span class="form-dropdown #{viewType == 'touch' ? '-touch' : ''}" data-dropdown="country" style="#{viewType == 'touch' ? 'width: 100%' : ''}" data-calc-width="#{viewType == 'touch' ? 'false' : 'true'}">
+        <h:inputText id="country"
+          styleClass="js-field #{ component.valid ? '' : '-invalid'}"
+          value="#{address.countryId}"
+          required="true"
+          requiredMessage="#{_['Required.']}"
+          style="display: none" />
+        <button type="button" class="label"><span>(#{_['Please choose']})</span></button>
+          <ul class="choices">
+          <ui:repeat value="#{countries}" var="c">
+            <li data-value="#{c.value}">#{c.label}</li>
+          </ui:repeat>
+          </ul>
+        </span>
+        <h:message for="country" styleClass="validation -error -right" />
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="label">
+        <span class="label">#{_['Phone:']}</span>
+      </div>
+      <div class="entry">
+      <h:inputText id="phoneNumber"
+        styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+        converter="StringFieldConverter"
+        value="#{address.phoneNumber}" />
+        <h:message for="phoneNumber" styleClass="validation -error -right" />
+      </div>
+    </div>
+
+    <ui:fragment rendered="#{showFax}">
+      <div class="group">
+        <div class="label">
+          <span class="label">#{_['Fax:']}</span>
+        </div>
+        <div class="entry">
+        <h:inputText id="fax"
+          styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+          converter="StringFieldConverter"
+          value="#{address.faxNumber}" />
+          <h:message for="fax" styleClass="validation -error -right" />
+        </div>
+      </div>
+    </ui:fragment>
+
+    <ui:fragment rendered="#{showCompany}">
+      <div class="group">
+        <div class="label">
+          <span class="label">#{_['Company:']} <h:outputLabel for="company" rendered="#{companyRequired}" value="*" /></span>
+        </div>
+        <div class="entry">
+        <h:inputText id="company"
+          styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+          converter="StringFieldConverter"
+          value="#{address.company}"
+          a:placeholder="med typ av juridisk person (t.ex. AB)"  />
+          <h:message for="company" styleClass="validation -error -right" />
+        </div>
+      </div>
+    </ui:fragment>
+
+    <ui:fragment rendered="#{showVat}">
+      <div class="group">
+        <div class="label">
+          <span class="label">#{_['Ust.-ID:']}:</span>
+          <div class="info-component dInlineBlock -vat">
+            <h:outputText escape="false" value="#{contentBean.snippets['VAT-Number-Tooltip']}" />
+          </div>
+        </div>
+        <div class="entry">
+        <h:inputText id="vatNumber"
+          styleClass="input -fullbleed -shy #{viewType == 'touch' ? '-touch' : ''} #{ component.valid ? '' : '-invalid'}"
+          converter="StringFieldConverter"
+          validator="vatNumberValidator"
+          value="#{address.vatNumber}"/>
+          <h:message for="vatNumber" styleClass="validation -error -right" />
+        </div>
+      </div>
+    </ui:fragment>
+
+</ui:composition>

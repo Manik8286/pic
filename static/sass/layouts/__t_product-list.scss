@@ -1,0 +1,12 @@
+.product-list {
+	@extend .row;
+	.nl-icon {
+		width: 200px;
+		height: 90px;
+		fill: currentColor;
+	}
+	> .product {
+		@extend .col;
+		margin-bottom: 20px;
+	}
+}

@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<section class="page-teaser">
+
+  <div class="showcase">
+
+    <div class="body">
+    <img width="100%" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/backgrounds/teaser-recaptcha.jpg" alt="" />
+    <br />
+      <div class="info col -span-11 -centered -white padd mar">
+        <h1 class="headline" jsf:rendered="#{not empty headline}" style="margin-bottom: 5px;">
+          <h:outputText value="#{headline}" escape="false" />
+        </h1>
+          <ui:fragment rendered="#{not empty headlineFormat}">
+            <div class="claim">
+            	<h:outputText value="#{headlineFormat}" escape="false" />
+            </div>
+          </ui:fragment>
+		<form action="#{subscribeApi}" method="post" class="signup" accept-charset="UTF-8" id="newsletter-form" target="newsletterTarget" onsubmit="newsletterSubmitted();submit();">
+			<div class="form-group -powerline -grouped">
+				<div class="field">
+					<input class="input -shy -high" type="email" id="emailNewsletter" name="email" placeholder="Ange din e-postadress" required="true" oninvalid="this.setCustomValidity('Ange din e-postadress')"  onchange="setCustomValidity('');" />
+				</div>
+			</div>
+			<div class="form-group -grouped -nl -inTeaser">
+				<div class="checkbox accept">
+					<input type="checkbox" id="agreedNewsletter" name="acceptNewsletter" required="true" oninvalid="this.setCustomValidity('Markera den här rutan för att fortsätta');"  onchange="setCustomValidity('');"/>
+					<label for="agreedNewsletter">Jag har läst och accepterar <a href="javascript:void(0)" onclick="Modal.open('#privacyPolicy');"> integritetspolicyn.</a></label>
+				</div>
+				<button type="submit" class="action button -action -span-12 -nlButton" id="newsletterSubmit">#{buttonTextNL}</button>
+			</div>
+			<div class="form-group -grouped text-center -recaptcha">
+				<div id='recaptcha' class="g-recaptcha dInlineBlock" data-sitekey="6LeKH6wUAAAAAJFOGvfQi_HRu9kuPcY4MX4wvacI" data-callback="newsletterSubmitted" data-size="invisible" data-badge="inline"></div>
+			</div>
+
+			<c:set var="url" value="#{ fn:substringAfter(request.getRequestURL(), '://') } " />
+			<c:set var="urlEnds" value="#{ fn:indexOf(url, '/')}" />
+			<c:set var="domain" value="#{ fn:substring(url, 0, urlEnds) }" />
+			<input name="red" type="hidden" value="#{domain}" />
+			<input name="shop" type="hidden" value="bestcanvas.se" />
+			<input name="event" type="hidden" value="566" />
+			<input name="subscribevia" type="hidden" value="1" />
+		</form>
+		<iframe style="display: none" name="newsletterTarget"></iframe>
+      </div>
+      <!-- /teaser right -->
+    </div>
+  </div>
+</section>
+
+</ui:composition>

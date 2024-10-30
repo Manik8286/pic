@@ -1,0 +1,166 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+  <header class="page-head">
+    <div class="page-head-bar">
+      <div class="page-head-row -top-bar #{checkout ne true ? '-bottomBorder' : '-link'}" style="grid-template-columns: auto 3fr auto;">
+        <p class="sr">bestcanvas.se</p>
+        <a href="#{baseUrlBean.baseUrl}" class="brand">
+          <ui:include src="/helper/svg.xhtml">
+            <ui:param name="svgClass" value="logo" />
+            <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/page/logo.svg" />
+            <ui:param name="svgWidth" value="100%" />
+            <ui:param name="svgHeight" value="100%" />
+          </ui:include>
+        </a>
+        <div class="header-middle" jsf:rendered="#{checkout ne true and not request.getRequestURI().toString().contains('/nl/')}">
+          <c:set var="eventDeadlineDay" value="22" />
+          <c:set var="eventDeadlineMonth" value="5" />
+          <c:set var="eventDeadlineYear" value="2023" />
+          <c:set var="eventMessageLabel" value="Garanterad leverans före mors dag" />
+          <c:set var="eventMessageLinkURL" value="/betalning-leveransinfo.jsf" />
+          <c:set var="eventMessageLinkTarget" value="_blank" />
+          <c:if test="#{now.date lt eventDeadlineDay and (now.month + 1) eq eventDeadlineMonth and (now.year + 1900) eq eventDeadlineYear}">
+          <div class="header-middle-content">
+            <strong class="dBlock">
+              <span class="js-countdown" data-until="#{eventDeadlineYear}/#{eventDeadlineMonth}/#{eventDeadlineDay}"
+                data-format="%-D d %-H h %M min %S s"></span>
+            </strong>
+            <a target="#{eventMessageLinkTarget}" class="dBlock" href="#{eventMessageLinkURL}">#{eventMessageLabel}</a>
+          </div>
+          </c:if>
+        </div>
+        <div class="header-right-side">
+          <a href="/betalning-leveransinfo.jsf" target="_blank" class="-shippingLink" jsf:rendered="#{checkout eq true}">
+            <span>FRI leverans</span> från 800 kr.
+          </a>
+
+          <div class="header-icon" jsf:rendered="#{checkout ne true}">
+            <a href="/bestallningsstatus/">
+              <ui:include src="/helper/svg.xhtml">
+                <ui:param name="svgClass" value="icon" />
+                <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-icon_bus" />
+                <ui:param name="svgWidth" value="30" />
+                <ui:param name="svgHeight" value="25" />
+              </ui:include>
+              <p>Beställningsstatus</p>
+            </a>
+          </div>
+          <div class="header-icon" jsf:rendered="#{checkout ne true}">
+            <a href="/faq/vanliga-fragor.jsf">
+              <ui:include src="/helper/svg.xhtml">
+                <ui:param name="svgClass" value="icon" />
+                <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-icon_information" />
+                <ui:param name="svgWidth" value="20" />
+                <ui:param name="svgHeight" value="25" />
+              </ui:include>
+              <p>Vanliga Frågor</p>
+            </a>
+          </div>
+          <div class="header-icon #{loginBean.loggedIn ? '-active' : ''}">
+            <c:choose>
+              <c:when test="#{loginBean.loggedIn}">
+                <a href="/accountoverview/">
+                  <ui:include src="/helper/svg.xhtml">
+                    <ui:param name="svgClass" value="icon" />
+                    <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-icon_account" />
+                    <ui:param name="svgWidth" value="20" />
+                    <ui:param name="svgHeight" value="25" />
+                  </ui:include>
+                  <p>Kontoöversikt</p>
+                </a>
+              </c:when>
+              <c:otherwise>
+                <a href="/customer/">
+                  <ui:include src="/helper/svg.xhtml">
+                    <ui:param name="svgClass" value="icon" />
+                    <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-icon_account" />
+                    <ui:param name="svgWidth" value="20" />
+                    <ui:param name="svgHeight" value="25" />
+                  </ui:include>
+                  <p>Logga in</p>
+                </a>
+              </c:otherwise>
+            </c:choose>
+          </div>
+          <div class="header-icon #{shoppingCartBean.numberOfItems > 0 ? '-active' : ''}">
+            <a href="/shoppingcart/">
+              <ui:include src="/helper/svg.xhtml">
+                <ui:param name="svgClass" value="icon" />
+                <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-icon_cart" />
+                <ui:param name="svgWidth" value="20" />
+                <ui:param name="svgHeight" value="25" />
+              </ui:include>
+              <h:outputText
+                id="cartcount"
+                global="false"
+                class="#{shoppingCartBean.numberOfItems eq 0 ? 'hidden' : 'cart-notification'}"
+                value="#{shoppingCartBean.numberOfItems}"
+              />
+              <p>Varukorg</p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="page-head-row">
+        <nav class="nav js-expandable-nav"
+             data-exn-toggles=".js-exn-btn"
+             data-exn-target=".js-expanded-nav"
+             data-close-delay="100"
+             jsf:rendered="#{checkout ne true}"
+             aria-label="navigation">
+          <ul class="space-between">
+            <li class="-expandable"><a href="/vaggdekor/"><button type="button" class="js-exn-btn action" data-exn-group="walldecoration">VÄGGDEKORATION</button></a></li>
+            <li class="-expandable"><a href="/home-lifestyle/ "><button type="button" class="js-exn-btn action" data-exn-group="homeandlifestyle">HOME &amp; LIFESTYLE</button></a></li>
+            <li class="-expandable"><a href="/fotopresenter/ "><button type="button" class="js-exn-btn action" data-exn-group="photogifts">FOTOPRESENTER</button></a></li>
+            <li><a href="/format/" class="action">Format &amp; Priser</a></li>
+            <li><a href="/betalning-leveransinfo.jsf" target="_blank" class="-shippingLink"><span>FRI leverans</span> från 800 kr.</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="page-head-sub js-expanded-nav" jsf:rendered="#{checkout ne true}">
+      <div class="page-head-sub-row">
+        <nav class="js-exn-sub subnav" data-exn-name="walldecoration" aria-label="navigation">
+          <ul>
+            <li class="item"><a href="/vaggdekor/canvastavlor.jsf" class="subnavitem -leinwand"><span class="title">CANVASTAVLOR</span></a></li>
+            <li class="item"><a href="/vaggdekor/fototavlor-med-ram.jsf" class="subnavitem -gerahmte-bild"><span class="-red"></span><span class="title">FOTOTAVLOR MED RAM</span></a></li>
+            <li class="item"><a href="/vaggdekor/tratavlor.jsf" class="subnavitem -wood"><span class="-red"></span><span class="title">TRÄTAVLOR</span></a></li>
+            <li class="item"><a href="/vaggdekor/akrylglastavlor.jsf" class="subnavitem -acryl"><span class="title">AKRYLGLASTAVLOR</span></a></li>
+            <li class="item"><a href="/vaggdekor/aluminiumtavlor.jsf" class="subnavitem -aluminium"><span class="title">ALUMINIUMTAVLOR</span></a></li>
+          </ul>
+          <br/>
+          <ul>
+            <li class="item"><a href="/vaggdekor/fototavlor.jsf" class="subnavitem -forex"><span class="title">FOTOTAVLOR</span></a></li>
+            <li class="item"><a href="/vaggdekor/akryl-aluminium.jsf" class="subnavitem -acryl-aluminium"><span class="title">AKRYL + ALUMINIUM</span></a></li>
+            <li class="item ref-mixpix"><a href="/mixpix/" class="subnavitem -mixpix"><span class="title"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/mixpix_D.svg" alt="MixPix" /></span><span class="-red"><strong>NY</strong></span></a></li>
+            <li class="item ref-mixpix"><a href="/vaggdekor/fotoposter.jsf" class="subnavitem -fotoposter"><span class="-red"><strong>NY</strong></span><span class="title">FOTOPOSTER</span></a></li>
+          </ul>
+        </nav>
+        <nav class="js-exn-sub subnav" data-exn-name="photogifts" aria-label="navigation">
+          <ul>
+            <li class="item"><a href="/fotopresenter/fotomugg.jsf" class="subnavitem -tasse"><span class="title">FOTOMUGG</span></a></li>
+            <li class="item"><a href="/fotopresenter/musmatta-med-foto.jsf" class="subnavitem -mousepad"><span class="title">MUSMATTA MED FOTO</span></a></li>
+            <li class="item"><a href="/fotopresenter/fotopussel.jsf" class="subnavitem -puzzle"><span class="title">FOTOPUSSEL</span></a></li>
+            <li class="item"><a href="/fotopresenter/stjarnkarta.jsf" class="subnavitem -starmap"><span class="-red"></span><span class="title">STJÄRNHIMMEL</span></a></li>
+          </ul>
+        </nav>
+        <nav class="js-exn-sub subnav" data-exn-name="homeandlifestyle" aria-label="navigation">
+          <ul>
+            <li class="item"><a href="/home-lifestyle/fotohandduk.jsf" class="subnavitem -handtuch"><span class="-red"></span><span class="title">HANDDUK</span></a></li>
+            <li class="item"><a href="/home-lifestyle/fotofilt.jsf" class="subnavitem -blanket"><span class="title">FOTOFILT</span></a></li>
+            <li class="item"><a href="/home-lifestyle/fotokudde.jsf" class="subnavitem -kissen"><span class="title">FOTOKUDDE</span></a></li>
+            <li class="item"><a href="/home-lifestyle/akrylblock.jsf" class="subnavitem -acrylblock"><span class="title">AKRYLBLOCK</span></a></li>
+            <li class="item"><a href="/home-lifestyle/fotomatta.jsf" class="subnavitem  -rug"><span class="-red"></span><span class="title">MATTA</span></a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+</ui:composition>
+

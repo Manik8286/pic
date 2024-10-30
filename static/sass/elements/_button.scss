@@ -1,0 +1,1045 @@
+$svgarrow: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6.1 9.4"><polygon fill="#fff" points="4.7,3.3 1.4,0 0,1.4 3.3,4.7 0,8 1.4,9.4 4.7,6.1 6.1,4.7 "/></svg>';
+$svgarrow-escaped: '%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%206.1%209.4%22%3E%3Cpolygon%20fill%3D%22%23fff%22%20points%3D%224.7%2C3.3%201.4%2C0%200%2C1.4%203.3%2C4.7%200%2C8%201.4%2C9.4%204.7%2C6.1%206.1%2C4.7%20%22/%3E%3C/svg%3E';
+$svgarrow-base64: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2LjEgOS40Ij48cG9seWdvbiBmaWxsPSIjZmZmIiBwb2ludHM9IjQuNywzLjMgMS40LDAgMCwxLjQgMy4zLDQuNyAwLDggMS40LDkuNCA0LjcsNi4xIDYuMSw0LjcgIi8+PC9zdmc+';
+
+
+$svgarrow-invert: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6.1 9.4"><polygon fill="#35B2B6" points="4.7,3.3 1.4,0 0,1.4 3.3,4.7 0,8 1.4,9.4 4.7,6.1 6.1,4.7 "/></svg>';
+$svgarrow-invert-escaped: '%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%206.1%209.4%22%3E%3Cpolygon%20fill%3D%22%234a4a4a%22%20points%3D%224.7%2C3.3%201.4%2C0%200%2C1.4%203.3%2C4.7%200%2C8%201.4%2C9.4%204.7%2C6.1%206.1%2C4.7%20%22/%3E%3C/svg%3E';
+$svgarrow-invert-base64: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2LjEgOS40Ij48cG9seWdvbiBmaWxsPSIjNGE0YTRhIiBwb2ludHM9IjQuNywzLjMgMS40LDAgMCwxLjQgMy4zLDQuNyAwLDggMS40LDkuNCA0LjcsNi4xIDYuMSw0LjcgIi8+PC9zdmc+';
+
+$svgarrow-primary: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6.1 9.4"><polygon fill="#35B2B6" points="4.7,3.3 1.4,0 0,1.4 3.3,4.7 0,8 1.4,9.4 4.7,6.1 6.1,4.7 "/></svg>';
+$svgarrow-primary-escaped: '%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%206.1%209.4%22%3E%3Cpolygon%20fill%3D%22%2374c100%22%20points%3D%224.7%2C3.3%201.4%2C0%200%2C1.4%203.3%2C4.7%200%2C8%201.4%2C9.4%204.7%2C6.1%206.1%2C4.7%20%22/%3E%3C/svg%3E';
+$svgarrow-primary-base64: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2LjEgOS40Ij48cG9seWdvbiBmaWxsPSIjNzRjMTAwIiBwb2ludHM9IjQuNywzLjMgMS40LDAgMCwxLjQgMy4zLDQuNyAwLDggMS40LDkuNCA0LjcsNi4xIDYuMSw0LjcgIi8+PC9zdmc+';
+
+
+$svgrefresh: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="603 -470.7 1536 1536" ><path fill="#fff" d="M2114,457.3c0,3.3-0.3,5.7-1,7c-42.7,178.7-132,323.5-268,434.5s-295.3,166.5-478,166.5c-97.3,0-191.5-18.3-282.5-55
+  s-172.2-89-243.5-157l-129,129c-12.7,12.7-27.7,19-45,19s-32.3-6.3-45-19s-19-27.7-19-45v-448c0-17.3,6.3-32.3,19-45s27.7-19,45-19
+  h448c17.3,0,32.3,6.3,45,19s19,27.7,19,45s-6.3,32.3-19,45l-137,137c47.3,44,101,78,161,102s122.3,36,187,36
+  c89.3,0,172.7-21.7,250-65s139.3-103,186-179c7.3-11.3,25-50.3,53-117c5.3-15.3,15.3-23,30-23h192c8.7,0,16.2,3.2,22.5,9.5
+  S2114,448.6,2114,457.3z M2139-342.7v448c0,17.3-6.3,32.3-19,45s-27.7,19-45,19h-448c-17.3,0-32.3-6.3-45-19s-19-27.7-19-45
+  s6.3-32.3,19-45l138-138c-98.7-91.3-215-137-349-137c-89.3,0-172.7,21.7-250,65s-139.3,103-186,179c-7.3,11.3-25,50.3-53,117
+  c-5.3,15.3-15.3,23-30,23H653c-8.7,0-16.2-3.2-22.5-9.5s-9.5-13.8-9.5-22.5v-7c43.3-178.7,133.3-323.5,270-434.5
+  s296.7-166.5,480-166.5c97.3,0,192,18.5,284,55.5s173.7,89.2,245,156.5l130-129c12.7-12.7,27.7-19,45-19s32.3,6.3,45,19
+  S2139-360.1,2139-342.7z"/>
+</svg>';
+$svgrefresh-escaped: '%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%22603%20-470.7%201536%201536%22%20%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M2114%2C457.3c0%2C3.3-0.3%2C5.7-1%2C7c-42.7%2C178.7-132%2C323.5-268%2C434.5s-295.3%2C166.5-478%2C166.5c-97.3%2C0-191.5-18.3-282.5-55%0A%20%20s-172.2-89-243.5-157l-129%2C129c-12.7%2C12.7-27.7%2C19-45%2C19s-32.3-6.3-45-19s-19-27.7-19-45v-448c0-17.3%2C6.3-32.3%2C19-45s27.7-19%2C45-19%0A%20%20h448c17.3%2C0%2C32.3%2C6.3%2C45%2C19s19%2C27.7%2C19%2C45s-6.3%2C32.3-19%2C45l-137%2C137c47.3%2C44%2C101%2C78%2C161%2C102s122.3%2C36%2C187%2C36%0A%20%20c89.3%2C0%2C172.7-21.7%2C250-65s139.3-103%2C186-179c7.3-11.3%2C25-50.3%2C53-117c5.3-15.3%2C15.3-23%2C30-23h192c8.7%2C0%2C16.2%2C3.2%2C22.5%2C9.5%0A%20%20S2114%2C448.6%2C2114%2C457.3z%20M2139-342.7v448c0%2C17.3-6.3%2C32.3-19%2C45s-27.7%2C19-45%2C19h-448c-17.3%2C0-32.3-6.3-45-19s-19-27.7-19-45%0A%20%20s6.3-32.3%2C19-45l138-138c-98.7-91.3-215-137-349-137c-89.3%2C0-172.7%2C21.7-250%2C65s-139.3%2C103-186%2C179c-7.3%2C11.3-25%2C50.3-53%2C117%0A%20%20c-5.3%2C15.3-15.3%2C23-30%2C23H653c-8.7%2C0-16.2-3.2-22.5-9.5s-9.5-13.8-9.5-22.5v-7c43.3-178.7%2C133.3-323.5%2C270-434.5%0A%20%20s296.7-166.5%2C480-166.5c97.3%2C0%2C192%2C18.5%2C284%2C55.5s173.7%2C89.2%2C245%2C156.5l130-129c12.7-12.7%2C27.7-19%2C45-19s32.3%2C6.3%2C45%2C19%0A%20%20S2139-360.1%2C2139-342.7z%22%2F%3E%0A%3C%2Fsvg%3E';
+$svgrefresh-base64: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjYwMyAtNDcwLjcgMTUzNiAxNTM2IiA+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTIxMTQsNDU3LjNjMCwzLjMtMC4zLDUuNy0xLDdjLTQyLjcsMTc4LjctMTMyLDMyMy41LTI2OCw0MzQuNXMtMjk1LjMsMTY2LjUtNDc4LDE2Ni41Yy05Ny4zLDAtMTkxLjUtMTguMy0yODIuNS01NXMtMTcyLjItODktMjQzLjUtMTU3bC0xMjksMTI5Yy0xMi43LDEyLjctMjcuNywxOS00NSwxOXMtMzIuMy02LjMtNDUtMTlzLTE5LTI3LjctMTktNDV2LTQ0OGMwLTE3LjMsNi4zLTMyLjMsMTktNDVzMjcuNy0xOSw0NS0xOWg0NDhjMTcuMywwLDMyLjMsNi4zLDQ1LDE5czE5LDI3LjcsMTksNDVzLTYuMywzMi4zLTE5LDQ1bC0xMzcsMTM3YzQ3LjMsNDQsMTAxLDc4LDE2MSwxMDJzMTIyLjMsMzYsMTg3LDM2Yzg5LjMsMCwxNzIuNy0yMS43LDI1MC02NXMxMzkuMy0xMDMsMTg2LTE3OWM3LjMtMTEuMywyNS01MC4zLDUzLTExN2M1LjMtMTUuMywxNS4zLTIzLDMwLTIzaDE5MmM4LjcsMCwxNi4yLDMuMiwyMi41LDkuNVMyMTE0LDQ0OC42LDIxMTQsNDU3LjN6IE0yMTM5LTM0Mi43djQ0OGMwLDE3LjMtNi4zLDMyLjMtMTksNDVzLTI3LjcsMTktNDUsMTloLTQ0OGMtMTcuMywwLTMyLjMtNi4zLTQ1LTE5cy0xOS0yNy43LTE5LTQ1czYuMy0zMi4zLDE5LTQ1bDEzOC0xMzhjLTk4LjctOTEuMy0yMTUtMTM3LTM0OS0xMzdjLTg5LjMsMC0xNzIuNywyMS43LTI1MCw2NXMtMTM5LjMsMTAzLTE4NiwxNzljLTcuMywxMS4zLTI1LDUwLjMtNTMsMTE3Yy01LjMsMTUuMy0xNS4zLDIzLTMwLDIzSDY1M2MtOC43LDAtMTYuMi0zLjItMjIuNS05LjVzLTkuNS0xMy44LTkuNS0yMi41di03YzQzLjMtMTc4LjcsMTMzLjMtMzIzLjUsMjcwLTQzNC41czI5Ni43LTE2Ni41LDQ4MC0xNjYuNWM5Ny4zLDAsMTkyLDE4LjUsMjg0LDU1LjVzMTczLjcsODkuMiwyNDUsMTU2LjVsMTMwLTEyOWMxMi43LTEyLjcsMjcuNy0xOSw0NS0xOXMzMi4zLDYuMyw0NSwxOVMyMTM5LTM2MC4xLDIxMzktMzQyLjd6Ii8+PC9zdmc+';
+
+
+$svgupdownarrow: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5.1 13.1"><path fill="#4B4A4B" d="M2.5,13.1l2.5-4H0L2.5,13.1z M2.5,0L0,4.4h5.1L2.5,0z"/></svg>';
+$svgupdownarrow-base64: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1LjEgMTMuMSI+PHBhdGggZmlsbD0iIzRCNEE0QiIgZD0iTTIuNSwxMy4xbDIuNS00SDBMMi41LDEzLjF6IE0yLjUsMEwwLDQuNGg1LjFMMi41LDB6Ii8+PC9zdmc+';
+
+$svgcart: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59 50"><path fill="#fff" d="M22.6470588,45.4705882 C22.6470588,46.7058824 22.1764706,47.7647059 21.2941176,48.6470588 C20.4117647,49.5294118 19.3529412,50 18.1176471,50
+  C16.8823529,50 15.8235294,49.5294118 14.9411765,48.6470588 C14.0588235,47.7647059 13.5882353,46.7058824 13.5882353,45.4705882 C13.5882353,44.2352941 14.0588235,43.1764706 14.9411765,42.2941176 C15.8235294,41.4117647 16.8823529,40.9411765
+  18.1176471,40.9411765 C19.3529412,40.9411765 20.4117647,41.4117647 21.2941176,42.2941176 C22.1764706,43.1764706 22.6470588,44.2352941 22.6470588,45.4705882 L22.6470588,45.4705882 Z M54.2941176,45.4705882 C54.2941176,46.7058824
+  53.8235294,47.7647059 52.9411765,48.6470588 C52.0588235,49.5294118 51,50 49.7647059,50 C48.5294118,50 47.4705882,49.5294118 46.5882353,48.6470588 C45.7058824,47.7647059 45.2352941,46.7058824 45.2352941,45.4705882 C45.2352941,44.2352941
+  45.7058824,43.1764706 46.5882353,42.2941176 C47.4705882,41.4117647 48.5294118,40.9411765 49.7647059,40.9411765 C51,40.9411765 52.0588235,41.4117647 52.9411765,42.2941176 C53.8235294,43.1764706 54.2941176,44.2352941 54.2941176,45.4705882
+  L54.2941176,45.4705882 Z M58.8235294,7 L58.8235294,25.1176471 C58.8235294,25.7058824 58.6470588,26.1764706 58.2352941,26.6470588 C57.8235294,27.0588235 57.3529412,27.3529412 56.8235294,27.4117647 L19.9411765,31.7058824 C20.2352941,33.1176471
+  20.4117647,33.9411765 20.4117647,34.1764706 C20.4117647,34.5294118 20.1176471,35.2941176 19.5882353,36.4117647 L52.1176471,36.4117647 C52.7058824,36.4117647 53.2352941,36.6470588 53.7058824,37.0588235 C54.1764706,37.5294118 54.3529412,38.0588235
+  54.3529412,38.6470588 C54.3529412,39.2352941 54.1176471,39.7647059 53.7058824,40.2352941 C53.2352941,40.7058824 52.7058824,40.8823529 52.1176471,40.8823529 L15.9411765,40.8823529 C15.3529412,40.8823529 14.8235294,40.6470588 14.3529412,40.2352941
+  C13.8823529,39.7647059 13.7058824,39.2352941 13.7058824,38.6470588 C13.7058824,38.4117647 13.8235294,38 14,37.5294118 C14.1764706,37.0588235 14.3529412,36.6470588 14.5882353,36.2352941 C14.7647059,35.8823529 15.0588235,35.4117647
+  15.3529412,34.8235294 C15.6470588,34.2352941 15.8823529,33.8823529 15.8823529,33.7647059 L9.64705882,4.64705882 L2.41176471,4.64705882 C1.82352941,4.64705882 1.29411765,4.41176471 0.823529412,4 C0.352941176,3.52941176 0.176470588,3
+  0.176470588,2.41176471 C0.176470588,1.82352941 0.411764706,1.29411765 0.823529412,0.823529412 C1.29411765,0.352941176 1.82352941,0.176470588 2.41176471,0.176470588 L11.4705882,0.176470588 C11.8235294,0.176470588 12.1764706,0.235294118
+  12.4705882,0.411764706 C12.7647059,0.588235294 13,0.764705882 13.1764706,0.941176471 C13.3529412,1.17647059 13.4705882,1.47058824 13.6470588,1.82352941 C13.7647059,2.17647059 13.8823529,2.47058824 13.9411765,2.76470588 C14,3 14.0588235,3.35294118
+  14.1176471,3.82352941 C14.1764706,4.29411765 14.2352941,4.58823529 14.2941176,4.76470588 L56.7647059,4.76470588 C57.3529412,4.76470588 57.8823529,5 58.3529412,5.41176471 C58.5882353,5.88235294 58.8235294,6.41176471 58.8235294,7 L58.8235294,7 Z"/>
+</svg>';
+$svgcart-base64: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1OSA1MCI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTIyLjY0NzA1ODgsNDUuNDcwNTg4MiBDMjIuNjQ3MDU4OCw0Ni43MDU4ODI0IDIyLjE3NjQ3MDYsNDcuNzY0NzA1OSAyMS4yOTQxMTc2LDQ4LjY0NzA1ODggQzIwLjQxMTc2NDcsNDkuNTI5NDExOCAxOS4zNTI5NDEyLDUwIDE4LjExNzY0NzEsNTANCiAgQzE2Ljg4MjM1MjksNTAgMTUuODIzNTI5NCw0OS41Mjk0MTE4IDE0Ljk0MTE3NjUsNDguNjQ3MDU4OCBDMTQuMDU4ODIzNSw0Ny43NjQ3MDU5IDEzLjU4ODIzNTMsNDYuNzA1ODgyNCAxMy41ODgyMzUzLDQ1LjQ3MDU4ODIgQzEzLjU4ODIzNTMsNDQuMjM1Mjk0MSAxNC4wNTg4MjM1LDQzLjE3NjQ3MDYgMTQuOTQxMTc2NSw0Mi4yOTQxMTc2IEMxNS44MjM1Mjk0LDQxLjQxMTc2NDcgMTYuODgyMzUyOSw0MC45NDExNzY1DQogIDE4LjExNzY0NzEsNDAuOTQxMTc2NSBDMTkuMzUyOTQxMiw0MC45NDExNzY1IDIwLjQxMTc2NDcsNDEuNDExNzY0NyAyMS4yOTQxMTc2LDQyLjI5NDExNzYgQzIyLjE3NjQ3MDYsNDMuMTc2NDcwNiAyMi42NDcwNTg4LDQ0LjIzNTI5NDEgMjIuNjQ3MDU4OCw0NS40NzA1ODgyIEwyMi42NDcwNTg4LDQ1LjQ3MDU4ODIgWiBNNTQuMjk0MTE3Niw0NS40NzA1ODgyIEM1NC4yOTQxMTc2LDQ2LjcwNTg4MjQNCiAgNTMuODIzNTI5NCw0Ny43NjQ3MDU5IDUyLjk0MTE3NjUsNDguNjQ3MDU4OCBDNTIuMDU4ODIzNSw0OS41Mjk0MTE4IDUxLDUwIDQ5Ljc2NDcwNTksNTAgQzQ4LjUyOTQxMTgsNTAgNDcuNDcwNTg4Miw0OS41Mjk0MTE4IDQ2LjU4ODIzNTMsNDguNjQ3MDU4OCBDNDUuNzA1ODgyNCw0Ny43NjQ3MDU5IDQ1LjIzNTI5NDEsNDYuNzA1ODgyNCA0NS4yMzUyOTQxLDQ1LjQ3MDU4ODIgQzQ1LjIzNTI5NDEsNDQuMjM1Mjk0MQ0KICA0NS43MDU4ODI0LDQzLjE3NjQ3MDYgNDYuNTg4MjM1Myw0Mi4yOTQxMTc2IEM0Ny40NzA1ODgyLDQxLjQxMTc2NDcgNDguNTI5NDExOCw0MC45NDExNzY1IDQ5Ljc2NDcwNTksNDAuOTQxMTc2NSBDNTEsNDAuOTQxMTc2NSA1Mi4wNTg4MjM1LDQxLjQxMTc2NDcgNTIuOTQxMTc2NSw0Mi4yOTQxMTc2IEM1My44MjM1Mjk0LDQzLjE3NjQ3MDYgNTQuMjk0MTE3Niw0NC4yMzUyOTQxIDU0LjI5NDExNzYsNDUuNDcwNTg4Mg0KICBMNTQuMjk0MTE3Niw0NS40NzA1ODgyIFogTTU4LjgyMzUyOTQsNyBMNTguODIzNTI5NCwyNS4xMTc2NDcxIEM1OC44MjM1Mjk0LDI1LjcwNTg4MjQgNTguNjQ3MDU4OCwyNi4xNzY0NzA2IDU4LjIzNTI5NDEsMjYuNjQ3MDU4OCBDNTcuODIzNTI5NCwyNy4wNTg4MjM1IDU3LjM1Mjk0MTIsMjcuMzUyOTQxMiA1Ni44MjM1Mjk0LDI3LjQxMTc2NDcgTDE5Ljk0MTE3NjUsMzEuNzA1ODgyNCBDMjAuMjM1Mjk0MSwzMy4xMTc2NDcxDQogIDIwLjQxMTc2NDcsMzMuOTQxMTc2NSAyMC40MTE3NjQ3LDM0LjE3NjQ3MDYgQzIwLjQxMTc2NDcsMzQuNTI5NDExOCAyMC4xMTc2NDcxLDM1LjI5NDExNzYgMTkuNTg4MjM1MywzNi40MTE3NjQ3IEw1Mi4xMTc2NDcxLDM2LjQxMTc2NDcgQzUyLjcwNTg4MjQsMzYuNDExNzY0NyA1My4yMzUyOTQxLDM2LjY0NzA1ODggNTMuNzA1ODgyNCwzNy4wNTg4MjM1IEM1NC4xNzY0NzA2LDM3LjUyOTQxMTggNTQuMzUyOTQxMiwzOC4wNTg4MjM1DQogIDU0LjM1Mjk0MTIsMzguNjQ3MDU4OCBDNTQuMzUyOTQxMiwzOS4yMzUyOTQxIDU0LjExNzY0NzEsMzkuNzY0NzA1OSA1My43MDU4ODI0LDQwLjIzNTI5NDEgQzUzLjIzNTI5NDEsNDAuNzA1ODgyNCA1Mi43MDU4ODI0LDQwLjg4MjM1MjkgNTIuMTE3NjQ3MSw0MC44ODIzNTI5IEwxNS45NDExNzY1LDQwLjg4MjM1MjkgQzE1LjM1Mjk0MTIsNDAuODgyMzUyOSAxNC44MjM1Mjk0LDQwLjY0NzA1ODggMTQuMzUyOTQxMiw0MC4yMzUyOTQxDQogIEMxMy44ODIzNTI5LDM5Ljc2NDcwNTkgMTMuNzA1ODgyNCwzOS4yMzUyOTQxIDEzLjcwNTg4MjQsMzguNjQ3MDU4OCBDMTMuNzA1ODgyNCwzOC40MTE3NjQ3IDEzLjgyMzUyOTQsMzggMTQsMzcuNTI5NDExOCBDMTQuMTc2NDcwNiwzNy4wNTg4MjM1IDE0LjM1Mjk0MTIsMzYuNjQ3MDU4OCAxNC41ODgyMzUzLDM2LjIzNTI5NDEgQzE0Ljc2NDcwNTksMzUuODgyMzUyOSAxNS4wNTg4MjM1LDM1LjQxMTc2NDcNCiAgMTUuMzUyOTQxMiwzNC44MjM1Mjk0IEMxNS42NDcwNTg4LDM0LjIzNTI5NDEgMTUuODgyMzUyOSwzMy44ODIzNTI5IDE1Ljg4MjM1MjksMzMuNzY0NzA1OSBMOS42NDcwNTg4Miw0LjY0NzA1ODgyIEwyLjQxMTc2NDcxLDQuNjQ3MDU4ODIgQzEuODIzNTI5NDEsNC42NDcwNTg4MiAxLjI5NDExNzY1LDQuNDExNzY0NzEgMC44MjM1Mjk0MTIsNCBDMC4zNTI5NDExNzYsMy41Mjk0MTE3NiAwLjE3NjQ3MDU4OCwzDQogIDAuMTc2NDcwNTg4LDIuNDExNzY0NzEgQzAuMTc2NDcwNTg4LDEuODIzNTI5NDEgMC40MTE3NjQ3MDYsMS4yOTQxMTc2NSAwLjgyMzUyOTQxMiwwLjgyMzUyOTQxMiBDMS4yOTQxMTc2NSwwLjM1Mjk0MTE3NiAxLjgyMzUyOTQxLDAuMTc2NDcwNTg4IDIuNDExNzY0NzEsMC4xNzY0NzA1ODggTDExLjQ3MDU4ODIsMC4xNzY0NzA1ODggQzExLjgyMzUyOTQsMC4xNzY0NzA1ODggMTIuMTc2NDcwNiwwLjIzNTI5NDExOA0KICAxMi40NzA1ODgyLDAuNDExNzY0NzA2IEMxMi43NjQ3MDU5LDAuNTg4MjM1Mjk0IDEzLDAuNzY0NzA1ODgyIDEzLjE3NjQ3MDYsMC45NDExNzY0NzEgQzEzLjM1Mjk0MTIsMS4xNzY0NzA1OSAxMy40NzA1ODgyLDEuNDcwNTg4MjQgMTMuNjQ3MDU4OCwxLjgyMzUyOTQxIEMxMy43NjQ3MDU5LDIuMTc2NDcwNTkgMTMuODgyMzUyOSwyLjQ3MDU4ODI0IDEzLjk0MTE3NjUsMi43NjQ3MDU4OCBDMTQsMyAxNC4wNTg4MjM1LDMuMzUyOTQxMTgNCiAgMTQuMTE3NjQ3MSwzLjgyMzUyOTQxIEMxNC4xNzY0NzA2LDQuMjk0MTE3NjUgMTQuMjM1Mjk0MSw0LjU4ODIzNTI5IDE0LjI5NDExNzYsNC43NjQ3MDU4OCBMNTYuNzY0NzA1OSw0Ljc2NDcwNTg4IEM1Ny4zNTI5NDEyLDQuNzY0NzA1ODggNTcuODgyMzUyOSw1IDU4LjM1Mjk0MTIsNS40MTE3NjQ3MSBDNTguNTg4MjM1Myw1Ljg4MjM1Mjk0IDU4LjgyMzUyOTQsNi40MTE3NjQ3MSA1OC44MjM1Mjk0LDcgTDU4LjgyMzUyOTQsNyBaIi8+DQo8L3N2Zz4=';
+
+
+$svgcart-arrow: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78.01 41.41"><path M18.85,37.82a3.83,3.83,0,0,1-3.76,3.76,3.62,3.62,0,0,1-2.64-1.12,3.65,3.65,0,0,1,0-5.28,3.67,3.67,0,0,1,5.28,0,3.62,3.62,0,0,1,1.12,2.64Zm26.3,0A3.83,3.83,0,1,1,44,35.18a3.62,3.62,0,0,1,1.12,2.64Zm3.77-32V20.9a1.86,1.86,0,0,1-.49,1.28,2,2,0,0,1-1.18.63L16.6,26.38A20.2,20.2,0,0,1,17,28.43a6.16,6.16,0,0,1-.68,1.86h27a2,2,0,0,1,1.32.54,1.77,1.77,0,0,1,.54,1.32,1.94,1.94,0,0,1-.54,1.32,1.77,1.77,0,0,1-1.32.54H13.28A2,2,0,0,1,12,33.47a1.77,1.77,0,0,1-.54-1.32,3.41,3.41,0,0,1,.24-.93,8.86,8.86,0,0,1,.49-1.08c.15-.29.39-.68.64-1.17a7.06,7.06,0,0,0,.44-.88L8.05,3.89H2A2,2,0,0,1,.71,3.35,1.76,1.76,0,0,1,.18,2,2,2,0,0,1,.71.71,1.79,1.79,0,0,1,2,.18H9.56a1.64,1.64,0,0,1,.83.19A3.47,3.47,0,0,1,11,.81a5,5,0,0,1,.39.74,6.31,6.31,0,0,1,.25.78c0,.19.09.49.14.88a4.42,4.42,0,0,0,.15.78h35.3a2,2,0,0,1,1.32.54,3,3,0,0,1,.39,1.32Z" transform="translate(-0.18 -0.18)"/><g><path d="M68.43,11.5c.24.25.48.51.73.75l8.73,8.5.3.3-.3.31-9.19,9a3.85,3.85,0,0,0-.27.3h-.08L65.69,28l7.36-7-7.32-7,.41-.35,2.21-2.17Z" transform="translate(-0.18 -0.18)" fill="#fff"/></g>
+</svg>';
+$svgcart-cart-base64: 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3OC4wMSA0MS40MSI+DQogIDxwYXRoIGQ9Ik0xOC44NSwzNy44MmEzLjgzLDMuODMsMCwwLDEtMy43NiwzLjc2LDMuNjIsMy42MiwwLDAsMS0yLjY0LTEuMTIsMy42NSwzLjY1LDAsMCwxLDAtNS4yOCwzLjY3LDMuNjcsMCwwLDEsNS4yOCwwLDMuNjIsMy42MiwwLDAsMSwxLjEyLDIuNjRabTI2LjMsMEEzLjgzLDMuODMsMCwxLDEsNDQsMzUuMThhMy42MiwzLjYyLDAsMCwxLDEuMTIsMi42NFptMy43Ny0zMlYyMC45YTEuODYsMS44NiwwLDAsMS0uNDksMS4yOCwyLDIsMCwwLDEtMS4xOC42M0wxNi42LDI2LjM4QTIwLjIsMjAuMiwwLDAsMSwxNywyOC40M2E2LjE2LDYuMTYsMCwwLDEtLjY4LDEuODZoMjdhMiwyLDAsMCwxLDEuMzIuNTQsMS43NywxLjc3LDAsMCwxLC41NCwxLjMyLDEuOTQsMS45NCwwLDAsMS0uNTQsMS4zMiwxLjc3LDEuNzcsMCwwLDEtMS4zMi41NEgxMy4yOEEyLDIsMCwwLDEsMTIsMzMuNDdhMS43NywxLjc3LDAsMCwxLS41NC0xLjMyLDMuNDEsMy40MSwwLDAsMSwuMjQtLjkzLDguODYsOC44NiwwLDAsMSwuNDktMS4wOGMuMTUtLjI5LjM5LS42OC42NC0xLjE3YTcuMDYsNy4wNiwwLDAsMCwuNDQtLjg4TDguMDUsMy44OUgyQTIsMiwwLDAsMSwuNzEsMy4zNSwxLjc2LDEuNzYsMCwwLDEsLjE4LDIsMiwyLDAsMCwxLC43MS43MSwxLjc5LDEuNzksMCwwLDEsMiwuMThIOS41NmExLjY0LDEuNjQsMCwwLDEsLjgzLjE5QTMuNDcsMy40NywwLDAsMSwxMSwuODFhNSw1LDAsMCwxLC4zOS43NCw2LjMxLDYuMzEsMCwwLDEsLjI1Ljc4YzAsLjE5LjA5LjQ5LjE0Ljg4YTQuNDIsNC40MiwwLDAsMCwuMTUuNzhoMzUuM2EyLDIsMCwwLDEsMS4zMi41NCwzLDMsMCwwLDEsLjM5LDEuMzJaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC4xOCAtMC4xOCkiIGZpbGw9IiNmZmYiIC8+DQogIDxnPg0KICAgICAgPHBhdGggZD0iTTY4LjQzLDExLjVjLjI0LjI1LjQ4LjUxLjczLjc1bDguNzMsOC41LjMuMy0uMy4zMS05LjE5LDlhMy44NSwzLjg1LDAsMCwwLS4yNy4zaC0uMDhMNjUuNjksMjhsNy4zNi03LTcuMzItNywuNDEtLjM1LDIuMjEtMi4xN1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjE4IC0wLjE4KSIgZmlsbD0iI2ZmZiIgLz4NCiAgPC9nPg0KPC9zdmc+';
+
+%svgbackground-arrow {
+  background-image: url('data:image/svg+xml;base64,#{$svgarrow-base64}');
+}
+
+%svgbackground-arrow-invert {
+  background-image: url('data:image/svg+xml;base64,#{$svgarrow-invert-base64}');
+}
+
+%svgbackground-arrow-primary {
+  background-image: url('data:image/svg+xml;base64,#{$svgarrow-primary-base64}');
+}
+
+%svgbackground-updown-arrow {
+  background-image: url('data:image/svg+xml;base64,#{$svgupdownarrow-base64}');
+}
+
+%svgbackground-refresh {
+  background-image: url('data:image/svg+xml;base64,#{$svgrefresh-base64}');
+}
+
+%svgbackground-cart {
+  background-image: url('data:image/svg+xml;base64,#{$svgcart-base64}');
+}
+
+%svgbackground-cart-arrow {
+  background-image: url('data:image/svg+xml;base64,#{$svgcart-cart-base64}');
+}
+
+%button {
+  padding: 0;
+  text-decoration: none;
+  border-radius: 0;
+  border: none;
+  box-sizing: border-box;
+  text-align: center;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.button_action {
+  @extend %button;
+  color: $white;
+  font-size: 16px;
+  height: 35px;
+  line-height: 35px;
+  padding: 0 10px;
+  position: relative;
+  background-color: $newGreen;
+  transition: background 0.2s linear; // Note: should work, won't work in every browser at the moment
+  font-weight: 400;
+
+  &:focus,
+  &:hover {
+    background-color: $newDarkGreen;
+  }
+
+  &.-hover {
+    background-color: $newDarkGreen;
+  }
+
+  &.m0auto {
+    margin: 0 auto;
+    font-size: 15px;
+    width: 100%;
+    
+    &.-smallerFont {
+      font-size: 12px;
+    }
+    
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 6px;
+      height: 9px;
+      top: 49%;
+      margin-top: -4px;
+      right: 6px;
+      background-repeat: no-repeat;
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2LjEgOS40Ij48cG9seWdvbiBmaWxsPSIjZmZmIiBwb2ludHM9IjQuNywzLjMgMS40LDAgMCwxLjQgMy4zLDQuNyAwLDggMS40LDkuNCA0LjcsNi4xIDYuMSw0LjcgIi8+PC9zdmc+);
+    }
+
+  }
+
+  &[disabled] {
+    color: darken($white, 2);
+    /* background-image: linear-gradient(darken($white, 25), darken($white, 30)); */
+  }
+
+  &.-disabled {
+    background-color: #aaaaaa;
+    pointer-events: none;
+    padding-right: 10px;
+    &.-wide {
+      padding-right: 90px;
+    }
+    &.-hover {
+      background-color: #aaaaaa;
+    }
+    &:hover {
+      background-color: #aaaaaa;
+    }
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.button_action_mod-hover {
+  background-color: $newDarkGreen;
+}
+
+.button_action_mod-secondary {
+  color: $white;
+  background-color: $newGreen;
+
+  &:focus, &:hover {
+&.-with-cart {
+  &:after {
+    @extend %svgbackground-cart;
+    content: '';
+    width: 27px;
+    height: 27px;
+    margin-right: 10px;
+    margin-top: 0;
+    top: 8px;
+    right: 10px;
+  }
+}
+    background-color: $newDarkGreen;
+  }
+}
+
+// Button with icon variants
+.button_action_mod-arrow {
+  padding-right: 20px;
+
+  &:after {
+    @extend %svgbackground-arrow;
+    content: '';
+    position: absolute;
+    display: block;
+    width: 6px;
+    height: 9px;
+    top: 50%;
+    margin-top: -4px;
+    right: 10px;
+    background-repeat: no-repeat;
+  }
+}
+
+.button_action_mod-arrow-left-inline {
+
+  &:before {
+    @extend %svgbackground-arrow-invert;
+    content: '';
+    width: 6px;
+    height: 9px;
+    margin-right: 10px;
+    display: inline-block;
+    transform: scale(-1, 1);
+  }
+
+  &:hover, &:focus {
+    color: $newDarkGreen;
+    border-color: $newDarkGreen;
+
+    &:before {
+      @extend %svgbackground-arrow-invert;
+    }
+  }
+}
+
+.button_action_mod-refresh {
+  padding-left: 32px;
+
+  &:before {
+    @extend %svgbackground-refresh;
+    content: '';
+    position: absolute;
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-top: -5px;
+    top: 50%;
+    left: 10px;
+    background-repeat: no-repeat;
+  }
+}
+
+.button_action_mod-static-250-60-refresh {
+  &:before {
+    line-height: 60px;
+    margin-left: 8px;
+    margin-top: -7px;
+  }
+}
+
+.button_action_mod-plus {
+  padding-left: 30px;
+
+  &:before {
+    content: '+';
+    font-size: 24px;
+    line-height: 34px;
+    position: absolute;
+    left: 10px;
+    top: 0;
+  }
+}
+
+.button_action_mod-plus-after {
+  padding-right: 30px;
+
+  &:after {
+    content: '+';
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 34px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+  }
+}
+
+// Action button variants
+.button_action_mod-wide {
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.button_action_mod-small {
+  height: 30px;
+  line-height: 30px;
+  font-size: 13px;
+}
+
+.button_action_mod-medium {
+  height: 50px;
+  line-height: 50px;
+  border-radius: 0;
+  font-size: 16px;
+  padding: 0 20px;
+}
+
+.button_action_mod-touch {
+  height: 40px;
+  line-height: 40px;
+}
+
+.button_action_mod-fullbleed {
+  width: 100%;
+  box-shadow: none;
+}
+
+.button_action_mod-fullbleed-plus {
+  width: 100%;
+
+  &:before {
+    content: '+';
+    margin-right: 10px;
+  }
+}
+
+.button_action_mod-big {
+  height: 57px;
+  line-height: 57px;
+  text-transform: uppercase;
+  font-size: 24px;
+  padding: 0 20px;
+  &.-topBottom {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+.button_action_mod-big-arrow {
+  padding-right: 41px;
+
+  &:after {
+    height: 18px;
+    width: 11px;
+    margin-left: 8px;
+    right: 21px;
+    margin-top: -9px;
+  }
+}
+
+.button_action_mod-big-plus {
+  &:before {
+    content: '+';
+    line-height: 54px;
+    margin-right: 10px;
+  }
+}
+
+.button_action_mod-big-wide {
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+}
+
+.button_action_mod-static-250-60 {
+  height: 60px;
+  width: 250px;
+  line-height: 60px;
+  font-size: 24px;
+  text-transform: none;
+  text-align: center;
+}
+
+.button_action_mod-static-260-60-plus {
+  &:before {
+    line-height: 60px;
+    margin-right: 10px;
+  }
+}
+
+.button_action_mod-static-260-60-refresh {
+  &:before {
+    line-height: 60px;
+    margin-left: 8px;
+    margin-top: -7px;
+  }
+}
+
+.button_simple {
+  @extend %button;
+  border: 1px solid $button-simple-normal-color;
+  background: transparent;
+  height: 40px;
+  line-height: 40px;
+  font-size: 13px;
+  white-space: normal;
+}
+
+.button_simple_mod-has-image {
+  height: auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  position: relative;
+
+  > .label {
+    line-height: 18px;
+    min-height: 40px;
+    display: block;
+    vertical-align: middle;
+    margin-bottom: 15px;
+  }
+}
+
+// Button with icon variants
+.button_simple_mod-arrow {
+  padding-left: 20px;
+  position: relative;
+
+  &:before {
+    @extend %svgbackground-arrow-invert;
+    content: '';
+    position: absolute;
+    display: block;
+    width: 6px;
+    height: 9px;
+    top: 50%;
+    margin-top: -4px;
+    left: 10px;
+    background-repeat: no-repeat;
+  }
+
+  &:hover:before {
+    @extend %svgbackground-arrow-primary;
+  }
+
+  &.-left {
+    &:before {
+      transform: scaleX(-1);
+    }
+  }
+}
+
+.button_simple_mod-has-background {
+  background-color: $button-simple-background-color;
+}
+
+.button_simple_mod-shy {
+  border-color: $button-simple-lighter-color;
+}
+
+.button_simple_mod-dark {
+  color: $white;
+  background-color: $button-simple-dark-color;
+  border-color: $button-simple-dark-color;
+}
+
+.button_simple_mod-updown-arrows {
+  position: relative;
+  &:before {
+    content: '';
+    width: 5px;
+    height: 13px;
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    @extend %svgbackground-updown-arrow;
+  }
+}
+
+.no-touch .button_simple:hover,
+.button_simple_mod-highlight {
+  color: $button-simple-highlight-color;
+  border-color: $button-simple-highlight-color;
+}
+
+.button_simple_mod-cancel {
+  transition: all 0.2s;
+
+  &:before {
+    content: '×';
+  }
+
+  .no-touch &:hover {
+    border-color: $button-cancel-border-color;
+    background-color: $button-cancel-background-color;
+    color: $white;
+  }
+}
+
+
+// Old syntax for support in browser-view
+
+.button {
+  display: inline-block;
+  padding: 0;
+  text-decoration: none;
+  border-radius: 0;
+  border: none;
+  box-sizing: border-box;
+  text-align: center;
+
+  &.-no-padding-left {
+    margin-left: -40px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.-empty-background {
+    color: $button-primary-normal-color-top;
+    background: $white;
+    border: 1px solid $button-primary-normal-color-top;
+    font-size: 13px;
+    height: 35px;
+    display: inline-block;
+    line-height: 35px;
+    padding: 0 15px;
+    cursor: pointer;
+  }
+}
+
+// A call to action button. This button should only be used to direct to the
+// order process or directly in the order process.
+//
+// :hover       - Hover highlight.
+// .-arrow      - Adds an arrow in the right of the button.
+// .-big        - A bigger button.
+// .-wide       - A little wider small button.
+//
+// Styleguide Buttons.Action.
+//
+// Compatibility for gradients in all browsers except -IE9 and Opera Mini,
+// transition doesn't work in major browsers except IE10+, but this is untested.
+.button.-action {
+  color: $white;
+  /* font-size: 13px; */
+  height: 35px;
+  line-height: 35px;
+  padding: 0 10px;
+  position: relative;
+  background-color: $newGreen;
+  transition: background 0.2s linear; // Note: should work, won't work in every browser at the moment
+  background-image: none;
+  cursor: pointer;
+
+  &.-right {
+    float: right;
+  }
+  &.-left {
+    float: left;
+  }
+  &.-left-space {
+    margin-left: 20px;
+  }
+  &.-right-space {
+    margin-right: 20px;
+  }
+  &.-facebook {
+    background: $facebook;
+    color: $white;
+    font-size: 14px;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 10px;
+    &:before {
+        content: "";
+        display: block;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        fill: #4C6FAA; 
+        position: absolute;
+        top: 6px;
+        width: 24px;
+        height: 24px;
+      }
+  }
+
+  &.-link {
+    background-color: #545454;
+    color: white;
+    border: none;
+    height: 35px;
+    max-width: 295px;
+    font-size: 13px;
+    font-weight: 400;
+    background-image: none;
+    position: relative;
+    right: 0;
+
+      &:before {
+        content: "";
+        display: block;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        position: absolute;
+        fill: #545454;
+        color: #545454;
+        top: 6px;
+        width: 24px;
+        height: 24px;
+      }
+  }
+
+  &:focus,
+  &:hover {
+    background-color: $newDarkGreen;
+  }
+
+  &[disabled],
+  &.ui-state-disabled {
+    color: darken($white, 2);
+    background-image: linear-gradient(darken($white, 25), darken($white, 30));
+  }
+
+
+  &.-secondary {
+    border: 2px solid $newGreen;
+    background-color: transparent;
+    color: #35B2B6;
+    cursor: pointer;
+    background-image: none;
+    line-height: 1em;
+    height: auto;
+    padding: 9px 10px;
+    border-radius: 0;
+    &:focus, &:hover,&.-hover {
+      color: $newDarkGreen;
+      border: 2px solid $newDarkGreen;
+    }
+    &.-font16 {
+      font-size: 15px;
+    } 
+  }
+
+
+  &.-with-cart {
+    &:after {
+      @extend %svgbackground-cart;
+      content: '';
+      width: 27px;
+      height: 27px;
+      margin-right: 10px;
+      margin-top: 0;
+      top: 8px;
+      right: 10px;
+    }
+  }
+
+  &.-with-cart-arrow {
+    &:after {
+      @extend %svgbackground-cart-arrow;
+      content: '';
+      width: 40px;
+      height: 20px;
+      top: 8px;
+      right: 10px;
+      position: absolute;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &.-bolder {
+    font-weight: 700;
+  }
+
+  &.-right {
+    float: right;
+  }
+
+  &.-top-space {
+    margin-top: 20px;
+  }
+
+  // Button with icon variants
+  &.-arrow {
+    padding-right: 20px;
+
+    &:after {
+      @extend %svgbackground-arrow;
+      content: '';
+      position: absolute;
+      display: block;
+      width: 6px;
+      height: 9px;
+      top: 50%;
+      margin-top: -4px;
+      right: 10px;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &.-upload-another {
+    background: white;
+    border: 1px solid $newGreen;
+    color: $newGreen;
+    width: 100%;
+
+    &:after {
+      content: "+";
+      position:absolute;
+      color: $newGreen;
+      margin: 0;
+      top: 0;
+      right: 10px;
+      background: 0 0;
+      font-size: 36px;
+    }
+
+    &:hover, &:focus {
+      border: 1px solid $newDarkGreen;
+      color: $newDarkGreen;
+      transition: all 0.2s;
+      &:after {
+        transition: all 0.2s;
+        color: $newDarkGreen;
+      }
+    }
+  }
+
+
+  &.-refresh {
+    padding-left: 32px;
+
+    &:before {
+      @extend %svgbackground-refresh;
+      content: '';
+      position: absolute;
+      display: block;
+      width: 16px;
+      height: 16px;
+      margin-top: -5px;
+      top: 50%;
+      left: 10px;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &.-plus {
+    padding-left: 30px;
+
+    &:before {
+      content: '+';
+      font-size: 24px;
+      line-height: 34px;
+      position: absolute;
+      left: 10px;
+      top: 0;
+    }
+  }
+
+  // Action button variants
+  &.-wide {
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    border-radius: 2px;
+  }
+
+  &.-small {
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+  }
+
+  &.-margin-bottom {
+    margin-bottom: 20px;
+  }
+
+  &.-medium {
+    height: 50px;
+    line-height: 50px;
+    border-radius: 0;
+    font-size: 13px;
+    padding: 0 20px;
+  }
+
+  &.-touch {
+    height: 40px;
+    line-height: 40px;
+
+    &.-plus:before {
+      line-height: 40px;
+    }
+  }
+
+  &.-fullbleed {
+    width: 100%;
+  }
+
+  &.-big {
+    height: 57px;
+    line-height: 57px;
+    text-transform: uppercase;
+    font-size: 24px;
+    padding: 0 20px;
+
+    &.-arrow {
+      padding-right: 41px;
+
+      &:after {
+        height: 18px;
+        width: 11px;
+        margin-left: 8px;
+        right: 21px;
+        margin-top: -9px;
+      }
+    }
+
+    &.-plus {
+      &:before {
+        content: '+';
+        line-height: 54px;
+        margin-right: 10px;
+      }
+    }
+
+    &.-wide {
+      padding-left: 30px;
+      padding-right: 30px;
+      text-align: center;
+    }
+  }
+
+  &.-big.-static-250-60{
+    height: 60px;
+    width: 250px;
+    line-height: 60px;
+    font-size: 24px;
+    text-transform: none;
+    text-align: center;
+
+    &.-plus {
+      &:before {
+        line-height: 60px;
+        margin-right: 10px;
+      }
+    }
+
+    &.-refresh {
+      &:before {
+        line-height: 60px;
+        margin-left: 8px;
+        margin-top: -7px;
+      }
+    }
+  }
+}
+
+.button.-simple {
+  border: 1px solid $button-simple-normal-color;
+  background: transparent;
+  height: 40px;
+  line-height: 38px;
+  font-size: 13px;
+  white-space: normal;
+
+  &.-has-image {
+    height: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    position: relative;
+
+    > .label {
+      line-height: 18px;
+      min-height: 40px;
+      display: block;
+      vertical-align: middle;
+      margin-bottom: 15px;
+    }
+  }
+
+  &.-has-background {
+    background-color: $button-simple-background-color;
+  }
+
+  &.-shy {
+    border-color: $button-simple-lighter-color;
+  }
+
+  .no-touch &:hover,
+  &.-highlight {
+    color: $button-simple-highlight-color;
+    border-color: $button-simple-highlight-color;
+  }
+
+  &.-cancel {
+    transition: all 0.2s;
+
+    &:before {
+      content: '×';
+    }
+
+    .no-touch &:hover {
+      border-color: $button-cancel-border-color;
+      background-color: $button-cancel-background-color;
+      color: $white;
+    }
+  }
+}
+
+.button.-control {
+  border: 1px solid $button-simple-normal-color;
+  color: $button-simple-normal-color;
+  background: transparent;
+  height: 35px;
+  line-height: 33px;
+  font-size: 13px;
+  white-space: normal;
+  padding: 0 10px;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+.button.-positive {
+  color: $highlight-color;
+  border-color: $highlight-color;
+
+  &:hover {
+    color: darken($highlight-color, 10);
+    border-color: darken($highlight-color, 10);
+  }
+}
+
+.button.-neutral {
+  color: $concrete;
+  border-color: $concrete;
+
+  &:hover {
+    color: darken($concrete, 10);
+    border-color: darken($concrete, 10);
+  }
+}
+
+.button.-critical {
+  color: $red;
+  border-color: $red;
+
+  &:hover {
+    color: darken($red, 10);
+    border-color: darken($red, 10);
+  }
+}
+
+.button.-nothing {
+  color: $concrete;
+  border-color: transparent;
+
+  &:hover {
+    background-color: $mercury;
+  }
+}
+
+.button.-flat-green {
+  color: $white;
+  background-color: $newGreen;
+  border-color: transparent;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: darken($newGreen, 5);
+  }
+}
+
+.button.-flat-orange {
+  color: $white;
+  background-color: $orange;
+  border-color: transparent;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: darken($orange, 5);
+  }
+}
+
+.article-btn {
+  clear: both;
+  .js-du {
+    display: inline-block;
+    margin-top: 26px;
+  }
+}
+
+.button_action_v2 {
+
+  @extend %button;
+  user-select: none;
+  white-space: normal;
+  font-size: 18px;
+  border: none;
+  background: transparent;
+  color: #fff;
+  height: 99px;
+  border-radius: 0;
+  margin: 0 !important;
+  width: 24.5%;
+  position: relative;
+  opacity: 1 !important;
+
+  img {
+    padding-bottom: 5px;
+  }
+
+  &:focus{
+    background: transparent;
+  }
+
+  &.active{
+
+    font-weight: normal;
+    text-decoration: underline;
+
+    &:after {
+      content:'';
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+      margin-left: -13px;
+      width: 0;
+      height: 0;
+      border-bottom: solid 13px #fff;
+      border-left: solid 13px transparent;
+      border-right: solid 13px transparent;
+      z-index: 800;
+    }
+
+    color: #ffffff;
+    user-select: none;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  &:hover {
+    font-weight: normal;
+    text-decoration: underline;
+  }
+}
+
+.youtube-btn {
+    border: none;
+    background: none;
+    padding: 0;
+    &:focus {
+      outline: none;
+    }
+}

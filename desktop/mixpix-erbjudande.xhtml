@@ -1,0 +1,101 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:param name="pageTitle" value="MIXPIX - Foto plattor med bästa-pris-garanti" />
+
+<ui:define name="dataLayer">
+  <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+    <ui:param name="mixpix" value="true" />
+    <ui:param name="noList" value="true" />
+  </ui:include>
+</ui:define>
+
+<ui:define name="head">
+  <ui:include src="/coupons/discountcode-BC_SE_SEA.xhtml" />
+<ui:include src="/helper/reference.xhtml" />
+  <!--  -->
+</ui:define>
+
+<ui:define name="meta">
+  <meta name="description" content="Fäst, avlägsna och arrangera om. &#x2705; Köp 10 och få FRI leverans. &#x2705; Enastående skärpa och fantastiska färger!" />
+  <meta name="robots" content="NOINDEX,FOLLOW" />
+  <link rel="canonical" href="https://www.bestcanvas.se/mixpix/" />
+
+   <meta property="og:title" content="MIXPIX - Foto plattor med bästa-pris-garanti" />
+   <meta property="og:type" content="website" />
+   <meta property="og:url" content="https://www.bestcanvas.se/mixpix/" />
+   <meta property="og:image" content="https://download.cdn-shop.com/media/web_images/social_media/bestcanvasse/mixpix.jpg" />
+   <meta property="og:description" content="Fäst, avlägsna och arrangera om. &#x2705; Köp 10 och få FRI leverans. &#x2705; Enastående skärpa och fantastiska färger!" />
+    <meta property="og:site_name" content="BestCanvas.se" />
+
+   <meta name="twitter:card" content="summary_large_image" />
+   <meta name="twitter:site" content="@bestcanvas_se" />
+   <meta name="twitter:creator" content="@bestcanvas_se" />
+   <meta name="twitter:title" content="MIXPIX - Foto plattor med bästa-pris-garanti" />
+   <meta name="twitter:description" content="Fäst, avlägsna och arrangera om. &#x2705; Köp 10 och få FRI leverans. &#x2705; Enastående skärpa och fantastiska färger!" />
+   <meta name="twitter:url" content="https://www.bestcanvas.se/mixpix/" />
+   <meta name="twitter:image" content="https://download.cdn-shop.com/media/web_images/social_media/bestcanvasse/mixpix.jpg" />
+   <meta http-equiv="content-language" content="sv_SE"/>
+</ui:define>
+
+<ui:define name="content">
+    <ui:include src="/page-blocks/teaser-right-white.xhtml">
+      <!-- Images -->
+      <ui:param name="teaserBgImage" value="#{libraryImagesBean.getFilePathByLibraryImageId(459)}" />
+      <ui:param name="teaserProductImage" value="#{libraryImagesBean.getFilePathByLibraryImageId(460)}" />
+      <ui:param name="altTeaserProductImage" value="#{libraryImagesBean.getAltByLibraryImageId(459)}" />
+      <ui:param name="showcaseClass" value="-transparent" />
+      <ui:param name="imgClass" value="-withGap" />
+      
+      <!-- Headers -->
+      <ui:param name="headline" value="&#x3C;img src=&#x22;/#{shopInfoBean.versionPath}assets/img/logo/mixpix-logo.svg&#x22; class=&#x22;mixPix-logo&#x22; /&#x3E; Foto plattor med bästa-pris-garanti" />
+
+      <!-- Price Badge -->
+      <ui:param name="badgeTop" value="Styck" />
+      <ui:param name="badgeTopDiscount" value="Spara upp till" />
+      <ui:param name="badgeMiddle" value="#{priceBean.productPriceShort('MixPics_Bestecanvas_SE', 'MixPix', 'MixPix 20x20')}" />
+      <ui:param name="badgeBottom" value="&#x3C;strike&#x3E;#{priceBean.productCrossPrice('MixPics_Bestecanvas_SE', 'MixPix', 'MixPix 20x20')}&#x3C;/strike&#x3E;" />
+      <ui:param name="badgeClass" value="-positionBottom" />
+      
+      <!-- Bullet points -->
+      <ui:param name="teaserFeature1" value="Fäst, avlägsna och arrangera om" />
+      <ui:param name="teaserFeature2" value="Enastående skärpa och fantastiska färger" />
+      <ui:param name="teaserFeature3" value="Köp 8 och få FRI leverans" />
+
+      <!-- Button -->
+      <ui:param name="quotes" value="false" />
+      <ui:param name="uploadId" value="4284" />
+      <ui:param name="buttonText" value="Skapa" />
+      
+    </ui:include>
+
+
+  <!-- info boxes -->
+    <section class="page-section -alternate -smaller">
+      <ui:include src="/page-blocks/info-blocks-mixpix.xhtml">
+        <ui:param name="RenderReviewBlock" value="#{sessionBean.userAgentType == 'phone' ? 'false' : ''}" />
+      </ui:include>
+    </section>
+  <!-- /info boxes -->
+
+  <section class="page-section">
+    <ui:include src="/content-blocks/mixpix-text.xhtml" />
+  </section>
+
+  <!-- paymentmethods -->
+  <section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+   <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+</section>
+  <!-- /paymentmethods -->
+
+  <ui:include src="/page-blocks/uploader-cover.xhtml" />
+
+</ui:define>
+</ui:composition>
+

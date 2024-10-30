@@ -1,0 +1,103 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:define name="head">
+   <ui:include src="/coupons/discountcode-BC_SE_SEA.xhtml" />
+<ui:include src="/helper/reference.xhtml" />
+   <!--  -->
+</ui:define>
+
+<ui:param name="formatSize" value="20x20" />
+<ui:param name="productVariant" value="Canvas #{formatSize}" />
+<ui:param name="priceComma" value="#{fn:replace(priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', productVariant), ' kr', ' ')}" />
+
+<ui:define name="dataLayer">
+  <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+    <ui:param name="canvas" value="true" />
+    <ui:param name="noList" value="true" />
+  </ui:include>
+  <script>
+    dataLayer.push({
+      'marketingChannelPage': 'sea'
+    })
+  </script>
+</ui:define>
+
+<ui:param name="pageTitle" value="Skriv ut dina foton på duk till ett överkomligt pris från #{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', productVariant)} i formatet #{formatSize} cm" />
+<ui:param name="mastertagTracking" value="canvas" />
+
+<ui:define name="meta">
+  <meta name="robots" content="NOINDEX,FOLLOW" />
+</ui:define>
+
+<ui:define name="content">
+  <c:set var="NlDealActivated" scope="request" value="false" />
+
+  <!-- teaser -->
+  <ui:include src="/page-blocks/teaser-right-white.xhtml">
+    <!-- Images -->
+    <ui:param name="teaserBgImage" value="/#{shopInfoBean.versionPath}assets/img/backgrounds/gsp-teaser-background.jpg" />
+    <ui:param name="teaserProductImage" value="/#{shopInfoBean.versionPath}assets/img/format/canvas/background-teaser-quad-20x20-1.png" />
+    <ui:param name="acrylblockProduct" value="true" />
+    <ui:param name="altTeaserProductImage" value="Ditt Foto på Canvas" />
+    <ui:param name="showcaseClass" value="#{sessionBean.userAgentType != 'phone' ? '-smallerHeight' : ''}" />
+    <ui:param name="imgClass" value="-withGap" />
+    <ui:param name="ProductImgClass" value="-smaller" />
+
+    <!-- Headers -->
+    <ui:param name="headline" value="Ditt Foto på Canvas  &#60;span style='font-size:12px;'&#62;i formatet 20x20 cm&#60;/span&#62;" />
+    <ui:param name="claim1" value="Skapa ditt eget högvärdiga konstverk!" />
+
+    <!-- Price Badge -->
+    <ui:param name="badgeTop" value="Spara upp till #{priceBean.absoluteSavingsPercent('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 20x20')}" />
+    <ui:param name="badgeTopDiscount" value="Spara upp till" />
+    <ui:param name="badgeMiddle" value="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 20x20')}" />
+    <ui:param name="badgeBottom" value="istället för #{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 20x20')}" />
+    <ui:param name="badgeClass" value="-positionBottom" />
+    <ui:param name="seaBadgeText1" value="20x20 cm" />
+
+    <!-- Bullet points -->
+    <ui:param name="teaserFeature1" value="&#60;b&#62;Redan över 40.000 nöjda kunder&#60;/b&#62;" />
+    <ui:param name="teaserFeature2" value="Bäst i Test på SVT's PLUS" />
+    <ui:param name="teaserFeature3" value="Leveransfärdig inom 24 timmar" />
+    <ui:param name="teaserFeature4" value="Modernt latextryck - Barnrumsvänligt" />
+
+    <!-- Upload Button -->
+    <ui:param name="uploadId" value="254" />
+    <ui:param name="buttonText" value="Skapa" />
+    <ui:param name="quotes" value="false" />
+  </ui:include>
+  <!-- /teaser -->
+
+    <!-- info boxes -->
+  <section class="page-section -alternate -collapse-top">
+     <ui:include src="/page-blocks/info-blocks-canvas.xhtml" />
+  </section><!-- /info boxes -->
+
+  <section class="page-section">
+    <ui:include src="/page-blocks/canvas-page-content.xhtml" />
+  </section>
+
+  <!-- paymentmethods -->
+  <section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+   <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+  </section>
+  <!-- /paymentmethods -->
+
+  <!-- microdata -->
+  <ui:include src="/content-blocks/microdata-simple.xhtml">
+    <ui:param name="name" value="Ditt Foto på Canvas" />
+    <ui:param name="sku" value="CANVAS-#{formatSize}" />
+    <ui:param name="url" value="#{request.getRequestURL()}" />
+    <ui:param name="price" value="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', productVariant)}" />
+  </ui:include>
+  <!-- /microdata -->
+
+</ui:define>
+</ui:composition>

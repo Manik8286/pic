@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+
+
+  <div class="showcase-box" data-mh="info">
+    <h3 class="headline #{sessionBean.userAgentType == 'tablet' ? '-titleTable' : ''}">Vi har låga priser för Foto på Trä!</h3>
+    <table class="table -striped #{sessionBean.userAgentType == 'tablet' ? '-tableTablet' : ''}">
+      <thead class="-highlighted">
+          <tr>
+            <th class="-text-centered">Format</th>
+            <th class="-text-centered">Pris</th>
+            <th class="-highlighted -text-centered">Idag</th>
+          </tr>
+      </thead>
+      <tbody class="-text-centered">
+          <tr>
+            <td>20 x 20cm</td>
+            <td>#{priceBean.productCrossPrice('Wood Print_Bestcanvas_SE', 'Wood Classic', 'Wood 20x20')}</td>
+            <td class="-highlighted">#{priceBean.productPrice('Wood Print_Bestcanvas_SE', 'Wood Classic', 'Wood 20x20')}</td>
+          </tr>
+          <tr>
+            <td>30 x 20cm</td>
+            <td>#{priceBean.productCrossPrice('Wood Print_Bestcanvas_SE', 'Wood Classic', 'Wood 30x20')}</td>
+            <td class="-highlighted">#{priceBean.productPrice('Wood Print_Bestcanvas_SE', 'Wood Classic', 'Wood 30x20')}</td>
+          </tr>
+
+          <tr>
+            <td>30 x 30cm</td>
+            <td>#{priceBean.productCrossPrice('Wood Print_Bestcanvas_SE', 'Wood Classic', 'Wood 30x30')}</td>
+            <td class="-highlighted">#{priceBean.productPrice('Wood Print_Bestcanvas_SE', 'Wood Classic', 'Wood 30x30')}</td>
+          </tr>
+          <tr>
+            <td>40 x 30cm</td>
+            <td>#{priceBean.productCrossPrice('Wood Print_Bestcanvas_SE', 'Wood Classic', 'Wood 40x30')}</td>
+            <td class="-highlighted">#{priceBean.productPrice('Wood Print_Bestcanvas_SE', 'Wood Classic', 'Wood 40x30')}</td>
+          </tr>
+          <tr>
+            <td>40 x 40cm</td>
+            <td>#{priceBean.productCrossPrice('Wood Print_Bestcanvas_SE', 'Wood Classic', 'Wood 40x40')}</td>
+            <td class="-highlighted">#{priceBean.productPrice('Wood Print_Bestcanvas_SE', 'Wood Classic', 'Wood 40x40')}</td>
+          </tr>
+          <tr>
+            <td>60 x 40cm</td>
+            <td>#{priceBean.productCrossPrice('Wood Print_Bestcanvas_SE', 'Wood Classic', 'Wood 60x40')}</td>
+            <td class="-highlighted">#{priceBean.productPrice('Wood Print_Bestcanvas_SE', 'Wood Classic', 'Wood 60x40')}</td>
+          </tr>
+        </tbody>
+    </table>
+    <ui:fragment rendered="#{sessionBean.userAgentType != 'phone'}">
+      <a href="#{not empty customLink ? customLink : '/format/#tra'}" class="link">Alla priser och format »</a>
+    </ui:fragment>
+    <ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+      <a href="#{not empty customLink ? customLink : '/format/tra.jsf'}" class="link">Alla priser och format »</a>
+    </ui:fragment>
+  </div>
+
+</ui:composition>

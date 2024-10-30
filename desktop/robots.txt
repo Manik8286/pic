@@ -1,0 +1,37 @@
+User-agent: *
+Disallow: *.pdf
+Allow: *.css
+Allow: *.js
+Allow: *.png
+Allow: *.jpg
+Allow: /java/
+Allow: /banner/
+Allow: /css/
+Allow: /staticimages/
+Allow: /jquery/
+
+
+User-agent: Googlebot
+Disallow: *.pdf
+Allow: *.css
+Allow: *.js
+Allow: *.png
+Allow: *.jpg
+Allow: /java/
+Allow: /banner/
+Allow: /css/
+Allow: /staticimages/
+Allow: /jquery/
+
+
+User-agent: Googlebot-Mobile
+Disallow: *.pdf
+Allow: *.css
+Allow: *.js
+Allow: *.png
+Allow: *.jpg
+Allow: /java/
+Allow: /banner/
+Allow: /css/
+Allow: /staticimages/
+Allow: /jquery/

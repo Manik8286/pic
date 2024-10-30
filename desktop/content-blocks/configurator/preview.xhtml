@@ -1,0 +1,171 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+								xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+								xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <div class="product #{type eq 'small' ? '-reduced' : ''}" data-waiting-text="Preview is generated...">
+
+    <ui:fragment rendered="#{type ne 'small'}">
+      <div id="cw" class="measure -horizontal">
+        <span class="js-measure-width">
+          <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId != materialBlanketBasic and itemConfiguratorBean.colorCarrierId != materialBlanketPremium and
+          itemConfiguratorBean.colorCarrierId != materialPillow and itemConfiguratorBean.colorCarrierId != materialPassepartoutPoster }">
+            #{itemConfiguratorBean.formatWidth('in')}#{_['&#8243;']}
+          </ui:fragment>
+          <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId == materialPillow}">
+            #{itemConfiguratorBean.formatWidth('in') == 14 ? 16 : itemConfiguratorBean.formatWidth('in')}#{_['&#8243;']}
+          </ui:fragment>
+          <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId == materialBlanketBasic or itemConfiguratorBean.colorCarrierId == materialBlanketPremium}">
+          #{itemConfiguratorBean.formatWidth == '100 cm'?'40&#8243;':''}
+          #{itemConfiguratorBean.formatWidth == '150 cm'?'60&#8243;':''}
+          #{itemConfiguratorBean.formatWidth == '204 cm'?'80&#8243;':''}
+          </ui:fragment>
+          <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId == materialPassepartoutPoster}">
+          #{itemConfiguratorBean.formatWidth == '14 cm'?'8&#8243;':''}
+          #{itemConfiguratorBean.formatWidth == '23 cm'?'12&#8243;':''}
+          #{itemConfiguratorBean.formatWidth == '24 cm'?'12&#8243;':''}
+          #{itemConfiguratorBean.formatWidth == '33 cm'?'16&#8243;':''}
+          #{itemConfiguratorBean.formatWidth == '30 cm'?'16&#8243;':''}
+          #{itemConfiguratorBean.formatWidth == '31 cm'?'16&#8243;':''}
+          #{itemConfiguratorBean.formatWidth == '40 cm'?'20&#8243;':''}
+          #{itemConfiguratorBean.formatWidth == '41 cm'?'20&#8243;':''}
+          #{itemConfiguratorBean.formatWidth == '32 cm'?'16&#8243;':''}
+          #{itemConfiguratorBean.formatWidth == '66 cm'?'30&#8243;':''}
+        </ui:fragment>
+        </span>
+      </div>
+      <div id="ch" class="measure -vertical">
+        <span class="js-measure-height">
+          <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId != materialBlanketBasic and itemConfiguratorBean.colorCarrierId != materialBlanketPremium and
+          itemConfiguratorBean.colorCarrierId != materialPillow and itemConfiguratorBean.colorCarrierId != materialPassepartoutPoster}">
+            #{itemConfiguratorBean.formatHeight('in')}#{_['&#8243;']}
+          </ui:fragment>
+          <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId == materialPillow}">
+            #{itemConfiguratorBean.formatWidth('in') == 14 ? 16 : itemConfiguratorBean.formatWidth('in')}#{_['&#8243;']}
+          </ui:fragment>
+          <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId == materialBlanketBasic or itemConfiguratorBean.colorCarrierId == materialBlanketPremium}">
+          #{itemConfiguratorBean.formatHeight == '75 cm'?'30&#8243;':''}
+          #{itemConfiguratorBean.formatHeight == '100 cm'?'40&#8243;':''}
+          #{itemConfiguratorBean.formatHeight == '150 cm'?'60&#8243;':''}
+          #{itemConfiguratorBean.formatHeight == '204 cm'?'80&#8243;':''}
+          </ui:fragment>
+          <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId == materialPassepartoutPoster}">
+          #{itemConfiguratorBean.formatHeight == '14 cm'?'8&#8243;':''}
+          #{itemConfiguratorBean.formatHeight == '23 cm'?'12&#8243;':''}
+          #{itemConfiguratorBean.formatHeight == '24 cm'?'12&#8243;':''}
+          #{itemConfiguratorBean.formatHeight == '30 cm'?'16&#8243;':''}
+          #{itemConfiguratorBean.formatHeight == '31 cm'?'16&#8243;':''}
+          #{itemConfiguratorBean.formatHeight == '33 cm'?'16&#8243;':''}
+          #{itemConfiguratorBean.formatHeight == '40 cm'?'20&#8243;':''}
+          #{itemConfiguratorBean.formatHeight == '41 cm'?'20&#8243;':''}
+          #{itemConfiguratorBean.formatHeight == '22 cm'?'12&#8243;':''}
+          #{itemConfiguratorBean.formatHeight == '32 cm'?'16&#8243;':''}
+        </ui:fragment>
+        </span>
+      </div>
+    </ui:fragment>
+
+    <ui:fragment rendered="#{type eq 'small'}">
+      <div id="thepreviewBox">
+        <h3 class="title">Förhandsvisning</h3>
+        <div id="loading" class="imgLoading">
+          <span class="imgLoadingText">Förhandsgranskning genereras ...</span>
+        </div>
+        <div class="text-center">
+        <canvas id="myCanvas" class=""></canvas>
+        </div>
+      </div>
+    </ui:fragment>
+
+    <ui:fragment rendered="#{type ne 'small'}">
+      <div class="canvas">
+        <canvas id="myCanvas"></canvas>
+      </div>
+    </ui:fragment>
+
+    <ui:fragment rendered="#{type eq 'small'}">
+      <br/>
+      <p class="text-center">
+       Om önskas: <a href="javascript:SaveZoom();ShowModal();" class="link">ändra beskärning</a>
+      </p>
+    </ui:fragment>
+
+    <div id="imageData" class="hidden"
+      data-id="#{itemConfiguratorBean.item.images[0].imageId}"
+      data-productid="#{itemConfiguratorBean.productId}"
+      data-format="#{itemConfiguratorBean.configurator.formatKey}"
+      data-effect="#{itemConfiguratorBean.imageEffect}"
+      data-border="#{itemConfiguratorBean.borderEffect}"
+      data-backid="#{itemConfiguratorBean.colorCarrierId == materialCanvas ? itemConfiguratorBean.configurator.backMaterialId:0}"
+      data-imgwidth="#{itemConfiguratorBean.configurator.image.width}"
+      data-imgheight="#{itemConfiguratorBean.configurator.image.height}"
+      data-loadalert="#{_['Please wait until the whole page has loaded. If the preview does not display the page reload']}."
+      data-material="#{itemConfiguratorBean.colorCarrierId}"
+      data-frame="#{itemConfiguratorBean.frameId!=null?itemConfiguratorBean.frameId:0}"
+      data-finish1="#{itemConfiguratorBean.colorCarrierId == materialDTG ? itemConfiguratorBean.finishing[itemConfiguratorBean.finishings.get(0).id]:0}"
+      data-finish2="#{itemConfiguratorBean.colorCarrierId == materialDTG ? itemConfiguratorBean.finishing[itemConfiguratorBean.finishings.get(1).id]:0}"
+      data-finish3="#{itemConfiguratorBean.colorCarrierId == materialDTG ? itemConfiguratorBean.finishing[itemConfiguratorBean.finishings.get(2).id]:0}"
+      data-fourcmid="11"
+      data-sixcmid="19"></div>
+
+    <script type="text/javascript">
+    // <![CDATA[
+    var viewportFit = window.innerWidth - 20;
+    if (viewportFit > 350) viewportFit = 350;
+    var previewWidth = #{type eq 'small' ? 'viewportFit' : '350'};
+
+    function defer(method) {
+      if (typeof(previewConfig) != 'undefined' && typeof(previewConfig.buildPreview) == 'function')
+       method();
+      else
+       setTimeout(function() { defer(method) }, 50);
+    }
+
+    var showPreview = true;
+    defer(function() {
+      if (showPreview){
+        previewConfig.buildPreview();
+				aluPrintPreview();
+        #{type eq 'small' ? 'LockEdition()' : ''};
+      }
+    });
+    // ]]>
+    </script>
+
+    <h:inputHidden id="cutoutX"
+      value="#{itemConfiguratorBean.configurator.config.images[0].cutoutX}" />
+    <h:inputHidden id="cutoutY"
+      value="#{itemConfiguratorBean.configurator.config.images[0].cutoutY}" />
+    <h:inputHidden id="cutoutWidth"
+      value="#{itemConfiguratorBean.configurator.config.images[0].cutoutWidth}" />
+    <h:inputHidden id="cutoutHeight"
+      value="#{itemConfiguratorBean.configurator.config.images[0].cutoutHeight}" />
+  </div>
+
+  <div class="checkout-new">
+    <ui:fragment rendered="#{type ne 'small'}">
+      <p class="draginfo" id="isFeature">
+      <span class="isMove">
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="arrows" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-checkout.svg#checkout-arrows" />
+        </ui:include>
+        Flytta på ditt foto, för att passa in det i tryck området.
+      </span>
+      <span class="notMove -hidden">
+        Ditt foto passar perfekt till ditt valda format
+      </span>
+      </p>
+      <p class="draginfo text-center">
+        <span>Zoom:</span> <input type="range" id="scaleCanvas" class="vertical-middle" value="0" min="0" max="30" onchange="previewConfig.stopScale()" oninput="previewConfig.doScale()"></input>
+      </p>
+    </ui:fragment>
+
+    <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId == materialCanvas and itemConfiguratorBean.borderEffect eq 'FOLDED'}">
+      <p class="note"><small>Information: Kanten på bilden viks runt kanten på ramen och nitas fast</small></p>
+    </ui:fragment>
+  </div>
+
+</ui:composition>

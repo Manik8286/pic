@@ -1,0 +1,286 @@
+<ui:composition template="/templates/checkout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:t="http://myfaces.apache.org/tomahawk"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+  <f:metadata>
+    <o:enableRestorableView />
+  </f:metadata>
+  <ui:param name="pageTitle" value="#{_['Choose Format']}" />
+  <ui:param name="stepCount" value="2" />
+  <ui:param name="stepClass" value=" no-line" />
+  <ui:define name="dataLayer">
+    #{itemConfiguratorBean.ignoreCutout}
+    <ui:include src="/tracking/ecommerce/dataLayer-product-details.xhtml" />
+  </ui:define>
+  <ui:define name="meta">
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+  </ui:define>
+  <ui:define name="content">
+
+    <ui:fragment rendered="#{sessionScope.get('coupon') == 'HJ69BQMI' or sessionScope.get('coupon') == '5VZCZBZW' or sessionScope.get('coupon') == 'XKPNC45X'}">
+      #{itemConfiguratorBean.selectFormat(300, 200)}
+    </ui:fragment>
+    <ui:fragment rendered="#{sessionScope.get('coupon') == 'CAD8HLZX'}">
+			#{itemConfiguratorBean.selectFormat(120.01, 85.01)}
+		</ui:fragment>
+
+    <!-- Human readable names instead of numbers (productId and colorCarrierId) -->
+    <ui:include src="/content-blocks/configurator/variables.xhtml"/>
+
+    <ui:include src="/content-blocks/configurator-product-check.xhtml" />
+    <!-- blockCount initial value-->
+    <c:set var="blockCount" value="0" />
+    <!-- Mobile switch for scrollup etc. -->
+    <c:set var="mobileView" scope="request" value="true" />
+
+    <section class="checkout-step-2 checkout-section -alternative -small-action-btn">
+      <p:ajaxStatus
+        onstart="altMsg ? showToast('Uppdaterar urval...') : showToast('Uppdaterar vy...');block($('.-alternative'));FakePreview();"
+        oncomplete="hideToast(500); unblock($('.-alternative,.changeMountingsRow')); viewFunc();HideFakePreview();fillMissingDeal();"
+        onerror="hideToast(500);unblock($('.-alternative'))" />
+      <h:form id="itemConfiguratorForm" styleClass="row">
+        <!-- formats -->
+        <!-- canvas-preview -->
+        <!-- main -->
+        <main jsf:id="formats" class="col -collapse -centered options">
+        <!-- Product select -->
+        <div class="choose">
+          <span class="label">Vald produkt:</span>
+          <span class="dInlineBlock -span-12">
+            <span class="form-dropdown" data-dropdown="product">
+              <h:inputText id="product" style="display: none" styleClass="js-field #{ component.valid ? '' : '-invalid'}" value="#{itemConfiguratorBean.productId}">
+                  <p:ajax listener="#{itemConfiguratorBean.change}" onstart="previewConfig.isFormatChange()" oncomplete="updateDom();" update="itemConfiguratorForm"/>
+              </h:inputText>
+              <ui:include src="/content-blocks/configurator/product-select.xhtml" />
+            </span>
+          </span>
+        </div>
+        <!-- end Product select -->
+          <section jsf:id="canvas-preview" class="config-box preview">
+            <ui:include src="/content-blocks/configurator/preview.xhtml">
+              <ui:param name="type" value="small" />
+            </ui:include>
+          </section>
+          <ui:include src="/content-blocks/configurator/preview_modal.xhtml" />
+          <section jsf:id="formatsSection" class="config-box">
+            <c:set var="blockCount" value="#{blockCount + 1}" />
+            <ui:include src="/content-blocks/configurator/format-select.xhtml">
+              <ui:param name="blockCount" value="${blockCount}) " />
+            </ui:include>
+          </section>
+          <ui:remove><!-- False because because this is not selectable on canvasdiscount --></ui:remove>
+          <section jsf:id="printMaterial" class="config-box" jsf:rendered="#{itemConfiguratorBean.colorCarriers.size > 1 and itemConfiguratorBean.productId != canvas or itemConfiguratorBean.productId == phone and false}">
+              <c:if test="#{itemConfiguratorBean.colorCarrierId != materialAluminiumGlossy and itemConfiguratorBean.colorCarrierId != materialAluminiumMatte}">
+            <c:set var="blockCount" value="#{(itemConfiguratorBean.colorCarriers.size > 1 and itemConfiguratorBean.productId != canvas or itemConfiguratorBean.productId == phone) ? blockCount + 1 : blockCount}" />
+            <ui:include src="/content-blocks/configurator/phonecases.xhtml">
+              <ui:param name="blockCount" value="${blockCount}) " />
+            </ui:include>
+          </c:if>
+          <c:if test="#{itemConfiguratorBean.colorCarrierId == materialAluminiumGlossy or itemConfiguratorBean.colorCarrierId == materialAluminiumMatte}">
+          <c:set var="blockCount" value="#{(itemConfiguratorBean.colorCarriers.size > 1) ? blockCount + 1 : blockCount}" />
+          <ui:include src="/content-blocks/configurator/aluOptions.xhtml">
+          <ui:param name="blockCount" value="${blockCount}) " />
+        </ui:include>
+        </c:if>
+          </section>
+          <section jsf:id="cups" class="config-box text-center" jsf:rendered="#{itemConfiguratorBean.colorCarrierId == materialMug or
+                            itemConfiguratorBean.colorCarrierId == materialPorcelainMug or
+                            itemConfiguratorBean.colorCarrierId == materialMugMagic or
+                            itemConfiguratorBean.colorCarrierId ==  materialInnerColoredMug}">
+            <ui:include src="/content-blocks/configurator/mug-previews.xhtml" />
+          </section>
+
+          <section class="config-box mountings changeMountingsRow" jsf:rendered="#{itemConfiguratorBean.mountings.size > 1 and itemConfiguratorBean.productId != wood}">
+            <c:set var="blockCount" value="#{itemConfiguratorBean.mountings.size > 1 ? blockCount + 1 : blockCount}" />
+            <ui:include src="/content-blocks/configurator/mountings-hs.xhtml">
+              <ui:param name="blockCount" value="${blockCount}) " />
+            </ui:include>
+            <ui:include src="/page-blocks/configurator/changeRow.xhtml" />
+          </section>
+
+					<!-- Free Hanger set Info -->
+					<ui:fragment rendered="#{itemConfiguratorBean.productId == 1945}">
+            <section class="config-box">
+              <div class="prices formats hanger-set-wood">
+                <div class="dFlex hanger-set-wood-wrap">
+                  <div class="hanger-set-wood-content-wrap">
+                    <h3 class="title">
+                      Gåva:
+                    </h3>
+                    <div class="hanger-set-wood-content">
+                      #{_['Hanger Set']} -
+                      <span class="-outdated -discounted"><s>90 kr</s></span> |
+                      <span class="-highlighted -discounted"><strong>#{_['Free']}</strong></span>
+                    </div>
+                  </div>
+                  <div class="hanger-set-wood-img">
+                    <img src="/#{shopInfoBean.versionPath}static/images/configurator/mf/mounting-44.jpg" alt="#{_['Hanger Set for Wood']}" />
+                  </div>
+                </div>
+              </div>
+            </section>
+					</ui:fragment>
+					<!-- end of Free Hanger set Info -->
+
+          <section jsf:id="backgroundEffectsWrap" class="config-box backgroundEffects"
+            jsf:rendered="#{itemConfiguratorBean.backgroundEffects.size > 1}">
+            <c:set var="blockCount" value="#{(itemConfiguratorBean.backgroundEffects.size > 1) ? blockCount + 1 : blockCount}" />
+            <div jsf:id="backgroundEffects" class="backgroundEffects"
+              jsf:rendered="#{itemConfiguratorBean.backgroundEffects.size > 1}">
+              <p:selectOneRadio id="backgroundEffect" value="#{itemConfiguratorBean.backgroundEffect}" layout="custom"
+                plain="true">
+                <p:ajax listener="#{itemConfiguratorBean.change}" onstart="mountingSize = 1;"
+                  update=":itemConfiguratorForm:configuration :itemConfiguratorForm:priceBox :itemConfiguratorForm:backgroundEffectsWrap"
+                  oncomplete="updateDom();mountingSize = 0" />
+                <f:selectItems value="#{itemConfiguratorBean.backgroundEffects}" />
+              </p:selectOneRadio>
+              <h3 class="title">
+                <h:outputText value="${blockCount})" /> Välj baksida:
+              </h3>
+              <div class="clearfix">
+
+                <ui:repeat value="#{itemConfiguratorBean.backgroundEffects}" var="f" varStatus="s">
+                  <div class="selectable backgroundEffectsBox #{f.value == 'WHITE' ? 'wide' : ''}" data-clickarea="data-clickarea" data-mh="selectable">
+                    <img class="img-resposive"
+                      src="/#{shopInfoBean.versionPath}static/images/configurator/bgcolors/backgroundEffects-#{f.value.toString().toLowerCase()}-#{itemConfiguratorBean.colorCarrierId}.jpg"
+                      alt="background color" />
+                    <div class="radio pull-left">
+                      <p:radioButton id="product" for=":itemConfiguratorForm:backgroundEffect" itemIndex="#{s.index}" />
+                      <h:outputLabel for="product" />
+                    </div>
+                    <div class="details pull-left">
+                      <h:outputText value="#{f.value == 'COLORED' ? 'Färgad' : ''} " />
+                      <h:outputText value="#{f.value == 'TILED' ? 'Ditt foto dubbelsidigt' : ''} " />
+                      <h:outputText value="#{f.value == 'WHITE' ? 'Vit' : ''} " />
+                      <br />
+                      <ui:fragment rendered="#{f.label ne 'White'}">
+                        <h:outputText
+                          value="+ #{itemConfiguratorBean.configurator.backgroundEffectFormatDefaultPriceDifference(f.value)}"
+                          style="#{itemConfiguratorBean.configurator.backgroundEffectFormatDefaultPriceDifference(f.value) != itemConfiguratorBean.configurator.backgroundEffectFormatDefaultPriceDifference(f.value,true) ? 'color:#F10006;' : ''}" />
+                      </ui:fragment>
+                    </div>
+                  </div>
+                </ui:repeat>
+              </div>
+              <div class="backgroundEffectsColors clearfix" jsf:rendered="#{itemConfiguratorBean.backgroundEffect == 'COLORED'}">
+                <div class="bracket -active bracket-right">
+                  <img src="/#{shopInfoBean.versionPath}static/images/configurator/all/bracket.png" alt="bracket" />
+                </div>
+
+                <p:selectOneRadio id="backgroundColor" value="#{itemConfiguratorBean.backgroundColor}" layout="custom"
+                  plain="true">
+                  <p:ajax listener="#{itemConfiguratorBean.change}" onstart="mountingSize = 1;"
+                    update=":itemConfiguratorForm:configuration :itemConfiguratorForm:priceBox :itemConfiguratorForm:backgroundEffectsWrap"
+                    oncomplete="updateDom();mountingSize = 0" />
+                  <f:selectItems value="#{colorBean.colorSelectItems}" />
+                </p:selectOneRadio>
+
+                <ui:repeat value="#{colorBean.colorSelectItems}" var="f" varStatus="s">
+                  <div class="selectable backgroundEffectsColorsBox" data-clickarea="data-clickarea">
+                    <div id="backgroundEffectCircle" style="background: #{f.value};"></div>
+                    <div class="radio pull-left">
+                      <p:radioButton id="color" for=":itemConfiguratorForm:backgroundColor" itemIndex="#{s.index}" />
+                      <h:outputLabel value="#{f.label}" for="color" class="pull-left -f12" />
+                    </div>
+                    <div class="details pull-left"></div>
+                  </div>
+                </ui:repeat>
+              </div>
+              <!-- Reset colored param when switch to White or Tiled -->
+              <c:if test="#{itemConfiguratorBean.backgroundEffect != 'COLORED'}">
+                <c:set value="" target="#{itemConfiguratorBean}" property="backgroundColor" />
+              </c:if>
+            </div>
+          </section>
+          <section jsf:id="backMaterials" class="config-box backMaterials" jsf:rendered="#{itemConfiguratorBean.borderEffects.size > 1 and itemConfiguratorBean.backMaterials.size > 0 and itemConfiguratorBean.productId != phone}">
+            <c:set var="blockCount" value="#{(itemConfiguratorBean.borderEffects.size > 1 and itemConfiguratorBean.backMaterials.size > 0 and itemConfiguratorBean.productId != phone) ? blockCount + 1 : blockCount}" />
+            <ui:include src="/content-blocks/configurator/backmaterials.xhtml">
+              <ui:param name="blockCount" value="${blockCount}) " />
+            </ui:include>
+          </section>
+          <section class="config-box borderEffects" jsf:rendered="#{itemConfiguratorBean.borderEffects.size > 1 and itemConfiguratorBean.productId != phone}">
+            <c:set var="blockCount" value="#{(itemConfiguratorBean.borderEffects.size > 1 and itemConfiguratorBean.productId != phone) ? blockCount + 1 : blockCount}" />
+            <ui:include src="/content-blocks/configurator/border-effects.xhtml">
+              <ui:param name="blockCount" value="${blockCount}) " />
+            </ui:include>
+          </section>
+          <section jsf:id="frames" class="config-box frames" jsf:rendered="#{itemConfiguratorBean.frames.size > 1}">
+            <c:set var="blockCount" value="#{(itemConfiguratorBean.frames.size > 1) ? blockCount + 1 : blockCount}" />
+            <ui:include src="/content-blocks/configurator/floating-frames.xhtml">
+              <ui:param name="blockCount" value="${blockCount}) " />
+            </ui:include>
+          </section>
+          <c:if test="#{itemConfiguratorBean.productId == mugInner or param['product'] == mugInner}">
+            <ui:remove><!-- without c:if brakes imageEffect --></ui:remove>
+            <section class="config-box colorFinishings">
+              <c:set var="blockCount" value="#{(itemConfiguratorBean.productId == mugInner or param['product'] == mugInner) ? blockCount + 1 : blockCount}" />
+              <ui:include src="/content-blocks/configurator/mug-colors.xhtml">
+                <ui:param name="blockCount" value="${blockCount}) " />
+              </ui:include>
+            </section>
+          </c:if>
+          <section class="config-box imageEffects" jsf:rendered="#{itemConfiguratorBean.productId != acrylClassic and itemConfiguratorBean.productId != acrylPremium}">
+            <c:set var="blockCount" value="#{blockCount + 1}" />
+            <ui:include src="/content-blocks/configurator/image-effects.xhtml">
+              <ui:param name="blockCount" value="${blockCount}) " />
+            </ui:include>
+          </section>
+          <section class="config-box configuration summaryRow" jsf:id="configuration">
+            <ui:include src="/content-blocks/configurator/summary.xhtml" />
+            <ui:include src="/content-blocks/configurator/buy-button-another.xhtml" />
+          </section>
+        </main>
+        <!-- /main -->
+      </h:form>
+
+      <!-- Upload another form (form can't be included in other form) -->
+      <ui:include src="/content-blocks/upload-another.xhtml" />
+      <!-- / Upload another form -->
+
+    </section>
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+
+</section>
+    <!-- /paymentmethods -->
+  </ui:define>
+  <ui:define name="eofscript">
+    <script src="/#{shopInfoBean.versionPath}static/build/js/ux-checkout-configurator.js"></script>
+    <script src="/#{shopInfoBean.versionPath}static/build/js/configurator.min.js"></script>
+    <script>
+      // Init function
+      var isMobile = true;
+	  var isPhone = true;
+
+       $(document).ready(function () {
+          viewFunc();
+          fillMissingDeal();
+          updateDom();
+       });
+      // Configurator flag
+      previewConfig.isMobile = true;
+     
+      // Change a nuber in the title of block in configurator
+      // <![CDATA[
+      function CountBoxes() {
+        var boxes = document.querySelectorAll('.StepsCount');
+        if (boxes.length >= 1) {
+          for (var i = 0; i < boxes.length;) {
+          boxes[i].innerText = ++i + ') ';
+        }
+        } else {
+          $(".StepsCount").hide();
+        }
+      }
+      // ]]>
+    </script>
+  </ui:define>
+</ui:composition>

@@ -1,0 +1,18 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+      <button type="button" class="label"><span>(Välj)</span></button>
+
+        <ul class="choices">
+            <ui:repeat value="#{productBean.productCategories}" var="c">
+                <li class="categorie">#{c.translatedName}</li>
+                <ui:repeat value="#{productBean.categoryProducts(c.id)}" var="p">
+					<li jsf:rendered="#{p.id != 473 and p.id != 2276 and p.id != 2820}"  data-value="#{p.id}">#{p.translatedName}</li>
+                </ui:repeat>
+            </ui:repeat>
+        </ul>
+
+</ui:composition>

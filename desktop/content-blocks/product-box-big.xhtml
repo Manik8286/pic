@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+  <div class="product-box -big" data-mh="product">
+    <div class="bigleft">
+      <a href="#{productBoxProductLink}" class="image">
+        <img src="#{productBoxImage}" alt="#{productBoxTitle}" />
+      </a>
+    </div>
+    <div class="bigright">
+      <h3 class="title"><a href="#{productBoxProductLink}">#{productBoxTitle}</a></h3>
+
+      <c:if test="${not empty productBoxText}">
+        <div class="body"><p>#{productBoxText}</p></div>
+      </c:if>
+
+      <div class="info">
+        <div class="price">
+          from <span class="highlight">#{productBoxPrice}</span>
+        </div>
+        <a href="#{productBoxUploadLink}" class="action">Skapa</a>
+      </div>
+    </div>
+  </div>
+</ui:composition>

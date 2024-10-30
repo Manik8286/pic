@@ -1,0 +1,151 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <div class="article-showcase -small-bottom" id="prices">
+    <h2 class="headline -has-sidelines"><span>Canvastavla: Storlekar och Priser</span></h2>
+    <ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+      <div class="description">
+        <p class="text text-center">Svajpa till sidan för att visa priserna för andra måttförhållanden.</p>
+      </div>
+    </ui:fragment>
+    <section class="page-section -smaller -collapse-top -collapse-bottom">
+      <div class="row">
+
+        <div class="col -span-#{sessionBean.userAgentType != 'phone' ? '10' : '12'} -centered format-lp-selection">
+          <ul class="selection-list #{sessionBean.userAgentType == 'phone' ? '-phone' : ''}">
+            <li class="formatButton text-center">
+              <input class="selectradio" type="radio" id="selectCanvas_1" name="productSelection" data-active-target-group="prices" data-active-target=".js-canvas-1" />
+              <label class="lp-format-selection" for="selectCanvas_1">
+                  <ui:include src="/helper/svg.xhtml">
+                    <ui:param name="svgHeight" value="#{sessionBean.userAgentType != 'phone' ? '60' : '80'}px" />
+                    <ui:param name="svgWidth" value="#{sessionBean.userAgentType != 'phone' ? '60' : '80'}px" />
+                    <ui:param name="svgClass" value="page-format" />
+                    <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-quadrat" />
+                  </ui:include><br/>
+                    <span>Kvadratiskt</span>
+                <div class="arrow-up"></div>
+            </label>
+            </li>
+            <li class="formatButton text-center">
+              <input class="selectradio" type="radio" id="selectCanvas_2" name="productSelection" checked="checked" data-active-target-group="prices" data-active-target=".js-canvas-2" />
+              <label class="lp-format-selection" for="selectCanvas_2">
+                  <ui:include src="/helper/svg.xhtml">
+                    <ui:param name="svgHeight" value="#{sessionBean.userAgentType != 'phone' ? '60' : '80'}px" />
+                    <ui:param name="svgWidth" value="#{sessionBean.userAgentType != 'phone' ? '80' : '107'}px" />
+                    <ui:param name="svgClass" value="page-format" />
+                    <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-4-3" />
+                  </ui:include><br/>
+              <span>4:3</span>
+              <div class="arrow-up"></div>
+            </label>
+            </li>
+            <li class="formatButton text-center">
+              <input class="selectradio" type="radio" id="selectCanvas_3" name="productSelection" data-active-target-group="prices" data-active-target=".js-canvas-3" />
+              <label class="lp-format-selection" for="selectCanvas_3">
+                  <ui:include src="/helper/svg.xhtml">
+                    <ui:param name="svgHeight" value="#{sessionBean.userAgentType != 'phone' ? '60' : '80'}px" />
+                    <ui:param name="svgWidth" value="#{sessionBean.userAgentType != 'phone' ? '90' : '120'}px" />
+                    <ui:param name="svgClass" value="page-format" />
+                    <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-3-2" />
+                  </ui:include><br/>
+               <span>3:2</span>
+               <div class="arrow-up"></div>
+            </label>
+            </li>
+            <li class="formatButton text-center">
+              <input class="selectradio" type="radio" id="selectCanvas_4" name="productSelection" data-active-target-group="prices" data-active-target=".js-canvas-4" />
+              <label class="lp-format-selection" for="selectCanvas_4">
+                  <ui:include src="/helper/svg.xhtml">
+                    <ui:param name="svgHeight" value="#{sessionBean.userAgentType != 'phone' ? '60' : '80'}px" />
+                    <ui:param name="svgWidth" value="#{sessionBean.userAgentType != 'phone' ? '120' : '160'}px" />
+                    <ui:param name="svgClass" value="page-format" />
+                    <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-panorama" />
+                  </ui:include><br/>
+               <span>Panorama</span>
+               <div class="arrow-up"></div>
+            </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <h:panelGroup id="viewPanel">
+      <h:panelGroup id="tableRenderPanel">
+
+        <div class="price-tables row">
+            <section class="page-section -collapse-bottom js-canvas-1 panel">
+              <ui:include src="/content-blocks/lp/canvas/price-table-lp-canvas-quadrat.xhtml" />
+            </section>
+            <section class="page-section -collapse-bottom js-canvas-2 panel">
+              <ui:include src="/content-blocks/lp/canvas/price-table-lp-canvas-4-3.xhtml" />
+            </section>
+            <section class="page-section -collapse-bottom js-canvas-3 panel">
+              <ui:include src="/content-blocks/lp/canvas/price-table-lp-canvas-3-2.xhtml" />
+            </section>
+            <section class="page-section -collapse-bottom js-canvas-4 panel">
+              <ui:include src="/content-blocks/lp/canvas/price-table-lp-canvas-panorama-kino.xhtml" />
+            </section>
+        </div>
+
+      </h:panelGroup>
+    </h:panelGroup>
+
+    <!-- Canvas format overview -->
+    <ui:fragment rendered="#{sessionBean.userAgentType == 'phone' and showPreview == true}">
+      <div class="col -span-12 text-center closeFormatOverview">
+        <a href="javascript:void(0)" class="showFormatReview"><span>Welche Größe soll ich bestellen?</span></a>
+      </div>
+      <div class="col -centered overviewFormats">
+        <br />
+        <div class="col -span-6">
+          <img src="/#{shopInfoBean.versionPath}assets/img/products/wand-deko/format30x20.jpg" width="100%" alt="format 30x20" />
+          <div class="text-center">30x20cm</div>
+        </div>
+        <div class="col -span-6">
+          <img src="/#{shopInfoBean.versionPath}assets/img/products/wand-deko/format40x30.jpg" width="100%" alt="format 40x30" />
+          <div class="text-center">40x30cm</div>
+        </div>
+        <div class="col -span-6">
+          <img src="/#{shopInfoBean.versionPath}assets/img/products/wand-deko/format60x40.jpg" width="100%" alt="format 60x40" />
+          <div class="text-center">60x40cm</div>
+        </div>
+        <div class="col -span-6">
+          <img src="/#{shopInfoBean.versionPath}assets/img/products/wand-deko/format80x60.jpg" width="100%" alt="format 80x60" />
+          <div class="text-center">80x60cm</div>
+        </div>
+        <div class="col -span-6">
+          <img src="/#{shopInfoBean.versionPath}assets/img/products/wand-deko/format120x90.jpg" width="100%" alt="format 120x90" />
+          <div class="text-center">120x90cm</div>
+        </div>
+        <div class="col -span-6">
+          <img src="/#{shopInfoBean.versionPath}assets/img/products/wand-deko/format150x100.jpg" width="100%" alt="format 150x100" />
+          <div class="text-center">150x100cm</div>
+        </div>
+
+        <div class="col -span-12">
+          <br />
+          <p class="text text-center">Die abgebildete Person ist ca. 170cm groß.</p>
+        </div>
+      </div>
+
+    </ui:fragment>
+
+    <div class="description text-center col -span-#{sessionBean.userAgentType != 'phone' ? '2' : '5'} -centered">
+      <form class="js-du">
+        <input type="hidden" value="254" class="js-du-productid" accept="#{sessionBean.userAgentType == 'desktop' ? '.jpg, .jpeg, .png, .gif, .webp' : 'image/*'}" />
+        <div class="upload-button info" style="#{sessionBean.userAgentType != 'desktop' ? 'padding-left: 0;padding-top:0;margin: 0 auto;' : 'padding-top:0'}">
+          <input id="uploadInputFormat254" type="file" class="js-du-file fileinput" accept="#{sessionBean.userAgentType == 'desktop' ? '.jpg, .jpeg, .png, .gif, .webp' : 'image/*'}" />
+          <button type="button" id="chooseFile" class="button -action ">
+            <label for="uploadInputFormat254">Skapa</label>
+          </button>
+        </div>
+      </form>
+    </div>
+</div>
+
+</ui:composition>

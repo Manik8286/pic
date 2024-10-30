@@ -1,0 +1,59 @@
+.teaser-box {
+  @extend .page-teaser;
+
+  width: 100%;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.teaser-box > .wrapper {
+  @extend .row;
+}
+
+.teaser-box > .wrapper > .body {
+  @extend .col;
+  @extend %-span-12 !optional;
+  @extend %-centered !optional;
+
+  position: relative;
+  padding-bottom: 108px;
+
+  > .headline {
+    font-size: 33px;
+    font-weight: $weight-semibold;
+    margin-bottom: 0;
+    margin-top: 18px;
+  }
+
+  > .subline {
+    font-size: 16px;
+    margin: 0 0 30px 0;
+    display: inline-block;
+
+    > .icon {
+      height: 14px;
+      width: 14px;
+      fill: $icon-dark-color;
+    }
+
+    > .highlight {
+      color: $highlight-color;
+    }
+  }
+
+  > .boxes {
+    .product-box {
+      background-color: $product-box-background-color-light;
+      margin: 0 21px;
+    }
+  }
+
+  > .fine-print {
+    position: absolute;
+    bottom: -25px;
+    right: 44px;
+    font-size: 12px;
+  }
+}

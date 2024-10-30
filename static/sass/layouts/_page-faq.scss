@@ -1,0 +1,163 @@
+.page-faq {
+  @extend .row;
+
+  > .nav {
+    width: 100%;
+    display:table;
+    padding: 0 $grid-gutter/2;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    text-align: center;
+
+    > ul {
+      display:table-row;
+      width: 100%;
+      height: 100px;
+      padding: 0;
+      margin: 0;
+
+      > li {
+        display:initial;
+        line-height: 55px;
+        vertical-align: middle;
+        width: 50%;
+        margin-bottom: 10px;
+      }
+
+      > li > a {
+        margin: 0 15px;
+        font-size: 18px;
+        text-decoration: none;
+        color: $page-text-color;
+
+        &.-active, &:hover {
+          color: $link-secondary-color;
+        }
+      }
+    }
+  }
+
+  > .headline {
+    font-size: 24px;
+    font-weight: $weight-normal;
+    padding-left: $grid-gutter/2;
+    margin-bottom: 40px;
+  }
+
+  > .categories > .category {
+    @extend .col;
+    @extend %-span-6;
+
+    margin-bottom: 50px;
+    overflow: hidden;
+
+    > .icon {
+      fill: $icon-primary-color;
+      height: 30px;
+      width: 30px;
+      margin-right: 10px;
+      margin-bottom: -8px;
+      display: inline-block;
+      float: left;
+    }
+
+    > .title {
+      font-size: 18px;
+      margin-bottom: 20px;
+      padding-top: 3px;
+      margin-top: 0;
+      display: block;
+      overflow: hidden;
+      font-weight: $weight-semibold;
+    }
+
+    > .questions {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+
+      > li > a {
+        font-size: 14px;
+        line-height: 20px;
+        color: $page-text-color;
+
+        &:hover {
+          color: $link-secondary-color;
+        }
+      }
+    }
+  }
+}
+
+.page-faq.-basic {
+  background-color: $section-background-color-alternate;
+
+  .not-found {
+    @extend .col;
+    @extend %-span-12;
+  }
+
+  > .question {
+    @extend .col;
+    @extend %-span-12;
+
+    margin-bottom: 45px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .highlight {
+      background-color: $text-search-highlight-color;
+    }
+
+    > .title {
+      font-size: 18px;
+      font-weight: $weight-semibold;
+      margin: 0 0 20px 0;
+    }
+
+    .-noMargin {
+      margin: 0;  
+    }
+
+    > .answer {
+      font-size: 14px;
+      line-height: 24px;
+      margin: 0;
+      .subtitle {
+        display: block;
+        font-weight: $weight-bold;
+      }
+    }
+
+    .enum {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      padding-left: 45px;
+
+      li {
+        font-size: 14px;
+      }
+    }
+
+    > .action {
+      margin-top: 15px;
+      font-size: 14px;
+      display: block;
+      color: $link-secondary-color;
+      text-decoration: none;
+
+      > .icon {
+        width: 12px;
+        height: 11px;
+        fill: $icon-primary-color;
+        margin-left: 10px;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

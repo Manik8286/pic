@@ -1,0 +1,127 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+    <section class="page-section">
+        <h3 class="headline -section">Fotoframkallningar av hög kvalitet för oförglömliga bilder</h3>
+        <div class="product-list">
+            <ui:fragment rendered="#{hideCanvas != true}">
+                <div class="product -span-6">
+                    <ui:include src="/content-blocks/product-box.xhtml">
+                        <ui:param name="productBoxTitle" value="Foto på Canvas" />
+                        <ui:param name="productBoxAlt" value="foto pa canvas" />
+                        <ui:param name="productBoxAltHover" value="canvastavlor detalj" />
+                        <ui:param name="productBoxProductLink" value="/vaggdekor/canvastavlor.jsf" />
+                        <ui:param name="productBoxUploadLink" value="/singleupload.jsf?product=254" />
+                        <ui:param name="productButtonIDinside" value="254" />
+                        <ui:param name="buttonText" value="Skapa" />
+                        <ui:param name="buttonId" value="canvas" />
+                        <ui:param name="formatAngebot" value="Formato: 20x20 cm" />
+                        <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/hemsida/foto-pa-canvas.jpg" />
+                        <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 20x20')}" />
+                        <ui:param name="productBoxText" value="Starka färger på extra vitt, canvas av hög kvalitet, noggrant sträckt för hand." />
+                    </ui:include>
+                </div>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{hideAcryl != true}">
+                <div class="product -span-6">
+                    <ui:include src="/content-blocks/product-box.xhtml">
+                        <ui:param name="productBoxTitle" value="Akrylglastavlor" />
+                        <ui:param name="productBoxAlt" value="Akrylglastavlor" />
+                        <ui:param name="productBoxAltHover" value="Akrylglastavlor detalj" />
+                        <ui:param name="productBoxProductLink" value="/vaggdekor/akrylglastavlor.jsf" />
+                        <ui:param name="productBoxUploadLink" value="/singleupload.jsf?product=2421" />
+                        <ui:param name="productButtonIDinside" value="2421" />
+                        <ui:param name="buttonText" value="Skapa" />
+                        <ui:param name="buttonId" value="acrylic" />
+                        <ui:param name="formatAngebot" value="Formato: 20x20 cm" />
+                        <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/hemsida/foto-bakom-akrylglas.jpg" />
+                        <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 20x20')}" />
+                        <ui:param name="productBoxText" value="En digital fotoframkallning bankom kristallklart glas med en underbar känsla av djup. Vibrerande färger och optimala förhållanden för att visa upp de finaste detaljerna." />
+                    </ui:include>
+                </div>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{hideAlu != true}">
+                <div class="product -span-6">
+                    <ui:include src="/content-blocks/product-box.xhtml">
+                        <ui:param name="productBoxTitle" value="Aluminiumtavlor" />
+                        <ui:param name="productBoxAlt" value="Aluminiumtavlor" />
+                        <ui:param name="productBoxAltHover" value="Aluminiumtavlor detalj" />
+                        <ui:param name="productBoxProductLink" value="/vaggdekor/aluminiumtavlor.jsf" />
+                        <ui:param name="productBoxUploadLink" value="/singleupload.jsf?product=258" />
+                        <ui:param name="productButtonIDinside" value="258" />
+                        <ui:param name="buttonText" value="Skapa" />
+                        <ui:param name="buttonId" value="aluminium" />
+                        <ui:param name="formatAngebot" value="Formato: 20x20 cm" />
+                        <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/hemsida/foto-pa-aluminium.jpg" />
+                        <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 20x20')}" />
+                        <ui:param name="productBoxText" value="Glansigt vinylark på en skiva av rostfri aluminiumkomposit. Skarpa bilder och en högkvalitativ, ren look." />
+                    </ui:include>
+                </div>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{hideVaggdekoration != true}">
+                <div class="product -span-6">
+                    <ui:include src="/content-blocks/product-box.xhtml">
+                        <ui:param name="productBoxTitle" value="Väggdekoration" />
+                        <ui:param name="productBoxAlt" value="metacrilato aluminio" />
+                        <ui:param name="productBoxAltHover" value="akrylglas aluminium detalj" />
+                        <ui:param name="productBoxProductLink" value="/vaggdekor/" />
+                        <ui:param name="productBoxUploadLink" value="/vaggdekor/" />
+                        <ui:param name="productButtonIDinside" value="" />
+                        <ui:param name="buttonText" value="Upptäck nu" />
+                        <ui:param name="buttonId" value="acrylic+aluminium" />
+                        <ui:param name="formatAngebot" value="Formato: 20x20 cm" />
+                        <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/hemsida/foto-akrylglas-aluminium.jpg" />
+                        <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Acryl + Alu Print_Bestcanvas_SE', 'Acryl+Alu', 'Acryl+Alu 20x20')}" />
+                        <ui:param name="productBoxText" value="Varierade väggdekorationer som passar alla smaker. Noggrant utvaldt material och förstklassig framkallningskvalitet som lyfter ditt hem." />
+                    </ui:include>
+                </div>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{hideHomeAndLifestyle != true}">
+                <div class="product -span-6">
+                    <ui:include src="/content-blocks/product-box.xhtml">
+                        <ui:param name="productBoxTitle" value="Home &amp; Lifestyle" />
+                        <ui:param name="productBoxAlt" value="foto pa aluminium" />
+                        <ui:param name="productBoxAltHover" value="foto pa aluminium detalj" />
+                        <ui:param name="productBoxProductLink" value="/home-lifestyle/" />
+                        <ui:param name="productBoxUploadLink" value="/home-lifestyle/" />
+                        <ui:param name="productButtonIDinside" value="" />
+                        <ui:param name="buttonText" value="Upptäck nu" />
+                        <ui:param name="buttonId" value="aluminium" />
+                        <ui:param name="formatAngebot" value="Formato: 20x20 cm" />
+                        <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/hemsida/foto-pa-aluminium.jpg" />
+                        <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Aluminium Print_Bestcanvas_SE', 'Aluminium Glossy', 'Alu 20x20')}" />
+                        <ui:param name="productBoxText" value="Mjuka och sköna material framkallade med individuella bilder gör ditt hem personligt och behagligt." />
+                    </ui:include>
+                </div>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{hidePhotoGifts != true}">
+                <div class="product -span-6">
+                    <ui:include src="/content-blocks/product-box.xhtml">
+                        <ui:param name="productBoxTitle" value="Fotopresenter" />
+                        <ui:param name="productBoxAlt" value="foto presenter" />
+                        <ui:param name="productBoxProductLink" value="/fotopresenter/" />
+                        <ui:param name="productBoxUploadLink" value="/fotopresenter/" />
+                        <ui:param name="productBoxImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/vaggdekoration/foto-photogifts.jpg" />
+                        <ui:param name="productButtonIDinside" value="" />
+                        <ui:param name="productBoxPrice" value="#{priceBean.productPrice('Mousepad_Bestcanvas_SE', 'Mousepad', 'Mousepad 22x18x03')}" />
+                        <ui:param name="productBoxPriceHigh" value="#{priceBean.productPrice('Mousepad_Bestcanvas_SE', 'Mousepad', 'Mousepad 22x18x03')}" />
+                        <ui:param name="buttonText" value="Upptäck nu" />
+                        <ui:param name="crossPreis" value="" />
+                        <ui:param name="formatAngebot" value="" />
+                        <ui:param name="productBoxText" value="Visa någon du tycker om hur mycket du uppskattar dem, med en personlig fotogåva! En fotomugg eller en härlig egendesignad musmatta, de är alla perfekta presenter och helt unika!" />
+                    </ui:include>
+                </div>
+            </ui:fragment>
+
+    </div>
+  </section>
+
+</ui:composition>

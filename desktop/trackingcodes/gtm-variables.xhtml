@@ -1,0 +1,30 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+<script>
+    window.dataLayer = window.dataLayer || []
+    dataLayer.push({
+  'transactionNetPriceWithoutShipping': #{orderInfoBean.totalNetPrice - orderInfoBean.shippingNetPrice},
+      'transactionCurrency': '#{orderInfoBean.currency}',
+        'transactionId': '#{orderInfoBean.orderNumber}',
+        'transactionAffiliation': '#{shopInfoBean.shopName}',
+        'transactionTotal': #{orderInfoBean.totalNetPrice},
+        'transactionTax': #{orderInfoBean.totalVat},
+        'transactionShipping': #{orderInfoBean.shippingNetPrice},
+  'googleAnalyticsDimension1': '#{orderInfoBean.couponCode}',
+        'transactionProducts': [<c:forEach var="item" items="#{orderInfoBean.items}">{
+            'sku': '#{item.articleNumberWithIndex}',
+            'name': '#{item.description}',
+            'price': #{item.unitNetPrice},
+            'quantity': #{item.quantity}
+      },</c:forEach>],
+      <c:forEach var="item" varStatus="stat" items="#{orderInfoBean.items}">
+        <c:set var="allItems" value="#{stat.first ? '' : allItems}#{stat.first ? '' : ','}#{item.articleNumberWithIndex}" />
+      </c:forEach>
+      'transactionArticleNumbersWithIndex': '#{allItems}',
+      <c:forEach var="item" varStatus="stat" items="#{orderInfoBean.items}">
+        <c:set var="allItemsPipe" value="#{stat.first ? '' : allItemsPipe}#{stat.first ? '' : '|'}#{item.articleNumberWithIndex}" />
+      </c:forEach>
+      'transactionArticleNumbersWithIndexPipe': '#{allItemsPipe}'
+    });
+</script>
+</ui:composition>

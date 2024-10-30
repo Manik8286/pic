@@ -1,0 +1,81 @@
+.form-group {
+  position: relative;
+  overflow: visible;
+
+  &.-new-action {
+    margin-top: 15px;
+  }
+
+  &.-action {
+    margin: 30px 0;
+  }
+
+  &.-grouped {
+    margin: 20px 0;
+  }
+
+  &.-inline {
+    margin: 10px 0;
+
+    > .label {
+      display: inline-block;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    > .field {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    > .action {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  &.-powerline {
+    > .field {
+      display: block;
+      overflow: hidden;
+    }
+
+    > .field > input {
+      width: 100%;
+    }
+
+    > .action {
+      float: right;
+      margin-left: 20px;
+    }
+  }
+
+  &.-collapse {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  &.-collapse-top {
+    margin-top: 0;
+  }
+
+  .validation {
+    &.-right {
+      left: 100%;
+      margin-left: 8px;
+      top: 50%;
+      margin-top: -15px;
+    }
+
+    &.-bottom {
+      top: 100%;
+      right: 0;
+      margin-top: 8px;
+      
+      &.-position {
+        position: absolute;
+        margin-right: 266px;
+      }
+    }
+  }
+}

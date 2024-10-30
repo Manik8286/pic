@@ -1,0 +1,138 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <section class="page-teaser #{teaserClass}">
+    <div class="showcase" style="background-image: url(#{teaserBgImage})">
+      <header class="head">
+        <h1 class="headline #{headlineClass}">#{headline} <span class="-highlighted-text">#{headline2}</span> <span style="font-size:18px;">#{format}</span></h1>
+        <div class="claim">#{claim}
+          <span class="-highlighted-text">#{claimGreen} </span> #{claim2}
+          <ui:fragment rendered="#{not empty claimLink}">
+            - with <a href="javascript:void(0)" onclick="Modal.open('#best-price-garantie');">#{claimLink}</a>
+          </ui:fragment>
+        </div>
+      </header>
+
+      <div class="body">
+        <!-- teaser left -->
+        <div class="product #{ProductImgClass}">
+          <ui:fragment rendered="#{empty noShowcase}">
+            <ui:fragment rendered="#{not empty magnifiedImg}">
+              <img class="magnified-corner" src="#{magnifiedImg}" alt="#{altMagnifiedImg}" />
+            </ui:fragment>
+
+            <ui:fragment rendered="#{empty acrylblockProduct}">
+              <img class="#{imgClass}" src="#{teaserProductImage}" alt="#{altTeaserProductImage}" />
+            </ui:fragment>
+            <ui:fragment rendered="#{not empty acrylblockProduct}">
+              <img class="#{imgClass}" src="#{teaserProductImage}" alt="#{altTeaserProductImage}" />
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty badgeMiddle}">
+              <div class="badge #{badgeClass}">
+                <div class="title" style="font-size:13px;">
+                  <ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'NDLRI91VRT5XV6X2U7AZ'}">
+                    #{badgeTop}
+                  </ui:fragment>
+                  <ui:fragment rendered="#{sessionServicesBean.discountCode.code == 'NDLRI91VRT5XV6X2U7AZ'}">
+                    #{badgeTopDiscount}
+                  </ui:fragment>
+                </div>
+                <div class="price #{alternative}">#{badgeMiddle}<small><sup></sup></small></div>
+                <div class="sub #{size}" style="font-size: 20px;">
+                  <div style="margin-top: 7px;">
+                    <sup>
+                      #{seaBadgeText1}
+                      <ui:fragment rendered="#{empty seaBadgeText1 and empty seaBadgeText2}">
+                        #{badgeBottomBottom}
+                      </ui:fragment>
+                    </sup>
+                    <sup class="sup -sup2Line">#{seaBadgeText2} </sup>
+                  </div>
+                </div>
+              </div>
+            </ui:fragment>
+          </ui:fragment>
+        </div>
+        <!-- /teaser left -->
+
+        <!-- teaser right -->
+        <div class="info -right">
+          <ui:fragment rendered="#{not empty uspHeading}">
+            <h3>#{uspHeading}</h3>
+          </ui:fragment>
+
+          <ul class="features" style="margin-top:#{bulletTop};">
+
+              <ui:fragment rendered="#{not empty teaserFeatureHighlighted}">
+                <li class="-highlight">#{teaserFeatureHighlighted}</li>
+              </ui:fragment>
+
+              <ui:fragment rendered="#{not empty teaserFeature1}">
+                <li> <span class="#{strong}">#{teaserFeature1}</span> </li>
+              </ui:fragment>
+
+              <ui:fragment rendered="#{not empty teaserFeature2}">
+                <li>#{teaserFeature2} <span class="-highlighted-text">#{teaserFeature2Green}</span> #{teaserFeature2Finish}</li>
+              </ui:fragment>
+
+              <ui:fragment rendered="#{not empty teaserFeature3}">
+                <li>#{teaserFeature3} <span class="-highlighted-text">#{teaserFeature3Green}</span> #{teaserFeature3Finish}</li>
+              </ui:fragment>
+
+              <ui:fragment rendered="#{not empty teaserFeature4}">
+                <li>#{teaserFeature4} <span class="-highlighted-text">#{teaserFeature4Green}</span> #{teaserFeature4Finish}</li>
+              </ui:fragment>
+
+              <ui:fragment rendered="#{not empty teaserFeature5}">
+                <li>#{teaserFeature5} <span class="-highlighted-text">#{teaserFeature5Green}</span> #{teaserFeature5Finish}</li>
+              </ui:fragment>
+
+          </ul>
+
+          <ui:fragment rendered="#{codeField == true}">
+            <div class="teaserCodeField #{topCorrection}">
+             <div class="topTitle"><b>#{codeTitle}</b></div>
+              <div class="content">
+                <span>
+                  #{codeContent}
+                </span>
+              </div>
+              <p>
+                <small>#{validUntil}</small>
+              </p>
+            </div>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{not empty Ndate and not empty quotes}">
+            <br />
+          </ui:fragment>
+
+          <ui:fragment rendered="#{showUpload != false}">
+            <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+              <ui:param name="directuploadProductId" value="#{uploadId}" />
+              <ui:param name="directuploadClass" value="action" />
+              <ui:param name="buttonText" value="#{buttonText}" />
+            </ui:include>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{not empty Ndate}">
+            <p style="padding-left: 40px;"><small>#{Ndate}</small></p>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{Advantages == true}">
+            <div class="show-advantages">
+              <a href="javascript:void(0)" onclick="Modal.open('#advantages');" class="-highlighted-text">
+                <u>Vi gör skillnaden – Jämför oss!</u>
+              </a>
+            </div>
+          </ui:fragment>
+
+        </div><!-- /teaser right -->
+      </div>
+    </div>
+  </section>
+
+</ui:composition>

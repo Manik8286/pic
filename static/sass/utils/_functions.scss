@@ -1,0 +1,14 @@
+// Convert px values into em.
+//
+// $width - Width in pixels.
+// $base  - Base font size.
+@function em-calc($width, $base: 16px) {
+  @return ($width / $base) * 1em;
+}
+
+// Get z-index from depth-map
+//
+// Compatible with all Browsers.
+@function z-index($depth, $type) {
+ @return map-get($depth, $type);
+}

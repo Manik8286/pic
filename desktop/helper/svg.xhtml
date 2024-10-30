@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <svg role="presentation" class="#{svgClass}" width="#{not empty svgWidth ? svgWidth : '100%'}" height="#{not empty svgHeight ? svgHeight : '100%'}" xmlns="http://www.w3.org/2000/svg">
+    <c:if test="#{not empty title}"><title>#{title}</title></c:if>
+
+    <c:set var="svgUrlFilePath" value="#{svgUrl}" />
+    
+    <c:if test="#{fn:contains(svgUrl, '#')}">
+      <c:set var="svgUrlFilePath" value="#{svgUrlFilePath.split('#')[1]}" />
+      <c:set var="svgUrlFilePathSlach" value="#{fn:indexOf(svgUrlFilePath, '-')}" />
+      <c:set var="svgUrlFolderPath" value="#{fn:substring(svgUrlFilePath, 0, svgUrlFilePathSlach)}" />
+      <c:set var="svgUrlFilePath" value="#{fn:substring(svgUrlFilePath, svgUrlFilePathSlach+1, svgUrlFilePath.length())}" />
+      <c:set var="svgUrlFilePath" value="/#{shopInfoBean.versionPath}assets/build/svg/#{svgUrlFolderPath}/#{svgUrlFilePath}.svg" />
+    </c:if>
+
+    <c:if test="#{not empty instagram}">
+      <ui:include src="/helper/fill-instagram.xhtml" />
+    </c:if>
+
+    <c:catch var="svgLoadCatchException">
+      <ui:include src="#{svgUrlFilePath}" />
+    </c:catch>
+    <c:if test="#{not empty svgLoadCatchException}">
+      <h:outputText escape="false" value="&lt;!-- Error Loading SVG File: #{svgUrlFilePath} - #{svgLoadCatchException.message} --&gt;"/>
+    </c:if>
+  </svg>
+
+</ui:composition>

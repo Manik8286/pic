@@ -1,0 +1,270 @@
+<ui:composition template="/templates/default.xhtml"
+								xmlns="http://www.w3.org/1999/xhtml"
+								xmlns:h="http://java.sun.com/jsf/html"
+								xmlns:f="http://java.sun.com/jsf/core"
+								xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+								xmlns:c="http://java.sun.com/jsp/jstl/core"
+								xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:param name="pageTitle" value="FOTOCALENDARIO 2017 - Crea un Fotocalendario personalizado" />
+
+	<ui:define name="meta">
+		<meta name="description" content="Fotocalendario 2017 – las fechas y fotos importantes en un vistazo. ✓ Todas las funciones de nuestro Software para un Fotocalendario perfecto. " />
+		<meta name="robots" content="NOINDEX,NOFOLLOW" />
+		<link rel="canonical" href="https://www.bestcanvas.se/fotocalendario/" />
+
+		<meta property="og:title" content="Crea un Fotocalendario personalizado" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://www.bestcanvas.se/fotocalendario/" />
+		<meta property="og:image" content="https://download.cdn-shop.com/media/web_images/social_media/miartees/2017/spring/fotocalendario.jpg" />
+		<meta property="og:description" content="Fotocalendario – las fechas y fotos importantes en un vistazo. ✓ Todas las funciones de nuestro Software para un Fotocalendario perfecto" />
+		<meta property="og:site_name" content="BestCanvas.se" />
+
+		<meta itemprop="name" content="Crea un Fotocalendario personalizado" />
+		<meta itemprop="description" content="Fotocalendario – las fechas y fotos importantes en un vistazo. ✓ Todas las funciones de nuestro Software para un Fotocalendario perfecto" />
+		<meta itemprop="image" content="https://download.cdn-shop.com/media/web_images/social_media/miartees/2017/spring/fotocalendario.jpg" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@bestcanvas_se" />
+		<meta name="twitter:creator" content="@bestcanvas_se" />
+		<meta name="twitter:title" content="Crea un Fotocalendario personalizado" />
+		<meta name="twitter:description" content="Fotocalendario – las fechas y fotos importantes en un vistazo. ✓ Todas las funciones de nuestro Software para un Fotocalendario perfecto" />
+		<meta name="twitter:url" content="https://www.bestcanvas.se/fotocalendario/" />
+		<meta name="twitter:image" content="https://download.cdn-shop.com/media/web_images/social_media/miartees/2017/spring/fotocalendario.jpg" />
+		<meta http-equiv="content-language" content="sv_SE"/>
+	</ui:define>
+
+	<ui:define name="content">
+		<div class="page-photobook" >
+			<section class="page-teaser -alternate -has-ribbon" data-ribbon-title="NIEUW">
+				<a name="top"></a>
+				<div class="photobook -photobook-teaser" style="background-image: url(/#{shopInfoBean.versionPath}assets/img/backgrounds/livingroom-with-sofa-calendar.jpg)">
+					<div class="body">
+						<!-- teaser left -->
+						<div class="eyecatcher">
+							<img class="image" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/fotocalendario/fotocalendario-creacion.png" alt="fotocalendario creacion" />
+							
+						</div><!-- /teaser left -->
+
+						<!-- teaser right -->
+						<div class="action-wrapper">
+							<div class="actions">
+								<span class="label">Iniciar un nuevo Fotocalendario</span>
+								<div class="action">
+									<div onclick="Modal.open('#myModal2');_gaq.push(['_trackEvent', 'Photocalendar', 'LinkClick', 'Neues Projekt']);" class="fancybox new cursor-pointer">Nuevo proyecto</div>
+								</div>
+								<span class="label">Continuar donde lo dejó</span>
+								<div class="action">
+									<a href="http://cart.unitedartslimited.com/branding/miartees/" target="_blank" onclick="_gaq.push(['_trackEvent', 'Photocalendar', 'LinkClick', 'Projekt editieren']);" class="edit">Proyecto de edición</a>
+								</div>
+							</div>
+						</div><!-- /teaser right -->
+					</div>
+				</div>
+				<!-- teaser trust -->
+				<div class="trust">
+
+					<!-- <div class="tv -span-8">
+						<ui:include src="/content-blocks/tv-icon-block.xhtml" />
+					</div> -->
+				</div><!-- /teaser trust -->
+			</section>
+
+			<section class="page-section -collapse-top">
+			<br/>
+				<h1 class="headline -section">Crea un Fotocalendario personalizado</h1>
+				<div class="plattforms">
+					<!-- photobook web -->
+					<div class="-span-8 -centered">
+						<div class="photobook-box" data-mh="photobook-box">
+							<div class="image">
+								<img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/fotocalendario/fotocalendario-creacion-online.jpg" alt="fotocalendario creacion online" />
+							</div>
+							<div class="content">
+								<h4 class="headline">Diseña en línea</h4>
+								<p class="text">Crea tu Fotocalendario en línea y en cualquier lugar</p>
+								<div onclick="Modal.open('#myModal2');_gaq.push(['_trackEvent', 'Fotokalender', 'LinkClick', 'Starte mit meinfoto Web']);" class="fancybox button-start cursor-pointer">Comienza con mi-arte</div>
+							</div>
+						</div>
+					</div><!-- /photobook web -->
+
+					<!-- photobook home -->
+					<div class="-span-8 -centered">
+						<div class="photobook-box" data-mh="photobook-box">
+							<div class="image">
+								<img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/fotocalendario/fotocalendario-creacion-offline.png" alt="fotocalendario creacion offline" />
+							</div>
+							<div class="content">
+								<h4 class="headline">Diseña offline</h4>
+								<p class="text">Crea en tu portátil u ordenador - ¡incluso sin conexión!</p>
+								<div onclick=" Modal.open('#myModal');" class="fancybox button-start cursor-pointer">Comienza con mi-arte</div>
+							</div>
+						</div>
+					</div><!-- /photobook home -->
+
+					<div class="-span-8 -centered">
+						<div class="photobook-box" data-mh="photobook-box">
+							<div class="image">
+								<img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/fotocalendario/fotolibro-orden.png" alt="fotolibro orden" />
+							</div>
+							<div class="content">
+								<h4 class="headline">Álbum digital</h4>
+								<p class="text">¿Prefieres crear un álbum digital personal? </p>
+							
+								<div onclick="javascript:location.href='/album-digital/'" class="fancybox button-start cursor-pointer">Volver al Album Digital</div>
+							</div>
+						</div>
+					</div><!-- /photobook home -->
+				</div>
+			</section>
+
+			<!-- info boxes 
+			<section class="page-section -alternate">
+				<div class="row">
+					<div class="col -span-4">
+						<div class="showcase-box" data-mh="photobook-showcase-box">
+							<h3 class="headline">Tausende begeisterte Kunden</h3>
+							<a href="https://www.trustedshops.de/bewertung/info_XDFE21E7DDD4FB22E10C77D19F887E411.html"  rel="nofollow" target="_blank" title="Händlerbewertungen von meinfoto.de einsehen">
+								<img alt="Händlerbewertungen von meinfoto.de" class="bewertung" src="https://widgets.trustedshops.com/reviews/widgets/XDFE21E7DDD4FB22E10C77D19F887E411.gif" />
+							</a>
+							<a href="https://www.trustedshops.de/bewertung/info_XDFE21E7DDD4FB22E10C77D19F887E411.html" target="_blank" class="link">mehr erfahren »</a>
+						</div>
+					</div>
+
+					<div class="col -span-4">
+						<div class="showcase-box" data-mh="photobook-showcase-box">
+							<h3 class="headline">Mein Fotobuch</h3>
+							<img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/fotocalendario/paper.png" width="100%" alt="Fotobuch. Glücklicher Paare" />
+							<a href="/fotobuch" class="link">Weitere Infos »</a>
+						</div>
+					</div>
+
+					<div class="col -span-4">
+						<div class="showcase-box" data-mh="photobook-showcase-box">
+							<h3 class="headline">Individuelle Fotokalender</h3>
+							<table class="table -striped -centered">
+								<thead class="-highlighted">
+									<tr>
+										<th>Format</th>
+										<th>Angebotspreis</th>
+										<th>Seiten</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>21x21cm</td>
+										<td class="-highlighted">ab 13,90 €*</td>
+										<td>13</td>
+									</tr>
+									<tr>
+										<td>21x29,7cm</td>
+										<td class="-highlighted">ab 14,90 €*</td>
+										<td >13</td>
+									</tr>
+									<tr>
+										<td>29,7x21cm</td>
+										<td class="-highlighted">ab 14,90 €*</td>
+										<td>13</td>
+									</tr>
+									<tr>
+										<td>30x30cm</td>
+										<td class="-highlighted">ab 19,90 €*</td>
+										<td>13</td>
+									</tr>
+									<tr>
+										<td>42x29,7cm</td>
+										<td class="-highlighted">ab 24,90 €*</td>
+										<td>13</td>
+									</tr>
+									<tr>
+										<td>29,7x42cm</td>
+										<td class="-highlighted">ab 24,90 €*</td>
+										<td>13</td>
+									</tr>
+								</tbody>
+							</table>
+							<a href="/formatos" class="link">weitere Formate »</a>
+						</div>
+					</div>
+				</div>
+			</section> /info boxes -->
+
+			<section class="page-section">
+				<div class="articles">
+					<div class="article-showcase">
+						<h3 class="headline -has-sidelines"><span>Fotocalendario – fechas importantes e imágenes a primera vista</span></h3>
+						<div class="description-wrapper -span-12">
+							<div class="description">
+								<p class="text">
+									Hemos desarrollado nuestro programa de fotocalendarios prestando especial atención para realizar una interfaz amigable al usuario. Una abundancia de herramientas útiles, tan sencillas de usar que incluso los niños pueden usarlo, te ofrece la posibilidad de diseñar y procesar tu calendario con fotos  a tu gusto. Y la mejor parte es: que puedes guardar tu fotocalendario  y continuar el trabajo en cualquier momento.
+								</p>
+								<p class="text">
+									Descarga e instala el programa para fotocalendarios gratuitamente: Al presionar el botón "Descargar", fácil y rápido alcanzarás tu objetivo. El archivo de instalación del software del fotocalendario, de tu elección, se guardará en tu desktop o en la carpeta de descargas. La instalación comienza con un simple clic en el archivo.
+								</p>
+								<p class="text">
+									Puedes utilizar nuestro programa en cualquiera de estos sistemas operativos: Windows 2000, XP, Vista y Windows 7. Puedes desinstalar el programa manualmente en cualquier momento.
+								</p> <br/>
+								<a href="https://download.cdn-shop.com/media/mi-arte.es_setup.exe" class="button -action -left -right-space">Software Windows</a>
+								<a href="https://download.cdn-shop.com/media/mi-arte.es_setup.dmg" class="button -action -left">Software Mac</a>
+							</div>
+						</div>
+						<div class="col -span-6 text-center">
+							<img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/fotocalendario/fotocalendario.jpg" alt="fotocalendario" />
+						</div>
+					</div>
+					<br/>
+					<div class="article-showcase">
+						<h3 class="headline -has-sidelines"><span>Todas las funciones de nuestro software para tu perfecto Fotocalendario</span></h3>
+						<div class="description-wrapper -span-12">
+							<div class="description">
+								<ul class="text">
+								    <li>Cortar, girar y sobreponer fotos</li>
+								    <li>Efectos de los colores: blanco y negro, sepia, filtro rojo</li>
+								    <li>Marcos: agrega marcos coloridos a las fotos (colores estándar o especiales), sombras y un efecto de brillo</li>
+								    <li>Máscaras: en forma de corazón, texturas para fotos destacadas</li>
+								    <li>Efectos especiales: corrección de ojos rojos, transparencia, foto a color, saturación de color, contraste, etc.</li>
+								    <li>Elección del fondo: Individualmente para cada página con colores estándar, colores especiales, con elección manual, con tus fotos o con fondos de plantilla</li>
+								    <li>Herramientas de texto: añade texto y ajusta individualmente el color, la fuente y el tamaño</li>
+								    <li>Clipart: utiliza datos propios o dados como imágenes prediseñadas</li>
+								</ul> <br/>
+								<p class="text">Por favor, no te sorprendes por la calidad de las fotos en tu fotocalendario. La calidad va a ser reducida solo para una carga más rápida. Para imprimir, vamos a utilizar los originales, así que tu fotocalendario  te será entregado con imágenes de la más alta calidad.</p>
+							</div>
+						</div>
+						<div class="col -span-6 text-center">
+							<img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/fotocalendario/fotocalendario-2017.jpg" alt="fotocalendario 2017" />
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+			<div class="js-modal" id="myModal">
+				<h2 class="text-center">Elegir sistema operativo</h2>
+				<div class="col -span-6">
+					<a href="https://download.cdn-shop.com/media/mi-arte.es_setup.exe" target="_blank">
+						<img border="0" onclick="_gaq.push(['_trackEvent', 'Fotobuch-Software', 'WIN', 'Teaser Fotobuch']);" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/win-logo.jpg" />
+					</a>
+				</div>
+				<div class="col -span-6">
+					<a href="https://download.cdn-shop.com/media/mi-arte.es_setup.dmg" target="_blank">
+						<img border="0" onclick="_gaq.push(['_trackEvent', 'Fotobuch-Software', 'WIN', 'Teaser Fotobuch'])" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/mac-logo.jpg" />
+					</a>
+				</div>
+			</div>
+			
+			<div class="js-modal" id="myModal2">
+				<iframe width="700" scrolling="no" height="650" frameborder="0" src="/fotobuch-produkte/"></iframe>
+			</div>
+
+			<!-- paymentmethods -->
+			<section class="page-section -alternate">
+				<ui:include src="/page-blocks/paymentmethods.xhtml" />
+				<ui:include src="/page-blocks/newsletter-wr.xhtml" />
+			</section>
+			<!-- /paymentmethods -->
+		</div>
+	</ui:define>
+	<ui:define name="trackingcodes">
+		<ui:include src="/trackingcodes/endofbody-fotobuch-fotokalender.xhtml" />
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,275 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+  <div class="row">
+    <ui:include src="/content-blocks/info-blocks-badges.xhtml" >
+      <ui:param name="qualityPromiseText" value="Ontvang familievriendelijke geschenken van topkwaliteit – gemaakt hier in de Verenigde Staten. Snelle verwerking en met 100% Geld-terug-garantie." />
+    </ui:include>
+
+    <ui:fragment rendered="#{not empty nonePrices}">
+      <div class="col -span-4">
+        <div class="showcase-box mh-showcase-box" data-mh="info">
+          <h3 class="headline">Foto Regalos Premium</h3>
+          <div class="body">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/fotopresenter/fotopresenter.jpg"  alt="fotopresenter"/>
+            <p>Haz un regalo maravilloso y original, ideal para cualquier ocasión!</p>
+          </div>
+          <a href="/fotopresenter/" class="link">Läs mer »</a>
+        </div>
+      </div>
+    </ui:fragment>
+
+    <!-- Mug Prices -->
+    <ui:fragment rendered="#{not empty mugFormatTable}">
+      <div class="col -span-4">
+      <div class="showcase-box" data-mh="info">
+        <h3 class="headline">Vi har låga priser för Fotomugg!</h3>
+        <table class="table -striped">
+          <thead class="-highlighted">
+            <tr>
+              <th class="-text-centered">Format</th>
+              <th class="-text-centered">Pris</th>
+              <th class="-highlighted -text-centered">Idag</th>
+            </tr>
+          </thead>
+          <tbody class="-text-centered">
+            <tr>
+              <td class="-smallFormatSize">Vågrätt höger</td>
+              <td><s>#{priceBean.productCrossPrice('Mug_Bestcanvas_SE', 'Mug', 'Mug Right Portrait')}</s></td>
+              <td class="-highlighted"><!-- #{priceBean.productPrice('Mug_Bestcanvas_SE', 'Mug', 'Mug Right Portrait')}* -->Slutsåld</td>
+            </tr>
+            <tr>
+              <td class="-smallFormatSize">Vågrätt vänster</td>
+              <td><s>#{priceBean.productCrossPrice('Mug_Bestcanvas_SE', 'Mug', 'Mug Right Portrait')}</s></td>
+              <td class="-highlighted"><!-- #{priceBean.productPrice('Mug_Bestcanvas_SE', 'Mug', 'Mug Right Portrait')}* -->Slutsåld</td>
+            </tr>
+            <tr>
+              <td class="-smallFormatSize">Högkant höger</td>
+              <td><s>#{priceBean.productCrossPrice('Mug_Bestcanvas_SE', 'Mug', 'Mug Right Portrait')}</s></td>
+              <td class="-highlighted"><!-- #{priceBean.productPrice('Mug_Bestcanvas_SE', 'Mug', 'Mug Right Portrait')}* -->Slutsåld</td>
+            </tr>
+            <tr>
+              <td class="-smallFormatSize">Högkant vänster</td>
+              <td><s>#{priceBean.productCrossPrice('Mug_Bestcanvas_SE', 'Mug', 'Mug Right Portrait')}</s></td>
+              <td class="-highlighted"><!-- #{priceBean.productPrice('Mug_Bestcanvas_SE', 'Mug', 'Mug Right Portrait')}* -->Slutsåld</td>
+            </tr>
+            <tr>
+              <td class="-smallFormatSize">Panorama Format</td>
+              <td><s>#{priceBean.productCrossPrice('Mug_Bestcanvas_SE', 'Mug', 'Mug Panorama')}</s></td>
+              <td class="-highlighted"><!-- #{priceBean.productPrice('Mug_Bestcanvas_SE', 'Mug', 'Mug Panorama')}* -->Slutsåld</td>
+            </tr>
+          </tbody>
+        </table>
+        <a href="/format/#fotopresenter" class="link">Alla priser och format »</a>
+      </div>
+      </div>
+    </ui:fragment>
+
+    <!-- Premium Mug Prices -->
+    <ui:fragment rendered="#{not empty mugPremiumFormatTable}">
+      <div class="col -span-4">
+      <div class="showcase-box" data-mh="info">
+        <h3 class="headline">Vi har låga priser för Premiummugg!</h3>
+        <table class="table -striped">
+          <thead class="-highlighted">
+            <tr>
+              <th class="-text-centered">Format</th>
+              <th class="-text-centered">Pris</th>
+              <th class="-highlighted -text-centered">Idag</th>
+            </tr>
+          </thead>
+          <tbody class="-text-centered">
+            <tr>
+              <td class="-smallFormatSize">Vågrätt höger</td>
+              <td><s>#{priceBean.productCrossPrice('Mug-Porcelain_Bestcanvas_SE', 'Porcelain Mug', 'Porcelain Mug Left Landscape')}</s></td>
+              <td class="-highlighted"><!-- #{priceBean.productPrice('Mug-Porcelain_Bestcanvas_SE', 'Porcelain Mug', 'Porcelain Mug Left Landscape')}* -->Slutsåld</td>
+            </tr>
+            <tr>
+              <td class="-smallFormatSize">Vågrätt vänster</td>
+              <td><s>#{priceBean.productCrossPrice('Mug-Porcelain_Bestcanvas_SE', 'Porcelain Mug', 'Porcelain Mug Left Landscape')}</s></td>
+              <td class="-highlighted"><!-- #{priceBean.productPrice('Mug-Porcelain_Bestcanvas_SE', 'Porcelain Mug', 'Porcelain Mug Left Landscape')}* -->Slutsåld</td>
+            </tr>
+            <tr>
+              <td class="-smallFormatSize">Högkant höger</td>
+              <td><s>#{priceBean.productCrossPrice('Mug-Porcelain_Bestcanvas_SE', 'Porcelain Mug', 'Porcelain Mug Left Landscape')}</s></td>
+              <td class="-highlighted"><!-- #{priceBean.productPrice('Mug-Porcelain_Bestcanvas_SE', 'Porcelain Mug', 'Porcelain Mug Left Landscape')}* -->Slutsåld</td>
+            </tr>
+            <tr>
+              <td class="-smallFormatSize">Högkant höger</td>
+              <td><s>#{priceBean.productCrossPrice('Mug-Porcelain_Bestcanvas_SE', 'Porcelain Mug', 'Porcelain Mug Left Landscape')}</s></td>
+              <td class="-highlighted"><!-- #{priceBean.productPrice('Mug-Porcelain_Bestcanvas_SE', 'Porcelain Mug', 'Porcelain Mug Left Landscape')}* -->Slutsåld</td>
+            </tr>
+            <tr>
+              <td class="-smallFormatSize">Panorama Format</td>
+              <td><s>#{priceBean.productCrossPrice('Mug-Porcelain_Bestcanvas_SE', 'Porcelain Mug', 'Porcelain Mug Panorama')}</s></td>
+              <td class="-highlighted"><!-- #{priceBean.productPrice('Mug-Porcelain_Bestcanvas_SE', 'Porcelain Mug', 'Porcelain Mug Panorama')}* -->Slutsåld</td>
+            </tr>
+          </tbody>
+        </table>
+        <a href="/format/#fotopresenter" class="link">Alla priser och format »</a>
+      </div>
+      </div>
+    </ui:fragment>
+
+    <!-- Magic Mug Prices -->
+    <ui:fragment rendered="#{not empty mugMagicFormatTable}">
+      <div class="col -span-4">
+      <div class="showcase-box" data-mh="info">
+        <h3 class="headline">Vi har låga priser för Magisk mugg!</h3>
+        <table class="table -striped">
+          <thead class="-highlighted">
+            <tr>
+              <th class="-text-centered">Format</th>
+              <th class="-text-centered">Pris</th>
+              <th class="-highlighted -text-centered">Idag</th>
+            </tr>
+          </thead>
+          <tbody class="-text-centered">
+            <tr>
+              <td class="-smallFormatSize">Vågrätt höger</td>
+              <td><s>#{priceBean.productCrossPrice('Mug-Magic_Bestcanvas_SE', 'Magic Mug', 'Magic Mug Left Landscape')}</s></td>
+              <td class="-highlighted">#{priceBean.productPrice('Mug-Magic_Bestcanvas_SE', 'Magic Mug', 'Magic Mug Left Landscape')}*</td>
+            </tr>
+            <tr>
+              <td class="-smallFormatSize">Vågrätt vänster</td>
+              <td><s>#{priceBean.productCrossPrice('Mug-Magic_Bestcanvas_SE', 'Magic Mug', 'Magic Mug Left Landscape')}</s></td>
+              <td class="-highlighted">#{priceBean.productPrice('Mug-Magic_Bestcanvas_SE', 'Magic Mug', 'Magic Mug Left Landscape')}*</td>
+            </tr>
+            <tr>
+              <td class="-smallFormatSize">Högkant höger</td>
+              <td><s>#{priceBean.productCrossPrice('Mug-Magic_Bestcanvas_SE', 'Magic Mug', 'Magic Mug Left Landscape')}</s></td>
+              <td class="-highlighted">#{priceBean.productPrice('Mug-Magic_Bestcanvas_SE', 'Magic Mug', 'Magic Mug Left Landscape')}*</td>
+            </tr>
+            <tr>
+              <td class="-smallFormatSize">Högkant höger</td>
+              <td><s>#{priceBean.productCrossPrice('Mug-Magic_Bestcanvas_SE', 'Magic Mug', 'Magic Mug Left Landscape')}</s></td>
+              <td class="-highlighted">#{priceBean.productPrice('Mug-Magic_Bestcanvas_SE', 'Magic Mug', 'Magic Mug Left Landscape')}*</td>
+            </tr>
+            <tr>
+              <td class="-smallFormatSize">Panorama Format</td>
+              <td><s>#{priceBean.productCrossPrice('Mug-Magic_Bestcanvas_SE', 'Magic Mug', 'Magic Mug Panorama')}</s></td>
+              <td class="-highlighted">#{priceBean.productPrice('Mug-Magic_Bestcanvas_SE', 'Magic Mug', 'Magic Mug Panorama')}*</td>
+            </tr>
+          </tbody>
+        </table>
+        <a href="/format/#fotopresenter" class="link">Alla priser och format »</a>
+      </div>
+      </div>
+    </ui:fragment>
+
+    <!-- Colored Mug Prices -->
+    <ui:fragment rendered="#{not empty mugColoredFormatTable}">
+      <div class="col -span-4">
+      <div class="showcase-box" data-mh="info">
+        <h3 class="headline">Vi har låga priser för Färgglad Mugg!</h3>
+        <table class="table -striped">
+          <thead class="-highlighted">
+            <tr>
+              <th class="-text-centered">Format</th>
+              <th class="-text-centered">Pris</th>
+              <th class="-highlighted -text-centered">Idag</th>
+            </tr>
+          </thead>
+          <tbody class="-text-centered">
+            <tr>
+              <td class="-smallFormatSize">Vågrätt höger</td>
+              <td><s>#{priceBean.productCrossPrice('Mug-Inner_Bestcanvas_SE', 'Inner colored mug', 'Inner Colored Mug Left Landscape')}</s></td>
+              <td class="-highlighted">#{priceBean.productPrice('Mug-Inner_Bestcanvas_SE', 'Inner colored mug', 'Inner Colored Mug Left Landscape')}*</td>
+            </tr>
+            <tr>
+              <td class="-smallFormatSize">Vågrätt vänster</td>
+              <td><s>#{priceBean.productCrossPrice('Mug-Inner_Bestcanvas_SE', 'Inner colored mug', 'Inner Colored Mug Left Landscape')}</s></td>
+              <td class="-highlighted">#{priceBean.productPrice('Mug-Inner_Bestcanvas_SE', 'Inner colored mug', 'Inner Colored Mug Left Landscape')}*</td>
+            </tr>
+            <tr>
+              <td class="-smallFormatSize">Högkant höger</td>
+              <td><s>#{priceBean.productCrossPrice('Mug-Inner_Bestcanvas_SE', 'Inner colored mug', 'Inner Colored Mug Left Landscape')}</s></td>
+              <td class="-highlighted">#{priceBean.productPrice('Mug-Inner_Bestcanvas_SE', 'Inner colored mug', 'Inner Colored Mug Left Landscape')}*</td>
+            </tr>
+            <tr>
+              <td class="-smallFormatSize">Högkant höger</td>
+              <td><s>#{priceBean.productCrossPrice('Mug-Inner_Bestcanvas_SE', 'Inner colored mug', 'Inner Colored Mug Left Landscape')}</s></td>
+              <td class="-highlighted">#{priceBean.productPrice('Mug-Inner_Bestcanvas_SE', 'Inner colored mug', 'Inner Colored Mug Left Landscape')}*</td>
+            </tr>
+            <tr>
+              <td class="-smallFormatSize">Panorama Format</td>
+              <td><s>#{priceBean.productCrossPrice('Mug-Inner_Bestcanvas_SE', 'Inner colored mug', 'Inner Colored Mug Panorama')}</s></td>
+              <td class="-highlighted">#{priceBean.productPrice('Mug-Inner_Bestcanvas_SE', 'Inner colored mug', 'Inner Colored Mug Panorama')}*</td>
+            </tr>
+          </tbody>
+        </table>
+        <a href="/format/#fotopresenter" class="link">Alla priser och format »</a>
+      </div>
+      </div>
+    </ui:fragment>
+
+
+    <!-- Mousemat Prices -->
+    <ui:fragment rendered="#{not empty mouseFormatTable}">
+      <div class="col -span-4">
+      <div class="showcase-box" data-mh="info">
+        <h3 class="headline">Vi har låga priser för Musmatta!</h3>
+        <table class="table -striped">
+          <thead class="-highlighted">
+            <tr>
+              <th class="-text-centered">Format</th>
+              <th class="-text-centered">Pris</th>
+              <th class="-highlighted -text-centered">Idag</th>
+            </tr>
+          </thead>
+          <tbody class="-text-centered">
+            <tr>
+              <td>22 x 18 x 0,3 cm</td>
+              <td><s>#{priceBean.productCrossPrice('Mousepad_Bestcanvas_SE', 'Mousepad', 'Mousepad 22x18x03')}</s></td>
+              <td class="-highlighted">#{priceBean.productPrice('Mousepad_Bestcanvas_SE', 'Mousepad', 'Mousepad 22x18x03')}*</td>
+            </tr>
+          </tbody>
+        </table>
+        <a href="/format/#fotopresenter" class="link">Alla priser och format »</a>
+      </div>
+      </div>
+    </ui:fragment>
+
+    <!-- Mousemat Prices -->
+    <ui:fragment rendered="#{not empty puzzleFormatTable}">
+      <div class="col -span-4">
+      <div class="showcase-box" data-mh="info">
+        <h3 class="headline">Vi har låga priser för Fotopussel!</h3>
+        <table class="table -striped">
+          <thead class="-highlighted">
+            <tr>
+              <th class="-text-centered">Format</th>
+              <th class="-text-centered">Pris</th>
+              <th class="-highlighted -text-centered">Idag</th>
+            </tr>
+          </thead>
+          <tbody class="-text-centered">
+            <tr>
+              <td>20 x 27 cm (88 delar)</td>
+              <td><s>#{priceBean.productCrossPrice('Puzzle_Bestcanvas_SE', 'Puzzle', 'Puzzle 20x27 cm - 88 Teile')}</s></td>
+              <td class="-highlighted">#{priceBean.productPrice('Puzzle_Bestcanvas_SE', 'Puzzle', 'Puzzle 20x27 cm - 88 Teile')}*</td>
+            </tr>
+            <tr>
+              <td>30 x 40 cm (300 delar)</td>
+              <td><s>#{priceBean.productCrossPrice('Puzzle_Bestcanvas_SE', 'Puzzle', 'Puzzle 30x40 cm - 300 Teile')}</s></td>
+              <td class="-highlighted">#{priceBean.productPrice('Puzzle_Bestcanvas_SE', 'Puzzle', 'Puzzle 30x40 cm - 300 Teile')}*
+              </td>
+            </tr>
+            <tr>
+              <td>44 x 68 cm (1000 delar)</td>
+              <td><s>#{priceBean.productCrossPrice('Puzzle_Bestcanvas_SE', 'Puzzle', 'Puzzle 68x44 cm - 1000 Teile')}</s></td>
+              <td class="-highlighted">#{priceBean.productPrice('Puzzle_Bestcanvas_SE', 'Puzzle', 'Puzzle 68x44 cm - 1000 Teile')}*
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <a href="/format/#fotopresenter" class="link">Alla priser och format »</a>
+      </div>
+      </div>
+    </ui:fragment>
+  </div>
+
+</ui:composition>

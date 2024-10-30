@@ -1,0 +1,17 @@
+.form-boxed {
+
+  .title {
+    margin-bottom: 26px;
+  }
+
+  .data .group {
+    > .label {
+      width: 100%;
+    }
+
+    > .entry {
+      width: 100%;
+    }
+  }
+
+}

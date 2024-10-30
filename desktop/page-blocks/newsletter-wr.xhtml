@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<div class="newsletter-list">
+	    <div class="newsletter #{sessionBean.userAgentType != 'phone' ? '-span-8' : '-span-12'} ">
+			<ui:include src="/content-blocks/newsletter/newsletter-signup-block.xhtml"> 
+				<ui:param name="newsletterBlockTitle" value="Ännu bättre priser i nyhetsbrevet!" />
+				<ui:param name="newsletterSubtitleSmall" value="Anmäl dig nu och få en" />
+				<ui:param name="subtitleBeforeBold" value="60x40 canvastavlor" />
+				<ui:param name="subtitleBold" value="med 54 %" />
+				<ui:param name="subtitleAfterBold" value="rabatt" />
+				<ui:param name="iconOneText" value="Bästa erbjudanden" />
+				<ui:param name="iconTwoText" value="Nya produkter" />
+				<ui:param name="iconThreeText" value="Tips och inspiration" />
+				<ui:param name="newsletterButtonText" value="Spara kupong" />
+			</ui:include>
+	    </div>
+
+			<div class="social #{sessionBean.userAgentType != 'phone' ? '-span-4' : '-span-12'}">
+				<div class="item-box -nl -small" data-mh="newsletter">
+					<h3 class="title">Följ oss</h3>
+					<div class="subtitle">och håll dig uppdaterad</div>
+					<ul class="social-items">
+						<li class="social-item -facebook">
+							<a href="https://www.facebook.com/bestcanvasse/" target="_blank">
+								<ui:include src="/helper/svg.xhtml">
+									<ui:param name="svgClass" value="icon" />
+									<ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-facebook" />
+								</ui:include>
+								Facebook
+							</a>
+						</li>
+						<li class="social-item -instagram -browserAll">
+							<a href="https://www.instagram.com/bestcanvas_se/" target="_blank">
+								<ui:include src="/helper/svg.xhtml">
+									<ui:param name="svgClass" value="icon" />
+									<ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-instagram" />
+									<ui:param name="instagram" value="true" />
+								</ui:include>
+								Instagram
+							</a>
+						</li>
+						<li class="social-item -youtube">
+							<a href="https://www.youtube.com/channel/UCIRU75uqQrfoevnKt3RlUGQ" target="_blank">
+								<ui:include src="/helper/svg.xhtml">
+									<ui:param name="svgClass" value="icon" />
+									<ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-youtube" />
+								</ui:include>
+								Youtube
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+	</div>
+
+</ui:composition>

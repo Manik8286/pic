@@ -1,0 +1,49 @@
+.payment-methods {
+  >.headline {
+    margin-bottom: 19px;
+    font-size: 20px;
+  }
+
+  > .method {
+    &.-paypal{
+      margin-right: 18px;
+      width: 92px;
+      height: 25px;
+    }
+    &.-visa{
+      margin-right: 25px;
+      width: 63px;
+      height: 20px;
+    }
+    &.-visaVerified,
+    &.-masterCardSecure {
+      margin-right: 25px;
+      width: 65px;
+      height: 25px;
+    }
+    &.-amex{
+      margin-right: 26px;
+      width: 30px;
+      height: 30px;
+    }
+    &.-master{
+      width: 43px;
+      height: 33px;
+    }
+    &.-amazon{
+      margin-right: 26px;
+      width: 113px;
+      height: 22px;
+    }
+    &.-rechnung{
+      margin-right: 19px;
+      width: 52px;
+      height: 43px;
+    }
+    &.-barzahlen{
+      width: 91px;
+      height: 30px;
+    }
+  }
+
+}

@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+      <div class="articles">
+          <!-- product info -->
+          <div class="article-showcase">
+          <h2 class="headline -section"><span>Personlig Fotofilt</span></h2>
+            <h3 class="headline -has-sidelines"><span>Ditt foto på en fotofilt</span></h3>
+            <div class="col -span-#{sessionBean.userAgentType == 'desktop' ? '6' : ''} #{sessionBean.userAgentType == 'tablet' ? '8 -centered' : ''} #{sessionBean.userAgentType == 'phone' ? '12 -centered' : ''} image js-image-switcher">
+              <ul class="images">
+                <li data-image-name="preview:front" class="-visible"><img class="lazy" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-src="/#{shopInfoBean.versionPath}assets/img/produkter/fotofilt/fotofilt-komplett-vy.jpg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/fotofilt/fotofilt-komplett-vy.jpg" alt="fotofilt komplett vy" /></li>
+                <li data-image-name="preview:room"><img src="/#{shopInfoBean.versionPath}assets/img/produkter/fotofilt/fotofilt-i-rummet.jpg" alt="fotofilt i rummet" /></li>
+                <li data-image-name="preview:detail"><img src="/#{shopInfoBean.versionPath}assets/img/produkter/fotofilt/fotofilt-detaljerad-vy-1.jpg" alt="fotofilt detaljerad vy" /></li>
+                <li data-image-name="preview:video" class="videoBlock">
+                  <iframe src="" data-src="https://www.youtube.com/embed/Bui_1AZWxec?loop=1&amp;modestbranding=1&amp;controls=0&amp;showinfo=0" width="#{sessionBean.userAgentType == 'phone' ? '100%' : '490'}" frameborder="0" height="#{sessionBean.userAgentType == 'phone' ? '192' : '313'}"></iframe>
+                </li>
+              </ul>
+
+              <ul class="options -has-#{sessionBean.userAgentType == 'phone' ? '2' : '4'}">
+                <li><button type="button" class="cbutton -highlight" data-target="preview:front">Komplett vy</button></li>
+                <li><button type="button" class="cbutton" data-target="preview:detail">Detaljerad vy</button></li>
+                <li><button type="button" class="cbutton" data-target="preview:room">I rummet</button></li>
+                <li><button type="button" class="cbutton" data-target="preview:video">Video</button></li>
+              </ul>
+            </div>
+
+            <div class="description-wrapper -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'}">
+              <div class="description">
+                <p class="text">
+                   Letar du efter ett dekorativt fotoobjekt som också har ett praktiskt syfte? En fotofilt är en inredningslösning som alltid fungerar!  Filten kommer med ett tryck som är helt luktfritt, allergivänlig och med ett foto som är älskat av dig, och detta gör att det är en fantastisk familjesäker och praktiskt fotoinredningsprodukt som kommer att ge en känsla av originalitet till alla sängkläder som finns!
+                </p>
+              </div>
+              <div class="description">
+                <p class="text">
+                  Bestcanvas.se håller sig till en strikt miljöpolicy och erbjuder en möjlighet att skaffa en fotofilt med högkvalitativ kopia av den ursprungliga bilden, vilken endast skrivs ut med miljövänliga metoder! Tillverkad av en särskilt mjuk fleece, kommer din foto filt att behålla ditt foto så länge som du tvättar det i kalla temperaturer som inte överstiger 30 ° C. Designa din egen filt och få de bästa minnena att dröja kvar, även i sömnen! Denna storskaliga rekreation av ditt foto kommer inte att förlora någon av dess ursprungliga detaljer. Genom att köpa en personlig fotofilt får du:
+                </p>
+              </div>
+              <div class="description">
+                <p class="text">
+                  <ul class="text -list">
+                    <li>Luktfritt fototryck</li>
+                    <li>Helt ofarlig för hela familjen</li>
+                    <li>Perfekt för picknick eller för soffan</li>
+                    <li>Kall maskin tvätt vid max. 40° C</li>
+                </ul>
+               </p>
+             </div>
+           </div>
+         </div>
+         <!-- /product info -->
+  </div>
+
+</ui:composition>

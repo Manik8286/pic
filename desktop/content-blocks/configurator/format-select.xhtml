@@ -1,0 +1,122 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+								xmlns:c="http://java.sun.com/jsp/jstl/core"
+								xmlns:ui="http://java.sun.com/jsf/facelets"
+								xmlns:h="http://java.sun.com/jsf/html"
+								xmlns:f="http://java.sun.com/jsf/core"
+								xmlns:p="http://primefaces.org/ui"
+								xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+	<!-- Format radio list -->
+
+    <h3 class="title"><span class="StepsCount"><h:outputText value="#{blockCount}" /></span>#{_['Choose Format']}:</h3>
+    <p>Bildens upplösning (#{itemConfiguratorBean.imagePixelsX} × #{itemConfiguratorBean.imagePixelsY} Pixel) är tillräckligt för följande format:</p>
+    <p:selectOneRadio plain="true" id="formatRadios" value="#{itemConfiguratorBean.configurator.formatKey}" layout="custom">
+      <p:ajax
+        listener="#{itemConfiguratorBean.change}"
+        onstart='previewConfig.isFormatChange();#{mobileView ? "smoothScrollTo($(\"#thepreviewBox\"));" : ""}'
+        oncomplete="updateDom();mugSummary(#{itemConfiguratorBean.productId});#{textConfig ? 'RefreshControls();RefreshFormatChange();' : ''}"
+        event="change"
+        update="itemConfiguratorForm" />
+      <f:selectItems value="#{itemConfiguratorBean.tiledFormats(1)}"/>
+    </p:selectOneRadio>
+
+      <c:set var="discounted" value="#{itemConfiguratorBean.configurator.formatDefaultPrice(f.value) != itemConfiguratorBean.formatComponentPrice(f.value) and
+                                       sessionServicesBean.discountCode.code != 'AFFILIATECANVAS15USD' and
+                                       sessionServicesBean.discountCode.code != 'AFFILIATECDOFFER' and
+                                       sessionServicesBean.discountCode.code != 'AFFILIATECANVAS25USD'}" />
+
+      <c:set var="indexOffset" value="0" />
+
+      <c:forEach var="i" begin="1" end="4">
+        <!-- loops through each tiled formats -->
+        <table class="table -striped -centered -config-fix -selection format-table" jsf:rendered="#{itemConfiguratorBean.tiledFormats(i).size > 0}" aria-label="table">
+          <thead class="-highlighted">
+            <tr>
+              <th id="1"></th>
+              <th id="2">#{_['Format']}</th>
+              <th id="3">#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE' ? _['Price'] : ''}</th>
+              <th id="4">#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE' ? _['Special Price'] : _['Price']}</th>
+            </tr>
+          </thead>
+        <tbody>
+        <ui:repeat value="#{itemConfiguratorBean.tiledFormats(i)}" var="f" varStatus="s">
+          <tr data-clickarea="data-clickarea" class="#{f.value == itemConfiguratorBean.configurator.formatKey ? '-active' : ''}">
+            <td>
+              <div class="radio -alone">
+                <p:radioButton id="product" for=":itemConfiguratorForm:formatRadios" itemIndex="#{s.index + indexOffset}"/>
+                <h:outputLabel for="product" />
+              </div>
+            </td>
+            <td class="format text-left">
+              <ui:fragment rendered="#{(
+                (sessionScope.get('coupon') == 'HJ69BQMI' or sessionScope.get('coupon') == '5VZCZBZW' or sessionScope.get('coupon') == 'XKPNC45X')
+                 and (f.label == '30x20 cm') and itemConfiguratorBean.productId == 254
+                 )}">
+                <div class="ribbon-label red #{sessionBean.userAgentType == 'desktop' ? '-friend-osp' : ''}"> 
+                  <strong class="ribbon-content">GRATIS</strong>
+                </div>
+              </ui:fragment>
+
+              <h:outputLabel for="entry" value='#{f.label}' styleClass="format-label" />
+
+            <div class="ribbon" jsf:rendered="#{f.label == '60x40 cm' and reference ne 'crm' and sessionScope.get('coupon') != '5VZCZBZW'}">
+              <div class="ribbon-label red">
+                <strong class="ribbon-content">PRISTIPP</strong>
+              </div>
+            </div>
+
+            <div class="ribbon" jsf:rendered="#{f.label == '80x60 cm' and reference ne 'crm' and sessionScope.get('coupon') != '5VZCZBZW'}">
+              <div class="ribbon-label red">
+                <strong class="ribbon-content">BESTSELLER</strong>
+              </div>
+            </div>
+
+            <ui:fragment rendered="#{
+              (itemConfiguratorBean.configurator.formatDefaultPrice(f.value) != itemConfiguratorBean.configurator.formatDefaultPrice(f.value,true) and (reference eq 'crm' or referenceSTIT eq 'crm') and itemConfiguratorBean.isHighlightInConfigurator(f.value) == 'false') or
+              (reference eq 'cms' and sessionServicesBean.discountCode.code == 'ALLSHOWCRM13034' and itemConfiguratorBean.isHighlightInConfigurator(f.value) == 'false')
+              }">
+              <h:outputLabel for="entry">
+                <div class="ribbon-label red -longer -fix"><strong class="ribbon-content"><small>Newsletter-Deal</small></strong></div>
+                <div class="ribbon-shadow"></div>
+              </h:outputLabel>
+            </ui:fragment>
+
+            </td>
+            <td class="-outdated">
+                <h:outputText value="#{itemConfiguratorBean.formatComponentCrossPrice(f.value)}" rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}" />
+
+            </td>
+
+            <td class="-highlighted #{discounted ? ' -discounted' : '' }" jsf:rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}">
+              <h:outputText value="#{itemConfiguratorBean.configurator.formatDefaultPrice(f.value)}&#160;" />
+              <h:outputText rendered="#{discounted and !mobileView and sessionServicesBean.discountCode.code != '9VTR4ZJ6BX6Q8IBX8HNS'}" value="" styleClass="only-today-flag" />
+            </td>
+
+						<td class="#{discounted ? '-highlighted' : '' }" jsf:rendered="#{sessionServicesBean.discountCode.code == 'HIGHPRICES-BESTCANVASSE'}">
+              <ui:fragment rendered="#{(
+                (sessionScope.get('coupon') == 'HJ69BQMI' or sessionScope.get('coupon') == '5VZCZBZW' or sessionScope.get('coupon') == 'XKPNC45X')
+                 and (f.label == '30x20 cm') and itemConfiguratorBean.productId == 254
+                 )}">
+                <div class="ribbon-label red #{sessionBean.userAgentType == 'desktop' ? '-friend-osp' : ''}"> 
+                  <strong class="ribbon-content">GRATIS</strong>
+                </div>
+              </ui:fragment>
+
+              <ui:fragment rendered="#{!((sessionScope.get('coupon') == 'HJ69BQMI' or sessionScope.get('coupon') == '5VZCZBZW' or sessionScope.get('coupon') == 'XKPNC45X') and f.label == '30x20 cm') and !((sessionScope.get('coupon') == 'HJ69BQMI' or sessionScope.get('coupon') == '5VZCZBZW' or sessionScope.get('coupon') == 'XKPNC45X') and f.label == '30x20 cm')}">
+                <h:outputText  value="#{itemConfiguratorBean.formatComponentCrossPrice(f.value)}" />
+              </ui:fragment>
+            </td>
+          </tr>
+        </ui:repeat>
+
+        <!-- Here we increase the indexOffset -->
+        <c:set var="indexOffset" value="#{indexOffset + itemConfiguratorBean.tiledFormats(i).size}" />
+
+        </tbody>
+      </table>
+    </c:forEach>
+  <!-- end Format radio list -->
+
+
+
+</ui:composition>

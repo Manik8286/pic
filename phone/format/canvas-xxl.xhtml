@@ -1,0 +1,55 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:param name="pageTitle" value="Storlekar och Priser  - Canvastryck (Ramtjocklek 4cm)" />
+<ui:define name="meta">
+  <meta name="description" content="" />
+  <meta name="robots" content="NOINDEX,FOLLOW" />
+</ui:define>
+<ui:define name="content">
+
+  <section class="page-section -small -collapse-bottom">
+    <div class="row">
+      <div class="col -span-12">
+        <h1 class="headline -sub-1 -collapse">Storlekar och Priser </h1>
+        <span class="-highlighted-text"><small>* Alla priser inkluderar moms 25%, exkl. leveranskostnad</small></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section -collapse-bottom">
+    <ui:include src="/content-blocks/format-navi.xhtml">
+    <ui:param name="ProductName" value="Canvastavlor (Ramtjocklek 4cm)" />
+    </ui:include>
+  </section>
+
+
+  <section class="page-section -medium">
+    <div class="row">
+      <div class="col -span-12">
+        <h:panelGroup id="tableRenderPanel">
+          <ui:include src="/content-blocks/price-accordion-canvas-xxl.xhtml" />
+        </h:panelGroup>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col -span-12">
+        <a href="/singleupload.jsf" class="button -action -touch -arrow -fullbleed form-group -action">Beställ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- paymentmethods -->
+  <section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+   <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+</section><!-- /paymentmethods -->
+
+</ui:define>
+</ui:composition>

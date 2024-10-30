@@ -1,0 +1,112 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <div class="col -span-#{sessionBean.userAgentType != 'phone' ? '8' : '12'} -centered">
+      
+      <!-- Desktop, Tablet view -->
+      <ui:fragment rendered="#{sessionBean.userAgentType != 'phone'}">
+        <table class="table -striped-inverted -centered -space-bottom -double-product">
+          <thead>
+            <tr>
+              <td></td>
+              <td><strong>Acrylglas</strong></td>
+              <td><strong>Acrylglas Premium</strong></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>20 x 20 cm</strong></td>
+              <td><span class="-outdated">#{priceBean.productCrossPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 20x20')}</span> <span class="-highlighted -red-bold">#{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 20x20')}</span></td>
+              <td><span class="-outdated">#{priceBean.productCrossPrice('Premium Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass', 'Acryl Premium 20x20')}</span> <span class="-highlighted -red-bold">#{priceBean.productPrice('Premium Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass', 'Acryl Premium 20x20')}</span></td>
+            </tr>
+            <tr>
+              <td><strong>30 x 30 cm</strong></td>
+              <td><span class="-outdated">#{priceBean.productCrossPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 30x30')}</span> <span class="-highlighted -red-bold">#{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 30x30')}</span></td>
+              <td><span class="-outdated">#{priceBean.productCrossPrice('Premium Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass', 'Acryl Premium 30x30')}</span> <span class="-highlighted -red-bold">#{priceBean.productPrice('Premium Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass', 'Acryl Premium 30x30')}</span></td>
+            </tr>
+            <tr>
+              <td><strong>40 x 40 cm</strong></td>
+              <td><span class="-outdated">#{priceBean.productCrossPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 40x40')}</span> <span class="-highlighted -red-bold">#{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 40x40')}</span></td>
+              <td><span class="-outdated">#{priceBean.productCrossPrice('Premium Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass', 'Acryl Premium 40x40')}</span> <span class="-highlighted -red-bold">#{priceBean.productPrice('Premium Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass', 'Acryl Premium 40x40')}</span></td>
+            </tr>
+            <tr>
+              <td><strong>60 x 60 cm</strong></td>
+              <td><span class="-outdated">#{priceBean.productCrossPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 60x60')}</span> <span class="-highlighted -red-bold">#{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 60x60')}</span></td>
+              <td><span class="-outdated">#{priceBean.productCrossPrice('Premium Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass', 'Acryl Premium 60x60')}</span> <span class="-highlighted -red-bold">#{priceBean.productPrice('Premium Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass', 'Acryl Premium 60x60')}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </ui:fragment>
+
+      <!-- Phone View -->
+      <ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+        <table class="table -striped-inverted -centered -equal-3 -space-bottom">
+          <thead>
+            <tr>
+              <td></td>
+              <td><strong>Acrylglas</strong></td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>20 x 20 cm</strong></td>
+              <td><span class="-outdated">#{priceBean.productCrossPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 20x20')}</span></td>
+              <td><span class="-highlighted -red-bold">#{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 20x20')}</span></td>
+            </tr>
+            <tr>
+              <td><strong>30 x 30 cm</strong></td>
+              <td><span class="-outdated">#{priceBean.productCrossPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 30x30')}</span></td>
+              <td><span class="-highlighted -red-bold">#{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 30x30')}</span></td>
+            </tr>
+            <tr>
+              <td><strong>40 x 40 cm</strong></td>
+              <td><span class="-outdated">#{priceBean.productCrossPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 40x40')}</span></td>
+              <td><span class="-highlighted -red-bold">#{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 40x40')}</span></td>
+            </tr>
+            <tr>
+              <td><strong>60 x 60 cm</strong></td>
+              <td><span class="-outdated">#{priceBean.productCrossPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 60x60')}</span></td>
+              <td><span class="-highlighted -red-bold">#{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 60x60')}</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table -striped-inverted -centered -equal-3 -space-bottom">
+          <thead>
+            <tr>
+              <td></td>
+              <td><strong>Acrylglas Premium</strong></td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>20 x 20 cm</strong></td>
+              <td><span class="-outdated">#{priceBean.productCrossPrice('Premium Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass', 'Acryl Premium 20x20')}</span></td>
+              <td><span class="-highlighted -red-bold">#{priceBean.productPrice('Premium Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass', 'Acryl Premium 20x20')}</span></td>
+            </tr>
+            <tr>
+              <td><strong>30 x 30 cm</strong></td>
+              <td><span class="-outdated">#{priceBean.productCrossPrice('Premium Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass', 'Acryl Premium 30x30')}</span></td>
+              <td><span class="-highlighted -red-bold">#{priceBean.productPrice('Premium Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass', 'Acryl Premium 30x30')}</span></td>
+            </tr>
+            <tr>
+              <td><strong>40 x 40 cm</strong></td>
+              <td><span class="-outdated">#{priceBean.productCrossPrice('Premium Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass', 'Acryl Premium 40x40')}</span></td>
+              <td><span class="-highlighted -red-bold">#{priceBean.productPrice('Premium Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass', 'Acryl Premium 40x40')}</span></td>
+            </tr>
+            <tr>
+              <td><strong>60 x 60 cm</strong></td>
+              <td><span class="-outdated">#{priceBean.productCrossPrice('Premium Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass', 'Acryl Premium 60x60')}</span></td>
+              <td><span class="-highlighted -red-bold">#{priceBean.productPrice('Premium Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass', 'Acryl Premium 60x60')}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </ui:fragment>
+
+    </div>
+
+</ui:composition>

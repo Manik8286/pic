@@ -1,0 +1,79 @@
+.page-partnerprogramm {
+  @extend .row;
+  padding: 40px 0;
+
+  p {
+    margin: 0;
+  }
+
+  .gap,
+  &.gap {
+    margin-top: 50px;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .headline.-has-sidelines {
+    margin-bottom: 0;
+  }
+
+  .steps .steps-title {
+    display: block;
+    margin-top: 20px;
+  }
+
+  > .content {
+    @extend .col;
+    @extend %-span-12;
+
+    > h3 {
+      padding-top: 20px;
+      &.-highlight {
+        color: $newGreen;
+      }
+      &.-collapse-top {
+        padding-top: 0;
+      }
+    }
+
+    > h4 {
+      padding-top: 20px;
+      &.-highlight {
+        color: $newGreen;
+      }
+    }
+
+    > .col-checklist {
+      #one-row {
+        float: left;
+        width: 50%;
+
+        .phone & {
+          width: 100%;
+        }
+      }
+
+      li {
+        padding-left: 40px;
+        &:not(:last-child) {
+          margin-bottom: 40px;
+        }
+      }
+
+      .tablet & {
+        font-size: 16px;
+        line-height: 20px;
+      }
+
+      .phone & {
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
+
+    > .fine-print {
+      font-size: 12px;
+    }
+  }
+}

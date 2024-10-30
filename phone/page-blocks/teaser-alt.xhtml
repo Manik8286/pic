@@ -1,0 +1,128 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <section class="page-teaser">
+    <div class="showcase -canvas-gsp #{teaserClass}">
+      <header class="head">
+        <h1 class="headline">#{headline} <span class="-highlighted-text">#{headline2}</span> <span style="line-height:1.4em; font-size:18px;">#{format}</span></h1>
+        <div class="claim">#{claim} <span class="-highlighted-text">#{claimGreen}</span> #{claim2}</div>
+      </header>
+
+      <div class="body">
+        <!-- teaser left -->
+        <div class="product">
+          <img class="image" src="#{teaserProductImage}" width="410" height="308" alt="#{altTeaserProductImage}" />
+          <!--
+          Hidden, du to maybe price restrictions
+          <ui:include src="/content-blocks/price-badge.xhtml">
+          <ui:param name="badgeTop" value="20x20 cm" />
+          <ui:param name="badgeMiddle" value="nur 5€" />
+          <ui:param name="badgeBottom" value="istället för #{priceBean.productCrossPrice('Canvas_Canvasdiscount_COM', 'Canvas', 'Canvas 20x20')}" />
+          </ui:include>
+          -->
+          <ui:fragment rendered="#{not empty badgeMiddle}">
+              <ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'XZTNAB698UFRY25JDMJS' or
+                                       sessionServicesBean.discountCode.code != 'WUMZTDSHLFN9AM9106MQ' or
+                                       sessionServicesBean.discountCode.code != 'CANVASKERSTAANBIEDING' or
+                                       sessionServicesBean.discountCode.code != 'G1XJ5R96JICGJ6J5PLZF' or
+                                       sessionServicesBean.discountCode.code != '19DZKNQB79EBF2TECRPC'}">
+                <div class="badge">
+                  <div class="title" style="font-size:13px;">#{badgeTop}</div>
+                <div class="price" style="line-height: 18px;">#{badgeMiddle}<small><sup>*</sup></small></div>
+                  <div class="sub #{size}" style="font-size: 20px;">
+                    <div style="margin-top: 7px;">
+                      <sup>
+                        #{badgeBottom}
+                        <ui:fragment rendered="#{empty seaBadgeText1 and empty seaBadgeText2}">
+                          <br /> #{badgeBottomBottom}
+                        </ui:fragment>
+                      </sup>
+                      <sup class="sup -sup2Line">#{seaBadgeText1} <br /> #{seaBadgeText2} </sup>
+                    </div>
+                  </div>
+
+                </div>
+              </ui:fragment>
+              <ui:fragment rendered="#{sessionServicesBean.discountCode.code == 'XZTNAB698UFRY25JDMJS' or
+                                       sessionServicesBean.discountCode.code == 'WUMZTDSHLFN9AM9106MQ' or
+                                       sessionServicesBean.discountCode.code == 'CANVASKERSTAANBIEDING' or
+                                       sessionServicesBean.discountCode.code == 'G1XJ5R96JICGJ6J5PLZF' or
+                                       sessionServicesBean.discountCode.code == '19DZKNQB79EBF2TECRPC'}">
+                <!-- NO BADGE -->
+              </ui:fragment>
+          </ui:fragment>
+        </div>
+        <!-- /teaser left -->
+
+        <!-- teaser right -->
+        <div class="info">
+
+          <ui:fragment rendered="#{codeField == true}">
+            <div class="teaserCodeField #{topCorrection}">
+             <div class="topTitle"><b>#{codeTitle}</b></div>
+              <div class="content">
+                <span>
+                  #{codeContent}
+                </span>
+              </div>
+            </div>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{showUpload != false}">
+            <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+              <ui:param name="directuploadProductId" value="#{uploadId}" />
+              <ui:param name="directuploadClass" value="action" />
+              <ui:param name="buttonText" value="#{buttonText}" />
+            </ui:include>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{not empty uspHeading}">
+            <h3>#{uspHeading}</h3>
+          </ui:fragment>
+
+          <ul class="features">
+            <li class="-highlight">#{teaserFeatureHighlighted}</li>
+            
+            <ui:fragment rendered="#{not empty teaserFeature1}">
+              <li> <span class="#{strong}">#{teaserFeature1}</span> </li>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty teaserFeature2}"> 
+              <li>#{teaserFeature2}</li>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty teaserFeature3}"> 
+              <li>#{teaserFeature3}</li>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty teaserFeature4}"> 
+              <li>#{teaserFeature4}</li>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty teaserFeature5}"> 
+              <li>#{teaserFeature5} <u>#{teaserFeature5Plus}</u> </li>
+            </ui:fragment>
+          </ul>
+
+          <ui:fragment rendered="#{codeField == true}">
+            <p class="text-center"><small>#{not empty underCodeSentence ? underCodeSentence : "Offer valid until 31.12.2017."}</small></p>
+          </ui:fragment>
+
+          <div class="freeShippingTeaser text-center">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/fri-leverans.png" class="freeShippingLogo" alt="24 hora logo" width="25" />
+            <span class="-highlighted-text">
+              FRI leverans
+            </span> 
+            från 800 kr.
+            till den <h:outputText escape="false" value="#{contentBean.snippets['aktion_datum']}"/> !
+          </div>
+
+        </div>
+        <!-- /teaser right -->
+      </div>
+    </div>
+  </section>
+
+</ui:composition>

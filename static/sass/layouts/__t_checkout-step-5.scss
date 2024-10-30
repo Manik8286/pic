@@ -1,0 +1,50 @@
+.checkout-step-5 {
+  .legend {
+    @extend .col;
+    @extend .col.-centered;
+    @extend %-span-10;
+  }
+
+  .method {
+    @extend .col.-centered;
+    @extend %-span-10;
+
+    .group {
+       > .label {
+        width: 40%;
+      }
+
+      > .action {
+        width: 60%;
+      }
+    }
+
+  }
+
+  .radio {
+    border: none;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .creditinput + .link {
+    text-decoration: none;
+    padding: 9px 10px;
+    border: 1px solid $highlight-color;
+    border-radius: 2px;
+  }
+
+  .continue {
+    @extend .col.-centered;
+    @extend %-span-10;
+
+    > .action {
+      @extend .button_action_mod-touch;
+      margin-top: 10px;
+    }
+  }
+
+  .js-accordion-body.-expanded~.tool-tip {
+    display: none;
+  }
+}

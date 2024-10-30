@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+  <!-- Rich snippet -->
+  <ui:remove>
+    <section class="page-section">
+      <div class="article-showcase -no-bottom">
+        <h3 class="headline -has-sidelines"><span>Las mejores calificaciones de clientes</span></h3>
+        <div class="col -span-12 description text-center" vocab="http://schema.org/" typeof="Product">
+          <span property="brand" typeof="Brand">
+		  <meta property="name" content="BestCanvas.se" />
+          </span>
+          <meta property="name" content="Taza de Ceramica" />
+          <meta property="image" src="https://d2iooymu68nnir.cloudfront.net/mi-arte3-es/#{shopInfoBean.versionPath}assets/img/showcase/taza-con-foto-clasico.ac610687.png" />
+          <meta property="description" content="Un regalo clásico con foto hecho de cerámica blanca. ✓ Las fotos se pueden imprimir en formato vertical y horizontal. ✓ Aptas para lavavajillas." />
+          <meta property="sku" content="TASSE-LI_HOCH" />
+          <span property="aggregateRating" typeof="AggregateRating">
+          <p class="text">
+            <ui:include src="/rich-snippets/snippet-rating.xhtml" /> Taza de Ceramica ahora!</p>
+          </span>
+          <span property="offers" typeof="Offer">
+            <meta property="priceCurrency" content="EUR" />
+            <meta property="price" content="#{fn:trim(priceBean.productPrice('Mug_Bestcanvas_SE', 'Mug', 'Mug Left Landscape').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+            <time property="priceValidUntil" datetime="#{now.month + 1 eq 12 ? now.year + 1900 + 1 : now.year + 1900}-12-31"></time>
+            <span property="seller" typeof="Organization">
+              <meta property="name" content=" BestCanvas.se " />
+            </span>
+            <link property="itemCondition" href="http://schema.org/NewCondition" />
+            <link property="availability" href="http://schema.org/InStock" />
+          </span>
+        </div>
+      </div>
+    </section>
+  </ui:remove>
+  <!-- /Rich snippet -->
+
+</ui:composition>

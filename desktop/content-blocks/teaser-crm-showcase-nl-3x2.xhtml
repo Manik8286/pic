@@ -1,0 +1,78 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <div class="showcase" style="background-image:url(#{bgimage})">
+    <header class="head">
+      <h1 class="headline">#{headline}</h1>
+      <div class="claim">#{subheading}</div>
+    </header>
+    <div class="body">
+
+      <!-- teaser left -->
+      <div class="info-crm46">
+        <div class="title">#{listTitle}</div>
+        <ul class="features">
+        <ui:fragment rendered="#{not empty list1}">
+          <li>#{list1}</li>
+        </ui:fragment>
+        <ui:fragment rendered="#{not empty list2}">
+          <li>#{list2}</li>
+        </ui:fragment>
+        <ui:fragment rendered="#{not empty list3}">
+          <li>#{list3}</li>
+        </ui:fragment>
+        <ui:fragment rendered="#{not empty list4}">
+          <li>#{list4}</li>
+        </ui:fragment>
+        <ui:fragment rendered="#{not empty list5}">
+          <li>#{list5}</li>
+        </ui:fragment>
+        </ul>
+        <ui:fragment rendered="#{not empty voucherCode}">
+        <p class="-text-centered">Your voucher code:</p>
+        <div class="voucher-code">
+            <span>#{voucherCode}</span>
+        </div>
+        </ui:fragment>
+        <div class="subtitle">#{dealDeadline}</div>
+      </div><!-- /teaser left -->
+
+      <!-- teaser right -->
+      <div class="product-crm">
+      <ui:fragment rendered="#{not empty image1}">
+        <div class="product-showcase-1-nl3x">
+          <img class="image" src="#{image1}" alt="" />
+        </div>
+      </ui:fragment>
+
+      <ui:fragment rendered="#{not empty image2}">
+        <div class="product-showcase-2-nl3x">
+          <img class="image" src="#{image2}" alt="" />
+          <ui:fragment rendered="#{not empty image2zoom}">
+            <img class="magnified-corner-nl" src="#{image2zoom}" alt="product-corner-zoomed2"/>
+          </ui:fragment>
+        </div>
+      </ui:fragment>
+
+      <ui:fragment rendered="#{not empty image3}">
+        <div class="product-showcase-3-nl3x">
+          <img class="image" src="#{image3}" alt="" />
+          <ui:fragment rendered="#{not empty image3zoom}">
+            <img class="magnified-corner-nl" src="#{image3zoom}" alt="product-corner-zoomed3"/>
+          </ui:fragment>
+        </div>
+
+      </ui:fragment>
+      <!-- UPLOAD BUTTON INCLUDE-->
+              <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+          <ui:param name="directuploadProductId" value="254" />
+          <ui:param name="directuploadClass" value="action" />
+          <ui:param name="buttonText" value="#{buttonText}" />
+        </ui:include>
+      </div><!-- /teaser right -->
+    </div>
+  </div>
+
+</ui:composition>

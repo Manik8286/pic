@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <script>
+      var formAnother = $(".js-du").last();
+      var fileInput = formAnother.find("input[type=file]");
+
+      function UploadAnother() {
+        var varproductId = $("[data-dropdown='product'] input").val();
+        formAnother.find(".js-du-productid").val(varproductId).change();
+        CallUploadButtonEvents();
+        fileInput.trigger('click');
+      }
+
+      fileInput.on("change click", function(ev){
+        if (ev.originalEvent != null){
+          saveToCart();
+        }
+
+        document.body.onfocus = function(){
+          document.body.onfocus = null;
+          setTimeout(function(){
+          if (fileInput.val().length === 0)  previewConfig.validateParams(); }, 500);
+        };
+      });
+    </script>
+
+</ui:composition>

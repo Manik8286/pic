@@ -1,0 +1,79 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<section class="page-teaser">
+  <div class="showcase" style="background-image: url(#{teaserBgImage})">
+    <header class="head">
+      <h1 class="headline">#{headline}</h1>
+      <div class="claim">#{claim}</div>
+    </header>
+    <div class="body">
+
+      <!-- teaser left -->
+      <div class="product">
+        <img class="image #{imgClass}" src="#{teaserProductImage}" width="410" height="308" alt="" />
+
+        <ui:fragment rendered="#{not empty badgeMiddle}">
+        <div class="badge">
+          <div class="size">#{badgeTop}</div>
+          <div class="price">#{badgeMiddle}</div>
+          <div class="sub">#{badgeBottom}</div>
+        </div>
+      </ui:fragment>
+    </div><!-- /teaser left -->
+
+    <!-- teaser right -->
+    <div class="info">
+      <ul class="features">
+        <li class="-highlight">#{teaserFeatureHighlighted}</li>
+        <li>#{teaserFeature1}</li>
+        <li>#{teaserFeature2}</li>
+        <ui:fragment rendered="#{not empty teaserFeature3}"> 
+        <li>#{teaserFeature3}</li>
+      </ui:fragment>
+      <ui:fragment rendered="#{not empty teaserFeature4}"> 
+      <li>#{teaserFeature4}</li>
+    </ui:fragment>
+    <ui:fragment rendered="#{not empty teaserFeature5}"> 
+      <li>#{teaserFeature5} 
+      <ui:fragment rendered="#{not empty voucherCode}"><strong>#{voucherCode}</strong></ui:fragment>
+      </li>
+    </ui:fragment>
+     <ui:fragment rendered="#{not empty showHpLogo}"> 
+    <li> 
+      <span class="sr">hp</span><span class="hplogo"></span>
+    Solvent-free HP latex inks</li>
+     </ui:fragment> 
+  </ul>
+  <br/><br/>
+  <p><strong>#{endDate}</strong></p>
+  <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+  <ui:param name="directuploadProductId" value="#{uploadId}" />
+  <ui:param name="directuploadClass" value="action" />
+</ui:include>
+</div><!-- /teaser right -->
+</div>
+</div>
+<div class="trust">
+  <div class="col -span-4 -text-centered quality-badges">
+    <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/quality-badges.png" alt="quality badges" />
+  </div>
+  <div class="tv -span-4">
+    <ul class="stations">
+      <li class="station -ups"><span class="-orange">Free shipping</span> on orders over $55</li>
+      
+    </ul>
+  </div>
+    <div class="tv -span-4">
+    <ul class="stations">
+
+      <li class="station -sbox"><span><span class="-orange">Ready to ship</span> within 24 hours</span></li>
+    </ul>
+  </div>
+</div>
+
+</section>
+
+</ui:composition>

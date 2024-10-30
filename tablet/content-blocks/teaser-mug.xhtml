@@ -1,0 +1,83 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <c:set var="FOTOGESCHENKE" value="#{ fn:contains(request.getRequestURL(), 'fotogeschenke') }" />
+  
+  <div class="showcase #{showcaseClass}" style="background-image: url(#{teaserImage})">
+    <header class="head">
+      <h1 class="headline">#{teaserHeadline}</h1>
+      <div class="claim">#{teaserClaim}
+        <ui:fragment rendered="#{not empty claimLink}">
+         - Mit <a href="javascript:void(0)" onclick="Modal.open('#best-price-garantie');">#{claimLink}</a>
+        </ui:fragment>
+      </div>
+    </header>
+
+    <div class="body tasse">
+      <!-- teaser left -->
+      <div class="tasse-row col -span-12 info" style="width: 100%;">
+        <ui:fragment rendered="#{not empty teaserProductDetail}">
+          <img class="magnified-corner" src="#{teaserProductDetail}" alt="#{teaserProductDetailAlt}" />
+        </ui:fragment>
+        
+        <div class="col -span-3 text-center colorMug">
+          <div class="col -span-11 sameLevel">
+            <h2 class="headline">#{productHeadline1}</h2>
+          </div>
+          <img class="#{imageClass1}" src="#{teaserProductImage1}" width="170" alt="#{teaserProductAlt1}" />
+          <ui:include src="/helper/directupload-short.xhtml">
+            <ui:param name="directuploadProductId" value="#{productId1}" />
+            <ui:param name="directuploadClass" value="" />
+            <ui:param name="buttonText" value="Skapa" />
+            <ui:param name="buttonMugs" value="true" />
+          </ui:include>
+        </div>
+
+        <div class="col -span-3 text-center colorMug">
+          <div class="col -span-11 sameLevel">
+            <h2 class="headline">#{productHeadline2}</h2>
+          </div>
+          <img class="#{imageClass2}" src="#{teaserProductImage2}" width="170" alt="#{teaserProductAlt2}" />
+          <ui:include src="/helper/directupload-short.xhtml">
+            <ui:param name="directuploadProductId" value="#{productId2}" />
+            <ui:param name="directuploadClass" value="action" />
+            <ui:param name="buttonText" value="Skapa" />
+            <ui:param name="buttonMugs" value="true" /> 
+          </ui:include>
+        </div>
+
+        <div class="col -span-3 text-center colorMug">
+          <div class="col -span-11 sameLevel">
+            <h2 class="headline3">#{productHeadline3}</h2>
+          </div>
+          <img class="#{imageClass3}" src="#{teaserProductImage3}" width="170" alt="#{teaserProductAlt3}" />
+           <ui:include src="/helper/directupload-short.xhtml">
+            <ui:param name="directuploadProductId" value="#{productId3}" />
+            <ui:param name="directuploadClass" value="action" />
+            <ui:param name="buttonText" value="Skapa" />
+            <ui:param name="buttonMugs" value="true" /> 
+          </ui:include> 
+        </div>
+
+        <div class="col -span-3 text-center color-top colorMug">
+          <img class="#{imageClass5}" src="#{teaserLogoImageColors}" width="41" alt="#{teaserLogoImageColorsAlt}" />
+          <h2 class="headline4 sameLevelColor" style="margin-top: 0px;">#{productHeadline4}</h2>
+          <img class="#{imageClass4}" src="#{teaserProductImage4}" width="170" alt="#{teaserProductAlt4}" />
+          <ui:include src="/helper/directupload-short.xhtml">
+            <ui:param name="directuploadProductId" value="#{productId4}" />
+            <ui:param name="directuploadClass" value="action" />
+            <ui:param name="buttonText" value="Skapa" />
+            <ui:param name="buttonMugs" value="true" /> 
+          </ui:include>
+        </div>
+      </div><!-- /teaser left -->
+    </div>
+
+    <ui:include src="/page-blocks/uploader-cover.xhtml" />
+  </div>
+
+</ui:composition>

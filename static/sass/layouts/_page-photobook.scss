@@ -1,0 +1,21 @@
+.page-photobook {
+
+  .plattforms {
+    @extend .row;
+  }
+
+  .plattforms >.box-wrapper {
+    @extend .col;
+    @extend %-span-10;
+    @extend .col.-centered;
+
+    >.web, >.home {
+      @extend .col;
+      @extend %-span-6;
+    }
+  }
+
+  .article-showcase:last-of-type{
+    padding-bottom: 0;
+  }
+}

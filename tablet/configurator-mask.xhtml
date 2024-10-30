@@ -1,0 +1,455 @@
+<ui:composition template="/templates/checkout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+	<ui:param name="pageTitle" value="#{_['Choose Format']}" />
+	<ui:param name="stepClass" value=" no-line" />
+	<ui:param name="bodyClass" value="ConfiguratorTemplate" />
+	
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{facesContext.externalContext.response.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')}" />
+		
+	</f:metadata>
+	
+	<ui:define name="dataLayer">
+		<ui:include src="/tracking/ecommerce/dataLayer-product-details.xhtml"/>
+	</ui:define>
+	
+	<ui:define name="meta">
+		<meta name="robots" content="NOINDEX,FOLLOW" />
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1" />
+		<meta http-equiv="cache-control" content="max-age=0" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="expires" content="0" />
+		<meta http-equiv="pragma" content="no-cache" />
+	</ui:define>
+	
+	<ui:define name="head">
+		#{itemConfiguratorBean.setDefaultConfigurationAndFormat}
+		#{itemConfiguratorBean.ignoreCutout}
+	</ui:define>
+
+	<ui:define name="content">
+	
+		<p:ajaxStatus
+			onstart="showToast('Updating view ...'); block($('.js-next-button,.format-table,.block-table,.tab-options,.main-block'))"
+			oncomplete="hideToast(500); unblock($('.js-next-button,.format-table,.block-table,.tab-options,.main-block'));viewFunc();"
+			onerror="hideToast(500); unblock($('.js-next-button,.format-table,.block-table,.tab-options,.main-block'));"
+		/>
+
+		<section class="checkout-step-2 checkout-section -top-sticky">
+			<div class="-top-container">
+				<div class="itemAdded">
+					<span class="info">Din produkt har lagts till i kundvagnen.</span>
+					<a href="/shoppingcart.jsf">
+						<button type="button" id="chooseFile" class="button -action -shapy -wide -noIcon -main">Gå till kundvagnen</button>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<h:form id="itemConfiguratorForm" class="itemConfiguratorForm">
+
+			<p:remoteCommand name="changeMotivItem" action="#{itemConfiguratorBean.changeGalleryItem}" process="@this" update="@([id$=preview]) @([id$=designSection]) @([id$=configuration])" onstart="ResetCanvasPreview();" oncomplete="RestartCanvasPreview();OnComplete()"/>
+			<p:remoteCommand name="changeFarbeItem" action="#{itemConfiguratorBean.changeGalleryItem}" process="@this" update="@([id$=preview]) @([id$=designSection]) @([id$=configuration])" onstart="ResetCanvasPreview();" oncomplete="RestartCanvasPreview();OnComplete()"/>
+			<p:remoteCommand name="changeInboxItemSameConfig" action="#{itemConfiguratorBean.changeInboxItemSameConfig}" process="@this" update="@([id$=preview]) @([id$=designSection]) @([id$=configuration])" onstart="ResetCanvasPreview();" oncomplete="RestartCanvasPreview();OnComplete()"/>
+			<p:remoteCommand name="changeToUnusedInboxItem" action="#{itemConfiguratorBean.changeToUnusedInboxItem}" process="@this" update="@([id$=preview]) @([id$=designSection]) @([id$=configuration])" onstart="ResetCanvasPreview();" oncomplete="RestartCanvasPreview();OnComplete()"/>
+
+			<p:remoteCommand name="initialFormUpdate" process="@this" update="@([id$=preview]) @([id$=designSection]) @([id$=configuration])" onstart="ResetCanvasPreview();" oncomplete="RestartCanvasPreview();OnComplete();"/>
+			<p:remoteCommand name="ForceUploadTabTrue" global="false" process="@this" action="#{session.setAttribute('UploadTab', 'true')}" />
+			<p:remoteCommand name="ForceUploadTabFalse" global="false" process="@this" action="#{session.setAttribute('UploadTab', 'false')}" />
+
+			<p:remoteCommand name="UpdateCartInfo" global="false" update="@([id$=cartcount])" />
+
+			<p:remoteCommand process="@this" global="false" name="CurrentGroupTabFormats" action="#{session.setAttribute('CurrentGroupTab', 'Formats')}" />
+			<p:remoteCommand process="@this" global="false" name="CurrentGroupTabDesigns" action="#{session.setAttribute('CurrentGroupTab', 'Designs')}" />
+
+			<section id="productpreview" class="checkout-step-2 checkout-section -alternative -forms maskConfigurator">
+			
+				<!-- preview -->
+				<h:panelGroup id="preview" styleClass="prices -last">
+					
+					<section id="productpreview2" class="preview -alternate">
+						<h3 class="title text-center">Förhandsgranska</h3>
+						<div id="loading" class="imgLoading">
+							<span class="imgLoadingText">Preview is updated...</span>
+						</div>
+						
+						<ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId != 76}">
+							<div class="text-center -noVisible" id="thepreviewBox">
+								<canvas id="myCanvas"></canvas>
+							</div>
+						</ui:fragment>
+						
+						<div id="imageData"
+							class="hidden"
+							data-id="#{itemConfiguratorBean.item.images[0].imageId}"
+							data-productid="#{itemConfiguratorBean.productId}"
+							data-format="#{itemConfiguratorBean.configurator.formatKey}"
+							data-effect="#{itemConfiguratorBean.imageEffect}"
+							data-trim="#{itemConfiguratorBean.configurator.product.trim}"
+							data-border="#{itemConfiguratorBean.borderEffect}"
+							data-backid="#{(itemConfiguratorBean.colorCarrierId == 10 || itemConfiguratorBean.colorCarrierId == 54 ?itemConfiguratorBean.configurator.backMaterialId:0)}"
+							data-imgwidth="#{itemConfiguratorBean.configurator.image.width}"
+							data-imgheight="#{itemConfiguratorBean.configurator.image.height}"
+							data-loadalert="Please wait for the whole page to load. If the preview is not displayed, reload the page."
+							data-material="#{itemConfiguratorBean.colorCarrierId}"
+							data-frame="#{itemConfiguratorBean.frameId!=null?itemConfiguratorBean.frameId:0}"
+							data-finish1="#{itemConfiguratorBean.colorCarrierId==51?itemConfiguratorBean.finishing[itemConfiguratorBean.finishings.get(0).id]:0}"
+							data-finish2="#{itemConfiguratorBean.colorCarrierId==51?itemConfiguratorBean.finishing[itemConfiguratorBean.finishings.get(1).id]:0}"
+							data-finish3="#{itemConfiguratorBean.colorCarrierId==51?itemConfiguratorBean.finishing[itemConfiguratorBean.finishings.get(2).id]:0}"
+							data-clippath="#{itemConfiguratorBean.configurator.clipPath}"
+							data-fourcmid="11"
+							data-sixcmid="19"></div>
+
+						<script type="text/javascript">
+						// <![CDATA[
+
+							var previewWidth = 500;
+							var uploadedImage = #{fn:length(galleryBean.items) > 0 and itemConfiguratorBean.itemType != 'cart-item'};
+							var showPreview = true;
+
+							if (typeof showCartInfoFlag !== "undefined" && showCartInfoFlag) {
+								MobileBasketInfoFocus();
+								ShowCartInfo();
+								ResetQnty()
+							}
+							
+						// ]]>
+						</script>
+						
+						<h:inputHidden id="cutoutX" value="#{itemConfiguratorBean.configurator.config.images[0].cutoutX}" />
+						<h:inputHidden id="cutoutY" value="#{itemConfiguratorBean.configurator.config.images[0].cutoutY}" />
+						<h:inputHidden id="cutoutWidth" value="#{itemConfiguratorBean.configurator.config.images[0].cutoutWidth}" />
+						<h:inputHidden id="cutoutHeight" value="#{itemConfiguratorBean.configurator.config.images[0].cutoutHeight}" />
+
+						<ui:fragment rendered="#{InitShapeImageId ne itemConfiguratorBean.image.id}">
+							<table class="preview-buttons">
+								<tr>
+									<td>
+										<div class="text-center warning-note">
+											<span><strong>Observera:</strong></span> Vissa delar av din bild som syns nära kanterna (utanför de röda linjerna) kan täckas av vecken.
+										</div>
+										<div class="text-center">
+											<a href="javascript:void(0)" onclick="javascript:SaveZoom();ShowModal();">
+												<button type="button" id="chooseFile" class="button -action -shapy -secondary #{itemConfiguratorBean.itemType != 'cart-item' ? '' : '-wide'}">Redigera</button>
+											</a>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</ui:fragment>
+					</section>
+					
+					<div class="modal animated fadeIn modal-wide" id="myCanvasModal" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+						<div class="modal-dialog" id="modal-dialog-canvas" role="document">
+							<div class="modal-content">
+								<div class="modal-body">
+									<div jsf:id="productPreview">
+										<div class="canvas-wrapper" id="myCanvasEdit"></div>
+										<br/>
+										<p class="text-center hitSpace">
+											<span class="isMove hint"><sup>Dra för att anpassa tryckområdet.</sup></span>
+											<span class="notMove -hidden hint"><sup>Your photo fits this format exactly.</sup></span>
+										</p>
+										<p class="draginfo text-center ">
+											<span>Zooma:</span> <input type="range" id="scaleCanvas" class="vertical-middle" value="0" min="0" max="30" onchange="previewConfig.stopScale()" oninput="previewConfig.doScale()"></input>
+										</p>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<div class="col-xs-20 col-sm-20 fit">
+										<table width="100%">
+											<tr>
+												<td>
+													<div class="upload-button pull-left">
+														<a href="javascript:void(0)" onclick="javascript:CloseModal(true);">
+															<button type="button" id="chooseFile" class="button -action -shapy -secondary">#{_['Cancel']}</button>
+														</a>
+													</div>
+												</td>
+												<td>
+													<div class="upload-button pull-right">
+														<a href="javascript:void(0)" onclick="javascript:CloseModal(false);">
+															<button type="button" id="chooseFile" class="button -action -shapy -main">#{_['Save']}</button>
+														</a>
+													</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+				</h:panelGroup>
+				<!-- end preview -->
+
+				<!-- options -->
+				<h:panelGroup id="options">
+					
+					<p:messages id="errormsg" />
+
+					<div jsf:id="designSection" jsf:rendered="#{itemConfiguratorBean.itemType != 'cart-item'}" class="main-block">
+
+						<script type="text/javascript">
+						// <![CDATA[
+
+							if (typeof showCartInfoFlag !== "undefined" && showCartInfoFlag) {
+								MobileBasketInfoFocus();
+								ShowCartInfo();
+								ResetQnty()
+							}
+							
+						// ]]>
+						</script>
+
+						<div class="option-block-title prices -active" data-group-tab="Designs">
+							<h3 class="title">Utforma din mask:</h3>
+							<h3 class="change">Change</h3>
+						</div>
+
+						<!-- ########################## IMAGES CHECKING ########################## -->
+
+            <c:set var="imageFromMotivId" scope="request" value="0" />
+            <c:if test="#{fn:length(galleryBean.itemsByGalleryName('Motive')) > 0}">
+              <c:forEach items="#{galleryBean.itemsByGalleryName('Motive')}" var="item">
+                <c:if test="#{imageFromMotivId eq 0 and item.g.images[0].imageId.toString() == itemConfiguratorBean.image.id.toString()}">
+                  <c:set var="imageFromMotivId" scope="request" value="#{item.g.images[0].imageId.toString()}" />
+                </c:if>
+              </c:forEach>
+            </c:if>
+
+            <c:set var="imageFromFarbeId" scope="request" value="0" />
+            <c:if test="#{fn:length(galleryBean.itemsByGalleryName('Color')) > 0}">
+              <c:forEach items="#{galleryBean.itemsByGalleryName('Color')}" var="item">
+                <c:if test="#{imageFromFarbeId eq 0 and item.g.images[0].imageId.toString() == itemConfiguratorBean.image.id.toString()}">
+                  <c:set var="imageFromFarbeId" scope="request" value="#{item.g.images[0].imageId.toString()}" />
+                </c:if>
+              </c:forEach>
+            </c:if>
+
+            <c:set var="imageFake" value="#{InitShapeImageId eq itemConfiguratorBean.image.id}" />
+            <c:set var="imageMotiv" value="#{imageFromMotivId eq itemConfiguratorBean.image.id}" />
+            <c:set var="imageFarbe" value="#{imageFromFarbeId eq itemConfiguratorBean.image.id}" />
+            <c:set var="imageUpload" value="#{not imageMotiv and not imageFarbe}" />
+
+            <ui:fragment rendered="#{(not imageFake and not imageMotiv and not imageFarbe) or UploadTab}">
+              #{itemConfiguratorBean.readLastUploadedImage}
+            </ui:fragment>
+
+            <c:set var="uploadedImageId" value="#{imageFake ? 0 : itemConfiguratorBean.uploadedImageId}" />
+            <c:set var="imageUploaded" value="#{uploadedImageId gt 0 and uploadedImageId ne imageFromGalleryId and not imageFake}" />
+
+						<!-- ########################## /IMAGES CHECKING ########################## -->
+
+						<div class="prices -collapse designs text-center -alternative option-block-content -active">
+							<ul class="tab-options text-left">
+								<ui:fragment rendered="#{fn:length(galleryBean.itemsByGalleryName('Motive')) > 0}">
+									<li data-tab="Motiv" class="clickable #{imageMotiv and not UploadTab ? '-active' : ''}">Designer</li>
+								</ui:fragment>
+								<ui:fragment rendered="#{fn:length(galleryBean.itemsByGalleryName('Color')) > 0}">
+									<li data-tab="Farbe" class="clickable #{imageFarbe and not UploadTab ? '-active' : ''}">Färger/mönster</li>
+								</ui:fragment>
+								<li data-tab="Upload" class="clickable #{imageUpload or UploadTab ? '-active' : ''}">Ladda upp bild</li>
+							</ul>
+
+							<!-- ########################## GALERY PICTURES ########################## -->
+
+							<div class="forms Gallery Upload upload tab #{imageUpload or UploadTab ? '-active' : ''}" jsf:id="upload-options">
+
+								<ui:repeat value="#{galleryBean.items}" var="item" varStatus="s">
+									<div jsf:rendered="#{galleryBean.isItemValid(item.g, itemConfiguratorBean.productId)}" class="upload-preview clickable #{item.isInCart ? '-isInCart' : ''} #{itemConfiguratorBean.image.id == item.g.images[0].imageId ? '-active' : ''} -nomark" data-upload-id="#{item.g.altId}" style="background-image: url(dynamicimage/#{item.g.images[0].imageId}?rotation=0&amp;ignoreShape&amp;size=200);background-size: auto 100%;">
+										<ui:fragment rendered="#{itemConfiguratorBean.image.id gt 0}">
+											<a href="javascript:void(0)" onclick="javascript:PF('deleteConfirmation_#{s.index}').show()" class="removeLink">
+												<span class="removeClick">X</span>
+											</a>
+											<p:confirmDialog showEffect="fade" hideEffect="fade" id="deleteDialog" message="#{_['Do you really want to delete this photo?']}" severity="alert" widgetVar="deleteConfirmation_#{s.index}" closable="false">
+												<h:commandButton id="deleteCancel" value="#{_['Cancel']}" onclick="PF('deleteConfirmation_#{s.index}').hide();$('.ui-dialog-mask').remove();" type="button" styleClass="action button -action -secondary" />                
+												<h:commandButton id="deleteConfirm" value="#{_['Delete Picture']}" action="#{galleryBean.delete}" styleClass="action button -action" onclick="PF('deleteConfirmation_#{s.index}').hide();UpdateUloadGallery(#{item.g.altId});">
+													<f:setPropertyActionListener value="#{item.g}" target="#{galleryBean.selectedItem}" />
+													<f:ajax execute="@form" onevent="" />
+												</h:commandButton>
+											</p:confirmDialog>
+										</ui:fragment>
+										<ui:fragment rendered="#{item.isInCart}">
+											<span class="isInCartCheck">✔</span>
+										</ui:fragment>
+									</div>
+								</ui:repeat>
+
+								<div class="upload-button text-left">
+									<ui:fragment rendered="#{fn:length(galleryBean.items) == 0}">
+										<div class="info-header">
+											Ladda upp en bild för att utforma masken! (.jpg .jpeg .png .gif .webp)
+										</div>
+										<a href="javascript:void(0)" onclick="javascript:ColapseFormat();CallUpload(2820);">
+											<button type="button" id="chooseFile" class="button -action -shapy -wide -main">Ladda upp bild</button>
+										</a>
+									</ui:fragment>
+									<ui:fragment rendered="#{fn:length(galleryBean.items) > 0}">
+										<a href="javascript:void(0)" onclick="javascript:ColapseFormat();CallUpload(2820);">
+											<button type="button" id="chooseFile" class="button -action -shapy -wide -add">Ladda upp fler bilder</button>
+										</a>
+									</ui:fragment>
+									<div class="info">
+										Max. filstorlek: 60MB | Min. upplösning: 350x240px
+									</div>
+								</div>
+							</div>
+
+							<!-- ########################## /GALERY PICTURES ########################## -->
+
+							<!-- ########################## PATTERNS PICTURES ########################## -->
+
+							<div jsf:rendered="#{fn:length(galleryBean.itemsByGalleryName('Motive')) > 0}" class="forms Motiv Pattern upload tab #{imageMotiv and not UploadTab ? '-active' : ''} -nomark" jsf:id="motiv-options">
+								<ui:repeat value="#{galleryBean.itemsByGalleryName('Motive')}" var="item" varStatus="s">
+									<div jsf:rendered="#{not empty item}" class="motiv-preview clickable #{itemConfiguratorBean.image.id == item.g.images[0].imageId ? '-active' : ''} -nomark" data-motiv-id="#{item.g.id}" onclick="FakePreview();smoothScrollToTop($('.preview'));" style="background-image: url(dynamicimage/#{item.g.images[0].imageId}?rotation=0&amp;ignoreShape&amp;size=200);background-size: auto 100%;">
+									</div>
+								</ui:repeat>
+							</div>
+
+							<div jsf:rendered="#{fn:length(galleryBean.itemsByGalleryName('Color')) > 0}" class="forms Farbe Pattern upload tab #{imageFarbe and not UploadTab ? '-active' : ''} -nomark" jsf:id="farbe-options">
+								<ui:repeat value="#{galleryBean.itemsByGalleryName('Color')}" var="item" varStatus="s">
+									<div jsf:rendered="#{not empty item}" class="farbe-preview clickable #{itemConfiguratorBean.image.id == item.g.images[0].imageId ? '-active' : ''} -nomark" data-farbe-id="#{item.g.id}" onclick="FakePreview();smoothScrollToTop($('.preview'));" style="background-image: url(dynamicimage/#{item.g.images[0].imageId}?rotation=0&amp;ignoreShape&amp;size=200);background-size: auto 100%;">
+									</div>
+								</ui:repeat>
+							</div>
+
+							<!-- ########################## /PATTERNS PICTURES ########################## -->
+
+						</div>
+
+					</div>
+
+				</h:panelGroup>
+				<!-- options -->
+
+				<!-- Order summery -->
+				<h:panelGroup id="configuration" styleClass="prices -last">
+					<h3 class="title hidden">Summary</h3>
+					<table class="table">
+						<tbody class="hidden">
+							<tr>
+								<td>Product:</td>
+								<td><h:outputText value="#{itemConfiguratorBean.configurator.product.displayName}" /></td>
+								<td class="text-right"></td>
+							</tr>
+							<tr>
+								<td>Format:</td>
+								<td><span id="formatLabel"><h:outputText value="#{fn:replace(itemConfiguratorBean.formatWidth, ' cm', '')} x #{fn:replace(itemConfiguratorBean.formatHeight, ' cm', '')} cm" /></span></td>
+								<td class="text-right"><h:outputText value="#{itemConfiguratorBean.configurator.formatDefaultPrice(itemConfiguratorBean.configurator.formatKey)}" /></td>
+							</tr>
+						</tbody>
+						<tfoot jsf:id="sum">
+							<tr>
+								<td class="price-label">
+									#{_['Price']}:
+								</td>
+								<td class="text-right">
+									<h:selectOneMenu id="quantity" global="false" value="#{itemConfiguratorBean.quantity}" styleClass="select quantity">
+										<f:selectItems value="#{fn:split(itemConfiguratorBean.maxQuantityPerItemList, ',')}" />
+										<p:ajax oncomplete="SumTotalPrice()" global="false"/>
+									</h:selectOneMenu>
+								</td>
+								<td class="text-right price-label highlight">
+									<h:outputText id="price_left" value="#{itemConfiguratorBean.configurator.price}" styleClass="hidden" />
+									<span id="total_left"></span>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+					
+					<h:messages styleClass="outmsg" globalOnly="true"
+						errorClass="-error"
+						warnClass="-warn"
+						infoClass="-info" />
+
+					<div class="col -span-12">
+						<p>
+              
+              <p:commandLink action="#{itemConfiguratorBean.persist}"
+                onstart="return previewConfig.validateParams()"
+                onclick="RemoveSavedOptions();"
+                rendered="#{itemConfiguratorBean.itemType == 'cart-item'}"
+                styleClass="js-next-button action button -action -fullbleed AddBasketButton -with-cart-arrow"
+                oncomplete="window.location='shoppingcart.jsf'">
+                Lägg till i kundvagnen
+              </p:commandLink>
+              
+
+              <p:commandLink action="#{itemConfiguratorBean.addToCart(false)}"
+                global="true"
+                onstart="return previewConfig.validateParams()"
+                rendered="#{itemConfiguratorBean.itemType != 'cart-item'}"
+                styleClass="js-next-button action button -action -fullbleed AddBasketButton -with-cart-arrow"
+                update="@([id$=designSection]) @([id$=configuration])"
+                oncomplete="OnComplete();CheckPreviousOptions();"
+                onclick="RemoveSavedUploadAddBasket();EnableCartInfo();">
+                Lägg till i kundvagnen
+              </p:commandLink>
+						</p>
+						<p>
+							<ui:include src="/content-blocks/facemask-offer-confi.xhtml" />              
+						</p>
+					</div>
+					<h:messages styleClass="outmsg" globalOnly="true"/>
+					
+				</h:panelGroup>
+			  <!-- end Order summery -->
+				
+			</section>
+			
+		</h:form>
+
+		<div class="hidden">
+			<ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+				<ui:param name="directuploadProductId" value="2790" />
+				<ui:param name="directuploadClass" value="-shapy-button" />
+			</ui:include>
+		</div>
+		
+		<ui:include src="/helper/multiupload-mask.xhtml"/>
+		<ui:include src="/page-blocks/uploader-cover.xhtml" />
+
+		<!-- paymentmethods -->
+		<section class="page-section -alternate">
+			<ui:include src="/page-blocks/paymentmethods.xhtml" />
+		</section>
+		<!-- /paymentmethods -->
+	
+	</ui:define>
+
+	<ui:define name="eofscript">
+		<script src="/#{shopInfoBean.versionPath}static/build/js/ux-checkout-configurator.min.js"></script>
+    	<script src="/#{shopInfoBean.versionPath}static/build/js/multiimage-upload-progress.min.js"></script>
+		
+   
+        <script src="/#{shopInfoBean.versionPath}static/build/js/configurator.min.js"></script>
+        <script src="/#{shopInfoBean.versionPath}static/build/js/configurator-mask.min.js"></script>
+     
+
+		<script>
+
+			// <![CDATA[
+
+			// Init function
+			var isMobile = true;
+
+			var imageFake = #{imageFake};
+
+			// Configurator flag
+			previewConfig.isMobile = isMobile;
+
+			// ]]>
+		</script>
+	</ui:define>
+</ui:composition>

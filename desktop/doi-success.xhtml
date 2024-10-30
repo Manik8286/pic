@@ -1,0 +1,45 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:param name="pageTitle" value="Anmälningen var lyckad" />
+<ui:param name="mastertagTracking" value="generic" />
+
+<ui:define name="head">
+  
+</ui:define>
+
+<ui:define name="meta">
+  <meta name="robots" content="NOINDEX,FOLLOW" />
+</ui:define>
+
+<ui:define name="content">
+  <div class="page-teaser -collapse">
+    <div class="text -doi-teaser ">
+      <div class="row">
+        <div class="col -span-12">
+          <h1 class="headline">Anmälningen var lyckad</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="page-text doi-success">
+    <div class="text-center">
+      <p>
+        Från och med nu kommer du att få exklusiva erbjudanden och kuponger via e-post och du kommer aldrig att behöva betala fullt pris!
+      </p>
+      <p>
+        <br/>
+        Ha så kul!</p>
+      <p>
+      <a href="/singleupload.jsf" class="button -action -arrow">
+        Skapa
+      </a></p>
+    </div>
+  </section>
+</ui:define>
+</ui:composition>

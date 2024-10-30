@@ -1,0 +1,51 @@
+.textarea {
+  border-radius: 2px;
+  border: 1px solid $input-border-color;
+  background-color: $input-background;
+  box-sizing: border-box;
+  line-height: 30px;
+  font-size: 14px;
+  padding: 0 10px;
+
+  &.-shy {
+    border-color: $input-shy-border-color;
+  }
+
+  &.-high {
+    height: 35px;
+    line-height: 35px;
+  }
+
+  &.-touch {
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+  }
+
+  &.-has-background {
+    background-color: $input-darker-background-color;
+  }
+
+  &:focus,
+  &:active {
+    outline: none;
+    border-color: $input-active-border-color;
+  }
+
+  &::placeholder {
+    font-style: italic;
+    color: $input-placeholder-color;
+  }
+
+  &.-fullbleed{
+    width: 100%;
+  }
+
+  &.-invalid {
+    border-color: $input-invalid-border-color;
+  }
+
+  &.-valid {
+    border-color: $input-valid-border-color;
+  }
+}

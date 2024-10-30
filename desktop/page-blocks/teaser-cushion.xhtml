@@ -1,0 +1,96 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <div class="showcase" style="background-position: #{bgPosition}; background-image: url(#{teaserImage})">
+    <header class="head">
+      <div class="col -span-6" style="padding-left: 100px;">
+        <h2 class="headline">#{teaserHeadline}</h2>
+        <div class="claim">#{teaserClaim}</div>
+      </div>
+
+      <div class="col -span-6" style="padding-left: 98px;">
+        <h2 class="headline">#{teaserHeadlineR}</h2>
+        <div class="claim">#{teaserClaimR}</div>
+      </div>
+    </header>
+
+    <div class="body">
+      <!-- teaser left -->
+      <div class="product-kissen info">
+        <img class="#{imageClass}" src="#{teaserProductImage}" alt="#{teaserProductAlt}" />
+        <h:panelGroup layout="block" rendered="#{not empty badgeMiddle}">
+
+              <div class="badge">
+                <div class="size">#{badgeTop}</div>
+                <div class="price">#{badgeMiddle}</div>
+                <div class="sub">#{badgeBottom}</div>
+              </div>
+      
+        </h:panelGroup>
+
+        <ui:fragment rendered="#{not empty teaserCode}">
+          <p class="text-center">De winkelwagen en voer deze code om gratis verzending:<br/>
+            <strong>#{teaserCode}</strong>
+          </p>
+        </ui:fragment>
+
+          <form class="info js-du -top-kissen -kissen-upload-left">
+            <input type="hidden" value="1614" class="js-du-productid"/>
+            <div class="upload-button -position #{empty teaserProductAlt ? '-positionCushion' : ''}">
+              <input type="file" class="js-du-file fileinput" accept="#{sessionBean.userAgentType == 'desktop' ? '.jpg, .jpeg, .png, .gif, .webp' : 'image/*'}"/>
+              <button type="button" id="chooseFile" class="js-du-button action filebutton">
+               #{buttonText}
+              </button>
+              <ui:fragment rendered="#{not empty underUploadBottonTxt}">
+                <p><small>#{underUploadBottonTxt}</small></p>
+              </ui:fragment>
+            </div>
+          </form>
+      </div>
+      <!-- /teaser left -->
+
+
+      <!-- teaser right -->
+      <div class="product-kissen -mlkissen info">
+        <img class="#{imageClassR}" src="#{teaserProductImageR}" alt="#{teaserProductAltR}" />
+        
+        <h:panelGroup layout="block" rendered="#{not empty badgeMiddleR}">
+      
+              <div class="badge">
+                <div class="size">#{badgeTopR}</div>
+                <div class="price">#{badgeMiddleR}</div>
+                <div class="sub">#{badgeBottomR}</div>
+              </div>
+            
+        </h:panelGroup>
+
+        <ui:fragment rendered="#{not empty teaserCodeR}">
+          <p class="text-center">De winkelwagen en voer deze code om gratis verzending:<br/>
+          <strong>#{teaserCode}</strong></p>
+        </ui:fragment>
+
+
+          <form class="info js-du -top-kissen -kissen-upload-right">
+            <input type="hidden" value="861" class="js-du-productid"/>
+            <div class="upload-button -position #{empty teaserProductAltR ? '-positionCushion' : ''}" style="bottom: -300px">
+              <input type="file" class="js-du-file fileinput" accept="#{sessionBean.userAgentType == 'desktop' ? '.jpg, .jpeg, .png, .gif, .webp' : 'image/*'}"/>
+              <button type="button" id="chooseFile" class="js-du-button action filebutton">
+                #{buttonText}
+              </button>
+              <ui:fragment rendered="#{not empty underUploadBottonTxt}">
+                <p><small>#{underUploadBottonTxt}</small></p>
+              </ui:fragment>
+            </div>
+          </form>
+
+        <ui:include src="/page-blocks/uploader-cover.xhtml" />
+      </div>
+      <!-- /teaser right -->
+    </div>
+  </div>
+
+</ui:composition>

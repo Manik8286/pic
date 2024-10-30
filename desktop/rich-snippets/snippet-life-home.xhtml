@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+  <!-- Rich snippet -->
+  <section class="page-section -collapse-top">
+            <div class="article-showcase -no-bottom">
+            <h2 class="headline -has-sidelines"><span>Betygsättning och recensioner</span></h2>
+            <div class="col -span-12 description text-center" vocab="http://schema.org/" typeof="Product">
+			<span property="brand" typeof="Brand">
+			<meta property="name" content="BestCanvas.se" />
+			</span>
+            <meta property="name" content="Home &amp;Lifestyle" />
+            <meta property="image" src="https://download.cdn-shop.com/media/web_images/se/bestcanvas/structured-data/home-lifestyle-16x9.jpg" />
+            <meta property="image" src="https://download.cdn-shop.com/media/web_images/se/bestcanvas/structured-data/home-lifestyle-4x3.jpg" />
+            <meta property="image" src="https://download.cdn-shop.com/media/web_images/se/bestcanvas/structured-data/home-lifestyle-1x1.jpg" />
+            <meta property="description" content="Personliga produkter för hem och livsstil. Foto på handduk, kudde, filt, akrylblock. Produkter som får dig att må bra."/>
+            <meta property="sku" content="HOME-LIFESTYLE" />
+            <span property="aggregateRating" typeof="AggregateRating">
+                <p class="text">
+                    <ui:include src="/rich-snippets/snippet-rating.xhtml" />Fotoprodukter för hem och livsstil nu!</p>
+            </span>
+            <span property="offers" typeof="Offer">
+            <meta property="url" content="https://www.bestcanvas.se/home-lifestyle/" />
+            <meta property="priceCurrency" content="SEK" />
+            <meta property="price" content="#{fn:trim(priceBean.productPrice('Pillow_Bestcanvas_SE', 'Pillow', 'Pillow 40x40').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+            <time property="priceValidUntil" datetime="#{now.month + 1 eq 12 ? now.year + 1900 + 1 : now.year + 1900}-12-31"></time>
+            <span property="seller" typeof="Organization">
+            <meta property="name" content="BesteCanvas.se" />
+            </span>
+            <link property="itemCondition" href="http://schema.org/NewCondition" />
+            <link property="availability" href="http://schema.org/InStock" />
+            </span>
+        </div>
+
+      </div>
+    </section>
+  <!-- /Rich snippet -->
+
+</ui:composition>

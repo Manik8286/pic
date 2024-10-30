@@ -1,0 +1,60 @@
+{
+  "name": "Ditt Foto på Canvas",
+  "short_name": "bestcanvas.se",
+  "start_url": ".",
+  "icons": [
+		{
+			"src": "\/apple-touch-icon-57x57.png",
+			"sizes": "57x57",
+			"type": "image\/png",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "\/apple-touch-icon-72x72.png",
+			"sizes": "72x72",
+			"type": "image\/png",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "\/apple-touch-icon-114x114.png",
+			"sizes": "114x114",
+			"type": "image\/png",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "\/android-chrome-144x144.png",
+			"sizes": "144x144",
+			"type": "image\/png",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "\/apple-touch-icon-152x152.png",
+			"sizes": "152x152",
+			"type": "image\/png",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "\/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image\/png",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "\/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image\/png",
+			"purpose": "any maskable"
+		}
+	],
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFFFF",
+  "theme_color": "#35B2B6",
+  "permissions": [
+    "https://www.bestcanvas.se*",
+    "https://testing-bestcanvas-se.picanova.de/*",
+    "http://localhost/*",
+    "http://bc2.se:8080/*"
+	]
+}

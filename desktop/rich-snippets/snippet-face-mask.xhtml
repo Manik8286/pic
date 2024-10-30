@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html">
+
+  <!-- Rich snippet -->
+  <section class="text-center">
+    <div class="article-showcase">
+      <h2 class="headline -has-sidelines"><span>Betygsättning och recensioner</span></h2>
+      <div class="col -span-12 text-center description" vocab="http://schema.org/" typeof="Product">
+        <meta property="brand" content="BestCanvas.se" />
+        <meta property="name" content="Munskydd med Foto" />
+        <meta property="image" src="https://download.cdn-shop.com/media/web_images/se/bestcanvas/structured-data/munskydd-ansiktsmask-16x9.jpg" />
+		<meta property="image" src="https://download.cdn-shop.com/media/web_images/se/bestcanvas/structured-data/munskydd-ansiktsmask-4x3.jpg" />
+		<meta property="image" src="https://download.cdn-shop.com/media/web_images/se/bestcanvas/structured-data/munskydd-ansiktsmask-1x1.jpg" />
+        <meta property="description" content="Munskydd: Ansiktsmask med foto eller design. &#x2705; Din personliga ansiktsmask: Justerbar mask, 2 lager av Oeko-Tex-certifierat tyg" />
+        <meta property="sku" content="FP-FACEMASK-18X13" />
+        <span property="aggregateRating" typeof="AggregateRating">
+         <p class="text">
+            <ui:include src="/rich-snippets/snippet-rating.xhtml" />Munskydd Ansiktsmask nu!
+          </p>
+          </span>
+        
+        <span property="offers" typeof="Offer">
+          <meta property="url" content="https://www.bestcanvas.se/home-lifestyle/munskydd-ansiktsmask.jsf" />
+          <meta property="priceCurrency" content="SEK" />
+          <meta property="price" content="100.00" />
+          <time property="priceValidUntil" datetime="2022-12-31"></time>
+          <span property="seller" typeof="Organization">
+            <meta property="name" content="BestCanvas.se" />
+          </span>
+          <link property="itemCondition" href="http://schema.org/NewCondition" />
+          <link property="availability" href="http://schema.org/InStock" />
+        </span>
+      </div>
+    </div>
+  </section>
+   <!-- /Rich snippet -->
+
+</ui:composition>

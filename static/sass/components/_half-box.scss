@@ -1,0 +1,30 @@
+.half-box {
+  @extend .box;
+  @include clearfix;
+  position: relative;
+
+  > .body {
+    padding-left: 10px;
+    width: 50%;
+    margin-left: 50%;
+    float: left;
+    box-sizing: border-box;
+  }
+
+  > .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 50%;
+    width: auto;
+    overflow: hidden;
+  }
+
+  > .image img {
+    width: auto;
+    height: 100%;
+    min-height: 100%;
+    display: inline-block;
+  }
+}

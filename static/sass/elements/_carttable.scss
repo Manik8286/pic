@@ -1,0 +1,243 @@
+.carttable {
+  @extend .table;
+  font-size: 14px;
+
+  &.new-cart{
+    display: inline-table;
+    vertical-align: top;
+
+  .validation.-error {
+    position: absolute;
+    width: 240px;
+    &:after,
+    &:before{
+      display:none;
+    }
+  }
+
+    tbody {
+      tr:nth-child(even) {
+        background-color: $white;
+      }
+    }
+
+  .checkout-padding {
+    padding-top: 10px;
+  }
+  .checkout-padding-odd {
+    padding-top: 12px;
+  }
+  .change {
+    display: inline;
+    margin-top: 15px;
+    font-size: 12px;
+  }
+
+  td.image {
+    padding-top: 10px;
+
+    &.-mixpix {
+      background-image: url(/assets/img/checkout/mixpixPreviewBackground.png);
+      background-repeat: no-repeat;
+      width: 150px;
+      height: 150px;
+      background-size: 140px 140px;
+      background-position: 15px 20px;
+      padding-bottom: 15px;
+      padding-top: 5px;
+      img {
+        width: 135px;
+      }
+    }
+  }
+
+  td p {
+    line-height: 13px;
+  }
+  .tooltip {
+    color: $newGreen;
+  }
+
+  .action {
+    cursor: pointer;
+  }
+
+  }
+
+  tr.products {
+    border-bottom: 1px solid #bfbfbf;
+
+    picture {
+            display: inline-flex;
+            position: relative;
+
+            &:after {
+                content: '';
+                background-size: 100% 100%;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+
+            &.-premiumPillow {
+                &:after {
+                    background-image: url(/assets/img/checkout/cushion/premium-cushion-mask.png);
+                }
+            }
+
+            &.-standardPillow {
+                &:after {
+                    background-image: url(/assets/img/checkout/cushion/standard-cushion-mask.png);
+                }
+            }
+
+            &.-blanketPillowLandscape {
+                &:after {
+                    background-image: url(/assets/img/checkout/blanket/blanket-2000x1500.png);
+                }
+            }
+
+            &.-blanketPillowPortrait {
+                &:after {
+                    background-image: url(/assets/img/checkout/blanket/blanket-1500x2000.png);
+                }
+            }
+
+            &.-towelLandscape {
+                &:after {
+                background-image: url(/assets/img/checkout/towel/configurator-towel-880x480.png);
+                }
+            }
+
+            &.-towelPortrait {
+                &:after {
+                background-image: url(/assets/img/checkout/towel/configurator-towel-880x1380-vertical.png);
+                }
+            }
+    }
+
+  img {
+    max-width: 300px;
+    height: auto;
+  }
+
+  }
+
+  thead.shoppingcart {
+    border-bottom: 1px solid #bfbfbf;
+
+  th {
+    font-weight: 400;
+  }
+
+  }
+
+  th {
+    white-space: nowrap;
+  }
+
+  td.p-left {
+    float: left;
+    text-align: left;
+  }
+
+  td p {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  td a {
+    color: $newGreen;
+    text-decoration: none;
+    font-weight: $weight-semibold;
+  }
+
+  @include break(tablet_portrait_small) {
+    td {
+      padding: 5px;
+    }
+  }
+
+  .-block-content {
+    padding: 0;
+    padding-right: 20px;
+
+    > * {
+      vertical-align: bottom;
+    }
+  }
+
+  tr.-bigger {
+    font-size: 16px;
+
+    &.-top td {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    &.-bottom td {
+      padding-bottom: 20px;
+    }
+  }
+
+  tr.-sum {
+    border-top: 1px solid $page-text-color;
+
+    td {
+      padding-top: 10px;
+    }
+  }
+  td.-summ{
+   border-top: 1px solid #bfbfbf;
+  }
+  tr .-total {
+    font-size: 16px;
+    color: $highlight-color;
+    width: 115px;
+  }
+
+  .preview {
+    width: 80px;
+
+    @include break(tablet_portrait_small) {
+      width: 60px;
+    }
+  }
+
+  .delete {
+    display: block;
+    margin-top: 15px;
+    color: $cart-delete-color;
+    font-size: 12px;
+  }
+
+  td.-mixpixCheckout {
+      background-image: url(/assets/img/checkout/mixpixPreviewBackground.png);
+      background-repeat: no-repeat;
+      width: 70px;
+      height: 70px;
+      background-size: 70px 70px;
+      background-position: 13px 12px;
+      padding-bottom: 15px;
+      padding-right: 20px;
+    img {
+      width: 70px;
+    }
+  }
+
+  .change {
+    .tablet & {
+      margin-top: 10px;
+    }
+  }
+  .form-group .-action {
+    margin: 15px 0;
+  }
+  #activateCoupon {
+    cursor:pointer;
+  }
+}

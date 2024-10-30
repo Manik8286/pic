@@ -1,0 +1,13 @@
+exclude-sync.txt
+.deploylock
+.editorconfig
+.gitignore
+.git/
+node_modules/
+static/js/
+static/sass/
+assets/svg/
+gulpfile.js
+package.json
+README.md
+sprite-scss.hbs 

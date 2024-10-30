@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      class="no-js desktop">
+  <f:view>
+    <h:head>
+      <base href="#{baseUrlBean.baseUrl}"/>
+      <ui:insert name="dataLayer"/>
+      <ui:include src="/trackingcodes/startofhead.xhtml"/>
+      <h:outputText value="&lt;!--[if IE]&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;/#{shopInfoBean.versionPath}static/build/css/split/page-desktop.min.css&quot; /&gt;&lt;![endif]--&gt;" escape="false" />
+      <h:outputText value="&lt;!--[if !IE]&gt; &lt;!--&gt; &lt;link rel=&quot;stylesheet&quot; href=&quot;/#{shopInfoBean.versionPath}static/build/css/page-desktop.min.css&quot; /&gt;&lt;![endif]--&gt;" escape="false" />
+      <script src="/#{shopInfoBean.versionPath}static/build/js/preload.min.js"></script>
+      <ui:insert name="head" />
+      <ui:include src="/head/icons.xhtml" />
+      <h:outputText escape="false" value="#{contentBean.snippets['order-deadlines']}"/>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="theme-color" content="#74c100" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+      <ui:insert name="meta" />
+      <title>#{pageTitle} | #{shopInfoBean.shopName}</title>
+      <ui:remove>
+        <!-- Try to keep the scripts in the head as short as possible. A <script> will block the
+        browser rendering until the script is loaded. Put as much scripts as possible before
+        the closing </body>, resp. use the eofscript-insert. (See  or
+        sessionServicesBean.discountCode.code == '4S10CRM1671'below) -->
+      </ui:remove>
+      <ui:include src="/trackingcodes/endofhead.xhtml"/>
+      <ui:insert name="topbar" />
+
+    </h:head>
+    <h:body styleClass="#{sessionServicesBean.discountCode.code != null and sessionServicesBean.discountCode.code != 'LayoutChangeOnly' ? '-has-header-bar' : ''}">
+
+      <ui:include src="/trackingcodes/beginofbody.xhtml"/>
+      <ui:include src="/content-blocks/nldiscountcodes.xhtml" />
+      <ui:include src="/content-blocks/modal-windows.xhtml" />
+
+      <ui:insert name="topBar">
+        <c:if test="#{shopInfoBean.shopUrl.contains('testing') and empty param['islive']}">
+          <ui:include src="/topBars-new/bestcanvas-se.xhtml">
+            <ui:param name="checkout" value="false" />
+          </ui:include>
+          <ui:include src="/topBars-new/exclude-checkout/bestcanvas-se.xhtml" />
+        </c:if>
+        <c:if test="#{!shopInfoBean.shopUrl.contains('testing') or param['islive']}">
+          <ui:include src="/topBars-new/bestcanvas-se.xhtml">
+            <ui:param name="checkout" value="false" />
+          </ui:include>
+          <ui:include src="/topBars-new/exclude-checkout/bestcanvas-se.xhtml" />
+        </c:if>
+      </ui:insert>
+
+      <ui:include src="/#{shopInfoBean.defaultVersionPath}components/header/header.xhtml">
+        <ui:param name="viewType" value="desktop" />
+      </ui:include>
+      <ui:insert name="content" />
+      <ui:include src="/components/footer/footer.xhtml"/>
+      <h:outputScript library="primefaces" name="jquery/jquery.js"/>
+      <script src="/#{shopInfoBean.versionPath}static/build/js/ux-desktop.min.js"></script>
+
+      <ui:remove>
+        <!-- Use <ui:define name="eofscript"></ui:define> to include scripts for specific pages or
+        page groups like the checkout. Try to minify and concatenate them as good as possible. -->
+      </ui:remove>
+
+      <!-- Lazy load script -->
+      <ui:include src="/page-blocks/lazyload-script.xhtml" />
+
+      <!-- script remembers discount code and UTM/SF parameters in cookies -->
+      <ui:include src="/cookie-cache-script-utm-sf.xhtml" />
+
+      <ui:insert name="eofscript" />
+      <ui:include src="/trackingcodes/endofbody.xhtml"/>
+
+      <ui:include src="/components/endofbody/endofbody.xhtml"/>
+    </h:body>
+  </f:view>
+</html>

@@ -1,0 +1,89 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://java.sun.com/jsf/html"
+             xmlns:c="http://java.sun.com/jsp/jstl/core"
+             xmlns:f="http://java.sun.com/jsf/core"
+             xmlns:ui="http://java.sun.com/jsf/facelets"
+             xmlns:p="http://primefaces.org/ui">
+
+  <div class="creditcard-data">
+
+    <p:remoteCommand name="submitEncrypted" action="#{paymentMethodBean.submit}" process="cardEncrypted encCardType"/>
+
+    <script type="text/javascript" src="#{paymentMethodBean.clientSideCreditCardEncryptionData}"></script>
+
+    <script type="text/javascript">
+      var submitEncryptedCardData = function () {
+        document.getElementById('validationMessages').style.display = 'none';
+        var number = document.getElementById('cardNumber').value.replace(/\D+/g, '');
+        var encrypted = adyen.createEncryption().encrypt({
+          "number": number,
+          "holderName": document.getElementById('cardHolder').value,
+          "expiryMonth": document.getElementById('cardExpirationMonth').value,
+          "expiryYear": document.getElementById('cardExpirationYear').value,
+          "cvc": document.getElementById('cardSecurityCode').value,
+          "generationtime": '#{commonDataBean.currentIsoDateUtc}'});
+        if (! encrypted) {
+          document.getElementById('validationMessages').style.display = 'block';}
+        else {
+          document.getElementById('cardEncryptedContainer').children[0].value = encrypted;
+          document.getElementById('cardEncryptedContainer').children[1].value = (
+            (number.match(/^4/) != null) ? 'visa' : (
+              (number.match(/^(34|37)/) != null) ? 'amex' : (
+                (number.match(/^5[1-5]/) != null) ? 'master' : '')))
+          submitEncrypted();}}
+    </script>
+
+    <div id="validationMessages" class="validation-messages ui-message ui-message-error ui-widget ui-corner-all" style="display: none">
+      Vänligen kontrollera din information, detta är inte ett giltigt kreditkort!
+    </div>
+		<table>
+			<tbody>
+				<tr>
+					<td>
+						<img src="staticimages/credit-cards.png" />
+					</td>
+				</tr>
+			</tbody>
+	  </table>
+    <table id="cc-table">
+      <tr><td colspan="2" style="padding-bottom: 15px;"><strong>#{_['Card type (e.g. Visa, Mastercard, American Express) will be detected automatically']}.</strong></td></tr>
+      <tr>
+        <td>#{_['Name on Card']} <span class="required-field-marker">*</span></td>
+        <td><input id="cardHolder" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"/></td>
+      </tr>
+      <tr>
+        <td>#{_['Credit Card Number']} <span class="required-field-marker">*</span></td>
+        <td><input id="cardNumber" size="20" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"/></td>
+      </tr>
+      <tr>
+        <td>#{_['Expiration Date']} <span class="required-field-marker">*</span></td>
+        <td>
+          <select id="cardExpirationMonth" class="valid-month">
+            <ui:repeat value="#{paymentMethodBean.creditCard.months}" var="month">
+              <option value="#{month.value}">#{month.label}</option>
+            </ui:repeat>
+          </select>
+          <select id="cardExpirationYear" class="valid-year">
+            <ui:repeat value="#{paymentMethodBean.creditCard.years}" var="year">
+              <option value="#{year.value}">#{year.label}</option>
+            </ui:repeat>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>#{_['Card Verification Number']} <span class="required-field-marker">*</span></td>
+        <td><input id="cardSecurityCode" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"/></td>
+      </tr>
+    </table>
+
+    <span id="cardEncryptedContainer">
+      <h:inputHidden id="cardEncrypted" value="#{paymentMethodBean.creditCard.encryptedData}"/>
+      <h:inputHidden id="encCardType" value="#{paymentMethodBean.creditCard.cardType}"/>
+    </span>
+  </div>
+		<script>
+			document.getElementById('cardNumber').addEventListener('input', function (e) {
+				e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+			});
+		</script>
+</ui:composition>

@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+								xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+  <h:messages styleClass="outmsg" globalOnly="true"
+    errorClass="-error"
+    warnClass="-warn"
+    infoClass="-info" />
+
+  
+  <!-- the persist-method does not redirect to the shoppingcart, so we have
+  to explicit route it there with javascript.
+  This is legit, since many JSF commands are executed with javascript.
+  -->
+  
+
+  <p:commandLink action="#{itemConfiguratorBean.persist}"
+      value="Spara ändringar"
+      onstart="return previewConfig.validateParams()"
+      rendered="#{itemConfiguratorBean.itemType == 'cart-item'}"
+      styleClass="js-next-button action button -action -fullbleed AddBasketButton -with-cart-arrow"
+      oncomplete="window.location='shoppingcart.jsf'"/>
+
+  <p:commandLink action="#{itemConfiguratorBean.persist}"
+      value="Fortsätt och ladda upp ett annat foto"
+      global="false"
+      onstart="return previewConfig.validateParams()"
+      rendered="#{itemConfiguratorBean.itemType != 'cart-item'}"
+      styleClass="js-next-button action button -action -upload-another"
+      onclick="#{sessionBean.userAgentType eq 'desktop' ? 'CheckNextStep(true)' : 'UploadAnother()'};" />
+
+  <p:commandLink action="#{itemConfiguratorBean.addToCart}"
+      value=" Fortsätt till kundvagnen"
+      global="false"
+      onstart="return previewConfig.validateParams()"
+      rendered="#{itemConfiguratorBean.itemType != 'cart-item'}"
+      styleClass="js-next-button action button -action -fullbleed AddBasketButton -with-cart-arrow" />
+
+  <p:remoteCommand name="saveToCart" action="#{itemConfiguratorBean.addToCart(false)}" />
+
+  <h:messages styleClass="outmsg" globalOnly="true"/>
+
+</ui:composition>

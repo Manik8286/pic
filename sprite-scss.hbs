@@ -1,0 +1,51 @@
+//                                                            //
+// ATTENTION       ATTENTION       ATTENTION        ATTENTION //
+// ========================================================== //
+//                                                            //
+// This file was generated automatically with `gulp sprites`. //
+// CHANGES WILL BE OVERRIDDEN. DO NOT MODIFY.                 //
+//                                                            //
+// ========================================================== //
+//                                                            //
+{{!-- of course changes here will not be overridden. this banner is for the generated file --}}
+
+{{#each retina_sprites}}
+${{name}}: -{{x}}px -{{y}}px {{width}}px {{height}}px;
+{{/each}}
+
+@function sprite-width($sprite) {
+  @return nth($sprite, 3);
+}
+
+@function sprite-height($sprite) {
+  @return nth($sprite, 4);
+}
+
+@mixin sprite-width($sprite, $scale) {
+  width: round(sprite-width($sprite)/2 * $scale);
+}
+
+@mixin sprite-height($sprite, $scale) {
+  height: round(sprite-height($sprite)/2 * $scale);
+}
+
+@mixin sprite-position($sprite, $scale) {
+  $sprite-offset-x: round(nth($sprite, 1)/2 * $scale);
+  $sprite-offset-y: round(nth($sprite, 2)/2 * $scale);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite($sprite, $display: false, $scale: 1) {
+  @if $display { display: $display; }
+  @include sprite-position($sprite, $scale);
+  @include sprite-width($sprite, $scale);
+  @include sprite-height($sprite, $scale);
+  background-repeat: no-repeat;
+  overflow: hidden;
+  background-image: url('{{spritesheet.image}}');
+  background-size: round({{spritesheet.width}}px * $scale)  round({{spritesheet.height}}px * $scale);
+
+  @media only screen and (min-resolution: 2dppx), (min-resolution: 192dpi) {
+    background-image: url('{{retina_spritesheet.image}}');
+  }
+}

@@ -1,0 +1,27 @@
+.newsletter-list {
+  @extend .row;
+  margin-top: 50px;
+
+  > .newsletter, .social{
+    @extend .col;
+    margin-bottom: 20px;
+  }
+  >.newsletter {
+    .-nl{
+      padding: 20px;
+      display: inline-block;
+    }
+  }
+  > .newsletter {
+    .tablet & {
+      max-width: 700px;
+    }
+
+    .bestpreise-seal {
+      width: 80px;
+      margin: 0 12px 0 0;
+      float: left;
+      margin-bottom: 190px;
+    }
+  }
+}

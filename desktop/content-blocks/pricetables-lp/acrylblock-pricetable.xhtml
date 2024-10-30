@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+  <p:outputPanel style="display:block">
+  <div class="showcase-box" data-mh="info">
+    <h3 class="headline">Vi har låga priser för Akrylblock!</h3>
+    <table class="table -striped">
+      <thead class="-highlighted">
+        <tr>
+          <th>Format</th>
+          <th>#{_['Price']}</th>
+          <th>#{_['Special Price']}</th>
+        </tr>
+      </thead>
+      <tbody class="-text-centered">
+        <tr>
+          <td>10 x 10cm</td>
+          <td>#{priceBean.productCrossPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 10x10')}</td>
+          <td class="-highlighted">#{priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 10x10')}*</td>
+        </tr>
+        <tr>
+          <td>15 x 10cm</td>
+          <td>#{priceBean.productCrossPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 15x10')}</td>
+          <td class="-highlighted">#{priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 15x10')}*</td>
+        </tr>
+        <tr>
+          <td>20 x 15cm</td>
+          <td>#{priceBean.productCrossPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x15') eq '#ERROR#' ? '—' : priceBean.productCrossPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x15')}</td>
+          <td class="-highlighted">#{priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x15') eq '#ERROR#' ? '—' : priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x15')}*</td>
+        </tr>
+        <tr>
+          <td>20 x 20cm</td>
+          <td>#{priceBean.productCrossPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x20')}</td>
+          <td class="-highlighted">#{priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 20x20')}*</td>
+        </tr>
+      </tbody>
+    </table>
+    <a href="/format/#lifestyle" class="link">Alla priser och format »</a>
+  </div>
+  </p:outputPanel>
+
+
+</ui:composition>

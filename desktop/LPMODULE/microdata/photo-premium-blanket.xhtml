@@ -1,0 +1,16 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:o="http://omnifaces.org/ui">
+
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Blanket']}" />
+      <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+      <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 100x70').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+    
+</ui:composition>

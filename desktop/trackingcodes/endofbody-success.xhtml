@@ -1,0 +1,11 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+ 
+<!-- begin VWO Conversion code -->
+<c:if test="#{empty param['noTracking']}">
+  <ui:include src="/tracking/visual-web-optimizer-ordersuccess.xhtml">
+    <ui:param name="cookieFirst" value="false" />
+  </ui:include>
+</c:if>
+<!-- end VWO Conversion code -->
+
+</ui:composition>

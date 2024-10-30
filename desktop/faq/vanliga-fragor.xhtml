@@ -1,0 +1,645 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:param name="pageTitle" value="Vanliga Frågor" />
+
+<ui:define name="head">
+  
+</ui:define>
+
+<ui:define name="meta">
+  <meta name="robots" content="INDEX,FOLLOW" />
+  <meta http-equiv="content-language" content="sv_SE"/>
+</ui:define>
+
+<ui:define name="content">
+  <section class="page-teaser -collapse">
+    <div class="faq" style="background-image: url(/#{shopInfoBean.versionPath}assets/img/backgrounds/mac_desktop.jpg)">
+      <h1 class="headline">Vanliga Frågor (FAQ)</h1>
+      <form>
+        <span class="search-wrapper">
+          <input type="text" class="search js-faq-search" placeholder="Sök" />
+          <ui:include src="/helper/svg.xhtml">
+            <ui:param name="svgClass" value="icon" />
+            <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-search" />
+          </ui:include>
+        </span>
+      </form>
+    </div>
+  </section>
+
+  <section class="page-faq search-skip">
+<div class="nav">
+</div>
+    <div class="categories">
+      <div class="category">
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-shopping-cart" />
+        </ui:include>
+        <h4 class="title">Beställningsprocessen</h4>
+        <ul class="questions">
+          <li><a href="/faq/vanliga-fragor.jsf#faq-1">När är min beställning bindande?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-2">Jag har inte fått beställningsbekräftelsen.</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-3">Kan jag ändra min beställning?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-4">Hur laddar jag upp ett foto?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-5">Kan jag göra flera fotokopior från mina bilder?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-6">Varför visas mina bilder efter uppladdning endast i minsta möjliga format, t.ex. "20 x 30 cm"?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-7">Även om mitt foto har en hög upplösning, erbjuder systemet inte önskat format.</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-8">Efter jag har laddat upp mina bilder får jag meddelandet "Ogiltigt Format". Vad gör jag för fel?</a></li>
+        </ul>
+      </div>
+
+
+
+      <div class="category">
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-picture" />
+        </ui:include>
+        <h4 class="title">Produkt och Kvalitet</h4>
+        <ul class="questions">
+          <li><a href="/faq/vanliga-fragor.jsf#faq-9">Är bilderna tryckta med eller utan ränder?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-10">Vilken upplösning tagna med en digitalkamera är bäst lämpad för ett tryck på duk?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-11">Vilken upplösning behöver jag på filen?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-12">Vilket filformat är lämpligt för produktion?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-13">Vad ska jag göra med ett annorlunda fotoformat?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-14">Vad händer om jag skapar ett specialformat som standardformat?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-15">Hur tjock är ramen?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-16">Vilket material är min bild tryckt på?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-17">Hur är duken monterad på ramen?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-18">Hur är tryckkvaliteten?</a></li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-truck" />
+        </ui:include>
+        <h4 class="title">Leverans</h4>
+        <ul class="questions">
+          <li><a href="/faq/vanliga-fragor.jsf#faq-19">Var hittar jag leveranskostnaderna?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-20">Hur är leveranskostnaderna när jag beställer fler bilder?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-21">Hur lång tid tar det innan jag får min produkt?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-22">Hur lång tid tar det att skicka utomlands?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-23">Jag vill ge min bild som gåva, kan det levereras direkt till mottagaren?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-24">Finns det en transportförsäkring?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-25">Vem levererar min produkt?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-26">Kan jag hämta produkten själv?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-26b">Vem är ansvarig för eventuella tullavgifter?</a></li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-eur" />
+        </ui:include>
+        <h4 class="title">Betalning</h4>
+        <ul class="questions">
+          <li><a href="/faq/vanliga-fragor.jsf#faq-27">Vilka betalningssätt finns det?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-28">Kan jag betala kontant på plats?</a></li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-refresh" />
+        </ui:include>
+        <h4 class="title">Klagomål</h4>
+        <ul class="questions">
+          <li><a href="/faq/vanliga-fragor.jsf#faq-29">Vad ska jag göra vid leveransskador?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-30">Vad ska jag göra med generella klagomål?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-34">Hur kan jag konstruktivt klaga på er?</a></li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-info-circle" />
+        </ui:include>
+        <h4 class="title">Övriga Frågor</h4>
+        <ul class="questions">
+          <li><a href="/faq/vanliga-fragor.jsf#faq-31">Hur lagras mina kunduppgifter?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-32">Snabbköp eller registrering?</a></li>
+          <li><a href="/faq/vanliga-fragor.jsf#faq-33">Mobilskydds förhandsvisning</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+
+<section class="page-section -alternate">
+  <div class="page-faq -basic js-faq-questions">
+    <h2 class="-highlighted-text">Beställningsprocessen</h2>
+    <div class="question" id="faq-1">
+      <h4 class="title">När är min beställning bindande?</h4>
+      <p class="answer">
+        Din beställning kan inte bearbetas förrän du slutfört din beställning. Efter du valt betalningssätt och tryckt på "Beställ" får du sedan en orderbekräftelse via e-post från oss och först därefter är beställningen bindande.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-2">
+      <h4 class="title">Jag har inte fått beställningsbekräftelsen.</h4>
+      <p class="answer">
+        Efter en fullständig beställning skickas automatisk en orderbekräftelse till den angivna e-postadressen. Det är möjligt att detta klassas som spam. Kontrollera ditt spamfilter om du behöver det. Om du inte hittar mejlet, kanske pga ett skrivfel i mejladressen, vänligen kontakta oss innan du lägga en ny beställning.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-3">
+      <h4 class="title">Kan jag ändra min beställning?</h4>
+      <p class="answer">
+        Efter en beställning och betalning har slutförts, är det av logistiska skäl inte möjligt att ändra beställningen.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-4">
+      <h4 class="title">Hur laddar jag upp ett foto?</h4>
+      <p class="answer">
+        Klicka på "<b>BESTÄLL</b>" i det övre högra hörnet i navigationsfältet. Då kan du överföra dina bilder till vår server.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-5">
+      <h4 class="title">Kan jag göra flera fotokopior från mina bilder?</h4>
+      <p class="answer">
+        Naturligtvis kan du beställa ett obegränsat antal bilder hos oss, i olika format. När bilden har laddats upp kan du välja den kvantitet och storlek som du önskar, med bara ett steg, kan du även välja flera direkt utan att behöva ladda upp en bild mer än en gång. 20x20 cm formatet är ett specialerbjudande och kan bara beställas maximalt 5x per varukorg.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-6">
+      <h4 class="title">Varför visas mina bilder efter uppladdning endast i minsta möjliga format, t.ex. "20 x 30 cm"?</h4>
+      <p class="answer">
+        När du har laddat upp din bild till vår server, kollar vårt system upp vilket format som passar bäst till din bild. Det som avgör den kvalitet vi kan garantera dig är upplösning och kvaliteten på bilden.
+      </p>
+      <p class="answer">
+        För att välja större format måste du ladda upp filen med en högre upplösning eller ett annat bildformat.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-7">
+      <h4 class="title">Även om mitt foto har en hög upplösning, erbjuder systemet inte önskat format.</h4>
+      <p class="answer">
+        Det viktiga är förhållandet i bildfilen. Det finns olika bildformat som 4:3, 3:2, 2:1 eller 1:1. Det kan du ändra automatiskt i inställningarna på digitalkameran eller manuellt med efterföljande bearbetning i ett bildredigeringsprogram som Adobe Photoshop.
+      </p>
+      <p class="answer">
+        Ett tryck kan endast göras i det format bildfilen stöds. Annars kommer bilden att snedvridas. För att förhindra detta, föreslår systemet endast möjliga storlekar som kan tryckas.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+
+    <div class="question" id="faq-8">
+      <h4 class="title">Efter jag har laddat upp mina bilder får jag meddelandet "Ogiltigt Format". Vad gör jag för fel?</h4>
+      <p class="answer">
+        Ett ogiltigt filformat beror på två olika orsaker:
+      </p>
+      <ul>
+        <li>Välj önskad bildfil och klicka på "Nästa". Observera att endast filer av typen ".jpg", ".jpeg", ".png", ".gif", ".webp" är användbara och max. data storlek är 60 MB.</li>
+        <li>Filnamnet på bilden innehåller, till exempel punkter, kommatecken, mellanslag etc. Döp filen innan uppladdning så att filnamnet inte innehåller specialtecken.</li>
+      </ul>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+<!-- Produkt och Kvalitet -->
+    <h2 class="-highlighted-text">Produkt och Kvalitet</h2>
+    <div class="question" id="faq-9">
+      <h4 class="title">Är bilderna tryckta med eller utan ränder?</h4>
+      <p class="answer">
+        Dukarna är tryckta med "randlöst" tryck. Vilket innebär att vi trycker alla bilder 2,5 cm bredare på varje sida så att de kan monteras på baksidan av ramen. T.ex. ett tryck på duk i storleken 20 x 30 cm trycks i storleken 25 x 35 cm. Efter montage visas endast storleken 20 x 30 cm. För att göra det möjligt drar vi ut den sista pixeln i bilden de 2,5 cm utan motivförlust. På det sättet sker ingen beskärning av den uppladdade bilden.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-10">
+      <h4 class="title">Vilken upplösning tagna med en digitalkamera är bäst lämpad för ett tryck på duk?</h4>
+      <p class="answer">
+        För att uppnå ett bra resultat, behöver vi en upplösning på minst 4 Megapixel. Med 2 Megapixel kan vi fortfarande erbjuder bra kvalitet på mindra format.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-11">
+      <h4 class="title">Vilken upplösning behöver jag på filen?</h4>
+      <p class="answer">
+        Beställning av bilder med en upplösning under 75 DPI är inte att rekommendera. Därför kan vi tyvärr inte garantera utskriftskvaliteten av sådana bilder.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-12">
+      <h4 class="title">Vilket filformat är lämpligt för produktion?</h4>
+      <p class="answer">
+        Vi kan bara använda formatet "JPG" (även kallat JPEG) för produktion.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>    
+
+    <div class="question" id="faq-13">
+      <h4 class="title">Vad ska jag göra med ett annorlunda fotoformat?</h4>
+      <p class="answer">
+        Om din bild inte passar in i någon av våra standardformat, så producerar vi gärna ett specialformat åt dig. I vårat område "Storlekar &amp; Priser" hittar du under "Förfrågan Specialformat" en ansökningsblankett. Vid beställningsprocessen finns det möjlighet för specialformatproduktion om ditt fotoformat inte är av standardformat. Du kan då automatiskt beskära bilden till passande format.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-14">
+      <h4 class="title">Vad händer om jag skapar ett specialformat som standardformat?</h4>
+      <p class="answer">
+        Skulle du ändå bestämma dig för ett av våra standardformat kommer vi automatiskt att anpassa bildens storlek till det som bäst motsvarar dina krav på storlek. Observera att bilden kommer beskäras vid detta behov.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-15">
+      <h4 class="title">Hur tjock är ramen?</h4>
+      <p class="answer">
+        Vår ram är ungefär 2 cm djup. Vi erbjuder även 4 cm djup galleriram.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div> 
+
+    <div class="question" id="faq-16">
+      <h4 class="title">Vilket material är min bild tryckt på?</h4>
+      <p class="answer">
+        Vår canvastavlor är tillverkade av högvärdiga specialgjorda-polyesterväv slutna med en HP-certifierad beläggning. De är därför mycket lämpliga för latextryck. Ramen är tillverkade av gran i toppkvalitet.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div> 
+
+    <div class="question" id="faq-17">
+      <h4 class="title">Hur är duken monterad på ramen?</h4>
+      <p class="answer">
+        Duken spänns och häftas fast på baksidan av ramen. Därigenom sträcks motivet över kanterna, så att bilden kan hängas upp utan att ramen syns. Du får en färdig uppspänd tavla, ingen byggsats.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-18">
+      <h4 class="title">Hur är tryckkvaliteten?</h4>
+      <p class="answer">
+        Ditt foto trycks på högkvalitets konstnär-målarduk med speciella HP latex färger som garanterar färgäkta i minst 75 år. Detta för det till briljanta färger och gör det möjligt att skildra de minsta detaljer vid denna mall.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+<!-- Leverans -->
+    <h2 class="-highlighted-text">Leverans</h2>
+    <div class="question" id="faq-19">
+      <h4 class="title">Var hittar jag leveranskostnaderna?</h4>
+      <p class="answer">
+        I tabellen under "Storlekar &amp; Priser" är priserna för leveranskostnader för varje bildstorlek.
+      </p>
+      <p class="answer">
+        Beställningar med 2 produkter (exklusiv fotobok och fotokalender) med maximal storlek 40x30cm kommer automatiskt att skickas utan paketnummer.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-20">
+      <h4 class="title">Hur är leveranskostnaderna när jag beställer fler bilder?</h4>
+      <p class="answer">
+        Leveranskostnaderna inom Sverige inkl. emballage kostar 129 kr. Frakt till öar kostar 299 kr. För varje ytterligare artikel är det kostnadsfri leverans. Frakt till Danmark, Finland och Norge kostar 129 kr.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-21">
+      <h4 class="title">Hur lång tid tar det innan jag får min produkt?</h4>
+      <p class="answer">
+        Varan produceras och görs leveransfärdig inom 2 arbetsdagar efter betalning. Därefter levereras varan inom 4-7 arbetsdagar. Produktionen påbörjas efter att betalningen kommit in (gäller inte vid Klarna faktura). Med reservation för eventuella förseningar i enstaka fall. Produktionstid för de enskilda produkter:
+      </p>
+      <ul>
+        <li>Canvastavla: 1 arbetsdagar</li>
+        <li>Aluminium: 5 arbetsdagar</li>
+        <li>Akryl: 5 arbetsdagar</li>
+      </ul>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-22">
+      <h4 class="title">Hur lång tid tar det att skicka utomlands?</h4>
+      <p class="answer">
+        Vi erbjuder kundanpassade produkter. Genom Advanced Printing Technology är det möjligt att minska produktionstid utan att kompromissa med kvaliteten. 
+      </p>
+      <p class="answer">
+        Leveranstid Vid beställningar som innehåller olika produkter, riktar sig leveranstiden efter den produkt med längst leveranstid. Sveringe, Norge, Finland, Danmark: Canvastryck: Leveransen sker senast inom 4 till 7 arbetsdagar efter betalning. Aluminium Fine Art tryck, Acrylglas Fine Art tryck, Acryl+Alu Fine Art tryck: Leveransen sker senast inom 8 till 10 arbetsdagar efter betalning. Kopp, kudde, mobilskal, musmatta, fotopussel: Leveransen sker senast inom 8 till 10 arbetsdagar efter betalning.
+      </p>
+      <p class="answer"><b>Leverans utanför Sverige endast i följande länder:</b> Danmark, Finland, Norge.</p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-23">
+      <h4 class="title">Jag vill ge min bild som gåva, kan den levereras direkt till mottagaren?</h4>
+      <p class="answer">
+        Det är naturligtvis möjligt. I slutet av köpet kan du ange en annan leveransadress. Fakturan kommer att skickas via e-post inom 48 timmar.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-24">
+      <h4 class="title">Finns det en transportförsäkring?</h4>
+      <p class="answer">
+        Ja. Alla föremål som skickas från oss transportförsäkras. Detta innebär att alla skador som kan uppstå under transport kommer att ersättas. Det är viktigt att du kontrollerar om produkten eller förpackningen är skadad vid mottagandet.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-25">
+      <h4 class="title">Vem levererar min produkt?</h4>
+      <p class="answer">
+        Vi skickar via UPS.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-26">
+      <h4 class="title">Kan jag hämta produkten själv?</h4>
+      <p class="answer">
+        Detta är av logistiska skäl inte möjligt.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-26b">
+      <h4 class="title">Vem är ansvarig för eventuella tullavgifter?</h4>
+      <p class="answer">
+        Vid leverans till europeiska länder som inte ingår i EU, till exempel Norge, kan tullar tas ut av kuriren. Observera att dessa avgifter alltid måste betalas av mottagaren.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <!-- Betalning -->
+    <h2 class="-highlighted-text">Betalning</h2>
+    <div class="question" id="faq-27">
+      <h4 class="title">Vilka betalningssätt finns det?</h4>
+      <p class="answer">
+        Du kan betala via Paypal, via förskottsbetalningen, kreditkort eller Klarna faktura. Vi accepterar VISA, MasterCard och American Express. Vid köp över faktura, så betalar du den sammanlagda summan inom 14 dagar efter du fått din beställningsbekräftelse. Fakturan skickas separat till dig via e-post.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-28">
+      <h4 class="title">Kan jag betala kontant på plats?</h4>
+      <p class="answer">
+        Kontant betalning är av logistiska skäl inte möjligt.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <!-- Klagomål -->
+    <h2 class="-highlighted-text">Klagomål</h2>
+    <div class="question" id="faq-29">
+      <h4 class="title">Vad ska jag göra vid leveransskador?</h4>
+      <p class="answer">
+        Om din bild har skadats under transport, måste du omedelbart informera den förare som levererat den. Helst bör du dokumentera skadan med en digitalkamera och skicka bilderna till oss. Meddela oss omedelbart skador så att varan / varorna kan bytas ut. Varje transport är försäkrad.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-30">
+      <h4 class="title">Vad ska jag göra med generella klagomål?</h4>
+      <p class="answer">
+        Kontakta oss via <a href="/impressum">e-post</a>. Vid reklamationsfall, var snäll att kontakta oss så snabbt som möjligt, senast 2 veckor efter varan mottagits. En fördröjd reklamation kan inte bearbetats av oss. Det bästa sättet är att dokumentera ditt påstående med ett eller flera foton. Då kan vi hjälpa dig snabbare och börja avveckling av fallet.
+      </p>
+      <p class="answer">
+        Har du problem med din beställning, meddela oss vilken browser du använder och vilket browsernummer det är. Kontrollera om din browser är av aktuell version.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+   
+    <div class="question" id="faq-34">
+      <h4 class="title">Hur kan jag konstruktivt klaga på er?</h4>
+      <p class="answer">
+        Vi uppskattar all feedback som hjälper oss att ständigt förbättras. Om du har ett klagomål kommer vår kundservice göra sitt bästa för att hitta en tillfredsställande lösning åt dig. För allmänna klagomål om din beställning, använd vår <a href="/impressum">e-postadress</a> och ange ditt beställningsnummer samt en detaljerad beskrivning av problemet. För produktklagomål, vänligen inkludera ett foto av produkten som tydligt visar dess brister.
+      </p>
+      <br />
+      <p class="answer">
+        Om du fortfarande är missnöjd efter att vi har behandlat din begäran kan du skicka in ett ytterligare klagomål till oss. Med det här steget vill vi använda din kritik för att förbättra vår service. Använd kontaktalternativet på denna sida: bestcanvas.se/klagomal
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <!-- Övriga Frågor -->
+    <h2 class="-highlighted-text">Övriga Frågor</h2>
+    <div class="question" id="faq-31">
+      <h4 class="title">Hur lagras mina kunduppgifter?</h4>
+      <p class="answer">
+        Vi lagrar dina kunduppgifter endast för beställning och leveransprocess. Vi ger inte ut dina uppgifter till tredje part. Fotofilerna kommer att raderas från vår server 30 dagar efter beställning. Bilder från avbrutna transaktioner raderas efter 24 timmar.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-32">
+      <h4 class="title">Snabbköp eller registrering?</h4>
+      <p class="answer">
+        Din personliga information kommer endast att användas för fakturering eller leverans av din beställning. Du kan också välja att prenumerera för att hålla dig informerad om nya erbjudanden och produkter från bestcanvas.se. Då kan du beställa snabbare och bekvämare via din inloggning. Vill du inte registrera dig, erbjuder vi dig en snabbköpsfunktion.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+    <div class="question" id="faq-33">
+      <h4 class="title">Mobilskydds förhandsvisning</h4>
+      <p class="answer">
+        De praktiska fall tillverkas med en marginal som orsakas av tillverkningsprocessen. Därför viktiga delar av bilden och texten ska placeras ca 10 mm från sidorna av bilden, eftersom de kan gå bort på grund av produktionsprocesser.
+      </p>
+      <a href="/faq/vanliga-fragor.jsf#top" data-static-offset="0" class="action">upp
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="icon" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-arrow-up" />
+        </ui:include>
+      </a>
+    </div>
+
+  </div>
+</section>
+</ui:define>
+
+<ui:define name="eofscript"><script src="/#{shopInfoBean.versionPath}static/build/js/faq-search.js"></script></ui:define>
+
+</ui:composition>

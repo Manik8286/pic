@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+  <!-- Rich snippet -->
+  <ui:remove>
+    <section class="page-section">
+      <div class="article-showcase -no-bottom">
+        <h3 class="headline -has-sidelines"><span>Las mejores calificaciones de clientes</span></h3>
+        <div class="col -span-12 description text-center" vocab="http://schema.org/" typeof="Product">
+		  <span property="brand" typeof="Brand">
+	      <meta property="name" content="BestCanvas.se" />
+	      </span>
+          <meta property="name" content="Klassiek Mok met Foto" />
+          <meta property="image" src="https://www.bestcanvas.se/#{shopInfoBean.versionPath}assets/img/produkter/fotomugg/klassisk/klassisk-mugg-portratt.png" />
+          <meta property="description" content="Uw Mok met Foto. ✓ Enkelzijdig bedrukte keramiek mok in top kwaliteit. ✓ Briljante kleuren en haarscherpe afdrukken. ✓ Vaatwasmachinebestendig."/>
+          <meta property="sku" content="TASSE-LI_QUER" />
+          <span property="aggregateRating" typeof="AggregateRating">
+          
+          <p class="text">
+            <ui:include src="/rich-snippets/snippet-rating.xhtml" />Klassiek Mok met Foto !</p>
+          </span>
+    
+          <span property="offers" typeof="Offer">
+            <meta property="priceCurrency" content="EUR" />
+            <meta property="price" content="#{fn:trim(priceBean.productPrice('Mug_Bestcanvas_SE', 'Mug', 'Mug Left Landscape').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+            <time property="priceValidUntil" datetime="#{now.month + 1 eq 12 ? now.year + 1900 + 1 : now.year + 1900}-12-31"></time>
+            <span property="seller" typeof="Organization">
+              <meta property="name" content="BestCanvas.se" />
+            </span>
+            <link property="itemCondition" href="http://schema.org/NewCondition"/>
+            <link property="availability" href="http://schema.org/InStock"/>
+          </span>
+        </div>
+      </div>
+    </section>
+  </ui:remove>
+  <!-- /Rich snippet -->
+
+</ui:composition>

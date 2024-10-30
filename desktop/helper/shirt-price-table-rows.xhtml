@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:remove><!--
+    Since the beans for Shirts  are rather inhomogeneous we need to tweak the design for this table a little.
+    We're using <c:choose> to determine if we're dealing with men or women sizes (this is why we need explictly named price
+    list from price-accordion-shirt.xhtml).
+    We then set up our type to match the bean we need.
+  --></ui:remove>
+
+  <c:choose>
+    <c:when test="${not empty womenPrices}">
+      <ui:repeat value="#{fn:split(womenPrices, ',')}" var="f">
+        <c:set var="type" value="T-Shirt Womens ${f}" />
+        <tr>
+          <td>#{f}</td>
+          <td>
+            <ui:fragment rendered="#{priceBean.productPrice('T-Shirt_NEW_Bestecanvas_NL', 'Gloss phone cover', type) ne '#ERROR#'}">
+              <span class="-outdated">#{priceBean.productCrossPrice('T-Shirt_Bestecanvas_NL', 'Gloss phone cover', type)}</span>
+              <span class="-highlighted">#{priceBean.productPrice('T-Shirt_Bestecanvas_NL', 'Gloss phone cover', type)}</span>
+            </ui:fragment>
+            <h:outputText value="—" rendered="#{priceBean.productPrice('T-Shirt_Bestecanvas_NL', 'Gloss phone cover', type) eq '#ERROR#'}" />
+          </td>
+        </tr>
+      </ui:repeat>
+    </c:when>
+
+    <c:when test="${not empty menPrices}">
+      <ui:repeat value="#{fn:split(menPrices, ',')}" var="f">
+        <c:set var="type" value="T-Shirt Mens #{f}" />
+        <tr>
+          <td>#{f}</td>
+          <td>
+            <ui:fragment rendered="#{priceBean.productPrice('T-Shirt_Bestecanvas_NL', 'Gloss phone cover', type) ne '#ERROR#'}">
+              <span class="-outdated">#{priceBean.productCrossPrice('T-Shirt_Bestecanvas_NL', 'Gloss phone cover', type)}</span>
+              <span class="-highlighted">#{priceBean.productPrice('T-Shirt_Bestecanvas_NL', 'Gloss phone cover', type)}</span>
+            </ui:fragment>
+            <h:outputText value="—" rendered="#{priceBean.productPrice('T-Shirt_Bestecanvas_NL', 'Gloss phone cover', type) eq '#ERROR#'}" />
+          </td>
+        </tr>
+      </ui:repeat>
+    </c:when>
+  </c:choose>
+</ui:composition>

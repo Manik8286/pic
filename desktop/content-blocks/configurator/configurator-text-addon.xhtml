@@ -1,0 +1,303 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+								xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <label class="hidden" id="ProductIdLabelInitial">#{itemConfiguratorBean.productId.toString()}</label>
+  <label class="hidden" id="CanvasFormatWidthInitial">#{itemConfiguratorBean.configurator.formatWidth.toString()}</label>
+  <label class="hidden" id="CanvasFormatHeightInitial">#{itemConfiguratorBean.configurator.formatHeight.toString()}</label>
+  <label class="hidden" id="CanvasbackMaterialIdInitial">#{itemConfiguratorBean.configurator.backMaterialId.toString()}</label>
+  <label class="hidden" id="CanvasborderEffectInitial">#{itemConfiguratorBean.borderEffect.toString()}</label>
+  <label class="hidden" id="CanvasframeIdInitial">#{itemConfiguratorBean.frameId.toString()}</label>
+
+  <ui:fragment id="ScriptRestore">
+
+    <c:if test="#{fn:length(itemConfiguratorBean.configurator.config.getOverlayImages) > 0}">
+
+    <c:set var="NormalCr" value="\\n" />
+    <c:set var="ScapedCr" value="\\\\n" />
+
+    <script type="text/javascript">
+
+      function FrontRestoreTexts(callback) {
+
+        currentEdit = null;
+        RestoreItemCanvasElements = [];
+
+        fbCanvas.renderOnAddRemove = false;
+        <c:forEach var="item" varStatus="status" items="#{itemConfiguratorBean.configurator.config.getOverlayImages}">
+        BackRestoreTexts(#{item.imageId}, #{item.positionX}, #{item.positionY}, '#{item.fontSize}', '#{item.fontName}', '#{fn:replace(item.content, NormalCr, ScapedCr)}', '#{item.color}', '#{item.width}', '#{item.backgroundColor}', '#{item.textAlign}', '#{item.fontWeight}', '#{item.fontStyle}', '#{item.textDecoration}');</c:forEach>
+        fbCanvas.renderOnAddRemove = true;
+
+        if (callback) {
+          if (typeof(callback) === "function") {
+            callback();
+          }
+        }
+      }
+
+      WebFont.load({
+        google: {
+          families: ['Bangers', 'Cabin Sketch', 'Codystar', 'Domine', 'Gloria Hallelujah', 'Josefin Sans', 'Lato', 'Loved by the king', 'Merriweather', 'Montserrat', 'PT Serif', 'Raleway', 'Satisfy', 'VT323', 'Yellowtail']
+        },
+        active: function() {
+          $(document).ready(function () {
+            if (CheckProductTextOff()) {
+              FrontRestoreTexts(function () {
+                LoadCurrentRestoreTexts(function () {
+                  SetElementsProportionRestoreTexts();
+                });
+              });
+            }
+          });
+        },
+        loading: function() {
+        },
+        inactive: function() {
+        },
+        timeout: 2000,
+      });
+
+    </script>
+
+    </c:if>
+
+  </ui:fragment>
+
+  <h:form id="CanvasConfiguratorForm" styleClass="configurator-text" onsubmit="console.log('form submit')">
+    <div class="modal animated fadeIn modal-wide" id="myCanvasModal" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog" id="modal-dialog-canvas" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div jsf:id="productPreview">
+              <div class="canvas-wrapper" id="myCanvasEdit"></div>
+              <table width="100%">
+                <tr>
+                  <td width="50%" align="center">
+                  <table align="center">
+                    <tr>
+                      <td align="left"><div id="add-text" class="pull-right action button -action clickable -cart5" tabindex="1">T+</div></td>
+                      <td align="center"><span id="add-text-label" class="desktop text clickable">  Ny text</span></td>
+                    </tr>
+                  </table>
+                  </td>
+                  <td width="50%" align="center">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td><span class="signals">-</span></td>
+                        <td><span id="scaleCanvasModal"></span></td>
+                        <td><span class="signals">+</span></td>
+                        <td><p class="draginfo"><span>Zooma</span></p></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="col-xs-20 col-sm-20 fit">
+              <a href="javascript:NoConfirmClose();" class="link">Avbryt</a>
+              <a href="javascript:SaveAndClose();" class="pull-right action button -action SaveCanvasChange">Spara</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </h:form>
+
+  <div class="modal fade modal-wide" id="ModalTextRemoveConfirm" role="dialog">
+    <div class="modal-dialog" id="modal-dialog-text" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Är du säker på att du vill radera den här texten?</h4>
+        </div>
+        <div class="modal-footer">
+          <div class="col-xs-20 col-sm-20 fit">
+            <button type="button" class="action button -action -cart5" id="CancelDialogText">Avbryt</button>
+            <button type="button" class="action button -action" id="SaveDialogText">Ta bort text</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade modal-wide" id="ModalSaveCanges" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" id="modal-dialog-save" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Vill du spara dina ändringar?</h4>
+        </div>
+        <div class="modal-footer">
+          <div class="col-xs-20 col-sm-20 fit">
+            <!-- <button type="button" class="action button -action -cart5" id="CancelDialogCanvas">#{_['Cancel']}</button> -->
+            <button type="button" class="action button -action -cart5" id="NotsafeDialogCanvas">Släng</button>
+            <button type="button" class="action button -action" id="SaveDialogCanvas">Spara</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="ControlFixed">
+    <div id="TopMoveBar" class="MoveBar moveable"></div>
+    <div id="LeftMoveBar" class="MoveBar moveable"></div>
+    <div id="RightMoveBar" class="MoveBar moveable"></div>
+    <div id="BottomMoveBar" class="MoveBar moveable"></div>
+    <div id="controls-complete">
+      <div id="FormatBar">
+        <div class="format-bar font-family">
+          <select id="font-family" tabindex="1">
+            <option>Arial</option>
+            <option>Bangers</option>
+            <option>Cabin Sketch</option>
+            <option>Codystar</option>
+            <option>Domine</option>
+            <option>Gloria Hallelujah</option>
+            <option>Josefin Sans</option>
+            <option>Lato</option>
+            <option>Loved by the king</option>
+            <option>Merriweather</option>
+            <option>Montserrat</option>
+            <option>PT Serif</option>
+            <option>Raleway</option>
+            <option>Satisfy</option>
+            <option>Tahoma</option>
+            <option>Times new roman</option>
+            <option>VT323</option>
+            <option>Yellowtail</option>
+          </select>
+        </div>
+        <div class="format-bar font-size">
+          <select id="font-size" tabindex="2">
+            <option>6</option><option>8</option><option>9</option>
+            <option>10</option><option>11</option><option>12</option><option>14</option><option>16</option><option>18</option><option>20</option>
+            <option>22</option><option>24</option><option>28</option><option>30</option><option>32</option><option>34</option><option selected="selected">36</option>
+            <option>38</option><option>40</option><option>44</option><option>48</option><option>52</option><option>56</option><option>60</option>
+            <option>64</option><option>68</option><option>72</option><option>76</option><option>80</option><option>84</option><option>90</option>
+            <option>96</option><option>100</option><option>106</option><option>112</option><option>118</option>
+          </select>
+        </div>
+        <div class="format-bar remove-text">
+          <div id="remove-text" class="button-bar clickable" tabindex="10">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/TextV7/trash.png" width="14" height="15" border="0" title="Remove Text(s)" />
+          </div>
+        </div>
+        <div class="format-bar font-bold">
+          <div id="bold" class="button-bar clickable" title="Bold" tabindex="6">B</div>
+        </div>
+        <div class="format-bar font-italic">
+          <div id="italic" class="button-bar clickable" title="Italic" tabindex="7">I</div>
+        </div>
+        <div class="format-bar font-underlined">
+          <div id="underline" class="button-bar clickable" title="Underline" tabindex="8">U</div>
+        </div>
+        <div class="format-bar" id="TextAlign">
+          <div id="TextPos1">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/TextV7/left.png" id="TextLeftIcon" class="clickable" width="28" height="28" border="0" title="Left" />
+          </div>
+          <div id="TextAlignOption">
+            <div class="format-bar-tin" id="TextPos2">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/TextV7/center.png" id="TextCenterIcon" class="clickable" width="28" height="28" border="0" title="Center" />
+            </div>
+            <div class="format-bar-tin" id="TextPos3">
+              <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/TextV7/right.png" id="TextRightIcon" class="clickable" width="28" height="28" border="0" title="Left" />
+            </div>
+          </div>
+        </div>
+        <div class="format-bar format-bar-tin font-color clickable" id="TextColorIcon">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/TextV7/select2.png" width="28" height="28" border="0" title="Text Color" />
+          <input type="hidden" value="#ffffff" id="font-color" class="hidden" />
+        </div>
+        <div class="format-bar format-bar-tin background-color clickable" id="BackgroundColorIcon">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/TextV7/select3.png" width="28" height="28" border="0" title="Background Color" />
+          <input type="hidden" id="background-Color" class="hidden" />
+        </div>
+      </div>
+      <div id="ColorPalletes">
+        <div id="ColorTextPallete">
+          <table>
+            <tr>
+              <td class="empty" bgcolor=""></td>
+              <td class="clickable" bgcolor="#f3bde1" title="Pastel Pink" alt="Pastel Pink" Onclick="javascript:SetTextColor('#f3bde1')"></td>
+              <td class="clickable" bgcolor="#e73f97" title="Pink" alt="Pink" Onclick="javascript:SetTextColor('#e73f97')"></td>
+              <td class="clickable" bgcolor="#db0962" title="Raspberry" alt="Raspberry" Onclick="javascript:SetTextColor('#db0962')"></td>
+              <td class="clickable" bgcolor="#ee2d24" title="Bright Red" alt="Bright Red" Onclick="javascript:SetTextColor('#ee2d24')"></td>
+              <td class="clickable" bgcolor="#b6171b" title="Dark Red" alt="Dark Red" Onclick="javascript:SetTextColor('#b6171b')"></td>
+              <td class="clickable" bgcolor="#7c0849" title="Marron" alt="Marron" Onclick="javascript:SetTextColor('#7c0849')"></td>
+              <td class="clickable" bgcolor="#a5439a" title="Purple" alt="Purple" Onclick="javascript:SetTextColor('#a5439a')"></td>
+              <td class="clickable" bgcolor="#6e2a8d" title="Dark Purple" alt="Dark Purple" Onclick="javascript:SetTextColor('#6e2a8d')"></td>
+            </tr>
+            <tr>
+              <td class="clickable" bgcolor="#ffffff" title="White" alt="White" Onclick="javascript:SetTextColor('#ffffff')"></td>
+              <td class="clickable" bgcolor="#d0e1f3" title="Light Powder Blue" alt="Light Powder Blue" Onclick="javascript:SetTextColor('#d0e1f3')"></td>
+              <td class="clickable" bgcolor="#78d2ec" title="Pastel Blue" alt="Pastel Blue" Onclick="javascript:SetTextColor('#78d2ec')"></td>
+              <td class="clickable" bgcolor="#0083a9" title="Aqua" alt="Aqua" Onclick="javascript:SetTextColor('#0083a9')"></td>
+              <td class="clickable" bgcolor="#0d5cab" title="Powder Blue" alt="Powder Blue" Onclick="javascript:SetTextColor('#0d5cab')"></td>
+              <td class="clickable" bgcolor="#002e62" title="Navy Blue" alt="Navy Blue" Onclick="javascript:SetTextColor('#002e62')"></td>
+              <td class="clickable" bgcolor="#9ee6da" title="Pastel Green" alt="Pastel Green" Onclick="javascript:SetTextColor('#9ee6da')"></td>
+              <td class="clickable" bgcolor="#00a88f" title="Pale Green" alt="Pale Green" Onclick="javascript:SetTextColor('#00a88f')"></td>
+              <td class="clickable" bgcolor="#6fb43f" title="Lime Green" alt="Lime Green" Onclick="javascript:SetTextColor('#6fb43f')"></td>
+            </tr>
+            <tr>
+              <td class="clickable" bgcolor="#000000" title="Black" alt="Black" Onclick="javascript:SetTextColor('#000000')"></td>
+              <td class="clickable" bgcolor="#007060" title="Forest Green" alt="Forest Green" Onclick="javascript:SetTextColor('#007060')"></td>
+              <td class="clickable" bgcolor="#004811" title="Army Green" alt="Army Green" Onclick="javascript:SetTextColor('#004811')"></td>
+              <td class="clickable" bgcolor="#efefb3" title="Pastel Yellow" alt="Pastel Yellow" Onclick="javascript:SetTextColor('#efefb3')"></td>
+              <td class="clickable" bgcolor="#fff001" title="Yellow" alt="Yellow" Onclick="javascript:SetTextColor('#fff001')"></td>
+              <td class="clickable" bgcolor="#f9aa89" title="Peache" alt="Peache" Onclick="javascript:SetTextColor('#f9aa89')"></td>
+              <td class="clickable" bgcolor="#f78f1e" title="Orange" alt="Orange" Onclick="javascript:SetTextColor('#f78f1e')"></td>
+              <td class="clickable" bgcolor="#717075" title="Dark Grey" alt="Dark Grey" Onclick="javascript:SetTextColor('#717075')"></td>
+              <td class="clickable" bgcolor="#a2968a" title="Light Grey" alt="Light Grey" Onclick="javascript:SetTextColor('#a2968a')"></td>
+            </tr>
+          </table>
+        </div>
+        <div id="ColorBackgroundPallete">
+          <table>
+            <tr>
+              <td class="clickable TransparentCell" bgcolor="#ffffff" title="Transparent" alt="Transparent" Onclick="javascript:SetBackgroundColor('')"></td>
+              <td class="clickable" bgcolor="#f3bde1" title="Pastel Pink" alt="Pastel Pink" Onclick="javascript:SetBackgroundColor('#f3bde1')"></td>
+              <td class="clickable" bgcolor="#e73f97" title="Pink" alt="Pink" Onclick="javascript:SetBackgroundColor('#e73f97')"></td>
+              <td class="clickable" bgcolor="#db0962" title="Raspberry" alt="Raspberry" Onclick="javascript:SetBackgroundColor('#db0962')"></td>
+              <td class="clickable" bgcolor="#ee2d24" title="Bright Red" alt="Bright Red" Onclick="javascript:SetBackgroundColor('#ee2d24')"></td>
+              <td class="clickable" bgcolor="#b6171b" title="Dark Red" alt="Dark Red" Onclick="javascript:SetBackgroundColor('#b6171b')"></td>
+              <td class="clickable" bgcolor="#7c0849" title="Marron" alt="Marron" Onclick="javascript:SetBackgroundColor('#7c0849')"></td>
+              <td class="clickable" bgcolor="#a5439a" title="Purple" alt="Purple" Onclick="javascript:SetBackgroundColor('#a5439a')"></td>
+              <td class="clickable" bgcolor="#6e2a8d" title="Dark Purple" alt="Dark Purple" Onclick="javascript:SetBackgroundColor('#6e2a8d')"></td>
+            </tr>
+            <tr>
+              <td class="clickable" bgcolor="#ffffff" title="White" alt="White" Onclick="javascript:SetBackgroundColor('#ffffff')"></td>
+              <td class="clickable" bgcolor="#d0e1f3" title="Light Powder Blue" alt="Light Powder Blue" Onclick="javascript:SetBackgroundColor('#d0e1f3')"></td>
+              <td class="clickable" bgcolor="#78d2ec" title="Pastel Blue" alt="Pastel Blue" Onclick="javascript:SetBackgroundColor('#78d2ec')"></td>
+              <td class="clickable" bgcolor="#0083a9" title="Aqua" alt="Aqua" Onclick="javascript:SetBackgroundColor('#0083a9')"></td>
+              <td class="clickable" bgcolor="#0d5cab" title="Powder Blue" alt="Powder Blue" Onclick="javascript:SetBackgroundColor('#0d5cab')"></td>
+              <td class="clickable" bgcolor="#002e62" title="Navy Blue" alt="Navy Blue" Onclick="javascript:SetBackgroundColor('#002e62')"></td>
+              <td class="clickable" bgcolor="#9ee6da" title="Pastel Green" alt="Pastel Green" Onclick="javascript:SetBackgroundColor('#9ee6da')"></td>
+              <td class="clickable" bgcolor="#00a88f" title="Pale Green" alt="Pale Green" Onclick="javascript:SetBackgroundColor('#00a88f')"></td>
+              <td class="clickable" bgcolor="#6fb43f" title="Lime Green" alt="Lime Green" Onclick="javascript:SetBackgroundColor('#6fb43f')"></td>
+            </tr>
+            <tr>
+              <td class="clickable" bgcolor="#000000" title="Black" alt="Black" Onclick="javascript:SetBackgroundColor('#000000')"></td>
+              <td class="clickable" bgcolor="#007060" title="Forest Green" alt="Forest Green" Onclick="javascript:SetBackgroundColor('#007060')"></td>
+              <td class="clickable" bgcolor="#004811" title="Army Green" alt="Army Green" Onclick="javascript:SetBackgroundColor('#004811')"></td>
+              <td class="clickable" bgcolor="#efefb3" title="Pastel Yellow" alt="Pastel Yellow" Onclick="javascript:SetBackgroundColor('#efefb3')"></td>
+              <td class="clickable" bgcolor="#fff001" title="Yellow" alt="Yellow" Onclick="javascript:SetBackgroundColor('#fff001')"></td>
+              <td class="clickable" bgcolor="#f9aa89" title="Peache" alt="Peache" Onclick="javascript:SetBackgroundColor('#f9aa89')"></td>
+              <td class="clickable" bgcolor="#f78f1e" title="Orange" alt="Orange" Onclick="javascript:SetBackgroundColor('#f78f1e')"></td>
+              <td class="clickable" bgcolor="#717075" title="Dark Grey" alt="Dark Grey" Onclick="javascript:SetBackgroundColor('#717075')"></td>
+              <td class="clickable" bgcolor="#a2968a" title="Light Grey" alt="Light Grey" Onclick="javascript:SetBackgroundColor('#a2968a')"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="FakeBackdrop" class="modal-backdrop in hidden"></div>
+
+</ui:composition>

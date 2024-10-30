@@ -1,0 +1,64 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Individuell Fotopresenter - prisvinnande kvalitet" />
+
+  <ui:param name="SMP" value="spring" />
+
+  <ui:define name="head">
+    <ui:include src="/coupons/discountcode-SMP-BCSE.xhtml" />
+    <ui:include src="/helper/reference.xhtml" />
+  </ui:define>
+
+  <ui:define name="dataLayer">
+    <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+      <ui:param name="canvas" value="true" />
+      <ui:param name="passepartout" value="true" />
+      <ui:param name="acryl_glass" value="true" />
+      <ui:param name="aluminium_glossy" value="true" />
+      <ui:param name="aluminium_matte" value="true" />
+      <ui:param name="blanket_premium" value="true" />
+      <ui:param name="pillow" value="true" />
+    </ui:include>
+    <script>
+        dataLayer.push({
+          'marketingChannelPage': 'social_paid'
+        })
+      </script>
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="description" content="Individuell Fotopresenter - prisvinnande kvalitet" />
+    <meta name="robots" content="NOINDEX,NOFOLLOW" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+    <link rel="canonical" href="https://www.bestcanvas.se/vaggdekor/" />
+  </ui:define>
+
+  <ui:define name="content">
+
+    <!-- teaser -->
+    <section class="page-teaser mainproducts -collapse">
+      <div class="showcase #{sessionBean.userAgentType == 'phone' ? '-noPaddingTop' : ''}" style="background-image: url(#{sessionBean.userAgentType == 'phone' ? '/#{shopInfoBean.versionPath}assets/img/teaser/mobile/wall-deco-mobile.jpg' : '/#{shopInfoBean.versionPath}assets/img/teaser/desktop/wall-deco.jpg'});#{sessionBean.userAgentType == 'phone' ? 'height: 318px;' : ''}" >
+        <ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+          <a href="javascript:smoothScrollTo($('#products'));" class="button -action -arrow -filled">Mer Information</a>
+        </ui:fragment>
+      </div>
+    </section>
+    <!-- /teaser -->
+
+    <!-- product boxes -->
+    <section class="page-section -collapse-top">
+      <ui:include src="/page-blocks/product-boxes-walldecofb-align.xhtml" />
+    </section>
+    <!-- /product boxes -->
+
+    <!-- paymentmethods and social -->
+    <section class="page-section -alternate">
+      <ui:include src="/page-blocks/paymentmethods.xhtml" />
+      <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+    </section>
+    <!-- /paymentmethods and social -->
+
+  </ui:define>
+</ui:composition>

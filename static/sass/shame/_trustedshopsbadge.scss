@@ -1,0 +1,73 @@
+//
+// Fix for trusted shop responsive mobile banner
+// ====
+// There's no way to easy position this thing. Also, the ID looks very
+// suspicious to me. I can't rule out TrustedShops will eventually change
+// this ID.
+//
+// This css rule sets the responsive banner to the top and pushes everything
+// below it down with some cool selector-magic.
+// This way we achive the look we want.
+//
+// If it fails, it will be shown below the header navigation and won't be
+// fixed, so it won't break the template.
+//
+
+@media only screen and (max-width: 649px) {
+  .newsletter-body {
+    #tsbadgeResponsiveTop_db8d3657bdbe440c985ae127463eaad4node {
+      ~._p_t-page-head {
+        margin-top: 0;
+        + * {
+          margin-top: 0;
+        }
+      }
+      ~.page-teaser {
+        padding-top: 0;
+      }
+    }
+  }
+  #tsbadgeResponsiveTop_db8d3657bdbe440c985ae127463eaad4node {
+    position: fixed;
+    top: 0;
+    @include z-index(navigation, 1);
+
+    &, * {
+      box-sizing: border-box;
+    }
+
+     ~ .top-header-bar {
+      top: 69px;
+    }
+
+     ~ #discountForm {
+
+     .newsletter-line {
+      position: relative;
+      z-index: 9;
+      margin-top: 45px;
+      margin-bottom: -53px;
+      padding: 15px;
+      }
+     }
+
+    ~ .header-bar {
+      margin-top: 54px;
+    }
+
+     ~ .page-teaser {
+
+      &.-top-bar-button {
+        padding-top: 150px;
+      }
+    }
+
+    ~ ._p_t-page-head {
+      margin-top: 69px;
+
+      + * {
+        margin-top: 69px;
+      }
+    }
+  }
+}

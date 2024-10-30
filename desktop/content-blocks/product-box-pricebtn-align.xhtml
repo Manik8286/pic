@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+  <div class="product-box" data-mh="product">
+    <h3 class="title" jsf:rendered="#{not empty productBoxTitle}"><a href="#{productBoxProductLink}">#{productBoxTitle}</a></h3>
+    <div id="products" style="position: relative;top: 25px;"></div>
+    <a href="#{productBoxProductLink}" class="image #{productBoxProductClass}" data-more-text="mer information">
+      <c:if test="${empty productBoxImageHover}">
+        <img src="#{productBoxImage}" id="#{ImageId}" alt="#{productBoxAlt}" />
+      </c:if>
+
+      <c:if test="${not empty productBoxImageHover}">
+        <img src="#{productBoxImage}" id="img2" alt="#{productBoxAlt}" />
+        <img src="#{productBoxImageHover}" id="#{ImageId}" alt="#{productBoxAltHover}" />
+      </c:if>
+    </a>
+    <c:if test="${not empty productBoxText}">
+      <div class="body"><p>#{productBoxText}</p></div>
+    </c:if>
+
+    <div class="body" jsf:rendered="${not empty productBoxListHeadline}" data-mh="product-text">
+        <h2 class="headline">#{productBoxListHeadline}</h2>
+        <p class="text" jsf:rendered="${not empty productBoxListText}">
+          #{productBoxListText}
+        </p>
+        <ul class="features">
+          <li>#{productBoxListFeature1}</li>
+          <li>#{productBoxListFeature2}</li>
+          <li>#{productBoxListFeature3}</li>
+        </ul>
+      </div>
+    <div class="info">
+      <div class="price pull-left">
+        <div jsf:rendered="#{not empty showCrossPrices}">
+          <span><s>#{productBoxCrossPrice}</s></span>
+        </div>
+        <span>från</span><span class="highlight -highlighted">#{productBoxPrice}<sup>*</sup></span>
+      </div>
+      <c:choose>
+        <c:when test="${not empty buttonText and not empty productButtonIDinside }">
+          <c:set var="productButtonID" value="#{productButtonIDinside}" />
+          <ui:include src="/helper/directupload-short-pricebtn-align.xhtml">
+            <ui:param name="directuploadProductId" value="#{productButtonID}" />
+            <ui:param name="directuploadClass" value="button -action -secondary -right" />
+            <ui:param name="styleTop" value="" />
+            <ui:param name="buttonText" value="Skapa" />
+            <ui:param name="buttonTextDesktop" value="Skapa" />
+            <ui:param name="buttonId" value ="#{buttonId}"/>
+            <ui:param name="buttonFixPhone" value ="#{buttonFixPhone}"/>
+          </ui:include>
+        </c:when>
+        <c:otherwise>
+          <a href="#{productBoxUploadLink}" class="button -action -secondary -right">#{buttonText}</a>
+        </c:otherwise>
+      </c:choose>
+    </div>
+  </div>
+</ui:composition>

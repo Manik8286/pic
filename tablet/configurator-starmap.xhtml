@@ -1,0 +1,464 @@
+<ui:composition template="/templates/checkout.xhtml"
+				xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:c="http://java.sun.com/jsp/jstl/core"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:o="http://omnifaces.org/ui"
+				xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:p="http://primefaces.org/ui"
+				xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <!-- Sets view in cache - fixes back button lost session -->
+  <f:metadata>
+    <c:catch var="ProductIdCatchException">
+      <c:set var="productId" value="#{param['product'] + 1}" scope="request" />
+    </c:catch>
+    <c:if test="#{not empty ProductIdCatchException}">
+      <f:viewAction action="/fotopresenter/stjarnkarta.jsf" />
+    </c:if>
+    <f:event type="preRenderView" listener="#{facesContext.externalContext.response.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')}" />
+
+  </f:metadata>
+	<ui:define name="dataLayer">
+    #{itemConfiguratorBean.setDefaultConfigurationAndFormat}
+    #{itemConfiguratorBean.ignoreCutout}
+    <ui:include src="/tracking/ecommerce/dataLayer-product-details.xhtml"/>
+  </ui:define>
+  <ui:param name="pageTitle" value="Personliga Stjärnkarta  | Star Map" />
+  <ui:param name="bodyClass" value="StarMap" />
+  <ui:define name="head">
+    <script>
+    // <![CDATA[
+    var isMobile = false;
+    // ]]>
+    </script>
+    <ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+      <style>
+        .StarMap .checkout-step-2.-alternative .selectable {
+          width: 30%;
+        }
+        .checkout-step-2.-alternative .table.format-table tbody td {
+          padding: 10px 10px;
+        }
+        .checkout-step-2.-alternative .table.format-table tbody td:first-child {
+          padding: 5px 5px;
+          width: 6%;
+        }
+        .checkout-step-2 #preview-wrapper .format-table .radio.-alone {
+          padding: 0 2px 4px;
+        }
+        .StarMap .starMapTitles .centered {
+          top: 91%;
+        }
+      </style>
+    </ui:fragment>
+  </ui:define>
+  <ui:define name="meta">
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="pragma" content="no-cache" />
+  </ui:define>
+  <ui:define name="content">
+    <p:ajaxStatus />
+	<script type="text/javascript">
+	  function blinkMsgBox() {
+	    $('.cartInfoBox-bubble').slideToggle(400);
+	    setTimeout(function(){
+	      $('.cartInfoBox-bubble').slideToggle(400);
+	    },3000);
+	  }
+	</script>
+
+	  <ui:fragment rendered="#{param['success'] == 'true'}">
+	    <script type="text/javascript">setTimeout(function() { blinkMsgBox(); }, 50);</script>
+	  </ui:fragment>
+
+    <h:form id="itemConfiguratorForm" styleClass="StarMap">
+
+      <section class="checkout-step-2 checkout-section -alternative background-container">
+
+        <div class="addon">
+          <div id="preview-wrapper">
+            <div class="canvas-block" jsf:id="productSpecific">
+              <div class="prices">
+
+                <!-- Format block -->
+                <div class="prices" jsf:id="formatSwitch">
+
+                  <!-- Since we have to show diffrent formats with or without frames we need such conditions to preselect new formats when selecting frame / non-frame -->
+                  <ui:fragment rendered="#{itemConfiguratorBean.frameId eq 0 and itemConfiguratorBean.formatId(itemConfiguratorBean.configurator.formatKey) == 1058}">#{itemConfiguratorBean.selectFormat(600, 800)} </ui:fragment>
+                  <ui:fragment rendered="#{itemConfiguratorBean.frameId eq 0 and itemConfiguratorBean.formatId(itemConfiguratorBean.configurator.formatKey) == 1057}">#{itemConfiguratorBean.selectFormat(400, 600)} </ui:fragment>
+                  <ui:fragment rendered="#{itemConfiguratorBean.frameId eq 0 and itemConfiguratorBean.formatId(itemConfiguratorBean.configurator.formatKey) == 1056}">#{itemConfiguratorBean.selectFormat(300, 400)} </ui:fragment>
+
+                  <ui:fragment rendered="#{itemConfiguratorBean.frameId ne 0 and itemConfiguratorBean.formatId(itemConfiguratorBean.configurator.formatKey) == 990}"> #{itemConfiguratorBean.selectFormat(572, 772)}</ui:fragment>
+                  <ui:fragment rendered="#{itemConfiguratorBean.frameId ne 0 and itemConfiguratorBean.formatId(itemConfiguratorBean.configurator.formatKey) == 1015}">#{itemConfiguratorBean.selectFormat(372, 572)}</ui:fragment>
+                  <ui:fragment rendered="#{itemConfiguratorBean.frameId ne 0 and itemConfiguratorBean.formatId(itemConfiguratorBean.configurator.formatKey) == 1014}">#{itemConfiguratorBean.selectFormat(272, 372)}</ui:fragment>
+                  <!-- // Since we have to show diffrent formats with or without frames we need such conditions to preselect new formats when selecting frame / non-frame -->
+
+                  <h3 class="title">Välj format:</h3>
+
+                  <p:selectOneRadio plain="true" id="formatRadios" value="#{itemConfiguratorBean.configurator.formatKey}" layout="custom">
+                    <p:ajax listener="#{itemConfiguratorBean.change}" oncomplete="previewConfig.buildPreview();$.primefacesHelper();" event="change" update=":itemConfiguratorForm:preview :itemConfiguratorForm:priceBox :itemConfiguratorForm:optionBox :itemConfiguratorForm:formatSwitch" />
+                    <f:selectItems value="#{itemConfiguratorBean.tiledFormats(1)}"/>
+                  </p:selectOneRadio>
+
+                  <table class="table -striped -centered -selection format-table">
+                    <thead class="-highlighted">
+                      <tr>
+                        <th></th>
+                        <th>#{i} Format</th>
+                        <th>Pris</th>
+                        <th>Specialpris</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ui:repeat value="#{itemConfiguratorBean.tiledFormats(1)}" var="f" varStatus="s">
+                        <!-- show diffrent formats when with / without frame -->
+                        <ui:fragment rendered="#{(itemConfiguratorBean.frameId eq 0 and (fn:substringBefore(f.value.split(':')[0], '.') == '400' or fn:substringBefore(f.value.split(':')[0], '.') == '300' or fn:substringBefore(f.value.split(':')[0], '.') == '600')) or
+                                                 (itemConfiguratorBean.frameId ne 0 and (fn:substringBefore(f.value.split(':')[0], '.') == '272' or fn:substringBefore(f.value.split(':')[0], '.') == '372' or fn:substringBefore(f.value.split(':')[0], '.') == '572'))}">
+                        <tr data-clickarea="data-clickarea" data-frame="formats">
+                          <td>
+                            <div class="radio -alone">
+                              <p:radioButton id="product" for=":itemConfiguratorForm:formatRadios" itemIndex="#{s.index}"/>
+                              <h:outputLabel for="product" />
+                            </div>
+                          </td>
+                          <td class="-formatLeft">
+                            <h:outputLabel for="entry" value="#{f.label}" class="cursorPointer pull-left format-label" />
+                          </td>
+                          <td class="-outdated">#{itemConfiguratorBean.formatComponentCrossPrice(f.value)}</td>
+                          <td class="-highlighted #{(sessionServicesBean.discountCode.code != 'HIGHPRICESMEINFOTO' and sessionServicesBean.discountCode.code != 'HIGHPRICESMEINFOTO-TV') ? '-discounted' : ''} #{itemConfiguratorBean.productId == 492 and sessionServicesBean.discountCode.code == '6KJN0RHZ48UB4PMHFDOI' ? 'text-red-force' : ''}">
+                            <h:outputLabel for="entry" rendered="#{itemConfiguratorBean.formatComponentCrossPrice(f.value) != itemConfiguratorBean.configurator.formatDefaultPrice(f.value) and itemConfiguratorBean.configurator.formatDefaultPrice(f.value) != itemConfiguratorBean.formatComponentPrice(f.value) and (sessionServicesBean.discountCode.code == 'HIGHPRICESMEINFOTO-TV' or sessionServicesBean.discountCode.code == 'HIGHPRICESMEINFOTO')}" value="#{itemConfiguratorBean.configurator.formatDefaultPrice(f.value)}" styleClass="cursorPointer #{sessionServicesBean.discountCode.code == '6KJN0RHZ48UB4PMHFDOI-ANGEBOTE' ? 'text-red' : ''}" />
+                            <h:outputLabel for="entry" rendered="#{itemConfiguratorBean.formatComponentCrossPrice(f.value) != itemConfiguratorBean.configurator.formatDefaultPrice(f.value) and itemConfiguratorBean.configurator.formatDefaultPrice(f.value) != itemConfiguratorBean.formatComponentPrice(f.value) and (sessionServicesBean.discountCode.code != 'HIGHPRICESMEINFOTO-TV' and sessionServicesBean.discountCode.code != 'HIGHPRICESMEINFOTO' and sessionServicesBean.discountCode.code != 'A4XDW88OBV8E9NW8MHJZ')}"  styleClass="cursorPointer text-red" value="#{itemConfiguratorBean.configurator.formatDefaultPrice(f.value)}" />
+                            <h:outputLabel for="entry" rendered="#{itemConfiguratorBean.formatComponentCrossPrice(f.value) != itemConfiguratorBean.configurator.formatDefaultPrice(f.value) and itemConfiguratorBean.configurator.formatDefaultPrice(f.value) == itemConfiguratorBean.formatComponentPrice(f.value)}"  value="#{itemConfiguratorBean.configurator.formatDefaultPrice(f.value)}" styleClass="cursorPointer #{sessionServicesBean.discountCode.code == '6KJN0RHZ48UB4PMHFDOI-ANGEBOTE' ? 'text-red' : ''}" />
+                            <h:outputLabel for="entry" rendered="#{itemConfiguratorBean.formatComponentCrossPrice(f.value) != itemConfiguratorBean.configurator.formatDefaultPrice(f.value) and itemConfiguratorBean.configurator.formatDefaultPrice(f.value) != itemConfiguratorBean.formatComponentPrice(f.value) and (sessionServicesBean.discountCode.code == 'A4XDW88OBV8E9NW8MHJZ')}" style="color:#D40140;" value="Heute #{itemConfiguratorBean.configurator.formatDefaultPrice(f.value)}" styleClass="cursorPointer" />
+                            <h:outputLabel for="entry" rendered="#{itemConfiguratorBean.formatComponentCrossPrice(f.value) == itemConfiguratorBean.configurator.formatDefaultPrice(f.value) and (sessionServicesBean.discountCode.code == 'HIGHPRICESMEINFOTO' or sessionServicesBean.discountCode.code == 'HIGHPRICESMEINFOTO-TV')}" value="#{itemConfiguratorBean.configurator.formatDefaultPrice(f.value)}" styleClass="cursorPointer #{sessionServicesBean.discountCode.code == '6KJN0RHZ48UB4PMHFDOI-ANGEBOTE' ? 'text-red' : ''}" />
+
+                          </td>
+                        </tr>
+                        </ui:fragment>
+                        <!-- // show diffrent formats when with / without frame -->
+                      </ui:repeat>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /Format block -->
+
+          <!-- Starmap Color -->
+          <!-- Reset default color value and set Sternbilder -->
+          <c:if test="#{empty param['cartItem']}">
+            <c:set target="#{itemConfiguratorBean.configurator.starMapData}" property="constellations" value="#{true}" />
+            <c:set target="#{itemConfiguratorBean.configurator.starMapData}" property="fillColor" value="#2D2C4D" />
+          </c:if>
+            <p:selectOneRadio id="fillColor" value="#{itemConfiguratorBean.configurator.starMapData.fillColor}" layout="custom" plain="true" onchange="previewConfig.buildPreview();">
+              <f:selectItem itemValue="#2D2C4D" itemLabel="Midnatt" />
+              <f:selectItem itemValue="#000000" itemLabel="Svart" />
+              <f:selectItem itemValue="#FFFFFF" itemLabel="Vit" />
+              <f:selectItem itemValue="#B76E69" itemLabel="Morgonrodnad" />
+              <f:selectItem itemValue="#FC5C65" itemLabel="Aftonrodnad" />
+              <f:selectItem itemValue="#F7CAC9" itemLabel="Morgondagg" />
+              <f:selectItem itemValue="#A2ADD0" itemLabel="Månsken" />
+              <f:selectItem itemValue="#5F4B8B" itemLabel="Ultraviolett" />
+              <f:selectItem itemValue="#00AB84" itemLabel="Glänta" />
+
+            </p:selectOneRadio>
+            <!-- <h3 class="title">Farbe wählen</h3> -->
+            <div class="clearfix">
+
+              <div class="selectable starMapTitles" data-clickarea="data-clickarea">
+                <div class="radio pull-left">
+                  <p:radioButton id="color9" for=":itemConfiguratorForm:fillColor" itemIndex="0" />
+                  <h:outputLabel for="color9" />
+                </div>
+                <img style="background-color: #2D2C4D !important;" for="entry" class="img-resposive" src="/staticimages/configurator/mf/starmap-icon.png" />
+                <div class="centered">Midnatt</div>
+              </div>
+
+              <div class="selectable starMapTitles" data-clickarea="data-clickarea">
+                <div class="radio pull-left">
+                  <p:radioButton id="color7" for=":itemConfiguratorForm:fillColor" itemIndex="1" />
+                  <h:outputLabel for="color7" />
+                </div>
+                <img style="background-color: #000000 !important;" for="entry" class="img-resposive" src="/staticimages/configurator/mf/starmap-icon.png" />
+                <div class="centered">Svart</div>
+              </div>
+
+              <div class="selectable starMapTitles" data-clickarea="data-clickarea">
+                <div class="radio pull-left">
+                  <p:radioButton checked="true" id="color5" for=":itemConfiguratorForm:fillColor" itemIndex="2" />
+                  <h:outputLabel for="color5" />
+                </div>
+                <img style="background-color: #FFFFFF !important;" for="entry" class="img-resposive" src="/staticimages/configurator/mf/starmap-icon-black.png" />
+                <div class="centered">Vit</div>
+              </div>
+
+              <div class="selectable starMapTitles" data-clickarea="data-clickarea">
+                <div class="radio pull-left">
+                  <p:radioButton id="color1" for=":itemConfiguratorForm:fillColor" itemIndex="3" />
+                  <h:outputLabel for="color1" />
+                </div>
+                <img style="background-color: #B76E69 !important;" for="entry" class="img-resposive" src="/staticimages/configurator/mf/starmap-icon.png" />
+                <div class="centered">Morgonrodnad</div>
+              </div>
+
+              <div class="selectable starMapTitles" data-clickarea="data-clickarea">
+                <div class="radio pull-left">
+                  <p:radioButton id="color4" for=":itemConfiguratorForm:fillColor" itemIndex="4" />
+                  <h:outputLabel for="color4" />
+                </div>
+                <img style="background-color: #FC5C65 !important;" for="entry" class="img-resposive" src="/staticimages/configurator/mf/starmap-icon.png" />
+                <div class="centered">Aftonrodnad</div>
+              </div>
+
+              <div class="selectable starMapTitles" data-clickarea="data-clickarea">
+                <div class="radio pull-left">
+                  <p:radioButton id="color8" for=":itemConfiguratorForm:fillColor" itemIndex="5" />
+                  <h:outputLabel for="color8" />
+                </div>
+                <img style="background-color: #F7CAC9 !important;" for="entry" class="img-resposive" src="/staticimages/configurator/mf/starmap-icon.png" />
+                <div class="centered">Morgondagg</div>
+              </div>
+
+              <div class="selectable starMapTitles" data-clickarea="data-clickarea">
+                <div class="radio pull-left">
+                  <p:radioButton checked="true" id="color3" for=":itemConfiguratorForm:fillColor" itemIndex="6" />
+                  <h:outputLabel for="color3" />
+                </div>
+                <img style="background-color: #A2ADD0 !important;" for="entry" class="img-resposive" src="/staticimages/configurator/mf/starmap-icon.png" />
+                <div class="centered">Månsken</div>
+              </div>
+
+              <div class="selectable starMapTitles" data-clickarea="data-clickarea">
+                <div class="radio pull-left">
+                  <p:radioButton id="color2" for=":itemConfiguratorForm:fillColor" itemIndex="7" />
+                  <h:outputLabel for="color2" />
+                </div>
+                <img style="background-color: #5F4B8B !important;" for="entry" class="img-resposive" src="/staticimages/configurator/mf/starmap-icon.png" />
+                <div class="centered">Ultraviolett</div>
+              </div>
+
+
+              <div class="selectable starMapTitles" data-clickarea="data-clickarea">
+                <div class="radio pull-left">
+                  <p:radioButton id="color6" for=":itemConfiguratorForm:fillColor" itemIndex="8" />
+                  <h:outputLabel for="color6" />
+                </div>
+                <img style="background-color: #00AB84 !important;" for="entry" class="img-resposive" src="/staticimages/configurator/mf/starmap-icon.png" />
+                <div class="centered">Glänta</div>
+              </div>
+            </div>
+          <!-- /Starmap Color -->
+
+
+
+
+          <div jsf:id="preview">
+            <p:outputPanel id="updatePreview">
+              <div class="loader">Loading...</div>
+              <canvas id="canvas-preview"></canvas>
+              <div class="-attention -text"><strong>Obs!</strong><br/>Vissa rader är längre än 40 tecken. Kontrollera att texten visas korrekt.</div>
+
+              <div id="imageData" class="hidden" data-id="#{itemConfiguratorBean.configurator.productType != 'STARMAP' ? itemConfiguratorBean.item.images[0].imageId : 0}" data-serviceurl="#{itemConfiguratorBean.configurator.productType == 'STARMAP' ? itemConfiguratorBean.starmapServiceUrl : ''}" data-productid="#{itemConfiguratorBean.productId}" data-format="#{itemConfiguratorBean.configurator.formatKey}" data-imgwidth="#{itemConfiguratorBean.configurator.image.width}" data-imgheight="#{itemConfiguratorBean.configurator.image.height}" data-loadalert="Wacht tot de hele pagina is geladen. Laad de pagina opnieuw als het voorbeeld niet verschijnt." data-material="#{itemConfiguratorBean.colorCarrierId}" data-frame="#{itemConfiguratorBean.frameId!=null?itemConfiguratorBean.frameId:0}">
+
+              </div>
+            </p:outputPanel>
+          </div>
+
+
+          <!-- Starmap settings -->
+            <div class="OptionBox">
+              <h3 class="title">Välj stjärnhimmel</h3>
+              <div class="row">
+              <div class="fieldBlock col -span-4">
+                <p>Plats:</p>
+                <h:inputText id="location" converter="StringFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.location}" update="dateValidation" onchange="checkLocatonDateFields(0);previewConfig.buildPreview();smoothScrollTo($('#canvas-preview'));" required="true" />
+                <div id="error-location" class="-attention"><strong>Fel!</strong><br/>Ange en plats.</div>
+              </div>
+              <div class="fieldBlock col -span-8">
+                <div class="col -span-6">
+                <p>Datum:</p>
+                <span id="dateValidation" class="validation -error -bottom">#{_['Please enter valid data.']}</span>
+                <h:inputText type="tel" id="datetimeInput" onclick="$(this).datepicker('show');" required="true" readonly="true" />
+
+                </div>
+                 <div class="col -span-6">
+                <p>Klockslag:</p>
+              <h:selectOneMenu id="dateTimeHours" value="00" onchange="previewConfig.buildPreview();smoothScrollTo($('#canvas-preview'));smoothScrollTo($('#canvas-preview'));">
+                   <f:selectItems value="#{fn:split('00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23', ',')}" />
+              </h:selectOneMenu>
+              :
+              <h:selectOneMenu id="dateTimeMinutes" value="00" onchange="previewConfig.buildPreview();smoothScrollTo($('#canvas-preview'));">
+                   <f:selectItems value="#{fn:split('00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59', ',')}" />
+              </h:selectOneMenu>
+              </div>
+              </div>
+
+              </div>
+            </div>
+            <ul class="toggleSwitch">
+              <li>
+                <div class="panelSwitch">
+                  Konstellation:
+                  <label class="switch">
+                    <h:selectBooleanCheckbox id="constellations" converter="BooleanFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.constellations}" onchange="previewConfig.buildPreview();smoothScrollTo($('#canvas-preview'));" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="panelSwitch">
+                  Rutnät:
+                  <label class="switch">
+                    <h:selectBooleanCheckbox id="graticule" converter="BooleanFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.graticule}" onchange="previewConfig.buildPreview();smoothScrollTo($('#canvas-preview'));" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="panelSwitch -last">
+                  Enkel design:
+                  <label class="switch">
+                    <h:selectBooleanCheckbox id="onwhite" converter="BooleanFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.onwhite}" onchange="previewConfig.buildPreview();smoothScrollTo($('#canvas-preview'));" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </li>
+            </ul>
+          <!-- Starmap settings -->
+
+
+              </div>
+
+          <!-- Starmap Optinal Text -->
+          <div class="prices OptionBox textBlock">
+            <h3 class="title">Infoga text (optionellt):</h3>
+            <h:inputTextarea data-limit-rows="true" onchange="previewConfig.buildPreview();" onkeyup="limitTextarea(this,6,40)" id="title"  value="#{itemConfiguratorBean.configurator.starMapData.title}" cols="55" rows="6"/>
+            <a href="javascript:void" onclick="previewConfig.buildPreview();smoothScrollTo($('#canvas-preview'));" class="action button -action -left">Verkställ</a>
+            <div class="text-right"><span class="textLines">1</span> / 6 rader</div>
+          </div>
+          <!-- /Starmap Optinal Text -->
+
+
+          <div jsf:id="optionBox">
+            <!-- Starmap Frames -->
+            <div class="prices" jsf:rendered="#{itemConfiguratorBean.frames.size > 1}">
+              <p:selectOneRadio id="frame" value="#{itemConfiguratorBean.frameId}" layout="custom" plain="true">
+                <p:ajax listener="#{itemConfiguratorBean.change}" onstart="previewConfig.isFormatChange()" update=":itemConfiguratorForm:preview :itemConfiguratorForm:priceBox :itemConfiguratorForm:optionBox :itemConfiguratorForm:formatSwitch" oncomplete="previewConfig.buildPreview();$.primefacesHelper();smoothScrollTo($('#canvas-preview'));" />
+                <f:selectItems value="#{itemConfiguratorBean.frames}" />
+              </p:selectOneRadio>
+              <h3 class="title">Skuggram:</h3>
+              <div class="passepartout clearfix">
+                <ui:repeat value="#{itemConfiguratorBean.frames}" var="f" varStatus="s">
+                  <div class="selectable starMapTitles" data-clickarea="data-clickarea" data-frame="passepartout" data-mh="passepartout">
+                    <div class="radio pull-left">
+                      <p:radioButton id="product" for=":itemConfiguratorForm:frame" itemIndex="#{s.index}" />
+                      <h:outputLabel for="product" />
+                    </div>
+                    <img for="entry" class="img-resposive" src="/staticimages/configurator/starmap-frame-#{f.value}.jpg" />
+                    <div class="centered">#{f.label}<br />#{itemConfiguratorBean.configurator.frameFormatDefaultPriceDifference(f.value)}</div>
+                  </div>
+                </ui:repeat>
+              </div>
+            </div>
+            <!-- /Starmap Frames -->
+
+            <!-- Starmap Mounting -->
+            <div class="prices" jsf:rendered="#{itemConfiguratorBean.mountings.size > 1}">
+              <p:selectOneRadio id="mounting" value="#{itemConfiguratorBean.mountingId}" layout="custom" plain="true">
+                <p:ajax listener="#{itemConfiguratorBean.change}" update=":itemConfiguratorForm:priceBox :itemConfiguratorForm:optionBox" oncomplete="$.primefacesHelper();" />
+                <f:selectItems value="#{itemConfiguratorBean.mountings}"/>
+              </p:selectOneRadio>
+            <h3 class="title">Välj upphängningssats:</h3>
+              <div class="clearfix">
+                <ui:repeat value="#{itemConfiguratorBean.mountings}" var="f" varStatus="s">
+                  <div class="selectable starMapTitles mountingBox #{f.value eq 19 and itemConfiguratorBean.formatWidth eq '30 cm' and itemConfiguratorBean.formatHeight eq '40 cm' ? 'hidden' : ''}" data-clickarea="data-clickarea" data-mh="mountings">
+                    <div class="radio pull-left">
+                      <p:radioButton id="product" for=":itemConfiguratorForm:mounting" itemIndex="#{s.index}" />
+                      <h:outputLabel for="product" />
+                    </div>
+                    <img for="entry" class="img-resposive" src="/staticimages/configurator/mf/Aufsteller-#{f.value}.jpg"/>
+                    <div class="centered">#{f.label}<br />#{itemConfiguratorBean.mountingPriceDifference(f.value)}</div>
+                  </div>
+                </ui:repeat>
+              </div>
+            </div>
+            <!-- /Starmap Mounting -->
+
+          </div>
+
+              <div class="prices clearfix" jsf:id="priceBox">
+                <label class="hidden" id="OriginalPrice">#{itemConfiguratorBean.configurator.price}</label>
+                <div class="text-left -padd">
+                  <strong><span class="pull-left">#{_['Price']}: <div class="inclCostsText">#{_['incl. VAT excl. shipping costs']}</div></span><span class="highlight pull-right"><strong>#{itemConfiguratorBean.configurator.price}</strong></span></strong>
+                </div>
+                <br />
+              </div>
+
+                <p:commandLink action="#{itemConfiguratorBean.persist}" value="#{_['Save Changes']}" onstart="showToast('Uppdaterar vy...'); block($('body'));return previewConfig.validateParams()" rendered="#{itemConfiguratorBean.itemType == 'cart-item'}" styleClass="js-next-button action button -action -arrow" oncomplete="window.location='shoppingcart.jsf'" />
+
+                <p:commandLink action="#{itemConfiguratorBean.addToCart}" global="false"
+                               onstart="if (!checkLocatonDateFields(1)) { return false; } return previewConfig.validateParams();"
+                               rendered="#{itemConfiguratorBean.itemType != 'cart-item'}"
+                               styleClass="js-next-button action button -action -arrow -cart4"
+                               oncomplete="dataLayerPushColorSelection()">
+                  Fortsätt
+                  <ui:include src="/helper/svg.xhtml">
+                    <ui:param name="svgClass" value="checkout-cart" />
+                    <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-shopping-cart" />
+                  </ui:include>
+                </p:commandLink>
+                <p:commandLink action="#{itemConfiguratorBean.addToCart(false)}" value="Skapa ett annat stjärnhimmel" onstart="showToast('Uppdaterar vy...'); block($('body'));return previewConfig.validateParams()" rendered="#{itemConfiguratorBean.itemType != 'cart-item'}" styleClass="js-next-button action button -action -fullbleed -arrow -cart3" oncomplete="window.location='/configurator-starmap.jsf?product=2276&amp;new&amp;success=true'" />
+                <h:messages styleClass="outmsg" globalOnly="true" errorClass="-error" warnClass="-warn" infoClass="-info" />
+
+            </div>
+          </div>
+
+
+        </div>
+
+
+      </section>
+      <h:inputHidden id="latitude" converter="StringFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.latitude}" />
+      <h:inputHidden id="longitude" converter="StringFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.longitude}" />
+      <h:inputHidden id="datetime" converter="StringFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.datetime}" />
+      <h:inputHidden id="margin" converter="DoubleFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.margin}" />
+      <h:inputHidden id="subtitle1" converter="StringFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.subtitle1}" />
+      <h:inputHidden id="subtitle2" converter="StringFieldConverter" value="#{itemConfiguratorBean.configurator.starMapData.subtitle2}" />
+    </h:form>
+
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+      <ui:include src="/page-blocks/paymentmethods.xhtml" />
+
+    </section>
+    <!-- /paymentmethods -->
+
+  </ui:define>
+
+  <ui:define name="eofscript">
+  <script type="text/javascript">
+    function AdjusteScroll() {
+      // empty function
+    }
+  </script>
+    <script src="/#{shopInfoBean.versionPath}static/build/js/ux-checkout-configurator.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?language=sv&amp;key=AIzaSyAu_BtPilbAIX5FtU0a0onnKqdVLR4PliE&amp;libraries=places"></script>
+    <script src="/#{shopInfoBean.versionPath}static/build/js/configuratorS.min.js"></script>
+    <script src="/#{shopInfoBean.versionPath}static/build/js/jquery-ui-full.min.js"></script>
+    <style>
+      .checkout-step-2 #preview-wrapper .format-table .radio.-alone {
+        border: none;
+      }
+      table td.-formatLeft  {
+        padding-left: 20px;
+      }
+      .StarMap .checkout-step-2.-alternative .selectable.starMapTitles.mountingBox  {
+        width: 30%;
+      }
+    </style>
+  </ui:define>
+</ui:composition>

@@ -1,0 +1,18 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<div class="clearfix #{productClass}">
+	<h2>#{productBoxTitle}</h2>
+	<p>#{productBoxText}</p>
+	<div class="clearfix col -right">
+  <ui:fragment rendered="#{not empty productDealPrice}">
+		<div class="clearfix"><span class="deal-price col -right">#{productDealPrice}</span> </div>
+  </ui:fragment>
+		<div class="clearfix"><span class="old-price col">#{productOldPrice}</span></div>
+		<a href="#{productLink}" class="button -action -arrow -touch -right -big">#{productLinkText}</a>
+	</div> <br/>
+</div>
+
+</ui:composition>

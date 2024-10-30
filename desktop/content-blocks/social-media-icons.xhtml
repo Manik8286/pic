@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+				<div class="social -span-12 text-center">
+					<div class="item-box -small" data-mh="newsletter">
+						<h3 class="title accont-social-title">Följ oss på sociala medier och få specialrabatter, ta del av gåvor och mycket mer!</h3>
+						<!-- <div class="subtitle">och håll dig uppdaterad</div> -->
+						<ul class="social-items -account">
+							<li class="social-item -facebook">
+								<a href="https://www.facebook.com/bestcanvasse/" target="_blank">
+									<ui:include src="/helper/svg.xhtml">
+										<ui:param name="svgClass" value="icon" />
+										<ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-facebook" />
+									</ui:include>
+								</a>
+							</li>
+							<li class="social-item -instagram -browserAll">
+								<a href="https://www.instagram.com/bestcanvas_se/" target="_blank">
+									<ui:include src="/helper/svg.xhtml">
+										<ui:param name="svgClass" value="icon" />
+										<ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-instagram" />
+										<ui:param name="instagram" value="true" />
+									</ui:include>
+								</a>
+							</li>
+							<li class="social-item -youtube">
+								<a href="https://www.youtube.com/channel/UCIRU75uqQrfoevnKt3RlUGQ" target="_blank">
+									<ui:include src="/helper/svg.xhtml">
+										<ui:param name="svgClass" value="icon" />
+										<ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-youtube" />
+									</ui:include>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+ </ui:composition>

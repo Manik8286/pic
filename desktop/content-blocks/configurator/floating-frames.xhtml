@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <!-- floating frames -->
+  <c:set var="IdUpdate" value="#{itemConfiguratorBean.colorCarrierId == materialPassepartoutPoster ? 'itemConfiguratorForm:canvas-preview' : ''}" />
+  <p:selectOneRadio
+    id="frame"
+    value="#{itemConfiguratorBean.frameId}"
+    layout="custom"
+    plain="true">
+    <p:ajax
+      listener="#{itemConfiguratorBean.change}"
+      update=":itemConfiguratorForm"
+    onstart='#{mobileView ? "smoothScrollTo($(\"#thepreviewBox\"));" : ""}'
+    oncomplete="updateDom();#{textConfig ? 'RefreshControls();RefreshFormatChange();' : ''}" />
+    <f:selectItems value="#{itemConfiguratorBean.frames}"/>
+  </p:selectOneRadio>
+  <h3 class="title"> <span class="StepsCount"><h:outputText value="#{blockCount}" /></span> #{itemConfiguratorBean.colorCarrierId != materialPassepartoutPoster ? 'Skuggram' : 'Skuggram' }:</h3>
+  <section class="clearfix">
+
+    <div class="passepartout" jsf:rendered="#{itemConfiguratorBean.colorCarrierId == materialPassepartoutPoster}">
+      <ui:repeat value="#{itemConfiguratorBean.frames}" var="f" varStatus="s">
+        <div class="selectable passepartoutBox" data-clickarea="data-clickarea" data-frame="passepartout">
+          <img class="img-resposive" src="/staticimages/configurator/all/frame-#{f.value}-#{materialPassepartoutPoster}.jpg"/>
+          <div class="radio pull-left">
+            <p:radioButton id="product" for=":itemConfiguratorForm:frame" itemIndex="#{s.index}" />
+            <h:outputLabel for="product" />
+          </div>
+          <div class="details pull-left">
+            <h:outputText value="#{f.label} " />
+          </div>
+        </div>
+      </ui:repeat>
+    </div>
+
+    <div class="frames-panel" jsf:rendered="#{itemConfiguratorBean.frames.size > 1 and itemConfiguratorBean.colorCarrierId != materialPassepartoutPoster}">
+      <ui:repeat value="#{itemConfiguratorBean.frames}" var="frame" varStatus="i">
+        <div class="selectable" data-clickarea="data-clickarea">
+          <img class="img-resposive" src="/staticimages/configurator/all/frame-#{frame.value}-#{itemConfiguratorBean.colorCarrierId}.jpg" />
+          <div class="radio pull-left">
+            <p:radioButton id="product" for=":itemConfiguratorForm:frame" itemIndex="#{i.index}"/>
+            <h:outputLabel for="product" />
+          </div>
+          <div class="details pull-left">
+            <h:outputText value="#{frame.label} " /><br />
+            <h:outputText rendered="#{frame.value gt 0}" value="+ #{fn:replace(itemConfiguratorBean.configurator.frameFormatDefaultPriceDifference(16), ',00', ' ')}*" />
+          </div>
+        </div>
+      </ui:repeat>
+    </div>
+
+  </section>
+  <!-- /floating frames -->
+</ui:composition>

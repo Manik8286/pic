@@ -1,0 +1,917 @@
+//colors
+$greenSlider: #74c100;
+$white: $white;
+$black: rgb(0, 0, 0);
+$black_70: rgba(0, 0, 0, 0.7);
+$white_70: rgba(255, 255, 255, 0.7);
+$black_20: rgba(0, 0, 0, 0.2);
+
+.slider-pro {
+	position: relative;
+	margin: 0 auto;
+	//Instead of the line below you could use @include box-sizing($bs)
+	box-sizing: content-box;
+	img {
+		&.sp-image {
+			max-width: none;
+			max-height: none;
+			border: none !important;
+			//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+			border-radius: 0 !important;
+			padding: 0 !important;
+			//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+			box-shadow: none !important;
+			//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+			transition: none;
+		}
+		&.sp-thumbnail {
+			max-width: none;
+			max-height: none;
+			border: none !important;
+			//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+			border-radius: 0 !important;
+			padding: 0 !important;
+			//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+			box-shadow: none !important;
+			//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+			transition: none;
+		}
+		&.sp-layer {
+			border: none;
+		}
+	}
+	a {
+		position: static;
+		//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+		transition: none !important;
+	}
+	iframe {
+		max-width: none;
+		max-height: none;
+	}
+	object {
+		max-width: none;
+		max-height: none;
+	}
+	video {
+		max-width: none;
+		max-height: none;
+	}
+	embed {
+		max-width: none;
+		max-height: none;
+	}
+	canvas {
+		max-width: none;
+		max-height: none;
+	}
+	&:hover .sp-fade-full-screen {
+		opacity: 1;
+	}
+	p.sp-layer {
+		font-size: 14px;
+		line-height: 1.4;
+		margin: 0;
+	}
+	h1.sp-layer {
+		font-size: 32px;
+		line-height: 1.4;
+		margin: 0;
+	}
+	h2.sp-layer {
+		font-size: 24px;
+		line-height: 1.4;
+		margin: 0;
+	}
+	h3.sp-layer {
+		font-size: 19px;
+		line-height: 1.4;
+		margin: 0;
+	}
+	h4.sp-layer {
+		font-size: 16px;
+		line-height: 1.4;
+		margin: 0;
+	}
+	h5.sp-layer {
+		font-size: 13px;
+		line-height: 1.4;
+		margin: 0;
+	}
+	h6.sp-layer {
+		font-size: 11px;
+		line-height: 1.4;
+		margin: 0;
+	}
+}
+.sp-slides-container {
+	position: relative;
+	&:hover .sp-fade-arrows {
+		opacity: 1;
+	}
+}
+.sp-mask {
+	position: relative;
+	overflow: hidden;
+}
+.sp-slides {
+	position: relative;
+}
+.sp-slide {
+	position: absolute;
+}
+.sp-image-container {
+	overflow: hidden;
+}
+.sp-image {
+	position: relative;
+	display: block;
+	border: none;
+}
+.sp-no-js {
+	overflow: hidden;
+	max-width: 100%;
+}
+.sp-thumbnails-container {
+	font-size: 13px;
+	position: relative;
+	overflow: hidden;
+	direction: ltr;
+	&:hover .sp-fade-thumbnail-arrows {
+		opacity: 1;
+	}
+}
+.sp-top-thumbnails {
+	left: 0;
+	margin: 0 auto;
+	position: absolute;
+	top: 0;
+	margin-bottom: 4px;
+	.sp-thumbnail-container {
+		margin-left: 2px;
+		margin-right: 2px;
+		&:first-child {
+			margin-left: 0;
+		}
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+	&.sp-has-pointer {
+		margin-bottom: -13px;
+		.sp-thumbnail {
+			position: absolute;
+			bottom: 18px;
+		}
+		.sp-selected-thumbnail {
+			&:before {
+				content: '';
+				position: absolute;
+				width: 100%;
+				border-bottom: 5px solid $greenSlider;
+				bottom: 0;
+				margin-bottom: 13px;
+			}
+			&:after {
+				content: '';
+				position: absolute;
+				width: 0;
+				height: 0;
+				left: 50%;
+				bottom: 0;
+				margin-left: -8px;
+				border-top: 13px solid $greenSlider;
+				border-left: 8px solid transparent;
+				border-right: 8px solid transparent;
+			}
+		}
+	}
+	.sp-thumbnail-arrows {
+		width: 100%;
+		top: 50%;
+		left: 0;
+		margin-top: -12px;
+	}
+	.sp-previous-thumbnail-arrow {
+		left: 0;
+	}
+	.sp-next-thumbnail-arrow {
+		right: 0;
+	}
+}
+.sp-bottom-thumbnails {
+	left: 0;
+	margin: 0 auto;
+	margin-top: 4px;
+	.sp-thumbnail-container {
+		margin-left: 10px !important;
+		margin-left: 10px !important;
+		&:first-child {
+			margin-left: 10px;
+		}
+		&:last-child {
+			margin-right: 10px;
+		}
+	}
+	&.sp-has-pointer {
+		margin-top: -13px;
+		.sp-thumbnail {
+			position: absolute;
+			top: 18px;
+			margin-top: 0 !important;
+			width: 100% !important;
+			text-align: center;
+		}
+		.sp-selected-thumbnail {
+			font-weight: 500;
+			color: $greenSlider;
+			&:before {
+				content: '';
+				position: absolute;
+				width: 100%;
+				border-bottom: 5px solid $greenSlider;
+				top: 0;
+				margin-top: 13px;
+			}
+			&:after {
+				content: '';
+				position: absolute;
+				width: 0;
+				height: 0;
+				left: 50%;
+				top: 0;
+				margin-left: -8px;
+				border-bottom: 13px solid $greenSlider;
+				border-left: 8px solid transparent;
+				border-right: 8px solid transparent;
+			}
+		}
+	}
+	.sp-thumbnail-arrows {
+		width: 100%;
+		top: 50%;
+		left: 0;
+		margin-top: -12px;
+	}
+	.sp-previous-thumbnail-arrow {
+		left: 0;
+	}
+	.sp-next-thumbnail-arrow {
+		right: 0;
+	}
+}
+.sp-left-thumbnails {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-right: 4px;
+	.sp-thumbnail-container {
+		margin-top: 2px;
+		margin-bottom: 2px;
+		&:first-child {
+			margin-top: 0;
+		}
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	&.sp-has-pointer {
+		margin-right: -13px;
+		.sp-thumbnail {
+			position: absolute;
+			right: 18px;
+		}
+		.sp-selected-thumbnail {
+			&:before {
+				content: '';
+				position: absolute;
+				height: 100%;
+				border-left: 5px solid $greenSlider;
+				right: 0;
+				top: 0;
+				margin-right: 13px;
+			}
+			&:after {
+				content: '';
+				position: absolute;
+				width: 0;
+				height: 0;
+				right: 0;
+				top: 50%;
+				margin-top: -8px;
+				border-left: 13px solid $greenSlider;
+				border-top: 8px solid transparent;
+				border-bottom: 8px solid transparent;
+			}
+		}
+	}
+	.sp-thumbnail-arrows {
+		height: 100%;
+		top: 0;
+		left: 50%;
+		margin-left: -7px;
+		.sp-thumbnail-arrow {
+			//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+			transform: rotate(90deg);
+		}
+	}
+	.sp-previous-thumbnail-arrow {
+		top: 0;
+	}
+	.sp-next-thumbnail-arrow {
+		bottom: 0;
+	}
+}
+.sp-right-thumbnails {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-left: 4px;
+	.sp-thumbnail-container {
+		margin-top: 2px;
+		margin-bottom: 2px;
+		&:first-child {
+			margin-top: 0;
+		}
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	&.sp-has-pointer {
+		margin-left: -13px;
+		.sp-thumbnail {
+			position: absolute;
+			left: 18px;
+			margin-left: 0 !important;
+		}
+		.sp-selected-thumbnail {
+			&:before {
+				content: '';
+				position: absolute;
+				height: 100%;
+				border-left: 5px solid $greenSlider;
+				left: 0;
+				top: 0;
+				margin-left: 13px;
+			}
+			&:after {
+				content: '';
+				position: absolute;
+				width: 0;
+				height: 0;
+				left: 0;
+				top: 50%;
+				margin-top: -8px;
+				border-right: 13px solid $greenSlider;
+				border-top: 8px solid transparent;
+				border-bottom: 8px solid transparent;
+			}
+		}
+	}
+	.sp-thumbnail-arrows {
+		height: 100%;
+		top: 0;
+		left: 50%;
+		margin-left: -7px;
+		.sp-thumbnail-arrow {
+			//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+			transform: rotate(90deg);
+		}
+	}
+	.sp-previous-thumbnail-arrow {
+		top: 0;
+	}
+	.sp-next-thumbnail-arrow {
+		bottom: 0;
+	}
+}
+.sp-thumbnails {
+	position: relative;
+}
+.sp-thumbnail {
+	border: none;
+}
+.sp-thumbnail-container {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	float: left;
+	//Instead of the line below you could use @include box-sizing($bs)
+	box-sizing: border-box;
+}
+.sp-rtl {
+	.sp-thumbnail-container {
+		float: right;
+	}
+	.sp-buttons {
+		direction: rtl;
+	}
+}
+.sp-layer {
+  width: 100%;
+  position: absolute;
+  margin: 0;
+  
+  //Instead of the line below you could use @include box-sizing($bs)
+  box-sizing: border-box;
+  
+  .sp-content {
+    max-width: 1020px;
+    margin: 0 auto;
+  }
+}
+.sp-black {
+	color: $white;
+	background: $black;
+	background: $black_70;
+}
+.sp-white {
+	color: $black;
+	background: $white;
+	background: $white_70;
+}
+.sp-rounded {
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 10px;
+}
+.sp-padding {
+	padding: 10px;
+}
+.sp-grab {
+	/*cursor:grab;*/
+	cursor:-moz-grab;
+	cursor:-webkit-grab;
+}
+.sp-grabbing {
+	/*cursor:grabbing;*/
+	cursor:-moz-grabbing;
+	cursor:-webkit-grabbing;
+}
+.sp-selectable {
+	cursor: default;
+}
+.sp-caption-container {
+	text-align: center;
+	margin-top: 10px;
+}
+.sp-full-screen {
+	margin: 0 !important;
+	background-color: $black;
+	.sp-buttons {
+		display: none;
+	}
+}
+.sp-full-screen-button {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	font-size: 30px;
+	line-height: 1;
+	cursor: pointer;
+	//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+	transform: rotate(45deg);
+	&:before {
+		content: '\2195';
+	}
+}
+.sp-fade-full-screen {
+	opacity: 0;
+	//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+	transition: opacity 0.5s;
+}
+.sp-buttons {
+	position: relative;
+	width: 100%;
+	text-align: center;
+	padding-top: 10px;
+}
+.sp-button {
+	width: 17px;
+	height: 17px;
+	border: 2px solid $black;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 50%;
+	margin: 4px;
+	display: inline-block;
+	//Instead of the line below you could use @include box-sizing($bs)
+	box-sizing: border-box;
+	cursor: pointer;
+	-webkit-box-shadow: 0px 0px 18px -4px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 18px -4px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 18px -4px rgba(0,0,0,0.75);
+}
+.sp-selected-button {
+	background-color: $black;
+}
+@media only screen and(min-width: 768px) and(max-width: 1024px) {
+	.sp-button {
+		width: 14px;
+		height: 14px;
+	}
+}
+@media only screen and(min-width: 568px) and(max-width: 768px) {
+	.sp-button {
+		width: 16px;
+		height: 16px;
+	}
+}
+@media only screen and(min-width: 320px) and(max-width: 568px) {
+	.sp-button {
+		width: 18px;
+		height: 18px;
+	}
+}
+.sp-arrows {
+	position: absolute;
+}
+.sp-fade-arrows {
+	opacity: 0;
+	//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+	transition: opacity 0.5s;
+}
+.sp-horizontal {
+	.sp-arrows {
+		width: 100%;
+		left: 0;
+		top: 50%;
+		margin-top: -15px;
+	}
+	.sp-previous-arrow {
+		left: 20px;
+		right: auto;
+	}
+	&.sp-rtl {
+		.sp-previous-arrow {
+			right: 20px;
+			left: auto;
+			//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+			transform: rotate(180deg);
+		}
+		.sp-next-arrow {
+			left: 20px;
+			right: auto;
+			//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+			transform: rotate(0deg);
+		}
+	}
+	.sp-next-arrow {
+		right: 20px;
+		left: auto;
+	}
+}
+.sp-vertical {
+	.sp-arrows {
+		height: 100%;
+		left: 50%;
+		top: 0;
+		margin-left: -10px;
+	}
+	.sp-arrow {
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: rotate(90deg);
+	}
+	.sp-previous-arrow {
+		top: 20px;
+	}
+	.sp-next-arrow {
+		bottom: 20px;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: rotate(270deg);
+	}
+}
+.sp-arrow {
+	position: absolute;
+	display: block;
+	width: 10px;
+	height: 45px;
+	cursor: pointer;
+	&:before {
+		left: 30%;
+		top: 0;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: skew(145deg, 0deg);
+		-webkit-box-shadow: 0px 0px 18px -4px rgba(0,0,0,0.75);
+		-moz-box-shadow: 0px 0px 18px -4px rgba(0,0,0,0.75);
+		box-shadow: 0px 0px 18px -4px rgba(0,0,0,0.75);
+	}
+	&:after {
+		left: 30%;
+		top: 50%;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: skew(-145deg, 0deg);
+		-webkit-box-shadow: 0px 0px 18px -4px rgba(0,0,0,0.75);
+		-moz-box-shadow: 0px 0px 18px -4px rgba(0,0,0,0.75);
+		box-shadow: 0px 0px 18px -4px rgba(0,0,0,0.75);
+	}
+}
+.sp-previous-arrow {
+	&:before {
+		content: '';
+		position: absolute;
+		width: 50%;
+		height: 50%;
+		background-color: $black;
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		width: 50%;
+		height: 50%;
+		background-color: $black;
+	}
+}
+.sp-next-arrow {
+	//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+	transform: rotate(180deg);
+	&:before {
+		content: '';
+		position: absolute;
+		width: 50%;
+		height: 50%;
+		background-color: $black;
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		width: 50%;
+		height: 50%;
+		background-color: $black;
+	}
+}
+.ie8 {
+	.sp-arrow {
+		width: 0;
+		height: 0;
+		&:before {
+			content: none;
+		}
+		&:after {
+			content: none;
+		}
+	}
+	&.sp-horizontal {
+		.sp-previous-arrow {
+			border-right: 20px solid $white;
+			border-top: 20px solid transparent;
+			border-bottom: 20px solid transparent;
+		}
+		.sp-next-arrow {
+			border-left: 20px solid $white;
+			border-top: 20px solid transparent;
+			border-bottom: 20px solid transparent;
+		}
+	}
+	&.sp-vertical {
+		.sp-previous-arrow {
+			border-bottom: 20px solid $white;
+			border-left: 20px solid transparent;
+			border-right: 20px solid transparent;
+		}
+		.sp-next-arrow {
+			border-top: 20px solid $white;
+			border-left: 20px solid transparent;
+			border-right: 20px solid transparent;
+		}
+	}
+	.sp-thumbnail-arrow {
+		width: 0;
+		height: 0;
+		&:before {
+			content: none;
+		}
+		&:after {
+			content: none;
+		}
+	}
+	.sp-top-thumbnails {
+		.sp-previous-thumbnail-arrow {
+			border-right: 12px solid $white;
+			border-top: 12px solid transparent;
+			border-bottom: 12px solid transparent;
+		}
+		.sp-next-thumbnail-arrow {
+			border-left: 12px solid $white;
+			border-top: 12px solid transparent;
+			border-bottom: 12px solid transparent;
+		}
+	}
+	.sp-bottom-thumbnails {
+		.sp-previous-thumbnail-arrow {
+			border-right: 12px solid $white;
+			border-top: 12px solid transparent;
+			border-bottom: 12px solid transparent;
+		}
+		.sp-next-thumbnail-arrow {
+			border-left: 12px solid $white;
+			border-top: 12px solid transparent;
+			border-bottom: 12px solid transparent;
+		}
+	}
+	.sp-left-thumbnails {
+		.sp-previous-thumbnail-arrow {
+			border-bottom: 12px solid $white;
+			border-left: 12px solid transparent;
+			border-right: 12px solid transparent;
+		}
+		.sp-next-thumbnail-arrow {
+			border-top: 12px solid $white;
+			border-left: 12px solid transparent;
+			border-right: 12px solid transparent;
+		}
+	}
+	.sp-right-thumbnails {
+		.sp-previous-thumbnail-arrow {
+			border-bottom: 12px solid $white;
+			border-left: 12px solid transparent;
+			border-right: 12px solid transparent;
+		}
+		.sp-next-thumbnail-arrow {
+			border-top: 12px solid $white;
+			border-left: 12px solid transparent;
+			border-right: 12px solid transparent;
+		}
+	}
+}
+.ie7 {
+	.sp-arrow {
+		width: 0;
+		height: 0;
+		&:before {
+			content: none;
+		}
+		&:after {
+			content: none;
+		}
+	}
+	&.sp-horizontal {
+		.sp-previous-arrow {
+			border-right: 20px solid $white;
+			border-top: 20px solid transparent;
+			border-bottom: 20px solid transparent;
+		}
+		.sp-next-arrow {
+			border-left: 20px solid $white;
+			border-top: 20px solid transparent;
+			border-bottom: 20px solid transparent;
+		}
+	}
+	&.sp-vertical {
+		.sp-previous-arrow {
+			border-bottom: 20px solid $white;
+			border-left: 20px solid transparent;
+			border-right: 20px solid transparent;
+		}
+		.sp-next-arrow {
+			border-top: 20px solid $white;
+			border-left: 20px solid transparent;
+			border-right: 20px solid transparent;
+		}
+	}
+	.sp-thumbnail-arrow {
+		width: 0;
+		height: 0;
+		&:before {
+			content: none;
+		}
+		&:after {
+			content: none;
+		}
+	}
+	.sp-top-thumbnails {
+		.sp-previous-thumbnail-arrow {
+			border-right: 12px solid $white;
+			border-top: 12px solid transparent;
+			border-bottom: 12px solid transparent;
+		}
+		.sp-next-thumbnail-arrow {
+			border-left: 12px solid $white;
+			border-top: 12px solid transparent;
+			border-bottom: 12px solid transparent;
+		}
+	}
+	.sp-bottom-thumbnails {
+		.sp-previous-thumbnail-arrow {
+			border-right: 12px solid $white;
+			border-top: 12px solid transparent;
+			border-bottom: 12px solid transparent;
+		}
+		.sp-next-thumbnail-arrow {
+			border-left: 12px solid $white;
+			border-top: 12px solid transparent;
+			border-bottom: 12px solid transparent;
+		}
+	}
+	.sp-left-thumbnails {
+		.sp-previous-thumbnail-arrow {
+			border-bottom: 12px solid $white;
+			border-left: 12px solid transparent;
+			border-right: 12px solid transparent;
+		}
+		.sp-next-thumbnail-arrow {
+			border-top: 12px solid $white;
+			border-left: 12px solid transparent;
+			border-right: 12px solid transparent;
+		}
+	}
+	.sp-right-thumbnails {
+		.sp-previous-thumbnail-arrow {
+			border-bottom: 12px solid $white;
+			border-left: 12px solid transparent;
+			border-right: 12px solid transparent;
+		}
+		.sp-next-thumbnail-arrow {
+			border-top: 12px solid $white;
+			border-left: 12px solid transparent;
+			border-right: 12px solid transparent;
+		}
+	}
+}
+.sp-thumbnail-arrows {
+	position: absolute;
+}
+.sp-fade-thumbnail-arrows {
+	opacity: 0;
+	//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+	transition: opacity 0.5s;
+}
+.sp-thumbnail-arrow {
+	position: absolute;
+	display: block;
+	width: 15px;
+	height: 25px;
+	cursor: pointer;
+}
+.sp-previous-thumbnail-arrow {
+	&:before {
+		content: '';
+		position: absolute;
+		width: 50%;
+		height: 50%;
+		background-color: $white;
+		left: 30%;
+		top: 0;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: skew(145deg, 0deg);
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		width: 50%;
+		height: 50%;
+		background-color: $white;
+		left: 30%;
+		top: 50%;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: skew(-145deg, 0deg);
+	}
+}
+.sp-next-thumbnail-arrow {
+	&:before {
+		content: '';
+		position: absolute;
+		width: 50%;
+		height: 50%;
+		background-color: $white;
+		right: 30%;
+		top: 0;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: skew(35deg, 0deg);
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		width: 50%;
+		height: 50%;
+		background-color: $white;
+		right: 30%;
+		top: 50%;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: skew(-35deg, 0deg);
+	}
+}
+a.sp-video {
+	text-decoration: none;
+	img {
+		border: none;
+	}
+	&:after {
+		content: '\25B6';
+		position: absolute;
+		width: 45px;
+		padding-left: 5px;
+		height: 50px;
+		border: 2px solid $white;
+		text-align: center;
+		font-size: 30px;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 30px;
+		top: 0;
+		color: $white;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: $black_20;
+		margin: auto;
+		line-height: 52px;
+	}
+}

@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <!--
+    A logic for custom width display.
+  -->
+
+    <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId == 20 or itemConfiguratorBean.colorCarrierId == 41 or itemConfiguratorBean.colorCarrierId == 48}">
+    #{itemConfiguratorBean.formatWidth == '8 cm'?'7,5 cm':itemConfiguratorBean.formatWidth}
+    </ui:fragment>
+    <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId == 43}">
+    #{itemConfiguratorBean.formatWidth == '11 cm'?'20 cm':''}
+    #{itemConfiguratorBean.formatWidth == '21 cm'?'30 cm':''}
+    #{itemConfiguratorBean.formatWidth == '30 cm'?'40 cm':''}
+    #{itemConfiguratorBean.formatWidth == '20 cm'?'30 cm':''}
+    #{itemConfiguratorBean.formatWidth == '28 cm'?'40 cm':''}
+    #{itemConfiguratorBean.formatWidth == '48 cm'?'60 cm':''}
+    #{itemConfiguratorBean.formatWidth == '66 cm'?'80 cm':''}
+    #{itemConfiguratorBean.formatWidth == '46 cm'?'60 cm':''}
+    </ui:fragment>
+     <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId == 23}">
+      #{itemConfiguratorBean.formatWidth == '37 cm'?'40 cm':''}
+    </ui:fragment>
+     <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId == 47 or itemConfiguratorBean.colorCarrierId == 58}">
+      #{itemConfiguratorBean.formatWidth == '204 cm'?'200 cm':itemConfiguratorBean.formatWidth}
+    </ui:fragment>
+    <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId == 22}">
+      #{itemConfiguratorBean.formatWidth == '69 cm'?'68 cm':''}
+      #{itemConfiguratorBean.formatWidth == '45 cm'?'44 cm':''}
+      #{itemConfiguratorBean.formatWidth == '42 cm'?'40 cm':''}
+      #{itemConfiguratorBean.formatWidth == '30 cm'?'30 cm':''}
+      #{itemConfiguratorBean.formatWidth == '27 cm'?'27 cm':''}
+      #{itemConfiguratorBean.formatWidth == '20 cm'?'20 cm':''}
+    </ui:fragment>
+    <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId == 60}">
+      #{itemConfiguratorBean.formatWidth == '88 cm'?'90 cm':''}
+      #{itemConfiguratorBean.formatWidth == '200 cm'?'200 cm':''}
+      #{itemConfiguratorBean.formatWidth == '48 cm'?'50 cm':''}
+      #{itemConfiguratorBean.formatWidth == '138 cm'?'140 cm':''}
+      #{itemConfiguratorBean.formatWidth == '150 cm'?'150 cm':''}
+    </ui:fragment>
+    <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId != 34 and itemConfiguratorBean.colorCarrierId != 26 and itemConfiguratorBean.colorCarrierId != 47 and itemConfiguratorBean.colorCarrierId != 58 and itemConfiguratorBean.colorCarrierId != 20 and itemConfiguratorBean.colorCarrierId != 41 and itemConfiguratorBean.colorCarrierId != 48 and itemConfiguratorBean.colorCarrierId != 43 and itemConfiguratorBean.colorCarrierId != 23 and itemConfiguratorBean.colorCarrierId != 22 and itemConfiguratorBean.colorCarrierId != 60}">
+      #{not empty itemConfiguratorBean.formatWidthDisplayName ? itemConfiguratorBean.formatWidthDisplayName : itemConfiguratorBean.formatWidth}
+    </ui:fragment>
+</ui:composition>

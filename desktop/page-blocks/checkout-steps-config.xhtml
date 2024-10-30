@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+  <section class="checkout-head">
+    <ul class="steps">
+      <li class="step #{stepCount eq 1 ? '-active' : ''} #{stepCount > 1 ? '-done' : ''}" data-step="1">
+        <c:set var="stepName" value="Cargar foto" />
+        <c:choose>
+          <c:when test="${stepCount > 1}">
+            <a href="/singleupload.jsf" class="text">#{stepName}</a>
+          </c:when>
+          <c:otherwise>
+            <span class="text">#{stepName}</span>
+          </c:otherwise>
+        </c:choose>
+      </li>
+      <li class="step #{stepCount eq 2 ? '-active' : ''} #{stepCount > 2 ? '-done' : ''}" data-step="2">
+        <c:set var="stepName" value="Cargar foto" />
+        <c:choose>
+          <c:when test="${stepCount > 2}">
+            <a href="/singleupload.jsf" class="text">#{stepName}</a>
+          </c:when>
+          <c:otherwise>
+            <span class="text">#{stepName}</span>
+          </c:otherwise>
+        </c:choose>
+      </li>
+      <li class="step #{stepCount eq 3 ? '-active' : ''} #{stepCount > 3 ? '-done' : ''}" data-step="3">
+        <c:set var="stepName" value="Varukorg" />
+        <c:choose>
+          <c:when test="${stepCount > 3}">
+            <a href="/singleupload.jsf" class="text">#{stepName}</a>
+          </c:when>
+          <c:otherwise>
+            <span class="text">#{stepName}</span>
+          </c:otherwise>
+        </c:choose>
+      </li>
+    </ul>
+  </section>
+</ui:composition>

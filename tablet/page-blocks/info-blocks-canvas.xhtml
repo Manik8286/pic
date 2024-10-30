@@ -1,0 +1,312 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+
+    <div class="row">
+		<ui:include src="/content-blocks/info-blocks-badges.xhtml"/>
+		<div class="col -span-4">
+			<ui:fragment rendered="#{empty dealCanvasTable}">
+				<ui:include src="/content-blocks/pricetables-lp/canvas-pricetable.xhtml" />
+			</ui:fragment>
+
+			<ui:fragment rendered="#{not empty dealCanvasTable}">
+
+			  <div class="showcase-box" data-mh="info">
+			    <h3 class="headline">
+			        <ui:fragment rendered="#{sessionServicesBean.discountCode.code == '17UJF26XQKZFPL5O5GU7'}">
+			          Spara upp till 88%!
+			        </ui:fragment>
+			        <ui:fragment rendered="#{sessionServicesBean.discountCode.code == 'OSM-BCSE'}">
+			          Spara upp till 86%!
+			        </ui:fragment>
+			        <ui:fragment rendered="#{sessionServicesBean.discountCode.code != '17UJF26XQKZFPL5O5GU7' and sessionServicesBean.discountCode.code != 'OSM-BCSE'}">
+			          Spara upp till 84%!
+			        </ui:fragment>
+			    </h3>
+			    <table class="table -striped -tableTablet" aria-label="table">
+			      <thead class="-highlighted">
+			        <tr>
+			          <th class="-text-centered">Format</th>
+					<ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><th class="-text-centered">Pris</th></ui:fragment>
+			          <th class="-highlighted -text-centered">Idag</th>
+			        </tr>
+			      </thead>
+			      <tbody class="-text-centered">
+
+					<!-- Quadrad formats -->
+			        <ui:fragment rendered="#{not empty format20x20}">
+			                <tr>
+			                  <td>20 x 20cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 20x20')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 20x20')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format40x40}">
+			                <tr>
+			                  <td>40 x 40cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 40x40')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 40x40')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format60x60}">
+			                <tr>
+			                  <td>60 x 60cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 60x60')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 60x60')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format80x80}">
+			                <tr>
+			                  <td>80 x 80cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 80x80')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 80x80')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format100x100}">
+			                <tr>
+			                  <td>100 x 100cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 100x100')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 100x100')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format120x120}">
+			                <tr>
+			                  <td>120 x 120cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 120x120')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 120x120')}*</td>
+			                </tr>
+			        </ui:fragment>
+					<!-- /Quadrad formats -->
+
+					<!-- /Digitaal formats -->
+			        <ui:fragment rendered="#{not empty format40x30}">
+			                <tr>
+			                  <td>40 x 30cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 40x30')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 40x30')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format80x60}">
+			                <tr>
+			                  <td>80 x 60cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 80x60')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 80x60')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format100x75}">
+			                <tr>
+			                  <td>100 x 75cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 100x75')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 100x75')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format120x90}">
+			                <tr>
+			                  <td>120 x 90cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 120x90')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 120x90')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format160x120}">
+			                <tr>
+			                  <td>160 x 120cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 160x120')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 160x120')}*</td>
+			                </tr>
+			        </ui:fragment>
+					<!-- /Digitaal formats -->
+
+
+
+					<!-- Classic formats -->
+			        <ui:fragment rendered="#{not empty format30x20}">
+			                <tr>
+			                  <td>30 x 20cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 30x20')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 30x20')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format60x40}">
+			                <tr>
+			                  <td>60 x 40cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 60x40')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 60x40')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format75x50}">
+			                <tr>
+			                  <td>75 x 50cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 75x50')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 75x50')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format90x60}">
+			                <tr>
+			                  <td>90 x 60cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 90x60')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 90x60')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format120x80}">
+			                <tr>
+			                  <td>120 x 80cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 120x80')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 120x80')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format150x100}">
+			                <tr>
+			                  <td>150 x 100cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 150x100')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 150x100')}*</td>
+			                </tr>
+			        </ui:fragment>
+					<!-- /Classic formats -->
+
+
+
+					<!-- Kopp Panoramaformats  2:1-->
+			        <ui:fragment rendered="#{not empty format60x30}">
+			                <tr>
+			                  <td>60 x 30cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 60x30')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 60x30')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format80x40}">
+			                <tr>
+			                  <td>80 x 40cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 80x40')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 80x40')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format100x50}">
+			                <tr>
+			                  <td>100 x 50cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 100x50')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 100x50')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format120x60}">
+			                <tr>
+			                  <td>120 x 60cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 120x60')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 120x60')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format150x75}">
+			                <tr>
+			                  <td>150 x 75cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 150x75')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 150x75')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format160x80}">
+			                <tr>
+			                  <td>160 x 80cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 160x80')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 160x80')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format180x90}">
+			                <tr>
+			                  <td>180 x 90cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 180x90')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 180x90')}*</td>
+			                </tr>
+			        </ui:fragment>
+					<!-- /Kopp Panoramaformats 2:1 -->
+
+
+					<!-- Kopp Panoramaformats 3:1 -->
+			        <ui:fragment rendered="#{not empty format60x20}">
+			                <tr>
+			                  <td>60 x 20cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 60x20')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 60x20')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format90x30}">
+			                <tr>
+			                  <td>90 x 30cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 90x30')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 90x30')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format120x40}">
+			                <tr>
+			                  <td>120 x 40cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 120x40')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 120x40')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format180x60}">
+			                <tr>
+			                  <td>180 x 60cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 180x60')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 180x60')}*</td>
+			                </tr>
+			        </ui:fragment>
+					<!-- /Kopp Panoramaformats 3:1 -->
+
+
+					<!-- Kopp Panoramaformats 4:1 -->
+			        <ui:fragment rendered="#{not empty format80x20}">
+			                <tr>
+			                  <td>80 x 20cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 80x20')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 80x20')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format120x30}">
+			                <tr>
+			                  <td>120 x 30cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 120x30')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 120x30')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format160x40}">
+			                <tr>
+			                  <td>160 x 40cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 160x40')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 160x40')}*</td>
+			                </tr>
+			        </ui:fragment>
+					<!-- /Kopp Panoramaformats 4:1 -->
+
+
+					<!-- Film formats 4:1 -->
+			        <ui:fragment rendered="#{not empty format90x50}">
+			                <tr>
+			                  <td>90 x 50cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 90x50')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 90x50')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format160x90}">
+			                <tr>
+			                  <td>160 x 90cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 160x90')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 160x90')}*</td>
+			                </tr>
+			        </ui:fragment>
+			        <ui:fragment rendered="#{not empty format180x100}">
+			                <tr>
+			                  <td>180 x 100cm</td>
+			                  <td><ui:fragment rendered="#{sessionServicesBean.discountCode.code != 'HIGHPRICES-BESTCANVASSE'}"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 180x100')}</s></ui:fragment></td>
+			                  <td class="-highlighted">#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 180x100')}*</td>
+			                </tr>
+			        </ui:fragment>
+					<!-- /Film formats 4:1 -->
+
+			      </tbody>
+			    </table>
+			    <a href="/format/#canvas" class="link">Alla priser och format »</a>
+			  </div>
+			</ui:fragment>
+      	</div>
+    </div>
+
+</ui:composition>

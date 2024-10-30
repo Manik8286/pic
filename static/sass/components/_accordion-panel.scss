@@ -1,0 +1,61 @@
+.accordion-panel {
+  @extend .accordion-base;
+  font-size: 14px;
+  background-color: $accoridion-panel-background;
+  border: 1px solid $accoridion-panel-border;
+  border-radius: 2px;
+  overflow: hidden;
+
+  > .title {
+    padding: 7px 25px;
+    color: $accoridion-panel-title-color;
+    cursor: pointer;
+  }
+
+  > .sub {
+    border-bottom: 1px solid $accoridion-panel-border;
+
+    &:last-of-type {
+      border-bottom: 0;
+    }
+  }
+
+  > .sub > .inner {
+    padding: 15px 25px 20px;
+  }
+
+  > .title.-expandable {
+    position: relative;
+    font-weight: $weight-semibold;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      margin-top: -3px;
+      width: 0;
+      height: 0;
+      transition: transform 0.2s;
+      border-style: solid;
+      border-width: 3px 0 3px 6px;
+      border-color: transparent transparent transparent $accordion-panel-indicator;
+
+      .no-csstransforms {
+        // TODO: Compatibility for Browsers
+        // without css transforms
+        content: none;
+      }
+    }
+    
+    > .format {
+      font-weight: $weight-normal;
+    }
+    
+    &.-active {
+      &:before {
+        transform: rotate(90deg);
+      }
+    }
+  }
+}

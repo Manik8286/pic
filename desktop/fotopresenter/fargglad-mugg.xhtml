@@ -1,0 +1,77 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:param name="pageTitle" value="Din Innerfärgade Fotomugg" />
+
+    <ui:define name="dataLayer">
+      <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+        <ui:param name="mug_color" value="true" />
+        <ui:param name="noList" value="true" />
+      </ui:include>
+    </ui:define>
+
+    <ui:define name="head">
+        
+    </ui:define>
+
+    <ui:define name="meta">
+        <meta name="description" content="" />
+        <meta name="robots" content="NOINDEX,FOLLOW" />
+        <link rel="canonical" href="https://www.bestcanvas.se/fotopresenter/fargglad-mugg.jsf" />
+        <meta http-equiv="content-language" content="sv_SE"/>
+    </ui:define>
+
+  <ui:define name="content">
+    <!-- teaser -->
+    <section class="page-teaser">
+      <ui:include src="/page-blocks/teaser.xhtml">
+        <ui:param name="teaserBgImage" value="/#{shopInfoBean.versionPath}assets/img/backgrounds/mug-teaser-background.jpg" />
+        <ui:param name="headline" value="Din" />
+        <ui:param name="headline2" value="innerfärgade fotomugg" />
+        <ui:param name="claim" value="" />
+        <ui:param name="badgeTop" value="Spara upp till 64%" />
+        <ui:param name="badgeMiddle" value="#{priceBean.productPrice('Mug-Inner_Bestcanvas_SE', 'Inner colored mug', 'Inner Colored Mug Left Landscape')}" />
+        <ui:param name="badgeBottom" value="istället för #{priceBean.productCrossPrice('Mug-Inner_Bestcanvas_SE', 'Inner colored mug', 'Inner Colored Mug Left Landscape')}" />
+        <ui:param name="teaserProductImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/fotomugg/fargglad/fargglad-mugg.png" />
+        <ui:param name="ProductImgClass" value="text-center" />
+        <ui:param name="altTeaserProductImage" value="fargglad foto mugg" />
+        <ui:param name="teaserFeatureHighlighted" value="" />
+        <ui:param name="teaserFeature1" value="Keramikmuggar med en gnutta färg" />
+        <ui:param name="teaserFeature2" value="Diskmaskins- och mikrovågsugnssäker" />
+        <ui:param name="teaserFeature3" value="5 färger att välja mellan" />
+        <ui:param name="teaserFeature4" value="" />
+        <ui:param name="showHpLogo" value="" />
+        <ui:param name="uploadId" value="1616" />
+        <ui:param name="buttonText" value="Skapa" />
+        <ui:param name="showShippingInfo" value="true" />
+      </ui:include>
+    </section>
+    <!-- /teaser -->
+
+    <!-- info boxes -->
+    <section class="page-section -alternate -collapse-top">
+        <ui:include src="/page-blocks/info-blocks-photogifts.xhtml">
+          <ui:param name="mugColoredFormatTable" value="true" />
+          <ui:param name="checkHideSVT" value="true" />
+        </ui:include>
+    </section>
+    <!-- /info boxes -->
+
+    <section class="page-section">
+      <ui:include src="/page-blocks/content-colored-mug.xhtml" />
+    </section>
+
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+      <ui:include src="/page-blocks/paymentmethods.xhtml" />
+      <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+    </section>
+    <!-- /paymentmethods -->
+
+  </ui:define>
+</ui:composition>

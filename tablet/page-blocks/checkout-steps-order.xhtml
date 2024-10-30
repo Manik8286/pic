@@ -1,0 +1,255 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+<!--   <section class="checkout-head">
+  <ul class="steps">
+    <li class="step #{stepCount eq 3 ? '-active' : '-condensed'} #{stepCount > 3 ? '-done' : ''}" data-step="3">
+      <c:set var="stepName" value="Winkelwagen" />
+      <c:if test="${stepCount == 3}">
+        <span class="text">#{stepName}</span>
+      </c:if>
+      <c:if test="${stepCount > 3}">
+        <a href="/shoppingcart.jsf" class="blind"></a>
+      </c:if>
+    </li>
+    <li class="step #{stepCount eq 4 ? '-active' : '-condensed'} #{stepCount > 4 ? '-done' : ''}" data-step="4">
+      <c:set var="stepName" value="Adres" />
+      <c:if test="${stepCount == 4}">
+        <span class="text">#{stepName}</span>
+      </c:if>
+      <c:if test="${stepCount > 4}">
+        <a href="/orderaddresses.jsf" class="blind"></a>
+      </c:if>
+    </li>
+    <li class="step #{stepCount eq 5 ? '-active' : '-condensed'} #{stepCount > 5 ? '-done' : ''}" data-step="5">
+      <c:set var="stepName" value="Betaalmethode" />
+      <c:if test="${stepCount == 5}">
+        <span class="text">#{stepName}</span>
+      </c:if>
+      <c:if test="${stepCount > 5}">
+        <a href="/paymentmethod.jsf" class="blind"></a>
+      </c:if>
+    </li>
+    <li class="step #{stepCount eq 6 ? '-active' : '-condensed'} #{stepCount > 6 ? '-done' : ''}" data-step="6">
+      <c:set var="stepName" value="Bestelgegevens" />
+      <c:if test="${stepCount == 6}">
+        <span class="text">#{stepName}</span>
+      </c:if>
+      <c:if test="${stepCount > 6}">
+        <a href="/confirmorder.jsf" class="blind"></a>
+      </c:if>
+    </li>
+  </ul>
+</section> -->
+
+    <section class="checkout-head-new#{stepClass}">
+        <ui:fragment rendered="#{stepCount == 1}">
+            <div class="row bs-wizard" style="border-bottom:0;">
+                <div class="col -span-4 bs-wizard-step active">
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="glyphicon bs-wizard-dot active"></div>
+                    <div class="bs-wizard-info text-center">#{_["Upload Image"]}</div>
+                </div>
+                <!-- active -->
+                <div class="col -span-4 bs-wizard-step">
+                    <!-- next -->
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="bs-wizard-dot"></div>
+                    <div class="bs-wizard-info text-center">Välj format</div>
+                </div>
+                <div class="col -span-4 bs-wizard-step">
+                    <!-- next -->
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="bs-wizard-dot"></div>
+                    <div class="bs-wizard-info text-center">Varukorg</div>
+                </div>
+            </div>
+        </ui:fragment>
+            <!-- shoppingcart.jsf progress-->
+            <ui:fragment rendered="#{stepCount == 2}">
+            <div class="row bs-wizard" style="border-bottom:0;">
+                <div class="col -span-4 bs-wizard-step complete">
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="glyphicon bs-wizard-dot complete"></div>
+                    <div class="bs-wizard-info text-center"><a href="singleupload.jsf">#{_["Upload Image"]}</a></div>
+                </div>
+                <!-- active -->
+                <div class="col -span-4 bs-wizard-step active">
+                    <!-- next -->
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="bs-wizard-dot active"></div>
+                   <div class="bs-wizard-info text-center">Välj format</div>
+                </div>
+                <div class="col -span-4 bs-wizard-step">
+                    <!-- next -->
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="bs-wizard-dot"></div>
+                   <div class="bs-wizard-info text-center">Varukorg</div>
+                </div>
+            </div>
+            </ui:fragment>
+            <ui:fragment rendered="#{stepCount == 3}">
+            <div class="row bs-wizard" style="border-bottom:0;">
+                <div class="col -span-3 bs-wizard-step active">
+                    <!-- active -->
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="bs-wizard-dot active"></div>
+                    <div class="bs-wizard-info text-center">Varukorg</div>
+                </div>
+                <div class="col -span-3 bs-wizard-step">
+                    <!-- next -->
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="bs-wizard-dot"></div>
+                   <div class="bs-wizard-info text-center">#{_["Address"]}</div>
+                </div>
+                <div class="col -span-3 bs-wizard-step">
+                    <!-- next -->
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="bs-wizard-dot"></div>
+                   <div class="bs-wizard-info text-center">Betalningsmetod</div>
+                </div>
+                <div class="col -span-3 bs-wizard-step">
+                    <!-- next -->
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="bs-wizard-dot"></div>
+                    <div class="bs-wizard-info text-center">Granska order</div>
+                </div>
+                </div>
+            </ui:fragment>
+            <!-- orderaddresses.jsf progress-->
+            <ui:fragment rendered="#{stepCount == 4}">
+            <div class="row bs-wizard" style="border-bottom:0;">
+                <div class="col -span-3 bs-wizard-step complete">
+                    <!-- complete -->
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="glyphicon bs-wizard-dot complete"></div>
+                    <a href="/shoppingcart.jsf"><div class="bs-wizard-info text-center">Varukorg</div></a>
+                </div>
+                <div class="col -span-3 bs-wizard-step active">
+                    <!-- next -->
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="bs-wizard-dot active"></div>
+                    <div class="bs-wizard-info text-center">#{_["Address"]}</div>
+                </div>
+                <div class="col -span-3 bs-wizard-step">
+                    <!-- next -->
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="bs-wizard-dot"></div>
+                    <div class="bs-wizard-info text-center">Betalningsmetod</div>
+                </div>
+                <div class="col -span-3 bs-wizard-step">
+                    <!-- next -->
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="bs-wizard-dot"></div>
+                    <div class="bs-wizard-info text-center">Granska order</div>
+                </div>
+                </div>
+            </ui:fragment>
+            <!-- paymentmethod.jsf progress-->
+            <ui:fragment rendered="#{stepCount == 5}">
+            <div class="row bs-wizard" style="border-bottom:0;">
+                <div class="col -span-3 bs-wizard-step complete">
+                    <!-- complete -->
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+
+                    <div class="glyphicon bs-wizard-dot complete"></div>
+                     <a href="/shoppingcart.jsf"><div class="bs-wizard-info text-center">Varukorg</div></a>
+                </div>
+                <div class="col -span-3 bs-wizard-step complete">
+                    <!-- next -->
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="glyphicon bs-wizard-dot complete"></div>
+                    <a href="/orderaddresses.jsf"><div class="bs-wizard-info text-center">#{_["Address"]}</div></a>
+                </div>
+                <div class="col -span-3 bs-wizard-step active">
+                    <!-- next -->
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="bs-wizard-dot active"></div>
+                    <div class="bs-wizard-info text-center">Betalningsmetod</div>
+                </div>
+                <div class="col -span-3 bs-wizard-step">
+                    <!-- next -->
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="bs-wizard-dot"></div>
+                    <div class="bs-wizard-info text-center">Granska order</div>
+                </div>
+                </div>
+            </ui:fragment>
+            <!-- confirmorder.jsf progress-->
+            <ui:fragment rendered="#{stepCount == 6}">
+                <div class="row bs-wizard" style="border-bottom:0;">
+                    <div class="col -span-3 bs-wizard-step complete">
+                        <!-- complete -->
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+
+                        <div class="glyphicon bs-wizard-dot complete"></div>
+                         <a href="/shoppingcart.jsf"><div class="bs-wizard-info text-center">Varukorg</div></a>
+                    </div>
+                    <div class="col -span-3 bs-wizard-step complete">
+                        <!-- complete -->
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <div class="glyphicon bs-wizard-dot complete"></div>
+                        <a href="/orderaddresses.jsf"><div class="bs-wizard-info text-center">#{_["Address"]}</div></a>
+                    </div>
+
+                    <div class="col -span-3 bs-wizard-step complete">
+                        <!-- complete -->
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <div class="glyphicon bs-wizard-dot complete"></div>
+                        <a href="/paymentmethod.jsf"><div class="bs-wizard-info text-center">Betalningsmetod</div></a>
+                    </div>
+                    <div class="col -span-3 bs-wizard-step active">
+                        <!-- next -->
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <div class="bs-wizard-dot active"></div>
+                        <div class="bs-wizard-info text-center">Granska order</div>
+                    </div>
+                </div>
+            </ui:fragment>
+    </section>
+
+</ui:composition>

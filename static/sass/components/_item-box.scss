@@ -1,0 +1,30 @@
+.item-box {
+  @extend .box;
+  font-size: 14px;
+  padding: 20px;
+  position: relative;
+  box-sizing: border-box;
+
+  &.-wide {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .accont-social-title {
+    margin: auto;
+    max-width: 420px;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .headline {
+    display: table;
+    font-size: 16px;
+    font-weight: $weight-semibold;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+}

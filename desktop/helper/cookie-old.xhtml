@@ -1,0 +1,96 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <script>
+    // <![CDATA[
+    (function() {
+      if (typeof(Cookies) !== 'undefined' && Cookies.get('topbanner')) {
+        var topbar = Cookies.getJSON('topbanner');
+        var headerBar = document.createElement('div');
+        var topbarWrapper = document.createElement('div');
+        var headerBarContainer = document.createElement('div');
+        var headerMsg = document.createElement('div');
+        var headerInfo = document.createElement('div');
+        var countdownFormat = "%-H h %M m %S s";
+        var countdown = document.createElement('span');
+        
+        headerBar.className = 'header-bar';
+        headerBarContainer.className = 'header-container';
+        headerMsg.className = 'header-msg';
+        headerInfo.className = 'header-info';
+
+        headerBar.appendChild(headerBarContainer);
+        headerBarContainer.appendChild(headerMsg);
+
+        // Writes msg
+        headerMsg.innerHTML = topbar.msg;
+        
+        // Appends class
+        if (topbar.style) {
+          headerBar.className = headerBar.className +" "+ topbar.style;
+        }
+
+        // Updates format
+        if (topbar.countdownFormat) {
+          countdownFormat = topbar.countdownFormat;
+        }
+
+        if (topbar.countdown) {
+          if (topbar.style !== '-simple') {
+            headerBar.classList.add('-countdown');
+            countdown.classList.add('js-countdown');
+            countdown.setAttribute('data-until', topbar.countdown);
+            countdown.setAttribute('data-format', countdownFormat);
+            countdown.setAttribute('data-msg-element', 'header-info');
+            headerInfo.appendChild(countdown);
+            headerBarContainer.appendChild(headerInfo);  
+          }
+
+
+
+          if (topbar.style === '-simple') {
+            headerBar.classList.add('-countdown');
+            countdown.classList.add('js-countdown');
+            countdown.setAttribute('data-until', topbar.countdown);
+            countdown.setAttribute('data-format', countdownFormat);
+            countdown.setAttribute('data-msg-element', 'header-info');
+            headerMsg.appendChild(countdown);
+          }
+        }
+
+        if (topbar.hideAfter) {
+          countdown.setAttribute('data-hide-element', topbar.hideAfter);
+        }
+
+        if (topbar.modal) {
+          headerBar.classList.add('-modal');
+          headerInfo.innerHTML += ' <a class="modal-link" href="javascript:void(0)" onclick="Modal.open(\''+ topbar.modal +'\');">'+ topbar.modalMsg +'</a>';
+        }
+
+        if (topbar.anchor) {
+          headerBar.classList.add('-link');
+          headerInfo.innerHTML += ' <a class="link" href="'+ topbar.anchor +'">'+ topbar.anchorText +'</a>';
+        }
+
+        if (topbar.finalMsg) {
+          headerBar.classList.add('-final');
+          countdown.setAttribute('data-final-msg', topbar.finalMsg);
+        }
+
+
+        topbarWrapper.setAttribute('id', 'topbar-wrapper');
+        document.body.insertBefore(topbarWrapper, document.body.firstChild);
+        topbarWrapper.style.backgroundImage = "url(#{libraryImagesBean.getFilePathByLibraryImageId(2403)})";
+        topbarWrapper.classList.add('topbar-wrapper');
+        topbarWrapper.appendChild(headerBar);
+        
+      }
+    })();
+    // ]]>
+  </script>
+
+</ui:composition>

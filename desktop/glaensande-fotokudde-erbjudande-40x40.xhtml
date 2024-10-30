@@ -1,0 +1,90 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Klassisk Fotokudde" />
+
+  <ui:define name="dataLayer">
+  <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+    <ui:param name="pillow" value="true" />
+    <ui:param name="noList" value="true" />
+  </ui:include>
+  </ui:define>
+
+  <ui:define name="head">
+      <ui:include src="/coupons/discountcode-BC_SE_SEA.xhtml" />
+      <ui:include src="/helper/reference.xhtml" />
+        <style>
+          .desktop .page-teaser .product {
+            top: -25px;
+          }
+        </style>
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+  </ui:define>
+
+  <ui:define name="content">
+    <!-- teaser -->
+    <section class="page-teaser">
+      <ui:include src="/page-blocks/teaser.xhtml">
+        <ui:param name="teaserBgImage" value="/#{shopInfoBean.versionPath}assets/img/backgrounds/cushion-teaser.jpg" />
+        <ui:param name="headline" value="Din" />
+        <ui:param name="headline2" value="Fotokudde" />
+        <ui:param name="claim" value="Personliga fotokuddar av högsta kvalitet" />
+        <ui:param name="badgeTop" value="40x40 cm" />
+        <ui:param name="badgeMiddle" value="#{priceBean.productPrice('Pillow_Bestcanvas_SE', 'Pillow', 'Pillow 40x40')}" />
+        <ui:param name="badgeBottom" value="istället för #{priceBean.productCrossPrice('Pillow_Bestcanvas_SE', 'Pillow', 'Pillow 40x40')}" />
+        <ui:param name="teaserProductImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/fotokudde/fotokudde.png" />
+        <ui:param name="altTeaserProductImage" value="fotokudde" />
+        <ui:param name="teaserFeatureHighlighted" value="" />
+        <ui:param name="teaserFeature1" value="Från den verkliga testvinnaren" />
+        <ui:param name="teaserFeature2" value="Garanti för bästa pris" />
+        <ui:param name="teaserFeature3" value="Brilliant, miljövänligt fototryck" />
+        <ui:param name="teaserFeature3" value="HD – särskilt lämplig för tryck i högupplösning" />
+        <ui:param name="showHpLogo" value="" />
+        <ui:param name="uploadId" value="861" />
+        <ui:param name="buttonText" value="Skapa" />
+        <ui:param name="showShippingInfo" value="true" />
+      </ui:include>
+    </section><!-- /teaser -->
+
+    <!-- info boxes -->
+    <section class="page-section -alternate -collapse-top">
+        <ui:include src="/page-blocks/info-blocks-homestyle.xhtml">
+          <ui:param name="cushionFormatTable" value="true" />
+          <ui:param name="checkHideSVT" value="#{sessionBean.userAgentType != 'desktop'}" />
+        </ui:include>
+    </section>
+    <!-- /info boxes -->
+
+    <section class="page-section">
+      <ui:include src="/page-blocks/content-golssy-cushion-new-img.xhtml" />
+    </section>
+
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+      <ui:include src="/page-blocks/paymentmethods.xhtml" />
+      <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+    </section>
+    <!-- /paymentmethods -->
+
+
+    <!-- microdata -->
+        <ui:include src="/content-blocks/microdata-simple.xhtml">
+        <ui:param name="name" value="Foto-Kudde" />
+        <ui:param name="sku" value="KISSEN" />
+        <ui:param name="url" value="https://www.bestcanvas.se/glaensande-fotokudde-erbjudande-40x40/" />
+        <ui:param name="price" value="#{priceBean.productPrice('Pillow_Bestcanvas_SE', 'Pillow', 'Pillow 40x40')}" />
+    </ui:include>
+    <!-- /microdata -->
+
+
+</ui:define>
+</ui:composition>

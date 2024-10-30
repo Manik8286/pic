@@ -1,0 +1,61 @@
+.payment-items > .payment-item {
+  display: inline;
+  text-align: justify;
+
+  &:before {
+
+  }
+
+  &:last-child:after {
+    display: inline-block;
+    margin-left: 100%;
+    content: '';
+  }
+
+  &.-mastercard:before {
+    transform-origin: left center;
+    transform: scale(1.0, 1.0);
+  }
+
+  &.-visa:before {
+    transform-origin: left center;
+    transform: scale(1.0, 1.0);
+  }
+
+  &.-american-express:before {
+    transform-origin: center center;
+    transform: scale(1.0, 1.0);
+  }
+
+  &.-paypal:before {
+    transform-origin: left center;
+    //transform: scale(0.45, 0.45);
+    zoom:0.60;
+    //transform: scale(0.6, 0.6);
+  }
+
+  &.-sofort:before {
+    transform-origin: left center;
+    //transform: scale(0.55, 0.55);
+    zoom: 0.55;
+    margin-bottom: 15px;
+  }
+
+  &.-barzahlen:before {
+    transform-origin: left center;
+    //transform: scale(0.6, 0.6);
+    zoom: 0.60;
+    margin-bottom: 13px;
+  }
+
+  &.-klarna:before {
+    transform-origin: left center;
+    //transform: scale(0.5, 0.5);
+    zoom: 0.50;
+  }
+
+  &.-amazon:before {
+    transform-origin: left center;
+    transform: scale(1.0, 1.0);
+  }
+}

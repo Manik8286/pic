@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+		<div class="modal animated fadeIn modal-wide" id="myCanvasModal" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+			<div class="modal-dialog" id="modal-dialog-canvas" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div jsf:id="productPreview">
+							<div class="canvas-wrapper" id="myCanvasEdit"></div>
+							<br/>
+							<p class="text-center hitSpace">
+								<span class="isMove hint"><sup>Flytta på ditt foto, för att passa in det i tryck området.</sup></span>
+								<span class="notMove -hidden hint"><sup>Ditt foto passar perfekt till ditt valda format</sup></span>
+							</p>
+							<p class="draginfo text-center ">
+								<span>Zooma:</span> <input type="range" id="scaleCanvas" class="vertical-middle" value="0" min="0" max="30" onchange="previewConfig.stopScale()" oninput="previewConfig.doScale()"></input>
+							</p>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<div class="col-xs-20 col-sm-20 fit">
+							<a href="javascript:CloseModal(true);" class="link">Avbryt</a>
+							<a href="javascript:CloseModal(false);" class="-right action button -action">Spara</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+</ui:composition>

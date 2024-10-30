@@ -1,0 +1,51 @@
+.post {
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .inner {
+
+      .headline {
+        font-size: 30px;
+        line-height: 1;
+        font-weight: $weight-bold;
+        margin: 0;
+      }
+
+      .subtitle {
+        font-size: 18px;
+        font-style: italic;
+        margin-top: 8px;
+      }
+    }
+  }
+
+  .body {
+    padding: 0 10px;
+  }
+
+  .footer {
+    .-recentArticles {
+      overflow-x: scroll;
+      white-space: pre-line;
+
+      .article-btn-container {
+        height: 40px;
+        display: inline-block;
+        width: 105px;
+        text-align: left;
+        background: #f3f3f3;
+      }
+
+      .-title {
+        span {
+          background: none;
+          display: block;
+          margin-top: -40px;
+          padding: 10px;
+        }
+      }
+    }
+  }
+}

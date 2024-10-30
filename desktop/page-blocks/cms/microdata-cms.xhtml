@@ -1,0 +1,194 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+					      xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:include src="/page-blocks/cms/variables.xhtml" />
+  
+  <c:choose>
+    <c:when test="#{productType eq canvas}">
+      <!-- canva -->
+      <c:set var="width" value="#{fn:substringBefore(productFormat, 'x')}" />
+      <c:set var="height" value="#{fn:substringAfter(productFormat, 'x')}" />
+      <c:set var="sizeInfo" value="cm" />
+      <c:set var="product"  value="Canvas" />
+      <c:set var="format"  value="true" />
+    </c:when>
+     <c:when test="#{productType eq aluminium}">
+     <!-- Aluminium -->
+      <c:set var="width" value="#{fn:substringBefore(productFormat, 'x')}" />
+      <c:set var="height" value="#{fn:substringAfter(productFormat, 'x')}" />
+      <c:set var="sizeInfo" value="cm" />
+      <c:set var="product"  value="Aluminium" />
+      <c:set var="format"  value="true" />
+    </c:when>
+    <c:when test="#{productType eq acryl_glass}">
+    <!-- Acryl Glass -->
+      <c:set var="width" value="#{fn:substringBefore(productFormat, 'x')}" />
+      <c:set var="height" value="#{fn:substringAfter(productFormat, 'x')}" />
+      <c:set var="sizeInfo" value="cm" />
+      <c:set var="product"  value="Plexiglas" />
+      <c:set var="format"  value="true" />
+    </c:when>
+    <c:when test="#{productType eq acryl_alu}">
+    <!-- Acryl+Alu -->
+      <c:set var="sizeInfo" value=""  />
+      <c:set var="product"  value="" />
+    </c:when>
+    <c:when test="#{productType eq forex}">
+    <!-- Forex -->
+      <c:set var="width" value="#{fn:substringBefore(productFormat, 'x')}" />
+      <c:set var="height" value="#{fn:substringAfter(productFormat, 'x')}" />
+      <c:set var="sizeInfo" value="cm" />
+      <c:set var="product"  value="Forex" />
+      <c:set var="format"  value="true" />
+    </c:when>
+    <c:when test="#{productType eq mug}">
+    <!-- Mug -->
+      <c:set var="width" value="Right" />
+      <c:set var="height" value="Portrait" />
+      <c:set var="sizeInfo" value="" />
+      <c:set var="product"  value="Mok" />
+      <c:set var="formatType"  value="KLAS" />
+    </c:when>
+    <c:when test="#{productType eq pillow}">
+    <!-- Pillow -->
+      <c:set var="width" value="40" />
+      <c:set var="height" value="40" />
+      <c:set var="sizeInfo" value="cm" />
+      <c:set var="product"  value="Kussen" />
+    </c:when>
+    <c:when test="#{productType eq mousepad}">
+    <!-- Mousepad -->
+      <c:set var="width" value="12" />
+      <c:set var="height" value="18" />
+      <c:set var="sizeInfo" value="cm" />
+      <c:set var="product"  value="Muismat" />
+    </c:when>
+    <c:when test="#{productType eq puzzle}">
+    <!-- Puzzle -->
+      <c:set var="width" value="20" />
+      <c:set var="height" value="28" />
+      <c:set var="sizeInfo" value="cm" />
+      <c:set var="product"  value="Fotopuzzel" />
+    </c:when>
+    <c:when test="#{productType eq phone_glossy}">
+    <!-- Phonecase -->
+      <c:set var="sizeInfo" value="" />
+      <c:set var="product"  value="" />
+    </c:when>
+    <c:when test="#{productType eq pillow_premium}">
+    <!-- Pillow Premium  -->
+      <c:set var="sizeInfo" value="" />
+      <c:set var="product"  value="" />
+    </c:when>
+    <c:when test="#{productType eq passepartout}">
+    <!-- Passepartout -->
+      <c:set var="width" value="#{fn:substringBefore(productFormat, 'x')}" />
+      <c:set var="height" value="#{fn:substringAfter(productFormat, 'x')}" />
+      <c:set var="sizeInfo" value="cm" />
+      <c:set var="product"  value="Passe-partout" />
+      <c:set var="format"  value="true" />
+    </c:when>
+    <c:when test="#{productType eq blanket}">
+    <!-- Blanket -->
+      <c:set var="width" value="150" />
+      <c:set var="height" value="100" />
+      <c:set var="sizeInfo" value="cm" />
+      <c:set var="product"  value="Strandlaken" />
+      <c:set var="formatType"  value="KLAS" />
+    </c:when>
+    <c:when test="#{productType eq acrylblock}">
+    <!-- Acrylblock -->
+      <c:set var="width" value="10" />
+      <c:set var="height" value="10" />
+      <c:set var="sizeInfo" value="cm" />
+      <c:set var="product"  value="Acrylblok" />
+      <c:set var="formatType"  value="QUAD" />
+    </c:when>
+    <c:when test="#{productType eq wood}">
+    <!-- Wood -->
+      <c:set var="width" value="" />
+      <c:set var="height" value="" />
+      <c:set var="sizeInfo" value="cm" />
+      <c:set var="product"  value="Hout" />
+      <c:set var="format"  value="true" />
+    </c:when>
+    <c:when test="#{productType eq mug_magic}">
+    <!-- Mug Magic -->
+      <c:set var="width" value="Left" />
+      <c:set var="height" value="Landscape" />
+      <c:set var="sizeInfo" value="" />
+      <c:set var="product"  value="Magische Mok" />
+      <c:set var="formatType"  value="KLAS" />
+    </c:when>
+    <c:when test="#{productType eq mug_porcelain}">
+    <!-- Mug Porcelain  -->
+      <c:set var="width" value="Left" />
+      <c:set var="height" value="Landscape" />
+      <c:set var="sizeInfo" value="" />
+      <c:set var="product"  value="Kwaliteitsmok" />
+      <c:set var="formatType"  value="KLAS" />
+    </c:when>
+    <c:when test="#{productType eq mug_color}">
+    <!-- Mug color -->
+      <c:set var="width" value="Left" />
+      <c:set var="height" value="Landscape" />
+      <c:set var="sizeInfo" value="" />
+      <c:set var="product"  value="Fotomok" />
+      <c:set var="formatType"  value="KLAS" />
+    </c:when>
+    <c:when test="#{productType eq blanket_premium}">
+    <!-- Blanket Premium -->
+      <c:set var="width" value="150" />
+      <c:set var="height" value="100" />
+      <c:set var="sizeInfo" value="cm" />
+      <c:set var="product"  value="Strandlaken" />
+      <c:set var="formatType"  value="KLAS" />
+    </c:when>
+    <c:when test="#{productType eq towel}">
+    <!-- Towel -->
+      <c:set var="width" value="140" />
+      <c:set var="height" value="70" />
+      <c:set var="sizeInfo" value="cm" />
+      <c:set var="product"  value="Handdoek" />
+      <c:set var="format"  value="true" />
+    </c:when>
+    <c:when test="#{productType eq carpet}">
+    <!-- rug -->
+      <c:set var="width" value="70" />
+      <c:set var="height" value="50" />
+      <c:set var="sizeInfo" value="cm" />
+      <c:set var="product"  value="alfombra" />
+      <c:set var="formatType"  value="KLAS" />
+    </c:when>
+    <c:otherwise></c:otherwise>
+  </c:choose>
+      
+
+  <c:if test="#{format eq true}">
+    <c:choose>
+      <c:when test="#{width eq '20' and height eq '20' or width eq '40' and height eq '40' or width eq '60' and height eq '60' or width eq '80' and height eq '80'}">
+        <c:set var="formatType"  value="QUAD" />
+      </c:when>
+      <c:when test="#{width eq '40' and height eq '30' or width eq '80' and height eq '60' or width eq '100' and height eq '75' or width eq '160' and height eq '120'}">
+        <c:set var="formatType"  value="DIGI" />
+      </c:when>
+      <c:when test="#{width eq '30' and height eq '20' or width eq '60' and height eq '40' or width eq '75' and height eq '50' or width eq '120' and height eq '80'}">
+        <c:set var="formatType"  value="KLAS" />
+      </c:when>
+      <c:otherwise></c:otherwise>
+    </c:choose>
+  </c:if>
+
+  <ui:include src="/content-blocks/microdata.xhtml">
+    <ui:param name="width"    value="#{width}" />
+    <ui:param name="height"   value="#{height}" />
+    <ui:param name="sizeInfo" value="#{sizeInfo}" />
+    <ui:param name="product"  value="#{product}" />
+    <ui:param name="price"   value="#{fn:replace(fn:trim(fn:replace(productPrice, '€', '')), ',00', '')}" />
+    <ui:param name="statt"    value="#{fn:replace(fn:trim(fn:replace(productPriceCross, '€', '')), ',00', '')}" />
+    <ui:param name="format"   value="#{formatType}" />
+  </ui:include>
+
+</ui:composition>

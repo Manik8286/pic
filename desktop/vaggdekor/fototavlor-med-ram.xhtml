@@ -1,0 +1,108 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Bild med Ram -84%: ditt foto i en Fotoram" />
+
+  <ui:define name="dataLayer">
+    <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+      <ui:param name="passepartout" value="true" />
+      <ui:param name="noList" value="true" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="head">
+    
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="description" content="Bild med Ram: fototryck i gallerikvalitet med fotoram, inneslutet i skinande akrylglas. Foto med ram: knivskarp upplösning, högkvalitativ museumkartong." />
+    <meta name="robots" content="INDEX,FOLLOW" />
+    <link rel="canonical" href="https://www.bestcanvas.se/vaggdekor/fototavlor-med-ram.jsf" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+	
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Bild med Ram -84%: ditt foto i en Fotoram | bestcanvas.se" />
+	<meta property="og:url" content="https://www.bestcanvas.se/vaggdekor/fototavlor-med-ram.jsf" />
+	<meta property="og:image" content="https://download.cdn-shop.com/meta/bestcanvas-se/fototavlor-med-ram.jpg" />
+	<meta property="og:description" content="Bild med Ram: fototryck i gallerikvalitet med fotoram, inneslutet i skinande akrylglas. Foto med ram: knivskarp upplösning, högkvalitativ museumkartong." />
+	<meta property="og:site_name" content="BestCanvas.se" />
+
+	<meta itemprop="name" content="Bild med Ram -84%: ditt foto i en Fotoram | bestcanvas.se" />
+	<meta itemprop="description" content="Bild med Ram: fototryck i gallerikvalitet med fotoram, inneslutet i skinande akrylglas. Foto med ram: knivskarp upplösning, högkvalitativ museumkartong." />
+	<meta itemprop="image" content="https://download.cdn-shop.com/meta/bestcanvas-se/fototavlor-med-ram.jpg" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Bild med Ram -84%: ditt foto i en Fotoram | bestcanvas.se" />
+	<meta name="twitter:description" content="Bild med Ram: fototryck i gallerikvalitet med fotoram, inneslutet i skinande akrylglas. Foto med ram: knivskarp upplösning, högkvalitativ museumkartong." />
+	<meta name="twitter:url" content="https://www.bestcanvas.se/vaggdekor/fototavlor-med-ram.jsf" />
+	<meta name="twitter:image" content="https://download.cdn-shop.com/meta/bestcanvas-se/fototavlor-med-ram.jpg" />
+	
+  </ui:define>
+
+  <ui:define name="content">
+    <ui:include src="/page-blocks/teaser-right-white.xhtml">
+      <!-- Images -->
+      <ui:param name="teaserBgImage" value="#{libraryImagesBean.getFilePathByLibraryImageId(468)}" />
+      <ui:param name="teaserProductImage" value="#{libraryImagesBean.getFilePathByLibraryImageId(469)}" />
+      <ui:param name="altTeaserProductImage" value="#{libraryImagesBean.getAltByLibraryImageId(468)}" />
+      <ui:param name="showcaseClass" value="-transparent -showcase350h" />
+      <ui:param name="imgClass" value="-withGap" />
+      
+      <!-- Headers -->
+      <ui:param name="headline" value="Ditt Fototavlor med Ram" />
+
+      <!-- Price Badge -->
+      <ui:param name="badgeTop" value="Spara upp till #{priceBean.absoluteSavingsPercent('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 20x20')}" />
+      <ui:param name="badgeTopDiscount" value="Spara upp till" />
+      <ui:param name="badgeMiddle" value="#{priceBean.productPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 17x17')}" />
+      <ui:param name="badgeBottom" value="istället för #{priceBean.productCrossPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 17x17')}" />
+      <ui:param name="badgeClass" value="-positionBottom" />
+      
+      <!-- Bullet points -->
+      <ui:param name="teaserFeature1" value="Digitalt fototryck med rakbladsskarp upplösning" />
+      <ui:param name="teaserFeature2" value="Ram i gallerikvalitet" />
+      <ui:param name="teaserFeature3" value="Inneslutet med skinande akrylglas" />
+      <ui:param name="teaserFeature4" value="Nu tillgängliga med extra smala ramar" />
+
+      <!-- Upload Button -->
+      <ui:param name="uploadId" value="1612" />
+      <ui:param name="buttonText" value="Skapa" />
+      <ui:param name="quotes" value="false" />
+    </ui:include>
+
+    <!-- info boxes -->
+    <section class="page-section -alternate -collapse-top">
+      <ui:include src="/page-blocks/info-blocks-framed-picture.xhtml" />
+    </section>
+    <!-- /info boxes -->
+
+    <section class="page-section">
+      <ui:include src="/content-blocks/framed-picture-text.xhtml" />
+    </section>
+
+    <!-- Rich Snippet -->
+    <ui:include src="/#{shopInfoBean.defaultVersionPath}components/rich-snippets/rich-snippets-template.xhtml">
+      <ui:param name="picturatorSnippetMeta" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Framed-Picture']}" />
+      <ui:param name="picturatorSnippetRating" value="#{contentBean.snippets['SEO-BCSE-Rich-Snippet-Rating']}" />
+      <ui:param name="offerPrice" value="#{fn:trim(priceBean.productPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 17x17').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+    </ui:include>
+    <!-- /Rich Snippet -->
+
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+      <ui:include src="/page-blocks/paymentmethods.xhtml" />
+      <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+    </section>
+    <!-- /paymentmethods -->
+
+    <!-- Breadcrumbs-->
+    <ui:include src="/bread-crumbs/breadcrumbs-framed-picture.xhtml" />
+    <!-- /Breadcrumbs -->
+
+  </ui:define>
+</ui:composition>

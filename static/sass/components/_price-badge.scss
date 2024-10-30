@@ -1,0 +1,148 @@
+$height: 92px;
+
+.price-badge {
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  color: $price-badge-text;
+  height: $height;
+  padding: 6px 6px 6px 5px;
+  border: 2px solid $price-badge-background;
+  border-left-width: 1px;
+  background-color: $price-badge-background;
+  font-size: inherit;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    left: 0;
+    top: -2px;
+  }
+
+  &:before {
+    left: -27px;
+    border-top: $height/2 solid transparent;
+    border-bottom: $height/2 solid transparent;
+    border-right: 26px solid $price-badge-background;
+  }
+
+  &:after {
+    left: -24px;
+    top: 1px;
+    border-top: ($height/2 -3px) solid transparent;
+    border-bottom: ($height/2 -3px) solid transparent;
+    border-right: 24px solid $price-badge-background;
+  }
+
+  > .price,
+  > .size,
+  > .sub {
+    line-height: 16px;
+    font-size: 18px;
+  }
+  
+  > .sub {
+    &.-size {
+      font-style: 17px;
+    }
+    div > .sup {
+      font-size: 10px;
+      display: block;
+      line-height: 13px;
+
+      &.-sup2Line {
+        line-height: 1.1em;
+      }
+    }
+  }
+  
+  > .price {
+    font-size: 32px;
+    line-height: 42px;
+    font-weight: bold;
+    &.alternative {
+      line-height: 25px;
+    }
+    &.alternative2 {
+      line-height: 32px;
+    }
+  }
+
+  $height: 80px;
+  &.-smaller {
+    height: $height;
+
+    > .price {
+      font-size: 20px;
+      line-height: 30px;
+    }
+
+    &:before {
+      left: -27px;
+      border-top: $height/2 solid transparent;
+      border-bottom: $height/2 solid transparent;
+    }
+
+    &:after {
+      left: -24px;
+      top: 1px;
+      border-top: ($height/2 -3px) solid transparent;
+      border-bottom: ($height/2 -3px) solid transparent;
+      border-right: 24px solid $price-badge-background;
+    }
+  }
+}
+
+.price-badge-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: $price-badge-background;
+  color: $price-badge-text;
+  border: 2px solid white;
+
+
+  > .title {
+    font-size: 12px;
+    font-weight: $weight-normal;
+    line-height: 50px;
+  }
+
+  > .price {
+    position: absolute;
+    left: 18px;
+    top: 30px;
+    font-size: 24px;
+    font-weight: $weight-semibold;
+  }
+}
+
+.price-badge-circle-small {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: $price-badge-background;
+  color: $price-badge-text;
+  border: 2px solid white;
+
+
+  > .title {
+    font-size: 9px;
+    font-weight: $weight-normal;
+    line-height: 40px;
+  }
+
+  > .price {
+    position: absolute;
+    left: 14px;
+    top: 24px;
+    font-size: 18px;
+    font-weight: $weight-semibold;
+  }
+}

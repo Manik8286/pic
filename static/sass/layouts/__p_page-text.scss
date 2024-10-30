@@ -1,0 +1,333 @@
+.page-text {
+  padding: 25px 0 50px 0;
+
+  &.-plr10 {
+    padding: 25px 10px 50px;
+    ul {
+      font-size: 13px;
+    }
+    .link {
+      word-wrap: break-word;
+    }
+  }
+
+  > .content {
+    @extend %-span-12;
+
+    > .headline {
+      margin-bottom: 22px;
+    }
+  }
+
+  > .content > .nav {
+    > .action {
+      float: none;
+      width: 100%;
+      margin-bottom: 20px;
+
+      &:after {
+        position: relative;
+        display: inline-block;
+        margin-left: 20px;
+      }
+    }
+
+    > .back {
+      float: none;
+      width: 100%;
+
+      &:before {
+        position: relative;
+        display: inline-block;
+        margin-right: 20px;
+      }
+    }
+
+    // Remove the 20px margin bottom if the Button is used alone
+    // Nested deep, but the more pretty solution.
+    &.-in-text{
+      &.-is-single {
+        > .action {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  > .content > .info {
+      @extend %-span-12;
+      font-size: 14px;
+      line-height: 20px;
+  }
+
+
+  // Bestellstatus page
+  .orderstatusTable td {
+    display: table-row;
+  }
+
+  &.orderStatusPage, &.customerLoginPage {
+		padding: 0;
+
+    .-register {
+      h4 {
+        margin: 20px 0;
+      }
+    }
+
+		.leftBlock {
+			width: 100%;
+			padding: 0;
+		}
+		.righBlock {
+			width: 100%;
+			padding: 0;
+
+			h4 {
+				font-size: 18px;
+				margin-bottom: 10px;
+			}
+		}
+    .advantages {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      &.loginPrompt {
+        margin: 20px 0 15px;
+      }
+      p {
+        margin-bottom: 0;
+        padding: 5px 0px 5px 10px;
+        text-align: left;
+      }
+      li {
+        display: flex;
+        margin-bottom: 5px;
+        align-items: center;
+        flex-direction: row;
+        width: 100%;
+      }
+      .image {
+        width: 17px;
+        height: 17px;
+        background-size: 17px 17px;
+        margin-bottom: 0;
+      }
+    }
+
+		.content {
+			padding: 10px;
+		}
+    .flippedBlock {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    .infoBox {
+      .itemLoop {
+        &.-mixpixMulti {
+          background-image: url('/assets/img/checkout/mixpixPreviewBackground.png');
+          background-repeat: no-repeat;
+          padding-bottom: 15px;
+          background-size: 110px 110px;
+          background-position: 0px 4px;
+          padding-top: 5px;
+        }
+        +.productTypeButton {
+          border: 2px solid #35B2B6;
+          background-color: transparent;
+          color: #35B2B6;
+          line-height: 2em;
+        }
+        .image {
+          width: 100%;
+        }
+        .product {
+          display: inline-block;
+          width: 95px;
+          height: 110px;
+        }
+        .description {
+          padding-left: 20px;
+          width: 38%;
+        }
+      }
+    }
+  }
+
+  // OSP Cross Selling
+  .buymore {
+    margin-bottom: 45px;
+    .uploadProduct {
+      #blanket-mask,
+      #cushion-mask,
+      #mug-mask {
+        max-width: 95%;
+        position: relative;
+      }
+      img {
+        max-width: 95%;
+        min-height: 135px;
+        border: 0;
+      }
+      .smallPriceBadge {
+        position: absolute;
+        color: #fff;
+        background-color: #d40140;
+        padding: 2px 5px;
+        font-weight: 700;
+        right: 0;
+        bottom: 20px;
+      }
+      .button {
+        &:hover {
+          border: 2px solid #35b2b6;
+          color: #35b2b6;
+        }
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+    
+    &.ospCrossSellProducts {
+      width: 90%;
+      margin: 0 auto;
+      text-align: center;
+
+      .button {
+        line-height: 0;
+        background-color: transparent;
+        border: 2px solid #35b2b6;
+        color: #35b2b6;
+        padding: 6px 20px;
+        cursor: pointer;
+        width: 95%;
+      }
+
+      &.-flex {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+
+        .-deal-text {
+          width: 50%;
+          text-align: left;
+          padding-bottom: 0;
+          .headline {
+            padding-top: 0;
+            padding-bottom: 0;
+          }
+          .-smaller {
+            line-height: 1.5;
+            font-size: 12px;
+          }
+        }
+
+        .headline.-large, .headline.-large .-red {
+          font-size: 16px;
+          margin-top: 10px;
+          font-weight: $weight-bold;
+        }
+        .uploadProduct {
+          &.-left {
+            width: 45%;
+          }
+        }
+      }
+
+      .headline {
+        text-align: left;
+        padding: 30px 0 10px 0;
+      }
+
+      .uploadProduct {
+        position: relative;
+        width: 50%;
+
+        display: none;
+        &:nth-child(-n+3) {
+          display: block;
+        }
+
+        #mug-mask, #cushion-mask, #blanket-mask, .thumb-mask {
+          width: 100%;
+
+          img {
+            max-width: 100%;
+            height: 150px;
+          }
+        }
+
+        .smallPriceBadge {
+          position: absolute;
+          color: white;
+          background-color: #D40140;
+          padding: 2px 5px;
+          font-weight: bold;
+          right: 0;
+          bottom: 9px;
+        }
+
+        .button {
+          padding-right: 0;
+          padding-left: 0;
+          width: 90%;
+          max-width: 100%;
+          margin-right: auto;
+          margin-left: auto;
+          line-height: 1em;
+          .printsUpload {
+            width: 100%;
+            border: 0;
+            background: transparent;
+            font-weight: 600;
+            padding: 9px 0;
+            font-weight: normal;
+            &:focus {
+              outline: none;
+            }
+          }
+          a {
+            color: $newGreen;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.post {
+  .deko-welt {
+    padding-top: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    img {
+      width:100%;
+      height:auto;
+    }
+    h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    }
+    h3
+    {
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    }
+    p {
+      font-size: 14px;
+      margin: 0;
+      line-height: 20px;
+      margin-bottom: 20px;
+    }
+  }
+
+}

@@ -1,0 +1,63 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Om oss" />
+  <ui:param name="mastertagTracking" value="generic" />
+
+  <ui:define name="head">
+    
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="robots" content="INDEX,FOLLOW" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+  </ui:define>
+
+  <ui:define name="content">
+    <div class="page-teaser -collapse" style="background-image: url(/#{shopInfoBean.versionPath}assets/img/backgrounds/sobre-nosotros.jpg); ">
+      <div class="text -bestPreisGarantie-teaser">
+        <div class="row">
+          <h1 class="headline">Om oss</h1>
+        </div>
+      </div>
+    </div>
+
+    <section class="page-section">
+      <div class="row">
+        <div class="content text-format  col -span-12">
+          <h3>I början stod samhörighet till fotografin och konsten...</h3>
+          <p>
+            Först fanns det en stor intresse för konst och fotografi – och önskan att kunna förknippa båda. Man dekorerar väggar med målningar medan egna fina foton kommer vanligtvis att glömmas bort i lådan. Kanske därför att det inte finns någon lämplig form att använda de som dekorationselement än så länge. Vi vill ändra på detta! 
+          </p>
+          <p>
+            Naturligtvis kom bara högvärdiga konstnärs-målardukar och en stabil träkilram i fråga. Samtidigt är vi angelägna att erbjuda våra kunder produkter som är exceptionella, fascinerade och har dessutom en mycket personlig stil. Kort sagt: Vi vill ha en produkt som ger glädje! 
+          </p>
+        </div>
+
+        <div class="col -span-12">
+          <div class="col -span-6">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvastavlor-ram.jpg" alt="bestcanvas.se canvastavlor ram" />
+          </div>
+          <div class="col -span-6">
+            <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/bestcanvas-se-canvastavlor.jpg" alt="bestcanvas.se canvastavlor" />
+          </div>
+        </div>
+
+        <div class="content text-format col -span-12">
+          <h3>Resultatet är Bestcanvas.se: Ditt foto på canvas!</h3>
+          <p>
+            Låt dig inspireras av din foto-konst och gestalta din egen canvastavla för ditt hem, personligt och unikt. Det spelar ingen roll till vilken anledning - födelsedag, bröllop, företagsjubileum: våra canvastavlor är alltid en exklusiv present. 
+          </p>
+          <p>
+            Under beställningen kan du välja format till ditt individuella önskemotiv. Vill du t.ex. ha din semesterbild som tre-delad canvas, en så kallad Triptychon, är det inga problem alls! Även två- eller fyra-delade bilder är möjligt att beställa. Genom våra mångåriga kunskaper och vår service hjälper vi dig att komma till rätta med dina foton. 
+          </p>
+        </div>
+
+      </div>
+    </section>
+  </ui:define>
+  
+</ui:composition>

@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+
+  <div class="showcase-box" data-mh="info">
+    <h3 class="headline">Foto bakom akrylglas priser</h3>
+    <table class="table -striped">
+      <thead class="-highlighted">
+          <tr>
+            <th class="-text-centered">Format</th>
+            <th class="-text-centered">Pris</th>
+            <th class="-highlighted -text-centered">Idag</th>
+          </tr>
+      </thead>
+      <tbody class="-text-centered">
+        <tr>
+          <td>20 x 20cm</td>
+          <td>#{priceBean.productCrossPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 20x20')}</td>
+          <td class="-highlighted">#{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 20x20')}*</td>
+        </tr>
+        <tr>
+          <td>30 x 20cm</td>
+          <td>#{priceBean.productCrossPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 30x20')}</td>
+          <td class="-highlighted">#{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 30x20')}*</td>
+        </tr>
+        <tr>
+          <td>40 x 30cm</td>
+          <td>#{priceBean.productCrossPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 40x30')}</td>
+          <td class="-highlighted">#{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 40x30')}*</td>
+        </tr>
+        <tr>
+          <td>40 x 40cm</td>
+          <td>#{priceBean.productCrossPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 40x40')}</td>
+          <td class="-highlighted">#{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 40x40')}*</td>
+        </tr>
+        <tr>
+          <td>60 x 40cm</td>
+          <td>#{priceBean.productCrossPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 60x40')}</td>
+          <td class="-highlighted">#{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 60x40')}*</td>
+        </tr>
+        <tr>
+          <td>80 x 60cm</td>
+          <td>#{priceBean.productCrossPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 80x60')}</td>
+          <td class="-highlighted">#{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 80x60')}*</td>
+        </tr>
+      </tbody>
+    </table>
+    <a href="#{not empty customLink ? customLink : '/format/#acrylglas'}" class="link">Alla priser och format »</a>
+  </div>
+
+</ui:composition>

@@ -1,0 +1,208 @@
+<ui:composition template="/templates/checkout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<ui:param name="pageTitle" value="#{_['Payment Method']}" />
+<ui:param name="stepCount" value="5" />
+
+<f:event type="preRenderView" listener="#{paymentMethodBean.initPaymentPage}" />
+
+<ui:define name="dataLayer">
+  <ui:include src="/tracking/trackingcodes-end-of-head-paymentmethod.xhtml"/>
+</ui:define>
+<ui:define name="meta">
+  <meta name="robots" content="NOINDEX,FOLLOW" />
+</ui:define>
+
+<ui:define name="content">
+
+<p:ajaxStatus onstart="showToast('Uppdaterar...'); block($('.js-blocker'));" oncomplete="hideToast(500); unblock($('.js-blocker'))" onerror="hideToast(500); unblock($('.js-blocker'))" />
+
+
+<h:form id="paymentMethod">
+
+  <section class="checkout-step-5 checkout-section">
+    <h1 class="legend">#{_['Your Method of Payment']}</h1>
+    <h:messages styleClass="outmsg" globalOnly="true"
+        errorClass="-error"
+        warnClass="-warn"
+        infoClass="-info" />
+
+    <div class="js-blocker clearfix">
+
+      <ui:remove>
+        <!-- First we check if the user needs to pay -->
+      </ui:remove>
+      <c:if test="#{sessionServicesBean.checkout.paymentNeeded}">
+
+        <c:set var="dpActivated" value="false" />
+        <c:forEach items="#{paymentMethodBean.payments}" var="pm" varStatus="i">
+          <c:if test="${pm.method == 'DEUTSCHEPAYMENTWPF'}">
+            <c:set var="dpIndex" value="#{i.index}" />
+            <c:set var="dpActivated" value="true" />
+          </c:if>
+        </c:forEach>
+        <script src="#{baseUrlBean.scheme}://integration.klarna.com/js/klarnapart.js"></script>
+        <script src="#{baseUrlBean.scheme}://integration.klarna.com/js/klarnainvoice.js"></script>
+        <p:outputPanel id="adyenPayment">
+          <ui:fragment rendered="#{paymentMethodBean.clientSideCreditCard}">
+            <script type="text/javascript" src="#{paymentMethodBean.clientSideCreditCardEncryptionData}"></script>
+
+            <script type="text/javascript">
+              /* <![CDATA[ */
+              var submitEncryptedCardData = function () {
+                document.getElementById('validationMessages').style.display = 'none';
+                var number = document.getElementById('cardNumber').value.replace(/\D+/g, '');
+                var encrypted = picanovaValidationCC();
+                if (encrypted) {
+                  encrypted = adyen.createEncryption().encrypt({
+                    "number": number,
+                    "holderName": document.getElementById('cardHolder').value,
+                    "expiryMonth": document.getElementById('cardExpirationMonth').value,
+                    "expiryYear": document.getElementById('cardExpirationYear').value,
+                    "cvc": document.getElementById('cardSecurityCode').value,
+                    "generationtime": '#{commonDataBean.currentIsoDateUtc}'});
+                }
+                if (! encrypted) {
+                  document.getElementById('validationMessages').style.display = 'block';}
+                else {
+                  document.getElementById('cardEncryptedContainer').children[0].value = encrypted;
+                  document.getElementById('cardEncryptedContainer').children[1].value = (
+                    (number.match(/^4/) != null) ? 'visa' : (
+                      (number.match(/^(34|37)/) != null) ? 'amex' : (
+                        (number.match(/^5[1-5]/) != null) ? 'master' : '')))
+                  submitEncrypted();
+                }
+              }
+
+              function picanovaValidationCC() {
+                var validation = true;
+                var currentTime = new Date();
+              var month = currentTime.getMonth() + 1;
+              var year = currentTime.getFullYear();
+
+              var ccYear = parseInt(document.getElementById('cardExpirationYear').value);
+              var ccMonth = parseInt(document.getElementById('cardExpirationMonth').value);
+              if (ccYear == year && ccMonth < month) {
+                validation = false;
+              }
+              return validation;
+              }
+              /* ]]> */
+            </script>
+          </ui:fragment>
+        </p:outputPanel>
+
+        <p:selectOneRadio id="method"
+          plain="true"
+          layout="custom"
+          required="#{paymentMethodBean.method == null}"
+          requiredMessage="#{_['Required.']}"
+          onclick="updateDom()"
+          value="#{paymentMethodBean.method}">
+          <p:ajax listener="#{paymentMethodBean.change}" update="proceed paymentMethod:adyenPayment #{dpActivated ? ':paymentMethod:dpwpf' : ''}"/>
+          <f:selectItems value="#{paymentMethodBean.methods}" />
+        </p:selectOneRadio>
+
+
+
+        <div class="payment-accordion js-accordion">
+          <ui:repeat value="#{paymentMethodBean.payments}" var="method" varStatus="status">
+
+            <ui:fragment rendered="#{method.method eq 'ADYEN'}">
+              <div class="method">
+                <ui:include src="/payment/creditcardencrypted.xhtml">
+                  <ui:param name="index" value="#{status.index}" />
+                </ui:include>
+
+              </div>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{method.method eq 'PAYPAL'}">
+              <div class="method">
+                <ui:include src="/content-blocks/paymentmethod-paypal.xhtml">
+                  <ui:param name="index" value="#{status.index}" />
+                </ui:include>
+              </div>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{method.method eq 'ADYENPAYPAL'}">
+              <div class="method">
+                <ui:include src="/content-blocks/paymentmethod-adyenpaypal.xhtml">
+                  <ui:param name="index" value="#{status.index}" />
+                </ui:include>
+              </div>
+            </ui:fragment>
+
+           <ui:fragment rendered="#{method.method eq 'IDEAL'}">
+              <div class="method">
+                <ui:include src="/payment/ideal.xhtml">
+                  <ui:param name="index" value="#{status.index}" />
+                </ui:include>
+              </div>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{method.method eq 'KLARNA'}">
+              <div class="method">
+                <ui:include src="/payment/paymentmethod-klarna.xhtml">
+                  <ui:param name="index" value="#{status.index}" />
+                </ui:include>
+              </div>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{method.method eq 'PREPAID'}">
+              <div class="method">
+                <ui:include src="/content-blocks/paymentmethod-prepaid.xhtml">
+                  <ui:param name="index" value="#{status.index}" />
+                </ui:include>
+                <h:outputText escape="false" value="#{contentBean.snippets['tooltip-vorkasse']}" />
+              </div>
+            </ui:fragment>
+
+          </ui:repeat>
+        </div>
+
+      </c:if>
+
+      <c:if test="#{!sessionServicesBean.checkout.paymentNeeded}">
+        #{_['No payment information is required.']}
+      </c:if>
+
+        <div class="continue" jsf:id="proceed">
+          <button jsf:rendered="#{(paymentMethodBean.method ne 'ADYEN') and sessionServicesBean.checkout.paymentNeeded}"
+            class="js-next-button action"
+            jsf:disabled="#{!paymentMethodBean.selected and sessionServicesBean.checkout.paymentNeeded}"
+            jsf:action="#{paymentMethodBean.submit}">#{_['Continue']}
+          </button>
+
+          <button jsf:rendered="#{!sessionServicesBean.checkout.paymentNeeded}"
+            class="js-next-button action"
+            jsf:disabled="#{sessionServicesBean.checkout.paymentNeeded}"
+            jsf:action="#{paymentMethodBean.submit}">#{_['Continue']}
+          </button>
+
+          <ui:fragment rendered="#{paymentMethodBean.clientSideCreditCard and sessionServicesBean.checkout.paymentNeeded}">
+            <button type="button" onclick="submitEncryptedCardData();" class="js-next-button action">
+              #{_['Continue']}
+            </button>
+          </ui:fragment>
+        </div>
+    </div>
+  </section>
+</h:form>
+
+
+<!-- paymentmethods -->
+<section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+   
+</section><!-- /paymentmethods -->
+
+
+</ui:define>
+</ui:composition>

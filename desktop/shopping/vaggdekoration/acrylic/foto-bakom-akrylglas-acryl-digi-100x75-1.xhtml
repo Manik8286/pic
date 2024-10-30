@@ -1,0 +1,132 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Akrylglastavla | Foto bakom Akrylglas" />
+
+  <ui:param name="formatSize" value="100x75" />
+	<ui:param name="productVariant" value="Acryl #{formatSize}" />
+  <ui:param name="priceComma" value="#{fn:replace(priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', productVariant), ' kr', ' ')}" />
+
+  <ui:define name="dataLayer">
+    <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+      <ui:param name="acryl_glass_classic" value="true" />
+      <ui:param name="acryl_glass_premium" value="true" />
+      <ui:param name="noList" value="true" />
+    </ui:include>
+    <script>
+			dataLayer.push({
+				'marketingChannelPage': 'sea'
+			})
+		</script>
+  </ui:define>
+
+  <ui:define name="head">
+    <ui:include src="/coupons/discountcode-BC_SE_SEA.xhtml" />
+<ui:include src="/helper/reference.xhtml" />
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="description" content="Ditt Foto bakom Akrylglas. &#x2705; Högvärdig, ädel akrylglas. &#x2705; HD - särskilt lämpligt för högupplösta foton. &#x2705; Vattentät och Ljusäkta“. &#x2705; Beställ nu!" />
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+    <link rel="canonical" href="https://www.bestcanvas.se/vaggdekor/akrylglastavlor.jsf" />
+
+    <meta property="og:title" content="Ditt Foto bakom Akrylglas" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.bestcanvas.se/vaggdekor/akrylglastavlor.jsf" />
+    <meta property="og:image" content="https://download.cdn-shop.com/media/web_images/social_media/bestcanvasse/2018/foto-bakom-akrylglas.jpg" />
+    <meta property="og:description" content="Ditt Foto bakom Akrylglas. ✓ Högvärdig, ädel akrylglas. ✓ HD - särskilt lämpligt för högupplösta foton. ✓ Vattentät och Ljusäkta“. ✓ Beställ nu!" />
+    <meta property="og:site_name" content="BestCanvas.se" />
+
+    <meta itemprop="name" content="Ditt Foto bakom Akrylglas" />
+    <meta itemprop="description" content="Ditt Foto bakom Akrylglas. ✓ Högvärdig, ädel akrylglas. ✓ HD - särskilt lämpligt för högupplösta foton. ✓ Vattentät och Ljusäkta“. ✓ Beställ nu!" />
+    <meta itemprop="image" content="https://download.cdn-shop.com/media/web_images/social_media/bestcanvasse/2018/foto-bakom-akrylglas.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@bestcanvas_se" />
+    <meta name="twitter:creator" content="@bestcanvas_se" />
+    <meta name="twitter:title" content="Ditt Foto bakom Akrylglas" />
+    <meta name="twitter:description" content="Ditt Foto bakom Akrylglas. ✓ Högvärdig, ädel akrylglas. ✓ HD - särskilt lämpligt för högupplösta foton. ✓ Vattentät och Ljusäkta“. ✓ Beställ nu!" />
+    <meta name="twitter:url" content="https://www.bestcanvas.se/vaggdekor/akrylglastavlor.jsf" />
+    <meta name="twitter:image" content="https://download.cdn-shop.com/media/web_images/social_media/bestcanvasse/2018/foto-bakom-akrylglas.jpg" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+  </ui:define>
+
+  <ui:define name="content">
+    <ui:include src="/page-blocks/teaser-right-white.xhtml">
+      <!-- Images -->
+      <ui:param name="magnifiedImg" value="/#{shopInfoBean.versionPath}assets/img/format/acryl/zoom/acrylglas-digi-80x60-1-zoom.png" />
+      <ui:param name="teaserProductImage" value="/#{shopInfoBean.versionPath}assets/img/format/acryl/acrylic-prints-lp-teaser-acryl-digi-100x75-1.png" />
+      <ui:param name="altTeaserProductImage" value="Ditt Foto på Canvas" />
+      <ui:param name="showcaseClass" value="-transparent" />
+      <ui:param name="imgClass" value="-withGap #{sessionBean.userAgentType != 'desktop' ? '-span-12' : ''}" />
+      <ui:param name="acrylblockProduct" value="true" />
+      <ui:param name="ProductImgClass" value="-smaller" />
+      <ui:param name="magnifiedImgClass" value="-onImagePosition" />
+
+      <!-- Headers -->
+      <ui:param name="headline" value="Ditt Foto bakom Akryl" />
+      <ui:param name="claim1" value="Galerikvalitet med lågprisgaranti" />
+
+      <!-- Price Badge -->
+      <ui:param name="badgeTop" value="Spara upp till #{priceBean.absoluteSavingsPercent('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', productVariant)}" />
+      <ui:param name="badgeTopDiscount" value="Spara upp till" />
+      <ui:param name="badgeMiddle" value="#{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', productVariant)}" />
+      <ui:param name="badgeBottom" value="istället för #{priceBean.productCrossPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', productVariant)}" />
+      <ui:param name="badgeClass" value="#{sessionBean.userAgentType != 'desktop' ? '-positionBottom' : '-closeToWhiteBlock'}  " />
+      <ui:param name="seaBadgeText1" value="100x75 cm" />
+
+      <!-- Bullet points -->
+      <ui:param name="teaserFeature1" value="Högvärdig, ädel akrylglas" />
+      <ui:param name="teaserFeature2" value="Briljant 6-färgtryck för perfekta resultat" />
+      <ui:param name="teaserFeature3" value="HD - särskilt lämpligt för högupplösta foton" />
+      <ui:param name="teaserFeature4" value="Särskilt glänsande utseende" />
+      <ui:param name="teaserFeature5" value="Vattentät och Ljusäkta" />
+
+      <!-- Upload Button -->
+      <ui:param name="uploadId" value="2421" />
+      <ui:param name="buttonText" value="Skapa" />
+      <ui:param name="quotes" value="false" />
+    </ui:include>
+
+    <!-- info boxes -->
+    <section class="page-section -alternate -collapse-top">
+      <ui:include src="/page-blocks/info-blocks-acrylic.xhtml" />
+    </section>
+    <!-- /info boxes -->
+
+    <ui:include src="/page-blocks/acrylglas-page-content.xhtml" />
+
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+      <ui:include src="/page-blocks/paymentmethods.xhtml" />
+      <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+    </section>
+    <!-- /paymentmethods -->
+
+    <!-- microdata -->
+    <ui:include src="/content-blocks/microdata-simple.xhtml">
+      <ui:param name="name" value="Ditt Foto bakom Akryl" />
+      <ui:param name="sku" value="ACRYL-#{formatSize}" />
+      <ui:param name="url" value="#{request.getRequestURL()}" />
+      <ui:param name="price" value="#{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', productVariant)}" />
+    </ui:include>
+    <!-- /microdata -->
+
+    <div itemprop="video" itemscope="itemscope" itemtype="http://schema.org/VideoObject"  style="position: absolute; margin: -9999px;">
+      <h2><span itemprop="name">Akrylglastavla - Foto bakom Akryl | BestCanvas.se</span></h2>
+      <meta itemprop="duration" content="PT27S" />
+      <meta itemprop="uploadDate" content="2015-12-23T16:45:21.000Z"/>
+      <meta itemprop="thumbnailURL" content="https://download.cdn-shop.com/media/web_images/se/bestcanvas/video/thumbnail/foto-bakom-akrylglas.jpg" />
+      <meta itemprop="interactionCount" content="8264" />
+      <meta itemprop="embedURL" content="https://youtube.googleapis.com/v/KvHHfZV1yw0" />
+      <div id="schema-videoobject" class="video-container"><iframe width="853" height="480" src="https://www.youtube.com/embed/KvHHfZV1yw0?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div>
+      <span itemprop="description">Ditt Foto bakom Akrylglas. Högvärdig, ädel akrylglas. HD - särskilt lämpligt för högupplösta foton. Vattentät och Ljusäkta.</span>
+    </div>
+
+</ui:define>
+</ui:composition>

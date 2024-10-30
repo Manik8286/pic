@@ -1,0 +1,12 @@
+.checkout-head {
+  background-color: $checkout-head-background;
+  padding: 22px 0 0;
+  border-bottom: 1px solid $checkout-head-border-color;
+}
+.checkout-head-new {
+  padding-top: 10px;
+  &.no-line {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}

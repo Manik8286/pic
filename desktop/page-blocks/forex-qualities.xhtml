@@ -1,0 +1,84 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:o="http://omnifaces.org/ui">
+
+
+  <section class="page-section">
+    <div class="articles">
+      <!-- product info -->
+      <div class="article-showcase">
+        <h3 class="headline -has-sidelines"><span>Vad är Fototavlor-utskrifter?</span></h3>
+        <div class="col -span-#{sessionBean.userAgentType == 'desktop' ? '6' : ''}#{sessionBean.userAgentType == 'tablet' ? '8 -centered' : ''}#{sessionBean.userAgentType == 'phone' ? '12' : ''} image js-image-switcher">
+          <ul class="images has-video">
+            <li data-image-name="preview:front" class="-visible"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/forex/foto-pa-forex-komplett-vy.jpg" alt="foto pa forex komplett vy" /></li>
+            <li data-image-name="preview:room"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/forex/foto-pa-forex-i-rummet.jpg" alt="foto pa forex i rummet" /></li>
+            <li data-image-name="preview:detail"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/forex/foto-pa-forex-detaljerad-vy.jpg" alt="foto pa forex detaljerad vy" /></li>
+            <li data-image-name="preview:video"><iframe src="" data-src="//www.youtube.com/embed/EDqGtR_p1qI?loop=1&amp;modestbranding=1&amp;controls=0&amp;showinfo=0&amp;playlist=EDqGtR_p1qI" width="100%" title="video" height="315"></iframe></li>
+          </ul>
+
+          <ul class="options -has-#{sessionBean.userAgentType == 'desktop' ? '4' : '2'}">
+            <li><button type="button" class="cbutton -highlight" data-target="preview:front">Komplett vy</button></li>
+            <li><button type="button" class="cbutton" data-target="preview:detail">Detaljerad vy</button></li>
+            <li><button type="button" class="cbutton" data-target="preview:room">I rummet</button></li>
+            <li><button type="button" class="cbutton" data-target="preview:video">Video</button></li>
+          </ul>
+        </div>
+
+        <div class="description-wrapper -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'}">
+          <div class="description" style="#{sessionBean.userAgentType == 'tablet' ? 'width: 100%' : ''}">
+            <p class="text">
+              Våra tryck på fototavlor är unika väggdekorationer som kombinerar låg vikt med bevisad hållbarhet och noggrann bildreproduktion. Fototavlans tryck pressas på en 5 mm tunn hårdplastpanel, vilket gör fototavlan perfekt för väggar med låg bärkraft.
+            </p>
+            <p class="text">
+              <strong>Tryck på fototavlor sticker ut på grund av dess prisvärda kvalitet</strong>
+            </p>
+            <br />
+            <ul class="text grey-checkmark">
+              <li>Speciell matt yta för en elegant finish</li>
+              <li>Vårt mest prisvärda väggdekorationsformat</li>
+              <li>Lätt och tålig fototavla</li>
+              <li>Exakt skräddarsydd med elegant valsade kanter</li>
+              <li>Fantastiskt plånboksvänligt pris</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="description-wrapper">
+          <br />
+          <h3 class="headline -has-sidelines"><span>Digitalt fototryck på fototavla</span></h3>
+          <div class="col -span-#{sessionBean.userAgentType != 'desktop' ? '12' : '6'}">
+            <strong class="text">Laboratoriekvalitet för ditt foto på fototavla</strong>
+            <p class="text">
+              Den matta finishen ger dina foton en speciell visuell uppgradering. Vår speciellt framtagna premium utskriftsprocess ger dina bilder högsta möjliga skärpa, med fotoreproduktion i laboratoriekvalitet. Ditt foto på fototavla framstår verkligen visuellt exceptionellt. Extra höga pigmenteringsnivåer ger ett fantastiskt färgdjup.
+            </p>
+          </div>
+          <div class="col -span-#{sessionBean.userAgentType != 'desktop' ? '12' : '6'}">
+            <strong class="text">En kombination av teknik och hantverk</strong>
+            <p class="text">
+              Kombinationen av högteknologisk finjustering och äkta hantverk gör din bild unik. Varje foto skrivs noggrant ut på den extra lätta hårdplastboarden. Sen får ditt fotobord de sista finputsningarna för att säkerställa perfekt valsade kanter. Allt detta görs individuellt för varje bild, vilket kräver stor precision vad gäller både hantverk och maskin. Resultatet blir ett elegant dekorativt mästerverk för din vägg.
+            </p>
+          </div>
+          <div class="col -span-#{sessionBean.userAgentType != 'desktop' ? '12' : '6'}">
+            <strong class="text">Tryck på fototavlor med lågvikt passar för alla väggar</strong>
+            <p class="text">
+              Ditt tryck på fototavla tillverkas från en 5 mm tjock panel i hårdskum, i elegant vitt. Genom att trycka bilden på en fototavla uppnår man en bild med låg vikt, som passar även känsliga väggar. Ditt tryck på fototavla kan även användas i känsliga utomhusområden eller på kaklade väggar i kök och badrum.
+            </p>
+          </div>
+          <div class="col -span-#{sessionBean.userAgentType != 'desktop' ? '12' : '6'}">
+            <strong class="text">Leverans perfekt förpackad och redo för upphängning</strong>
+            <p class="text">
+              Att skapa din fototavla utskrift på nätet tar inte mer än 5 minuter. Varje beställning går in i tillverkningscykeln bara minuter efter det faktiska köpet, och ditt skräddarsydda mästerverk kommer hem till dig bara några dagar efter att du har beställt det.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- /product info -->
+    </div>
+
+      <ui:include src="/content-blocks/lp/fotoboard-format-table.xhtml" />
+
+  </section>
+
+</ui:composition>

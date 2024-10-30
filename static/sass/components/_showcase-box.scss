@@ -1,0 +1,231 @@
+.mh-showcase-box{height:310px;width: 340px;}
+.mh-showcase-box-short {height:280px;}
+.mTop11{margin-top:11px;}
+.showcase-box {
+  @extend .box;
+  @extend .box.-shaded;
+
+  font-size: 14px;
+  padding: 10px 10px 20px 10px;
+  position: relative;
+  box-sizing: border-box;
+  min-height: 280px;
+  text-align: center;
+
+  h4 {
+    margin-top: 3px;
+    margin-bottom: 0;
+  }
+  .-textTop {
+    margin-top: 10px;
+  }
+  
+  .table tbody tr td:nth-child(1),
+  .table tbody tr td:nth-child(2) {
+    text-align: center;
+  }
+    
+  .table {
+    &.-tableTablet {
+      font-size: 0.8em;
+    }
+    td {
+      padding: 5px 4px 5px 5px;
+      &.-smallFormatSize {
+        font-size: 90%;
+      }
+    }
+  }
+
+  .top-zero {margin-top:0;}
+
+  &.-h340 {height: 340px;}
+
+  &.certificatePdf-box {
+    padding: 10px 10px 15px;
+    min-height: auto;
+  }
+  
+  &.-quality{
+    border-color: transparent;
+    background-color: transparent;
+
+    > .headline {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: auto;
+    }
+    
+    > p {
+    text-align:left;
+      > .p-marginTop {
+        margin-top: 5px;
+      }
+    }
+  }
+
+  > .headline {
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100%;
+    font-size: 16px;
+    line-height: 2.4;
+    font-weight: $weight-semibold;
+    text-align: center;
+    color: $showcase-box-headline;
+    white-space: nowrap;
+    
+    &.-titleTable {
+      font-size: 0.9em; 
+    }
+  }
+
+  > .seals {
+    padding: 0;
+    margin: 0 auto;
+    width: 240px;
+    list-style: none;
+    text-align: center;
+    
+    &.-w-auto {
+      width: auto;
+    }
+    li {
+      float: left;
+      width: 50%;
+      margin-bottom: 0;
+    }
+  }
+
+  > .big-seals {
+    padding: 0;
+    margin: 0 auto;
+    width: auto;
+    list-style: none;
+    text-align: center;
+
+    li {
+      float: left;
+      width: 50%;
+      margin-bottom: 0;
+    }
+  }
+
+  > .big-seals-tab {
+    padding: 0;
+    margin: 0 auto;
+    width: auto;
+    list-style: none;
+    text-align: center;
+    width:330px;
+
+    li {
+      float: left;
+      width: 50%;
+      margin-bottom: 0;
+    }
+  }
+
+  > .link {
+      color: $newGreen;
+      position: absolute;
+      right: 10px;
+      bottom: 4px;
+      text-decoration: none;
+      @media only screen and(min-width: 768px) and(max-width: 1024px) {
+        bottom: 3px !important;
+        margin-top: 1px;
+      }
+
+      &:hover {
+        color: $newDarkGreen;
+      }
+  }
+
+  // TODO:
+  // Maybe join some similarities in smaller
+  // and normal version
+
+  &.-smaller {
+    min-height: auto;
+    min-height: initial;
+    @include clearfix;
+
+    > .headline {
+      height: auto;
+      font-size: 16px;
+    }
+
+    > .seals {
+      width: 100%;
+      margin-left: -5px;
+      margin-right: -5px;
+
+      li {
+        margin-bottom: 0;
+        padding: 5px;
+        box-sizing: border-box;
+
+        &.-big {
+          width: 100%;
+          height: auto;
+
+          a {
+            display: table;
+          }
+        }
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  .table {
+    tr {
+      td .-highlighted {
+        > .price-left {
+            margin-left: 9px;
+          }
+        }
+      }
+
+    tr .-highlighted {
+      color: $table-col-highlight-color--showcase;
+      background: $table-col-highlight-bgcolor--showcase;
+      text-align: center;
+      font-weight: bold;
+    }
+    
+    tr:nth-child(odd) .-highlighted {
+      color: $table-col-highlight-color--showcase;
+      background: $table-col-highlight-bgcolor-odd--showcase;
+    }
+
+    > .-highlighted {
+      color: $table-head-highlighted-color--showcase;
+      background-color: transparent;
+    }
+
+    > .-highlighted th.-highlighted {
+      background: $table-head-highlighted-color--showcase;
+      color: $white;
+      border-radius: 5px 5px 0 0;
+      text-align: center;
+    }
+    > .-highlighted th:last-child {   
+      text-align: center;
+    }
+  }
+
+  .trustpilot-widget {
+    padding: 20px 0;
+    justify-content: center!important;;
+    display: flex;
+  }
+
+}
+.coupon-code {
+  color: $coupon-code;
+}

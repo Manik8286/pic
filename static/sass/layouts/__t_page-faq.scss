@@ -1,0 +1,44 @@
+.page-faq {
+  @extend .row;
+
+  > .nav {
+    width: 100%;
+    padding: 0;
+    margin: 40px 0;
+
+    > ul {
+      @extend .row;
+      display: block;
+      height: 58px;
+      padding: 0;
+      margin: 0;
+
+      > li {
+        @extend .col;
+        @extend %-span-3;
+
+        display: table;
+      }
+
+      > li > a {
+        border: 1px solid $concrete;
+        border-radius: 2px;
+        height: 60px;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 10px;
+        margin: 0;
+        display: table-cell;
+        line-height: 19px;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 16px;
+
+        &.-active {
+          border-color: $button-simple-highlight-color;
+          color: $button-simple-highlight-color;
+        }
+      }
+    }
+  }
+}

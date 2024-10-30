@@ -1,0 +1,55 @@
+.checkout-step-6 {
+  > form > .overview {
+    @extend %-span-12;
+
+    .change {
+      padding: 10px 20px;
+      border: 1px solid $highlight-color;
+      border-radius: 2px;
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+  }
+
+  > form > .billing {
+    @extend %-span-6;
+
+    &.-double {
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  .halfhelper {
+    @extend .col;
+    @extend %-span-6;
+  }
+
+  .halfhelper + .halfhelper {
+    margin-top: 0;
+  }
+
+  .billbox {
+    &.-half {
+    }
+  }
+
+  .billbox .edit {
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid $newGreen;
+    border-radius: 2px;
+  }
+
+  > form > .terms {
+    @extend %-span-9;
+  }
+
+  > form > .next {
+    width: 25%;
+  }
+
+  > form > .next .action {
+    @extend .button_action_mod-touch;
+  }
+}

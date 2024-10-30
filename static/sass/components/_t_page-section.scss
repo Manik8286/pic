@@ -1,0 +1,14 @@
+.page-section {
+  &.-blog {
+    .story {
+      width: 500px;
+      float: none;
+    }
+
+    .story-box {
+      height: 400px !important;
+      width: 488px !important;
+      margin: 0 auto;
+    }
+  }
+}

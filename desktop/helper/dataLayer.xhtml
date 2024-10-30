@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <script>let productArray = [];</script>
+  
+  <ui:fragment rendered="#{ not empty productId1 }">
+    <ui:include src="/helper/datalayer-generator.xhtml">
+      <ui:param name="productId" value="#{productId1}" />
+    </ui:include>
+  </ui:fragment>
+
+  <ui:fragment rendered="#{ not empty productId2 }">
+    <ui:include src="/helper/datalayer-generator.xhtml">
+      <ui:param name="productId" value="#{productId2}" />
+    </ui:include>
+  </ui:fragment>
+
+  <ui:fragment rendered="#{ not empty productId3 }">
+    <ui:include src="/helper/datalayer-generator.xhtml">
+      <ui:param name="productId" value="#{productId3}" />
+    </ui:include>
+  </ui:fragment>
+
+  <ui:fragment rendered="#{ not empty productId4 }">
+    <ui:include src="/helper/datalayer-generator.xhtml">
+      <ui:param name="productId" value="#{productId4}" />
+    </ui:include>
+  </ui:fragment>
+
+  <script>
+    const productUnique = [];
+    const dataLayerMap = new Map();
+    for (const item of productArray) {
+      if(!dataLayerMap.has(item.name)){
+        dataLayerMap.set(item.name, true);
+        productUnique.push({
+          name: item.name,
+          category: item.category
+        });
+      }
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({
+      'ecommerce': {
+        'impressions': productUnique
+      },
+      'pagetype': 'product'
+    });
+  </script>
+
+</ui:composition>

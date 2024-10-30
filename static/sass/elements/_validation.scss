@@ -1,0 +1,111 @@
+.validation {
+  position: relative;
+  display: table;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  border-width: 1px;
+  border-style: solid;
+  max-width: 300px;
+  z-index: 99;
+
+  td & {
+    width: 100%;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0;
+  }
+  
+
+  &.-error-ideal {
+    border-color: $validation-border-color;
+    background-color: $validation-background;
+    top: 14px;
+    left: 50px;
+    
+    &:before {
+      border-color: darken($validation-border-color, 10);
+    }
+
+    &:after {
+      border-color: $validation-background;
+    }
+  }
+
+
+  &.-error {
+    border-color: $validation-border-color;
+    background-color: $validation-background;
+  
+    &:before {
+      border-color: darken($validation-border-color, 10);
+    }
+
+    &:after {
+      border-color: $validation-background;
+    }
+  }
+
+  &.-right {
+    &:before,
+    &:after {
+      top: 15px;
+      margin-top: -4px;
+      right: 100%;
+      border-right-width: 7px;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+    }
+
+    &:before {
+      right: auto;
+      left: -8px;
+      margin-top: -5px;
+      border-right-width: 8px;
+      border-top-width: 5px;
+      border-bottom-width: 5px;
+    }
+  }
+
+  &.-bottom {
+    &:before,
+    &:after {
+      bottom: 100%;
+      left: 15px;
+      border-bottom-width: 7px;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+    }
+
+    &:before {
+      bottom: 100%;
+      margin-top: -5px;
+      left: 14px;
+      border-bottom-width: 8px;
+      border-left-width: 5px;
+      border-right-width: 5px;
+    }
+  }
+
+  &.-align-right {
+    position: absolute;
+    right: 0;
+
+    &:before {
+      right: 14px;
+      left: auto;
+    }
+
+    &:after {
+      right: 15px;
+      left: auto;
+    }
+  }
+}

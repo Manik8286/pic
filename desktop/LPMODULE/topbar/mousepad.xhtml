@@ -1,0 +1,14 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+  <ui:fragment rendered="#{sessionBean.userAgentType != 'phone'}">
+    <h:outputText escape="false" value="#{contentBean.snippets['topbar-bcnl-mousepad']}"/>
+  </ui:fragment>
+  <ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+    <h:outputText escape="false" value="#{contentBean.snippets['topbar-bcnl-mousepad-phone']}"/>
+  </ui:fragment>
+
+</ui:composition>

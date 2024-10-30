@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <div id="bgCover" class="showcase" style="background-image:url(#{bgimage})">
+    <header class="head text-center">
+      <h1 class="headline -green"><strong>#{headline}</strong></h1>
+      <h3 class="subline">#{subheading} <s>#{subheadingCross}</s> #{subheadingNext} </h3>
+      <p class="text-center">#{Ndate}</p>
+      <ui:fragment rendered="#{not empty code}">
+        <form class="text-center">
+          <label for="coupon-code">Dein Gutscheincode: <input type="text" name="coupon-code" readonly="true" value="#{code}" class="coupon-code text-center" /></label>
+        </form>
+      </ui:fragment>
+    </header>
+    <div class="body">
+
+      <!-- teaser left -->
+      <div class="product-crm">
+        <img class="image checkout-preview" src="#{image}" alt=""  />
+
+      </div><!-- /teaser left -->
+
+      <!-- teaser right -->
+      <div class="info-crm">
+        <ul class="features">
+          <ui:fragment rendered="#{not empty list1}">
+            <li>#{list1}</li>
+          </ui:fragment>
+          <ui:fragment rendered="#{not empty list2}">
+            <li>#{list2}</li>
+          </ui:fragment>
+          <ui:fragment rendered="#{not empty list3}">
+            <li>#{list3}</li>
+          </ui:fragment>
+          <ui:fragment rendered="#{not empty list4}">
+            <li>#{list4}</li>
+          </ui:fragment>
+          <ui:fragment rendered="#{not empty list5}">
+            <li>#{list5}</li>
+          </ui:fragment>
+        </ul>
+
+        <!-- UPLOAD BUTTON INCLUDE--> <br/>
+          <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+            <ui:param name="directuploadProductId" value="492" />
+            <ui:param name="directuploadClass" value="action" />
+        </ui:include>
+        <br/>
+      </div><!-- /teaser right -->
+    </div>
+  </div>
+
+</ui:composition>

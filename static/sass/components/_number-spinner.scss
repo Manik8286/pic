@@ -1,0 +1,37 @@
+.number-spinner {
+  @extend .form-group;
+  @include clearfix;
+  user-select: none;
+
+  > .edit {
+    @extend .button_simple;
+    @extend .button_simple_mod-has-background;
+    @extend .button_simple_mod-shy;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 10px;
+    text-align: center;
+    padding: 0;
+    vertical-align: middle;
+    margin: 5px;
+  }
+
+  > .field {
+    @extend .input;
+    @extend .input.-shy;
+    @extend .input.-has-background;
+    display: inline-block;
+    line-height: 30px;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: -4px;
+  }
+
+  .validation {
+    position: absolute;
+  }
+}

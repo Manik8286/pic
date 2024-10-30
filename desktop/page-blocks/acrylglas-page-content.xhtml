@@ -1,0 +1,157 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:o="http://omnifaces.org/ui">
+
+  <section class="page-section">
+    <div class="articles">
+
+      <div class="article-showcase">
+        <h3 class="headline -has-sidelines"><span>Ditt foto pa akrylglastavlor: högkvalitativt utseende</span></h3>
+        <div class="col -span-#{sessionBean.userAgentType == 'phone' ? '12' : ''}#{sessionBean.userAgentType == 'tablet' ? '8 -centered' : ''}#{sessionBean.userAgentType == 'desktop' ? '6' : ''} image js-image-switcher">
+            <ul class="images">
+            <li data-image-name="preview:front" class="-visible"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/akrylglas/foto-bakom-akrylglas-komplett-vy.jpg" alt="" /></li>
+            <li data-image-name="preview:room"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/akrylglas/foto-bakom-akrylglas-i-rummet.jpg" alt="" /></li>
+            <li data-image-name="preview:detail"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/akrylglas/foto-bakom-akrylglas-detaljerad-vy.jpg" alt="" /></li>
+          </ul>
+
+          <ul class="options -has-3">
+            <li><button type="button" class="cbutton -highlight" data-target="preview:front">Komplett vy</button></li>
+            <li><button type="button" class="cbutton" data-target="preview:detail">Detaljerad vy</button></li>
+            <li><button type="button" class="cbutton" data-target="preview:room">I rummet</button></li>
+          </ul>
+        </div>
+
+        <div class="col -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'}">
+          <div class="description-wrapper">
+            <p class="text">Tack vare den handpolerade ytan förstärker akrylglaset skärpan och detaljerna i det tryckta fotot och gör färgerna väldigt intensiva. Tack vare våra osynliga upphängningssystem så ser akrylglastrycket ut att sväva framför väggen.</p>
+            <div class="description">
+            <h5 class="headline">Realistiska akrylglasfoton med högkvalitativt utseende</h5>
+            <p class="text">
+            <ul class="text -list">
+              <li>3 mm tjock akrylglasskiva</li>
+              <li>Fotorealistisk 6-färgsutskrift på akrylglas</li>
+              <li>Strålande utseende från alla vinklar</li>
+              <li>Skyddad mot effekterna från ljus och vatten</li>
+              <li>Modern precisionsskärning med polerade kanter</li>
+            </ul>
+          </p>
+          <br />
+          <ui:include src="/helper/directupload-short.xhtml">
+            <ui:param name="directuploadProductId" value="2421" />
+            <ui:param name="directuploadClass" value="button_action -productBox button_action_mod-arrow buttonContent" />
+            <ui:param name="buttonText" value="Skapa" />
+            <ui:param name="buttonTextDesktop" value="Skapa" />
+            <ui:param name="buttonId" value ="#{buttonId}"/>
+            <ui:param name="buttonCushion" value ="true"/>
+          </ui:include>
+            </div>
+          </div>
+
+        </div>
+       </div>
+
+      <ui:include src="/content-blocks/lp/acrylglas-format-table.xhtml" />
+
+      <div class="article-showcase">
+        <div class="description-wrapper">
+         <h3 class="headline -has-sidelines"><span>Akrylglasfoton - en höjdpunkt för hemmet</span></h3>
+         <div class="description media col -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'}">
+           <h5 class="headline">Högupplösta fotografier bakom akrylglas</h5>
+           <p class="text">
+             Upplev dina bästa minnen som ett knivskarpt foto på akrylglas i brillianta färger. Med vår direkttrycks-process uppnår vi de vackraste färgnyanserna och den högsta upplösningen. Det blanka akrylglasfotografiet ger dig intensiva färger samt mjuka och behagliga färggradienter.
+           </p>
+         </div>
+         <div class="description media col -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'}">
+           <h5 class="headline">Osynligt upphängningssystem</h5>
+           <p class="text">
+             Ditt foto på akrylglas passar jättebra i vilket rum som helst. Den ramlösa utformningen ger dina motiv ännu mer utrymme och ger dem all uppmärksamhet. Förstärk effekten med våra monteringstillbehör. Monteringen döljs av fotografiet och håller lite avstånd från väggen. Detta gör att ditt foto på akrylglas hänger fritt från väggen, som på ett galleri.
+           </p>
+         </div>
+          <div class="description media col -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'}">
+            <h5 class="headline">Fördjupad tillverkningsprocess</h5>
+            <p class="text">
+
+              För att uppnå en makalös yta tillverkas akrylglaset utifrån ett enda stycke. På vår produktionsplats sker bearbetningen av de 3 mm tjocka akrylglasen. Med hjälp av toppmodern precisionsskärning beskär vi bilderna bakom akrylglas med millimeterprecision. Därefter poleras kanterna för hand.
+            </p>
+          </div>
+
+          <div class="description media col -span-#{sessionBean.userAgentType == 'desktop' ? '6' : '12'}">
+            <h5 class="headline">Högkvalitativt och professionellt utseende</h5>
+            <p class="text">
+              Akrylglastryck som imponerar med sin höga skärpa, vilket gör att produkten ser väldigt högkvalitativ och professionell ut. Det blanka akrylglaset ger bilden en maximalt intryck från alla vinklar. Ett foto med akrylglas ser ut att höra hemma på ett konstgalleri, vilket ger varje rum en fantstiskt högkvalitativ estetik.
+            </p>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="article-showcase">
+    <h2 class="headline -has-sidelines" id="premium"><span>Foto på akrylglas alternativ</span></h2>
+    <div class="product-list">
+      <div class="product -span-#{sessionBean.userAgentType != 'phone' ? '6' : '12'}">
+        <div class="product-box" data-mh="product">
+          <h2 class="title"><a>Akrylglastavlor</a></h2>
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/akrylglas/Acrylic-Directdruck-image.btf-SE.jpg" width="100%" height="357"  />
+            <div class="body">
+              <ul class="grey-checkmark">
+                <li>6-färgers direkttryck</li>
+                <li>Flerskiktad baksida i renaste vitt</li>
+                <li>Färgreproduktion med hög kontrast</li>
+                <li>Långvarig klassiker med imponerande djupeffekt</li>
+              </ul>
+            </div>
+        <div class="info">
+          <div class="price pull-left"  style="#{sessionBean.userAgentType == 'phone' ? '' : 'margin-top: 33px'}">
+             <span class="highlight"><small>från </small> #{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 20x20')}<sup>*</sup></span>
+          </div>
+            <form class="js-du" style="float: right;">
+              <input type="hidden" value="2421" class="js-du-productid" accept="#{sessionBean.userAgentType == 'desktop' ? '.jpg, .jpeg, .png, .gif, .webp' : 'image/*'}" />
+              <div class="upload-button -absolute">
+                <input type="file" aria-label="Image upload" class="js-du-file fileinput" accept="#{sessionBean.userAgentType == 'desktop' ? '.jpg, .jpeg, .png, .gif, .webp' : 'image/*'}" />
+                <button type="button" id="chooseFile" class="js-du-button filebutton button -action -small -arrow">
+                  Skapa
+                </button>
+              </div>
+            </form>
+        </div>
+
+        </div>
+      </div>
+
+      <div class="product -span-#{sessionBean.userAgentType != 'phone' ? '6' : '12'}">
+        <div class="product-box" data-mh="product">
+          <h2 class="title"><a>Akrylglastavlor Premium</a></h2>
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/akrylglas/Acrylic-Laminated-image.btf-SE.jpg" width="100%" height="357" />
+            <div class="body">
+              <ul class="grey-checkmark">
+                <li>Färgpigment med 12 färger</li>
+                <li>Färgat fotopapper på baksidan</li>
+                <li>Digitalt bildtryck på gallerinivå</li>
+                <li>Vackert konsttryck med förstklassigt skärpedjup</li>
+              </ul>
+            </div>
+        <div class="info">
+          <div class="price pull-left" style="#{sessionBean.userAgentType == 'phone' ? '' : 'margin-top: 33px'}">
+             <span class="highlight"><small>från </small> #{priceBean.productPrice('Premium Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass', 'Acryl Premium 20x20')}<sup>*</sup></span>
+          </div>
+          <form class="js-du" style="float: right;">
+            <input type="hidden" value="2415" class="js-du-productid" accept="#{sessionBean.userAgentType == 'desktop' ? '.jpg, .jpeg, .png, .gif, .webp' : 'image/*'}" />
+            <div class="upload-button -absolute">
+              <input type="file" aria-label="Image upload" class="js-du-file fileinput" accept="#{sessionBean.userAgentType == 'desktop' ? '.jpg, .jpeg, .png, .gif, .webp' : 'image/*'}" />
+              <button type="button" id="chooseFile" class="js-du-button filebutton button -action -small -arrow">
+                Skapa
+              </button>
+            </div>
+          </form>
+        </div>
+        </div>
+      </div>
+     </div>
+ </div>
+    </div>
+  </section>
+
+</ui:composition>

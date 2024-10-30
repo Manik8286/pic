@@ -1,0 +1,144 @@
+<ui:composition
+  template="#{param['redirect'] == 'orderaddresses.jsf' ? '/templates/checkout.xhtml' : '/templates/default.xhtml'}"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:p="http://primefaces.org/ui"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="#{_['Login']}" />
+
+  <ui:define name="head">
+      <f:event type="preRenderView" listener="#{loginBean.init}" />
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+  </ui:define>
+
+  <ui:define name="content">
+
+    <section class="page-text customerLoginPage">
+      <div class="row">
+        <div class="orderstatusTable leftBlock">
+              <h:form id="loginForm">
+                <div class="content">
+                <h:messages
+                  globalOnly="true"
+                  styleClass="outmsg -full"
+                  errorClass="-error"
+                  warnClass="-warn"
+                  infoClass="-info"/>
+
+                  <h1>
+                    #{param['redirect'] == 'orderaddresses.jsf' ? _['Welcome back'] : _['I am already a customer']}
+                  </h1>
+                  <p jsf:rendered="#{param['redirect'] == 'orderaddresses.jsf'}">
+                    #{_['Please log in so that previously saved data can be used at checkout.']}
+                  </p>
+
+                <h:outputLabel for="username" styleClass="label">#{_['Email Address']}</h:outputLabel>
+
+                  <div class="inputBlock">
+                    <h:inputText
+                      id="username"
+                      styleClass="input -fullbleed -shy #{ component.valid ? '' : '-invalid'}"
+                      value="#{loginBean.userName}"
+                      required="true"
+                      validatorMessage="#{_['Invalid Username']}"
+                      requiredMessage="#{_['Please enter an email address']}.">
+                      <f:validateRegex pattern="^[\*_A-Za-z0-9-\+!$&amp;/=\?\{\}|~]+(\.[\*_A-Za-z0-9-\+!$&amp;/=\?\{\}|~]+)*@[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-\+]+)*(\.[A-Za-z]{2,})$" />
+                    </h:inputText>
+                    <h:message for="username" styleClass="validation -error -bottom" />
+                  </div>
+
+                <!-- /username -->
+
+                <!-- password -->
+
+                  <h:outputLabel for="username" styleClass="label">#{_['Password:']}</h:outputLabel>
+                  <div class="inputBlock">
+                    <h:inputSecret
+                      id="password"
+                      styleClass="input -fullbleed -shy #{ component.valid ? '' : '-invalid'}"
+                      value="#{loginBean.password}"
+                      required="true"
+                      validatorMessage="#{_['Invalid']}"
+                      requiredMessage="#{_['Please enter a password.']}">
+                    <f:validateRegex pattern="[^&gt;&lt;]*$" />
+                    </h:inputSecret>
+                    <h:message for="password" styleClass="validation -error -bottom" />
+                  </div>
+
+                <!-- /password -->
+                <a href="/requestpassword.jsf" class="lostpassword">#{_['Forgot Your Password?']}</a>
+                <h:commandButton
+                  id="loginButton"
+                  actionListener="#{loginBean.login}"
+                  value="#{_['Login']}"
+                  styleClass="action button -action width100 loginButton">
+                  <p:ajax update="loginForm" process="loginForm" />
+                </h:commandButton>
+
+                <div class="g-recaptcha"
+                  data-badge="bottomleft"
+                  data-sitekey="6LeKH6wUAAAAAJFOGvfQi_HRu9kuPcY4MX4wvacI"
+                  data-expired-callback="onExpired"
+                  data-error-callback="onError"
+                  data-callback="onSubmit"
+                  data-size="invisible">
+                </div>
+              </div>
+            </h:form>
+          </div>
+
+          <div class="righBlock">
+            <div class="content">
+              <h2>
+                #{param['redirect'] == 'orderaddresses.jsf' ? _['Order as guest / register later'] : _['I am not a customer yet']}
+              </h2>
+              <h3>#{_['The advantages of being a registered customer']}:</h3>
+
+              <ul class="advantages loginPrompt">
+                <li>
+                  <span class="image delivery"></span>
+                  <p>#{_['View order status even easier']}</p>
+                </li>
+                <li>
+                  <span class="image cartIn"></span>
+                  <p>#{_['View previous orders']}</p>
+                </li>
+                <li>
+                  <span class="image invoiceDownload"></span>
+                  <p>#{_['Save customer data for future orders']}</p>
+                </li>
+              </ul>
+
+              <p jsf:rendered="#{param['redirect'] == 'orderaddresses.jsf'}" class="checkout-login-text">
+                #{_['Quickly and easily create a free user account at checkout.']}
+              </p>
+
+              <a href="/#{param['redirect'] == 'orderaddresses.jsf' ? 'orderaddresses.jsf' : 'registro.jsf '}" class="action button -action width100">
+                #{param['redirect'] == 'orderaddresses.jsf' ? _['Continue to checkout'] : _['Register']}
+              </a>
+            </div>
+          </div>
+      </div>
+    </section>
+
+
+    <!-- paymentmethods and social -->
+    <section class="page-section -alternate row">
+      <ui:include src="/page-blocks/paymentmethods.xhtml" />
+      <ui:fragment rendered="#{param['redirect'] != 'orderaddresses.jsf'}">
+        <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+      </ui:fragment>
+    </section><!-- /paymentmethods and social -->
+
+  </ui:define>
+
+  <ui:define name="eofscript">
+    <ui:include src="/content-blocks/captcha-validation-global.xhtml" />
+  </ui:define>
+</ui:composition>

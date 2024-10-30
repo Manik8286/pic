@@ -1,0 +1,44 @@
+.page-account {
+
+  > .content > .addresses-wrapper {
+    .action {
+      @extend .button_simple;
+
+      padding: 0 10px;
+      border-color: $button-simple-highlight-color;
+      color: $button-simple-highlight-color;
+      border-radius: 2px;
+    }
+
+    > .addressbox {
+      @extend .col;
+      @extend %-span-6;
+
+      padding-bottom: 60px;
+      position: relative;
+
+      &:first-of-type {
+        margin-right: 0;
+      }
+
+      > .title > .action {
+        position: absolute;
+        float: none;
+        bottom: 0;
+      }
+    }
+
+    > .directory {
+      .address {
+        @extend %-span-4;
+
+        > .action {
+          display: table;
+        }
+      }
+    }
+  }
+  .info-component.-vat .info-bubble {
+    top: 40px;
+  }
+}

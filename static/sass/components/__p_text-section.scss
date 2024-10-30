@@ -1,0 +1,18 @@
+.text-section {
+  > .headline {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  > .section {
+    > .headline {
+      font-size: 16px;
+      font-weight: $weight-semibold;
+      margin-bottom: 7px;
+    }
+
+    > .text {
+      line-height: 20px;
+    }
+  }
+}

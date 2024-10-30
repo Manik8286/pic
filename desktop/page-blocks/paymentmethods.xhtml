@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <div class="payment-methods">
+    <h3 class="headline">Betala säkert och enkelt</h3>
+    <div class="method  -master">
+
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="logo" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-payments.svg#payments-mastercard" />
+          <ui:param name="svgWidth" value="100%" />
+          <ui:param name="svgHeight" value="100%" />
+        </ui:include>
+
+    </div>
+    <div class="method  -visa">
+
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="logo" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-payments.svg#payments-visa" />
+          <ui:param name="svgWidth" value="100%" />
+          <ui:param name="svgHeight" value="100%" />
+        </ui:include>
+
+    </div>
+    <div class="method  -amex">
+
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="logo" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-payments.svg#payments-ae" />
+          <ui:param name="svgWidth" value="100%" />
+          <ui:param name="svgHeight" value="100%" />
+        </ui:include>
+
+    </div>
+    <div class="method  -paypal">
+
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="logo" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-payments.svg#payments-paypal" />
+          <ui:param name="svgWidth" value="100%" />
+          <ui:param name="svgHeight" value="100%" />
+        </ui:include>
+
+    </div>
+    <div class="method -visaVerified">
+
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="logo" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-payments.svg#payments-verified-by-visa" />
+          <ui:param name="svgWidth" value="100%" />
+          <ui:param name="svgHeight" value="100%" />
+        </ui:include>
+
+    </div>
+    <div class="method -masterCardSecure">
+
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="logo" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-payments.svg#payments-mastercard-securecode" />
+          <ui:param name="svgWidth" value="100%" />
+          <ui:param name="svgHeight" value="100%" />
+        </ui:include>
+
+    </div>
+  </div>
+
+</ui:composition>

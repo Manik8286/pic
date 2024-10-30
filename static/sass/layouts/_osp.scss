@@ -1,0 +1,56 @@
+.orderStatusPage{ 
+  
+    min-height: 65vh;
+ 
+ .ospLogin{
+    width: 496px;
+    background-color: #F9F9F9;
+    height: 340px;
+    margin-top: 30px;
+    padding-left: 9px;
+
+  }
+   .ospLogin label{
+    font-size: 16px;
+   }
+
+  .ospLoingHeader{
+    margin-top: 25px;
+  }
+
+  .more-info{
+    font-size: 12px !important;
+  }
+  .orderstatusTable input{
+    height: 40px;
+    width: 479px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #BFBFBF;
+  }
+ .button.-action.-wide{
+  width: 98.3%;
+  font-weight: 700;
+  font-size: 19px;
+  margin-top: 15px;
+  height: 40px;
+}
+.ospLoginHeader p,h2{
+  margin-top: 0px;
+  padding-top: 5px;
+  font-size: 13px;
+  padding-right: 9px;
+}
+.ospheader{
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 22px;
+  padding-top: 15px;
+}
+.desktop .page-section{
+  margin-top: 170px;
+}
+
+
+
+}

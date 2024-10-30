@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="/templates/clean.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+  <ui:define name="head">
+    <f:event type="preRenderView" listener="#{fileUploadController.init}" />
+    <link rel="stylesheet" href="/#{shopInfoBean.versionPath}static/build/css/page-desktop-critical.min.css" />
+    <link rel="stylesheet" href="/#{shopInfoBean.versionPath}static/build/css/page-desktop.min.css" />
+  </ui:define>
+
+  <ui:define name="title">#{_['Gallery']}</ui:define>
+
+  <ui:define name="content">
+  <section class="page-section">
+    <div class="row">
+      <h:form id="gallery">
+
+        <p:outputPanel id="galleries" styleClass="galleries col -span-4">
+          <h3>Available Galleries</h3>
+          <p:outputPanel styleClass="gallery-login-note" rendered="#{galleryBean.galleryId == 0 or galleryBean.galleryId == null}">
+            Please <a href="login.jsf">log in</a> or <a href="registro.jsf ">register</a>
+            if you want to organize your items into multiple galleries.
+          </p:outputPanel>
+          <ui:fragment rendered="#{galleryBean.galleryId != 0 and galleryBean.galleryId != null}">
+
+            <ul class="gallery-list">
+              <ui:repeat value="#{galleryBean.galleries}" var="gallery">
+                <li class="#{gallery.id == galleryBean.galleryId ? 'active accent-fg' : ''}">
+                  <a href="creategallery.jsf?galleryId=#{gallery.id}"><h:outputText value="#{galleryBean.galleryName(gallery)}"/></a>
+                </li>
+              </ui:repeat>
+            </ul>
+
+            <p:menuButton value="#{_['Gallery']}" styleClass="gallery-actions">
+              <p:menuitem value="#{_['Create Gallery']}" onclick="PF('createDialog').show(); return false;"/>
+              <p:menuitem value="#{_['Rename Gallery']}" onclick="PF('renameDialog').show(); return false;" disabled="#{not galleryBean.galleryDeletionAllowed}"/>
+              <p:menuitem value="#{_['Delete Gallery']}" onclick="PF('deleteGalleryDialog').show(); return false;" disabled="#{not galleryBean.galleryDeletionAllowed}"/>
+            </p:menuButton>
+
+
+              <p:selectBooleanCheckbox id="public-gallery" value="#{galleryBean.publicGallery}">
+                <p:ajax update=":gallery"/>
+              </p:selectBooleanCheckbox>
+              <p:outputLabel for="public-gallery" value="#{_['Public']}"/>
+
+
+            <div style="clear: both"/>
+
+          </ui:fragment>
+        </p:outputPanel>
+
+        <p:outputPanel styleClass="gallery-container col -span-8">
+          <p:dataGrid var="item" value="#{galleryBean.items}" id="gallery-grid" columns="3" rows="9" emptyMessage="#{_['There are no items in this gallery.']}"
+                      paginator="true" rowsPerPageTemplate="9,12,15"
+                      paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+            <p:column>
+              <div class="gallery-item">
+                <h:panelGrid columns="1">
+                  <img src="#{item.previewUrl}" class="image"/>
+
+                  <h:panelGrid columns="2" styleClass="item-text">
+                    <p:outputPanel>
+                      <div class="item-name">
+                        <h:outputText value="#{item.g.name}"/>
+                      </div>
+                    </p:outputPanel>
+                    <p:outputPanel>
+                      <div class="item-price">
+                        #{galleryBean.price(item.displayId)}
+                      </div>
+                    </p:outputPanel>
+                  </h:panelGrid>
+
+                  <h:panelGrid columns="2" styleClass="item-buttons">
+                    <p:menuButton value="#{_['Options']}">
+                      <p:menuitem value="#{_['Clone']}" update=":gallery:gallery-grid" action="#{galleryBean.cloneGalleryItem}">
+                         <f:setPropertyActionListener value="#{item.g}" target="#{galleryBean.selectedItem}"/>
+                      </p:menuitem>
+                      <p:menuitem value="#{_['Move']}" rendered="#{galleryBean.galleries.size > 1}"
+                                  oncomplete="PF('moveDialog').show();"
+                                  update=":gallery:moveDialog">
+                         <f:setPropertyActionListener value="#{item.g}" target="#{galleryBean.selectedItem}"/>
+                      </p:menuitem>
+
+                      <p:menuitem value="#{_['Delete']}" oncomplete="PF('deleteDialog').show();" update=":gallery:deleteDialog">
+                         <f:setPropertyActionListener value="#{item.g}" target="#{galleryBean.selectedItem}"/>
+                      </p:menuitem>
+                    </p:menuButton>
+
+                  </h:panelGrid>
+                </h:panelGrid>
+              </div>
+            </p:column>
+          </p:dataGrid>
+
+          <p:fileUpload listener="#{fileUploadController.upload}"
+                        accept="#{sessionBean.userAgentType == 'desktop' ? '.jpg, .jpeg, .png, .gif, .webp' : 'image/*'}"
+                        multiple="true"
+                        auto="true"
+                        label="#{_['Upload Images']}"
+                        uploadLabel="#{_['Upload']}"
+                        cancelLabel="#{_['Cancel']}"
+                        styleClass="upload-area"
+                        update="gallery-grid">
+            <f:attribute name="galleryId" value="#{facesContext.externalContext.requestParameterMap.get('galleryId')}"/>
+          </p:fileUpload>
+
+          <p:dialog id="moveDialog" widgetVar="moveDialog"
+                    modal="true" showHeader="false" resizable="false" closeOnEscape="true">
+            <h1>#{_['Move Gallery Item']}</h1>
+            <p><h:outputText id="moveMessage" value="#{galleryBean.moveMessage}"/></p>
+            <p:selectOneMenu id="product" value="#{galleryBean.selectedGalleryId}">
+              <f:selectItems value="#{galleryBean.otherGalleries}" var="g"
+                             itemLabel="#{galleryBean.galleryName(g)}" itemValue="#{g.id}"/>
+            </p:selectOneMenu>
+            <div class="actions">
+              <p:commandButton value="#{_['Cancel']}" onclick="PF('moveDialog').hide();" type="button"/>
+              <p:commandButton value="#{_['Move']}" id="moveItem" styleClass="highlight"
+                               update="gallery"
+                               oncomplete="PF('moveDialog').hide();"
+                               actionListener="#{galleryBean.move}"/>
+            </div>
+          </p:dialog>
+
+          <p:dialog id="deleteDialog" widgetVar="deleteDialog" focus="deleteItem"
+                    modal="true" showHeader="false" resizable="false" closeOnEscape="true">
+            <h1>#{_['Delete Gallery Item']}</h1>
+            <p><h:outputText value="#{galleryBean.deleteMessage}"/></p>
+            <div class="actions">
+              <p:commandButton value="#{_['Cancel']}" onclick="PF('deleteDialog').hide();" type="button"/>
+              <p:commandButton value="#{_['Delete']}" id="deleteItem" styleClass="highlight"
+                               update="gallery"
+                               oncomplete="PF('deleteDialog').hide();"
+                               actionListener="#{galleryBean.delete}"/>
+            </div>
+          </p:dialog>
+
+          <p:dialog id="createDialog" widgetVar="createDialog"
+                    modal="true" showHeader="false" resizable="false" closeOnEscape="true">
+            <h1>#{_['Create Gallery']}</h1>
+            <p>#{_['Enter a name for the new gallery:']}</p>
+            <p:inputText id="createName" value="#{galleryBean.createGalleryName}"
+                         onkeypress="if (event.keyCode == 13) {document.getElementById('gallery:createButton').click(); return false;}"/>
+            <p:message for="createName" id="createNameMessage"/>
+            <div class="actions">
+              <p:commandButton value="#{_['Cancel']}" onclick="PF('createDialog').hide();" type="button"/>
+              <p:commandButton value="#{_['Create']}" id="createButton" styleClass="highlight"
+                               update="createName createNameMessage galleries"
+                               oncomplete="if (!args.validationFailed) PF('createDialog').hide();"
+                               actionListener="#{galleryBean.createGallery}"/>
+            </div>
+          </p:dialog>
+
+          <p:dialog id="renameDialog" widgetVar="renameDialog"
+                    modal="true" showHeader="false" resizable="false" closeOnEscape="true">
+            <h1>#{_['Rename Gallery']}</h1>
+            <p>#{_['Enter a new name for the gallery:']}</p>
+            <p:inputText id="renameName" value="#{galleryBean.renameGalleryName}"
+                         onkeypress="if (event.keyCode == 13) {document.getElementById('gallery:renameButton').click(); return false;}"/>
+            <p:message for="renameName" id="renameNameMessage"/>
+            <div class="actions">
+              <p:commandButton value="#{_['Cancel']}" onclick="PF('renameDialog').hide();" type="button"/>
+              <p:commandButton id="renameButton" value="#{_['Rename']}" styleClass="highlight"
+                               update="renameName renameNameMessage galleries"
+                               oncomplete="if (!args.validationFailed) PF('renameDialog').hide();"
+                               actionListener="#{galleryBean.renameGallery}"/>
+            </div>
+          </p:dialog>
+
+          <p:dialog id="deleteGalleryDialog" widgetVar="deleteGalleryDialog" focus="deleteGallery"
+                    modal="true" showHeader="false" resizable="false" closeOnEscape="true">
+            <h1>#{_['Delete Gallery']}</h1>
+            <p><h:outputText value="#{galleryBean.deleteGalleryMessage}"/></p>
+            <div class="actions">
+              <p:commandButton value="#{_['Cancel']}" onclick="PF('deleteGalleryDialog').hide();" type="button"/>
+              <p:commandButton value="#{_['Delete']}" id="deleteGallery" styleClass="highlight"
+                               update="gallery"
+                               oncomplete="PF('deleteGalleryDialog').hide()"
+                               actionListener="#{galleryBean.deleteGallery}"/>
+            </div>
+          </p:dialog>
+
+        </p:outputPanel>
+
+      </h:form>
+      </div>
+    </section>
+  </ui:define>
+</ui:composition>

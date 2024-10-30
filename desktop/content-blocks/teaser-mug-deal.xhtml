@@ -1,0 +1,26 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets">
+  <div class="showcase #{not empty showcaseClass ? showcaseClass : ''}" style="background-image: url(#{teaserImage})">
+    <div class="body">
+      <ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+        <div class="product">
+          <img src="#{teaserImageMobile}" alt="#{imageAlt}" class="#{imageClass}" />
+        </div>
+      </ui:fragment>
+      <div class="info -white">
+        <h1 class="headline">#{teaserHeadline}</h1>
+        <ul class="features">
+          <li>#{teaserFeatureline1}</li>
+          <li>#{teaserFeatureline2}</li>
+          <li>#{teaserFeatureline3}</li>
+        </ul>
+        <ui:include src="/helper/directupload-short.xhtml">
+          <ui:param name="directuploadProductId" value="#{productId1}" />
+          <ui:param name="directuploadClass" value="button_action" />
+          <ui:param name="buttonText" value="Carica Foto" />
+          <ui:param name="wrapMove" value="width: 100%" />
+        </ui:include>
+      </div>
+    </div>
+  </div>
+</ui:composition>

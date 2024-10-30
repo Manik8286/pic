@@ -1,0 +1,64 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:remove><!--
+    These Variables define the sizes of listed products.
+    They sizes are separated by commas and will be looped below
+    for each size-group.
+  --></ui:remove>
+  <c:set var="squareFormats" value="20 x 20,40 x 40,60 x 60,80 x 80" />
+  <c:set var="digitalFormats" value="40 x 30,80 x 60,100 x 75,120 x 90" />
+  <c:set var="classicFormats" value="30 x 20,60 x 40,75 x 50,90 x 60,120 x 80,150 x 100" />
+  <c:set var="panoramaFormats" value="60 x 30,80 x 40,100 x 50,120 x 60" />
+  <c:set var="cinemaFormats" value="90 x 50,160 x 90" />
+
+  <dl class="accordion-panel js-accordion">
+    <dt class="title js-accordion-title" data-init-expand="true"></dt>
+    <dd class="sub js-accordion-body">
+      <div class="inner">
+        <dd class="sub js-accordion-body -expanded" style="max-height: 396px;">
+      <div class="inner">
+
+  <table class="table -accordion">
+    <thead>
+      <tr>
+        <td colspan="3">Leinwand Classic (2 cm)</td>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>20 x 20cm</td>
+            <td class="-align-right"><span class="-highlighted">5,00€*</span>
+            </td>
+            <td><a href="/singleupload.jsf" class="-highlighted">» jetzt bestellen</a>
+            </td>
+        </tr>
+        <tr>
+          <td>30 x 20cm</td>
+            <td class="-align-right"><span class="-highlighted">5,00€*</span>
+            </td>
+            <td><a href="/singleupload.jsf" class="-highlighted">» jetzt bestellen</a>
+            </td>
+        </tr>
+        <tr>
+          <td>30 x 40cm</td>
+            <td class="-align-right"><span class="-highlighted">5,00€*</span>
+            </td>
+            <td><a href="/singleupload.jsf" class="-highlighted">» jetzt bestellen</a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+  
+      </div>
+    </dd>
+      </div>
+    </dd>
+
+  </dl>
+</ui:composition>

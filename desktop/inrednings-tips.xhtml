@@ -1,0 +1,882 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:param name="pageTitle" value="Heta Tips &amp; Trender för hemmet - Dekor Världen" />
+
+
+    <ui:define name="head">
+      
+    </ui:define>
+
+    <ui:define name="meta">
+      <meta name="description" content="Heta Inredningstips &amp; Trender för hemmet. Hur ska man matcha väggdekor hemma? Hur du får dina rum att se större ut?" />
+      <meta name="robots" content="INDEX,FOLLOW" />
+      <meta http-equiv="content-language" content="sv_SE"/>
+    </ui:define>
+
+    <ui:define name="content">
+        <header class="page-hero -relax">
+            <div class="inner">
+                <h1 class="headline">Dekor Världen</h1>
+                <div class="subtitle">Heta Tips &amp; Trender för hemmet</div>
+            </div>
+        </header>
+
+    <section class="page-section">
+      <div class="story-list" id="easyPaginate">
+
+          <c:forEach var="article" items="#{articlesBean.articles('decorating-tips')}">
+            <article class="story">
+              <div class="story-box" data-mh="article">
+                <header class="head">
+                  <h3 class="title"><a href="#{article.detailsUrl}.jsf">#{article.title}</a></h3>
+                  <div class="subtitle">#{article.subtitle}</div>
+                </header>
+                <a href="#{article.detailsUrl}.jsf">
+                  <img class="image storyimg" src="#{articlesBean.articleSocialMediaImage(article.id)}" alt="#{article.title}" />
+                </a>
+                <div class="body">
+                  <h:outputText value="#{article.shortDescription}" escape="false" />
+                  <p><a href="#{article.detailsUrl}.jsf" class="more">Läs mer »</a></p>
+                </div>
+              </div>
+            </article>
+          </c:forEach>
+
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 40 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/pa-jakt-efter-det-perfekta-fotot.jsf">På jakt efter det perfekta fotot</a></h3>
+              <div class="subtitle">5 regler för att ta extraordinära bilder</div>
+            </header>
+            <a href="/inredningstips/pa-jakt-efter-det-perfekta-fotot.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/teaser-488x255.jpg" alt="På jakt efter det perfekta fotot" />
+            </a>
+            <div class="body">
+              <p>Kan du känna att du många gånger tittat på extraordinära foton och undrar hur de bilderna skapats? Hur lyckades fotografen plocka ut den här exakta detaljen från i princip oräkneliga visuella möjligheter och sen fånga det i bilden? Har en del personer bara ett naturligt fotografiskt öga? Är det talang eller finns det någon teknik som kan hjälpa dig att utveckla insikten för fotografering?</p>
+              <a href="/inredningstips/pa-jakt-efter-det-perfekta-fotot.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 40 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/det-magiska-ordet-komposition.jsf">Det magiska ordet: Komposition</a></h3>
+              <div class="subtitle">Den perfekta kompositionen för uttrycksfulla foton</div>
+            </header>
+            <a href="/inredningstips/det-magiska-ordet-komposition.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/la-palabra-magica-composicion.jpg" alt="Det magiska ordet: Komposition" />
+            </a>
+            <div class="body">
+              <p>Dynamisk eller statisk, oavsett vad eller hur du fotograferar, så är det du som bestämmer vad tittarens öga ska dras till. För att skapa en tilltalande bild och rikta blicken mot de väsentliga detaljerna finns det några grundläggande regler för (bild)komposition som du definitivt bör veta om och tillämpa. Naturligtvis är du helt fri att experimentera med, och till och med att medvetet bryta några av reglerna ibland.</p>
+              <a href="/inredningstips/det-magiska-ordet-komposition.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 39 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/ta-foton-pa-semestern.jsf">Ta foton på semestern</a></h3>
+              <div class="subtitle">6 Tips för bättre bilder genom planering</div>
+            </header>
+            <a href="/inredningstips/ta-foton-pa-semestern.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/woman-with-camera.jpg" alt="Ta foton på semestern" />
+            </a>
+            <div class="body">
+              <p>
+                De bästa souvenirerna från semestern är alltid de bilder du har tagit själv. Det spelar ingen roll om du tar fotografier bara för ditt eget nöjes skull eller för din reseblogg: du kommer att vilja ha unika semesterfoton istället för massproducerade bilder. Det finns redan alltför många av dem på internetportalerna. Låt oss visa dig hur du skapar särpräglade semesterbilder som kommer att påminna dig om dina resor i många månader och år framöver.
+              </p>
+              <a href="/inredningstips/ta-foton-pa-semestern.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 38 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/minimalism-en-levnadstrend.jsf">Minimalism: En Levnadstrend</a></h3>
+              <div class="subtitle">Gör plats för ett nytt liv</div>
+            </header>
+            <a href="/inredningstips/minimalism-en-levnadstrend.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/minimalisme.jpg" alt="Minimalism: En Levnadstrend" />
+            </a>
+            <div class="body">
+              <p>
+                Minimalismen som levnadsval har ökat i popularitet under de senaste åren. Särskilt i stadskärnor, där utrymmena blir allt mindre, så krävs en reducering av möbler. Minimalism kan hjälpa dig att inte bara skapa mer utrymme i ditt hem, utan kan också ge en klarhet och lugn i ditt liv!
+              </p>
+              <a href="/inredningstips/minimalism-en-levnadstrend.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 37 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/upptack-fotografering.jsf">Upptäck Fotografering</a></h3>
+              <div class="subtitle">11 typiska misstag nybörjare gör som lätt kan undvikas</div>
+            </header>
+            <a href="/inredningstips/upptack-fotografering.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/ontdek-fotografie.jpg" alt="Upptäck Fotografering" />
+            </a>
+            <div class="body">
+              <p>
+                Har du nyligen insett att fotografering är den perfekta hobbyn för dig, men du har kanske också märkt att många av dina foton inte är jättebra, när du väl går igenom och tittar på dem? Anledningen till detta kan vara att man ofta gör några typiska misstag som nybörjare. Det finns ingen anledning att oroa sig för detta dock, eftersom dessa misstag lätt kan undvikas. Här kommer vi att informera om vad du behöver veta om du vill få till helt fantastiska bilder.
+              </p>
+              <a href="/inredningstips/upptack-fotografering.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 36 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/vaggdekorationer-oversikt.jsf">Väggdekorationer: Översikt</a></h3>
+              <div class="subtitle">Från kanvas till förstklassigt tryck</div>
+            </header>
+            <a href="/inredningstips/vaggdekorationer-oversikt.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/muurdecoraties-een-overzicht.jpg" alt="Väggdekorationer: Översikt" />
+            </a>
+            <div class="body">
+              <p>
+                Ett uttrycksfullt porträtt, ett detaljerat fotografi på ett landskap, eller en väldigt lyckad bild från din senaste semester är alla värda en plats på väggen. Om ditt favoritfoto ska hamna i blickfånget, så behöver du bra stödmaterial och ibland även en ram. Vi visar dig några fantastiska sätt att föra fram dina foton i rampljuset.
+              </p>
+              <a href="/inredningstips/vaggdekorationer-oversikt.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 35 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/kura-ihop-dig-bara-mys.jsf">Kura ihop dig, bara mys</a></h3>
+              <div class="subtitle">Vardagsrummet som en varm fristad under vintertid</div>
+            </header>
+            <a href="/inredningstips/kura-ihop-dig-bara-mys.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/ga-lekker-liggen-maak-het-gezellig.jpg" alt="Kura ihop dig, bara mys" />
+            </a>
+            <div class="body">
+              <p>
+                På vintern är det ofta vått, kallt och grått. Vinden visslar runt knuten och efter jobbet, vill du bara komma hem snabbt, till ett ställe där det är varmt och du kan få det bekvämt. Det är just under denna kalla årstid du behöver en mysig reträtt, där du kan lämna allt annat bakom dig. Här är några tips på hur du kan göra.
+              </p>
+              <a href="/inredningstips/kura-ihop-dig-bara-mys.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 34 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/fargtrender-2017.jsf">Färgtrender 2017</a></h3>
+              <div class="subtitle">Hög tid för färg!</div>
+            </header>
+            <a href="/inredningstips/fargtrender-2017.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/2017-kleurentrends.jpg" alt="Färgtrender 2017" />
+            </a>
+            <div class="body">
+              <p>
+                Färgexperter är överens: vita väggar och återhållsamma färgbegrepp har dominerat våra väggar under de senaste åren, men 2017 är året för att tillföra mer färg in i våra liv och hem. Vi ska berätta allt om årets trendigaste färger i den här artikeln.
+              </p>
+              <a href="/inredningstips/fargtrender-2017.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 33 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/dekortrender-2017.jsf">Dekortrender 2017</a></h3>
+              <div class="subtitle">6 trender från kork till metallblandning</div>
+            </header>
+            <a href="/inredningstips/dekortrender-2017.jsf"><img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/decoratieve-trends-2017.jpg" alt="Dekortrender 2017" /></a>
+            <div class="body">
+              <p>
+                Ett nytt år, en ny lycka: detsamma gäller för dekorationen av ditt hem. 2017 kommer att medföra många spännande trender inom heminredning, varav en del av dem redan har visat sig vara viktiga. Tillåt oss att presentera sex av de mest intressanta kommande dekorativa trenderna inför 2017. De kommer att vara en inspiration för dig!
+              </p>
+              <a href="/inredningstips/dekortrender-2017.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <!-- 32 -->
+        <!--         
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/inspiration-for-en-fotokalender.jsf">TITLE</a></h3>
+              <div class="subtitle">SUBTITLE</div>
+            </header>
+            <a href="/inredningstips/inspiration-for-en-fotokalender.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/maak-je-eigen-fotokalender.jpg" alt="ALT" />
+            </a>
+            <div class="body">
+              <p>
+                TEXT
+              </p>
+              <a href="/inredningstips/inspiration-for-en-fotokalender.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span> 
+        -->
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 31 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/gor-ditt-foto-till-en-gava.jsf">Gör ditt foto till en gåva</a></h3>
+              <div class="subtitle">Hur man gör sina nära och kära lyckliga</div>
+            </header>
+            <a href="/inredningstips/gor-ditt-foto-till-en-gava.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/maak-van-je-foto-een-geschenk.jpg" alt="Gör ditt foto till en gåva" />
+            </a>
+            <div class="body">
+              <p>
+                Oavsett om det är jul, en födelsedag, din årsdag med din partner eller Mors dag - så behöver du inte gå in i en lokal butik för att köpa en present, utan du kan istället ge din älskade något väldigt speciellt för att uttrycka hur mycket du värdesätter och uppskattar dem. Tavlor är en perfekt present! Vi skulle här vilja föreslå 7 sätt där du kan använda dina foton för att glädja dina nära och kära.
+              </p>
+              <a href="/inredningstips/gor-ditt-foto-till-en-gava.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 30 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/juldekoration.jsf">Juldekoration</a></h3>
+              <div class="subtitle">8 idéer för att få en mysig jul</div>
+            </header>
+            <a href="/inredningstips/juldekoration.jsf"><img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/kerstversiering.jpg" alt="Juldekoration" /></a>
+            <div class="body">
+              <p>
+                Doften av kakor och glögg som möter dig, julmusik som tyst spelas före jul medan du slår in de första julklapparna och du börjar se fram emot julafton. För att nedräkningen till jul ska bli ännu trevligare, bör du fixa till lite vacker juldekoration i din lägenhet.
+              </p>
+              <a href="/inredningstips/juldekoration.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+         </span>
+
+        <span class="story">
+                 <!-- 29 -->
+          <div class="story-box" data-mh="article">
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/gor-sa-din-bild-far-sta-i-centrum.jsf">Gör så din bild får stå i centrum</a></h3>
+              <div class="subtitle">7 tips för att hänga upp din bild på ett konstnärligt sätt</div>
+            </header>
+            <a href="/inredningstips/gor-sa-din-bild-far-sta-i-centrum.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/plaats-uw-afbeelding-in-het-centrum-van-alle-aandacht.jpg" alt="Gör så din bild får stå i centrum" />
+            </a>
+            <div class="body">
+              <p>
+                Tänker du ofta på hur du faktiskt hänger dina bilder? Detta är för många ofta en möjlighet som man missar, när det gäller att skickligt organisera sin vägg för att göra den mer intressant. Vi kommer att presentera sju populära sätt att hänga upp bilder på, som kommer att sätta dina bilder i rampljuset.
+              </p>
+              <a href="/inredningstips/gor-sa-din-bild-far-sta-i-centrum.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 28 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/ordning-i-hemmet-ordning-i-sinnet.jsf">Ordning i hemmet, ordning i sinnet</a></h3>
+              <div class="subtitle">6 snabba tips för ett stilrent hem</div>
+            </header>
+            <a href="/inredningstips/ordning-i-hemmet-ordning-i-sinnet.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/proper-huis-propere-geest.jpg" alt="Ordning i hemmet, ordning i sinnet" />
+            </a>
+            <div class="body">
+              <p>
+                Känner du av bristen på ledigt utrymme i ditt hem? Känns det som om allt står i vägen? Längtar du efter frihet inom dina egna fyra väggar? Frigör då utrymme och plocka undan! Vi erbjuder dig här sex tips för att få ett snygg, bekväm hem!
+              </p>
+              <a href="/inredningstips/ordning-i-hemmet-ordning-i-sinnet.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+           <div class="story-box" data-mh="article">
+            <!-- 27 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/ett-sagolikt-vackert-bord.jsf">Ett sagolikt vackert bord</a></h3>
+              <div class="subtitle">5 tips för ett snyggt dekorerat matbord</div>
+            </header>
+            <a href="/inredningstips/ett-sagolikt-vackert-bord.jsf"><img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/food.jpg" alt="Ett sagolikt vackert bord" /></a>
+            <div class="body">
+              <p>
+                Ett vackert dukat bord kommer definitivt att ange tonen när du bjuder in gäster till middag. Men även när du äter ensam, så blir ett omsorgsfullt dekorerat bord till middagen mycket roligare - trots allt, så äter du med ögonen först! Vi har 5 enkla knep för att förändra din bordsdekoration till att verkligen hamna i blickfånget.
+              </p>
+              <a href="/inredningstips/ett-sagolikt-vackert-bord.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+
+          <div class="story-box" data-mh="article">
+            <!-- 26 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/dekorera-din-vagg-med-klockor-speglar-och-bilder.jsf">Dekorera din vägg med klockor, speglar och bilder</a></h3>
+              <div class="subtitle">Dekorertionstips för att få en perfekt och unik vägg</div>
+            </header>
+            <a href="/inredningstips/dekorera-din-vagg-med-klockor-speglar-och-bilder.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/opvallende-lijsten-voor-je-spiegel-teaser.jpg" alt="Dekorera din vägg med klockor, speglar och bilder" />
+            </a>
+            <div class="body">
+              <p>
+                Är åsynen av dina väggar mer deprimerande än inspirerande? Kala väggar och skarpa färger så långt ögat kan se? Lyckligtvis går detta att fixa snabbt och enkelt! Det finns många vackra sätt att skapa sin egen perfekta unika vägg med hjälp av klockor, speglar och bilder!
+              </p>
+              <a href="/inredningstips/dekorera-din-vagg-med-klockor-speglar-och-bilder.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 25 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/brollopsfotografering.jsf">Bröllopsfotografering</a></h3>
+              <div class="subtitle">Den senaste trenden är Kassera Klänningen!</div>
+            </header>
+            <a href="/inredningstips/brollopsfotografering.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/bruiloftsfotografie.jpg" alt="Bröllopsfotografering" />
+            </a>
+            <div class="body">
+              <p>
+                Har du nyligen gift dig eller kommer ditt bröllop snart att äga rum? Vill du få fantastiska bilder i din brudklänning som riktigt fångar den bästa dagen i ditt liv? Romantiskt och idylliskt fungerar mycket bra, men vill du att dina foton ska bli något alldeles speciellt? Försök då med Kassera Klänningen, den nyaste trenden inom bröllopsfotografering!
+              </p>
+              <a href="/inredningstips/brollopsfotografering.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 24 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/dekorera-med-blommor.jsf">Dekorera med blommor</a></h3>
+              <div class="subtitle">Dekorationer för ditt hem</div>
+            </header>
+            <a href="/inredningstips/dekorera-med-blommor.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/dekorieren-mit-blumen.jpg" alt="Dekorera med blommor" />
+            </a>
+            <div class="body">
+              <p>
+                Vare sig det gäller en blombukett eller blommor i ett växthus, så är blommor ett vackert sätt att dekorera på och på detta viset kan du välkomna en blomsteräng eller en djungel rakt in i ditt eget hem. Oavsett om dina favoritblommor är hortensia, rosor, liljor eller orkidéer, så kan du skapa ditt eget paradis av blommor med hjälp av våra idéer!
+              </p>
+              <a href="/inredningstips/dekorera-med-blommor.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 23 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/njut-av-medelhavets-livsstil.jsf">Njut av medelhavets livsstil</a></h3>
+              <div class="subtitle">Få semesterkänsla året runt</div>
+            </header>
+            <a href="/inredningstips/njut-av-medelhavets-livsstil.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/wonen-als-aan-de-middellandse-zee.jpg" alt="Njut av medelhavets livsstil" />
+            </a>
+            <div class="body">
+              <p>
+                Älskar du att semestra vid havet så mycket att du längtar efter atmosfären vid Medelhavet när du är hemma på sommaren? Skulle du föredra att känna att du är på Costas jämt? Det är lättare än du tror! Vi visar dig de färger, material och objekt som du kan använda för att dekorera ditt hem för att skapa en medelhavsatmosfär.
+              </p>
+              <a href="/inredningstips/njut-av-medelhavets-livsstil.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 22 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/hemmasemester.jsf">Hemmasemester</a></h3>
+              <div class="subtitle">Gör din balkong redo för sommaren i 5 steg</div>
+            </header>
+            <a href="/inredningstips/hemmasemester.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/vakantie-op-balconia.jpg" alt="Hemmasemester" />
+            </a>
+            <div class="body">
+              <p>
+                Väntar du fortfarande på din semester, är den kanske redan över eller blev det kanske ingen semester i år? Du kan fortfarande njuta av sommaren! Skapa din egen privata oas på bara några timmar. Du kan få en riktig semesterkänsla hemma med rätt dekorationer. Vi visar dig hur man förvandlar sin balkong till ett riktigt sommarsemesterparadis genom fem enkla steg.
+              </p>
+              <a href="/inredningstips/hemmasemester.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 21 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/dekorationstrender-infor-sommaren.jsf">Dekorationstrender inför sommaren</a></h3>
+              <div class="subtitle">Tre sommarstilar för ditt hem</div>
+            </header>
+            <a href="/inredningstips/dekorationstrender-infor-sommaren.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/deco-trends-voor-de-zomer.jpg" alt="Dekorationstrender inför sommaren" />
+            </a>
+            <div class="body">
+              <p>
+                Sommaren är äntligen här! Rika färger, varm sol och en fläktande vind ger oss en fantastisk känsla. Vill du kunna fånga in denna och ta med den in i din lägenhet? Inga problem! Med dessa tips kan du ta semesterkänslan rakt in i ditt hem och bo i ett paradis!
+              </p>
+              <a href="/inredningstips/dekorationstrender-infor-sommaren.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!--  20 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/10-tips-for-bra-semesterbilder.jsf">10 tips för bra semesterbilder</a></h3>
+              <div class="subtitle">Ser du redan fram emot nästa semester?</div>
+            </header>
+            <a href="/inredningstips/10-tips-for-bra-semesterbilder.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/fantastische-vakantiefotos.jpg" alt="10 tips för bra semesterbilder" />
+            </a>
+            <div class="body">
+              <p>
+                Glöm inte att packa din kamera och fånga dina vackraste stunder. Men du kan inte bara jäkta iväg för att ta årets bästa bilder - ingenting är värre än ett fotografi av ett fantastiskt föremål som har fotograferats dåligt! Vi vill ge dig tio bra tips för att få en lyckad semesterbild.
+              </p>
+              <a href="/inredningstips/10-tips-for-bra-semesterbilder.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 19 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/det-perfekta-kontoret-i-hemmet.jsf">Det perfekta kontoret i hemmet</a></h3>
+              <div class="subtitle">Koppla av när du arbetar och få ett bättre liv</div>
+            </header>
+            <a href="/inredningstips/det-perfekta-kontoret-i-hemmet.jsf"><img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/de-perfecte-kantoor-aan-huis.jpg" alt="Det perfekta kontoret i hemmet" /></a>
+            <div class="body">
+              <p>
+                Tar du ofta med dig arbetet hem? Eller är du egenföretagare, eller har planer på att bli din egen chef snart? Då behöver du ett bekvämt och effektivt kontor hemma som kommer att motivera dig och hjälpa dig att kunna arbeta bra. Vi kommer här att visa hur man kan göra och ge några tips om hur man skapar ett kontor i hemmet, där du verkligen kan arbeta!
+              </p>
+              <a href="/inredningstips/det-perfekta-kontoret-i-hemmet.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 18 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/skapa-enkelt-dina-egna-vaggdekorationer.jsf">Skapa enkelt dina egna väggdekorationer</a></h3>
+              <div class="subtitle">Sex kreativa idéer för din vägg som du kan göra själv</div>
+            </header>
+            <a href="/inredningstips/skapa-enkelt-dina-egna-vaggdekorationer.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/creeer-eenvoudig-je-eigen-muurdecoraties.jpg" alt="Skapa enkelt dina egna väggdekorationer" />
+            </a>
+            <div class="body">
+              <p>
+                Tycker du att din vägg är vanlig och tråkig, men du har ingen aning om vad du ska göra med den och inte heller vill spendera en massa pengar? Vi presenterar sex kreativa idéer som kommer att göra att ditt hem ser fräscht ut och kommer att ge mer liv åt dina väggar!
+              </p>
+              <a href="/inredningstips/skapa-enkelt-dina-egna-vaggdekorationer.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 17 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/de-senaste-fototrenderna-2016.jsf">De senaste fototrenderna 2016</a></h3>
+              <div class="subtitle">Inspiration för bättre fotografering</div>
+            </header>
+            <a href="/inredningstips/de-senaste-fototrenderna-2016.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/the-new-photo-trends-of-2016.jpg" alt="De senaste fototrenderna 2016" />
+            </a>
+            <div class="body">
+              <p>
+                Fotografering fortsätter att utvecklas och det kommer nya trender under 2016 som används av konstnärer och kreatörer för att ta ännu bättre bilder. Vi kommer att visa dig sex spännande fototrender som kommer att inspirera alla blivande fotografer att ta nya typer av bilder.
+              </p>
+              <a href="/inredningstips/de-senaste-fototrenderna-2016.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 16 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/fargtrend-vinnare-2016.jsf">De winnaar van de kleurentrend 2016</a></h3>
+              <div class="subtitle">Welke kleur is toonaangevend voor het jaar?</div>
+            </header>
+            <a href="/inredningstips/fargtrend-vinnare-2016.jsf"><img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/de-winnaar-van-de-kleurentrend-2016.jpg" alt="De winnaar van de kleurentrend 2016" /></a>
+            <div class="body">
+              <p>
+                De lente is hier en je plant een grote lentekuis. Waarom geen gebruik maken van deze kans om een nieuwe laag verf in je woonkamer aan te brengen om de lente te verwelkomen? Laat je inspireren door de spannende kleurentrends van 2016 en vind de beste kleuren voor jouw thuis!
+              </p>
+              <a href="/inredningstips/fargtrend-vinnare-2016.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 15 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/konstnarliga-tavelramar.jsf">Konstnärliga tavelramar</a></h3>
+              <div class="subtitle">Sex stycken idéer för spännande motiv</div>
+            </header>
+            <a href="/inredningstips/konstnarliga-tavelramar.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/Product-afbeelding-omlijsting.jpg" alt="Konstnärliga tavelramar" />
+            </a>
+            <div class="body">
+              <p>
+                Tavelramar är praktiska och samtidigt dekorativa: de skyddar dina foton och bilder från damm, smuts och fläckar och om de sätts i rätt ljus blir de även en ordentlig medelpunkt. Oavsett din övriga inredning - med rätt ram kommer du att fullborda din lägenhet.
+              </p>
+              <a href="/inredningstips/konstnarliga-tavelramar.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+       <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 14 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/battre-boende-med-fototryck.jsf">Bättre boende med fototryck</a></h3>
+              <div class="subtitle">Sex inredningsidéer med hjälp av textilier</div>
+            </header>
+            <a href="/inredningstips/battre-boende-med-fototryck.jsf"><img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/fotoprints.jpg" alt="Bättre boende med fototryck" /></a>
+            <div class="body">
+              <p>
+                Vill du dekorera din lägenhet i en varm och personlig stil? Då ska du definitivt använda textilier. Genom att använda olika material sätter du färg och ger liv till ditt hem och skapar också en mysig atmosfär. Vi visar dig hur du ger din lägenhet ett trendigt och individuellt utseende med fototextilier....
+              </p>
+              <a href="/inredningstips/battre-boende-med-fototryck.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 13 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/hallen-som-ett-galleri.jsf">Hallen som ett galleri</a></h3>
+              <div class="subtitle">På detta sätt kan du dekorera hallen ordentligt</div>
+            </header>
+            <a href="/inredningstips/hallen-som-ett-galleri.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/gallery.jpg" alt="Hallen som ett galleri" />
+            </a>
+            <div class="body">
+              <p>
+                Varifrån får man det första intrycket av en lägenhet? Oftast från hallen. Desto viktigare, vad ser dina gäster där? Förhoppningsvis inte ett skräprum! Om du vill förbättra det första intrycket av din lägenhet, så har vi här några användbara tips för dig. På detta sätt kan du förvandla din hall till ett elegant bildgalleri...
+              </p>
+              <a href="/inredningstips/hallen-som-ett-galleri.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 12 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/dekoration-med-garanterat-blickfang.jsf">Dekoration med garanterat blickfång</a></h3>
+              <div class="subtitle">På detta sätt stämmer dina tavlor perfekt in i bilden</div>
+            </header>
+            <a href="/inredningstips/dekoration-med-garanterat-blickfang.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/op-deze-manier-spelen-je-fotos-een-perfecte-rol.jpg" alt="Dekoration med garanterat blickfång" />
+            </a>
+            <div class="body">
+              <p>
+                Vet du vad jag menar? Så fort du kommer in i ett rum, hinner du inte ens titta dig omkring riktigt, eftersom din blick redan oundvikligen har vandrat till en mycket specifik tavla. Detta är oftast inte av ren olyckshändelse, utan en skickligt iscensatt design. I den här artikeln får du lära dig hur du kan använda detta fenomen för dina egna tavlor.
+              </p>
+              <a href="/inredningstips/dekoration-med-garanterat-blickfang.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <!-- 11 -->
+        <!--         
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/disenar-album-de-fotos-de-forma-mas-imaginativa.jsf">TITLE</a></h3>
+              <div class="subtitle">SUBTITLE</div>
+            </header>
+            <a href="/inredningstips/disenar-album-de-fotos-de-forma-mas-imaginativa.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/tips-voor-uw-fotoboek-ontwerp.jpg" alt="ALT" />
+            </a>
+            <div class="body">
+              <p>
+                TEXT
+              </p>
+              <a href="/inredningstips/disenar-album-de-fotos-de-forma-mas-imaginativa.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span> 
+        -->
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 10 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/det-gyllene-snittet.jsf">Det gyllene snittet</a></h3>
+              <div class="subtitle">Hur man designar ett hem med harmoni</div>
+            </header>
+            <a href="/inredningstips/det-gyllene-snittet.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/de-gouden-verhouding.jpg" alt="Det gyllene snittet" />
+            </a>
+            <div class="body">
+              <p>
+                Hur kommer det sig att vissa bilder, byggnader eller utrymmen genom sin karisma har en harmonisk inverkan på oss? Vad ger en havssnäcka eller bladet av ett träd den här sortens perfektion? Och vad, kommer du att fråga nu, har allt detta att göra med inredning? Det är precis det du kommer att lära dig i den här artikeln!
+              </p>
+              <a href="/inredningstips/det-gyllene-snittet.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 9 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/blandning-av-stilar-i-inredningen.jsf">Blandning av stilar i inredningen</a></h3>
+              <div class="subtitle">Tips för perfekta kombinationer</div>
+            </header>
+            <a href="/inredningstips/blandning-av-stilar-i-inredningen.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/mix-van-stijlen-in-het-interieur.jpg" alt="Blandning av stilar i inredningen" />
+            </a>
+            <div class="body">
+              <p>
+                För den moderna inredningen gäller uttrycket, "allt fungerar". En blandning av olika möblelstilar, färger och mönster kan ge ett unikt, nytt utseende till ditt rum. Många människor tvekar dock när det gäller att blanda flera stilar i inredningen av oro för att det minutiöst planerade utrymmet så småningom kommer att likna...
+              </p>
+              <a href="/inredningstips/blandning-av-stilar-i-inredningen.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 8 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/bildvagg-i-galleri-stil.jsf">Bildvägg i galleri-stil</a></h3>
+              <div class="subtitle">Presentera dina bilder som på ett museum</div>
+            </header>
+            <a href="/inredningstips/bildvagg-i-galleri-stil.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/presenteer-uw-fotos-in-museumstijl.jpg" alt="Bildvägg i galleri-stil" />
+            </a>
+            <div class="body">
+              <p>
+                Ser den långa vita väggen i hallen tom och steril ut, som en sjukhuskorridor? Är ditt vardagsrum i ditt gamla hus enormt och har högt i tak? Om det finns stora ytor och inget som vägleder ögat, kan du använda dina egna bilder för att få brytningar och skapa struktur. Här visar vi dig de möjligheter du har genom att hänga bilder i rad, galleri-stil.
+              </p>
+              <a href="/inredningstips/bildvagg-i-galleri-stil.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 7 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/bilder-som-skapar-en-storre-helhet.jsf">Bilder som skapar en större helhet</a></h3>
+              <div class="subtitle">Den något annorlunda väggdekorationen</div>
+            </header>
+            <a href="/inredningstips/bilder-som-skapar-en-storre-helhet.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/de-vrij-aparte-muurdecoratie.jpg" alt="Bilder som skapar en större helhet" />
+            </a>
+            <div class="body">
+              <p>
+                Ditt eget mästerverk i ett stort panoramaformat ovanför soffan - en fantastisk väggdekoration! Det finns ännu fler spännande och exklusiva sätt att designa dina fotoutskrifter med hjälp av förslagen i det här inlägget. Och det bästa är, våra förslag innehåller många idéer; Vi hjälper till och med till så du kan spara några slantar.
+              </p>
+              <a href="/inredningstips/bilder-som-skapar-en-storre-helhet.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 6 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/vackrare-vaggbilder-pa-fotopapper.jsf">Vackrare väggbilder på fotopapper</a></h3>
+              <div class="subtitle">Vad är det som gör skillnad?</div>
+            </header>
+            <a href="/inredningstips/vackrare-vaggbilder-pa-fotopapper.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/fotopapier-afbeeldingen.jpg" alt="Vackrare väggbilder på fotopapper" />
+            </a>
+            <div class="body">
+              <p>
+                För entusiastiska fotografer, finns det knappast en vackrare väggdekoration än sina egna, fullstora bilder. Frågan är hur de presenteras. Även för experter finns det en förvirrande mängd fotopapper och ytalternativ - men vad fungerar bäst för dina bilder?
+              </p>
+              <a href="/inredningstips/vackrare-vaggbilder-pa-fotopapper.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 5 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/forvandla-din-balkong-till-en-oas.jsf">Förvandla din balkong till en oas</a></h3>
+              <div class="subtitle">Inredningsidéer för alla balkonger</div>
+            </header>
+            <a href="/inredningstips/forvandla-din-balkong-till-en-oas.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/het-balkon-als-een-wellness-oase.jpg" alt="Förvandla din balkong till en oas" />
+            </a>
+            <div class="body">
+              <p>
+                Med våren runt hörnet, är det hög tid att börja göra balkongen fin för soligt väder! Kom ihåg att de typer av möbler, växter och dekorationer som passar bäst för just din balkong beror på balkongens placering. Oavsett om du har en nordlig, östlig, sydlig eller en balkong som vetter västerut, har vi här några tips till dig.
+              </p>
+              <a href="/inredningstips/forvandla-din-balkong-till-en-oas.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 4 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/de-senaste-trenderna-for-hemmet-2016.jsf">De Senaste Trenderna för Hemmet 2016</a></h3>
+              <div class="subtitle">De senaste trenderna för heminredning</div>
+            </header>
+            <a href="/inredningstips/de-senaste-trenderna-for-hemmet-2016.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/de-nieuwste-woontrends-2015-2016.jpg" alt="De Senaste Trenderna för Hemmet 2016" />
+            </a>
+            <div class="body">
+              <p>
+                De senaste trenderna kombinerar traditionell stil med modern inredning. Morgondagens dekoration är inriktad på enkelhet och ett subtilt utbud av färger i kombination med iögonfallande delar. Läs mer för att ta reda på vilka typer av trender som kommer, kommer för att stanna och kommer att försvinna under 2016.
+              </p>
+              <a href="/inredningstips/de-senaste-trenderna-for-hemmet-2016.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 3 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/10-inredingssynder.jsf">10 Inredningssynder</a></h3>
+              <div class="subtitle">Saker du bör undvika när du inreder ditt hem</div>
+            </header>
+            <a href="/inredningstips/10-inredingssynder.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/10-decoratie-zonden.jpg" alt="10 decoratie zonden" />
+            </a>
+            <div class="body">
+              <p>
+                Fantastiskt elegant eller bara pinsamt? Ditt eget hem avslöjar en hel del om din personlighet, dina fritidsintressen och ditt liv – kanske mer än du är medveten om! Vi vet att stil är en fråga om smak och kan skilja sig från person till person. Det finns dock fortfarande några sätt att undvika att trampa I klaveret när det gäller att dekorera hemmet. Här är våra topp 10 tips:
+              </p>
+              <a href="/inredningstips/10-inredingssynder.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 2 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/hur-ska-man-matcha-vaggdekor-hemma.jsf">Hur ska man matcha väggdekor hemma</a></h3>
+              <div class="subtitle">Enkla regler för väggdekoration</div>
+            </header>
+            <a href="/inredningstips/hur-ska-man-matcha-vaggdekor-hemma.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/hang-foto-s-harmonieus-op.jpg" alt="Hur ska man matcha väggdekor hemma" />
+            </a>
+            <div class="body">
+              <p>
+                När det gäller att köpa väggdekoration, finns det i princip bara en tumregel - du måste gilla den! Men vi har även några andra tips som kan vara till hjälp när du ska välja väggdekor, som kan bistå med att skapa ett harmoniskt och mysigt hem. Ta en titt på våra grundläggande regler och bestäm själv vad som passar din smak och ditt hem bäst.
+              </p>
+              <a href="/inredningstips/hur-ska-man-matcha-vaggdekor-hemma.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 1 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/hur-du-far-dina-rum-att-se-storre-ut.jsf">Inreda små lägenheter</a></h3>
+              <div class="subtitle">Hur du får dina rum att se större ut</div>
+            </header>
+            <a href="/inredningstips/hur-du-far-dina-rum-att-se-storre-ut.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/kleine-woning-decoreren.jpg" alt="Inreda små lägenheter" />
+            </a>
+            <div class="body">
+              <p>
+                Hyrorna blir allt dyrare och rummen allt mindre. Numera måste många klara sig med mindre utrymme än tidigare och detta gör det allt viktigare att få ut det mesta av det utrymme du har till hands. Med rätt tavlor på väggarna kan du få dina rum att verka större. Här är några tips till dig om du vill att din lilla lägenheten ska kännas rymligare.
+              </p>
+              <a href="/inredningstips/hur-du-far-dina-rum-att-se-storre-ut.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+
+        <span class="story">
+          <div class="story-box" data-mh="article">
+            <!-- 0 -->
+            <header class="head">
+              <h3 class="title"><a href="/inredningstips/bestcanvas-se-ar-testvinnare-i-tv-progammet-plus.jsf">BestCanvas är testvinnare i TV-progammet +PLUS</a></h3>
+              <div class="subtitle"></div>
+            </header>
+            <a href="/inredningstips/bestcanvas-se-ar-testvinnare-i-tv-progammet-plus.jsf">
+              <img class="image storyimg" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/article/bestcanvas-se-ar-testvinnare-i-tv-progammet-plus.jpg" alt="Inreda små lägenheter" />
+            </a>
+            <div class="body">
+              <p>
+                Stockholm, 15.10.2015. TV-programmet +PLUS har testat de bästa fotocanvasleverantörerna i Sverige - första pris går till bestcanvas.se. En enastående bildkvalitet, intuitiv design och snabb leverans var alla viktiga faktorer till segern av testet. Ett överraskande slut: Fotocanvas från bestcanvas.se har fortfarande bäst pris.
+              </p>
+              <a href="/inredningstips/bestcanvas-se-ar-testvinnare-i-tv-progammet-plus.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </span>
+          
+
+        </div>
+      </section>
+  </ui:define>
+  <ui:define name="eofscript">
+      <script>
+      $(document).ready(function() {
+
+          // Add pinterest button to every article
+          $('.story .image').each(function() {
+              var $img = $(this),
+                  img = $img.attr('src'),
+                  url = $img.parent().attr('href'),
+                  $url = $img.parent(),
+                  desc = $url.next('.body').children('p').text();
+              $img.after('<a href="https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(document.location + url) + '&amp;media=' + img + '&amp;description=' + encodeURIComponent(desc) + '" class="pin-it-btn">Save</a>');
+          })
+
+          // Show pinterest button on hover
+          $('.story-box > a').hover(function() {
+              $(this).find('.pin-it-btn').fadeIn();
+          }, function() {
+              $(this).find('.pin-it-btn').fadeOut();
+          });
+
+          // Open popup on buttons click
+          $('.pin-it-btn').on('click', function(e) {
+              e.preventDefault();
+              window.open(this.href, 'Pinterest', 'width=760,height=640');
+          })
+      });
+
+      $('#easyPaginate').easyPaginate({
+          paginateElement: 'article',
+          elementsPerPage: 10,
+          effect: 'slide',
+          slideOffset: 50,
+          firstButton: false,
+          lastButton: false
+      });
+      </script>
+  </ui:define>
+</ui:composition>

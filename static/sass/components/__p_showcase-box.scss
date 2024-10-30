@@ -1,0 +1,48 @@
+.showcase-box {
+  margin-bottom: 20px;
+  padding: 15px 10px 35px 10px;
+  height: auto;
+  min-height: 1px;
+
+>.link 
+{
+  bottom:7px;
+}
+  >.headline {
+    margin-bottom: 10px;
+    height: auto;
+    &.-wrap {
+      line-height: 1.2;
+      white-space: pre-wrap;
+    }
+  }
+
+  >.seals {
+    display: inline-block;
+    width: 100%;
+    margin-top: 5px;
+    text-align: center;
+
+    li {
+      width: 70px;
+      display: inline-block;
+      float: none;
+      margin-right: 20px;
+      margin-bottom: 0;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .trustpilot-widget {
+    padding: 0;
+  }
+
+}

@@ -1,0 +1,88 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:define name="head">
+    <script>
+      var couponSuccess = #{discountCodeBean.setCode('LayoutChangeOnly')};
+      var element = document.getElementById("congrats");
+    </script>
+    
+  </ui:define>
+
+  <ui:define name="dataLayer">
+    <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+      <ui:param name="canvas" value="true" />
+      <ui:param name="noList" value="true" />
+    </ui:include>
+    <script>
+        dataLayer.push({
+          'marketingChannelPage': 'affiliate'
+        })
+      </script>
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+  </ui:define>
+
+  <ui:param name="pageTitle" value="Ditt Foto på Canvas!" />
+
+  <ui:define name="content">
+
+    <!-- teaser -->
+    <section class="page-teaser">
+      <ui:include src="/page-blocks/teaser.xhtml" >
+        <!-- base teaser parameters -->
+  	    <ui:param name="teaserBgImage" value="/#{shopInfoBean.versionPath}assets/img/backgrounds/room-canvas-christmas.jpg" />
+        <ui:param name="teaserClass" value="-mothersday" />
+        <ui:param name="headline" value=" Spara 15% på allt!" />
+        <ui:param name="claim" value="Exklusivt CUPONATION-erbjudande!" />
+        <ui:param name="teaserProductImage" value="/#{shopInfoBean.versionPath}assets/img/affiliate/teaser/acrylic15off.png" />
+        <ui:param name="imgSize" value="500" />
+        <ui:param name="codeClass" value="-smaller" />
+
+        <!-- feature checklist -->
+        <ui:param name="codeField" value="true" />
+        <ui:param name="teaserFeature1" value="Ladda upp foto" />
+        <ui:param name="teaserFeature2" value="Välj format och effekt" />
+        <ui:param name="teaserFeature3" value="Lös in koden i varukorgen" />
+
+        <ui:param name="noFreeShippingInfo" value="false" />
+        <ui:param name="codeTitle" value="Rabattkod:" />
+        <ui:param name="codeContent" value="CUPONATION1851" />
+        <ui:param name="validUntil" value="Erbjudandet gäller up till och med 31.12.2018." />
+        <ui:param name="quotes" value="false" />
+
+        <!-- button parameters -->
+        <ui:param name="uploadId" value="254" />
+        <ui:param name="buttonText" value="Skapa" />
+      </ui:include>
+    </section>
+    <!-- /teaser -->
+
+    <!-- info boxes -->
+    <section class="page-section -alternate -collapse-top">
+      <ui:include src="/page-blocks/info-blocks-canvas.xhtml" />
+    </section><!-- /info boxes -->
+
+    <!-- product boxes -->
+    <section class="page-section -collapse-top">
+      <ui:include src="/page-blocks/product-boxes.xhtml" />
+    </section><!-- /product boxes -->
+
+    <!-- paymentmethods and social -->
+    <section class="page-section -alternate">
+      <ui:include src="/page-blocks/paymentmethods.xhtml" />
+      <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+    </section>
+    <!-- /paymentmethods and social -->
+
+
+
+  </ui:define>
+</ui:composition>

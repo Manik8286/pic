@@ -1,0 +1,88 @@
+.deal {
+  .showcase {
+
+    &.teaser-blackweek {
+
+      .body {
+        padding-bottom: 20px;
+
+        .product {
+          text-align: center;
+        }
+
+        .quality-badges {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .countdown-block {
+    position: static;
+    bottom: auto;
+    left: auto;
+    width: 360px;
+    margin-left: 0;
+    text-align: center;
+    white-space: initial;
+    display: inline-block;
+  }
+
+  .deal-section {
+    .product-list {
+      .product {
+        @extend .-span-12;
+        .product-box {
+          min-height: 330px;
+        }
+
+        .countdown-clock {
+          position: absolute;
+          background: #72be44;
+          color: $white;
+          bottom: 10px;
+          padding: 8px 5px;
+          left: 0;
+          width: auto;
+        }
+
+        .coupon-block {
+          position: absolute;
+          width: 130px;
+          left: 80px;
+
+          .coupon {
+            text-align: center;
+            color: #72be44;
+            font-weight: 700;
+            font-size: 1em;
+            background: $white;
+            border: none;
+            box-shadow: 1px 1px 1px 1px rgba(0,0,0,.2);
+            padding: 18px 15px;
+            border-radius: 3px;
+            width: 80%;
+            margin-bottom: 0;
+            height: 34px;
+          }
+        }
+
+        .action {
+          margin-top: 0;
+          float: right;
+          font-size: 12px;
+          width: 42%;
+          box-sizing: border-box;
+
+          &.disabled {
+            padding-right: 10px;
+            background-image: linear-gradient(#c1c1c1,#757574);
+            &:after {
+              background: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      class="no-js tablet">
+
+<f:view>
+<h:head>
+  <base href="#{baseUrlBean.baseUrl}"/>
+
+  <ui:insert name="dataLayer"/>
+  <ui:include src="/trackingcodes/startofhead.xhtml"/>
+
+  <link rel="stylesheet" type="text/css" href="/#{shopInfoBean.versionPath}static/build/css/page-tablet.min.css" />
+  <script src="/#{shopInfoBean.versionPath}static/build/js/preload.min.js"></script>
+  <ui:insert name="head" />
+  <ui:include src="/head/icons.xhtml" />
+  <h:outputText escape="false" value="#{contentBean.snippets['order-deadlines']}"/>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#74c100" />
+  <ui:insert name="meta" />
+  <title>#{pageTitle} | #{shopInfoBean.shopName}</title>
+  <ui:include src="/trackingcodes/endofhead.xhtml"/>
+  <ui:remove>
+    <!-- Try to keep the scripts in the head as short as possible. A <script> will block the
+         browser rendering until the script is loaded. Put as much scripts as possible before
+         the closing </body>, resp. use the eofscript-insert. (See below) -->
+  </ui:remove>
+  <ui:insert name="topbar" />
+</h:head>
+
+<ui:remove></ui:remove>
+
+<h:body styleClass="#{sessionServicesBean.discountCode.code != null and sessionServicesBean.discountCode.code != 'LayoutChangeOnly' ? '-has-header-bar' : ''} #{bodyClass}">
+    <ui:include src="/trackingcodes/beginofbody.xhtml"/>
+
+    <ui:insert name="topBar">
+      <c:if test="#{shopInfoBean.shopUrl.contains('testing') and empty param['islive']}">
+        <ui:include src="/topBars-new/bestcanvas-se.xhtml">
+          <ui:param name="checkout" value="true" />
+        </ui:include>
+        <ui:include src="/topBars-new/exclude-checkout/bestcanvas-se.xhtml" />
+      </c:if>
+      <c:if test="#{!shopInfoBean.shopUrl.contains('testing') or param['islive']}">
+        <ui:include src="/topBars-new/bestcanvas-se.xhtml">
+          <ui:param name="checkout" value="true" />
+        </ui:include>
+        <ui:include src="/topBars-new/exclude-checkout/bestcanvas-se.xhtml" />
+      </c:if>
+    </ui:insert>
+
+    <c:set var="pageURL" value="#{request.getRequestURI().toLowerCase()}" scope="request" />
+    <c:set var="iscart" value="#{fn:contains(pageURL, 'shoppingcart')}" scope="request" />
+
+    <c:if test="#{!iscart}">
+      <ui:include src="/#{shopInfoBean.defaultVersionPath}components/header/header.xhtml">
+        <ui:param name="viewType" value="tablet" />
+        <ui:param name="checkout" value="true" />
+      </ui:include>
+    </c:if>
+    <c:if test="#{iscart}">
+      <ui:include src="/#{shopInfoBean.defaultVersionPath}components/header/header.xhtml">
+        <ui:param name="viewType" value="tablet" />
+        <ui:param name="checkout" value="false" />
+      </ui:include>
+    </c:if>
+
+  <ui:remove>
+    <!-- Each checkout-page will have a parameter "step".
+         If step < 3, we will show checkout-steps-config.xhtml
+           => This file has the first three steps
+         Otherwise, we will show checkout-steps-order.xhtml
+           => This file has the last four steps -->
+  </ui:remove>
+
+  <c:choose>
+    <c:when test="${stepCount lt 1}">
+      <ui:include src="/page-blocks/checkout-steps-config.xhtml">
+        <ui:param name="stepCount" value="#{stepCount}" />
+      </ui:include>
+    </c:when>
+
+    <c:otherwise>
+      <ui:include src="/page-blocks/checkout-steps-order.xhtml">
+        <ui:param name="stepCount" value="#{stepCount}" />
+        <ui:param name="stepClass" value="#{stepClass}" />
+      </ui:include>
+    </c:otherwise>
+  </c:choose>
+
+  <!-- modal window for shipping in header -->
+  <div class="js-modal" id="shippingInfoPayment">
+    <div class="head">Pago y envio<span class="close"></span></div>
+      <h:outputText escape="false" value="#{contentBean.snippets['shipping-info-modal']}"/>
+      <div class="col -span-12">
+        <h3 class="-highlighted-text">Pago seguro</h3>
+        <ui:include src="/page-blocks/payments-content.xhtml" />
+      </div>
+  </div>
+  <!-- /modal window for shipping in header -->
+
+  <!-- modal window for Privacy Policy -->
+  <div class="js-modal" id="privacyPolicy">
+    <div class="head">Integritetspolicyn<span class="close"></span></div>
+    <ui:include src="/page-blocks/privacy-policy.xhtml" />
+  </div>
+  <!-- /modal window for Privacy Policy -->
+
+  <ui:insert name="content" />
+
+  <!-- Back Button Workaround (bug using browser button) -->
+  <ui:include src="/back-button-work-around-script.xhtml"/>
+  <!-- end of Back Button Workaround (bug using browser button) (c) Emils -->
+
+  <ui:include src="/page-blocks/footer-min.xhtml"/>
+
+    <h:outputScript library="primefaces" name="jquery/jquery.js"/>
+    <c:if test="#{!textScripts}">
+      <script src="/#{shopInfoBean.versionPath}static/build/js/ux-tablet.min.js"></script>
+      <script src="/#{shopInfoBean.versionPath}static/build/js/ux-checkout.min.js"></script>
+    </c:if>
+
+    <script>
+      //Newsletter badge in configurator//
+      //<![CDATA[
+      function fillMissingDeal() {
+        console.log("Function is working" + " ");
+        if (Cookies.get('dealHighlight')) {
+          var exception = Cookies.getJSON('dealHighlight');
+
+          var dealText = "Newsletter-Deal";
+          if (exception.discountcode == Cookies.get('discountcode')){
+            var currentProduct = document.getElementById('itemConfiguratorForm:product').value;
+            var exceptionArray = exception.products.split(',');
+
+            for (var i = 0; i < exceptionArray.length; i++) {
+              var dealProduct = exceptionArray[i].split(':')[0];
+              var dealFormat = exceptionArray[i].split(':')[1];
+              console.log(currentProduct + ' ');
+              console.log(dealProduct + ' ');
+              if (currentProduct === dealProduct) {
+                if (/(iPad|iPhone|iPod|Android|IEMobile)/g.test( navigator.userAgent )) {
+                  $(".format-table td label:contains(" + dealFormat + ")").parent().siblings('.-highlighted').addClass('-discounted').prev().prev().append('<div class="ribbon-label red -longer -fix"><strong class="ribbon-content">' + dealText + '</strong></div>');
+                }
+              }
+            }
+          }
+        }
+      }
+
+
+
+
+      //]]>
+    </script>
+
+  <ui:remove>
+    <!-- Use <ui:define name="eofscript"></ui:define> to include scripts for specific pages or
+         page groups like the checkout. Try to minify and concatenate them as good as possible. -->
+  </ui:remove>
+
+  <!-- Lazy load script -->
+  <ui:include src="/page-blocks/lazyload-script.xhtml" />
+
+  <ui:insert name="eofscript" />
+  <ui:include src="/trackingcodes/endofbody.xhtml"/>
+
+  <!-- PWA unregister -->
+    <ui:include src="/page-blocks/service-worker-unregister.xhtml" />
+  <!-- /PWA unregister-->
+
+  <ui:include src="/components/endofbody/endofbody.xhtml"/>
+</h:body>
+</f:view>
+</html>

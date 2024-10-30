@@ -1,0 +1,791 @@
+.page-text {
+  @extend .row;
+  padding: 40px 0;
+
+  &.-noTopPadding {
+    padding-top: 0;
+  }
+
+  .-checkmark {
+      padding-left: 15px;
+    li:before {
+      content: '';
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='49' viewBox='0 0 64 49'%3E%3Cpath d='M62.75 9.625c0 1.125-.375 2-1.125 2.75L26.875 47c-.75.75-1.625 1.125-2.75 1.125s-2-.375-2.75-1.125L1.25 26.875C.5 26.125.125 25.25.125 24.125s.375-2 1.125-2.75l5.5-5.5c.75-.75 1.625-1.125 2.75-1.125s2 .375 2.75 1.125L24.125 27.75l26.5-26.5C51.375.5 52.25.125 53.375.125s2 .375 2.75 1.125l5.5 5.5c.75.875 1.125 1.75 1.125 2.875z' fill='%23d40140' fill-rule='evenodd'/%3E%3C/svg%3E");
+      width: 15px;
+      height: 15px;
+      background-size: 15px 18px;
+      position: absolute;
+      left: 0;
+    }
+
+    li {
+      font-size: 14px;
+      margin-bottom: 7px;
+      padding-left: 25px;
+      list-style-type: none;
+      position: relative;
+      display: table;
+    }
+  }
+
+  .redBox {
+    background: #D40140;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    margin-right: 10px;
+  }
+
+  .titleBlockShipping {
+    background-color: lightgray;
+    margin-bottom: 10px;
+    padding: 10px 0 10px 10px;
+    &.-top {
+      margin-top: 20px;
+    }
+  }
+  .contentBlockShipping {
+    background-color: lightgray;
+    padding: 10px 0 10px 10px;
+  }
+
+  .simpleTable {
+    td {
+      border: 1px solid;
+      padding: 5px;
+    }
+  }
+
+  > .content {
+    @extend .col;
+    @extend %-span-8;
+
+    > h3 {
+      padding-top: 20px;
+    }
+
+    > h4 {
+      padding-top: 20px;
+    }
+
+    > .info {
+      @extend .col;
+      @extend %-span-9;
+      @extend .-centered;
+
+      padding: 10px 10px 10px 60px;
+      border: 1px dotted $box-border-color;
+      margin-bottom: 30px;
+      position: relative;
+      line-height: 20px;
+
+      > .icon {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        top: 50%;
+        left: 10px;
+        margin-top: -20px;
+        fill: $icon-primary-color;
+      }
+
+      > .content {
+        width: auto;
+      }
+    }
+
+    > .nav {
+      @include clearfix;
+
+      > .back {
+        @extend .button_simple;
+        @extend .button_simple_mod-arrow;
+        @extend .button_action_mod-arrow-left-inline;
+
+        padding-right: 10px;
+        border-radius: 4px;
+        float: left;
+        font-size: 16px;
+        color: $page-text-color;
+
+        .desktop & {
+          height: 33px;
+          line-height: 33px;
+        }
+
+        &:hover:before {
+
+        }
+
+
+      }
+
+      > .action {
+          .tablet & {
+            @extend .button_action_mod-touch;
+          }
+
+        float: right;
+        color: $white;
+      }
+
+      &.-in-text {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  > .aside {
+    @extend .col;
+    @extend %-span-4;
+
+    > .media-wrapper {
+      margin-bottom: 27px;
+
+      > .media {
+        width: 100%;
+        height: auto;
+      }
+
+      > .title {
+        font-size: 14px;
+        line-height: 18px;
+      }
+    }
+  }
+
+  .orderstatusTable td {
+    &:nth-child(1) {
+      height: 27px;
+    }
+    &:nth-child(2) {
+      height: 42px;
+    }
+    display: inherit;
+  }
+
+  // OSP Cross Selling
+  .buymore {
+    margin-top: 25px;
+    .headline {
+      font-size: 16px;
+    }
+    .uploadProduct {
+      #blanket-mask,
+      #cushion-mask,
+      #mug-mask {
+        max-width: 95%;
+        position: relative;
+      }
+      img {
+        max-width: 95%;
+        min-height: 135px;
+        border: 0;
+      }
+      .smallPriceBadge {
+        position: absolute;
+        color: #fff;
+        background-color: #d40140;
+        padding: 2px 5px;
+        font-weight: 700;
+        right: 0;
+        bottom: 20px;
+      }
+      .button {
+        &:hover {
+          border: 2px solid #35b2b6;
+          color: #35b2b6;
+        }
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+    
+    &.ospCrossSellProducts {
+      width: 100%;
+
+      .headline {
+        font-size: 18px;
+        text-align: left;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+      }
+
+      .button {
+        line-height: 1em;
+        background-color: transparent;
+        border: 2px solid #35b2b6;
+        color: #35b2b6;
+        padding: 6px 20px;
+        cursor: pointer;
+        width: 95%;
+      }
+
+      &.-flex {
+        display: flex;
+        flex-wrap: wrap;
+        width: 330px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+
+        .-deal-text {
+          text-align: left;
+          padding-top: 10px;
+          .-smaller {
+            line-height: 1.5;
+          }
+        }
+
+        .headline.-large, .headline.-large .-red {
+          font-size: 18px;
+          font-weight: $weight-bold;
+        }
+
+        .button {
+          width: 100%;
+        }
+      }
+
+      .uploadProduct {
+        width: 50%;
+        display: none;
+        .button {
+          &:hover {
+            color: #35b2b6;
+          }
+        }
+        &:nth-child(-n+3) {
+          display: block;
+        }
+
+        .button {
+          padding: 0;
+          max-width: 95%;
+          .printsUpload {
+            width: 100%;
+            border: 0;
+            background: transparent;
+            font-weight: 600;
+            padding: 10px 0;
+          }
+        }
+
+        a {
+          display: inline-block;
+          padding: 10px 0;
+          text-align: center;
+          color: $newGreen;
+          text-decoration: none;
+          font-size: 13px;
+          width: 100%;
+
+          &:hover {
+            text-decoration: none;
+          }
+
+        }
+      }
+
+      #thumb-mask, #cushion-mask, #blanket-mask, .thumb-mask {
+        max-width: 95%;
+        position: relative;
+
+        img {
+          max-width: 100%;
+          height: 200px;
+        }
+
+        .smallPriceBadge {
+          position: absolute;
+          color: white;
+          background-color: #D40140;
+          padding: 2px 5px;
+          font-weight: bold;
+          right: 0;
+          bottom: 20px;
+        }
+      }
+    }
+  }
+
+  &.orderStatusPage, &.customerLoginPage {
+    font-size: 13px;
+    p {
+      margin: 0 0 10px 0;
+      padding: 0 50px 0 0;
+    }
+    .-register {
+        
+      .-action {
+        height: 40px;
+        background: white;
+        border: 2px solid #35b2b6;
+        color: #35b2b6;
+        margin-top: 25px;
+        width: 100%;
+        display: block;
+      }
+      h3 {
+        font-size: 18px;
+        margin-top: 0;
+      }
+      h4 {
+        margin: 20px 0 45px;
+        font-size: 14px;
+      }
+    }
+    .leftBlock {
+      width: 47%;
+      float: left;
+      padding: 8px;
+      background-color: #F9F9F9;
+      p {
+        margin: 0 0 18px 0;
+      }
+      h1 {
+        margin: 2px 0 8px 0;
+        font-size: 22px;
+      }
+      .lostpassword {
+        @extend .anchor;
+        font-size: 12px;
+      }
+      .loginButton {
+        margin-top: 26px !important;
+      }
+    }
+    .righBlock {
+      width: 47%;
+      float: right;
+      padding: 8px;
+      background-color: #F9F9F9;
+      h2 {
+        font-size: 22px;
+        margin: 2px 0 20px 0;
+      }
+      h3 {
+        font-size: 13px;
+        margin: 0;
+      }
+      h4 {
+        font-size: 18px;
+      }
+      p.checkout-login-text {
+        padding: 10px 0 13px 0;
+      }
+    }
+    .advantages {
+      list-style: none;
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 0;
+      padding: 0;
+      &.loginPrompt {
+        margin: 45px 0 25px;
+      }
+      p {
+        padding: 0;
+      }
+      img {
+        height: 40px;
+        margin-bottom: 8px;
+      }
+      li {
+        display: flex;
+        flex-direction: column;
+        width: 120px;
+        text-align: center;
+      }
+      .image {
+        height: 35px;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+        margin-bottom: 10px;
+      }
+      .delivery {
+        background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='50px' height='35px' viewBox='0 0 50 35' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: sketchtool 61.2 (101010) - https://sketch.com --%3E%3Ctitle%3EB66473E6-D036-4C30-A76B-DEC85404DC58%3C/title%3E%3Cdesc%3ECreated with sketchtool.%3C/desc%3E%3Cg id='OSP-Options' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='OSP_Login' transform='translate(-194.000000, -595.000000)' fill='%2335B2B7' fill-rule='nonzero'%3E%3Cg id='Group-2' transform='translate(130.000000, 470.000000)'%3E%3Cg id='delivery-(2)' transform='translate(64.000000, 125.000000)'%3E%3Cpath d='M37.7625977,22.2587219 C34.2873047,22.2587219 31.4600586,25.1050281 31.4600586,28.60375 C31.4600586,32.1024719 34.2873047,34.9487781 37.7625977,34.9487781 C41.2384766,34.9487781 44.0651367,32.1024719 44.0651367,28.60375 C44.0651367,25.1050281 41.2378906,22.2587219 37.7625977,22.2587219 Z M37.7625977,31.776264 C36.024707,31.776264 34.6113281,30.3533567 34.6113281,28.60375 C34.6113281,26.8541433 36.024707,25.431236 37.7625977,25.431236 C39.5004883,25.431236 40.9138672,26.8541433 40.9138672,28.60375 C40.9138672,30.3534551 39.5004883,31.776264 37.7625977,31.776264 Z' id='Shape'%3E%3C/path%3E%3Cpath d='M16.2290039,22.2587219 C12.7537109,22.2587219 9.92646484,25.1050281 9.92646484,28.60375 C9.92646484,32.1024719 12.7537109,34.9487781 16.2290039,34.9487781 C19.7042969,34.9487781 22.531543,32.1024719 22.531543,28.60375 C22.531543,25.1050281 19.7042969,22.2587219 16.2290039,22.2587219 Z M16.2290039,31.776264 C14.4911133,31.776264 13.0777344,30.3533567 13.0777344,28.60375 C13.0777344,26.8541433 14.4911133,25.431236 16.2290039,25.431236 C17.9664063,25.431236 19.3802734,26.8541433 19.3802734,28.60375 C19.3802734,30.3534551 17.9668945,31.776264 16.2290039,31.776264 Z' id='Shape'%3E%3C/path%3E%3Cpath d='M42.0068359,4.09726124 C41.7389648,3.56164326 41.1943359,3.22373596 40.5987305,3.22373596 L32.3003906,3.22373596 L32.3003906,6.39625 L39.6270508,6.39625 L43.9174805,14.9873736 L46.7336914,13.5618118 L42.0068359,4.09726124 Z' id='Path'%3E%3C/path%3E%3Crect id='Rectangle' x='21.1134766' y='27.0704354' width='11.9222656' height='3.17251404'%3E%3C/rect%3E%3Cpath d='M11.5020508,27.0704354 L6.03994141,27.0704354 C5.16962891,27.0704354 4.46435547,27.7805618 4.46435547,28.6566433 C4.46435547,29.532823 5.16972656,30.2428511 6.03994141,30.2428511 L11.5021484,30.2428511 C12.3724609,30.2428511 13.0777344,29.5327247 13.0777344,28.6566433 C13.0777344,27.7804635 12.3723633,27.0704354 11.5020508,27.0704354 Z' id='Path'%3E%3C/path%3E%3Cpath d='M49.6691406,17.3730758 L46.5699219,13.3545646 C46.272168,12.9675 45.8125977,12.7411798 45.3256836,12.7411798 L33.8760742,12.7411798 L33.8760742,1.63742978 C33.8760742,0.76125 33.1707031,0.0512219101 32.3004883,0.0512219101 L6.03994141,0.0512219101 C5.16962891,0.0512219101 4.46435547,0.761348315 4.46435547,1.63742978 C4.46435547,2.51351124 5.16972656,3.22363764 6.03994141,3.22363764 L30.7248047,3.22363764 L30.7248047,14.3273876 C30.7248047,15.2035674 31.4301758,15.9135955 32.3003906,15.9135955 L44.5541016,15.9135955 L46.8487305,18.889382 L46.8487305,27.0702388 L42.4894531,27.0702388 C41.6191406,27.0702388 40.9138672,27.7803652 40.9138672,28.6564466 C40.9138672,29.5326264 41.6192383,30.2426545 42.4894531,30.2426545 L48.4243164,30.2426545 C49.2946289,30.2426545 50,29.5325281 50,28.6564466 L50,18.3459972 C50,17.9938343 49.8833984,17.6512079 49.6691406,17.3730758 Z' id='Path'%3E%3C/path%3E%3Cpath d='M11.3970703,19.0334129 L4.14912109,19.0334129 C3.27880859,19.0334129 2.57353516,19.7435393 2.57353516,20.6196208 C2.57353516,21.4958006 3.27890625,22.2058287 4.14912109,22.2058287 L11.3969727,22.2058287 C12.2672852,22.2058287 12.9725586,21.4957022 12.9725586,20.6196208 C12.9725586,19.7435393 12.2672852,19.0334129 11.3970703,19.0334129 Z' id='Path'%3E%3C/path%3E%3Cpath d='M15.0209961,12.794073 L1.57558594,12.794073 C0.705371094,12.794073 0,13.5041994 0,14.3803792 C0,15.256559 0.705371094,15.9665871 1.57558594,15.9665871 L15.0209961,15.9665871 C15.8913086,15.9665871 16.596582,15.2564607 16.596582,14.3803792 C16.596582,13.5042978 15.8913086,12.794073 15.0209961,12.794073 Z' id='Path'%3E%3C/path%3E%3Cpath d='M17.5945313,6.55483146 L4.14912109,6.55483146 C3.27880859,6.55483146 2.57353516,7.26495787 2.57353516,8.14103933 C2.57353516,9.0172191 3.27890625,9.72724719 4.14912109,9.72724719 L17.5945313,9.72724719 C18.4648438,9.72724719 19.1701172,9.01712079 19.1701172,8.14103933 C19.1701172,7.26495787 18.4648438,6.55483146 17.5945313,6.55483146 Z' id='Path'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+      .cartIn {
+        background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Generator: Adobe Illustrator 25.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Ebene_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='49.8px' height='50.3px' viewBox='0 0 49.8 50.3' enable-background='new 0 0 49.8 50.3' xml:space='preserve'%3E%3Cg%3E%3Cpath fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' d=' M12.4,8.9c11.6,0,23.2,0,34.8,0c0.2,7.2,0.3,14-1.5,21.1c-10.2,0-22.5,0.1-32.7,0.1c-5.7,0-5.4,7.7-0.6,7.8c3.2,0.1,31.3,0,34.1,0' /%3E%3Cpath fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' d=' M2.1,2.5c2.8,0,5.6,0,8.8,0c0.7,9.3,1.3,18.1,2,27'/%3E%3C/g%3E%3Ccircle fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' cx='17.3' cy='43.6' r='4.4'/%3E%3Ccircle fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' cx='41.7' cy='43.6' r='4.4'/%3E%3Cg%3E%3Cpath fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' d=' M29.2,4.7c0,4.8,0,12.6,0,17.3'/%3E%3Cpolyline fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' points=' 21.8,14.8 29.1,23.5 37.1,14.8 '/%3E%3C/g%3E%3C/svg%3E%0A");
+      }
+      .invoiceDownload {
+        background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Generator: Adobe Illustrator 25.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Ebene_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='39.7px' height='49.6px' viewBox='0 0 39.7 49.6' enable-background='new 0 0 39.7 49.6' xml:space='preserve'%3E%3Cg%3E%3Cg%3E%3Cpath fill='%2335B2B7' d='M14.9,4c2.4,0,4.9,0,7.1,0c1.6,0,3.2,0,4.5,0l9.3,10.8c0,2.3,0,5.1,0,8.1c0,6.8,0,14.6-0.1,19.5 c-0.1,2.9-0.6,3.1-3.2,3.2c-2.6,0-5.5,0-9,0c-1.8,0-3.6,0-5.4,0c-1.8,0-3.6,0-5.4,0c-2.1,0-4.2,0-6.3,0c-1.1,0-1.9-0.2-2.2-0.5 C3.9,44.8,3.8,44,3.8,43c0-5.2,0-10.5,0-15.7c0-6.6,0-13.4,0-20.1c0-2.3,0.5-3.1,3.3-3.1C8.8,4,11.4,4,14.9,4 M14.9,1 c-3,0-5.8,0-7.9,0C2.8,1.1,0.8,3,0.8,7.2C0.7,19.1,0.8,31,0.8,43c0,3.8,1.8,5.6,5.7,5.6c0,0,0,0,0.1,0c2.1,0,4.2,0,6.3,0 c3.6,0,7.2,0,10.8,0c3,0,6,0,9,0c4,0,6.1-1.3,6.2-6.1c0.2-7.5,0-21.3,0.1-28.8L27.9,1c-0.2,0-0.4,0-0.6,0C24.1,1,19.3,1,14.9,1 L14.9,1z'/%3E%3C/g%3E%3Cpath fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' d=' M30.5,40.4c-7.3,0-14.6,0-21.9,0'/%3E%3Cpath fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' d=' M19.6,17.4c0,4.8,0,9.6,0,14.3'/%3E%3C/g%3E%3Cpolyline fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' points=' 12.2,24.6 19.5,33.2 27.5,24.6 '/%3E%3Cpath fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' d=' M26.2,3.2v8.5c0,0,0,3.7,3.6,3.7c3.3,0,7.3,0,7.3,0'/%3E%3C/svg%3E%0A");
+      }
+      .vip {
+        background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Generator: Adobe Illustrator 25.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Ebene_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='49.8px' height='50.3px' viewBox='0 0 49.8 50.3' enable-background='new 0 0 49.8 50.3' xml:space='preserve'%3E%3Cg%3E%3Cpath fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' d=' M46.3,45.5H11.8c-0.7,0-1.3-0.6-1.3-1.3v-34c0-0.7,0.6-1.3,1.3-1.3h34.5c0.7,0,1.3,0.6,1.3,1.3v34C47.6,45,47,45.5,46.3,45.5z'/%3E%3Cpath fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' d=' M38.2,40H2.9c-0.3,0-1-0.1-0.6-0.6c1-1.6,8.3-4.3,8.3-29.8c0,0,0.3-0.6,0.6-0.6H47c0.3,0,0.6,0.6,0.6,0.6c0,24.5-8.3,29.8-8.3,29.8 C39,39.7,38.5,40,38.2,40z'/%3E%3Cline fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' x1='10.3' y1='17.3' x2='47.3' y2='17.3'/%3E%3Cline fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' x1='19.1' y1='4.8' x2='19' y2='12.7'/%3E%3Cline fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' x1='29.1' y1='4.8' x2='29' y2='12.7'/%3E%3Cline fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' x1='39.2' y1='4.8' x2='39.1' y2='12.7'/%3E%3C/g%3E%3C/svg%3E%0A");
+      }
+      .discount {
+        background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Generator: Adobe Illustrator 25.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Ebene_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='49.8px' height='50.3px' viewBox='0 0 49.8 50.3' enable-background='new 0 0 49.8 50.3' xml:space='preserve'%3E%3Cg%3E%3Cpath fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' d=' M12.4,8.9c11.6,0,23.2,0,34.8,0c0.2,7.2,0.3,14-1.5,21.1c-10.2,0-22.5,0.1-32.7,0.1c-5.7,0-5.4,7.7-0.6,7.8c3.2,0.1,31.3,0,34.1,0' /%3E%3Cpath fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' d=' M2.1,2.5c2.8,0,5.6,0,8.8,0c0.7,9.3,1.3,18.1,2,27'/%3E%3C/g%3E%3Ccircle fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' cx='17.3' cy='43.6' r='4.4'/%3E%3Ccircle fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' cx='41.7' cy='43.6' r='4.4'/%3E%3Cg%3E%3Cpath fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' d=' M29.2,4.7c0,4.8,0,12.6,0,17.3'/%3E%3Cpolyline fill='none' stroke='%2335B2B7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' points=' 21.8,14.8 29.1,23.5 37.1,14.8 '/%3E%3C/g%3E%3C/svg%3E%0A");
+      }
+    }
+    .inputBlock {
+      input {
+        height: 40px;
+        margin-bottom: 15px;
+        width: 100%;
+        box-shadow: none;
+        border-radius: 2px;
+        color: #333;
+        border: 1px solid #e1e1e1;
+        background-color: #fff;
+        box-sizing: border-box;
+        line-height: 30px;
+        font-size: 13px;
+        padding: 0 10px;
+      }
+    }
+    label {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    .action.button {
+      margin-bottom: 12px;
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      width: 100%;
+    }
+    .validation {
+      margin: 0px;
+      top: -20px;
+      max-width: 100% !important;
+    }
+    h2 {
+      font-size: 24px;
+    }
+    h3 {
+      margin-bottom: 10px !important;
+      font-size: 16px;
+    }
+    .caution {
+      font-size: 13px;
+      margin-top: 10px;
+      margin-bottom: 22px;
+      span {
+        font-size: 13px;
+      }
+    }
+    .wrapShippingLinks {
+      margin-top: -25px;
+      padding: 10px 0;
+      z-index: 2;
+      position: relative;
+    }
+    .trackingNumber {
+      margin: 0;
+    }
+    .link {
+      color: #3DBABE;
+    }
+
+    .page-text {
+      font-size: 14px;
+      .link {
+        color: #35B2B6;
+      }
+    }
+
+    .splitOrder {
+      .fs {
+        font-size: 14px;
+      }
+    }
+
+    .button.-arrow {
+      &:after {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6.1 9.4'%3E%3Cpolygon fill='%2335B2B6' points='4.7,3.3 1.4,0 0,1.4 3.3,4.7 0,8 1.4,9.4 4.7,6.1 6.1,4.7 '/%3E%3C/svg%3E");
+        width: 8px;
+        height: 13px;
+        margin-top: -6px;
+      }
+      &:after {
+        &:hover {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6.1 9.4'%3E%3Cpolygon fill='%2335B2B6' points='4.7,3.3 1.4,0 0,1.4 3.3,4.7 0,8 1.4,9.4 4.7,6.1 6.1,4.7 '/%3E%3C/svg%3E");
+          width: 8px;
+          height: 13px;
+          margin-top: -6px;
+        }
+      }
+    }
+
+    .orderStatus {
+      position: relative;
+      li {
+        position: relative;
+        display: list-item;
+        list-style-type: none;
+        padding-bottom: 25px;
+
+        &.oneRow {
+          padding-bottom: 40px !important;
+          strong {
+            position: relative;
+            top: 5px;
+          }
+        }
+
+        &:before {
+          content: url('/assets/img/icons/status-not-check.svg');
+          position: absolute;
+          color: #D40140;
+          left: 0px;
+          font-size: 30px;
+          left: -40px;
+        }
+
+        &:after {
+          content: url('/assets/img/icons/status-line.svg');
+          left: -40px;
+          position: absolute;
+          top: 29px;
+        }
+
+        &:last-child:after {
+          content: none;
+        }
+
+        &:last-child {
+          padding-bottom: 30px !important;
+        }
+
+        &.-active {
+          &:before {
+            content: url('/assets/img/icons/status-check.svg');
+            left: -40px;
+          }
+        }
+      }
+    }
+
+    .infoBox {
+      border: 1px solid #e1e1e1;
+      background-color: #f9f9f9;
+      border-radius: 2px;
+      font-size: 13px;
+      padding: 10px;
+      margin-bottom: 15px;
+
+      &.-top {
+        margin-top: 15px;
+      }
+
+      &.-invoiceDownload {
+        .invoiceIcon {
+          position: relative;
+          top: 5px;
+        }
+        .downloadInvoice {
+          border: none;
+          color: #3DBABE;
+          background: none;
+          margin-left: -21px;
+          padding-left: 20px;
+          outline: none;
+          text-decoration: underline !important;
+        }
+      }
+
+      +.productTypeButton {
+        border: 2px solid #35B2B6;
+        background-color: transparent;
+        color: #35B2B6;
+        line-height: 2em;
+        margin: 0 auto;
+      }
+
+      .itemLoop {
+        display: inline-block;
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #bfbfbf;
+
+        +small {
+          font-size: 100%;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &.-mixpixMulti {
+          background-image: url('/assets/img/checkout/mixpixPreviewBackground.png');
+          background-repeat: no-repeat;
+          padding-bottom: 15px;
+          background-size: 110px 110px;
+          background-position: 28px 16px;
+          padding-top: 5px;
+        }
+
+        .image {
+          width: auto;
+          max-height: 110px;
+          max-width: 110px;
+          margin: 0 auto;
+          display: table;
+          float: none;
+        }
+
+        .description {
+          display: inline-block;
+          vertical-align: top;
+          padding-left: 10px;
+
+          &.-mixpixMulti {
+            padding-left: 15px;
+          }
+
+          p {
+            margin: 0;
+            display: block;
+          }
+
+          span {
+            display: block;
+            padding-bottom: 15px;
+          }
+
+          small {
+            display: block;
+            line-height: 1.7em;
+          }
+        }
+
+        .price {
+          color: #D40140;
+          font-weight: bold;
+          display: block;
+        }
+        .product {
+          display: inline-block;
+          width: 140px;
+          height: 110px;
+        }
+      }
+      .title {
+        margin: 0;
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+
+    .orderstatusTable {
+      .validation {
+        &.-error {
+          position: relative;
+          padding: 5px 10px;
+          border-radius: 5px;
+          line-height: 1.5;
+          font-size: 12px;
+          border-width: 1px;
+          border-style: solid;
+          max-width: 75px;
+          z-index: 99;
+          border-color: #D40140;
+          background-color: #ffc2c2;
+          display: inline-block;
+          margin-top: 8px;
+          color: #D40140;
+        }
+      }
+      .more-info {
+        font-size: 12px;
+      }
+    }
+
+    .accordion-panel {
+      background-color: transparent;
+      border: none;
+      >.sub {
+        border-bottom: none;
+      }
+    }
+
+    .js-accordion-title {
+      position: relative;
+      border-bottom: 1px solid;
+      margin-bottom: 20px;
+      &:after {
+        content: '';
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6.1 9.4'%3E%3Cpolygon fill='%2335B2B6' points='4.7,3.3 1.4,0 0,1.4 3.3,4.7 0,8 1.4,9.4 4.7,6.1 6.1,4.7 '/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        position: absolute;
+        left: 92%;
+        top: 31%;
+        transition: transform .2s;
+        border-width: 3px 0 3px 6px;
+        border-color: transparent transparent transparent #000;
+        width: 16px;
+        height: 16px;
+      }
+      &.-active {
+        &:after {
+          content: '';
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6.1 9.4'%3E%3Cpolygon fill='%2335B2B6' points='4.7,3.3 1.4,0 0,1.4 3.3,4.7 0,8 1.4,9.4 4.7,6.1 6.1,4.7 '/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          position: absolute;
+          left: 92%;
+          top: 31%;
+          transition: transform .2s;
+          border-width: 3px 0 3px 6px;
+          border-color: transparent transparent transparent #000;
+          width: 16px;
+          height: 16px;
+          transform: rotate(90deg);
+        }
+      }
+
+      .statusText {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .description:last-child {
+        margin-bottom: 15px;
+      }
+      &.-expandable {
+        &.cursorPointer {
+          &.-open {
+            border-bottom: 1px solid;
+            margin-bottom: 10px;
+            &.-active {
+              border-bottom: none;
+            }
+          }
+          span {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .sub.js-accordion-body.-expanded {
+      border-bottom: 1px solid;
+      margin-bottom: 10px;
+    }
+  }
+
+}
+
+.text-image-aside
+{
+  p
+  {
+    display: table-cell;
+  }
+}
+.-font-14
+{
+  font-size: 14px;
+}
+.-full-width-image
+{
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'desktop'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>♥ Alla Hjärtans Dag Erbjudande ♥</strong> Spara upp till <strong>88%</strong> på Canvas - </span> <span class="js-countdown" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'tablet'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span><strong>♥ Alla Hjärtans Dag Erbjudande ♥</strong> Spara upp till <strong>88%</strong> på Canvas - </span> <span class="js-countdown" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+      <div class="header-bar">
+        <div class="row">
+          <div class="col -span-12 -text-centered" >
+            <span style="margin-bottom: 4px; display: block;"><strong>♥ Alla Hjärtans Dag Erbjudande ♥</strong> Spara upp till <strong>88%</strong><br/></span> <span class="js-countdown" data-until="midnight" data-format="%-H T. %M Min. %S Sek."></span>
+          </div>
+        </div>
+      </div>
+		</ui:fragment>
+		<script>
+			 document.addEventListener('DOMContentLoaded', function () {
+         $('body').addClass('-has-header-bar');
+      });
+		</script>
+
+</ui:composition>

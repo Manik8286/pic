@@ -1,0 +1,130 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:p="http://primefaces.org/ui">
+
+<ui:param name="pageTitle" value="#{_['Order Overview']}" />
+
+<ui:define name="meta">
+  <meta name="robots" content="NOINDEX,FOLLOW" />
+</ui:define>
+
+<ui:define name="content">
+  <h:form id="orderForm">
+    <section class="page-account">
+      <!-- Content -->
+      <div class="content orders" id="data">
+        <h1 class="headline">Archivo #{item.id}</h1>
+        <span class="welcome">Hier sehen sie die Detailansicht Ihrer Bestellung.</span>
+
+        <p:dataTable value="#{archivedOrderItemBean.data}"
+                     id="data"
+                     rows="25"
+                     lazy="true"
+                     rowsPerPageTemplate="#{archivedOrderBean.pageSizes}"
+                     sortMode="single">
+        </p:dataTable>
+
+        <div class="order-table-wrapper">
+          <table class="order-table" id="data">
+            <tbody>
+              <ui:repeat value="#{archivedOrderItemBean.data}" var="item">
+                <tr>
+                  <td id="thumb">
+                    <ui:fragment rendered="#{productBean.productType(item.productId) == 'UPLOAD'}">
+                      <img src="dynamicimage/preview/orderitem/#{item.id}" class="thumbnail"/>
+                    </ui:fragment>
+                    <ui:fragment rendered="#{productBean.productType(item.productId) != 'UPLOAD'}">
+                      <img src="dynamicimage/product/#{item.productId}" class="thumbnail"/>
+                    </ui:fragment>
+                  </td>
+
+                  <td id="detail">
+                    <ui:fragment>
+                      <div class="produktinfo">
+                        <span class="key">#{archivedOrderItemBean.configMap[item.id].productName}</span>
+                        <span class="value">#{archivedOrderItemBean.configMap[item.id].formatName}</span>
+                      </div>
+                    </ui:fragment>
+
+                    <ui:fragment rendered="#{archivedOrderItemBean.configMap[item.id].borderEffectAvailable and
+                                             archivedOrderItemBean.configMap[item.id].productName != 'Handy Case'}">
+                      <div class="produktinfo">
+                        <div class="key">#{_['Border Effect:']}</div>
+                        <div class="value">#{archivedOrderItemBean.configMap[item.id].borderEffect}</div>
+                      </div>
+                    </ui:fragment>
+
+                    <ui:fragment rendered="#{archivedOrderItemBean.configMap[item.id].frame.available}">
+                      <div class="produktinfo">
+                        <div class="key">#{_['Shadow Frame:']}</div>
+                        <div class="value"> #{archivedOrderItemBean.configMap[item.id].frame.name}</div>
+                      </div>
+                    </ui:fragment>
+
+                    <ui:fragment rendered="#{archivedOrderItemBean.configMap[item.id].mounting.available}">
+                      <div class="produktinfo">
+                        <div class="key">#{_['Mounting']}:</div>
+                        <div class="value">#{archivedOrderItemBean.configMap[item.id].mounting.name}</div>
+                      </div>
+                    </ui:fragment>
+                  </td>
+
+                  <td id="totalPrice" class="price">
+                    #{item.totalPrice} #{archivedOrderItemBean.currencySymbol}
+                  </td>
+                </tr>
+              </ui:repeat>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="shippinginfo">
+          <div class="address">
+            <div class="addressbox">
+              <h3 class="title">#{_['Invoice Address']}</h3>
+              <p class="content">#{archivedOrderItemBean.invoiceAddress}</p>
+            </div>
+          </div>
+          <div class="address">
+            <div class="addressbox">
+              <h3 class="title">#{_['Shipping Address']}</h3>
+              <p class="content">#{archivedOrderItemBean.shippingAddress}</p>
+            </div>
+          </div>
+          <div class="address">
+            <div class="addressbox">
+              <h3 class="title">#{_['Shipping']}</h3>
+              #{archivedOrderItemBean.shippingName}: #{archivedOrderItemBean.shippingPrice}
+            </div>
+          </div>
+
+          <ui:fragment rendered="#{archivedOrderItemBean.couponThere}">
+            <div class="payment" data-mh="paymentbox">
+              <div class="paymentbox">
+                <h3 class="title">#{_['Coupon']}</h3>
+                #{archivedOrderItemBean.couponDescription}: #{archivedOrderItemBean.couponPrice}
+              </div>
+            </div>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{archivedOrderItemBean.paymentThere}">
+            <div class="payment" data-mh="paymentbox">
+              <div class="paymentbox">
+                <h3 class="title">#{_['Payment']}</h3>
+                #{archivedOrderItemBean.paymentDescription}: #{archivedOrderItemBean.paymentPrice}
+              </div>
+            </div>
+          </ui:fragment>
+        </div>
+
+        <a href="/archivedorders.jsf" class="backlink">Tillbaka</a>
+      </div>
+    </section>
+  </h:form>
+</ui:define>
+</ui:composition>

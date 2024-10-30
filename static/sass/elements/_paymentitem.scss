@@ -1,0 +1,140 @@
+.payment-items {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  list-style: none;
+  text-align: center;
+  list-style-type: none;
+
+  > .payment-item {
+    display: inline;
+    text-align: left;
+
+    &:last-child:after {
+      display:inline-block;
+      margin-left:100%;
+      content: '';
+    }
+
+    &:after {
+      content: '';
+      display: inline;
+    }
+
+    &:before {
+      content: '';
+      display: inline-block;
+    }
+
+    &.-mastercard:before {
+      background-image: url(/assets/img/sprites/payment/mastercard.png);
+      @include image-2x("/assets/img/sprites/payment/mastercard-2x.png", 72px, 43px);
+      width: 72px; 
+      height: 43px; 
+      margin-right: 10px;
+    }
+    
+    &.-mcode:before {
+      background-image: url(/assets/img/sprites/payment/mcode.png);
+      @include image-2x("/assets/img/sprites/payment/mcode-2x.png", 90px, 34px);
+      width: 90px; 
+      height: 34px; 
+      margin-right: 10px;
+    }
+    
+    &.-payamazon:before {
+      background-image: url(/assets/img/sprites/payment/payamazon.png);
+      @include image-2x("/assets/img/sprites/payment/payamazon-2x.png", 125px, 35px);
+      width: 125px; 
+      height: 35px; 
+      margin-right: 10px;
+    }
+
+    &.-visa:before {
+      background-image: url(/assets/img/sprites/payment/visa.png);
+      @include image-2x("/assets/img/sprites/payment/visa-2x.png", 68px, 42px);
+      width: 68px; 
+      height: 42px; 
+      margin-right: 10px;
+    }
+
+    &.-verified-by-visa:before {
+      background-image: url(/assets/img/sprites/payment/verified-by-visa.png);
+      @include image-2x("/assets/img/sprites/payment/verified-by-visa-2x.png", 73px, 32px);
+      width: 73px; 
+      height: 32px; 
+      margin-right: 10px;
+    }
+
+    &.-american-express:before {
+      background-image: url(/assets/img/sprites/payment/american-express.png);
+      @include image-2x("/assets/img/sprites/payment/american-express-2x.png", 43px, 43px);
+      width: 43px; 
+      height: 43px; 
+      margin-right: 10px;
+    }
+
+    &.-klarna:before {
+      background-image: url(/assets/img/sprites/payment/klarna.png);
+      @include image-2x("/assets/img/sprites/payment/klarna-2x.png", 67px, 37px);
+      width: 67px; 
+      height: 37px; 
+      margin-right: 10px;
+    }
+
+    &.-paypal:before {
+      background-image: url(/assets/img/sprites/payment/paypal.png);
+      @include image-2x("/assets/img/sprites/payment/paypal-2x.png", 171px, 43px);
+      width: 171px; 
+      height: 43px; 
+      margin-right: 10px;
+    }
+
+  }
+}
+
+.payment-method .payment-container {
+  position: relative;
+}
+.tool-tip {
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  width: 335px;
+  right: -420px;
+  top: 0;
+  color: #5F5E5E;
+  font-size: 14px;
+  display: none;
+  .tip-icon {
+    background: url('/assets/img/checkout/lightbulb.jpg') no-repeat;
+    text-indent: -999em;
+    overflow: hidden;
+    width: 70px;
+    height: 40px;
+    vertical-align: top;
+    display: inline-block;
+    background-position: 20px 0;
+  }
+  h2 {
+    font-size: 36px;
+    color: inherit;
+    font-weight: bold;
+    margin: 0 0 10px;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1;
+  }
+  > p {
+    margin: 10px 0;
+  }
+  > ul {
+    padding-left: 1.4em;
+    font-size: 14px;
+    margin-top: 10px;
+    > li {
+      margin-bottom: 10px;
+    }
+  }
+}
+.js-accordion-body.-expanded~.tool-tip {
+  display: block;
+}

@@ -1,0 +1,64 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+
+  <div class="showcase-box" data-mh="info">
+    <h3 class="headline" style="line-height: 2">Vi har låga priser på<br/>fototavlor med ram!</h3>
+    <table class="table -striped">
+      <thead class="-highlighted">
+        <tr>
+          <th class="-text-centered">Format</th>
+          <th class="-text-centered">Pris</th>
+          <th class="-highlighted -text-centered">Idag</th>
+        </tr>
+      </thead>
+      <tbody class="-text-centered">
+        <tr>
+          <td>20 x 20cm</td>
+          <td><s>#{priceBean.productCrossPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 17x17')}</s></td>
+          <td class="-highlighted">#{priceBean.productPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 17x17')}*</td>
+        </tr>
+        <tr>
+          <td>30 x 20cm</td>
+          <td><s>#{priceBean.productCrossPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 27x17')}</s></td>
+          <td class="-highlighted">#{priceBean.productPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 27x17')}*</td>
+        </tr>
+        <tr>
+          <td>40 x 30cm</td>
+          <td><s>#{priceBean.productCrossPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 37x27')}</s>*</td>
+          <td class="-highlighted">#{priceBean.productPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 37x27')}*</td>
+        </tr>
+        <tr>
+            <td>40 x 40cm</td>
+            <ui:fragment rendered="#{priceBean.productCrossPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 37x37') ne '#ERROR#'}">
+                    <td><s>#{priceBean.productCrossPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 37x37')}</s>*</td>
+                    <td class="-highlighted">#{priceBean.productPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 37x37')}*</td>
+                        </ui:fragment>
+                        <ui:fragment rendered="#{priceBean.productCrossPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 37x37') eq '#ERROR#'}">
+                            <td>ON HOLD</td>
+                            <td class="-highlighted">ON HOLD</td>
+                        </ui:fragment>
+                  </tr>
+              <tr>
+                <td>60 x 40cm</td>
+                <td><s>#{priceBean.productCrossPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 57x37')}</s>*</td>
+                <td class="-highlighted">#{priceBean.productPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 57x37')}*</td>
+              </tr>
+                  <tr>
+                    <td>80 x 60cm</td>
+                          <ui:fragment rendered="#{priceBean.productCrossPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 77x57') ne '#ERROR#'}">
+                    <td><s>#{priceBean.productCrossPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 77x57')}</s>*</td>
+                    <td class="-highlighted">#{priceBean.productPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 77x57')}*</td>
+                        </ui:fragment>
+                        <ui:fragment rendered="#{priceBean.productCrossPrice('Framed_Picture_Bestcanvas_SE', 'Passepartout Poster', 'Passepartout Poster 77x57') eq '#ERROR#'}">
+                            <td>ON HOLD</td>
+                            <td class="-highlighted">ON HOLD</td>
+                        </ui:fragment>
+                  </tr>
+
+      </tbody>
+    </table>
+  </div>
+ 
+</ui:composition>

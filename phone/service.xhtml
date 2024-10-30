@@ -1,0 +1,114 @@
+<ui:composition template="/templates/default.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:f="http://java.sun.com/jsf/core" 
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:o="http://omnifaces.org/ui">
+
+  <ui:param name="pageTitle" value="Service" />
+  <ui:param name="mastertagTracking" value="generic" />
+  
+  <ui:define name="head">
+    
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="robots" content="NOINDEX,NOFOLLOW" />
+    <meta name="description" content="Der Kundenservice von meinfoto.de steht dir jederzeit gerne zur Verfügung." />
+  </ui:define>
+
+  <ui:define name="content">
+    <o:cache key="mypc-service-content-phone2" scope="application">
+    <section class="page-teaser -collapse">
+      <div class="text" style="background-image: url(/#{shopInfoBean.versionPath}assets/img/backgrounds/tower_skyline.jpg)">
+        <div class="row">
+          <div class="col">
+            <h1 class="headline">Service</h1>
+            <h3 class="subline">We are happy to help</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="page-section service-list">
+      <div class="row">
+        <div class="service col -span-12">
+          <div class="story-box" data-mh="article">
+            <header class="head">
+              <h3 class="title"><a href="/faq/vanliga-fragor.jsf">Vanliga Frågor</a></h3>
+            </header>
+            <div class="body">
+              <p>Find answers to the most frequently asked questions</p>
+              <p class="text-center"><span class="service-item -faq"></span></p>
+              <a href="/faq/vanliga-fragor.jsf" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </div>
+        <div class="service col -span-12">
+          <div class="story-box" data-mh="article">
+            <header class="head">
+              <h3 class="title"><a href="/customer-service">Customer service</a></h3>
+            </header>
+            <div class="body">
+              <p>Get in touch with our friendly customer service if you have any questions</p>
+              <p class="text-center"><span class="service-item -kundenservice"></span></p>
+              <a href="/customer-service" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </div>
+        <div class="service col -span-12">
+          <div class="story-box" data-mh="article">
+            <header class="head">
+              <h3 class="title"><a href="/qualitaet/">Quality</a></h3>
+            </header>
+            <div class="body">
+              <p>Some information on our quality</p>
+              <p class="text-center"><span class="service-item -qualitaet"></span></p>
+              <a href="/quality/" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </div>
+        <div class="service col -span-12">
+          <div class="story-box" data-mh="article">
+            <header class="head">
+              <h3 class="title"><a href="/betalning/">Secure payment</a></h3>
+            </header>
+            <div class="body">
+              <p>Get all the info on our various payment methods</p>
+              <p class="text-center"><span class="service-item -sichere-zahlung"></span></p>
+              <a href="/secure-payment/" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="service col -span-12">
+          <div class="story-box" data-mh="article">
+            <header class="head">
+              <h3 class="title"><a href="/ueber-uns/">About us</a></h3>
+            </header>
+            <div class="body">
+              <p>Learn more about bestecanvas.nl</p>
+              <p class="text-center"><span class="service-item -ueber"></span></p>
+              <a href="/om-oss/" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </div>
+        <div class="service col -span-12">
+          <div class="story-box" data-mh="article">
+            <header class="head">
+              <h3 class="title"><a href="/lowest-price-guarantee">Best price guarantee</a></h3>
+            </header>
+            <div class="body">
+              <p>Take advantage of our guaranteed best rates</p>
+              <p class="text-center"><span class="service-item -tiefpreisgarantie"></span></p>
+              <a href="/lowest-price-guarantee" class="more">Läs mer »</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- .story-list -->
+    </section>
+    </o:cache>
+  </ui:define>
+</ui:composition>

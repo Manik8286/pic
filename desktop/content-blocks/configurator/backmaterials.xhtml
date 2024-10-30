@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+								xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+								xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+	<!-- backing material -->
+
+    <h3 class="title"><span class="StepsCount"><h:outputText value="#{blockCount}" /></span>#{_['Frame Thickness']}:</h3>
+    <p:selectOneRadio
+      id="backMaterial"
+      value="#{itemConfiguratorBean.configurator.backMaterialId}"
+      layout="custom"
+      plain="true">
+      <p:ajax
+        listener="#{itemConfiguratorBean.change}"
+        update="itemConfiguratorForm:formats :itemConfiguratorForm:priceBox :itemConfiguratorForm:canvas-preview"
+        onstart='#{mobileView ? "smoothScrollTo($(\"#thepreviewBox\"));" : ""}'
+        oncomplete="updateDom();#{textConfig ? 'RefreshControls();RefreshFormatChange();' : ''}"/>
+      <f:selectItems value="#{itemConfiguratorBean.backMaterials}"/>
+    </p:selectOneRadio>
+    <div class="clearfix">
+      <ui:repeat value="#{itemConfiguratorBean.backMaterials}" var="f" varStatus="s">
+        <div class="selectable" data-clickarea="data-clickarea">
+          <img class="img-resposive" src="/staticimages/configurator/mf/Keilrahmen-#{f.value}.jpg" alt="frame" />
+          <div class="radio pull-left">
+            <p:radioButton id="product" for=":itemConfiguratorForm:backMaterial" itemIndex="#{s.index}"/>
+            <h:outputLabel for="product" />
+          </div>
+          <div class="details pull-left">
+            <h:outputText value="#{f.label} " />
+
+            <h:outputText value="(XXXL)" rendered="#{f.label == '6 cm'}" />
+            <h:outputText value="(XXL)" rendered="#{f.label == '4 cm'}" />
+            <br />
+            <h:outputText rendered="#{itemConfiguratorBean.configurator.backMaterialFormatDefaultPriceDifference(f.value) != '0,00 kr'}" value="+ #{fn:replace(itemConfiguratorBean.configurator.backMaterialFormatDefaultPriceDifference(f.value,true), ',00', ' ')}*"/>
+
+          </div>
+        </div>
+      </ui:repeat>
+    </div>
+  <!-- /backing material -->
+
+
+
+</ui:composition>

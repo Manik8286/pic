@@ -1,0 +1,114 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:param name="pageTitle" value="Premium Kudde" />
+
+    <ui:define name="dataLayer">
+    <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+      <ui:param name="pillow_premium" value="true" />
+      <ui:param name="noList" value="true" />
+    </ui:include>
+    </ui:define>
+
+    <ui:define name="head">
+        <ui:include src="/coupons/discountcode-BC_SE_SEA.xhtml" />
+        <ui:include src="/helper/reference.xhtml" />
+        <style>
+          .desktop .page-teaser .product {
+            top: -25px;
+          }
+        </style>
+    </ui:define>
+
+    <ui:define name="meta">
+        <meta name="robots" content="NOINDEX,FOLLOW" />
+        <meta http-equiv="content-language" content="sv_SE"/>
+    </ui:define>
+
+  <ui:define name="content">
+    <!-- teaser -->
+    <section class="page-teaser">
+      <ui:include src="/page-blocks/teaser.xhtml">
+        <ui:param name="teaserBgImage" value="/#{shopInfoBean.versionPath}assets/img/backgrounds/cushion-teaser.jpg" />
+        <ui:param name="headline" value="Ditt" />
+        <ui:param name="headline2" value="foto som en personlig premiumkudde" />
+        <ui:param name="claim" value="" />
+        <ui:param name="badgeTop" value="60x60 cm" />
+        <ui:param name="badgeMiddle" value="#{priceBean.productPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 60x60')}" />
+        <ui:param name="badgeBottom" value="istället för #{priceBean.productCrossPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 60x60')}" />
+        <ui:param name="teaserProductImage" value="/#{shopInfoBean.versionPath}assets/img/produkter/fotokudde/premium/premium-kudde.png" />
+        <ui:param name="altTeaserProductImage" value="foto pa premium kudde" />
+        <ui:param name="teaserFeatureHighlighted" value="" />
+        <ui:param name="teaserFeature1" value="Kantlöst helsidetryck" />
+        <ui:param name="teaserFeature2" value="Super-mjuk premium yta i plysch" />
+        <ui:param name="showHpLogo" value="" />
+        <ui:param name="uploadId" value="1614" />
+        <ui:param name="buttonText" value="Skapa" />
+        <ui:param name="showShippingInfo" value="true" />
+      </ui:include>
+    </section>
+    <!-- /teaser -->
+
+    <!-- info boxes -->
+    <section class="page-section -alternate -collapse-top">
+      <div class="row">
+        <ui:include src="/content-blocks/info-blocks-badges.xhtml" >
+          <ui:param name="qualityPromiseText" value="Ontvang familievriendelijke geschenken van topkwaliteit – gemaakt hier in de Verenigde Staten. Snelle verwerking en met 100% Geld-terug-garantie." />
+          <ui:param name="hideSVT" value="#{sessionBean.userAgentType == 'tablet'}" />
+        </ui:include>
+
+        <div class="col -span-#{sessionBean.userAgentType == 'desktop' ? '4' : ''}#{sessionBean.userAgentType == 'tablet' ? '6' : ''}#{sessionBean.userAgentType == 'phone' ? '12' : ''}">
+          <div class="showcase-box" data-mh="info">
+            <h3 class="headline">Vi har låga priser för Premium Kudde</h3>
+            <table class="table -striped">
+              <thead class="-highlighted">
+                <tr>
+                  <th class="-text-centered">Format</th>
+                  <th class="-text-centered">Pris</th>
+                  <th class="-highlighted -text-centered">Idag</th>
+                </tr>
+              </thead>
+              <tbody class="-text-centered">
+                <tr>
+                  <td>60 x 60 cm</td>
+                  <td><s>#{priceBean.productCrossPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 60x60')}</s></td>
+                  <td class="-highlighted">#{priceBean.productPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 60x60')}*</td>
+                </tr>
+              </tbody>
+            </table>
+            <a href="/format/#lifestyle" class="link">Alla priser och format »</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /info boxes -->
+
+    <section class="page-section">
+      <ui:include src="/page-blocks/content-premium-cushion-new-img.xhtml" />
+    </section>
+
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+      <ui:include src="/page-blocks/paymentmethods.xhtml" />
+      <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+    </section>
+    <!-- /paymentmethods -->
+
+
+    <!-- microdata -->
+        <ui:include src="/content-blocks/microdata-simple.xhtml">
+        <ui:param name="name" value="Premium Kudde 60x60" />
+        <ui:param name="sku" value="CUSHION-PREMIUM-60X60" />
+        <ui:param name="url" value="https://www.bestcanvas.se/premium-fotokudde-erbjudande-60x60/" />
+        <ui:param name="price" value="#{priceBean.productPrice('Pillow_Premium_Bestcanvas_SE', 'Premium Cushion', 'Premium Cushion 60x60')}" />
+    </ui:include>
+    <!-- /microdata -->
+
+
+</ui:define>
+</ui:composition>

@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <div class="showcase">
+      <header class="head text-center">
+       <h1 class="headline">#{headline}</h1> <br />
+       <div class="claim">#{claim}</div>
+      </header>
+    <div class="body">
+      <div class="boxes">
+          <div class="col -span-10 -centered">
+           <img src="#{img1}" alt="" width="100%" />
+               <a class="button -action -right -arrow" href="/singleupload.jsf" style="margin-top: 6px;">#{_['Get started']}</a>
+          </div>
+          <div class="col -span-10 -centered">
+            <img src="#{img2}" alt="" width="100%" />
+              <a class="button -action -right -arrow" href="/singleupload.jsf">#{_['Get started']}</a>
+          </div>
+          <div class="col -span-10 -centered">
+           <img src="#{img3}" alt="" width="100%" />
+               <a class="button -action -right -arrow" href="/singleupload.jsf">#{_['Get started']}</a>
+          </div>
+
+        </div>
+    </div>
+    </div>
+
+</ui:composition>

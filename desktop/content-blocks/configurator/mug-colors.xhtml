@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+								xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+								xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+	<!-- innerMug color effects -->
+
+    <h3 class="title"><span class="StepsCount"><h:outputText value="#{blockCount}" /></span>Väl den innere Färgen:</h3>
+    <p:selectOneRadio id="finishingOptions" value="#{itemConfiguratorBean.finishing[itemConfiguratorBean.finishings[0].id]}" layout="custom">
+      <p:ajax
+        listener="#{itemConfiguratorBean.change}"
+        process="@this"
+        oncomplete="updateDom();#{textConfig ? 'RefreshControls();RefreshFormatChange();' : ''}" />
+      <f:selectItems value="#{itemConfiguratorBean.finishingOptions(itemConfiguratorBean.finishings[0].id)}"/>
+    </p:selectOneRadio>
+
+    <div class="clearfix">
+      <ui:repeat value="#{itemConfiguratorBean.finishingOptions(itemConfiguratorBean.finishings[0].id)}" var="f" varStatus="s">
+			<ui:fragment rendered="#{f.value != 19}">
+        <div class="selectable" data-clickarea="data-clickarea">
+          <h:graphicImage for="entry" class="img-resposive" value="/#{shopInfoBean.versionPath}assets/img/checkout/effect-inner-#{f.value}.png"/>
+          <div class="radio pull-left">
+            <p:radioButton id="mugOption" for=":itemConfiguratorForm:finishingOptions" itemIndex="#{s.index}" />
+            <h:outputLabel for="product" />
+          </div>
+          <div class="details pull-left">
+            <h:outputText value="#{f.label}" />
+          </div>
+        </div>
+				</ui:fragment>
+      </ui:repeat>
+    </div>
+  <!-- /innerMug color effects -->
+
+</ui:composition>

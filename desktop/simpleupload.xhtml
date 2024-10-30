@@ -1,0 +1,103 @@
+<ui:composition template="/templates/checkout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<ui:param name="pageTitle" value="#{_['Upload Image']}" />
+<ui:param name="stepCount" value="1" />
+<ui:define name="meta">
+  <meta name="robots" content="NOINDEX,FOLLOW" />
+</ui:define>
+<ui:define name="content">
+
+<section class="checkout-step-1 checkout-section -simpleupload">
+  <h:form enctype="multipart/form-data" id="upload">
+    <div class="head">
+      <h1 class="legend"><span class="-highlighted-text">Ladda upp</span> bild:</h1>
+    </div>
+    <div class="upload #{sessionBean.userAgentType != 'desktop' ? 'col' : ''}">
+      #{fileUploadController.restoreInvalidImageMessages}
+      <h:messages styleClass="outmsg" globalOnly="true"
+        errorClass="-error"
+        warnClass="-warn"
+        infoClass="-info" />
+      <div class="form-group -inline">
+        <span class="label">#{_['Product']}:</span>
+        <span class="form-dropdown action" data-dropdown="product">
+          <h:inputText id="product"
+            style="display: none"
+            styleClass="js-field #{ component.valid ? '' : '-invalid'}"
+            value="#{fileUploadController.productId}">
+            <p:ajax />
+          </h:inputText>
+          <ui:include src="/content-blocks/configurator/product-select.xhtml" />
+        </span>
+      </div>
+      <div class="form-group -new-action">
+        <p:fileUpload id="file" value="#{fileUploadController.file}" mode="simple" required="true" requiredMessage="Vänligen välj en fil att ladda upp" update="@form" style="margin-bottom: 20px" />
+        <button class="button -action -plus" jsf:actionListener="#{fileUploadController.upload}">Välj bild</button>
+        <p:message for="file" display="text" />
+      </div>
+
+    </div>
+    <div class="info col">
+      <div class="info-box #{sessionBean.userAgentType != 'desktop' ? 'col' : ''}" >
+        <div class="part #{sessionBean.userAgentType == 'phone' ? 'col -span-12' : ''}">
+          <ui:include src="/helper/svg.xhtml">
+            <ui:param name="svgClass" value="icon" />
+            <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-checkout.svg#checkout-file" />
+          </ui:include>
+          <div class="text">#{_['We can process the following formats']}:</div>
+          <div class="value">.jpg, .jpeg, .png</div>
+          <br jsf:rendered="#{sessionBean.userAgentType == 'phone'}" />
+        </div>
+        <div class="part #{sessionBean.userAgentType == 'phone' ? 'col -span-12' : ''}">
+          <ui:include src="/helper/svg.xhtml">
+            <ui:param name="svgClass" value="icon" />
+            <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-checkout.svg#checkout-floppy" />
+          </ui:include>
+          <div class="text">#{_['Max process data size']}:</div>
+          <div class="value">60MB</div>
+        </div>
+      </div>
+    </div>
+    <div class="files" style="display: none">
+      <ul class="uploads">
+        <li class="file-upload">
+          <img class="image" src="http://lorempixel.com/70/70/nature" />
+          <button class="cancel"><span class="sr">#{_['Cancel']}</span></button>
+          <div class="progress" data-progress-bar="true">
+            <span class="percentage"><span class="js-percentage">0</span>%</span>
+            <span class="bar">
+              <span class="inner js-bar"></span>
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </h:form>
+
+</section>
+
+<!-- paymentmethods -->
+<section class="page-section -alternate">
+   <ui:include src="/page-blocks/paymentmethods.xhtml" />
+   
+</section><!-- /paymentmethods -->
+
+</ui:define>
+
+<ui:define name="eofscript">
+  <script>
+    $('.-new-action input').click(function() {
+      $('.ui-message.ui-message-error.ui-widget.ui-corner-all').hide();
+    });
+  </script>
+</ui:define>
+
+<ui:include src="/trackingcodes/endofbody.xhtml"/>
+
+</ui:composition>

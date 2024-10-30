@@ -1,0 +1,179 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Stjärnhimmel » Personliga Stjärnkarta" />
+
+  <ui:define name="dataLayer">
+    <ui:include src="/tracking/ecommerce/dataLayer-product-impression.xhtml">
+      <ui:param name="starmap_forex" value="true" />
+      <ui:param name="noList" value="true" />
+    </ui:include>
+    <script>
+			dataLayer.push({
+				'marketingChannelPage': 'sea'
+			})
+		</script>
+  </ui:define>
+
+  <ui:define name="head">
+    <ui:include src="/helper/reference.xhtml" />
+
+    <style>
+      .centering {
+        margin: 0;
+        padding-top: 100px;
+      }
+      @media only screen and (max-width: 800px) {
+            .centering {
+            margin: 0;
+            padding-top: 43px;
+          }
+        }
+      </style>
+  </ui:define>
+
+  <ui:define name="meta">
+    <meta name="description" content="Stjärnhimmel: Detaljerad Stjärnkarta med utvalt datum och plats. Personlig Stjärnkarta – den perfekta gåvan för speciella tillfällen" />
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+  </ui:define>
+
+  <ui:define name="content">
+    <section class="page-teaser" jsf:rendered="#{sessionBean.userAgentType == 'desktop'}">
+      <div class="showcase" style="background-image: url(/#{shopInfoBean.versionPath}assets/img/produkter/starmap/starmap-teaser-desktop-BCSE.jpg)">
+        <header class="head"></header>
+        <div class="body">
+          <div class="product -smaller">
+            <!-- <img src="/#{shopInfoBean.versionPath}assets/img/productos/teaser-products-ES.png" width="410" height="308" alt="" /> -->
+            <div class="badge" style="padding: 5px 15px 5px 5px;">
+              <div class="title">40x30 cm</div>
+              <div class="price" style="line-height: 1.1;font-size: 35px;">#{priceBean.productPrice('Starmap_Forex_Bestcanvas_SE', 'Starmap Forex', 'Starmap Forex 40x30')}</div>
+              <div class="sub "><div style="font-size: 16px;line-height: 1.4;">istället för #{priceBean.productCrossPrice('Starmap_Forex_Bestcanvas_SE', 'Starmap Forex', 'Starmap Forex 40x30')}</div></div>
+            </div>
+          </div>
+          <div class="info rightWhiteBlock -right">
+            <h1 class="headline">Din personliga stjärnkarta</h1>
+            <ul class="features">
+              <li>Beräknas utifrån datum och plats som du väljer själv</li>
+              <li>Möjlighet att lägga en personlig hälsning</li>
+              <li>Perfekt sätt att fira stora händelser</li>
+              <li>HD-tryck på elegant fotoplatta</li>
+            </ul>
+
+
+            <div class="upload-button ">
+              <br />
+              <a href="/configurator-starmap.jsf?product=2276&amp;new" class="filebutton">
+                <button type="button" class="js-du-button action filebutton -span-12">
+                  DESIGNA NU
+                </button>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-teaser -encapsulated" jsf:rendered="#{sessionBean.userAgentType == 'tablet'}">
+      <div class="showcase" style="background-image: url(/#{shopInfoBean.versionPath}assets/img/produkter/starmap/starmap-teaser-desktop-BCSE.jpg)">
+        <div class="body">
+          <div class="product">
+            <!-- <img class=" " src="/#{shopInfoBean.versionPath}assets/img/productos/teaser-products-ES.png" alt="" /> -->
+            <div class="badge" style="padding: 6px 3px 6px 2px;top: 210px;position: absolute;right: 0px;">
+              <div class="title" style="font-size: 13px;line-height: 1.4;">40x30 cm</div>
+              <div class="price" style="line-height: 1.1;font-size: 35px;">#{priceBean.productPrice('Starmap_Forex_Bestcanvas_SE', 'Starmap Forex', 'Starmap Forex 40x30')}</div>
+              <div class="sub "><div style="font-size: 75%;line-height: 1.4;">#{priceBean.productCrossPrice('Starmap_Forex_Bestcanvas_SE', 'Starmap Forex', 'Starmap Forex 40x30')}</div></div>
+            </div>
+          </div>
+          <div class="info">
+            <h1 class="headline">Din personliga stjärnkarta</h1>
+            <ul class="features">
+              <li>Beräknas utifrån datum och plats som du väljer själv</li>
+              <li>Möjlighet att lägga en personlig hälsning</li>
+              <li>Perfekt sätt att fira stora händelser</li>
+              <li>HD-tryck på elegant fotoplatta</li>
+            </ul>
+
+              <br />
+              <a href="/configurator-starmap.jsf?product=2276&amp;new" class="filebutton">
+                <button type="button" class="js-du-button action filebutton -span-12" style="font-size: 15px;">
+                  DESIGNA NU
+                </button>
+              </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-teaser -new" jsf:rendered="#{sessionBean.userAgentType == 'phone'}">
+      <div class="showcase" style="padding-top: 0px;">
+        <div class="body">
+          <div class="product">
+            <div class="product-image">
+              <img src="/#{shopInfoBean.versionPath}assets/img/produkter/starmap/starmap-teaser-mobile-BCSE.jpg" alt="" class="image -smaller" />
+            </div>
+            <div class="badge" style="padding: 5px;right: 0;top: auto;bottom: 10px;height: 80px;">
+              <div class="title">40x30 cm</div>
+              <div class="price" style="line-height: 1.4;font-size: 20px;">#{priceBean.productPrice('Starmap_Forex_Bestcanvas_SE', 'Starmap Forex', 'Starmap Forex 40x30')}</div>
+              <div class="sub " style="font-size: 14px;line-height: 1.4;text-decoration: none;">istället för #{priceBean.productCrossPrice('Starmap_Forex_Bestcanvas_SE', 'Starmap Forex', 'Starmap Forex 40x30')}</div>
+            </div>
+          </div>
+          <div class="info">
+            <h1 class="headline">Din personliga stjärnkarta</h1>
+            <ul class="features">
+              <li>Beräknas utifrån datum och plats som du väljer själv</li>
+              <li>Möjlighet att lägga en personlig hälsning</li>
+              <li>Perfekt sätt att fira stora händelser</li>
+              <li>HD-tryck på elegant fotoplatta</li>
+            </ul>
+            <div class="upload-button ">
+              <br />
+              <a href="/configurator-starmap.jsf?product=2276&amp;new" class="filebutton">
+                <button type="button" class="js-du-button action filebutton -span-12">
+                  <span style="font-size: 16px;">DESIGNA NU</span>
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- info boxes -->
+    <section class="page-section -alternate -collapse-top">
+        <ui:include src="/page-blocks/info-blocks-starmap.xhtml" />
+        <ui:param name="checkHideSVT" value="true" />
+    </section>
+    <!-- /info boxes -->
+
+    <section class="page-section">
+      <!-- product info -->
+      <ui:include src="/page-blocks/content-starmap.xhtml" />
+      <!-- /product info -->
+    </section>
+
+    <!-- paymentmethods -->
+    <section class="page-section -alternate">
+      <ui:include src="/page-blocks/paymentmethods.xhtml" />
+      <ui:include src="/page-blocks/newsletter-wr.xhtml" />
+    </section>
+    <!-- /paymentmethods -->
+
+    <!-- microdata -->
+        <ui:include src="/content-blocks/microdata-simple.xhtml">
+        <ui:param name="name" value="Din personliga stjärnkarta - 40x30 cm" />
+        <ui:param name="sku" value="STARMAP-FOREX-DIGI-40x30-1" />
+        <ui:param name="url" value="https://www.bestcanvas.se/stjarnkarta-erbjudande-40x30/" />
+        <ui:param name="price" value="#{priceBean.productPrice('Starmap_Forex_Bestcanvas_SE', 'Starmap Forex', 'Starmap Forex 40x30')}" />
+    </ui:include>
+    <!-- /microdata -->
+
+  </ui:define>
+</ui:composition>

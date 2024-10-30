@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+  <div class="head js-accordion-title -expandable" data-clickarea="data-clickarea">
+    <div class="radio -alone">
+      <p:radioButton id="adyenpaypal"
+        for=":paymentMethod:method"
+        itemIndex="#{index}">
+       <!-- <p:ajax update=":paypalform" oncomplete="updateDom()" />-->
+      </p:radioButton>
+      <h:outputLabel styleClass="label" for="paypal" value="PayPal" />
+    </div>
+      <div class="-right">
+        <ui:include src="/helper/svg.xhtml">
+          <ui:param name="svgClass" value="logo" />
+          <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#payments-paypal" />
+          <ui:param name="svgWidth" value="#{sessionBean.userAgentType == 'phone' ? '120px' : '111px'}" />
+          <ui:param name="svgHeight" value="#{sessionBean.userAgentType == 'phone' ? '25px' : '28px'}" />
+        </ui:include>
+      </div>
+  </div>
+  <div class="sub body js-accordion-body">
+    <p class="text">Du kommer att skickas vidare till PayPals webbplats after att du har lagt en beställning.</p>
+  </div>
+
+</ui:composition>

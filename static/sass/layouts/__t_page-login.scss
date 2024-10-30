@@ -1,0 +1,12 @@
+.page-login {
+  min-width: 100%;
+
+  > .login-showcase {
+    width: 100%;
+  }
+
+  > .login-showcase > .box-wrapper {
+    @extend .col;
+    @extend %-span-12;
+  }
+}

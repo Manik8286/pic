@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+             	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+  <script type="text/javascript"  src="/#{shopInfoBean.versionPath}static/build/js/multiimage-upload-progress.min.js"></script>
+
+  <p:messages id="errormsges" styleClass="dNone" />
+
+  <h:form id="MixPixUpload" style="display: none;">
+    <p:fileUpload id="file-upload"
+                  auto="true"
+                  widgetVar="uploader"
+                  multiple="true"
+                  sequential="true"
+                  fileLimit="25"
+                  update="@([id$=errormsges])"
+                  onstart="onUploadStart();followUploadProcess();#{onStart}"
+                  oncomplete="onUploadComplete(this);"
+                  listener="#{fileUploadController.uploadMultiimage}"
+                  requiredMessage="#{_['Please select a file to upload.']}"
+                  message="Das Motiv wird hochgeladen. Bitte warten!"
+                  sizeLimit="62914560"
+                  fileLimitMessage="MAXIMUM_FILES"
+                  invalidFileMessage="WRONG_FILE"
+                  invalidSizeMessage="SIZE_LIMIT"
+                  accept="#{sessionBean.userAgentType == 'desktop' ? '.jpg, .jpeg, .png, .gif, .webp, .tiff, .tif, .heif, .heic' : 'image/*'}"
+                  label="Fotos hochladen" />
+  </h:form>
+
+
+  <script type="text/javascript" >
+    // <![CDATA[
+    var currentUploadID = 4284;
+  	// Script to catch primeface error events and show out custom error modals
+        (function($) {
+          var originalShowFunction = $.fn.show;
+          $.fn.show = function() {
+              this.trigger("show");
+              return originalShowFunction.apply(this, arguments);
+          };
+      })(jQuery);
+      
+      $(document).on("show", ".ui-fileupload-content>.ui-messages", function() {
+        $(this).children().hide().find("li").each(function(index, message) {
+            var $message = $(message);
+            console.log('Worked', index, message);
+            if ($(".ui-messages-error-summary").text() == 'SIZE_LIMIT') {
+              // pushErrorTooBig(); // Call the dataLayer push function
+              Modal.open('#fileTooBig');
+            } else if ($(".ui-messages-error-summary").text() == 'WRONG_FILE') {
+              // pushErrorWrongFile(); // Call the dataLayer push function
+              Modal.open('#fileWrongType');
+            } else if ($(".ui-messages-error-summary").text() == 'MAXIMUM_FILES') {
+              // pushErrorTooMany(); // Call the dataLayer push function
+              Modal.open('#fileTooMany25');
+            } else {
+              // pushErrorOther(); // Call the dataLayer push function
+              Modal.open('#fileUploadError');
+            }
+        });
+    });
+
+
+    var selectedFiles = null;
+    var onUploadStart = function() {
+      selectedFiles = 0;
+    };
+    
+    var onUploadComplete = function(component) {
+      if (component.files) {
+        if (selectedFiles == 0) {
+          selectedFiles = component.files.length + 1;
+        }     
+        var multiple = selectedFiles > 1;
+        var lastFile = component.files.length == 0;
+        if (lastFile) {
+          if ($(".ui-messages-error ul li").length && $(".ui-messages-error-summary").text() !== 'MAXIMUM_FILES') {
+            hideUploader();
+            Modal.open('#fileTooSmall');
+          }
+          else {
+           window.location.href='/multiimage_mixpix.jsf?product=' + currentUploadID;
+          }
+        }
+      }
+    };
+    // ]]>
+  </script>
+
+</ui:composition>

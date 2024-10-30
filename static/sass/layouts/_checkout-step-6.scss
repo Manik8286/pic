@@ -1,0 +1,91 @@
+.checkout-step-6 {
+  > .head {
+    @extend .col;
+    @extend %-span-12;
+  }
+
+  > form > .overview {
+    @extend .col;
+    @extend %-span-8;
+    @extend %-leave-4;
+    margin-bottom: 40px;
+  }
+
+  > form > .billing {
+    @extend .col;
+    @extend %-span-4;
+    margin-bottom: 20px;
+    table.prepaidConfirmorderTable td {
+      border: 1px solid $concrete;
+      padding-left:2px;
+    }
+  }
+
+  > form > .terms {
+    @extend .col;
+    @extend %-span-7;
+  }
+
+  > form > .next {
+    @extend .col;
+    @extend %-span-5;
+  }
+
+  > form > .terms {
+    font-size: 14px;
+
+    a {
+      @extend .anchor;
+    }
+
+    .info {
+      margin-top: 40px;
+      font-size: 12px;
+      color: $page-lighter-text-color;
+    }
+  }
+
+  .billbox {
+    @extend .item-box;
+    @extend .item-box.-wide !optional;
+    padding-bottom: 0;
+
+    &.-full {
+      height: 100%;
+    }
+
+    &.-half {
+      height: auto;
+    }
+
+    .head {
+      @include clearfix;
+      margin-top: -5px;
+    }
+
+    .edit {
+      @extend .anchor;
+      float: right;
+      display: block;
+      text-decoration: underline;
+    }
+
+    .nonformatted {
+      white-space: pre;
+    }
+    .formatted {
+      white-space: break-spaces;
+    }
+  }
+
+  .halfhelper + .halfhelper {
+    margin-top: 20px;
+  }
+
+  > form > .next .action {
+    @extend .button_action;
+    @extend .button_action_mod-arrow;
+    float: right;
+  }
+
+}

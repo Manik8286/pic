@@ -1,0 +1,15 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+								xmlns:h="http://java.sun.com/jsf/html"
+								xmlns:f="http://java.sun.com/jsf/core"
+								xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <div class="hidden">
+      <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+        <ui:param name="directuploadProductId" value="254" />
+      </ui:include>
+    </div>
+
+    <ui:include src="/page-blocks/uploader-cover.xhtml" />
+    <ui:include src="/content-blocks/upload-another-script.xhtml" />
+
+</ui:composition>

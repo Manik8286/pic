@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+    <div class="success-box inner text-center -new">
+        <div class="col -span-12 -centered">
+            <p class="mb0">
+                <strong class="dBlock -pt5">VÅR SÄRSKILDA BELÖNING FÖR DIG:</strong>
+                <img src="/#{shopInfoBean.versionPath}assets/img/checkout/3fc-mobile.jpg" class="width100" alt="3 free canvas" /><br />
+                <h2 class="mt0"><strong class="-red -new">3 FRIA CANVASPRINT</strong><br /><strong>för vänner och familj!</strong>
+                </h2>
+                <span>Dela bara det här erbjudandet</span><br />
+                <div class="dFlex dJustCenter -icons pRelative">
+                    <button id="fb-share" class="facebook-share"><img class="3fc-fb-share" src="/#{shopInfoBean.versionPath}assets/img/icons/fb-icon.svg" alt="facebook icon" /></button>
+                    <a id="wa-share"
+                        href="whatsapp://send?text=Hej!%0D%0AJag%20har%20just%20beställt%20ett%20fototryck%20på%20BestCanvas%20och%20de%20ger%20chansen%20att%20ge%20bort%203%20GRATIS%20canvastryck%20till%20vänner%20och%20familj.%20Vill%20du%20ha%20en?%0D%0ADu%20kan%20få%20din%20här:%0D%0Ahttps://www.bestcanvas.se/friend/?utm_source=whatsapp%26utm_campaign=3fc%26utm_medium=link"><img
+                            src="/#{shopInfoBean.versionPath}assets/img/icons/wa-icon.svg" width="53" height="53" alt="whatsapp icon" /></a>
+                    <a id="email-share"
+                        href="mailto:?Subject=GRATIS:%20Ditt%20foto%20på%20canvas!&amp;body=Hej!%0D%0AJag%20har%20just%20beställt%20ett%20fototryck%20på%20BestCanvas.se%20och%20de%20ger%20mig%20chansen%20att%20ge%20bort%203%20GRATIS%20canvastryck%20till%20vänner%20och%20familj.%20Vill%20du%20ha%20en?%0D%0ASkapa%20din:%0D%0Ahttps://www.bestcanvas.se/friend/?utm_source%3Demail%26utm_campaign%3D3fc%26utm_medium%3Dlink%0D%0A"><img
+                            src="/#{shopInfoBean.versionPath}assets/img/icons/mail-icon.svg" alt="mail icon" /></a>
+                    <button id="link-share" onclick="showbubble()" class="link-share clip"
+                        data-clipboard-text="https://www.bestcanvas.se/friend/?utm_source=copylink&amp;utm_campaign=3fc&amp;utm_medium=link"><img
+                        class="3fc-link-share" src="/#{shopInfoBean.versionPath}assets/img/icons/link-icon.svg" alt="link icon" /></button>
+                    <div style="display: none;" class="copy-bubble">Sparas i Urklipp</div>
+                </div>
+                <small>För inlägg på Facebook kommer du se en förhandsvisning.</small>
+            </p>
+        </div>
+    </div>
+
+</ui:composition>

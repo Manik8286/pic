@@ -1,0 +1,88 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+  <div class="preview">
+    <div class="product #{type eq 'small' ? '-reduced' : ''}" data-waiting-text="Bilden laddas...">
+      <ui:fragment rendered="#{type ne 'small'}">
+      <div id="cw" class="measure -horizontal"><span class="js-measure-width">
+        <ui:include src="/helper/preview-width-table-cell.xhtml" />
+      </span></div>
+      <div id="ch" class="measure -vertical"><span class="js-measure-height">
+        <ui:include src="/helper/preview-height-table-cell.xhtml" />
+      </span></div>
+      </ui:fragment>
+      <div class="canvas #{itemConfiguratorBean.colorCarrierId == 23 ? '-cushion' : ''}">
+        <canvas id="myCanvas"></canvas>
+      </div>
+
+      <div id="imageData" class="hidden"
+        data-id="#{itemConfiguratorBean.item.images[0].imageId}"
+        data-productid="#{itemConfiguratorBean.productId}"
+        data-format="#{itemConfiguratorBean.configurator.formatKey}"
+        data-effect="#{itemConfiguratorBean.imageEffect}"
+		data-trim="#{itemConfiguratorBean.configurator.product.trim}"
+        data-border="#{itemConfiguratorBean.borderEffect}"
+        data-backid="#{itemConfiguratorBean.colorCarrierId==10?itemConfiguratorBean.configurator.backMaterialId:0}"
+        data-imgwidth="#{itemConfiguratorBean.configurator.image.width}"
+        data-imgheight="#{itemConfiguratorBean.configurator.image.height}"
+        data-loadalert="#{_['Please wait until the whole page has loaded. If the preview does not display the page reload']}."
+        data-material="#{itemConfiguratorBean.colorCarrierId}"
+        data-frame="#{itemConfiguratorBean.frameId!=null?itemConfiguratorBean.frameId:0}"
+        data-finish1="#{itemConfiguratorBean.colorCarrierId==38?itemConfiguratorBean.finishing[itemConfiguratorBean.finishings.get(0).id]:0}"
+        data-finish2="#{itemConfiguratorBean.colorCarrierId==38?itemConfiguratorBean.finishing[itemConfiguratorBean.finishings.get(1).id]:0}"
+        data-fourcmid="11"
+        data-sixcmid="19"></div>
+
+      <script type="text/javascript">
+      // <![CDATA[
+        var viewportFit = window.innerWidth - 20;
+        if (viewportFit > 350) viewportFit = 350;
+        var previewWidth = #{type eq 'small' ? 'viewportFit' : '350'};
+
+        function defer(method) {
+          if (typeof(previewConfig) != 'undefined' && typeof(previewConfig.buildPreview) == 'function')
+            method();
+          else
+            setTimeout(function() { defer(method) }, 50);
+        }
+
+        var showPreview = true;
+        defer(function() {
+          previewConfig.buildPreview();
+        });
+      // ]]>
+      </script>
+
+      <h:inputHidden id="cutoutX"
+        value="#{itemConfiguratorBean.configurator.config.images[0].cutoutX}" />
+      <h:inputHidden id="cutoutY"
+        value="#{itemConfiguratorBean.configurator.config.images[0].cutoutY}" />
+      <h:inputHidden id="cutoutWidth"
+        value="#{itemConfiguratorBean.configurator.config.images[0].cutoutWidth}" />
+      <h:inputHidden id="cutoutHeight"
+        value="#{itemConfiguratorBean.configurator.config.images[0].cutoutHeight}" />
+    </div>
+    <p class="draginfo" id="isFeature">
+      <ui:include src="/helper/svg.xhtml">
+        <ui:param name="svgClass" value="arrows" />
+        <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-checkout.svg#checkout-arrows" />
+      </ui:include>
+      <span class="isMove">
+        <ui:include src="/helper/moveMessage.xhtml" />
+      </span>
+      <span class="notMove -hidden">
+        #{_['Your photo fits perfectly to your chosen format']}.
+      </span>
+    </p>
+    <p class="draginfo text-center">
+      <span>Zoom:</span> <input type="range" id="scaleCanvas" class="vertical-middle" value="0" min="0" max="30" onchange="previewConfig.stopScale()" oninput="previewConfig.doScale()"></input>
+    </p>
+    <ui:fragment rendered="#{itemConfiguratorBean.colorCarrierId==10}">
+      <p class="note text-center">Information: Kanten på bilden viks runt kanten på ramen och nitas fast
+</p>
+    </ui:fragment>
+  </div>
+</ui:composition>

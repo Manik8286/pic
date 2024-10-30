@@ -1,0 +1,435 @@
+.page-teaser .showcase.newsletter{
+  background-size:contain;
+  height: auto;
+}
+.unsubscribe
+{ 
+	.-checkmark li {
+    padding-left: 40px;
+}
+.submit {
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 6px 10px;
+    display: inline-block;
+    color: $white;
+}
+}
+
+/*newsletter style inside mobile view on sem pages like /offer */
+/* Matiss */
+/* Helper clases */
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+.text-center { text-align: center;}
+.hidden { display: none; }
+.relative { position: relative; }
+
+/* Global newsletter clases */
+form .check {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.newsletter-button {
+  border: 0;
+  background: $newGreen;
+  color: $white;
+  border-radius: 3px;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+
+/* Header form */
+#newsletter-header-mobile {
+  text-align: center;
+  background-color: #5f5e5e;
+  color: $white;
+  padding: 5px 0;
+  position: relative;
+  display: block;
+}
+#newsletter-header-mobile p {
+  margin: 0;
+}
+#newsletter-header-mobile a {
+  color: $white;
+  text-decoration: underline;
+}
+#newsletter-header-mobile .success {
+    top: 50%;
+    left: 13%;
+    width: 70%;
+     padding-right: 45px;
+}
+#newsletter-header-mobile .success h2
+{
+  font-size: 45px;
+}
+#newsletter-header-mobile .check {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+/* Body form */
+#newsletter-body {
+  position: relative;
+  display: block;
+}
+
+#newsletter-body input[type="text"] {
+  width: 50%;
+  background-image: none;
+}
+
+#newsletter-body input[type="email"] {
+  width: 50%;
+}
+#newsletter-body .btn-submit {
+  border: 1px solid #e9a209;
+  color: $white;
+  font-weight: 700;
+  text-shadow: 0 0 5px #e9a209;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZhYjIzOSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Q5ODEwMyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fab239), color-stop(100%, #d98103));
+  background: -webkit-linear-gradient(#fab239, #d98103);
+  background: -moz-linear-gradient(#fab239, #d98103);
+  background: -o-linear-gradient(#fab239, #d98103);
+  background: linear-gradient(#fab239, #d98103);
+  padding: 5px 10px;
+}
+#newsletter-body p {
+  margin-bottom: 10px;
+}
+#faq-content #newsletter-body p {
+  text-align: right;
+}
+#faq-content .text-right label {
+    width: 143px;
+    display: inline-block;
+}
+
+/* Body form alternative */
+#newsletter-body-form {
+  text-align: center;
+  position: relative;
+  display: block;
+}
+#newsletter-body-form p{
+    margin: 0 0 10px 0;
+}
+#newsletter-body-form input[type="email"] {
+  padding: 4px 4px;
+  border: 1px solid #ccc;
+  border-radius: 3px 0 0 3px;
+}
+#newsletter-body-form input[type="submit"] {
+  margin-left: -5px;
+}
+
+/* Mobile alternative header form */
+@media (min-width:1025px){
+  .mobile-only {
+    display: none;
+  }
+}
+#email-deal.mobile-email-form {
+  background: $white;
+  width: 100%;
+  z-index: 1000;
+  font-size: 40px;
+}
+#email-deal.mobile-email-form input , #email-deal.mobile-email-form .deadline
+{
+  font-size: 16px;
+  color: $black;
+
+}
+.mobile-email-form  .newsletter-header-msg a {
+  text-decoration:none;
+}
+.mobile-email-form .newsletter-header-msg {
+  background: $white;
+  border: 10px solid #797777;
+  padding: 10px;
+  z-index: 10000000;
+  position: fixed;
+  box-sizing: border-box;
+  margin: 10px;
+  border-radius: 6px;
+}
+.mobile-email-form .btn-close {
+  display: block;
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  line-height: .5;
+  color: #5F5E5E;
+  border-radius: 20px;
+  border: 1px solid #fff;
+  padding: 6px 7px;
+  margin: 10px;
+  text-align: center;
+  font-size: 40px;
+  background: $white;
+  font-weight: bold;
+  text-decoration: none;
+}
+.mobile-email-form .btn-close-mob {
+    z-index: 100;
+    display: block;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    line-height: 0.5;
+    color: #5F5E5E;
+    border: 1px solid #fff;
+    margin: 10px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 15px;
+    background: $white;
+    font-weight: 700;
+    text-decoration: none;
+}
+.mobile-email-form label {
+  line-height:2;
+}
+.mobile-email-form #clock-newsletter {
+  margin-bottom: .5em;
+}
+.mobile-email-form #newsletter-header-mobile {
+  padding: 5px 0 15px;
+  font-size: 16px;
+}
+
+/* Footer form */
+#newsletter-form input[type=checkbox] {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+#newsletter-form input[type="email"] {
+    padding: 6px;
+    width: 270px;
+}
+#newsletter-form .rules-link {
+  text-decoration: underline;
+  color: #222;
+}
+
+
+
+.unsubscribe {
+  position: relative;
+
+  h1 {
+    font-size: 32px;
+    margin: 10px 0 5px; 
+  }
+
+  h2 {
+    margin-top: 25px;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    font-size: 21px;
+  }
+
+  &.second {
+    color: rgb(34,34,34);
+    margin-bottom: 18px;
+  }
+  
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+
+  input[type="email"] {
+    border: 1px solid $newGreen;
+    width: 260px;
+    height: 30px;
+    padding: 0 3px;
+  }
+
+  label {
+    display: inline-block;
+    padding: 5px 0;
+  }
+
+  .submit {
+    color: $white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    display: inline-block;
+    padding: 5px 10px;
+    margin-top: 20px;
+    background-color: $newGreen;
+    border: 0px;
+    width: 170px;
+    height: 35px;
+  }
+
+  .awards {
+    height: 50px;
+    padding-top: 110px;
+  }
+
+  .quality h3 {
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .panel {
+    border-radius: 7px;
+    padding: 0px 40px;
+    margin-bottom: 10em;
+    margin-top: 0;
+  }
+
+  .panelCd {
+    border-radius: 7px;
+    padding: 0px 40px;
+    margin-bottom: 10em;
+    margin-top: 0; 
+  }
+
+  .checkmark  {
+    margin: 10px 0;
+  }
+
+  .services-list {
+    .checkmark {
+      position: relative;
+      padding-left: 30px;
+      font-size: 14px;
+      height: auto;
+
+      &:before {
+        position: absolute;
+        top: 3px;
+        left: 0;
+        width: 15px;
+        height: 15px;
+        font-size: 24px;
+        color: $newGreen;
+        content: '\2713';
+        line-height: .4;
+        border-radius: 50%;
+        border: 1px solid #e2e2e2;
+        background-color: $white;
+      }
+    }
+  }
+
+  .col-1-2 {
+    width: 47%;
+    float: left;
+    box-sizing: border-box;
+    margin: 0;
+
+    &:first-of-type {
+      margin-right: 20px;
+    }
+  }
+}
+
+
+/* Success msg box */
+.success {
+  background-color: #4EB11E;
+  color: $white;
+  border-radius: 10px;
+  padding: 10px;
+  position: absolute;
+  box-shadow: 1px 2px 1px 1px #ccc;
+  z-index: 11;
+  top: -30px;
+}
+.success .close {
+  position: absolute;
+  right: 8px;
+  top: -8px;
+  font-size: 20px;
+}
+.success .close:hover {
+  text-decoration: none;
+}
+.unsubscribe .error {
+  background-color: #DE4A4A;
+}
+
+/* Doi success */
+.doi-success p {
+  margin: 10px 0 10px;
+}
+.doi-success .teaser-main {
+  background: url(../staticimages/newsletter/doi.jpg) no-repeat;
+  background-position: top center;
+  background-size: cover;
+  position: relative;
+  min-height: 415px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+.doi-success .teaser-main h1 {
+  top: 300px;
+  position: absolute;
+  font-size: 35px;
+  padding-top: 20px;
+  padding-left: 30px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, .75);
+  color: $white;
+  max-width: 675px;
+}
+.doi-success .subscribe-btn {
+  background-color: orange;
+  padding: 10px;
+  display: inline-block;
+  color: $white;
+  border-radius: 5px;
+  box-shadow: 1px 1px #ccc;
+  text-decoration: none;
+}
+.doi-success .subscribe-btn:hover {
+  border: none;
+  box-shadow: 0px 0px 15px #ccc;
+}
+
+.privacy {
+  h1 {
+    font-size: 24px;
+    margin: 10px 0 10px 0;
+  }
+  h2 {
+    font-size: 22px;
+    margin: 0 0 10px 0;
+  }
+  a {
+    color: $newGreen;
+  }
+  ul {
+    margin: 10px 0;
+    padding-left: 30px;
+    &.-noDeco { 
+      padding-inline-start: 0;
+    }
+    &.-noDeco li {
+      list-style-type: none;
+    }
+    li {
+      list-style-type: disc;
+    }
+  }
+  ol {
+    padding-left: 30px;
+    margin: 10px 0;
+    list-style-type: decimal;
+  }
+  li {
+    margin-bottom: 5px;
+  }
+}

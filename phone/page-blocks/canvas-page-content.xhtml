@@ -1,0 +1,316 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:o="http://omnifaces.org/ui">
+
+<!-- product info -->
+<div class="article-showcase">
+  <h3 class="headline -has-sidelines"><span>Canvastavlor med fotografier från BestCanvas.se</span></h3>
+  <div class="col -span-12 image -centered js-image-switcher">
+    <ul class="images">
+      <li data-image-name="canvas:front" class="-visible">
+        <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/foto-pa-canvas-komplett-vy.jpg" alt="canvastavla komplett vy" />
+      </li>
+      <li data-image-name="canvas:detail">
+        <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/foto-pa-canvas-detaljerad-vy.jpg" alt="canvastavla detaljerad vy" />
+      </li>
+      <li data-image-name="canvas:room">
+        <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/foto-pa-canvas-i-rummet.jpg" alt="canvastavla i rummet" />
+      </li>
+      <li data-image-name="canvas:video">
+        <iframe width="#{sessionBean.userAgentType == 'phone' ? '100%' : '490'}" height="#{sessionBean.userAgentType == 'phone' ? 'auto' : '275'}" src="" data-src="//www.youtube.com/embed/SOzJbYnp8JI?loop=1&amp;autoplay=1&amp;modestbranding=1&amp;controls=0&amp;showinfo=0&amp;playlist=SOzJbYnp8JI" frameborder="0" allow="autoplay"></iframe>
+      </li>
+    </ul>
+
+    <ul class="options -has-2">
+      <li><button type="button" class="cbutton -highlight" data-target="canvas:front">Komplett vy</button></li>
+      <li><button type="button" class="cbutton" data-target="canvas:detail">Detaljerad vy</button></li>
+      <li><button type="button" class="cbutton" data-target="canvas:room">I rummet</button></li>
+      <li><button type="button" class="cbutton" data-target="canvas:video">Videon</button></li>
+    </ul>
+  </div>
+
+          <div class="col -span-12">
+            <div class="description-wrapper">
+              <div class="description">
+                <p class="text">
+                  Våra Canvastavlor är redo att skickas inom 24 timmar. Samtliga av våra tavlor har lägsta prisgaranti och bästa resultat på SVT-tester. De är sträckta över en handgjord bårram i trä och varje Canvastavla har endast producerats med lösningsmedelsfria HP-latexbläck - säkert för alla i närheten.
+                </p>
+                <br/>
+                <h3 class="headline">Dekorera din vägg med eget motiv på en canvastavla i hög kvalitet</h3>
+                <br/>
+                <ul class="text grey-checkmark">
+                  <li>Handsträckt duk på en ram i gran av hög kvalitet</li>
+                  <li>Utbud av slående kantdesigner finns tillgängliga</li>
+                  <li>Fotoutskrift med hög upplösning i levande färger</li>
+                  <li>UV-beständigt bläck, helt fria från lösningsmedel</li>
+                  <li>Canvas certifierad för professionell fotoutskrift</li>
+                </ul>
+                <br />
+                <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+                  <ui:param name="directuploadProductId" value="254" />
+                  <ui:param name="directuploadClass" value="button -action " />
+                  <ui:param name="buttonText" value="#{buttonText}" />
+                </ui:include>
+                <br />
+              </div>
+            </div>
+          </div>
+</div><!-- /product info -->
+
+<!-- border types -->
+<div class="article-showcase">
+
+  <h3 class="headline -has-sidelines"><span>Canvastavlor med Individuell kantdesign</span></h3>
+
+  <div class="col -span-12 image -centered js-image-switcher">
+    <ul class="images">
+      <li data-image-name="border:fold" class="-visible"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/foto-canvas-invikt.jpg" alt="canvastavla invikt kant"/></li>
+      <li data-image-name="border:mirror"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/foto-canvas-speglvand.jpg" alt="canvastavla speglvand kant" /></li>
+      <li data-image-name="border:stretch"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/foto-canvas-strackt.jpg" alt="canvastavla strackt kant" /></li>
+      <li data-image-name="border:white"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/foto-canvas-vit.jpg" alt="canvastavla vit kant" /></li>
+      <li data-image-name="border:black"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/foto-canvas-svart.jpg" alt="canvastavla svart kant" /></li>
+    </ul>
+
+    <ul class="options -has-3 ">
+      <li><button type="button" class="cbutton -highlight" data-target="border:fold">Invikt</button></li>
+      <li><button type="button" class="cbutton" data-target="border:mirror">Speglvänd</button></li>
+      <li><button type="button" class="cbutton" data-target="border:stretch">Sträckt</button></li>
+      <li><button type="button" class="cbutton" data-target="border:white">Vit</button></li>
+      <li><button type="button" class="cbutton" data-target="border:black">Svart</button></li>
+    </ul>
+  </div>
+
+  <div class="description-wrapper">
+    <div class="description">
+      <h5 class="headline">Invikt kant</h5>
+      <p class="text">
+       Precis som när man gör en klassisk konstduk, så sträcker man foto canvastavlan så att den passar ramen. När man designar sin canvas är det därför viktigt att se till att inget viktigt objekt är placerat för nära kanten på tavlan.
+      </p>
+    </div>
+
+    <div class="description">
+      <h5 class="headline">Spegelvänd kant</h5>
+      <p class="text">
+        Din bild kan ses i sin helhet på framsidan av canvastavlan. Den yttre kanten på din bild kopieras, speglas och läggs till i ramen.
+      </p>
+    </div>
+
+    <div class="description">
+      <h5 class="headline">Sträckt kant</h5>
+      <p class="text">
+        Den här kanten innebär att de yttersta bildpunkterna på ditt objekt dras ut och sträcks runt ramen. Din bild visas i helhet på tavlans framsida.
+      </p>
+    </div>
+
+    <div class="description">
+      <h5 class="headline">Vit kant</h5>
+      <p class="text">
+      Med denna typ av kant så trycks inte kanterna ut på canvastavlan. En vit kant läggs istället till de vikta sidorna, vilket förstärker och ger lyster till din bild.
+     </p>
+   </div>
+
+   <div class="description">
+    <h5 class="headline">Svart kant</h5>
+    <p class="text">
+      Din bild trycks endast på framsidan av tavlan, medan en svart kant genereras på sidorna runt ditt foto på canvas. De svarta fälten ger en fin kontrast till de flesta objekt.
+    </p>
+  </div>
+</div>
+</div><!-- /border types -->
+
+<!-- frame thickness -->
+<div class="article-showcase">
+  <h3 class="headline -has-sidelines"><span>Canvas tavla med Riktig träinramning</span></h3>
+
+  <div class="col -span-6 image -has-subtitle">
+    <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvastryck-traram-2-cm.jpg" alt="canvastryck XXL traram 2 cm" />
+    <h5 class="headline">Standard kanvasram (2 cm)</h5>
+    <p class="text -align-left">
+      Vi använder en högkvalitativ kilram av FSC-certifierad furu för din canvastavla. Denna massiva träram har en tjocklek på 2 cm och är så lätt att du bara behöver en eller två spikar för att hänga upp den på väggen, beroende på formatet.
+   </p>
+ </div>
+
+ <div class="col -span-6 image -has-subtitle">
+  <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvastryck-traram-4-cm.jpg" alt="canvastryck traram 4 cm" />
+  <h5 class="headline">XXL - träram (4 cm)</h5>
+  <p class="text -align-left">
+    Välj XXL - träramen i dubbel styrka för dina canvastavlor för att få till en riktig galleri-känsla. Extra stora format är betydligt mer uttrycksfulla och behöver ökad stabilitet. Denna högkvalitativa träram av FSC-certifierad furu gör att duken är mycket lätt och därför lätt att hänga upp.
+  </p>
+</div>
+    </div><!-- /frame thickness -->
+
+<!-- floating frames -->
+<div class="article-showcase">
+  <h3 class="headline -has-sidelines"><span>Premiumram för Canvastavlor</span></h3>
+
+  <div class="col -span-12 -centered image js-image-switcher" id="frameSwitcher">
+      <ul class="images">
+        <li data-image-name="floating:gold:full">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/tryck-canvas-ram-guld-sedd-framifran.png" alt="tryck canvas ram guld sedd framifran" />
+        </li>
+        <li data-image-name="floating:gold:front">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/tryck-canvas-ram-guld-detaljer-framifran.png" alt="tryck canvas ram guld detaljer framifran" />
+        </li>
+        <li data-image-name="floating:gold:back">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/tryck-canvas-ram-guld-detaljer-bakifran.jpg"  alt="tryck canvas ram guld detaljer bakifran" />
+        </li>
+
+        <li data-image-name="floating:silver:full">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvas-foto-ram-silver-sedd-framifran.png" alt="canvas foto ram silver sedd framifran" />
+        </li>
+        <li data-image-name="floating:silver:front">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvas-foto-ram-silver-detaljer-framifran.png" alt="canvas foto ram silver detaljer framifran" />
+        </li>
+        <li data-image-name="floating:silver:back">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvas-foto-ram-silver-detaljer-bakifran.jpg" alt="canvas foto ram silver detaljer bakifran" />
+        </li>
+
+        <li data-image-name="floating:shinyblack:full">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvastavla-ram-glansig-svart-stoft-sedd-framifran.png" alt="canvastavla ram glansig svart sedd framifran"/>
+        </li>
+        <li data-image-name="floating:shinyblack:front">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvastavla-ram-glansig-svart-detaljer-framifran.png" alt="canvastavla ram glansig svart detaljer framifran"/>
+        </li>
+        <li data-image-name="floating:shinyblack:back">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvastavla-ram-glansig-svart-detaljer-bakifran.jpg" alt="canvastavla ram glansig svart detaljer bakifran"/>
+        </li>
+
+        <li class="-visible"  data-image-name="floating:mattblack:full">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvastavlor-ram-svart-stoft-sedd-framifran.png" alt="canvastavlor ram svart stoft sedd framifran"/>
+        </li>
+        <li data-image-name="floating:mattblack:front">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvastavlor-ram-svart-stoft-detaljer-framifran.png" alt="canvastavlor ram svart stoft detaljer framifran"/>
+        </li>
+        <li data-image-name="floating:mattblack:back">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvastavlor-ram-svart-stoft-detaljer-bakifran.jpg" alt="canvastavlor ram svart stoft detaljer bakifran" />
+        </li>
+
+        <li data-image-name="floating:white:full">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvas-tavlor-ram-vit-sedd-framifran.png" alt="canvas tavlor ram vit sedd framifran" />
+        </li>
+        <li data-image-name="floating:white:front">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvas-tavlor-ram-vit-detaljer-framifran.png" alt="canvas tavlor ram vit detaljer framifran" />
+        </li>
+        <li data-image-name="floating:white:back">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvas-tavlor-ram-vit-detaljer-bakifran.jpg" alt="canvas tavlor ram vit detaljer bakifran" />
+        </li>
+
+        <li data-image-name="floating:brown:full">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvastavlor-foto-ram-valnotskansla-sedd-framifran.png" alt="canvastavlor foto ram valnotskansla sedd framifran" />
+        </li>
+        <li data-image-name="floating:brown:front">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvastavlor-foto-ram-valnotskansla-detaljer-framifran.png" alt="canvastavlor foto ram valnotskansla detaljer framifran" />
+        </li>
+        <li data-image-name="floating:brown:back">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvastavlor-foto-ram-valnotskansla-detaljer-bakifran.jpg" alt="canvastavlor foto ram valnotskansla detaljer bakifran" />
+        </li>
+
+        <li data-image-name="floating:ashtree:full">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvas-foto-ram-ekkansla-sedd-framifran.png" alt="canvas foto ram ekkansla sedd framifran" />
+        </li>
+        <li data-image-name="floating:ashtree:front">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvas-foto-ram-ekkansla-detaljer-framifran.png" alt="canvas foto ram ekkansla detaljer framifran" />
+        </li>
+        <li data-image-name="floating:ashtree:back">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvas-foto-ekkansla-detaljer-bakifran.jpg" alt="canvas foto ram ekkansla detaljer bakifran" />
+        </li>
+
+        <li data-image-name="floating:oak:full">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvastryck-ram-askkansla-sedd-framifran.png" alt="canvastryck ram askkansla sedd framifran" />
+        </li>
+        <li data-image-name="floating:oak:front">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvastryck-ram-askkansla-detaljer-framifran.png" alt="canvastryck ram askkansla detaljer framifran" />
+        </li>
+        <li data-image-name="floating:oak:back">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvastryck-ram-askkansla-detaljer-bakifran.jpg" alt="canvastryck ram askkansla detaljer bakifran" />
+        </li>
+
+        <li data-image-name="floating:jacaranda:full">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvastavla-ram-rosentrakansla-sedd-framifran.png" alt="canvastavla ram rosentrakansla sedd framifran" />
+        </li>
+        <li data-image-name="floating:jacaranda:front">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvastavla-ram-rosentrakansla-detaljer-framifran.png" alt="canvastavla ram rosentrakansla detaljer framifran" />
+        </li>
+        <li data-image-name="floating:jacaranda:back">
+          <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/canvastavlor/canvastavla-ram-rosentrakansla-detaljer-bakifran.jpg" alt="canvastavla ram rosentrakansla detaljer bakifran" />
+        </li>
+      </ul>
+
+      <ul class="options -has-5">
+        <li>
+          <button type="button" class="cbutton -has-image -highlight" data-target="floating:mattblack:%">
+            <span class="label">Svart matt</span>
+            <span class="icon -black-dull"></span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="cbutton -has-image" data-target="floating:silver:%">
+            <span class="label">Antikt silver</span>
+            <span class="icon -silver"></span>
+          </button>
+        </li>
+
+        <li>
+          <button type="button" class="cbutton -has-image" data-target="floating:white:%">
+            <span class="label">Vit</span>
+            <span class="icon -white"></span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="cbutton -has-image" data-target="floating:brown:%">
+            <span class="label">Valnöt optik</span>
+            <span class="icon -wood1"></span>
+          </button>
+        </li>
+
+          <li>
+            <button type="button" class="cbutton -has-image" data-target="floating:ashtree:%">
+              <span class="label">Ek antikt optik</span>
+              <span class="icon -wood2"></span>
+            </button>
+          </li>
+      </ul>
+  </div>
+
+  <div class="col -span-12 -centered description js-image-switcher" data-target-id="frameSwitcher">
+    <p class="text">
+      Ramverket för valet av din bild på canvas. De karaktäristiska vikta kanterna på duken syns genom den dekorativa svävande ramen, vilket gör denna typ av ram till en mycket populär stil i gallerier.
+    </p>
+    <p class="text">
+      Skapa dina egna canvastavlor och välj en lämplig svävande ram som finns i många olika stilar:
+    </p>
+  </div>
+</div><!-- /floating frames -->
+
+      <ui:include src="/content-blocks/lp/canvas-format-table.xhtml" />
+
+          <div class="article-showcase -small-bottom">
+          <div class="description-wrapper">
+           <h2 class="headline -has-sidelines"><span>Utmärkt kvalitet med personligt foto på Canvastavla</span></h2>
+
+            <div class="description col -span-12">
+              <h3 class="headline">Premium-bilder och en premiumram för din Canvastavla</h3>
+              <p class="text">Vi erbjuder ett brett utbud av anpassningsalternativ och våra premiumramar är det bästa sättet att visa upp ett redan imponerande utskriftsarbete! Oavsett om du väljer en av våra avancerade metalliska nyanser eller en organisk, jordnära träton. Så får du en autentisk struktur som ger ett fantastiskt utseende och känsla! Den slutliga produkten kan praktiskt taget inte skiljas från ett äkta galleristycke!</p>
+            </div>
+
+            <div class="description col -span-12">
+              <h3 class="headline">Plånboksvänliga priser för högkvalitativa Canvas utskrifter</h3>
+              <p class="text">Dessa skräddarsydda men överraskande billiga canvastryck kombinerar plånboksvänliga priser med produktionskvaliteter. Där dessa är i nivå med alla tillverkningsjättar där ute! Den enkla beställningsprocessen och snabba samt säkra leveranser har gjort BestCanvas.se till de mest respekterade tillverkarna av anpassningsbara inredningsartiklar!</p>
+            </div>
+
+            <div class="description col clear-both -span-12">
+              <h3 class="headline">En mängd olika anpassningsalternativ för Canvastavlor</h3>
+              <p class="text">Välj ramen till dig från vårt sortiment av mönster och skapa ett unikt samt personligt canvastryck. Vi är säkra på att BestCanvas.se canvastryck kommer att tillfredsställa den mest krävande köparen! Oavsett om du väljer stående, liggande eller panoramaformat. Eller om det är ett svartvitt eller färgavtryck av ditt foto, så får du alltid ett helt unikt dekorverk för ditt hem!</p>
+            </div>
+
+            <div class="description col -span-12">
+              <h3 class="headline">Smidig beställningsprocess för ditt Canvastryck</h3>
+              <p class="text">Vår webbshop är utformad för kundens bekvämlighet. Det är lätt att navigera och när du har laddat upp din bild kan du se hur den kommer att se ut genom att använda vår produktförhandsgranskningsskärm. Sedan skickas du till kassan och på ett ögonblick är du redo att göra ditt köp. Din produkt kommer att vara klar att skickas högst 24 timmar efter att produktionscykeln har börjat.</p>
+            </div>
+
+          </div>
+        </div>
+
+</ui:composition>

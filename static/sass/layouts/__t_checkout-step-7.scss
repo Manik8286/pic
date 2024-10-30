@@ -1,0 +1,56 @@
+.tablet .checkout-step-7 {
+  &.storyshare {
+    > .story .content {
+      @extend %-span-10;
+    }
+
+    > .share > .terms {
+      @extend %-span-8;
+      @extend %-skip-1;
+    }
+
+    > .share .action {
+      @extend .button_action_mod-touch;
+    }
+  }
+
+  &.orderreview {
+    font-size: 16px;
+
+    > .info {
+      @extend %-span-6;
+      margin-left: 0;
+    }
+
+    > .trusted {
+      @extend %-span-6;
+    }
+  }
+
+  &.customerstory {
+    font-size: 16px;
+
+    > .story {
+      @extend %-span-12;
+    }
+  }
+
+  &.community {
+    .images li {
+      width: 33.3333%;
+    }
+  }
+
+  &.coupon {
+    font-size: 16px;
+    p {
+      @extend %-span-8;
+    }
+
+    .action {
+      padding: 10px;
+      border: 1px solid $highlight-color;
+      border-radius: 2px;
+    }
+  }
+}

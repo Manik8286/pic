@@ -1,0 +1,172 @@
+// Extraced as single element for
+// better maintainability.
+
+.subnavitem {
+  &.-leinwand:before {
+    background-image: url(/assets/img/sprites/nav/leinwand.png);
+    @include image-2x("/assets/img/sprites/nav/leinwand-2x.png", 125px, 75px);
+  }
+
+  &.-fotoposter:before {
+    background-image: url(/assets/img/sprites/nav/fotoposter.png);
+    @include image-2x("/assets/img/sprites/nav/fotoposter-2x.png", 125px, 75px);
+  }
+
+  &.-gerahmte-bild:before {
+    background-image: url(/assets/img/sprites/nav/gerahmtes-bild.png);
+    @include image-2x("/assets/img/sprites/nav/gerahmtes-bild-2x.png", 125px, 75px);
+  }
+
+  &.-acryl:before {
+    background-image: url(/assets/img/sprites/nav/acryl.png);
+    @include image-2x("/assets/img/sprites/nav/acryl-2x.png", 125px, 75px);
+  }
+
+  &.-mixpix:before {
+    background-image: url(/assets/img/sprites/nav/mixpix.png);
+    @include image-2x("/assets/img/sprites/nav/mixpix-2x.png", 125px, 75px);
+  }
+
+  &.-acryl-forex:before {
+    background-image: url(/assets/img/sprites/nav/acryl-forex.png);
+    @include image-2x("/assets/img/sprites/nav/acryl-forex-2x.png", 125px, 75px);
+  }
+
+  &.-woodblock:before {
+    background-image: url(/assets/img/sprites/nav/woodblock.png);
+    @include image-2x("/assets/img/sprites/nav/woodblock-2x.png", 125px, 75px);
+  }
+
+  &.-acryl-aluminium:before {
+    background-image: url(/assets/img/sprites/nav/acryl-aluminium.png);
+    @include image-2x("/assets/img/sprites/nav/acryl-aluminium-2x.png", 125px, 75px);
+  }
+
+  &.-aluminium:before {
+    background-image: url(/assets/img/sprites/nav/aluminium.png);
+    @include image-2x("/assets/img/sprites/nav/aluminium-2x.png", 125px, 75px);
+  }
+
+  &.-forex:before {
+    background-image: url(/assets/img/sprites/nav/forex.png);
+    @include image-2x("/assets/img/sprites/nav/forex-2x.png", 125px, 75px);
+  }
+
+  &.-retro:before {
+    background-image: url(/assets/img/sprites/nav/retro-leinwand.png);
+    @include image-2x("/assets/img/sprites/nav/retro-leinwand-2x.png", 125px, 75px);
+  }
+
+  &.-poster:before {
+    background-image: url(/assets/img/sprites/nav/poster.png);
+    @include image-2x("/assets/img/sprites/nav/poster-2x.png", 125px, 75px);
+  }
+
+  &.-fotobuch:before {
+    background-image: url(/assets/img/sprites/nav/fotobuch.png);
+    @include image-2x("/assets/img/sprites/nav/fotobuch-2x.png", 125px, 75px);
+  }
+
+  &.-fotokalender:before {
+    background-image: url(/assets/img/sprites/nav/fotokalender.png);
+    @include image-2x("/assets/img/sprites/nav/fotokalender-2x.png", 125px, 75px);
+  }
+
+  &.-handycase:before {
+    background-image: url(/assets/img/sprites/nav/handycase.png);
+    @include image-2x("/assets/img/sprites/nav/handycase-2x.png", 125px, 75px);
+  }
+
+  &.-kissen:before {
+    background-image: url(/assets/img/sprites/nav/kissen.png);
+    @include image-2x("/assets/img/sprites/nav/kissen-2x.png", 125px, 75px);
+  }
+
+  &.-tasse:before {
+    background-image: url(/assets/img/sprites/nav/tasse.png);
+    @include image-2x("/assets/img/sprites/nav/tasse-2x.png", 125px, 75px);
+  }
+
+  &.-puzzle:before {
+    background-image: url(/assets/img/sprites/nav/puzzle.png);
+    @include image-2x("/assets/img/sprites/nav/puzzle-2x.png", 125px, 75px);
+  }
+
+  &.-mousepad:before {
+    background-image: url(/assets/img/sprites/nav/mousepad.png);
+    @include image-2x("/assets/img/sprites/nav/mousepad-2x.png", 125px, 75px);
+  }
+
+  &.-wood:before {
+    background-image: url(/assets/img/sprites/nav/wood.png);
+    @include image-2x("/assets/img/sprites/nav/wood-2x.png", 125px, 75px);
+  }
+
+  &.-childrenbook:before {
+    background-image: url(/assets/img/sprites/nav/childrenbook.png);
+    @include image-2x("/assets/img/sprites/nav/childrenbook-2x.png", 125px, 75px);
+  }
+
+  &.-blanket:before {
+    background-image: url(/assets/img/sprites/nav/blanket.png);
+    @include image-2x("/assets/img/sprites/nav/blanket-2x.png", 125px, 75px);
+  }
+
+  &.-acrylblock:before {
+    background-image: url(/assets/img/sprites/nav/acrylblock.png);
+    @include image-2x("/assets/img/sprites/nav/acrylblock-2x.png", 125px, 75px);
+  }
+
+  &.-handtuch:before {
+    background-image: url(/assets/img/sprites/nav/handtuch.png);
+    @include image-2x("/assets/img/sprites/nav/handtuch-2x.png", 125px, 75px);
+  }
+
+  &.-facemask:before {
+    background-image: url(/assets/img/sprites/nav/facemask.png);
+    @include image-2x("/assets/img/sprites/nav/facemask-2x.png", 125px, 75px);
+  }
+
+  &.-rug:before {
+    background-image: url(/assets/img/sprites/nav/rug.png);
+    @include image-2x("/assets/img/sprites/nav/rug-2x.png", 125px, 75px);
+  }
+
+  &.-totebag:before {
+    background-image: url(/assets/img/sprites/nav/totebag.png);
+    @include image-2x("/assets/img/sprites/nav/totebag-2x.png", 125px, 75px);
+  }
+
+  &.-starmap:before {
+    background-image: url(/assets/img/sprites/nav/starmap.png);
+    @include image-2x("/assets/img/sprites/nav/starmap-2x.png", 125px, 75px);
+  }
+
+  &.-mixblox:before {
+    background-image: url(/assets/img/sprites/nav/mixblox.png);
+    @include image-2x("/assets/img/sprites/nav/mixblox-2x.png", 125px, 75px);
+  }
+
+  &.-photoprints:before {
+    background-image: url(/assets/img/sprites/nav/photoprints-navi.png);
+    @include image-2x("/assets/img/sprites/nav/photoprints-navi-2x.png", 125px, 75px);
+  }
+
+  .-red {
+    position: absolute;
+    font-size: 14px !important;
+    top: -10px;
+    margin-left: 30px;
+    text-shadow: 2px 2px 2px #ffffff;
+
+    &.-righton {
+      margin-left: 8px !important;
+    }
+
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      strong {
+        margin-left: 65px;
+      }
+    }
+  }
+}

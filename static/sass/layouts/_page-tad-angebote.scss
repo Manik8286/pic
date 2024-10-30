@@ -1,0 +1,82 @@
+.tag-angebote{
+
+  .fototasse-tip {
+    background:#FCEBF3;
+    padding: 30px;
+    margin:0;
+    a{
+      color: $black;
+    }
+  }
+  .page-section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    > .vater-background1 {
+      background-image:url(/assets/img/photo-gift-ideas/Vatertag_Leinwand.jpg);
+      height:427px;
+      background-repeat: no-repeat;
+      -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+      background-size: cover;
+    }
+    > .vater-background2 {
+      background-image:url(/assets/img/photo-gift-ideas/Vatertag_Poster.jpg);
+      height:475px;
+      background-repeat: no-repeat;
+      -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+      background-size: cover;
+    }
+    > .vater-background3 {
+      background-image:url(/assets/img/photo-gift-ideas/Vatertag_Acryl.jpg);
+      height:427px;
+      background-repeat: no-repeat; 
+      background-repeat: no-repeat;
+      -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+      background-size: cover;
+    }       
+  }
+  .product-box-deal {
+    font-size: 18px;
+    float: left;
+  }
+  .deal-price  {
+    color: $newGreen;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .old-price {
+    float: right;
+    text-decoration: line-through;
+    font-size:13px;
+  }
+  .product-box-discount {
+    background-color: red;
+    padding: 5px 13px;
+    float: right;
+    margin-top: 4px;
+    color: $white;
+    text-align: center;
+    font-size: 18px;
+    margin-right: -13px;
+  }
+  .product-box.-extended {
+    margin-top: 30px;
+    padding: 10px 30px;
+    background-color:rgba(251,251,251,0.7);
+  } 
+  .product-deal-box  {
+    padding:20px;
+    background-color:rgba(251,251,251,0.7);
+  }
+  .deko-tipp {
+    text-align:center;
+    color:white;
+    padding:50px
+  }
+
+}

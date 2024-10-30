@@ -1,0 +1,97 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:fb="http://www.facebook.com/2008/fbml"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+			<div style="display:none" itemscope="itemscope" itemtype="http://schema.org/Product">
+				<meta itemprop="name" content="Uw Foto op #{product} #{width} #{sizeInfo == 'cm' ? 'x' : ''} #{height} #{sizeInfo}"/>
+				<div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+					<meta itemprop="sku" content="bcnl-gmc-format-#{format}-#{width}#{sizeInfo == 'cm' ? 'X' : ''}#{height}-1-bal" />
+					<meta itemprop="name" content="Uw Foto op #{product} #{width} #{sizeInfo == 'cm' ? 'x' : ''} #{height} #{sizeInfo}"/>
+					<h:outputText escape="false" value="#{contentBean.snippets['microdata-condition']}"/>
+					<h:outputText escape="false" value="#{contentBean.snippets['microdata-availability']}"/>
+					<span itemprop="price" content="#{fn:replace(price, ',', '.')}">#{price}</span>
+					<span itemprop="priceCurrency" content="EUR">€</span>
+				</div>
+			</div>
+			<div style="display:none" itemscope="itemscope" itemtype="http://schema.org/Product">
+				<meta itemprop="name" content="Uw Foto op #{product} #{width} #{sizeInfo == 'cm' ? 'x' : ''} #{height} #{sizeInfo}"/>
+				<div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+					<meta itemprop="sku" content="bcnl-gmc-format-#{format}-#{width}#{sizeInfo == 'cm' ? 'X' : ''}#{height}-1-fal" />
+					<meta itemprop="name" content="Uw Foto op #{product} #{width} #{sizeInfo == 'cm' ? 'x' : ''} #{height} #{sizeInfo}"/>
+					<h:outputText escape="false" value="#{contentBean.snippets['microdata-condition']}"/>
+					<h:outputText escape="false" value="#{contentBean.snippets['microdata-availability']}"/>
+					<span itemprop="price" content="#{fn:replace(price, ',', '.')}">#{price}</span>
+					<span itemprop="priceCurrency" content="EUR">€</span>
+				</div>
+			</div>
+			<div style="display:none" itemscope="itemscope" itemtype="http://schema.org/Product">
+				<meta itemprop="name" content="Foto#{product} #{width} #{sizeInfo == 'cm' ? 'x' : ''} #{height} #{sizeInfo}"/>
+				<div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+					<meta itemprop="sku" content="bcnl-gmc-format-#{format}-#{width}#{sizeInfo == 'cm' ? 'X' : ''}#{height}-1-fl" />
+					<meta itemprop="name" content="Foto#{product} #{width} #{sizeInfo == 'cm' ? 'x' : ''} #{height} #{sizeInfo}"/>
+					<h:outputText escape="false" value="#{contentBean.snippets['microdata-condition']}"/>
+					<h:outputText escape="false" value="#{contentBean.snippets['microdata-availability']}"/>
+					<span itemprop="price" content="#{fn:replace(price, ',', '.')}">#{price}</span>
+					<span itemprop="priceCurrency" content="EUR">€</span>
+				</div>
+			</div>
+			<div style="display:none" itemscope="itemscope" itemtype="http://schema.org/Product">
+				<meta itemprop="name" content="Foto #{product} #{width} #{sizeInfo == 'cm' ? 'x' : ''} #{height} #{sizeInfo}"/>
+				<div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+					<meta itemprop="sku" content="bcnl-gmc-format-#{format}-#{width}#{sizeInfo == 'cm' ? 'X' : ''}#{height}-1-f-l" />
+					<meta itemprop="name" content="Foto #{product} #{width} #{sizeInfo == 'cm' ? 'x' : ''} #{height} #{sizeInfo}"/>
+					<h:outputText escape="false" value="#{contentBean.snippets['microdata-condition']}"/>
+					<h:outputText escape="false" value="#{contentBean.snippets['microdata-availability']}"/>
+					<span itemprop="price" content="#{fn:replace(price, ',', '.')}">#{price}</span>
+					<span itemprop="priceCurrency" content="EUR">€</span>
+				</div>
+			</div>
+			<div style="display:none" itemscope="itemscope" itemtype="http://schema.org/Product">
+				<meta itemprop="name" content="Foto#{product} günstig #{width} #{sizeInfo == 'cm' ? 'x' : ''} #{height} #{sizeInfo}"/>
+				<div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+					<meta itemprop="sku" content="bcnl-gmc-format-#{format}-#{width}#{sizeInfo == 'cm' ? 'X' : ''}#{height}-1-flg" />
+					<meta itemprop="name" content="Foto#{product} günstig #{width} #{sizeInfo == 'cm' ? 'x' : ''} #{height} #{sizeInfo}"/>
+					<h:outputText escape="false" value="#{contentBean.snippets['microdata-condition']}"/>
+					<h:outputText escape="false" value="#{contentBean.snippets['microdata-availability']}"/>
+					<span itemprop="price" content="#{fn:replace(price, ',', '.')}">#{price}</span>
+					<span itemprop="priceCurrency" content="EUR">€</span>
+				</div>
+			</div>
+			<div style="display:none" itemscope="itemscope" itemtype="http://schema.org/Product">
+				<meta itemprop="name" content="#{product} #{width} #{sizeInfo == 'cm' ? 'x' : ''} #{height} #{sizeInfo}"/>
+				<div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+					<meta itemprop="sku" content="bcnl-gmc-format-#{format}-#{width}#{sizeInfo == 'cm' ? 'X' : ''}#{height}-1-l" />
+					<meta itemprop="name" content="#{product} #{width} #{sizeInfo == 'cm' ? 'x' : ''} #{height} #{sizeInfo}"/>
+					<h:outputText escape="false" value="#{contentBean.snippets['microdata-condition']}"/>
+					<h:outputText escape="false" value="#{contentBean.snippets['microdata-availability']}"/>
+					<span itemprop="price" content="#{fn:replace(price, ',', '.')}">#{price}</span>
+					<span itemprop="priceCurrency" content="EUR">€</span>
+				</div>
+			</div>
+			<div style="display:none" itemscope="itemscope" itemtype="http://schema.org/Product">
+				<meta itemprop="name" content="#{product}afdruk #{width} #{sizeInfo == 'cm' ? 'x' : ''} #{height} #{sizeInfo}"/>
+				<div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+					<meta itemprop="sku" content="bcnl-gmc-format-#{format}-#{width}#{sizeInfo == 'cm' ? 'X' : ''}#{height}-1-ld" />
+					<meta itemprop="name" content="#{product}afdruk #{width} #{sizeInfo == 'cm' ? 'x' : ''} #{height} #{sizeInfo}"/>
+					<h:outputText escape="false" value="#{contentBean.snippets['microdata-condition']}"/>
+					<h:outputText escape="false" value="#{contentBean.snippets['microdata-availability']}"/>
+					<span itemprop="price" content="#{fn:replace(price, ',', '.')}">#{price}</span>
+					<span itemprop="priceCurrency" content="EUR">€</span>
+				</div>
+			</div>
+			<div style="display:none" itemscope="itemscope" itemtype="http://schema.org/Product">
+				<meta itemprop="name" content="#{product} afdruk #{width} #{sizeInfo == 'cm' ? 'x' : ''} #{height} #{sizeInfo}"/>
+				<div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+					<meta itemprop="sku" content="bcnl-gmc-format-#{format}-#{width}#{sizeInfo == 'cm' ? 'X' : ''}#{height}-1-l-d" />
+					<meta itemprop="name" content="#{product} afdruk #{width} #{sizeInfo == 'cm' ? 'x' : ''} #{height} #{sizeInfo}"/>
+					<h:outputText escape="false" value="#{contentBean.snippets['microdata-condition']}"/>
+					<h:outputText escape="false" value="#{contentBean.snippets['microdata-availability']}"/>
+					<span itemprop="price" content="#{fn:replace(price, ',', '.')}">#{price}</span>
+					<span itemprop="priceCurrency" content="EUR">€</span>
+				</div>
+			</div>
+
+</ui:composition>

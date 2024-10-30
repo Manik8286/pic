@@ -1,0 +1,344 @@
+.p_carttable {
+  font-size: 14px;
+  width: 100%;
+
+  td {
+    padding: 20px 5px 5px 5px;
+    &.image {
+        padding-right: 10px;
+    }
+  }
+
+  td p {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  tr.-controls {
+    border-bottom: 1px solid $lightergrey;
+
+    td {
+      padding-bottom: 20px;
+      padding-top: 20px;
+    }
+  }
+
+  tr.products {
+        picture {
+            margin-bottom: 10px;
+            display: inline-flex;
+            position: relative;
+
+            &:after {
+                content: '';
+                background-size: 100% 100%;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+
+            &.-premiumPillow {
+                &:after {
+                    background-image: url(/assets/img/checkout/cushion/premium-cushion-mask.png);
+                }
+            }
+
+            &.-standardPillow {
+                &:after {
+                    background-image: url(/assets/img/checkout/cushion/standard-cushion-mask.png);
+                }
+            }
+
+            &.-blanketPillowLandscape {
+                &:after {
+                    background-image: url(/assets/img/checkout/blanket/blanket-2000x1500.png);
+                }
+            }
+
+            &.-blanketPillowPortrait {
+                &:after {
+                    background-image: url(/assets/img/checkout/blanket/blanket-1500x2000.png);
+                }
+            }
+
+            &.-towelLandscape {
+                &:after {
+                background-image: url(/assets/img/checkout/towel/configurator-towel-880x480.png);
+                }
+            }
+
+            &.-towelPortrait {
+                &:after {
+                background-image: url(/assets/img/checkout/towel/configurator-towel-880x1380-vertical.png);
+                }
+            }
+        }
+  }
+
+  td.price {
+    white-space: nowrap;
+  }
+
+  td.-align-right {
+    text-align: right;
+  }
+
+  td.-mixpix {
+    background-image: url(/assets/img/checkout/mixpixPreviewBackground.png);
+    background-repeat: no-repeat;
+    background-position: 9px 24px;
+    background-size: 86px 86px;
+
+    &.-checkout {
+        background-position: 7px 14px;
+    }
+   }
+
+
+  td.-mixpixCheckout{
+      background-image: url(/assets/img/checkout/mixpixPreviewBackground.png);
+      background-repeat: no-repeat;
+      width: 70px;
+      height: 70px;
+      background-size: 70px 70px;
+      background-position: 13px 27px;
+      padding-bottom: 15px;
+      padding-right: 20px;
+    img{
+      width: 70px;
+    }
+  }
+
+  .preview {
+    width: 80px;
+  }
+
+  .amount {
+    @extend .input;
+    @extend .input.-shy;
+    @extend .input.-touch;
+    @extend .input.-has-background;
+    @extend .button_simple_mod-updown-arrows;
+    width: 50px;
+    margin-right: 40px;
+    float: left;
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .change,
+  .delete {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    float: left;
+    text-decoration: none;
+  }
+
+  .change {
+    @extend .anchor;
+    margin-right: 40px;
+    margin-left: 25px;
+  }
+
+  .delete {
+    background-color: transparent;
+    border-color: $cart-delete-color;
+    color: $cart-delete-color;
+  }
+
+
+}
+.new-shoppingcart {
+
+    .options {
+        padding-top: 0;
+    }
+
+    .separator {
+        position: absolute;
+        margin-top: 9px;
+        margin-left: -5px;
+        &.-mixpix {
+            position: relative;
+        }
+    }
+    .form-group.-action{
+            margin: 15px 0;
+    }
+    .couponLink{
+    float: right;
+    font-size: 14px;
+    position: relative;
+    color: $newGreen;
+    top: -20px;
+    text-decoration: none;
+    }
+    .finalprice{font-size: 16px;font-weight: 700;}
+    .hidden{display:none !important;}
+    .number-spinner>.edit,
+    .number-spinner>.field {
+        display: inline-block;
+        padding: 0;
+        width: 30px;
+        height: 25px;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .number-spinner {
+       margin-top: 10px;
+       padding-bottom: 50px;
+    }
+    .number-spinner>.field {
+        margin: 0px;
+        border-color: #c5c5c5;
+    }
+    .number-spinner>.edit {
+        line-height: 0px;
+        font-size: 20px;
+    }
+    button.edit.js-more {
+        border-radius: 0px 5px 5px 0px;
+        margin-left: -5px;
+        color: gray;
+        background-color: #ececec;
+        border-color: #c5c5c5;
+    }
+    button.edit.js-less {
+        border-radius: 5px 0px 0px 5px;
+        margin-right: -1px;
+        color: gray;
+        background-color: #ececec;
+        border-color: #c5c5c5;
+    }
+
+    .additional {
+        background-color: $lightergrey;
+        border-bottom: 1px solid #d4d4d4;
+        margin-bottom: 5px;
+        text-align: left;
+        padding: 10px 0 0 10px;
+        width: 90%;
+        margin: 0 auto;
+        &.recommendation {
+            font-size: 15px;
+            border-top: 1px solid #d4d4d4;
+            p {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+            .image {
+                margin-right: 20px;
+                margin-bottom: 25px;
+                float: left;
+            }
+            .UploadAnother {
+                color: $newGreen;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .upload-add {
+        color: $newGreen;
+        text-decoration: none;
+    }
+
+    .checkout-step-3.cart {
+        border: none
+    }
+    .checkout-section .legend,
+    .headline.-checkout {
+        margin-bottom: 0px;
+    }
+    .checkout-step-3 .p_carttable .change {
+        background-color: transparent;
+    }
+    .-block-content {
+        padding: 0px 0px 0px !important;
+    }
+    .js-less {
+        visibility: visible !important;
+        ;
+    }
+    .checkout-step-3.options .subprice {
+        font-size: 14px;
+        line-height: 1.9em;
+        margin-top: -15px;
+    }
+     .amazon-button-image-2017 {
+        border-radius: 5px !important;
+    }
+
+    .checkout-step-3.options .coupon .action {
+        width: 39%;
+        margin-left: 5px;
+        height: 30px;
+        line-height: 1em;
+        color: $white;
+        background-color: $newGreen;
+        border-color: $newGreen;
+        margin-top: 20px;
+    }
+    .checkout-step-3.options .coupon .field {
+        margin-top: 5px;
+        width: 59%;
+        font-size: 14px;
+        height: 30px;
+        line-height: 20px;
+    }
+    .form-dropdown{
+        width: 140px !important;
+    }
+    button.label {
+        width: 140px !important;
+        text-align: left;
+        margin-left: 20px;
+    }
+    button.label:after {
+        top: 10px !important;
+        right: 18px !important;
+    }
+    button.label:before {
+        border-left: 0px !important;
+    }
+    .subprice {
+        border-bottom: 1px solid #c5c5c5;
+        padding: 15px 0px 15px 0px;
+    }
+    ul.features {
+        list-style-type: none;
+        padding-left: 10px;
+        font-size: 14px;
+    }
+    ul.features li:before {
+        content: "\2713\0020";
+        color: $newGreen;
+        font-weight: 700;
+        margin-right: 5px;
+    }
+    .footer-logos {
+        position: absolute;
+        right: 30px;
+        margin-top: -40px;
+    }
+    .topbutton{
+    margin-top:10px;
+    }
+    .change{
+    margin-left: -5px;
+    margin-right: 0px;
+    }
+    .edit-remove{
+    display: table;
+    position: absolute;
+    margin-top: -30px;
+    margin-left: -4px;
+    }
+
+    .item-quantity-dropdown {
+        margin: 5px 0 30px;
+    }
+}

@@ -1,0 +1,37 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:param name="pageTitle" value="#{_['Registration successful']}" />
+
+  <ui:define name="meta">
+    <meta name="robots" content="NOINDEX,FOLLOW" />
+    <meta http-equiv="content-language" content="sv_SE"/>
+  </ui:define>
+
+  <ui:define name="content">
+    <div class="page-teaser -collapse">
+      <div class="text" style="background-image: url(/#{shopInfoBean.versionPath}assets/img/backgrounds/mac_desktop.jpg)">
+        <div class="row">
+          <div class="col -span-12">
+            <h1 class="headline">#{_['Activation Code Sent']}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="page-text">
+      <div class="content">
+        <p>
+          Een E-Mail met een activeringscode wird naar uw e-mailadres verzonden Klik alstublieft op de link in de e-mail om uw registratie succesvol af te ronden.
+          <br/>
+          Alle afbeeldingen die u al heeft geüpload tijdens deze sessie zijn verplaatst naar u nieuwe gebruikersaccount .
+        </p>
+      </div>
+    </section>
+    
+  </ui:define>
+</ui:composition>

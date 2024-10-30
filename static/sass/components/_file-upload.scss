@@ -1,0 +1,31 @@
+.file-upload {
+  position: relative;
+  height: 70px;
+  margin-bottom: 20px;
+
+  .image {
+    display: block;
+    float: left;
+    margin-right: 20px;
+  }
+
+  .progress {
+    @extend .progress-bar !optional;
+    padding-top: 26px;
+    overflow: hidden;
+  }
+
+  .cancel {
+    @extend .button_simple;
+    @extend .button_simple_mod-has-background;
+    @extend .button_simple_mod-cancel;
+    width: 30px;
+    height: 30px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: $weight-bold;
+    line-height: 30px;
+    float: right;
+    margin-left: 20px;
+  }
+}

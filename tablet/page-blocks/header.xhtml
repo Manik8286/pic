@@ -1,0 +1,169 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <header class="#{viewType == 'tablet' ? '_p_t-page-head -bigger' : '_p_t-page-head'}">
+    <span class="sr">bestcanvas.se</span>
+<div class="full">
+  <a href="#{baseUrlBean.baseUrl}" class="brand">
+    <ui:include src="/helper/svg.xhtml">
+      <ui:param name="svgClass" value="logo" />
+      <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-logo" />
+    </ui:include>
+  </a>
+</div>
+
+    <button class="burger js-mobile-nav-toggle">
+      <span class="lines">
+        <span class="line -l1"></span>
+        <span class="line -l2"></span>
+        <span class="line -l3"></span>
+      </span>
+      <span class="text" data-alternate-text="Meny">Meny</span>
+    </button>
+
+    <ui:remove>
+    <!-- START shopping cart -->
+    <!-- Display Shopping Cart count
+    and output active state, if count > 0 -->
+    </ui:remove>
+
+    <div class="nav-right">
+      <c:choose>
+        <c:when test="#{loginBean.loggedIn}">
+          <a href="/accountoverview/" class="login -active">
+            <span class="sr">Kontoöversikt</span>
+            <ui:include src="/helper/svg.xhtml">
+              <ui:param name="svgClass" value="icon" />
+              <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-icon_account" />
+              <ui:param name="svgWidth" value="30" />
+              <ui:param name="svgHeight" value="25" />
+            </ui:include>
+          </a>
+        </c:when>
+        <c:otherwise>
+          <a href="/customer/" class="login">
+            <span class="sr">Logga in</span>
+            <ui:include src="/helper/svg.xhtml">
+              <ui:param name="svgClass" value="icon" />
+              <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-icon_account" />
+              <ui:param name="svgWidth" value="30" />
+              <ui:param name="svgHeight" value="25" />
+            </ui:include>
+          </a>
+        </c:otherwise>
+      </c:choose>
+      <c:choose>
+        <c:when test="${shoppingCartBean.numberOfItems > 0}">
+          <a href="/shoppingcart.jsf" class="cart -filled" style="border:none;" data-fill-count="#{shoppingCartBean.numberOfItems}">
+            <span class="sr">Varukorg</span>
+            <ui:include src="/helper/svg.xhtml">
+              <ui:param name="svgClass" value="icon" />
+              <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-icon_cart" />
+              <ui:param name="svgWidth" value="30" />
+              <ui:param name="svgHeight" value="25" />
+            </ui:include>
+          </a>
+        </c:when>
+        <c:otherwise>
+          <a href="/shoppingcart.jsf" class="cart">
+            <span class="sr">Varukorg</span>
+            <ui:include src="/helper/svg.xhtml">
+              <ui:param name="svgClass" value="icon" />
+              <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-icon_cart" />
+              <ui:param name="svgWidth" value="30" />
+              <ui:param name="svgHeight" value="25" />
+            </ui:include>
+          </a>
+        </c:otherwise>
+      </c:choose>
+    </div>
+
+    <ui:remove><!-- END shopping cart --></ui:remove>
+
+    <nav class="menu js-mobile-menu" data-toggle=".js-mobile-nav-toggle">
+
+      <div class="interact">
+        <ui:remove>
+          <!-- START account -->
+          <!-- Show Login link if not logged in,
+          otherwise show account related links -->
+        </ui:remove>
+
+        <a href="/bestallningsstatus/" class="action call">
+          <ui:include src="/helper/svg.xhtml">
+            <ui:param name="svgClass" value="icon phone" />
+            <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-truck" />
+          </ui:include>
+          #{_['Order Status']}
+        </a>
+
+        <a href="/impressum/" class="action call">
+          <ui:include src="/helper/svg.xhtml">
+            <ui:param name="svgClass" value="icon phone" />
+            <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-info-circle" />
+          </ui:include>
+          Kontakt
+        </a>
+
+        <c:choose>
+          <c:when test="#{loginBean.loggedIn}">
+            <a href="/accountoverview/" class="action login -active">
+              <ui:include src="/helper/svg.xhtml">
+                <ui:param name="svgClass" value="icon user" />
+                <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-user" />
+              </ui:include>
+              Account
+            </a>
+          </c:when>
+
+          <c:otherwise>
+            <a href="/customer.jsf" class="action login">
+              <ui:include src="/helper/svg.xhtml">
+                <ui:param name="svgClass" value="icon user" />
+                <ui:param name="svgUrl" value="/#{shopInfoBean.versionPath}assets/build/svg/map-page.svg#page-user" />
+              </ui:include>
+              #{_['Login']}
+            </a>
+          </c:otherwise>
+        </c:choose>
+
+        <ui:remove><!-- END account --></ui:remove>
+      </div>
+
+      <ul class="nav js-accordion" data-accordion-close="true">
+        <li class="item -level-1 -expandable js-accordion-title"><span>Väggdekoration</span></li>
+
+        <ul class="sub js-accordion-body">
+          <li class="item -level-2"><a class="_t_subnavitem -leinwand" href="/vaggdekor/canvastavlor.jsf">Canvastavlor</a></li>
+          <li class="item -level-2"><a class="_t_subnavitem -gerahmte-bild" href="/vaggdekor/fototavlor-med-ram.jsf">Fototavlor med ram</a></li>
+          <li class="item -level-2"><a class="_t_subnavitem -wood" href="/vaggdekor/tratavlor.jsf">Trätavlor</a></li>
+          <li class="item  -level-2"><a href="/vaggdekor/akrylglastavlor.jsf" class="_t_subnavitem -acryl"><span class="title">Akrylglastavlor</span></a></li>
+          <li class="item  -level-2"><a href="/vaggdekor/aluminiumtavlor.jsf" class="_t_subnavitem -aluminium"><span class="title">Aluminiumtavlor</span></a></li>
+          <li class="item  -level-2"><a href="/vaggdekor/fototavlor.jsf" class="_t_subnavitem -forex"><span class="title">Fototavlor</span></a></li>
+          <li class="item  -level-2"><a href="/vaggdekor/akryl-aluminium.jsf" class="_t_subnavitem -acryl-aluminium"><span class="title">Akryl + Aluminium</span></a></li>
+          <li class="item -level-2 ref-mixpix"><a class="_t_subnavitem -mixpix" href="/mixpix/"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/logo/mixpix_S_T.svg" alt="MixPix" height="11px" /><span class="NEW_badge">NY</span></a></li>
+        </ul>
+
+        <li class="item -level-1 -expandable js-accordion-title"><span>Home &amp; Lifestyle</span></li>
+        <ul class="sub js-accordion-body">
+          <li class="item -level-2"><a class="_t_subnavitem -handtuch" href="/home-lifestyle/fotohandduk.jsf">Handduk</a></li>
+          <li class="item -level-2"><a class="_t_subnavitem -kissen" href="/home-lifestyle/fotokudde.jsf">Fotokudde</a></li>
+          <li class="item -level-2"><a class="_t_subnavitem -blanket" href="/home-lifestyle/fotofilt.jsf">Fotofilt</a></li>
+          <li class="item -level-2"><a class="_t_subnavitem -acrylblock" href="/home-lifestyle/akrylblock.jsf">Akrylblock</a></li>
+          <li class="item -level-2"><a class="_t_subnavitem -rug" href="/home-lifestyle/fotomatta.jsf">Matta</a></li>
+        </ul>
+
+        <li class="item -level-1 -expandable js-accordion-title"><span>Fotopresenter</span></li>
+        <ul class="sub js-accordion-body">
+          <li class="item -level-2"><a class="_t_subnavitem -tasse" href="/fotopresenter/fotomugg.jsf">Fotomugg</a></li>
+          <li class="item -level-2"><a class="_t_subnavitem -mousepad" href="/fotopresenter/musmatta-med-foto.jsf">Musmatta med Foto</a></li>
+          <li class="item -level-2"><a class="_t_subnavitem -puzzle" href="/fotopresenter/fotopussel.jsf">Fotopussel</a></li>
+          <li class="item -level-2"><a class="_t_subnavitem -starmap" href="/fotopresenter/stjarnkarta.jsf">Stjärnhimmel</a></li>
+        </ul>
+        <li class="item -level-1"><a href="/format/">Format &amp; Priser</a></li>
+      </ul>
+
+    </nav>
+  </header>
+</ui:composition>

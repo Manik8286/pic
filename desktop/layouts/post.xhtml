@@ -1,0 +1,353 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:param name="pageTitle" value="#{articleBean.title}" />
+
+    <ui:define name="meta">
+      <meta name="robots" content="INDEX,FOLLOW" />
+      <meta http-equiv="content-language" content="sv_SE"/>
+      <meta name="description" content="#{articleBean.shortDescription}" />
+
+      <meta property="og:title" content="#{articleBean.title}" />
+      <meta property="og:type" content="article" />
+      <meta property="og:url" content="#{request.getRequestURL()}" />
+      <meta property="og:image" content="https://download.cdn-shop.com/media/web_images/se/blog/#{articleBean.page.url}-social.jpg" />
+      <meta property="og:description" content="#{articleBean.shortDescription}" />
+      <meta property="og:site_name" content="Bestcanvas.se" />
+      <meta property="article:section" content="Blog" />
+      <meta property="article:tag" content="photography" />
+
+      <meta itemprop="name" content="#{articleBean.title}" />
+      <meta itemprop="description" content="#{articleBean.shortDescription}" />
+      <meta itemprop="image" content="https://download.cdn-shop.com/media/web_images/se/blog/#{articleBean.page.url}-social.jpg" />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@bestcanvas_se" />
+      <meta name="twitter:creator" content="@bestcanvas_se" />
+      <meta name="twitter:title" content="#{articleBean.title}" />
+      <meta name="twitter:description" content="#{articleBean.shortDescription}" />
+      <meta name="twitter:url" content="#{request.getRequestURL()}" />
+      <meta name="twitter:image" content="https://download.cdn-shop.com/media/web_images/se/blog/#{articleBean.page.url}-social.jpg" />
+
+      <link rel="canonical" href="#{request.getRequestURL()}" />
+    </ui:define>
+
+    <ui:define name="content">
+
+    <main class="post">
+      <article class="header" style="background-image: url(https://download.cdn-shop.com/media/web_images/se/blog/#{articleBean.page.url}-intro.jpg)">
+        <div class="inner">
+          <h1 class="headline">#{articleBean.title}</h1>
+        </div>
+      </article>
+
+      <article class="body">
+        <img src="/assets/img/icons/user-icon.svg" jsf:rendered="#{not empty articleBean.author}" alt="user icon" class="publisherDetails" width="20px" height="20px" />
+        <span itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person" class="publisherDetails">Av <span itemprop="name" class="publisherDetails"><h:outputText value="#{articleBean.author}" escape="false" /></span></span>
+        <img src="/assets/img/icons/clock-icon.svg" jsf:rendered="#{not empty articleBean.estimatedReadingTime}" alt="clock icon" class="publisherDetails" width="20px" height="20px" /><span itemprop="timePublished" class="publisherDetails"><h:outputText value="#{articleBean.estimatedReadingTime}" escape="false" /></span>
+        <img src="/assets/img/icons/calendar-icon.svg" jsf:rendered="#{not empty articleBean.publishDateLabel}" alt="calender icon" class="publisherDetails" width="20px" height="20px" /><time itemprop="datePublished" class="publisherDetails" datetime="#{articleBean.publishDateLabel}"><h:outputText value="#{articleBean.publishDateLabel}" escape="false" /></time>
+        <h:outputText value="#{articleBean.longDescription}" escape="false" />
+
+        <aside>
+          <h3><strong>Populära produkter</strong></h3>
+          <!-- Canvas -->
+          <div class="#{sessionBean.userAgentType != 'phone' ? 'dFlex' : 'swipeMob '}" style="margin-top: 40px;">
+            <div class="product preview col -span-#{sessionBean.userAgentType != 'phone' ? '3' : '9'} #{sessionBean.userAgentType != 'phone' ? '' : 'dInlineBlock'} -blogArticle">
+              <div class="product-box preview -clearHeight">
+                <div class="content">
+                  <a href="/vaggdekor/canvastavlor.jsf" class="img-container" tabindex="0">
+                    <img src="/assets/img/blog/canvas.jpg" alt="cheap canvas print" class="product-image" />
+                  </a>
+                  <div class="infos" style="position: relative; margin-bottom: 0; width: 100%;">
+                    <h2 class="title -articleTitle">
+                      <a href="/vaggdekor/canvastavlor.jsf" tabindex="0" style="color: #4a4a4a;font-weight: bold;font-size: 16px">Canvastavlor</a>
+                    </h2>
+                    <div class="dFlex">
+                      <p class="crossPrice"><s>#{priceBean.productCrossPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 20x20')}</s></p>
+                      <p class="smallPriceBadge"><span><strong>#{priceBean.productPrice('Canvas_Bestcanvas_SE', 'Canvas', 'Canvas 20x20')}</strong></span></p>
+                    </div>
+
+                    <div class="buttons">
+                      <div class="upload-button" style="width: 100%;">
+                        <form class="js-du" style="margin-bottom: 0;">
+                          <input type="hidden" value="254" class="js-du-productid" tabindex="0" />
+                          <input type="hidden" value="0" class="js-rm-item" tabindex="0" />
+                          <div class="upload-button " style="width: 100%;">
+                            <input id="uploadInputId254" type="file" aria-label="Image upload" class="js-du-file fileinput" accept=".jpg, .jpeg, .png, .gif, .webp" tabindex="0" multiple="" />
+                            <button type="button" id="chooseFile254" class="js-du-button -action -secondary button filebutton -arrow -download" tabindex="0">
+                              Skapa
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                      <a href="/vaggdekor/canvastavlor.jsf" class="text-green" tabindex="0"></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MixPix -->
+            <div class="product preview col -span-#{sessionBean.userAgentType != 'phone' ? '3' : '9'} #{sessionBean.userAgentType != 'phone' ? '' : 'dInlineBlock'} -blogArticle">
+              <div class="product-box  preview -clearHeight">
+                <div class="content">
+                  <a href="/mixpix.jsf" class="img-container" tabindex="0">
+                    <img src="/assets/img/blog/mixpix.jpg" alt="mixpix" class="product-image" />
+                  </a>
+                  <div class="infos" style="position: relative; margin-bottom: 0; width: 100%;">
+                    <h2 class="title -articleTitle">
+                      <a href="/mixpix.jsf" style="color: #4a4a4a;font-weight: bold;font-size: 16px" tabindex="0">MIXPIX®</a>
+                    </h2>
+                    <div class="dFlex">
+                      <p class="crossPrice"><s>#{priceBean.productCrossPrice('MixPics_Bestecanvas_SE', 'MixPix', 'MixPix 20x20')}</s></p>
+                      <p class="smallPriceBadge"><span><strong>#{priceBean.productPrice('MixPics_Bestecanvas_SE', 'MixPix', 'MixPix 20x20')}</strong></span></p>
+                    </div>
+
+                    <div class="buttons">
+                      <div class="upload-button" style="width: 100%;">
+                        <div class="upload-button" style="width: 100%;">
+                          <a href="multiimage_mixpix.jsf?product=4284" class="filebutton" tabindex="0">
+                            <button type="button" class="js-du-button -action -secondary button filebutton -arrow -download" tabindex="0">
+                              Skapa
+                            </button>
+                          </a>
+                        </div>
+                      </div>
+                      <a href="/mixpix.jsf" class="text-green" tabindex="0">
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Blanket -->
+            <div class="product preview col -span-#{sessionBean.userAgentType != 'phone' ? '3' : '9'} #{sessionBean.userAgentType != 'phone' ? '' : 'dInlineBlock'} -blogArticle">
+              <div class="product-box  preview -clearHeight">
+                <div class="content">
+                  <a href="/home-lifestyle/fotofilt.jsf" class="img-container" tabindex="0">
+                    <img src="/assets/img/blog/blanket.jpg" alt="photo cushion" class="product-image" />
+                  </a>
+
+                  <div class="infos" style="position: relative; margin-bottom: 0; width: 100%;">
+                    <h2 class="title -articleTitle">
+                      <a href="/home-lifestyle/fotofilt.jsf" style="color: #4a4a4a;font-weight: bold;font-size: 16px" tabindex="0">Fotofilt</a>
+                    </h2>
+                    <div class="dFlex">
+                      <p class="crossPrice"><s>#{priceBean.productCrossPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 100x70')}</s></p>
+                      <p class="smallPriceBadge"><span><strong>#{priceBean.productPrice('Blanket_Premium_Bestcanvas_SE', 'Blanket Premium', 'Premium Blanket 100x70')}</strong></span></p>
+                    </div>
+
+                    <div class="buttons">
+                      <div class="upload-button" style="width: 100%;">
+                        <form class="js-du" style="margin-bottom: 0;">
+                          <input type="hidden" value="2000" class="js-du-productid" tabindex="0" />
+                          <input type="hidden" value="0" class="js-rm-item" tabindex="0" />
+                          <div class="upload-button " style="width: 100%;">
+                            <input id="uploadInputId2000" type="file" aria-label="Image upload" class="js-du-file fileinput" accept=".jpg, .jpeg, .png, .gif, .webp" tabindex="0" multiple="" />
+                            <button type="button" id="chooseFile2000" class="js-du-button -action -secondary button filebutton -arrow -download" tabindex="0">
+                              Skapa
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                      <a href="/home-lifestyle/fotofilt.jsf" class="text-green" tabindex="0"></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Acryl -->
+            <div class="product preview col -span-#{sessionBean.userAgentType != 'phone' ? '3' : '9'} #{sessionBean.userAgentType != 'phone' ? '' : 'dInlineBlock'} -blogArticle">
+              <div class="product-box  preview -clearHeight">
+                <div class="content">
+                  <a href="/vaggdekor/akrylglastavlor.jsf" class="img-container" tabindex="0">
+                    <img src="/assets/img/blog/acryl.jpg" alt="photo acryl" class="product-image" />
+                  </a>
+
+                  <div class="infos" style="position: relative; margin-bottom: 0; width: 100%;">
+                    <h2 class="title -articleTitle">
+                      <a href="/vaggdekor/akrylglastavlor.jsf" style="color: #4a4a4a;font-weight: bold;font-size: 16px" tabindex="0">Akrylglastavlor </a>
+                    </h2>
+                    <div class="dFlex">
+                      <p class="crossPrice"><s>#{priceBean.productCrossPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 20x20')}</s></p>
+                      <p class="smallPriceBadge"><span><strong>#{priceBean.productPrice('Classic Acryl Glass Print_Bestcanvas_SE', 'Acryl Glass Classic', 'Acryl 20x20')}</strong></span></p>
+                    </div>
+
+                    <div class="buttons">
+                      <div class="upload-button" style="width: 100%;">
+                        <form class="js-du" style="margin-bottom: 0;">
+                          <input type="hidden" value="2421" class="js-du-productid" tabindex="0" />
+                          <input type="hidden" value="0" class="js-rm-item" tabindex="0" />
+                          <div class="upload-button " style="width: 100%;">
+                            <input id="uploadInputId2421" type="file" aria-label="Image upload" class="js-du-file fileinput" accept=".jpg, .jpeg, .png, .gif, .webp" tabindex="0" multiple="" />
+                            <button type="button" id="chooseFile2421" class="js-du-button -action -secondary button filebutton -arrow -download" tabindex="0">
+                              Skapa
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                      <a href="/vaggdekor/akrylglastavlor.jsf" class="text-green" tabindex="0"></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </article>
+
+      <aside>
+        <section class="footer">
+          <h3>Senaste artiklarna</h3>
+          <ul class="#{sessionBean.userAgentType == 'phone' ? '-recentArticlesMob' : '-recentArticles dFlex'}">
+            <c:if test="#{articlesBean.articles('blog').get(0).id != articleBean.page.id}">
+              <li class="col #{sessionBean.userAgentType == 'phone' ? '-span-12' : ''}">
+                <a href="/blog/#{articlesBean.articles('blog').get(0).url}.jsf">
+                  <img class="recentArticleImg" src="#{articlesBean.articleSocialMediaImage(articlesBean.articles('blog').get(0).id)}" jsf:rendered="#{sessionBean.userAgentType != 'phone'}" data-mh="image" alt="article image #1" />
+                  <div class="dFlex -title" data-mh="info">
+                    <h4><h:outputText value="#{articlesBean.articles('blog').get(0).title}" escape="false" /></h4>
+                    <div class="article-btn-container" jsf:rendered="#{sessionBean.userAgentType != 'phone'}">
+                      <span>
+                        Läs mer »
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </c:if>
+
+            <c:if test="#{articlesBean.articles('blog').get(1).id != articleBean.page.id}">
+              <li class="col #{sessionBean.userAgentType == 'phone' ? '-span-12' : ''}">
+                <a href="/blog/#{articlesBean.articles('blog').get(1).url}.jsf">
+                  <img class="recentArticleImg" src="#{articlesBean.articleSocialMediaImage(articlesBean.articles('blog').get(1).id)}" jsf:rendered="#{sessionBean.userAgentType != 'phone'}" data-mh="image" alt="article image #2" />
+                  <div class="dFlex -title" data-mh="info">
+                    <h4><h:outputText value="#{articlesBean.articles('blog').get(1).title}" escape="false" /></h4>
+                    <div class="article-btn-container" jsf:rendered="#{sessionBean.userAgentType != 'phone'}">
+                      <span>
+                        Läs mer »
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </c:if>
+
+            <c:if test="#{articlesBean.articles('blog').get(2).id != articleBean.page.id}">
+              <li class="col #{sessionBean.userAgentType == 'phone' ? '-span-12' : ''}">
+                <a href="/blog/#{articlesBean.articles('blog').get(2).url}.jsf">
+                  <img class="recentArticleImg" src="#{articlesBean.articleSocialMediaImage(articlesBean.articles('blog').get(2).id)}" jsf:rendered="#{sessionBean.userAgentType != 'phone'}" data-mh="image" alt="article image #3"/>
+                  <div class="dFlex -title" data-mh="info">
+                    <h4><h:outputText value="#{articlesBean.articles('blog').get(2).title}" escape="false" /></h4>
+                    <div class="article-btn-container" jsf:rendered="#{sessionBean.userAgentType != 'phone'}">
+                      <span>
+                        Läs mer »
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </c:if>
+
+            <c:if test="#{articlesBean.articles('blog').get(0).id == articleBean.page.id or articlesBean.articles('blog').get(1).id == articleBean.page.id or articlesBean.articles('blog').get(2).id == articleBean.page.id}">
+              <li class="col #{sessionBean.userAgentType == 'phone' ? '-span-12' : ''}">
+                <a href="/blog/#{articlesBean.articles('blog').get(3).url}.jsf">
+                  <img class="recentArticleImg" src="#{articlesBean.articleSocialMediaImage(articlesBean.articles('blog').get(3).id)}" jsf:rendered="#{sessionBean.userAgentType != 'phone'}" data-mh="image" alt="article image #4" />
+                  <div class="dFlex -title p-m-b-40" data-mh="info">
+                    <h4><h:outputText value="#{articlesBean.articles('blog').get(3).title}" escape="false" /></h4>
+                    <div class="article-btn-container" jsf:rendered="#{sessionBean.userAgentType != 'phone'}">
+                      <span>
+                        Läs mer »
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </c:if>
+          </ul>
+
+          <ui:include src="/content-blocks/social.xhtml" />
+          <script defer="defer" data-pin-hover="true" data-pin-lang="en" data-pin-save="true" src="//assets.pinterest.com/js/pinit.js"></script>
+
+          <div class="button-container dFlex dJustBetween">
+              <a href="/blog/" class="button -action -short">« Tillbaka</a>
+              <a href="/singleupload.jsf" class="button -action -right -short">Skapa dina tryck »</a>
+          </div>
+
+          <ui:include src="/components/meta/json-post-markup.xhtml">
+            <ui:param name="imgPath" value="/assets/build/svg/page/logo.svg" />
+          </ui:include>
+        </section>
+      </aside>
+    </main>
+    <!-- / post -->
+
+    <div class="js-modal -beforeunloadModal" id="beforeunloadModal">
+      <div class="body text-center dFlex">
+        <div class="col -span-8 textArea">
+          <h2>EXTRA 10% rabatt</h2>
+          <p><strong>Tack</strong> för att du besöker vår blogg.<br/>Använd den här koden för att få <strong>EXTRA 10%</strong> rabatt på din beställning idag!</p>
+          <form id="j_id_3c" name="j_id_3c" method="post" action="" enctype="application/x-www-form-urlencoded" class="coupon -centered">
+            <input type="text" class="code" value="UPPTACK10" data-clipboard-text="UPPTACK10" data-clip-translation="Kopieras" readonly="true"/>
+          </form>
+          <button onclick="window.location.href='https://www.bestcanvas.se/'" class="button -action -arrow -cta -filled"><strong>Utforska och beställ nu</strong></button>
+          <span class="col -span-12 disclaimerText">
+            Ansvarsfriskrivning: Kampanjkoden är inte giltig för MIXPIX®-fotobrickor.
+          </span>
+        </div>
+        <div class="-tenOffBadgeWrap col -span-4">
+          <button type="button" onclick="Modal.close('#beforeunloadModal')" class="button -control -neutral -closingBtn">&#215;</button>
+          <div class="-tenOffBadge"></div>
+        </div>
+      </div>
+    </div>
+  </ui:define>
+
+  <ui:define name="eofscript">
+    <script type="text/javascript">
+      $( document ).ready(function() {
+        if ($('.-error, #thankYouMsg').length > 0) {
+          $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+        }
+
+        // When leave window shop modal only once not for every blog post viewed
+        $( "html" ).mouseleave(function() {
+          if (!Cookies.get('blogViewed')) {
+            Modal.open('#beforeunloadModal');
+          } else {
+          // do nothing
+          }
+          Cookies.set('blogViewed', "true")
+        });
+
+        // Put same Create Your Prints » button on post images
+        $( ".footer a.button.-action.-right" ).clone().addClass('-clonedButton').insertAfter( ".post .body img" );
+
+        $(".post .body img").mouseover(function() {
+          if ($(this).css('width') == '1000px'){
+            $(this).next('.-clonedButton').show();
+          }
+        });
+
+        $(".post .body .-clonedButton").mouseover(function() {
+          $(this).show();
+        });
+        $(".post .body img").mouseout(function() {
+          $(this).next('.-clonedButton').hide();
+        });
+
+        // Put same Create Your Prints » button on side oh page
+        $( ".footer a.button.-action.-right" ).clone().addClass('-clonedSideButton').appendTo( "html" );
+      });
+    </script>
+  </ui:define>
+
+</ui:composition>

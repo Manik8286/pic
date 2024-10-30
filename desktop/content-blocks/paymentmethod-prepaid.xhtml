@@ -1,0 +1,19 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+  <div class="head js-accordion-title -expandable" data-clickarea="data-clickarea">
+    <div class="radio -alone">
+      <p:radioButton id="prepaid"
+        for=":paymentMethod:method"
+        itemIndex="#{index}" />
+      <h:outputLabel styleClass="label" for="prepaid" value="Förskottsbetald" />
+    </div>
+    <ul class="logos">
+      <li class="payment-item -prepaid"></li>
+    </ul>
+  </div>
+  <div class="sub body js-accordion-body">
+    <p class="text">Kontonummer, Bankkod och alla andra viktiga informationer ska du få med din bekräftelse.</p>
+  </div>
+</ui:composition>

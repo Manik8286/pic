@@ -1,0 +1,151 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+    <div class="article-showcase -starMap">
+      <h2 class="headline text-center"><span>Personlig stjärnkarta - för de livsförändrande ögonblicken</span></h2>
+      <div class="col -span-12">
+        <div class="#{sessionBean.userAgentType == 'desktop' ? 'description' : ''}">
+          <p class="#{sessionBean.userAgentType == 'phone' ? '' : 'text-center'}">
+            Ett bröllop, ett barns födelse, examen - stora händelser som gör att det känns som stjärnorna har anpassats just för dig. Vår personliga stjärnkarta ger dig chansen att fånga stjärnornas unika uppställning i ett häpnadsväckande tryck som kommer vara ditt för alltid. Ange platsen och tiden för din speciella händelse (i det förgågna eller i framtiden) så kommer stjärnornas exakta position visas framför dina ögon. Varenda stjärnkarta är ett unikt minne kring ett ögonblick som förändrade livet.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="article-showcase -starMap">
+      <h2 class="headline -has-sidelines"><span>Det är otroligt enkelt att skapa en anpassad stjärnkarta</span></h2>
+      <div class="col #{sessionBean.userAgentType == 'desktop' ? '-span-5' : ''} #{sessionBean.userAgentType == 'tablet' ? '-span-6' : ''}">
+        <img alt="stjärnkarta" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/starmap/stjarnkarta.png" />
+      </div>
+      <div class="col #{sessionBean.userAgentType == 'desktop' ? '-span-7' : ''} #{sessionBean.userAgentType == 'tablet' ? '-span-6' : ''}">
+        <div class="#{sessionBean.userAgentType == 'desktop' ? 'description' : ''}">
+         <ul class="text -list">
+           <li><span>Ange ditt valda datum, plats och tid</span></li>
+           <li><span>Den unika uppställningen visas automatiskt</span></li>
+           <li><span>Utbud av färgalternativ och enkla designfunktioner</span></li>
+         </ul>
+         <a href="/configurator-starmap.jsf?product=2276&amp;new" style="left: 20px;" class="js-du-button filebutton button -action">DESIGNA NU</a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="article-showcase -starMap js-image-switcher">
+      <h2 class="headline -has-sidelines"><span>Personligt tryck av stjärnkarta - en underbart färgglad presentidé</span></h2>
+      <div class="col -span-#{sessionBean.userAgentType == 'phone' ? '12' : '4'}">
+        <div class="#{sessionBean.userAgentType == 'desktop' ? 'description' : ''}">
+          <p>Välj från vårt sortiment av nio vackra bakgrundsfärger (enkelt svart eller vitt, eller stämningsfulla nyanser som solnedgång eller ultraviolett). I sin mest grundläggande form visar din personliga stjärnkarta endast din valda plats och datum utan text. Du kan lägga till din egen titel för en ännu mer personlig touch.</p>
+          <p>Färdigställ din personliga stjärnkarta med en av våra vackra, dekorativa ramar. Välj den perfekta ramen från vårt breda utbud av alternativ, inklusive eleganta premiumfärger och varma trätoner.</p>
+        </div>
+      </div>
+
+        <div class="col -span-#{sessionBean.userAgentType == 'phone' ? '12' : '8'} image js-image-switcher pull-right text-center">
+          <ul class="images">
+            <li data-image-name="preview:front" class="-visible"><img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-src="/#{shopInfoBean.versionPath}assets/img/produkter/starmap/personalized_BCSE.jpg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/starmap/personalized_BCSE.jpg" class="lazy max-width" alt="stjärnkarta" /></li>
+            <li data-image-name="preview:detail"><iframe src="" data-src="https://www.youtube.com/embed/JS183URlBLg?loop=1&amp;modestbranding=1&amp;controls=0&amp;showinfo=0" width="100%" frameborder="0" height="#{sessionBean.userAgentType == 'phone' ? '209' : ''}#{sessionBean.userAgentType == 'desktop' ? '388' : ''}#{sessionBean.userAgentType == 'tablet' ? '289' : ''}"></iframe></li>
+          </ul>
+
+          <ul class="options -has-2" style="margin-bottom: 0">
+            <li><button type="button" class="cbutton -highlight" data-target="preview:front">Komplett vy</button></li>
+            <li><button type="button" class="cbutton" data-target="preview:detail">Video</button></li>
+          </ul>
+        </div>
+    </div>
+
+    <div class="article-showcase -starMap containering" jsf:rendered="#{sessionBean.userAgentType != 'phone'}">
+      <h2 class="headline -has-sidelines"><span>Enkelt och elegant - våra inramade stjärnkartotryck</span></h2>
+      <div class="center col -span-#{sessionBean.userAgentType == 'phone' ? '12' : '8'}">
+        <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-src="/#{shopInfoBean.versionPath}assets/img/produkter/starmap/layers-desktop.jpg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/starmap/layers-desktop.jpg" class="lazy max-width" alt="verschiedenen Farben" />
+      </div>
+      <div class="col -span-#{sessionBean.userAgentType == 'phone' ? '12' : '4'}">
+        <div class="centering #{sessionBean.userAgentType == 'desktop' ? '-framedDetails' : ''}">
+          <p class="p-t-90">Elegant dekorativ ram i fem olika färger</p>
+          <p>Krispigt premiumtryck med stilren matt yta</p>
+          <p>Direkttryck på moderna fotoplattor</p>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="article-showcase -starMap p-b-50" jsf:rendered="#{sessionBean.userAgentType == 'phone'}">
+      <h2 class="headline -has-sidelines center"><span>Così semplice e delicato: la nostra stampa di mappe stellari con cornice</span></h2>
+      <img src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-src="/#{shopInfoBean.versionPath}assets/img/produkter/starmap/layers-mobile.jpg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/starmap/layers-mobile.jpg" class="lazy" alt="stjärnkarta" width="100%" />
+      <div class="col -span-12'">
+        <ol>
+          <li class="m-b-10">Elegant dekorativ ram i fem olika färger</li>
+          <li class="m-b-10">Krispigt premiumtryck med stilren matt yta</li>
+          <li>Direkttryck på moderna fotoplattor</li>
+        </ol>
+      </div>
+    </div>
+
+
+    <ui:fragment rendered="#{sessionBean.userAgentType != 'phone'}">
+      <div class="article-showcase -starMap">
+          <div class="col -span-12 text-center">
+              <img alt="stjärnkarta" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/starmap/rooms_BCSE_1.jpg" />
+              <img alt="stjärnkarta" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/starmap/rooms_BCSE_2.jpg" />
+              <img alt="stjärnkarta" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/starmap/rooms_BCSE_3.jpg" />
+          </div>
+        <div class="col -span-12">
+          <div class="#{sessionBean.userAgentType == 'desktop' ? 'description' : ''} text-center">
+            <a href="/configurator-starmap.jsf?product=2276&amp;new" class="js-du-button filebutton button -action">DESIGNA NU</a>
+          </div>
+        </div>
+      </div>
+    </ui:fragment>
+
+
+  <ui:fragment rendered="#{sessionBean.userAgentType == 'phone'}">
+    <div class="article-showcase -starMap">
+          <img alt="stjärnkarta" class="starmapSlider" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/starmap/rooms_BCSE_1.jpg" />
+          <img alt="stjärnkarta" class="starmapSlider" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/starmap/rooms_BCSE_2.jpg" />
+          <img alt="stjärnkarta" class="starmapSlider" src="/#{shopInfoBean.versionPath}assets/img/backgrounds/placeholder.svg" data-srcset="/#{shopInfoBean.versionPath}assets/img/produkter/starmap/rooms_BCSE_3.jpg" />
+
+      <div class="starmapSliderSwitch">
+        <button class="starmapImg" onclick="currentDiv(1)"></button>
+        <button class="starmapImg" onclick="currentDiv(2)"></button>
+        <button class="starmapImg" onclick="currentDiv(3)"></button>
+      </div>
+
+    </div>
+
+    <script>
+    // <![CDATA[
+      var slideIndex = 1;
+      showDivs(slideIndex);
+
+      function plusDivs(n) {
+        showDivs(slideIndex += n);
+      }
+
+      function currentDiv(n) {
+        showDivs(slideIndex = n);
+      }
+
+      function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("starmapSlider");
+        var dots = document.getElementsByClassName("starmapImg");
+        if (n > x.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = x.length}
+        for (i = 0; i < x.length; i++) {
+           x[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+           dots[i].className = dots[i].className.replace(" -active", "");
+        }
+        x[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " -active";
+      }
+    // ]]>
+    </script>
+
+   </ui:fragment>
+</ui:composition>

@@ -1,0 +1,93 @@
+.form-boxed {
+  > .vertical {
+    @extend .col;
+    @extend %-span-6;
+
+    > .continue {
+      float: right;
+    }
+
+    > .forminfo {
+      color: $red;
+      font-size: 14px;
+      font-style: italic;
+      float: left;
+      line-height: 35px;
+      vertical-align: middle;
+    }
+  }
+
+  .legend {
+    margin-bottom: 20px;
+  }
+
+  .cradio {
+    @extend .radio;
+    font-size: 16px;
+    line-height: 30px;
+    float: left;
+    margin-right: 40px;
+  }
+
+  .selection {
+    display: inline-block;
+    margin-bottom: 20px;
+    float: none;
+  }
+
+  .data {
+    @extend .item-box;
+    padding: 20px 10px;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 18px;
+    font-weight: $weight-semibold;
+    margin-top: 0;
+    margin-bottom: 40px;
+  }
+
+  .group {
+    @extend .form-group;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    margin-bottom: 10px;
+
+    &.-company {
+      display: none;
+
+      &.-visible {
+        display: inline-block;
+      }
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    > .label {
+      width: 50%;
+      display: inline-block;
+      float: left;
+      box-sizing: border-box;
+      line-height: 20px;
+      padding: 5px 0;
+      vertical-align: middle;
+      font-size: 16px;
+      font-weight: $weight-normal;
+    }
+
+    > .entry {
+      width: 50%;
+      display: inline-block;
+      float: left;
+      box-sizing: border-box;
+    }
+
+    .-autosize{
+      width: auto;
+    }
+  }
+}

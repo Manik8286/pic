@@ -1,0 +1,51 @@
+.order-table {
+  @extend .table;
+  @extend .table.-centered;
+  @extend .table.-striped;
+
+  table-layout: fixed;
+
+  > thead {
+    @extend .-highlighted;
+
+    font-weight: $weight-normal;
+  }
+
+  > tbody {
+    > tr {
+      height: 75px;
+    }
+
+    .action {
+      @extend .button_action;
+      @extend .button_action_mod-arrow;
+
+      display: inline-block;
+      padding-left: 10px;
+      padding-right: 20px;
+    }
+
+    .thumbnail {
+      width: auto;
+      height: 75px;
+    }
+
+    .produktinfo {
+      margin-bottom: 10px;
+      font-size: 14px;
+
+      > .key {
+        font-weight: $weight-semibold;
+        display: block;
+      }
+
+      > .value {
+        display: block;
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

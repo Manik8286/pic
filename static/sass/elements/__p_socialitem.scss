@@ -1,0 +1,74 @@
+.social-items {
+  margin: 0;
+  margin-right: -20px;
+  padding-left: 0;
+  text-align: left;
+  list-style-type: none;
+  display: block;
+  @include clearfix;
+  columns: 2;
+
+	> .social-item {
+    display: block;
+    padding: 0px 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+    font-weight: $weight-normal;
+    line-height: 35px;
+    box-sizing: border-box;
+    float: unset;
+
+  	a {
+      color: inherit;
+      text-decoration: none;
+      transition: color .2s;
+      padding-left: 45px;
+      position: relative;
+
+      &:hover {
+        color: $highlight-color;
+      }
+
+  	  .icon {
+        width: 35px;
+        height: 35px;
+        left: 0;
+        display: inline-block;
+        position: absolute;
+        content: '';
+  	  }
+  	}
+  }
+  &.-account {
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    list-style-type: none;
+    text-align: center;
+    margin: 20px 0;
+    min-height: 52px;
+    > .social-item {
+      padding-bottom: 5px;
+      font-size: 16px;
+      font-weight: $weight-normal;
+      line-height: 35px;
+      box-sizing: border-box;
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+    }
+    a .icon {
+      width: 50px;
+      height: 50px;
+      left: 0;
+      margin: 0;
+    }
+  }
+}
+
+.social {
+  .-nl {
+    height: unset;
+    padding-bottom: 10px;
+  }
+}

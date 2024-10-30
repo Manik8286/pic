@@ -1,0 +1,64 @@
+.customer-quotes {
+  padding-left: 0;
+  padding-top: 15px;
+  position: relative;
+  margin-top: 62px;
+
+  li {
+    top: 6px;
+  }
+
+  .quote {
+    @extend .customer-quote;
+  }
+}
+
+.customer-quote {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+
+  p {
+    margin-top: 0;
+    margin-bottom: 5px;
+    line-height: 18px;
+  }
+
+  > .foot {
+    font-size: 12px;
+    margin-top: 12px;
+  }
+
+  > .foot > .stars {
+    display: inline-block;
+    position: relative;
+    top: -3px;
+    width: 98px;
+    height: 17px;
+    vertical-align: bottom;
+  }
+
+  > .foot > .from {
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: bottom;
+  }
+
+  > .foot > .date {
+    display: inline-block;
+    vertical-align: bottom;
+    font-weight: $weight-semibold;
+    float: right;
+  }
+
+  &.-condensed {
+    > .foot > .from {
+      white-space: pre;
+      display: inline;
+
+      &:before {
+        content: '\A'; // Line break
+      }
+    }
+  }
+}

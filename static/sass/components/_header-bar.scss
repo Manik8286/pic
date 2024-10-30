@@ -1,0 +1,232 @@
+.topbar-wrapper {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 0;
+  z-index: 899;
+  position: relative;
+}
+
+.header-bar {
+  width: 100%;
+  color: #fff;
+  font-size: 16px;
+  line-height: 35px;
+  position: relative;
+  text-align: center;
+
+  .js-countdown {
+    font-family: Arial,sans-serif;
+    font-weight: bold;
+    margin-bottom: 3px;
+    margin-top: 2px;
+    padding-left: 5px;
+  }
+
+  .link {
+    color: #fff;
+  }
+
+  // Top banner deal
+  &.-topbannerDeal {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 24px;
+    padding-top: 8px;
+  }
+  // end of Top banner deal
+
+  // constrains width and center block
+  .header-container {
+    max-width: $grid-width;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    height: 35px;
+    align-items: center;
+    line-height: 1.3;
+    background-color: inherit;
+  }
+
+  // variation with countdown text
+  &.-final {
+
+    .header-container {
+      justify-content: space-between;
+    }
+
+    .js-countdown {
+
+      &:before {
+        content: attr(data-final-msg);
+        margin-right: 5px;
+      }
+    }
+  }
+
+  // automatically added when used countdown
+  &.-countdown {
+
+    .header-container {
+      justify-content: space-between;
+
+      .header-msg {
+        text-align: center;
+        width: 100%;
+      }
+
+      > div:nth-child(2) {
+        width: 30%;
+        text-align: center;
+        a.link {
+          display: block;
+          font-size: 12px;
+          color: #fff;
+        }
+        .js-countdown {
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  // automatically added when used modal
+  &.-modal,
+  &.-link {
+
+    .header-container {
+      justify-content: center;
+
+      .header-msg {
+        text-align: center;
+      }
+
+      > div:nth-child(2) {
+        width: 30%;
+        text-align: center;
+        line-height: .8;
+
+        .js-countdown {
+          display: block;
+        }
+
+        .modal-link {
+          font-size: 12px;
+          color: white;
+          margin-bottom: 5px;
+          display: block;
+        }
+      }
+    }
+  }
+
+  .left {
+    @extend .col;
+  }
+
+  .icon {
+    margin-right: 10px;
+    width: 25px;
+    height: 18px;
+    fill: $header-bar-color;
+  }
+
+  &.blackweek-notification {
+    background-color: $black;
+    text-align: center;
+
+    .countdown-clock {
+      display: inline-block;
+    }
+    .row {
+      display: inline-block;
+      &::before,
+      &::after {
+        content: "+++";
+        padding: 0 5px;
+        display: inline-block;
+      }
+    }
+    &.disabled .countdown-clock {
+      background: transparent;
+      color: inherit;
+      display: inline;
+    }
+  }
+
+  .right {
+    @extend .col;
+    @extend .col.-right;
+
+    &.-countdownBlock {
+      line-height: 19px;
+      margin-top: 7px;
+
+      .shippingLinkDeal {
+        color: #ffffff;
+        font-size: 12px;
+        display: block;
+      }
+    }
+  }
+
+  // BG Colors for top bars
+
+  &.black-organic {
+    background: #2D2926;
+  }
+  &.red-old-organic {
+    background: #F10006;
+  }
+  &.red-new-organic {
+    background: #D40140;
+  }
+  &.red-cos-organic {
+    background: #E60042;
+  }
+
+  &.-winter {
+    background-color: #00b2ca;
+  }
+
+  &.-facebook {
+    background: linear-gradient( #3B5998, #2B4170);
+    border: 1px solid #2B4170;
+  }
+
+  &.-instagram {
+    background: linear-gradient(#400080,transparent),
+                linear-gradient(200deg,#d047d1,red,#ff0);
+  }
+
+  &.-halloween {
+    background-color: #ff841f;
+  }
+
+  &.-black {
+    background-color: black;
+  }
+
+  &.-with-link {
+
+    .timer {
+      float: right;
+      display: inline-block;
+      line-height: 1;
+      height: 50px;
+      vertical-align: middle;
+      font-size: 80%;
+      padding-top: 10px;
+      box-sizing: border-box;
+
+      .js-countdown {
+        font-weight: bold;
+        width: 254px;
+        text-align: center;
+        display: block;
+      }
+    }
+  }
+}

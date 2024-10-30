@@ -1,0 +1,77 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <div class="showcase" style="background-image:url(#{bgimage})">
+    <header class="head">
+      <h1 class="headline" style="line-height:0.9em;">#{headline}<br />#{headline2}</h1>
+      <div class="claim">#{subheading}</div>
+      <br/>
+    </header>
+    <div class="body">
+
+      <!-- teaser left -->
+      <div class="product-crm">
+       <ui:fragment rendered="#{not empty image}">
+        <img class="#{imageClass}" src="#{image}" alt="altImage"  />
+         </ui:fragment>
+         <ui:fragment rendered="#{not empty teaserProductDetail}">
+            <img class="magnified-corner" src="#{teaserProductDetail}" alt="#{teaserProductDetailAlt}" />
+        </ui:fragment>
+      </div><!-- /teaser left -->
+
+      <!-- teaser right -->
+      <div class="info-crm -right">
+	    <ui:fragment rendered="#{not empty listTitle}">
+           <div class="-green"><strong>#{listTitle}</strong></div> <br />
+        </ui:fragment>
+        <ui:fragment rendered="#{not empty list1}">
+          <ul class="features">
+            <ui:fragment rendered="#{not empty list1}">
+              <li>#{list1} <span class="-highlighted-text">#{list1Green}</span><s>#{strike1}</s> <strong><span>#{newPrice1}</span></strong></li>
+            </ui:fragment>
+            <ui:fragment rendered="#{not empty list2}">
+              <li>#{list2} <s>#{strike2}</s> <strong><span>#{newPrice2}</span></strong></li>
+            </ui:fragment>
+            <ui:fragment rendered="#{not empty list3}">
+              <li>#{list3} <s>#{strike3}</s> <strong><span>#{newPrice3}</span></strong></li>
+            </ui:fragment>
+            <ui:fragment rendered="#{not empty list4}">
+              <li>#{list4}</li>
+            </ui:fragment>
+            <ui:fragment rendered="#{not empty list5}">
+              <li>#{list5}</li>
+            </ui:fragment>
+          </ul>
+        </ui:fragment>
+
+        <ui:fragment rendered="#{not empty quotes}">
+          <ui:include src="/content-blocks/teaser-quotes.xhtml"/>
+        </ui:fragment>
+
+        <div class="product-crm -add-width">
+          <ui:fragment rendered="#{not empty code}">
+            <strong>
+              Voucher code:
+              <span class="codeSize20">#{code}</span>
+            </strong>
+            <br />
+            <small>#{underCodeSentence}</small>
+          </ui:fragment>
+        <!-- UPLOAD BUTTON INCLUDE-->
+          <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+            <ui:param name="directuploadProductId" value="#{UploadID}" />
+            <ui:param name="directuploadClass" value="action" />
+            <ui:param name="buttonText" value="#{buttonText}" />
+        </ui:include>
+
+        <ui:fragment rendered="#{not empty Ndate}">
+		      <p><small>#{Ndate}</small></p>
+        </ui:fragment>
+      </div>
+      </div><!-- /teaser right -->
+    </div>
+  </div>
+
+</ui:composition>

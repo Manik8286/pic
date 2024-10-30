@@ -1,0 +1,105 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <section class="page-teaser #{teaserClass}">
+    <div class="showcase" style="background-image: url(#{teaserBgImage});#{BGstyle}">
+      <header class="head">
+        <h1 class="headline #{headlineClass}">#{headline} <span class="-highlighted-text">#{headline2}</span> <span style="font-size:18px;">#{format}</span></h1>
+        <div class="claim">#{claim}
+          <span class="-highlighted-text">#{claimGreen} </span> #{claim2}
+          <ui:fragment rendered="#{not empty claimLink}">
+            - with <a href="javascript:void(0)" onclick="Modal.open('#best-price-garantie');">#{claimLink}</a>
+          </ui:fragment>
+        </div>
+      </header>
+
+      <div class="body">
+        <!-- teaser left -->
+        <div class="product">
+          <ui:fragment rendered="#{empty noShowcase}">
+            <ui:fragment rendered="#{not empty magnifiedImg}">
+              <img class="magnified-corner" src="#{magnifiedImg}" alt="Magnified corner" />
+            </ui:fragment>
+
+            <img class="#{imageClass} #{imageVisibility}" src="#{teaserProductImage}" width="410" height="308" alt="" />
+
+            <ui:fragment rendered="#{not empty badgeMiddle}">
+              <div class="badge #{badgeClass}">
+                <div class="title" style="font-size:13px;">#{badgeTop}</div>
+                <div class="price #{alternative}">#{badgeMiddle}<small><sup>*</sup></small></div>
+                <div class="sub #{size}" style="font-size: 20px;">
+                  <div style="margin-top: 7px;">
+                    <sup>
+                      #{badgeBottom}
+                      <ui:fragment rendered="#{empty seaBadgeText1 and empty seaBadgeText2}">
+                        #{badgeBottomBottom}
+                      </ui:fragment>
+                    </sup>
+                    <sup class="sup -sup2Line">#{seaBadgeText1} #{seaBadgeText2} </sup>
+                  </div>
+                </div>
+              </div>
+            </ui:fragment>
+          </ui:fragment>
+        </div>
+        <!-- /teaser left -->
+
+        <!-- teaser right -->
+        <div class="info -right">
+          <ui:fragment rendered="#{not empty uspHeading}">
+            <h3>#{uspHeading}</h3>
+          </ui:fragment>
+
+          <ul class="features">
+            <li class="-highlight">#{teaserFeatureHighlighted}</li>
+
+            <ui:fragment rendered="#{not empty teaserFeature1}">
+              <li> <span class="#{strong}">#{teaserFeature1}</span> </li>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty teaserFeature2}">
+              <li>#{teaserFeature2}</li>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty teaserFeature3}">
+              <li>#{teaserFeature3}</li>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty teaserFeature4}">
+              <li>#{teaserFeature4}</li>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{not empty teaserFeature5}">
+              <li>#{teaserFeature5} <u>#{teaserFeature5Plus}</u> </li>
+            </ui:fragment>
+          </ul>
+
+          <ui:fragment rendered="#{codeField == true}">
+            <div class="teaserCodeField #{topCorrection}">
+             <div class="topTitle"><b>#{codeTitle}</b></div>
+              <div class="content">
+                <span>
+                  #{codeContent}
+                </span>
+              </div>
+              <p>
+                <small>#{validUntil}</small>
+              </p>
+            </div>
+          </ui:fragment>
+
+          <ui:fragment rendered="#{showUpload != false}">
+            <ui:include src="/#{baseUrlBean.languageBase}components/file-upload/directupload.xhtml">
+              <ui:param name="directuploadProductId" value="#{uploadId}" />
+              <ui:param name="directuploadClass" value="action" />
+              <ui:param name="buttonText" value="#{buttonText}" />
+            </ui:include>
+          </ui:fragment>
+        </div><!-- /teaser right -->
+      </div>
+    </div>
+  </section>
+
+</ui:composition>

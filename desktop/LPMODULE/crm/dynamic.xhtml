@@ -1,0 +1,9 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+  <script>Cookies.set('topbanner', { msg:'#{_['Newsletter offer activated!']}', countdown: '#{discountCodeBean.endDateAndTimeIso}', countdownFormat: '%-D d %-H u %M m %S s', hideAfter: 'header-bar'}, { expires: parseInt("#{ not empty discountCodeBean.endDateAndTimeIso ? 1 : 0 }") });</script>
+
+</ui:composition>

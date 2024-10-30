@@ -1,0 +1,97 @@
+body {
+  font-family: $default-font-family;
+  color: $concrete;
+  // padding-top: 60px;
+  overflow-x: hidden;
+
+  // &.-has-header-bar {
+  //   padding-top: 100px;
+
+  //   .christmas-countdown {
+  //     background-color: #a10030 !important;
+  //     color: #fff;
+  //     font-size: 11px;
+  //     padding-bottom: 4px;
+
+  //     a {
+  //       color: #fff;
+  //       font-size: 11px;
+  //     }
+  //   }
+
+  //   ._p_t-page-head {
+  //     top: 40px;
+  //   }
+  // }
+  a {
+    color: $newGreen;
+  }
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+svg > img {
+  width: 100%;
+  height: 100%;
+}
+
+.no-svg svg,
+.no-inlinesvg svg {
+  display: inline-block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.-text-centered {
+  text-align:center;
+}
+
+.-red {
+  color: #e10000;
+}
+.-red.-new {
+  color: #D40140;
+}
+
+.-left {
+  float: left;
+}
+
+.-right {
+  float: right;
+}
+
+.-align-left {
+  text-align: left;
+}
+
+#eKomiVFreport-fixed {
+  display: none;
+}
+
+// non-sticky header (Phone)
+.phone ._p_t-page-head,
+.phone body.-has-header-bar ._p_t-page-head,
+.phone .header-bar {
+  position: relative;
+  top: unset;
+  left: unset;
+  right: unset;
+}
+.phone body,
+.phone body.-has-header-bar {
+  padding-top: 0;
+}
+
+[data-srcset] {
+  max-width: 100%;
+  max-height: 100%;
+}

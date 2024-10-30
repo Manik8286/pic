@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+  <!-- Rich snippet -->
+    <section class="page-section">
+      <div class="article-showcase -no-bottom">
+        <h3 class="headline -has-sidelines"><span>Betygsättning och recensioner</span></h3>
+        <div class="col -span-12 description text-center" vocab="http://schema.org/" typeof="Product">
+          <span property="brand" typeof="Brand">
+          <meta property="name" content="BestCanvas.se" />
+          </span>
+          <meta property="name" content="Akrylblock" />
+          <meta property="image" src="https://download.cdn-shop.com/media/web_images/se/bestcanvas/foto-pa-akrylblock.jpg" />
+          <meta property="description" content="Foto Akrylblock. Sofistikerad visuell estetik. 25 mm tjockt, robust glas. Gör så bilden ser dimensionell ut." />
+          <meta property="sku" content="ACRYLBLOCK-QUAD-10X10-1" />
+          <span property="aggregateRating" typeof="AggregateRating">
+          <p class="text">
+            <ui:include src="/rich-snippets/snippet-rating.xhtml" />Akrylblock nu!</p>
+          </span>
+          <span property="offers" typeof="Offer">
+            <meta property="url" content="https://www.bestcanvas.se/home-lifestyle/akrylblock.jsf" />
+            <meta property="priceCurrency" content="SEK" />
+            <meta property="price" content="#{fn:trim(priceBean.productPrice('Acrylblock_Bestcanvas_SE', 'Acrylblock', 'Acrylblock 10x10').replace(shopInfoBean.shopCurrencySymbol, '').replace(',', '.'))}" />
+            <time property="priceValidUntil" datetime="#{now.month + 1 eq 12 ? now.year + 1900 + 1 : now.year + 1900}-12-31"></time>
+            <span property="seller" typeof="Organization">
+              <meta property="name" content=" BestCanvas.se " />
+            </span>
+            <link property="itemCondition" href="http://schema.org/NewCondition" />
+            <link property="availability" href="http://schema.org/InStock" />
+          </span>
+        </div>
+      </div>
+    </section>
+  <!-- /Rich snippet -->
+
+</ui:composition>

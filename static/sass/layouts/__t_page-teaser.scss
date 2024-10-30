@@ -1,0 +1,363 @@
+.page-teaser {
+  > .trust > .badges {
+    li img {
+      max-height: 95px;
+    }
+
+    > li.-seal {
+      margin-bottom: 26px;
+    }
+  }
+
+  &.-modern .showcase .body .info.-white {
+    &.-nl-fluid {
+      @extend %-span-7;
+
+      h1 {
+        font-size: 22px;
+      }
+    }
+  }
+
+  > .showcase {
+    &.-mask {
+      height: 430px;
+      box-sizing: border-box;
+      background-position-x: -345px;
+    }
+  }
+
+  &.-encapsulated {
+
+    > .showcase {
+      height: 440px;
+      padding-top: 40px;
+      background-size: cover;
+      background-position: left 41% top;
+
+      >.body {
+
+        >.product {
+          width: calc(50% - 20px);
+          float: left;
+          position: relative;
+          margin-left: 10px;
+          margin-right: 10px;
+
+          img {
+            max-width: 100%;
+          }
+        }
+
+        >.info {
+          float:right;
+          box-sizing:border-box;
+          background: #fff;
+          padding: 20px;
+          border-radius: 5px;
+          margin-left: 10px;
+          margin-right: 10px;
+          width: calc(50% - 20px);
+
+          > .headline {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.038;
+            margin-top: 0;
+          }
+
+          > .features {
+            @extend .text-list;
+            @extend .text-list.-checkmark;
+            margin-bottom: 20px;
+
+            li {
+              margin-bottom: 7px;
+              padding-left: 25px;
+
+              &:last-of-type {
+                margin-bottom: 0;
+              }
+
+              &:before {
+                transform: scale(.78);
+              }
+            }
+          }
+
+          > .js-du {
+            > .upload-button {
+              display: block;
+              padding-left: 0;
+
+              .filebutton {
+                font-size: 22px;
+                line-height: 55px;
+                height: 55px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .product >.fullwidth {
+    width: 100%;
+  }
+
+  .freeShippingTeaserCuschion {
+    margin-top: 105px;
+
+    @include break(tablet_landscape) {
+      margin-top: 85px;
+    }
+
+    &.-highlightedWhite {
+      color: $white;
+    }
+
+    .freeShippingLogo {
+      position: relative;
+      top: 6px;
+    }
+  }
+
+  .freeShippingTeaser {
+    font-size: 13px;
+    @include break(tablet_landscape) {
+      width: 70%;
+    }
+    
+    .-highlightedWhite {
+      color: $white;
+    }
+
+    .freeShippingLogo {
+      position: relative;
+      top: 6px;
+    }
+    &.-textColor {
+      color: $mercury;
+    }
+  }
+
+  > .trust > .tv > .text {
+    display: inline-block;
+    width: 110px;
+    font-size: 14px;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+
+  > .showcase {
+    height: 520px;
+
+    &.-showcase320h {
+      height: 320px; 
+    }
+
+    &.-showcase350h {
+      height: 350px; 
+    }
+
+    &.-showcase450h {
+      height: 450px; 
+    }
+    
+    &.-showcasePositionX-295 {
+      background-position-x: -295px;
+    }
+
+    &.-mixPix {
+        background-position-x: -520px;
+    }
+  }
+
+  .page-teaser.kino > .showcase,
+  .page-teaser.pan1 > .showcase {
+    height: 415px;
+  }
+
+  > .showcase img.digi {
+    width: 400px;
+  }
+
+  > .showcase img.klas {
+    width: 400px;
+    margin-top: 35px;
+  }
+
+  > .showcase img.kino {
+    width: 380px;
+    margin-top: 0;
+  }
+
+  > .showcase img.pan1 {
+    width: 100%;
+    margin-top: 45px;
+  }
+
+  > .showcase img.pan2,
+  > .showcase img.pan3 {
+    width: 360px;
+    margin-top: 105px;
+  }
+
+  > .showcase > .head {
+
+    > .headline {
+      &.-smallerFont {
+        font-size: 25px;
+      }
+    }
+  }
+
+  &.kino > .showcase > .body > .product > .badge.-special {
+    margin-top: 20px;
+  }
+
+  &.pan1 > .showcase > .body > .product > .badge.-special {
+    margin-top: 0;
+  }
+
+  &.pan2 > .showcase > .body > .product > .badge.-special {
+    margin-top: -22px;
+  }
+
+  &.pan3 > .showcase > .body > .product > .badge.-special {
+    margin-top: -52px;
+  }
+
+  > .trust .stations {
+    margin-left: 0;
+
+    .station {
+      margin-left: 8px;
+      vertical-align: middle;
+
+      &.-ups { 
+        background-image: url("data:image/svg+xml,%3Csvg id='eb56a0e8-3803-495c-a72d-95754be315b9' data-name='图层 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 46.37 55.09'%3E%3Ctitle%3EUPS%3C/title%3E%3Cpath d='M46,5C36-.35,23.68,0,23.16,0S10.32-.35.33,5L0,5.2V32.31A17.38,17.38,0,0,0,6.27,46.26c3.92,3.21,16.39,8.61,16.91,8.83.52-.22,13-5.62,16.92-8.83a17.38,17.38,0,0,0,6.27-13.95V5.2Zm-.3,27.29a16.7,16.7,0,0,1-6,13.46c-3.9,3.2-16.52,8.64-16.52,8.64S10.56,49,6.66,45.77a16.73,16.73,0,0,1-6-13.46V5.58C10.59.21,23.18.63,23.18.63s12.6-.42,22.56,5Z' fill='%234b4a4a'/%3E%3Cpath d='M2.42,32.31A15.06,15.06,0,0,0,7.79,44.39C11,47,20.52,51.28,23.18,52.45c2.66-1.17,12.23-5.48,15.39-8.06A15,15,0,0,0,44,32.31V6c-13.32-1.24-29.07-.48-41.53,11Zm35-14.51a6.89,6.89,0,0,1,4.36,1.29v3.46a5.31,5.31,0,0,0-3.56-1.63c-1.13,0-2.3.48-2.34,1.9s1.13,2,2.62,2.89c3.32,1.95,4,3.71,3.89,6a5.38,5.38,0,0,1-5.77,5.32,8.75,8.75,0,0,1-4.37-1.23V32.16A6.34,6.34,0,0,0,36,33.78a2.12,2.12,0,0,0,2.39-2.22c0-1.24-.73-1.92-2.48-2.95C32.63,26.69,32.05,25.1,32,23A5.28,5.28,0,0,1,37.38,17.8Zm-19,1.42a9.61,9.61,0,0,1,5.36-1.42c4.75,0,7.36,3.61,7.36,9.4S28.6,37,24.19,37a6.54,6.54,0,0,1-1.79-.22v8.37h-4Zm-14-1h4V30.89c0,1.12.27,2.8,2.09,2.8a3.29,3.29,0,0,0,1.88-.49v-15h4V35.46a10.53,10.53,0,0,1-6,1.6c-3.94,0-5.93-2.13-5.93-6.35Z' fill='%234b4a4a'/%3E%3Cpath d='M27.07,27.31c0-4.46-.95-6.3-3.26-6.3a3.45,3.45,0,0,0-1.41.28V33.52a3.89,3.89,0,0,0,1.29.24C26,33.76,27.07,31.65,27.07,27.31Z' fill='%234b4a4a'/%3E%3C/svg%3E");
+        background-size: 35px 30px;
+        height: 30px;
+        background-repeat: no-repeat;
+        margin: 0;
+        width: auto;
+        height: auto;
+        padding-left: 35px;
+        line-height: 1;
+        overflow: visible;
+        width: 200px;
+      }
+      &.-sbox { 
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 297.25 131.98'%3E%3Ctitle%3Eshipping%3C/title%3E%3Cg id='e6a5b901-eb3f-4761-beca-05e7dac41e3b' data-name='Layer 2'%3E%3Cpath d='M252.34,100.09c-9.67,0-18.25,7.14-19.16,16S239.39,132,249.06,132s18.26-7.14,19.16-15.94S262,100.09,252.34,100.09Zm7.12,16c-.45,4.4-4.74,8-9.58,8s-8.39-3.57-7.94-8,4.74-8,9.58-8S259.92,111.63,259.46,116Z' fill='%234a4a4a'/%3E%3Cpath d='M296.44,69.55,275.39,32.7A7.16,7.16,0,0,0,269,29.28H231.11c-4.35,0-8.21,3.2-8.61,7.16L216,99.68c-.41,3.95,2.78,7.16,7.13,7.16h6.21a4,4,0,0,0,3.43-1.85A23.89,23.89,0,0,1,253,93.82c8.47,0,15.29,4.59,17.92,11.17a3.16,3.16,0,0,0,3,1.85h11.93c4.35,0,8.21-3.21,8.61-7.16l2.72-26.38A6.32,6.32,0,0,0,296.44,69.55Zm-16.93-3.69h-34.9a3.81,3.81,0,0,1-4.06-4.08L243,38.42a4.87,4.87,0,0,1,4.9-4.08H267a4.08,4.08,0,0,1,3.62,1.94L284,59.64C285.53,62.36,283,65.86,279.51,65.86Z' fill='%234a4a4a'/%3E%3Cpath d='M204,0H109.49c-3.53,0-6.66,2.6-7,5.81h0c-.33,3.21,2.27,5.81,5.79,5.81h23.43c3.52,0,6.11,2.6,5.78,5.8l-.06.58c-.33,3.21-3.45,5.81-7,5.81H85.65c-3.52,0-6.65,2.6-7,5.8h0c-.33,3.21,2.26,5.81,5.79,5.81h31.71c3.7,0,6.42,2.73,6.07,6.1h0c-.35,3.36-3.62,6.09-7.32,6.09H57.59c-3.52,0-6.65,2.6-7,5.81h0c-.33,3.21,2.27,5.81,5.79,5.81H106c3.7,0,6.42,2.73,6.07,6.09h0c-.34,3.37-3.62,6.1-7.32,6.1H34.26c-3.53,0-6.65,2.6-7,5.81h0C27,80.43,29.54,83,33.06,83H87.65c3.7,0,6.42,2.73,6.07,6.1h0c-.35,3.36-3.63,6.09-7.33,6.09H52.7c-3.53,0-6.65,2.6-7,5.81h0c-.33,3.21,2.26,5.81,5.78,5.81H85.77a13.46,13.46,0,0,0,10.17-4.61,24.11,24.11,0,0,1,18.23-8.41c7.23,0,13.25,3.34,16.49,8.41a10.79,10.79,0,0,0,9.22,4.61H193c8.56,0,16.15-6.31,16.95-14.1h0l.19-1.86,7.9-76.78C218.86,6.31,212.57,0,204,0Z' fill='%234a4a4a'/%3E%3Cpath d='M113.52,100.09c-9.67,0-18.25,7.14-19.16,16S100.57,132,110.24,132,128.5,124.84,129.4,116,123.2,100.09,113.52,100.09Zm7.12,16c-.45,4.4-4.74,8-9.58,8s-8.39-3.57-7.94-8,4.74-8,9.58-8S121.1,111.63,120.64,116Z' fill='%234a4a4a'/%3E%3Cpath d='M83.38,11.62H44.91c-3.52,0-6.11-2.6-5.78-5.81h0C39.46,2.6,42.58,0,46.11,0H84.58c3.52,0,6.12,2.6,5.79,5.81h0C90,9,86.91,11.62,83.38,11.62Z' fill='%234a4a4a'/%3E%3Cpath d='M32.9,59.22H16c-3.53,0-6.12-2.6-5.79-5.81h0c.33-3.21,3.46-5.81,7-5.81H34.09c3.53,0,6.12,2.6,5.79,5.81h0C39.55,56.62,36.43,59.22,32.9,59.22Z' fill='%234a4a4a'/%3E%3Cpath d='M61.89,35.09H5.81c-3.52,0-6.11-2.6-5.78-5.81H0c.33-3.21,3.45-5.81,7-5.81H63.08c3.53,0,6.12,2.6,5.79,5.81h0C68.54,32.49,65.41,35.09,61.89,35.09Z' fill='%234a4a4a'/%3E%3C/g%3E%3C/svg%3E");
+        background-size: 55px 30px;
+        background-repeat: no-repeat;
+        margin: 0;
+        width: auto;
+        height: 30px;
+        line-height: 1;
+        padding-left: 59px;
+
+        overflow: visible;
+        span
+        {
+          background: #f3f3f3;
+          position:relative;
+          padding: 0;
+          display: block;
+          top: -1px;
+        }
+      }
+
+      &.-fast-t {
+        height: 35px;
+        padding-left: 42px;
+        width: 140px;
+        line-height: 1.3;
+      }
+    }
+  }
+
+  &.easel-back {
+    .product {
+      margin-top: 60px;
+    }
+  }
+
+  .tasse {
+    .sameLevel {
+      height: 106px;
+    }
+
+    .sameLevelColor {
+      height: 74px;
+    }
+
+    .standardMugImg {
+      padding-left: 10px;
+    }
+
+    .magicMugImg {
+      position: relative;
+      top: -24px;
+    }
+
+    .standardMugImg,
+    .premiumMugImg,
+    .inner-colored-mug ,
+    .magicMugImg {
+      padding-left: 17px;
+    }
+
+    .magicMugImg {
+      position: relative;
+      top: 0;
+    }
+
+    .headline4 {
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .color-top {
+      margin-top: -9px;
+    }
+  }
+
+  .-green {
+    color: $newGreen;
+  }
+
+  .-whiteHighlight {
+    background: rgba(234,234,234,.6);
+    box-shadow: 0 0 12px 9px rgba(234,234,234,.6);
+  }
+  
+}
+
+.mug-teaser {
+  .price-badge {
+    position: absolute;
+    top: 110px;
+    right: -120px;
+  }
+  .col {
+    position:relative;
+  }
+}
+
+.photo-gifts-box {
+  .imagePosition {
+    margin-left: -35px;
+    margin-top: 30px;
+  }
+  .price-badge {
+    position: absolute;
+    top: 155px;
+    right: -0px;
+  }
+  .col {
+    position:relative;
+  }
+}
